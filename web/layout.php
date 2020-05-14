@@ -2,6 +2,7 @@
 /**
  * User: Hans-Gert Gräbe
  * Date: 2015-07-26
+ * Last Update: 2020-05-14
  */
 
 function pageHeader() {
@@ -57,7 +58,7 @@ function generalContent() {
 <p>Das <b>Ko</b>rrespondenz-<b>Se</b>minar-<b>Net</b>zwerk Projekt entstand
 ursprünglich im Nachgang zu einem Treffen von Gruppen engagierter Förderer
 mathematischer Nachwuchstalente im Schulalter aus Tschechien, der Slowakei,
-Ungarn und Deutschland im März 2004 in Bratislava. 
+Ungarn und Deutschland im März 2004 in Bratislava.
 
 <p>Nach einer enthusiastischen Anfangsphase sind heute einzelne Personen aus
 verschiedenen Förderzusammenhängen in Deutschland im Projekt aktiv. Die
@@ -74,7 +75,8 @@ function pageFooter() {
 
   <div class="container">
     <div class="footer" align="right">
-        <p class="text-muted">&copy; <a href="http://lsgm.de/KoSemNet/index.php">KoSemNet Projekt</a> 2015 </p>
+        <p class="text-muted">&copy; <a href="http://lsgm.de/KoSemNet/index.php">KoSemNet
+        Projekt</a> seit 2015 </p>
     </div>
   </div>
   <!-- jQuery (necessary for Bootstrap JavaScript plugins) -->

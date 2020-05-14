@@ -2,6 +2,7 @@
 /**
  * User: Hans-Gert Gräbe
  * Date: 2016-05-27
+ * Last Update: 2020-05-14
  */
 
 include_once("layout.php");
@@ -149,9 +150,10 @@ bereits im Abschnitt "Artikel-Bereich" erläutert.
 <h3>Bilder</h3>
 
 <p>Es gibt (noch) keine klaren Regeln über die Einbindung von Bildern.  Wir
-ermuntern Autoren, Bilder als eps oder (besser) als pspicture Inline-Text
-bereitzustellen.  eps-Dateien sind über das graphicx Paket und die Kurzbefehle
-\epsPicture und \epsTwoPictures (siehe <tt>kosemnet.sty</tt>) einzubinden.
+ermuntern Autoren, Bilder als pdf oder (besser) als pcpicture oder tikz
+Inline-Text bereitzustellen. Ältere Bilder liegen als eps-Dateien vor und sind
+über das graphicx Paket und die Kurzbefehle \epsPicture und \epsTwoPictures
+(siehe <tt>kosemnet.sty</tt>) eingebunden.
 
 <p>Dank der Bemühungen von Frank Göring sind bereits viele eps-Bilder in
 pspicture Inline-Text umgesetzt worden.  Bitte setzen Sie sich mit ihm in

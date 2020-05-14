@@ -2,6 +2,7 @@
 /**
  * User: Hans-Gert Gräbe
  * Date: 2016-05-27
+ * Last Update: 2020-05-14
  */
 
 include_once("layout.php");
@@ -44,9 +45,11 @@ beschrieben ist.
   noch nicht endgültig spezifiziert.
 <li> Aufzeichnung von Änderungen (Änderungen, Geschichte des Materials),
 </ul>
-Die <a href="MetaInformations.php">Meta-Informationen</a> können aus einem
-RDF Triple Store heruntergeladen oder über einen Sparql Endpunkt durchsucht
-werden.
+Die <a href="MetaInformations.php">Meta-Informationen</a> stehen in unserem
+<a href="">github Repo</a> zur Verfügung und können mit entsprechenden
+RDF-Werkzeugen durchsucht werden.  Wir planen, für das Projekt auch einen RDF
+Store mit SPARQL Endpunkt einzurichten, um die Inspektion der Metadaten zu
+erleichtern. </p>
 
 <p><b>Ein Problem kann für begrenzte Zeit als gesperrt markiert werden</b>,
 wenn es in einem Wettbewerb eingesetzt werden soll. Dies wird durch einen

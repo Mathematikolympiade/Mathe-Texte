@@ -2,6 +2,7 @@
 /**
  * User: Hans-Gert Gräbe
  * Date: 2016-05-27
+ * Last Update: 2020-05-14
  */
 
 include_once("layout.php");
@@ -64,9 +65,9 @@ wird.
 KoSemNet Datenbasis dem öffentlichen Bereich (Public Domain) überantwortet
 werden.  Die Webseiten der <a href="http://www.creativecommons.org">Creative
 Commons</a> unterscheiden allerdings zwischen der CC Attribution License
-(CC-BY) und einer Übergabe in den öffentlichen Bereich.
+(CC-BY) und einer Übergabe in den öffentlichen Bereich (CC-Zero).
 
-<p><table border width="80%" cellspacing="12" cellpadding="70" align="center">
+<p><table width="80%" cellspacing="12" cellpadding="70" align="center">
 <tr><td>
 <b>Wir haben deshalb die folgenden Hauptregeln vereinbart, die von Autoren von
 Beiträgen für die KoSemNet Datenbasis akzeptiert werden müssen:</b>
@@ -77,18 +78,21 @@ berechtigt ist, die folgenden Nutzungsrechte zu vergeben. (Ein Hinderungsgrund
 könnte die vorherige Übertragung eines ausschließlichen Nutzungsrechts an
 einen Dritten sein).
 
-<p>Der Autor räumt dem KoSemNet Projekt unwiderruflich ein umfassendes
-einfaches Nutzungsrecht nach § 31 (2) UrhG ein, den Beitrag für alle Zwecke,
-einschließlich des Rechts der Veränderung und der Veröffentlichung, kostenfrei
-zu nutzen, vorausgesetzt, das Werk und alle abgeleiteten Werke werden unter
-den Bedingungen
-der <a href="http://creativecommons.org/licenses/by/3.0/deed.de" >Creative
-Commons Attribution License</a> (CC-BY) verbreitet und veröffentlicht.
+<p>Der Autor räumt dem KoSemNet Projekt an dem
+  eingebrachten <strong>Aufgabenmaterial</strong> unwiderruflich ein
+  umfassendes einfaches Nutzungsrecht nach § 31 (2) UrhG ein, den Beitrag für
+  alle Zwecke, einschließlich des Rechts der Veränderung und der
+  Veröffentlichung, kostenfrei zu nutzen, wobei das Werk und alle abgeleiteten
+  Werke unter den Bedingungen
+  der <a href="http://creativecommons.org/licenses/by/3.0/deed.de" >Creative
+  Commons Attribution License</a> (CC-BY) verbreitet und veröffentlicht
+  werden.
 
-<p>Der Autor räumt der Öffentlichkeit das Recht ein, den Beitrag unverändert
-unter den Bedingungen
-der <a href="http://creativecommons.org/licenses/by-nd/3.0/deed.de" >Creative
-Commons Attribution-NoDerivs License</a> (CC-BY-ND) zu veröffentlichen.
+<p>Der Autor räumt der Öffentlichkeit (und damit auch dem KoSemNet Projekt)
+  das Recht ein, seine <strong>mathematischen Texte</strong> unter den
+  Bedingungen
+  der <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.de"
+  >Creative Commons Zero</a> (CC-Zero) zu verbreiten und zu veröffentlichen.
 </table>
 
 <p>Das Recht eines Autors auf die genaue Beschreibung seines Anteils am Werk
@@ -136,23 +140,15 @@ Attribution Section korrekt auszuweisen.
 
 <p>Das KoSemNet Projekt veröffentlicht ausschließlich Aufsätze oder
 mathematische Miniaturen, die von deren Autoren unter den Bedingungen der
-CC-BY zur Verfügung gestellt wurden.  <b>Beachten Sie, dass das nicht möglich
-ist, wenn Sie für den Text ein ausschließliches Nutzungsrecht (§ 31 (3) UrhG)
-vergeben haben und dieses Recht (wegen möglicher zeitlicher Beschrängung) noch
-nicht erloschen ist.</b>
+CC-Zero zur Verfügung gestellt wurden.  <b>Beachten Sie, dass das nicht
+möglich ist, wenn Sie für den Text ein ausschließliches Nutzungsrecht (§ 31
+(3) UrhG) vergeben haben und dieses Recht (wegen möglicher zeitlicher
+Beschrängung) noch nicht erloschen ist.</b>
 
 <p>Jeder Artikel hat einen oder mehrere Autoren. Einer der Autoren tritt im
 Projekt als Maintainer des Artikels auf. Er hat die letzte Entscheidung über
 Modifikationen, die in den primären Text Eingang finden. Dies tangiert nicht
 die Erstellung abgeleiteter Werke durch andere Autoren.
-
-<h3>Lokale Aktivitäten</h3>
-
-<p>In diesem Teil des Projekts sammeln wir Material, das nicht den rechtlichen
-Bedingungen oder den formal-technischen Anforderungen an die Aufnahme in die
-Datenbasis genügt oder vorläufigen oder lokalen Charakter hat. <b>Dieses
-Material steht also ausschließlich für den internen Gebrauch innerhalb der
-Projektgruppe zur Verfügung.</b>
 
    </div>
 </div>

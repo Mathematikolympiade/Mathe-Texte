@@ -2,6 +2,7 @@
 /**
  * User: Hans-Gert Gräbe
  * Date: 2016-05-27
+ * Last Update: 2020-05-14
  */
 
 include_once("layout.php");
@@ -13,9 +14,10 @@ $content='
 <p>Meta-Informationen werden
 im <a href="http://de.wikipedia.org/wiki/Resource_Description_Framework"
 >RDF-Format</a> als <a href="http://linkeddata.org/" >Linked Data</a> zur
-Verfügung gestellt und können auf die (in jenen Kreisen) bekannte Weise über
+Verfügung gestellt und können auf die (in jenen Kreisen) bekannte Weise aus
+den RDF-Quellen im github Repo durchsucht werden.  Es ist geplant, auch wieder
 einen <a href="http://de.wikipedia.org/wiki/SPARQL" >Sparql Endpunkt</a>
-durchsucht werden.</p>
+einzurichten.</p>
 
 <p>Metainformationen zu unseren Artikeln werden als einfache RDF-Datei in den
 gängigen Formaten (.ttl = Turtle, .rdf = rdfxml, .json = JSON-RDF) im
@@ -33,25 +35,9 @@ verteilten und öffentlich verfügbaren Datenbestand.  Anfrageergebnisse können
 auf ähnliche Weise in lokale Webseiten eingebunden werden, wie dies von
 SQL-basierten Datenbanken bekannt ist.</p>
 
-<p>Wir stellen einen solchen RDF-Store für unsere Daten zur Verfügung. Als
-Werkzeuge verwenden wir dabei
-<a href="http://aksw.org/Projects/OntoWiki.html">OntoWiki</a> als
-Präsentationsplattform und die <a href="http://virtuoso.openlinksw.com/"
->Virtuoso Community Edition</a> als Datenbank. </p>
-
 <p>Mehr zum Aufsetzen eines eigenen RDF-Stores ist
-im <a href="http://wiki.symbolicdata.org/LocalSparqlEndpoint" >Wiki des
+im <a href="http://symbolicdata.github.io/LocalSparqlEndpoint" >Wiki des
 SymbolicData Projekts</a> zu finden.</p>
-
-<p>Weiter zum 
-<ul>
-<li> <a href="http://lsgm.de/KoSemNet/rdf" >RDF-Download-Bereich unserer
-    Website</a></li> 
-<li> <a href="http://pcai003.informatik.uni-leipzig.de/kosemnet/" >RDF Triple
-Store</a></li>
-<li> <a href="http://pcai003.informatik.uni-leipzig.de:8893/sparql" >Sparql
-Endpunkt</a></li>
-</ul></p>
 
    </div>
 </div>

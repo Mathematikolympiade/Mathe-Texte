@@ -51,6 +51,10 @@ function fix($s) {
   return $s;
 }
 
+function createLink($s) {
+    return str_replace("file://rdf/","pdf/",$s);
+}
+
 function displayArtikel($v,$personen) { 
   $title=$v->get("dcterms:title");
   $uri=fix($v->getURI());
@@ -59,7 +63,7 @@ function displayArtikel($v,$personen) {
   $audience=fix($v->get("dcterms:audience"));
   $abstract=$v->get("dcterms:abstract");
   $author=getAutoren($v,$personen);
-  $asPDF=$v->get("ksn:availableAsPDF");
+  $asPDF=createLink($v->get("ksn:availableAsPDF"));
   $out='
 <div class="row"><div  class="col-sm-12">
 <h3><a href="'.$asPDF.'">'.$uri.'</a>: '.$title.'</h3></div></div>
