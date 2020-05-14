@@ -1,0 +1,171 @@
+% Version: $Id: graebe-04-1.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Mathematische Aussagen und mathematische Beweise\kosemnetlicensemark\\ 
+Arbeitsmaterial für Klasse 7}
+\date{}
+
+\begin{document} 
+\maketitle         
+
+In diesem Material geht es schwerpunktm"a"sig darum, wie mathematische
+Aussagen bewiesen werden und wie solche Beweise aufzuschreiben sind. 
+
+Mathematische S"atze bestehen in der Regel aus zwei Teilen, der {\em
+Voraussetzung} und der {\em Behauptung} und haben die allgemeine Gestalt
+\begin{center}
+{\tt Wenn} die Voraussetzung erf"ullt ist, {\tt dann} gilt auch die
+Behauptung.
+\end{center}
+Mathematische S"atze werden oft direkt mit diesen Worten formuliert:
+\begin{quote}\it
+{\tt Wenn} eine Zahl durch 9 teilbar ist, {\tt dann} ist sie auch durch 3
+teilbar.
+
+{\tt Wenn} zwei Dreiecke in zwei Seiten und dem eingeschlossenen Winkel
+"ubereinstimmen, {\tt dann} sind sie kongruent.
+\end{quote}
+Aber auch anders formulierte S"atze kann man so umformulieren:
+\begin{quote}\it
+Die Innenwinkelsumme im Dreieck betr"agt $180^o$.
+\begin{flushright}
+  \parbox{12cm}{ {\tt Wenn} man die Winkelgr"o"sen der drei Innenwinkel eines
+    Dreiecks addiert, {\tt dann} erh"alt man $180^o$.}
+\end{flushright}
+
+Stufenwinkel an geschnittenen Parallelen sind gleichgro"s. 
+\begin{flushright}
+  \parbox{12cm}{
+    {\tt Wenn} zwei Winkel Stufenwinkel an geschnittenen Parallelen sind,
+    {\tt dann} sind sie gleichgro"s.}
+\end{flushright}
+\end{quote}
+Dasselbe gilt f"ur Aufgaben wie sie etwa bei der Matheolympiade gestellt
+werden. Statt
+\begin{quote}
+Gegeben sei\ \ldots (V)\ldots \ Beweise, dass dann\ \ldots(B)\ldots\
+gilt. 
+\end{quote}
+kann man auch
+\begin{quote}
+{\tt Wenn} \ldots (V)\ldots erf"ullt ist, {\tt dann} gilt auch
+\ldots(B)\ldots\
+\end{quote}
+schreiben. 
+\medskip
+
+Aussagen dieser Art bezeichnet man als {\em Implikation} und schreibt auch
+kurz $(V) \Rightarrow (B)$, wenn man die Struktur der Aussage besonders
+betonen will. Hierbei stehen $(V)$ und $(B)$ als Kurzzeichen f"ur die
+jeweilige konkrete Voraussetzung bzw. Behauptung.
+\medskip
+
+Eine zweite wichtige Aussageform ist die {\em "Aquivalenz}, die in dieser
+allgemeinen Notation die Form
+\begin{center}
+(V) gilt {\tt genau dann, wenn} (B) gilt.
+\end{center}
+hat. Sie enth"alt einen Satz zusammen mit seiner Umkehrung, denn man kann eine
+"Aquivalenz umformulieren zu den beiden Aussagen
+\begin{quote}
+{\tt Wenn} (V) gilt, {\tt dann} gilt auch (B)
+
+{\bf und}
+
+{\tt Wenn} (B) gilt, {\tt dann} gilt auch (V).
+\end{quote}
+F"ur eine solche "Aquivalenz schreiben wir auch kurz $(V) \Leftrightarrow
+(B)$, denn sie bedeutet $(V) \Rightarrow (B)$ {\bf und} $(B) \Rightarrow (V)$.
+
+\subsection*{Zum Beweisen mathematischer S"atze}
+
+Wir hatten gesehen, dass mathematische S"atze wie kleine Bausteine
+beschaffen sind, mit denen man die Verbindung zwischen zwei Aussagen
+(V) und (B) herstellen kann. Wir k"onnen uns deshalb die Mathematik
+als eine Welt kleiner Inseln, der verschiedenen Aussagen, vorstellen,
+die durch Br"ucken, die S"atze, miteinander verbunden werden
+k"onnen. Einen Satz (wie etwa Aufgabe 1) zu beweisen bedeutet deshalb
+zuerst einmal, einen solchen Weg aus verschiedenen Br"ucken zu
+finden. Dieser Weg startet auf der Insel (V) und muss auf der Insel
+(B) enden. Als Br"ucken k"onnen wir nur bereits bekannte S"atze
+verwenden. Einen solchen Weg bezeichnet man als {\em Schlusskette}.
+
+Betrachten wir dazu die folgenden zwei Aufgaben:
+\begin{quote}\it
+Beweise den folgenden Satz: Es gibt keine Quadratzahl $n$, die bei Division
+durch 3 den Rest 2 l"asst.
+\end{quote}
+\begin{aufgabe}
+Formuliere diesen Satz als Wenn-Dann-Aussage.
+\end{aufgabe}
+\begin{beweis}
+$n$ ist eine Quadratzahl $n=m^2$, wobei sich $m$ in der Form $m=3k$
+oder $m=3k+1$ oder $m=3k+2$ darstellen l"asst (je nachdem, welchen
+Rest $m$ bei Division druch 3 l"asst). 
+
+1. Fall: Ist $m=3k$, so l"asst $n=m^2=9k^2$ bei Division durch 3 den
+Rest 0.
+
+2. Fall: Ist $m=3k+1$, so l"asst $n=m^2=9k^2+6k+1=3\cdot (3k^2+2k)+1$
+bei Division durch 3 den Rest 1.
+
+3. Fall: Ist $m=3k+2$, so l"asst $n=m^2=9k^2+12k+4=3\cdot
+(3k^2+4k+1)+1$ bei Division durch 3 ebenfalls den Rest 1.
+\end{beweis}
+
+Diese Art des Beweises nennt man {\em Beweis durch vollst"andige
+Fallunterscheidung}. Wir haben von unserer Insel Br"ucken zu {\em
+allen} Nachbarinseln gebaut und von jeder aus einen Weg zu (B)
+gefunden.
+\begin{quote}\it
+Beweise, dass f"ur positive reelle Zahlen $a,b$ stets
+$\frac{a}{b}+\frac{b}{a}\geq 2$ gilt.
+\end{quote}
+\begin{beweis}
+Wir formen die Ungleichung 
+\begin{align*}\frac{a}{b}+\frac{b}{a}\geq 2\tag{1}\end{align*}
+um, zuerst durch Multiplikation mit $ab$ zu
+\begin{align*}a^2+b^2\geq 2ab\tag{2}\end{align*}
+und schlie"slich durch Subtraktion von $2ab$ und Umformen zu 
+\begin{align*}a^2-2ab+b^2 = (a-b)^2\geq 0.\tag{3}\end{align*}
+Da das Quadrat einer reellen Zahl stets nichtnegativ ist, haben wir einen Weg
+zu sicherem Festland gefunden. Allerdings haben wir den Weg vom
+{\glqq}falschen{\grqq} Ende her gebaut, denn wir sind bei der Behauptung
+gestartet. Unsere Schlusskette war $(1)\Rightarrow (2)\Rightarrow (3)$.  Diese
+Art des Suchens nach einem Beweis bezeichnet man als {\em
+R"uckw"artsarbeiten}.
+
+Nachdem eine solche Stra"se aus mehreren Br"ucke gebaut, d.h.\ ein m"oglicher
+Beweisweg gefunden ist, m"ussen wir nun pr"ufen, ob es sich auch wirklich um
+einen Beweis handelt, denn Implikationen $(A_1)\Rightarrow (A_2)$ sind {\em
+Einbahnstra"sen}-Br"ucken. Wir m"ussen also pr"ufen, ob unsere Br"ucken auch
+so zusammenpassen, dass man von (V) nach (B) gelangen kann, d.h.\ ob die
+Implikationen $(V)=(3) \Rightarrow (2)\Rightarrow (1)=(B)$ ebenfalls gelten.
+Das ist aber offensichtlich der Fall, weil alle Umformungen r"uckg"angig
+gemacht werden k"onnen, d.h wir {\em "aquivalent} umgeformt haben.
+\end{beweis}
+
+F"ur den eigentlichen Beweis h"atte es ausgereicht, die Beweiskette $(V)=(3)
+\Rightarrow (2)\Rightarrow (1)=(B)$ aufzuschreiben.  Diese Richtung nennt man
+{\em Vorw"artsarbeiten}. Oft, insbesondere bei geometrischen Aufgaben, ist es
+zum Finden eines Beweisweges n"utzlich, zwischen Vorw"arts- und
+R"uckw"artsarbeiten zu wechseln, also viele Br"ucken an verschiedenen Stellen
+zu bauen, um einen Weg von der Voraussetzung zur Behauptung zu finden. F"ur
+den gefundenen Weg muss aber stets gepr"uft werden, ob die gebauten Br"ucken
+in der richtigen Richtung durchl"assig sind\,!
+\medskip
+
+"Ahnlich ist auch bei mathematischen {\em Bestimmungsaufgaben} vorzugehen. Der
+einzige Unterschied besteht darin, dass (B) in diesem Fall keine Aussage,
+sondern eine Bestimmungsfrage ist, die auf die Ermittlung einer L"osungsmenge
+hinausl"auft.
+
+\begin{attribution}
+graebe (2004-09-02):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 7 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}

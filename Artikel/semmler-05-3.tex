@@ -1,0 +1,199 @@
+% Version: $Id: semmler-05-3.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman,url}  
+
+\author{Gunter Semmler, Freiberg\\\url{semmler@math.tu-freiberg.de}}
+\title{Funktionen in der Zahlentheorie\kosemnetlicensemark}
+\date{}
+
+\begin{document}
+\maketitle         
+
+\section{Die Funktion $[\,]$}
+Die {\it Gau{\ss}klammer} oder {\it Integerfunktion} ordnet jeder reellen Zahl
+$x$ die gr\"{o}{\ss}te ganze Zahl zu, die h\"{o}chstens so gro{\ss} ist wie
+$x$. Schreibt man daf\"{u}r $[x]$, so gilt demzufolge
+\[ [x]\leq x<[x]+1.\]
+\begin{theorem}
+\label{T1}
+Sei $n$ ganz und positiv. Der Exponent einer Primzahl $p$ in der
+Primfaktorzerlegung von $n!$ ist
+\[\left[\frac{n}{p}\right]+\left[\frac{n}{p^2}\right]
++\left[\frac{n}{p^3}\right]+\ldots\] 
+\end{theorem}
+\begin{beweis}
+  \begin{enumerate}
+  \item[] $\left[\frac{n}{p}\right]$ der Zahlen $1,\ldots,n$ sind durch $p$
+    teilbar.
+  \item[] $\left[\frac{n}{p^2}\right]$ der Zahlen $1,\ldots,n$ sind durch $p^2$
+    teilbar.
+  \end{enumerate}
+  \hspace*{5cm}$\vdots$
+\end{beweis}
+
+\section{Multiplikative Funktionen}
+Eine f\"{u}r alle positiven ganzen Zahlen definierte Funktion $\vartheta$
+hei{\ss}t {\it multiplikativ}, wenn f\"{u}r teilerfremde $a_1,a_2$ stets
+\begin{equation}\label{1}
+\vartheta(a_1 a_2)=\vartheta(a_1)\vartheta(a_2)\end{equation}
+gilt.
+
+\noindent Beispiel: $\vartheta(a)=a^s, s\in\C$
+
+\noindent Eigenschaften multiplikativer Funktionen:
+\begin{itemize}
+\item $\vartheta(1)=1$
+\item $\vartheta(a_1\cdots a_n)=\vartheta(a_1)\cdots\vartheta(a_n)$,
+falls $a_1,\cdots,a_n$ paarweise teilerfremd sind.
+\item Ist $a=p_1^{\alpha_1} p_2^{\alpha_2}\cdots p_k^{\alpha_k}$ kanonische
+Zerlegung\footnote{d.h. die $p_i$ sind paarweise verschiedene Primzahlen} von
+$a$, so gilt
+\begin{equation}\label{2}
+\vartheta(p_1^{\alpha_1}\cdots p_k^{\alpha_k}) =\vartheta(p_k^{\alpha_1})
+\cdots \vartheta(p_k^{\alpha_k})
+\end{equation},
+\item Man erh\"{a}lt immer eine multiplikative Funktion, wenn man $\vartheta
+(1)=1$ und $\vartheta(p^\alpha) \;(\alpha>0)$ beliebig setzt und $\vartheta$
+f\"{u}r alle anderen positiven ganzen Zahlen durch (\ref{2}) erkl\"{a}rt.
+\item Das Produkt multiplikativer Funktionen ist wieder multiplikativ.
+\end{itemize}
+\begin{theorem} Ist $a=p_1^{\alpha_1} p_2^{\alpha_2}\cdots p_k^{\alpha_k}$
+kanonische Zerlegung von $a$ so gilt
+\begin{equation}\label{3}
+\sum_{d|a}\vartheta(d)=(1+\vartheta(p_1)+\vartheta(p_1^2)+\ldots
++\vartheta(p_1^{\alpha_1}))\cdots (1+\vartheta(p_k)+\vartheta(p_k^2)+
+\ldots+\vartheta(p_k^{\alpha_k})) 
+\end{equation}
+\end{theorem}
+\begin{beweis}
+  L\"{o}st man auf der rechten Seite die Klammern auf, so erh\"{a}lt man
+  \[\sum_{0\leq\beta_i\leq\alpha_i}\vartheta(p_1^{\beta_1})\cdots\vartheta(p_k^{\beta_k})=\sum_{0\leq\beta_i\leq{\alpha_i}} 
+  \vartheta(p_1^{\beta_1}\cdots p_k^{\beta_k})\] Die Produkte
+  $p_1^{\beta_1}\cdots p_k^{\beta_k}$ mit
+  $0\leq\beta_1\leq\alpha_1,\ldots,0\leq\beta_k\leq\alpha_k$
+  durchlaufen aber gerade die Teiler von $a$.
+\end{beweis}
+
+\noindent Bemerkung: F\"{u}r $a=1$ ist die rechte Seite von (\ref{3}) gleich
+$1$ zu setzen.
+
+\section{Teilerzahl und -summe}
+
+Setzt man in (\ref{3}) $\vartheta\equiv 1$, so erh\"{a}lt man f\"{u}r die
+Anzahl $\tau(a)$ der Teiler von $a$
+\[\tau(a)=\sum_{d|a}1=(\alpha_1+1)\cdots(\alpha_k+1)\]
+Folgerungen:
+\begin{itemize}
+\item $\tau$ ist eine multiplikative Funktion.
+\item F\"{u}r jede Primzahl $p$ gilt speziell $\tau(p^\alpha)=\alpha+1$.
+\end{itemize}
+
+\noindent Setzt man in (\ref{3}) $\vartheta(a)=a$, so erh\"{a}lt man f\"{u}r
+die Summe $S(a)$ der Teiler von $a$
+\begin{eqnarray*}S(a)&=&\sum_{d|a}d=(1+p_1+\ldots+p_1^{\alpha_1})\cdots(1+p_k+\ldots+p_k^{\alpha_k})\\
+S(a)&=&\frac{p_1^{\alpha_1+1}-1}{p_1-1}\cdots\frac{p_k^{\alpha_k+1}-1}{p_k-1}
+\end{eqnarray*}
+
+\noindent Folgerungen:
+\begin{itemize}
+\item $S$ ist eine multiplikative Funktion.
+\item F\"{u}r jede Primzahl $p$ gilt speziell
+$S(p^\alpha)=\frac{p^{\alpha+1}-1}{p-1}$.
+\end{itemize}
+
+\section{Die M\"{o}bius-Funktion}
+
+Die {\it M\"{o}biusfunktion} $\mu$ ist diejenige multiplikative Funktion, die
+f\"{u}r alle Primzahlen $p$
+\[\mu (p)=-1\;\;\;\mu (p^\alpha)=0 \;(\alpha>1)\]
+erf\"{u}llt. Es gilt:
+\begin{itemize}
+\item Ist $a$ durch eine Quadratzahl $>1$ teilbar (d.h. in der kanonischen
+Zerlegung $a=p_1^{\alpha_1} p_2^{\alpha_2}\cdots p_k^{\alpha_k}$ ist
+mindestens einer der Exponenten $\alpha_1,\ldots,\alpha_k$ gr\"{o}{\ss}er als
+$1$), so ist $\mu(a)=0$.
+\item Ist $a=p_1\cdots p_k$ das Produkt $k$ verschiedener Primzahlen, so gilt
+$\mu(a)=(-1)^k$.
+\end{itemize}
+\begin{theorem}
+F\"{u}r jede multiplikative Funktion $\vartheta$ gilt
+\[\sum_{d|a}\mu(d)\vartheta(d)=(1-\vartheta(p_1))\cdots(1-\vartheta(p_k))\]
+\end{theorem}
+Beweis. $\vartheta_1(a)=\mu(a)\theta(a)$ ist als Produkt
+multiplikativer Funktionen wieder multiplikativ und (\ref{3})
+liefert
+\begin{eqnarray*}
+\sum_{d|a}\mu(d)\vartheta(d)&=&\sum_{d|a}\vartheta_1(d)\\
+&=&(1+\vartheta_1(p_1)+\vartheta_1(p_1^2)+\ldots
++\vartheta_1(p_1^{\alpha_1}))\\ 
+&& \ \ \ \cdots
+(1+\vartheta_1(p_k)+\vartheta_1(p_k^2)+\ldots+\vartheta_1(p_k^{\alpha_k}))\\
+&=&(1+\mu(p_1)\vartheta(p_1)+\mu(p_1^2)\vartheta(p_1^2)+\ldots
++\mu(p_1^{\alpha_1})\vartheta(p_1^{\alpha_1}))\\
+&& \ \ \ \cdots
+(1+\mu(p_k)\vartheta(p_k)+\mu(p_k^2)\vartheta(p_k^2)+\ldots
++\mu(p_k^{\alpha_k})\vartheta(p_k^{\alpha_k}))\\ 
+&=&(1-\vartheta(p_1))\cdots(1-\vartheta(p_k))
+\end{eqnarray*}
+
+\noindent Anwendungen:
+\begin{itemize}
+\item F\"{u}r $\vartheta\equiv 1$ folgt
+\[\sum_{d|a}\mu(d)=\begin{cases}0&a>1\\1&a=1\end{cases}\]
+\item F\"{u}r $\vartheta(a)=\frac{1}{a}$ folgt
+\[\sum_{d|a}\frac{\mu(d)}{d}=
+\begin{cases}
+(1-\frac{1}{p_1})\cdots(1-\frac{1}{p_k})&a>1\\1&a=1
+\end{cases}\]
+\end{itemize}
+
+\section{Die Eulersche Funktion}
+F\"{u}r positives ganzes $a$ bedeute $\varphi(a)$ die Anzahl der Zahlen aus
+$1,2,\ldots,a$, die zu $a$ teilerfremd sind. $\varphi$ hei{\ss}t {\it
+Eulersche Funktion}.
+\begin{theorem}
+Es gilt f\"{u}r $a=p_1^{\alpha_1} p_2^{\alpha_2}\cdots p_k^{\alpha_k}$ die
+Darstellung
+\begin{eqnarray*}
+\varphi(a)&=&a\left(1-\frac{1}{p_1}\right)\cdots\left(1-\frac{1}{p_k}\right)\\
+&=&(p_1^{\alpha_1}-p_1^{\alpha_1-1})\cdots(p_k^{\alpha_k}-p_k^{\alpha_k-1})
+\end{eqnarray*}
+\end{theorem}
+\begin{beweis}
+  Setzt man $d_1=(1,a),d_2=(2,a),\ldots,d_{a}=(a,a)$, so gilt
+\[\varphi(a)=\sum_{d|d_1}\mu(d)+\ldots+\sum_{d|d_{a}}\mu(d)
+=\sum_{d|a}S_d\,\mu(d),
+\] 
+denn $d$ durchl\"{a}uft genau die Teiler von $a$: Ist n\"{a}mlich $d$ Teiler
+eines $d_j$ so ist es wegen $d_j|a$ auch Teiler von a.  Umgekehrt taucht jeder
+Teiler $d$ von $a$ unter den Teilern der $d_j$ auf, denn es ist
+$d_d=(d,a)=d$. $S_d$ bezeichnet f\"{u}r jeden Teiler $d$ von $a$ die Anzahl
+derjenigen $d_j$, die durch $d$ teilbar sind. Da dies genau die Zahlen
+$d_d,d_{2d},\ldots,d_a$ sind, gilt $S_d=\frac{a}{d}$ und wir erhalten weiter
+\[\varphi(a)=\sum_{d|a}\mu(d)\frac{a}{d}=a\sum_{d|a}\frac{\mu(d)}{d}
+=a(1-\frac{1}{p_1})\cdots(1-\frac{1}{p_k})
+\] 
+\end{beweis}
+
+\noindent Folgerungen:
+\begin{itemize}
+\item $\varphi$ ist eine multiplikative Funktion.
+\item F\"{u}r jede Primzahl $p$ und $\alpha>0$ gilt speziell
+$\varphi(p^\alpha)=p^\alpha-p^{\alpha-1}$.
+\end{itemize}
+\begin{theorem}
+Es gilt \[\sum_{d|a}\varphi(d)=a\]
+\end{theorem}
+\begin{beweis}
+  Nach (\ref{3}) gilt
+\begin{eqnarray*}
+  \sum_{d|a}\varphi(d)&=&(1+\varphi(p_1)+\varphi(p_1^2)+\ldots
+    +\varphi(p_1^{\alpha_1}))\cdots 
+    (1+\varphi(p_k)+\varphi(p_k^2)+\ldots+\varphi(p_k^{\alpha_k}))\\
+    &=&(1+(p_1-1)+(p_1^2-p_1)+\ldots+(p_1^{\alpha_1}-p_1^{\alpha_1-1}))
+    \\&& \cdots 
+    (1+(p_k-1)+(p_k^2-p_k)+\ldots+(p_k^{\alpha_k}-p_k^{\alpha_k-1}))\\
+    &=&p_1^{\alpha_1}\cdots p_k^{\alpha_k}=a 
+  \end{eqnarray*}
+\end{beweis}
+\end{document}

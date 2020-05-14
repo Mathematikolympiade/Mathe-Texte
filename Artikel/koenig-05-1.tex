@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage{ko-math,ko-graf,kosemnet,ngerman}
+
+\newcommand{\Bild}[3]{
+\begin{center}
+\includegraphics[#1]{#2}\nopagebreak\\[12pt] #3
+\end{center}
+}
+
+\title{Wo steckt der Fehler?\kosemnetlicensemark} 
+\author{Helmut König, Chemnitz} 
+\date{4. Februar 2005}
+
+\begin{document}
+\maketitle
+
+Wenn man im außerunterrichtlichen Bereich bei den Schülern die Fähigkeit zum
+problemlösenden Denken entwickeln will, dann sollte man nicht vergessen,
+bisweilen auch nach Fehlern in vorgelegten Lösungen suchen zu lassen. Ein
+hierfür gut geeignetes Beispiel soll hier vorgestellt werden.
+
+\subsection*{Die Aufgabenstellung}
+
+
+  Wir betrachten ein Rechteck $ABCD$, dessen Seite $\ksegment{AB}$ halb so
+  lang ist wie die Seite $\ksegment{BC}$ und bei dem $M$ der Mittelpunkt von
+  $\ksegment{BC}$ ist. Die Strecke $\ksegment{MA}$ schneide die Diagonale
+  $\ksegment{BD}$ im Punkt $P$ und $Q$ sei der Fußpunkt des Lots von $P$ auf
+  $\ksegment{BC}$. Die Strecke $\ksegment{MD}$ schneide die Diagonale
+  $\ksegment{AC}$ im Punkt $S$ und $R$ sei der Fußpunkt des Lots von $S$ auf
+  $\ksegment{BC}$.
+
+  Weise nach, dass unter diesen Voraussetzungen $PQRS$ ein Rechteck ist,
+  dessen Seite $\ksegment{PQ}$ halb so lang ist wie die Seite $\ksegment{QR}$
+  und dessen Flächeninhalt gleich dem neunten Teil des Flächeninhalts von
+  $ABCD$ ist!
+
+
+\subsection*{Auftrag an Schüler}
+
+Beweise den ersten Teil der Behauptung! 
+
+Prüfe nach, ob die folgenden drei Beweise des zweiten Teils der Behauptung
+korrekt sind!  Wenn dies nicht der Fall ist, dann gib an, wo der Fehler
+steckt!
+
+\begin{minipage}{0.75\textwidth}
+  \ul{1. Beweis}: Man teile die Seiten von $ABCD$ jeweils in drei gleiche
+  Teile. Die in der Abbildung eingezeichneten Verbindungsstrecken sind dann zu
+  einer der beiden Seiten parallel und zerlegen $ABCD$ in neun Rechtecke, die
+  offensichtlich kongruent und daher auch inhaltsgleich sind und deren
+  Seitenlängen sich wie $1:2$ verhalten. Das rechts neben dem zentralen
+  Teilrechteck liegende Rechteck ist unser Rechteck $PQRS$. Hieraus folgt
+  unmittelbar die Behauptung.\vspace*{20pt}
+\end{minipage}\hfill
+\begin{minipage}{0.2\textwidth}
+\psset{unit=3cm}
+%Bildbeginn: Breite=3cm
+\begin{flushright}
+\psset{unit=0.1000}
+\pspicture*(0,1)(10,15)
+\Hauptlinien
+\psline{-}(2,2)(8,2)(8,14)(2,14)(2,2)
+\psline{-}(8,6)(6,6)(6,10)(8,10)
+\psline{-}(2,2)(8,14)
+\psline{-}(2,14)(8,2)
+\Hilfslinien
+\psline{-}(4,2)(4,14)
+\psline{-}(6,2)(6,6)(2,6)
+\psline{-}(6,14)(6,10)(2,10)
+\ZPunkt{2,2}{210}{A}
+\ZPunkt{4,2}{0}{}
+\ZPunkt{6,2}{0}{}
+\ZPunkt{8,2}{330}{B}
+\ZPunkt{2,6}{0}{}
+\ZPunkt{4,6}{0}{}
+\ZPunkt{6,6}{60}{P}
+\ZPunkt{8,6}{0}{Q}
+\ZPunkt{2,10}{0}{}
+\ZPunkt{4,10}{0}{}
+\ZPunkt{6,10}{300}{S}
+\ZPunkt{8,10}{0}{R}
+\ZPunkt{2,14}{150}{D}
+\ZPunkt{4,14}{0}{}
+\ZPunkt{6,14}{0}{}
+\ZPunkt{8,14}{30}{C}
+\endpspicture
+\end{flushright}
+
+\end{minipage}
+\bigskip
+
+\begin{minipage}{0.7\textwidth}
+  \ul{2. Beweis}: Die Verlängerung von $\ksegment{QP}$ über $P$ hinaus
+  schneide $\ksegment{AC}$ in $T$ und $\ksegment{AD}$ in $Q'$; die
+  Verlängerung von $\ksegment{RS}$ über $S$ hinaus schneide $\ksegment{BD}$ in
+  $U$ und $\ksegment{AD}$ in $R'$.
+
+  Da $PQRS$ ein Rechteck ist, folgt hieraus $\kline{Q'Q}\parallel\kline{R'R}$
+  und $\kline{PS}\parallel\kline{BC}$.
+
+  Da $ABCD$ ein Rechteck ist, sind seine beiden Mittellinien die beiden
+  Symmetrieachsen $m$ und $n$ dieses Vierecks.
+
+  Aus Eigenschaften der Geradenspiegelung folgt, dass bei der Spiegelung an
+  $m$ die Diagonale $\ksegment{BD}$ das Bild der Diagonalen $\ksegment{AC}$
+  ist und dass die Gerade $\kline{QQ'}$ in sich übergeht. Folglich geht $P$ in
+  $T$ und analog auch $S$ in $U$ über.
+
+  Hieraus folgt, dass $TQ'R'U$ das Bild unseres Rechtecks $PQRS$ bei
+  Spiegelung an $m$ ist und dass daher diese beiden Rechtecke kongruent und
+  folglich auch inhaltsgleich sind. 
+\end{minipage}\hfill
+\begin{minipage}{0.27\textwidth}
+\psset{unit=4cm}
+%Bildbeginn: Breite=4cm
+\begin{flushright}
+\psset{unit=0.1000}
+\pspicture*(0,0)(10,15)
+\Hauptlinien
+\psline{-}(2,2)(8,2)(8,14)(2,14)(2,2)
+\psline{-}(8,6)(6,6)(6,10)(8,10)
+\psline{-}(8,14)(2,2)
+\psline{-}(2,14)(8,2)
+\psline{-}(1,8)(9,8)
+\psline{-}(5,1)(5,15)
+\psline{<->}(4.3,1.3)(5.7,1.3)
+\psline{<->}(8.7,7.3)(8.7,8.7)
+\Hilfslinien
+\psline{-}(4,2)(4,14)
+\psline{-}(6,2)(6,6)(2,6)
+\psline{-}(6,14)(6,10)(2,10)
+\ZPunkt{2,2}{210}{A}
+\ZPunkt{4,2}{0}{}
+\ZPunkt{6,2}{0}{}
+\ZPunkt{8,2}{330}{B}
+\ZPunkt{2,6}{210}{Q'}
+\ZPunkt{4,6}{210}{T}
+\ZPunkt{6,6}{330}{P}
+\ZPunkt{8,6}{330}{Q}
+\ZPunkt{2,10}{150}{R'}
+\ZPunkt{4,10}{150}{U}
+\ZPunkt{6,10}{30}{S}
+\ZPunkt{8,10}{30}{R}
+\ZPunkt{2,14}{150}{D}
+\ZPunkt{4,14}{0}{}
+\ZPunkt{6,14}{0}{}
+\ZPunkt{8,14}{30}{C}
+\uput[0]{*0}(8.7,8){\ensuremath{n}}
+\uput[270]{*0}(5,1.3){\ensuremath{m}}
+\endpspicture
+\end{flushright}
+\end{minipage}
+\bigskip
+
+  Führt man anschließend noch die Spiegelung an der Symmetrieachse $n$ durch,
+  dann erkennt man, dass dies für alle neun Teilrechtecke zutrifft. 
+
+  Hieraus folgt unmittelbar, dass alle neun Teilrechtecke und daher auch unser
+  Rechteck $PQRS$ einen Flächeninhalt besitzen, der gleich dem neunten Teil
+  des Flächeninhalts von $ABCD$ ist.
+\bigskip
+
+\begin{minipage}{0.7\textwidth}
+  \ul{3. Beweis}: Seien $T$ und $U$ die im 2.~Beweis eingeführten Hilfspunkte.
+  Da $PQRS$ ein Rechteck ist, folgt mithilfe des Nebenwinkelsatzes
+\[\mangle{RQP} = \mangle{SPT} = \mangle{CRS} (=90\grad) . \tag{1} \]
+Ferner folgt $\kline{PQ}\parallel\kline{RS}$ und mithilfe des
+Stufenwinkelsatzes $\mangle{PTS}=\mangle{RSC}$. Wegen
+$\kline{AC}\parallel\kline{PR}$ folgt analog $\mangle{PTS}=\mangle{QPR}$ und
+daher
+\[\mangle{QPR}=\mangle{PTS}=\mangle{RSC}. \tag{2}\] 
+Da $PQRS$ ein Rechteck ist, gilt auch 
+\[\msegment{QR}= \msegment{PS}\ \text{und}\  \msegment{PQ}=
+\msegment{SR}. \tag{3}\] 
+\end{minipage}\hfill
+\begin{minipage}{0.27\textwidth}
+\psset{unit=4cm}
+%Bildbeginn: Breite=4cm
+\begin{flushright}
+\psset{unit=0.1000}
+\pspicture*(0,1)(10,15)
+\MarkFlaeche{(4,6)(6,6)(6,10)}
+\MarkFlaeche{(6,6)(8,6)(8,10)}
+\MarkFlaeche{(6,10)(8,10)(8,14)}
+\Hauptlinien
+\psline{-}(2,2)(8,2)(8,14)(2,14)(2,2)
+\psline{-}(8,6)(6,6)(6,10)(8,10)
+\psline{-}(8,14)(2,2)
+\psline{-}(2,14)(8,2)
+\Hilfslinien
+\psline{-}(4,2)(4,14)
+\psline{-}(6,2)(6,6)(2,6)
+\psline{-}(6,14)(6,10)(2,10)
+\Hilfswinkel{8,10}{90}{180}
+\Hilfswinkel{8,6}{90}{180}
+\Hilfswinkel{6,10}{0}{63.434949}
+\Hilfswinkel{6,6}{0}{63.434949}
+\Hilfswinkel{6,6}{116.565051}{180}
+\Hilfswinkel{4,6}{0}{63.434949}
+\ZPunkt{2,2}{210}{A}
+\ZPunkt{4,2}{0}{}
+\ZPunkt{6,2}{0}{}
+\ZPunkt{8,2}{330}{B}
+\ZPunkt{2,6}{0}{}
+\ZPunkt{4,6}{210}{T}
+\ZPunkt{6,6}{210}{P}
+\ZPunkt{8,6}{330}{Q}
+\ZPunkt{2,10}{0}{}
+\ZPunkt{4,10}{150}{U}
+\ZPunkt{6,10}{150}{S}
+\ZPunkt{8,10}{30}{R}
+\ZPunkt{2,14}{150}{D}
+\ZPunkt{4,14}{0}{}
+\ZPunkt{6,14}{0}{}
+\ZPunkt{8,14}{30}{C}
+\endpspicture
+\end{flushright}
+\end{minipage}
+\bigskip
+
+Aus (1), (2), (3) folgt mithilfe des Kongruenzsatzes (wsw) die Kongruenz der
+Dreiecke $PQR$, $TPS$ und $SRC$, woraus dann leicht die Kongruenz aller neun
+Teilrechtecke abgeleitet werden kann. Hieraus folgt dann unmittelbar unsere
+Behauptung. 
+
+\subsection*{Auswertung mit den Schülern}
+
+{\bf Der 1. Beweis ist unkorrekt.} \\
+Hier liegt der grobe Beweisfehler vor, dass bei einem (direkten) Beweis {\em
+von der Behauptung ausgegangen} wird. 
+
+Dass $ABCD$ in neun kongruente Teilrechtecke zerlegt wird ist ein
+hinreichendes Teilziel, aus dem die Behauptung unmittelbar folgt und das aus
+den Voraussetzungen abgeleitet werden muss.
+
+Man könnte auch sagen, dass hier nicht unser Satz sondern eine Umkehrung
+dieses Satzes bewiesen wurde. 
+
+{\bf Der 2. Beweis ist unkorrekt.} \\ 
+Hier wird nur bewiesen, dass die vier {\glqq}Eckrechtecke{\grqq} und die vier
+{\glqq}Seitenrechtecke{\grqq} untereinander kongruent sind. Dass ein
+{\glqq}Eckrechteck{\grqq}, ein {\glqq}Seitenrechteck{\grqq} und das
+{\glqq}zentrale Rechteck{\grqq} nicht kongruent sein müssen erkennt man, wenn
+man das {\glqq}zentrale Rechteck{\grqq} ähnlich vergrößert oder verkleinert.
+
+In diesem Fall liegt eine {\em Beweislücke} vor. 
+
+{\bf Der 3. Beweis ist unkorrekt.}\\
+Die für den Beweis unverzichtbare {\em Feststellung}
+$\kline{AC}\parallel\kline{PR}$ wurde {\em der Anschauung entnommen}, aber
+{\em nicht aus den Voraussetzungen hergeleitet}. (Dies wäre mit dem
+Hilfsmittel Ähnlichkeit/Strahlensätze möglich.)
+
+\subsection*{Ein korrekter Beweis unserer Aufgabe}
+
+  Sei $\ksegment{MN}$ eine Mittellinie des Rechtecks $ABCD$ und $O$ der auf
+  $\ksegment{MN}$ liegende Diagonalenschnittpunkt. Sei $S'$ bzw. $S''$ der
+  Schnittpunkt der Geraden $\kline{PS}$ mit $\ksegment{MN}$ bzw.
+  $\ksegment{CD}$ und $U''$ der Schnittpunkt von $\kline{TU}$ mit
+  $\ksegment{CD}$. 
+
+\begin{minipage}{0.7\textwidth}
+
+  Nach Voraussetzung ist $\ksegment{AB}$ halb so lang wie $\ksegment{BC}$.
+  Hieraus folgt, dass $NMCD$ ein Quadrat ist, auf dessen Diagonale
+  $\ksegment{MD}$ nach Voraussetzung der Punkt $S$ liegt.
+
+  Hieraus folgt, dass auch $S'MRS$ ein Quadrat ist und dass $PQRS$ ein
+  Rechteck ist, deren Seite $\ksegment{PQ}$ halb so lang ist wie die Seite
+  $\ksegment{QR}$.
+
+  Aus den Voraussetzungen folgt $\kline{OM}\parallel\kline{CD}$ und
+  $\msegment{OM}:\msegment{CD} = 1:2$. Mithilfe des {\em Strahlensatzes} folgt
+  hieraus $\msegment{S'S}:\msegment{SS''} = 1:2$, woraus dann $\msegment{MR} =
+  \msegment{RC} = \msegment{QR}$ und hieraus $\msegment{BQ} = \msegment{QR} =
+  \msegment{RC}$ folgt. 
+
+  Da man zeigen kann (siehe 2. Beweis, Spiegelung an $m$) dass
+  $\kline{PS}\parallel\kline{TU}$ gilt, folgt analog $\msegment{CS''} =
+  \msegment{S''U''} = \msegment{U''D}$. Der Rest ist einfach.
+\end{minipage}\hfill
+\begin{minipage}{0.3\textwidth}
+\psset{unit=4.5cm}
+%Bildbeginn: Breite=4.5cm
+\begin{flushright}
+\psset{unit=0.1000}
+\pspicture*(0,1)(10,15)
+\Hauptlinien
+\psline{-}(2,2)(8,2)(8,14)(2,14)(2,2)
+\psline{-}(8,6)(6,6)(6,10)(8,10)
+\psline{-}(8,14)(2,2)(8,8)(2,14)(8,2)
+\psline{-}(2,8)(8,8)
+\Hilfslinien
+\psline{-}(4,2)(4,14)
+\psline{-}(6,2)(6,6)(2,6)
+\psline{-}(6,14)(6,10)(2,10)
+\ZPunkt{2,2}{210}{A}
+\ZPunkt{4,2}{0}{}
+\ZPunkt{6,2}{0}{}
+\ZPunkt{8,2}{330}{B}
+\ZPunkt{2,6}{0}{}
+\ZPunkt{4,6}{210}{T}
+\ZPunkt{6,6}{330}{P}
+\ZPunkt{8,6}{330}{Q}
+\ZPunkt{2,10}{0}{}
+\ZPunkt{4,10}{150}{U}
+\ZPunkt{6,10}{30}{S}
+\ZPunkt{8,10}{30}{R}
+\ZPunkt{2,14}{150}{D}
+\ZPunkt{4,14}{90}{U''}
+\ZPunkt{6,14}{90}{S''}
+\ZPunkt{8,14}{30}{C}
+\ZPunkt{2,8}{180}{N}
+\ZPunkt{5,8}{150}{O}
+\ZPunkt{6,8}{30}{S'}
+\ZPunkt{8,8}{0}{M}
+\endpspicture
+\end{flushright}
+\end{minipage}
+
+
+
+\begin{attribution}
+koenig (2005-01-25): Contributed to KoSemNet
+\end{attribution}
+
+
+\end{document}
+

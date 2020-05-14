@@ -1,0 +1,226 @@
+% Version: $Id: graebe-06-1.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[10pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Lineare diophantische Gleichungen\kosemnetlicensemark\\ 
+Arbeitsmaterial für Klasse 8}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+Dieser Text baut auf den Texten {\glqq}Rechnen mit Kongruenzen{\grqq}
+(graebe-04-4) und {\glqq}Rechnen mit Kongruenzen -- Teil 2{\grqq}
+(graebe-04-7) auf.
+
+\subsection*{Lineare diophantische Gleichungen}
+
+Als {\em lineare diophantische Gleichung} bezeichnet man folgende
+Problemstellung: \vskip6pt
+
+{\it Zur linearen Gleichung \[a\m x+b\m y=c\tag{1}\] mit gegebenen Zahlen
+$a,b,c\in\Z$ sind alle ganzzahligen Lösungen $(x;y)\in\Z^2$ zu bestimmen.}
+\vskip6pt
+
+\ul{Beispiel}: Bestimme alle ganzzahligen Lösungspaare $(x;y)$ der Gleichung 
+\[3\,x-7\,y=5\tag{1a}\]
+
+\subsection*{Lineare diophantische Gleichungen und lineare Kongruenzen}
+
+Es besteht ein enger Zusammenhang zwischen linearen diophantischen Gleichungen
+und linearen Kongruenzen, die im Arbeitsblatt {\glqq}Rechnen mit Kongruenzen
+-- Teil 2{\grqq} besprochen sind. Offensichtlich liefert eine Lösung von (1a)
+auch eine Lösung der linearen Kongruenz
+\[3\,x\equiv 5\pmod{7}.\tag{2a}\]
+Ist umgekehrt $x_0$ eine Lösung der linearen Kongruenz (2a), so ist $3\,x_0-5$
+durch 7 teilbar und die ganze Zahl $y_0=\frac{3\,x_0-5}{7}$ die einzige Zahl,
+die $x_0$ zu einem Lösungspaar $(x_0;y_0)$ von (1a) ergänzt. 
+
+Die (eindeutige) Lösung $x_0\equiv 4\pmod{7}$ von (2a) finden wir etwa durch
+vollständiges Probieren. Damit sind genau die ganzen Zahlen der Form
+$x_0=4+7\,t,\ t\in\Z,$ Lösung von (2a) und nach dem eben beschriebenen
+Verfahren bekommen wir für jeden solchen Wert $x_0$ einen eindeutig bestimmten
+zugehörigen Wert $y_0$
+\[
+y_0=\frac{3\,x_0-5}{7}=\frac{3\br{4+7\,t}-5}{7}=\frac{7+21\,t}{7}=1+3\,t\,,
+\]
+so dass $(x_0;y_0)$ eine Lösung von (1a) ist. Die Lösungsmenge von (1a) lässt
+sich also anschreiben als
+\[L=\cbr{(x;y)\,|\,x=4+7\,t,\ y=1+3\,t,\ t\in\Z}=
+\cbr{\dots,(-3;-2),(4;1),(11;4),\dots}.\] 
+Die Probe zeigt, dass jedes der Paare auch wirklich Lösung ist:
+\[3\,x-7\,y=3(4+7\,t)-7(1+3\,t) = (12+21\,t)-(7+21\,t)=5\]
+unabhängig von der Wahl von $t\in\Z$.
+\medskip
+
+Allgemein lässt sich zur linearen diophantischen Gleichung (1) sowohl die
+lineare Kongruenz $a\,x\equiv c\pmod{b}$ als auch $b\,y\equiv c\pmod{a}$
+betrachten. 
+
+\subsection*{Lösungsverfahren für lineare diophantische Gleichungen}
+
+Im Arbeitsblatt {\glqq}Rechnen mit Kongruenzen -- Teil 2{\grqq} hatten wir
+festgestellt, dass manche lineare Kongruenz "uberhaupt keine L"osung besitzt.
+Dies gilt auch für diophantische Gleichungen (1): Haben $a$ und $b$ einen
+gemeinsamen Teiler $d$, so muss f"ur die Existenz einer L"osung auch $c\teilt
+b$ gelten.
+
+$\gcd(a,b)\teilt c$ ist also eine {\em notwendige} Bedingung f"ur die Existenz
+einer L"osung. Ist diese notwendige Bedingung erfüllt und $d:=\gcd(a,b)$, so
+gilt $a=d\m a',\ b=d\m b',\ c=d\m c'$. Wir können dann (1) durch die
+äquivalente Gleichung
+\[a'x+b'y=c'\tag{1'}\]
+ersetzen, in der $a'$ und $b'$ teilerfremd sind. Eine solche Gleichung
+bezeichnet man als {\em reduzierte diophantische Gleichung} oder {\em
+Gleichung in Normalform}. Es stellt sich heraus, dass jede solche Gleichung
+lösbar ist, wobei sich die Lösungsmenge sogar genau beschreiben lässt.
+\medskip 
+
+Ein gutes Verfahren zur Bestimmung der Lösungen einer reduzierten
+diophantischen Gleichung ist das {\em Eulersche Reduktionsverfahren}, das
+dauernd zwischen diophantischer Gleichung (d.G.), zugehöriger linearer
+Kongruenz (l.K.) und Reduktion auf kleinste positive Reste
+{\glqq}pendelt{\grqq}. Es soll hier nur am Beispiel der Gleichung
+$179\,x+234\,y=251$ beschrieben werden:
+
+ \begin{quote}
+   \begin{tabular}{l@{\qquad}rcl}
+     Ausgangsgleichung & $179\,x+234\,y$&$=$&$251$\\ 
+     Verwandlung in l.K. & $234\,y$&$\equiv$&$ 251\pmod{179}$\\ 
+     Kleinste positive Reste & $55\,y$&$\equiv$&$ 72\pmod{179}$\\ 
+     Verwandlung in d.G. & $55\,y+179\,u$&$=$&$ 72$\\
+     Verwandlung in l.K. & $179\,u$&$\equiv$&$ 72\pmod{55}$\\ 
+     Kleinste positive Reste & $14\,u$&$\equiv$&$ 17\pmod{55}$\\ 
+     Verwandlung in d.G. & $14\,u+55\,v$&$=$&$ 17$\\
+     Verwandlung in l.K. & $55\,v$&$\equiv$&$ 17\pmod{14}$\\ 
+     Kleinste positive Reste & $13\,v$&$\equiv$&$ 3\pmod{14}$\\ 
+     Verwandlung in d.G. & $13\,v+14\,w$&$=$&$3$\\
+     Verwandlung in l.K. & $14\,w$&$\equiv$&$ 3\pmod{13}$\\ 
+     Kleinste positive Reste & $w$&$\equiv$&$ 3\pmod{13}$\\ 
+   \end{tabular}
+ \end{quote}
+
+Die Lösung der letzten linearen Kongruenz können wir ablesen: $w=3+13\,k,\
+k\in\Z$. Daraus ergeben sich rückwärts nacheinander
+\[\begin{array}{rcl}
+  v=& \dfrac{3-14\,w}{13} &= - 14\,k - 3\\[8pt]
+  u=& \dfrac{17-55\,v}{14} &= 55\,k + 13\\[8pt]
+  y=& \dfrac{72-179\,u}{55} &= - 179\,k - 41\\[8pt]
+  x=& \dfrac{251-234\,y}{179} &= 234\,k + 55
+\end{array}\]
+Die Lösungsmenge der diophantischen Gleichung (3) ergibt sich also zu 
+\begin{align*}
+ L &=\cbr{(x;y)\ |\ x=234\,k + 55,\ y=- 179\,k - 41,\ t\in\Z}\\& = \cbr{\dots,
+    (-413; 317), (-179; 138), (55; -41), (289; -220), (523; -399), \dots}
+\end{align*}
+Die speziellen Werte ergeben sich, wenn du $k\in\cbr{-2,-1,0,1,2}$ einsetzt. 
+
+\ul{Bemerkung}: Die Ähnlichkeit zum Euklidschen Algorithmus, mit dem sich der
+größte gemeinsame Teiler bestimmen lässt, ist nicht zufällig, wird aber hier
+nicht weiter erörtert. 
+\begin{align*}
+  234 & = 1\m 179 + 55\\
+  179 & = 3\m 55 + 14\\
+  55 & = 3\m 14 + 13\\
+  14 & = 1\m 13 + 1\\
+\end{align*}
+Mehr zum Euklidschen Algorithmus findest du im Arbeitsblatt {\glqq}Berechnung
+des gr"o"sten gemeinsamen Teilers mit dem Euklidschen Algorithmus{\grqq} für
+Klasse 7 (graebe-04-2).
+
+\subsection*{Das Lösbarkeitskriterium für lineare diophantische Gleichungen}
+
+Als letztes wollen wir noch einen Beweis für das Lösbarkeitskriterium
+anschauen. 
+
+\begin{satz}[Hauptsatz über diophantische Gleichungen]\mbox{}
+  \begin{enumerate}
+  \item Die diophantische Gleichung (1) hat genau dann Lösungen, wenn
+    $\gcd(a,b)\teilt c$ gilt.
+  \item Ist $(x_0;y_0)$ eine Lösung der reduzierten diophantischen Gleichung
+    (1'), so ist 
+    \[L=\cbr{(x;y)\ |\ x=x_0-b'\,t,\ y=y_0+a'\,t,\ t\in\Z}\]
+    die Lösungsmenge von (1') und damit auch von (1). 
+  \end{enumerate}
+\end{satz}
+\begin{beweis}
+  Nach unseren vorbereitenden Überlegungen sind nur noch die folgenden beiden
+  Aussagen zu beweisen:
+  \begin{enumerate}
+  \item Jede {\bf reduzierte} diophantische Gleichung hat Lösungen.
+  \item $L$ ist genau die Lösungsmenge.
+  \end{enumerate}
+Wir beginnen mit der {\bf zweiten Aussage}: Ist neben $(x_0;y_0)$ auch
+$(x_1;y_1)$ eine Lösung von (1'), so gilt
+\[a'x_0+b'y_0=a'x_1+b'y_1=c,\]
+also auch 
+\[a'(x_0-x_1)=b'(y_1-y_0).\tag{4}\]
+Nun sind aber $a'$ und $b'$ teilerfremd, so dass $a'\teilt (y_1-y_0)$ gilt.
+Folglich existiert ein $t\in\Z$ mit $y_1=y_0+a'\,t$ und aus (4) ergibt sich
+dann sofort $x_1=x_0-b'\,t$. $(x_1;y_1)$ gehört also zu $L$. 
+
+Umgekehrt überzeugt man sich leicht, dass jedes Paar aus $L$ eine Lösung ist. 
+\medskip
+
+Zum {\bf Beweis der Existenz einer Lösung} führen wir einen {\bf indirekten
+Beweis}. Wir nehmen dazu für einen Moment an, dass es reduzierte Gleichungen
+(1') gibt, die keine Lösungen haben und führen dies auf einen Widerspruch.
+
+\ul{Vorüberlegung}: Wir folgen der Idee des Eulerschen Reduktionsverfahrens,
+dass aus einer Gleichung immer {\glqq}kleinere{\grqq} Gleichungen gewonnen
+werden können. Starten wir mit einer Gleichung ohne Lösung, so dürften diese
+{\glqq}kleineren{\grqq} Gleichungen auch alle keine Lösung haben. Denn sonst
+könnte man ja aus einer solchen Lösung eine der Ausgangsgleichung
+{\glqq}bauen{\grqq}.  Andererseits gibt es {\glqq}ganz kleine{\grqq}
+Gleichungen wie etwa $2x+y=3$ oder so, die offensichtlich Lösungen
+besitzen. Wenn wir nur lange genug {\glqq}absteigen{\grqq}, dann kommen wir
+irgendwann auf eine solche Gleichung und haben einen Widerspruch gefunden: Die
+Gleichung hat dann Lösungen, darf aber eigentlich keine haben.
+
+Wie behandeln wir das beweistechnisch, dass es auch überzeugt? Die Idee ist,
+das {\em kleinste} Gegenbeispiel zu nehmen und von diesem aus abzusteigen zum
+{\glqq}noch kleineren{\grqq} Gegenbeispiel, das es nach Lage der Dinge aber
+nicht geben kann.  Dieses Herangehen bezeichnet man auch als {\bf unendlichen
+Abstieg}.
+
+\ul{Ausführung}: Nehmen wir an, dass es reduzierte Gleichungen (1') ohne
+Lösungen gibt. Sei $a'x+b'y=c'$ eine solche Gleichung, für die $|a'|+|b'|$
+kleinstmöglich ist\footnote{Für ganz Pingelige: Da $|a'|+|b'|$ eine natürliche
+Zahl ist und jede nicht leere Menge natürlicher Zahlen eine kleinste enthält,
+gibt es kleinstmögliche solche $|a'|+|b'|$.}. Sei weiter $|a'|\ge |b'|$ und
+$a'=q\m b'+r$ das Ergebnis der Division mit Rest (so dass $0\le r<|b'|$
+ist). Sicher ist $b'\neq\pm 1$, denn für eine solche Gleichung (1') lässt sich
+leicht eine Lösung angeben. Wegen $\gcd(a',b')=\gcd(b',r)$ sind auch $b'$ und
+$r$ teilerfremd und insbesondere $r\neq 0$ (denn sonst wäre
+$\gcd(b',r)=|b'|>1$).
+
+Setzen wir das in (1') ein, so erhalten wir 
+\[a'x+b'y = (q\m b'+r)x+b'y = r\,x+b'(y+q\,x) = c \]
+Die diophantische Gleichung $r\,x+b'z=c$ ist aber eine {\glqq}kleinere{\grqq}
+Gleichung, denn es gilt $|r|+|b'|<2|b'|\le |a'|+|b'|$.  Da $|a'|+|b'|$ so
+ausgewählt war, dass jede {\glqq}kleinere{\grqq} Gleichung Lösungen hat, muss 
+die diophantische Gleichung $r\,x+b'z=c$ Lösungen haben. Aus jeder solchen
+Lösung $(x_0,z_0)$ kann aber leicht eine Lösung $(x_0,y_0=z_0-q\,x_0)$ der
+Gleichung (1') berechnet werden, was der Annahme widerspricht, dass diese
+Gleichung keine Lösungen hat. 
+\medskip
+
+Also ist was faul in unserer Argumentationskette -- und da sie in sich logisch
+ist, muss der Anfang faul sein: Die Annahme, dass es reduzierte Gleichungen
+ohne Lösungen gibt, kann nicht zutreffen. 
+
+Folglich hat jede reduzierte Gleichung wenigstens eine Lösung.
+\end{beweis}
+
+\ul{Bemerkung}: Damit können wir die Lösungsmenge einer reduzierten Gleichung
+sofort hinschreiben, wenn wir nur eine einzige Lösung $(x_0,y_0)$ kennen.  In
+vielen Fällen lässt sich die (mehr oder weniger einfach) erraten.
+
+
+\begin{attribution}
+graebe (2006-01-04):\\ Begleitmaterial für den LSGM-Korrespondenzzirkel in der
+Klasse 8
+\end{attribution}
+
+\end{document}

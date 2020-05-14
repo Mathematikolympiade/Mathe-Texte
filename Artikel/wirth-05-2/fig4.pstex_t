@@ -1,0 +1,20 @@
+\begin{picture}(0,0)%
+\includegraphics{fig4.pstex}%
+\end{picture}%
+\setlength{\unitlength}{1579sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(6254,6299)(1996,-7215)
+\put(3451,-1231){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$A$\special{ps: grestore}}}}
+\put(4711,-3796){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$M$\special{ps: grestore}}}}
+\put(3676,-1921){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$\alpha$\special{ps: grestore}}}}
+\put(7456,-3046){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$\alpha$\special{ps: grestore}}}}
+\put(7846,-2356){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$A'$\special{ps: grestore}}}}
+\put(2146,-6091){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$B$\special{ps: grestore}}}}
+\put(7741,-6106){\makebox(0,0)[lb]{\smash{\SetFigFont{10}{12.0}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$C$\special{ps: grestore}}}}
+\end{picture}

@@ -1,0 +1,90 @@
+% Version: $Id: graebe-10-1.tex,v 1.2 2010/12/16 18:04:37 graebe Exp $
+\documentclass[10pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman} 
+\usepackage[utf8]{inputenc}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Eine Anmerkung zum Aufsatz [1] von M.~Dostal\kosemnetlicensemark}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+Ich hatte bereits vor einem Jahr in einem Aufsatz [2] auf die Eleganz der
+Methode der erzeugenden Funktionen zur Lösung rekursiver Abzählaufgaben
+hingewiesen. Auch bei mehrstelligen Rekursionen wie in der Problemstellung,
+die im Aufsatz [1] von Marion Dostal besprochen wird, leistet dieser Ansatz
+gute Dienste, wie ich nun ausführen werde.
+
+M.~Dostal fragt nach der Anzahl der $k$-dimensionalen
+{\glqq}Seitenflächen{\grqq} eines $n$-dimensionalen Hyperwürfels und stellt
+dazu die Rekursionsbeziehungen 
+\begin{align*}
+  &v^0_d=2\,v^0_{d-1}\ \text{für}\ d\ge 1\tag{1}
+\intertext{sowie}
+  &v^k_d=2\,v^k_{d-1}+v^{k-1}_{d-1}\ \text{für}\ d\ge 1,\ k\ge 1\tag{2}  
+\end{align*}
+auf, die ich noch durch die Setzung $v^0_0=1$ und $v^k_0=0$ für $k\ge 1$
+ergänzen möchte.
+
+Zu dieser zweidimensionalen Abzählfolge kann die erzeugende Funktion
+\begin{align*}
+  V(x,y) &=\sum_{k\ge 0, d\ge 0}{v^k_d\,x^k\,y^d}
+\intertext{gebildet werden. Die Zerlegung}
+  V(x,y) & =1+\sum_{d\ge 1}{v^0_d\,y^d}+ \sum_{k\ge 1, d\ge 1}{v^k_d\,x^k\,y^d}
+\intertext{und die Rekursionen (1) und (2) führen auf folgende funktionale
+  Beziehung für $V(x,y)$:}
+  V(x,y) & =1+\sum_{d\ge 1}{2\,v^0_{d-1}\,y^d}
+  +\sum_{k\ge 1, d\ge 1}{2\,v^k_{d-1}\,x^k\,y^d}
+  +\sum_{k\ge 1, d\ge 1}{v^{k-1}_{d-1}\,x^k\,y^d}\\
+  &= 1+2\,y\,\sum_{d\ge 0}{v^0_d\,y^d} 
+  +2\,y\,\sum_{k\ge 1, d\ge 0}{v^k_d\,x^k\,y^d}
+  +x\,y\,\sum_{k\ge 0, d\ge 0}{v^k_d\,x^k\,y^d}\\
+  &= 1+2\,y\,\sum_{k\ge 0, d\ge 0}{v^k_d\,x^k\,y^d}
+  +x\,y\,\sum_{k\ge 0, d\ge 0}{v^k_d\,x^k\,y^d}\\
+  &= 1+(2\,y\,+x\,y)\,V(x,y)
+\end{align*}
+und schließlich auf die Darstellung 
+\[V(x,y)=\dfrac{1}{1-2\,y\,-x\,y}\] 
+von $V(x,y)$ als rationale Funktion. Eine solche mehrstellige Funktion kann an
+der Stelle $x=y=0$ in eine (mehrdimensionale) Taylorreihe entwickelt werden,
+deren Koeffizienten eindeutig bestimmt sind und die sich mit einem CAS
+berechnen lassen, etwa mit {\sc Maxima} [3]:
+\begin{quote}\tt
+  s:1/(1-(2+x)*y);\\
+  taylor(s,x,0,4,y,0,6);
+\end{quote}
+\begin{align*}
+  1&+2\,y+4\,y^2+8\,y^3+16\,y^4+32\,y^5+64\,y^6+\ldots\\ 
+  &+(y+4\,y^2+12\,y^3+32\,y^4+80\,y^5+192\,y^6+\ldots)\,x\\
+  &+(y^2+6\,y^3+24\,y^4+80\,y^5+240\,y^6\ldots)\,x^2\\
+  &+(y^3+8\,y^4+40\,y^5+160\,y^6+\ldots)\,x^3\\
+  &+(y^4+10\,y^5+60\,y^6+\ldots)\,x^4+\ldots
+\end{align*}
+in Übereinstimmung mit den Ergebnissen in [1].
+
+In diesem Fall lässt sich die Taylordarstellung aber auch leicht in
+geschlossener Form berechnen. Wenden wir die Formel der geometrischen Reihe
+und den binomischen Satz an, so ergibt sich nacheinander
+\begin{align*} 
+  V(x,y) & =\frac{1}{1-(2+x)\,y}=\sum_{d\ge 0}{(2+x)^d\,y^d}
+  =\sum_{d\ge 0}{\left(\sum_{0\le k\le d}\binom{d}{k}\,2^k\,x^k\right)\,y^d}
+\end{align*}
+und damit unmittelbar die auch von der Autorin in [1] hergeleitete Formel $v
+_d=\binom{d}{k}\,2^k$. 
+
+\begin{enumerate}
+\item{[1]} Marion Dostal: Bestimmung $d$-dimensionaler Würfel. Wurzel {\bf 44},
+  Heft 11 (2010), S.\ 253\,--\,255
+\item{[2]} Hans-Gert Gräbe: Eine Anmerkung zum Wurzel-Artikel
+  {\glqq}Erleichterung durch Markow-Prozesse{\grqq}. Wurzel {\bf 43}, Heft 11
+  (2009), S.\ 241\,--\,243
+\item{[3]} Maxima 5.20.1, \url{http://maxima.sourceforge.net}
+\end{enumerate}
+
+
+\begin{attribution}
+graebe (2010-12-16)
+\end{attribution}
+
+\end{document}

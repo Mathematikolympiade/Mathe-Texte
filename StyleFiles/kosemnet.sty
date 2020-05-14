@@ -1,0 +1,80 @@
+%############################################################
+%
+% $Id: kosemnet.sty,v 1.16 2011/12/30 15:03:45 graebe Exp $
+%
+
+% Basic definitions 
+
+\usepackage{a4wide,ngerman,url}
+\usepackage{graphicx}
+
+\usepackage{theorem}    %%%%% neu am 3.5.07
+
+\theoremstyle{plain}     %%%%%
+{\theorembodyfont{\rmfamily} %%%%%%%
+
+\newtheorem{aufgabe}{Aufgabe}
+\newtheorem{beispiel}{Beispiel}
+\newtheorem{definition}{Definition}
+}
+
+\newtheorem{satz}{Satz}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{folgerung}{Folgerung}
+
+\newenvironment{beweis}{\emph{Beweis:}}{\quad$\Box$}
+\newenvironment{bemerkung}{\emph{Bemerkung:}}{}
+\newenvironment{loesung}{\emph{L\"osung:}}{}
+\newenvironment{code}{\tt \begin{tabbing}
+\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip12pt\=\hskip12pt\=\kill}
+{\end{tabbing}}
+
+\def\kosemnetlicensemark{ \footnotetext{This material belongs to the Public
+    Domain KoSemNet data base.  It can be freely used, distributed and
+    modified, if properly attributed.  Details are regulated by the {\em
+      Creative Commons Attribution License}, see {\tt
+      http://creativecommons.org/licenses/by/3.0}.\\ For the KoSemNet project
+    see {\tt http://www.lsgm.de/KoSemNet}.}}
+
+\def\kosemnetlicensemarkInGerman{ \footnotetext{Dieses Material gehört zur
+    Public Domain KoSemNet-Datenbasis.  Es kann frei verwendet, weitergegeben
+    und modifiziert werden. Details regelt die {\em Creative Commons
+      Attribution License},\\ siehe {\tt
+      http://creativecommons.org/licenses/by/3.0}.\\ Mehr zum KoSemNet-Project
+    siehe {\tt http://www.lsgm.de/KoSemNet}.}}
+
+% The Attribution Section should be present at the end of each record 
+\newenvironment{attribution}{\subsection*{Attribution Section}}{}
+\newenvironment{comment}{\subsection*{Comments}}{}
+
+% Include an EPS picture in a subdirectory with the name of the problem. 
+
+\newcommand{\epsPicture}[2]{
+\begin{center}
+ \includegraphics*[width=#1\textwidth]{#2.eps} 
+\end{center}
+}
+
+\newcommand{\epsTwoPictures}[5]{
+\begin{center}
+ \includegraphics*[width=#3]{#1.eps} 
+ \hspace{#4}
+ \includegraphics*[width=#5]{#2.eps}
+\end{center}
+}
+
+\newcommand{\PictureText}[4]{
+\begin{minipage}{#1\textwidth}
+  \includegraphics*[width=\textwidth]{#3.eps} 
+\end{minipage}
+\hfill
+\begin{minipage}{#2\textwidth}
+#4
+\end{minipage}
+}
+
+\parindent0pt
+\parskip2pt
+
+

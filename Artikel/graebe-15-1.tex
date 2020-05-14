@@ -1,0 +1,458 @@
+\documentclass[11pt,a4paper]{article}  
+\usepackage{kosemnet,ko-math,ngerman} 
+\usepackage[utf8]{inputenc}  
+
+\newcommand{\cas}[1]{{\sc #1}}
+\newcommand{\red}{\mathrm{red}}
+
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Zur Vereinfachung von Wurzelausdrücken.\\ 
+Eine Anmerkung zur Aufgabe $\varphi\ 28$\kosemnetlicensemark}
+\date{11. Januar 2015}
+
+\begin{document} 
+\maketitle 
+
+In [1] stellt Friedhelm Götze aus Jena die Aufgabe, den Ausdruck 
+\begin{gather*}
+  A=\frac{14}{\sqrt{78+52\,\sqrt[4]{2}+51\,\sqrt[4]{4}+34\,\sqrt[4]{8}}}
+\end{gather*}
+zu vereinfachen und in eine nennerfreie Darstellung zu überführen. Reiner
+Möwald gibt in [2] durch geeignet „trickreiche“ Umformungen eine Lösung an, die
+allerdings die Schönheit der dahinter verborgenen Mathematik nicht erkennen
+lässt -- dass sich nämlich \emph{jeder} derartige Ausdruck als nennerfreie
+Linearkombination darstellen lässt und dafür auch ein einfaches algorithmisches
+Vorgehen bekannt ist. Diese beiden Aspekte möchte ich im folgenden kleinen
+Aufsatz darstellen.  Eine ausführlicher Besprechung der Thematik ist in [4] zu
+finden.
+
+\section{Die Problemstellung}
+
+Rationale Ausdrücke wie 
+\begin{gather*}
+  \frac{a^2}{\br{a-b}\,\br{a-c}} + \frac{b^2}{\br{b-a}\,\br{b-c}} +
+  \frac{c^2}{\br{c-a}\,\br{c-b}}\tag{1}
+\end{gather*}     
+lassen sich durch einfache Termumformungen oft substanziell vereinfachen.
+Ähnliches gilt für Wurzelausdrücke, wie zum Beispiel 
+\begin{gather*}
+  \sqrt{2\sqrt{3}+4}=1+\sqrt{3}\tag{2}
+\end{gather*}
+oder 
+\begin{gather*}
+  \sqrt{11+6\sqrt{2}}+\sqrt{11-6\sqrt{2}} = 6\tag{3}.
+\end{gather*}
+
+Entsprechende Algorithmen sind auch in den meisten Computeralgebrasystemen
+(CAS) implementiert, allerdings aus hier nicht weiter zu besprechenden Gründen
+oft in Spezialpakete ausgelagert.  Während \cas{Maple} derartige
+Vereinfachungen automatisch vornimmt, sind andere CAS oft nur mit viel gutem
+Zureden bereit, diese Simplifikation vorzunehmen. Selbst das Normalformproblem,
+also jeweils die Vereinfachung der Differenz beider Seiten der Identitäten zu
+null, wird weder in \cas{MuPAD} noch in \cas{Mathematica} oder \cas{Maxima}
+allein durch den Aufruf von \texttt{simplify} gelöst. \cas{MuPAD}
+(\texttt{radsimp}) und \cas{Mathematica} (\texttt{RootReduce}) stellen
+spezielle Simplifikationsroutinen für geschachtelte Wurzelausdrücke zur
+Verfügung, was bei \cas{Mathematica} im stärkeren \texttt{FullSimplify}
+integriert ist. \cas{Maxima} [3] bietet eine solche Simplifikationsroutine
+\texttt{sqrtdenest} im Paket \texttt{sqdnst}.  
+
+Solche Wurzelausdrücke sind stets Nullstellen von Polynomen. Für
+$a=\sqrt{2\sqrt{3}+4}$ etwa rechnet man $(a^2-4)^2=4\cdot 3=12$ leicht nach,
+also ist $a$ Nullstelle des Polynoms 
+\begin{gather*}
+  P(x)=\br{x^2-4}^2-12=x^4-8\,x^2+4,
+\end{gather*}
+welches sich in die algebraische Ersetzungsregel $a^4\to 8\,a^2-4$
+transformieren lässt.  Wegen
+\begin{gather*}
+  P(x)=\br{x^2-2\,x-2}\cdot\br{x^2+2\,x-2}\tag{4}
+\end{gather*}
+ist $a$ aber auch Nullstelle eines der beiden Faktorpolynome und damit
+existiert sogar eine algebraische Ersetzungsregel für $a^2$.  
+
+Damit ist auch schon die Gültigkeit von (2) fast gezeigt, es bleibt allein zu
+begründen, welche der vier Nullstellen von (4) auf der rechten und welche auf
+der linken Seite steht. Dies kann man aber in diesem Fall durch eine einfache
+numerische Abschätzung entscheiden, da die vier Nullstellen genügend weit
+auseinander liegen.
+
+Jede Zahl $a$, die Nullstelle eines Polynoms $P(x)\in\Q[x]$ ist, ist auch
+Nullstelle eines irreduziblen monischen Polynoms $Q(x)=x^d-r(x)\in\Q[x]$, also
+eines Polynoms, das sich (über $\Q$) nicht weiter in Faktoren zerlegen lässt
+und dessen Koeffizient vor der höchsten $x$-Potenz gleich eins ist.  Hierbei
+ist $r(x)\in\Q[x]$ ein Polynom vom Grad kleiner als $d$.
+
+Derartige Zahlen $a$ bezeichnet man als \emph{algebraische Zahlen}, das Polynom
+$Q(x)$ als \emph{charakteristisches Polynom} der Zahl $a$ und $d$ als den
+\emph{Grad} der algebraischen Zahl.
+
+Ein erstes kleines Lemma beweist, dass dieses charakteristische Polynom und
+damit auch dessen Grad eindeutig bestimmt sind.
+\begin{lemma}
+Unter allen Polynomen
+\[P:=\{q(x)\in \Q[x]\,:\,q(a)=0 \text{ und } lc(q)=1\}\]
+mit Leitkoeffizient 1 und Nullstelle $a$ gibt es genau ein Polynom $p(x)$
+kleinsten Grades.  Dieses ist irreduzibel und jedes andere Polynom $q(x)\in P$
+ist ein Vielfaches von $p(x)$.
+\end{lemma}
+
+\begin{beweis} Division mit Rest in $\Q[x]$ ergibt 
+\[q(x)=s(x)\cdot p(x) + r(x)\]
+mit $r=0$ oder $\deg(r)<\deg(p)$. Wäre $r\neq 0$, so ergäbe sich wegen
+$q(a)=p(a)=0$ auch $r(a)=0$ und $\frac{1}{lc(r)}r(x)\in P$ im Gegensatz zur
+Annahme, dass $p(x)\in P$ minimalen Grad hat.
+
+Wäre $p(x)$ reduzibel, so wäre $a$ auch Nullstelle eines der Faktoren.  Dieser
+würde also zu $P$ gehören im Widerspruch zur Auswahl von $p(x)$.
+\end{beweis}
+
+\section{Rechnen mit algebraischen Zahlen}
+
+Ist das Minimalpolynom $Q(x)=x^d-r(x)$ einer algebraischen Zahl $a$ bekannt, so
+gilt $a^d=r(a)$ und es lassen sich alle arithmetischen Ausdrücke ohne Division,
+in denen (nur) $a$ vorkommt, also $A(a)\in\Q[a]$, wie folgt vereinfachen:
+Multipliziere den Ausdruck vollständig aus, wende die algebraische
+Ersetzungsregel $a^d\to r(a)$ an, und fasse danach die Ausdrücke mit gleicher
+Potenz $a^k$ zusammen.
+
+Anwenden der algebraischen Ersetzungsregel bedeutet dabei, alle Potenzen $a^k$
+mit $k\ge d$ zu ersetzen, so dass im Ergebnis nur noch Potenzen $a^k$ mit $0\le
+k\le d-1$ vorkommen.  Die Menge dieser Potenzen bezeichnen wir als
+\emph{reduzierte Terme} $T_{\red}$, die so berechnete Darstellung 
+\begin{gather*}
+  A(a)=c_0+c_1\,a+c_2\,a^2+\dots+c_{d-1}\,a^{d-1}
+\end{gather*}
+mit $c_i\in\Q$ als \emph{reduzierte Darstellung} von $A(a)$.
+
+\begin{satz}
+  Die reduzierte Darstellung von $A(a)$ ist eindeutig bestimmt.
+\end{satz}
+\begin{beweis}
+  Sind 
+\begin{gather*}
+  A(a)=c_0+c_1\,a+c_2\,a^2+\dots+c_{d-1}\,a^{d-1}=c_0'+c_1\,a+c_2'\,a^2+\dots+c_{d-1}'\,a^{d-1}
+\end{gather*}
+zwei Darstellungen des Ausdrucks $A(a)$, so gilt 
+\begin{gather*}
+  (c_0-c_0')+(c_1-c_1')\,a+(c_2-c_2')\,a^2+\dots+(c_{d-1}-c_{d-1}')\,a^{d-1}=0.
+\end{gather*}
+und damit $c_0=c_0',\ \dots,\ c_{d-1}=c_{d-1}'$, denn sonst wäre $a$ Nullstelle
+eines Polynoms vom einem Grad kleiner als $d$.
+\end{beweis}
+
+Dieses Vorgehen lässt sich unmittelbar auf das Rechnen mit mehreren
+algebraischen Zahlen verallgemeinern: Sind $\alpha_1,\ldots,\alpha_s$
+algebraische Zahlen vom Grad $d_1,\ldots,d_s$, so ergeben sich aus den
+entsprechenden Minimalpolynomen
+\[p_i(x)=x^{d_i}-q_i(x)\]
+Ersetzungsformeln 
+\[\{\alpha_i^{d_i}\to q_i(\alpha_i),\ i=1,\ldots,s\},\] 
+die es erlauben, jeden polynomialen Ausdruck aus $R=
+\Q[\alpha_1,\ldots,\alpha_s]$ in dessen \emph{reduzierte Form} zu
+transformieren, d.\,h.\ ihn als Linearkombination der $D:=d_1\cdots d_s$
+Produkte aus der Menge $T_{\red} := \cbr{ \alpha_1^{j_1} \cdots
+  \alpha_s^{j_s}\ : \ 0 \leq j_i<d_i}$ zu schreiben.
+
+Allerdings sind diese reduzierten Formen nur im Falle $s=1$ eindeutig, da
+zwischen den verschiedenen algebraischen Zahlen $\alpha_1,\ldots,\alpha_s$
+algebraische Abhängigkeitsrelationen bestehen können, die lineare
+Abhängigkeitsrelationen in der Menge $T_{\red}$ nach sich ziehen.
+
+\emph{Beispiel:} $\alpha_1=\sqrt{2}+\sqrt{3},\ \alpha_2=\sqrt{6}$. Es gilt
+$\alpha_1^2-2\,\alpha_2-5=0$.
+
+\section{Der Ring der algebraischen Zahlen}
+
+\begin{satz}
+  Jedes Element aus $R= \Q[\alpha_1,\ldots,\alpha_s]$ ist wieder eine
+  algebraische Zahl. 
+\end{satz}
+
+Statt eines Beweises demonstrieren wir das Vorgehen am Beispiel des Ausdrucks
+$c=a+b\in\Q[a,b]$ für die algebraischen Zahlen $a=\sqrt{2}$ und
+$b=\sqrt[3]{5}$.  Der allgemeine Beweis lässt sich ähnlich führen. 
+
+Um zu zeigen, dass $c$ eine algebraische Zahl ist, müssen wir ein Polynom
+$p(x)=\sum_{i=0}^n{r_i\,x^i}$ finden, für das $p(c)=\sum_{i=0}^n{r_i\,c^i}=0$
+gilt.  
+
+Wir setzen $p(x)$ mit unbestimmten Koeffizienten an und berechnen zunächst die
+Potenzen $c^i=(a+b)^i$ als Ausdrücke in $a$ und $b$ wie oben beschrieben. Dazu
+sind die binomischen Formeln sowie die algebraischen Ersetzungen $\{a^2\to 2,
+b^3\to 5\}$ anzuwenden, die sich aus den charakteristischen Polynomen von $a$
+bzw.\ $b$ unmittelbar ergeben. 
+
+Diese Rechnungen lassen sich mit Bleistift und Papier ausführen, aber auch mit
+einem CAS, das algebraische Ersetzungen beherrscht. Für die folgenden
+Rechnungen habe ich das freie CAS \cas{Maxima} [3] verwendet.
+\begin{code}
+tellrat(a\pw2=2,b\pw3=5);\\
+l:makelist(ratsimp((a+b){\pw}n),n,0,10),algebraic;
+\end{code}
+%% tellrat(a^2=2,b^3=5);
+%% l:makelist(ratsimp((a+b)^n),n,0,10),algebraic;
+\begin{align*}
+\Big[\quad & 1,\\ 
+& b+a,\\ 
+& b^2+2\,a\,b+2,\\ 
+& 3\,a\,b^2+6\,b+2\,a+5,\\ 
+& 12\,b^2+(8\,a+5)\,b+20\,a+4,\\ 
+& (20\,a+5)\,b^2+(25 \,a+20)\,b+4\,a+100,\\
+& (30\,a+60)\,b^2+(24\,a+ 150)\,b+200\,a+33,\\
+& (84\,a+210)\,b^2+(350\,a+ 81)\,b+183\,a+700,\\
+& (560\,a+249)\,b^2+(264\,a+ 1400)\,b+1120\,a+1416,\\
+& (513\,a+2520)\,b^2+(2520\,a+1944)\,b+4216\,a+3485,\\
+& (5040\,a+2970)\,b^2 +(6160\,a+8525)\,b+6050\,a+21032\quad \Big]
+\end{align*}
+Wir sehen, dass sich alle Potenzen als Linearkombinationen von den sechs
+reduzierten Termen $1,\,a,\,b,\,b^2,\,a\,b,\,a\,b^2$ darstellen lassen. Mehr
+als sechs solcher Ausdrücke sind dann sicher linear abhängig. Wir bestimmen für
+unser Beispiel eine solche Abhängigkeitsrelation, indem wir eine
+Linearkombination von sieben verschiedenen Potenzen $(a+b)^i$ mit unbestimmten
+Koeffizienten $r_i$ aufstellen und die $r_i$ dann so bestimmen, dass die sechs
+Koeffizienten vor $1,\,a,\,b,\,b^2,\,a\,b,\,a\,b^2$ alle verschwinden. 
+\begin{code}
+ p:sum(concat(r,i)*x{\pw}i,i,0,6);\\
+ p1:ratsimp(subst(x=a+b,f)),algebraic;
+\end{code}
+\begin{align*}
+  &\br{(30\,a+60)\,b^2+(24\,a+150)\,b+200\,a+33}\,{r_6}\\
+  &+\br{(20\,a+5)\,b^2+(25\,a+20 )\,b+4\,a+100}\,{r_5}
+  +\br{12\,b^2+(8\,a+5 )\,b+20\,a+4}\,{r_4}\\
+  &+\br{3\,a\,b^2+6\,b+2\,a+5}\,{r_3} +\br{b^2+2\,a\,b+2}\,{r_2}
+  +(b+a)\,{r_1}+{r_0}
+\end{align*}
+Dieses Polynom muss zunächst in die distributive Normalform gebracht werden, um
+es im zweiten Schritt rekursiv nach Potenzen von $a$ und $b$ zu sortieren und
+dann die Koeffizienten vor den reduzierten Termen zu extrahieren. Leider bietet
+\cas{Maxima} keine bequeme Möglichkeit, die Koeffizienten eines Polynoms zu
+extrahieren, deshalb die umständliche Berechnung von \texttt{coeffs} und
+\texttt{sys}.
+\begin{code}
+  p2:expand(p1);\\
+  coeffs:map(lambda([u],makelist(coeff(u,b,j),j,0,2)),\\\>\>
+  makelist(coeff(p2,a,i),i,0,1));\\ 
+  sys:flatten(coeffs);
+\end{code}
+\begin{align*}
+\big[\quad & r_0 + 2\,r_2 + 5\,r_3 + 4\,r_4 + 100\,r_5 + 33\,r_6,\
+ r_1 + 6\,r_3 + 5\,r_4 + 20\,r_5 + 150\,r_6,\\ 
+& r_2 + 12\,r_4 + 5\,r_5 + 60\,r_6,\ 
+ r_1 + 2\,r_3 + 20\,r_4 + 4\,r_5 + 200\,r_6,\\ 
+& 2\,r_2 + 8\,r_4 + 25\,r_5 + 24\,r_6,\
+ 3\,r_3 + 20\,r_5 + 30\,r_6\quad\big]
+\end{align*}
+Das ist ein homogenes lineares Gleichungssystem, dessen Lösung von einem
+Parameter abhängt.
+\begin{code}
+ vars:makelist(concat(r,i),i,0,6);\\
+ sol:solve(sys,vars);
+\end{code}
+\begin{gather*}
+  \big[\, \sbr{ {r_0}=17\,{\%r_4} , {r_1}=-60\, {\%r_4} , {r_2}=12\,{\%r_4} ,
+      {r_3}=-10\,{\%r_4} , {r_4}=-6\,{\%r_4} , {r_5}=0 , {r_6}={\%r_4}}\,\big]
+\end{gather*}
+Ein Polynom mit der Nullstelle $c=a+b$ lautet also
+\begin{code}
+ p0:subst(\%r4=1,subst(sol[1],p));
+\end{code}
+\begin{gather*}
+  p_0=x^6\,-\,6\,x^4\,-\,10\,x^3\,+\,12\,x^2\,-\,60\,x\,+\,17
+\end{gather*}
+
+Testen wir schließlich noch, ob dieses Polynom irreduzibel ist:
+\begin{code}
+factor(p0);
+\end{code}
+Damit wissen wir, dass es sich bei diesem Polynom sogar um das Minimalpolynom
+von $c=a+b$ handelt.
+
+\section{Quotienten algebraischer Zahlen}
+
+Von einfachen algebraischen Zahlen wie etwa $1+\sqrt{2}$ oder
+$\sqrt{2}+\sqrt{3}$ wissen wir, dass man die jeweilige Inverse dazu recht
+einfach darstellen kann, wenn man mit einer auf geeignete Weise definierten
+\emph{konjugierten} Zahl erweitert. So gilt etwa
+\begin{gather*}
+  \frac{1}{1+\sqrt{2}} = \frac{1-\sqrt{2}}{1-2} = \sqrt{2} -1
+  \quad\text{und}\quad \frac{1}{\sqrt{2}+\sqrt{3}} =
+  \frac{\sqrt{3}-\sqrt{2}}{3-2} =\sqrt{3}-\sqrt{2}\,.
+\end{gather*}
+Damit kann man in diesen Fällen auch die Inverse einer algebraischen Zahl (und
+damit beliebige Quotienten) als lineare Kombination der reduzierten Terme
+darstellen.  Es stellt sich die Frage, ob dies auch für kompliziertere
+rationale Ausdrücke mit algebraischen Zahlen möglich ist.  Wie sieht es
+z.\,B.\ mit
+\[\frac{1}{\sqrt{2}+\sqrt{3}+\sqrt{5}}\]
+aus?
+
+\cas{Axiom} liefert als Ergebnis sofort
+\[\frac{1}{6}\sqrt{3}+\frac{1}{4}\sqrt{2}-\frac{1}{12}\sqrt{30}\]
+Für die anderen Systeme sind dazu spezielle Funktionen, Schalter und/oder
+Pakete notwendig, so in \cas{Maple} die Funktion \texttt{rationalize} aus der
+gleichnamigen Bibliothek und in \cas{MuPAD} die Funktion \texttt{radsimp}. In
+\cas{Reduce} muss der Schalter \texttt{rationalize} eingeschaltet sein. In
+\cas{Maxima} ist dazu die rationale Normalform im Kontext \texttt{algebraic} zu
+berechnen:
+\begin{code}
+a:sqrt(2)+sqrt(3)+sqrt(5);\\
+ratsimp(1/a), algebraic;
+\end{code}
+\[-{\frac{\sqrt{2}\,\sqrt{3}\,\sqrt{5}-2\,\sqrt{3}-3\,\sqrt{2}}{12}}\]
+\medskip
+
+Untersuchen wir, auf welchem Wege sich eine solche Darstellung finden ließe.
+Wie oben findet man heraus, dass $a=\sqrt{2}+\sqrt{3}+\sqrt{5}$ das
+charakteristische Polynom 
+\begin{gather*}
+  p(x)=x^8-40\,x^6+352\,x^4-960\,x^2+576
+\end{gather*}
+hat, d.\,h.\ es gilt $a^8-40\,a^6+352\,a^4-960\,a^2+576=0$ oder
+\[a^{-1}=\frac{-a^7+40\,a^5-352\,a^3+960\,a}{576}\,.\]
+Ist das charakteristische Polynom bekannt, so ist es also nicht schwer,
+$a^{-1}$ zu berechnen. Es werden einzig noch Ringoperationen benötigt, um den
+Ausdruck zu vereinfachen:
+\begin{gather*}
+  a^{-1}=\texttt{subst}\left(a=\sqrt{2}+\sqrt{3}+\sqrt{5},
+  \frac{-a^7+40\,a^5-352\,a^3+960\,a}{576}\right)\,.
+\end{gather*}
+
+\section{Die Aufgabe $\varphi\ 28$}
+
+Mit dem im letzten Abschnitt beschriebenen Verfahren kann man zwar nun auch
+Quotienten in Linearkombinationen reduzierter Terme überführen, allerdings muss
+für jeden Divisor erst umständlich das Minimalpolynom bestimmt werden. Wir
+zeigen am Beispiel der Aufgabe $\varphi\ 28$, dass ein Ansatz mit unbestimmten
+Koeffizienten, wie wir ihn schon oben bei der Bestimmung des Minimalpolynoms
+von $c=a+b$ erfolgreich angewendet haben, auch hier weiterhilft.
+
+Gegeben sind in unserem Fall zwei algebraische Zahlen 
+\begin{gather*}
+  a=\sqrt[4]{2}\ \text{und}\ b=\sqrt{78+52\,a+51\,a^2+34\,a^3}
+\end{gather*}
+und der zu vereinfachende Ausdruck $A=\frac{14}{b}$.  Die Ersetzungregeln der
+beiden algebraischen Zahlen lauten $a^4\to 2$ und $b^2\to
+78+52\,a+51\,a^2+34\,a^3$, als reduzierte Terme ergeben sich
+$T_{\red}=\cbr{1,a,a^2,a^3,b,a\,b,a^2\,b,a^3\,b}$.  Wir suchen eine
+Linearkombination
+\begin{gather*}
+  p=r_0+r_1\,a+r_2\,a^2+r_3\,a^3+r_4\,b+r_5\,a\,b+r_6\,a^2\,b+r_7\,a^3\,b
+\end{gather*}
+mit $p\cdot b-14=0$ und verfahren dazu wie oben (alle Rechnungen wiederum mit
+\cas{Maxima}):
+\begin{code}
+  tellrat(b\pw2=78+52*a+51*a\pw2+34*a\pw3,a\pw4=2);\\
+  p:r0+r1*a+r2*a\pw2+r3*a\pw3+r4*b+r5*a*b+r6*a\pw2*b+r7*a\pw3*b;\\
+  u1:ratsimp(p*b-14),algebraic;
+\end{code}
+\begin{align*}
+  u_1= & (78\,a^3+68\,a^2+102\,a+104)\,r_7
+  +(52\,a^3+78\,a^2+68\,a+102)\,r_6\\ &\quad +(51\,a^3+52\,a^2+78\,a+68)\,r_5
+  +(34\,a^3+51\,a^2+52\,a+78)\,r_4\\ &\quad +a^3\,b\,r_3
+  +a^2\,b\,r_2+a\,b\,r_1+b\,r_0-14\,.
+\end{align*}
+Dieser Ausdruck ist nach Termen aus $T_{\red}$ zu sortieren. Die Koeffizenten
+vor den reduzierten Termen ergeben ein lineares Gleichungssystem zur Bestimmung
+der $r_i$.
+\begin{code}
+  u2:expand(u1);\\
+  coeffs:map(lambda([u],makelist(coeff(u,a,j),j,0,3)),\\\>\>
+  makelist(coeff(u2,b,i),i,0,1));\\ 
+  sys:flatten(coeffs);
+\end{code}
+\begin{align*}
+  \big[\ &
+    104\,r_7+102\,r_6+68\,r_5+78\,r_4-14,\ 102\,r_7+68\,r_6+78\,r_5+52\,r_4,\\ &\quad
+    68\,r_7+78\,r_6+52\,r_5+51\,r_4,\ 78\,r_7+52\,r_6+51\,r_5+34\,r_4,\ r_0,\ r_1,\ r_2,\ r_3\ \big]
+\end{align*}
+Wir sehen bereits an dieser Stelle, dass $r_0=r_1=r_2=r_3=0$ sein muss, der
+gesuchte Ausdruck also -- anders als in Möwalds Lösung [2] -- ein Vielfaches
+von $b$ ist. Wir lösen dieses (inhomogene lineare) Gleichungssystem, setzen die
+in diesem Fall eindeutig bestimmte Lösung
+\begin{code}
+vars:[r0,r1,r2,r3,r4,r5,r6,r7];\\
+sol:solve(sys,vars);  
+\end{code}
+\begin{gather*}
+  \sbr{\sbr{r_0 = 0,\ r_1 = 0,\ r_2 = 0,\ r_3 = 0,\ r_4 = \frac67,\ r_5 =
+      -\frac47,\ r_6 = -\frac37,\ r_7 = \frac27}}
+\end{gather*}
+in $p$ ein und erhalten 
+\begin{code}
+  p0:subst(sol[1],p);
+\end{code}
+\begin{gather*}
+  p_0=\frac{2\,a^3\,b-3\,a^2\,b-4\,a\,b+6\,b}{7}=\frac{b}{7}\,\br{2\,a^3-3\,a^2-4\,a+6}\,.
+\end{gather*}
+Die gestellte Aufgabe ist gelöst, allein die Differenz zu Möwalds Lösung
+$m=a^2-2\,a^2+2$ in [2] bleibt zu diskutieren.  Möwalds größter Trick ist
+gleich in der ersten Umformung
+\begin{gather*}
+  78+52\,a+51\,a^2+34\,a^3=\br{3\,a^3+a^2+5\,a+4}^2
+\end{gather*}
+enthalten und zeigt, dass $b^2-(78+52\,a+51\,a^2+34\,a^3)$ über $\Q[a]$ nicht
+irreduzibel ist. Faktorisieren über algebraischen Erweiterungskörpern ist im
+Allgemeinen eine komplizierte Angelegenheit und Lösungsversuche allein mit
+Bleistift und Papier sind schnell am Ende. In diesem speziellen Fall findet
+aber auch \cas{Maxima} die Faktorisierung:
+\begin{code}
+  factor(b\pw2-(78+52*a+51*a\pw2+34*a\pw3),a\pw4-2);
+\end{code}
+\begin{gather*}
+  \br{b-3\,a^3-a^2-5\,a-4}\,\br{b+3\,a^3+a^2+5\,a+4}
+\end{gather*}
+Nehmen wir dagegen Möwalds Lösung als Orakel („Da kam ein Wanderer des Wegs und
+sagte: $m$ ist eine Lösung“), so liefert $p_0=m$ eine algebraische
+Abhängigkeitsrelation zwischen den reduzierten Termen, aus der wir eine
+Darstellung für $b$ extrahieren können:
+\begin{code}
+  m:a\pw3-2*a\pw2+2;\\
+  solve(pp=m,b);
+\end{code}
+\begin{gather*}
+  b = \frac{7\,a^3-14\,a^2+14}{2\,a^3-3\,a^2-4\,a+6},
+\end{gather*}
+die wir wieder in eine Linearkombination der Terme $a^0,a^1,a^2,a^3$ umrechnen
+können
+\begin{code}
+  ratsimp(solve(pp=m,b)),algebraic;
+\end{code}
+\begin{gather*}
+  b = 3\,a^3+a^2+5\,a+4
+\end{gather*}
+Wir haben damit also Möwalds Trick „reverse engineered“.
+
+\begin{enumerate}
+\item{[1]} Aufgabe $\varphi\ 28$ von Friedhelm Götze. Wurzel {\bf 48}, Heft 6
+  (2014), S.\ 143.
+\item{[2]} Lösung der $\varphi\ 28$ von Reiner Möwald. Wurzel {\bf 49}, Heft 1
+\item{[3]} Maxima 5.32.1, \url{http://maxima.sourceforge.net}
+\item{[4]} Hans-Gert Gräbe: Skript zum Kurs „Einführung in das symbolische
+  Rechnen“.  Sommersemester 2012.
+  \url{http://www.informatik.uni-leipzig.de/~graebe/skripte/esr12.pdf}
+\end{enumerate}
+
+
+\begin{attribution}
+graebe (2010-12-16)
+\end{attribution}
+
+\end{document}
+
+tellrat(b^2=78+52*a+51*a^2+34*a^3,a^4=2);
+p:r0+r1*a+r2*a^2+r3*a^3+r4*b+r5*a*b+r6*a^2*b+r7*a^3*b;
+u1:ratsimp(p*b-14),algebraic;
+u2:expand(u1);
+coeffs:map(lambda([u],makelist(coeff(u,a,j),j,0,3)),makelist(coeff(u2,b,i),i,0,1));
+sys:flatten(coeffs);
+vars:[r0,r1,r2,r3,r4,r5,r6,r7];
+sol:solve(sys,vars);
+p0:subst(sol[1],p);
+
+factor(b^2-(78+52*a+51*a^2+34*a^3),a^4-2);
+
+m:a^3-2*a^2+2;
+ratsimp(solve(pp=m,b)),algebraic;
+ratsimp(7*a^3-14*a^2+14)/(2*a^3-3*a^2-4*a+6)

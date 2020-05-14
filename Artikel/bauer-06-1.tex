@@ -1,0 +1,175 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{ko-math,kosemnet,ngerman}
+
+\author{David Bauer, Freiberg}
+\title{Spieltheorie\kosemnetlicensemark}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+\section{Gewinnerzwingende Strategien}
+
+In jedem Zweipersonenspiel, das den folgenden Regeln gen"ugt,
+kann einer der beiden Spieler den Sieg erzwingen.
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item Es gibt nur eine endliche Anzahl m"oglicher Stellungen. 
+\item Das Spiel endet in jedem Fall nach einer endlichen Anzahl von Z"ugen.
+\item Es gibt am Ende immer einen Sieger (kein Unentschieden).
+\item Die m"oglichen Z"uge in einer Spielsituation sind f"ur beide Spieler
+  gleich.
+\end{itemize}
+\paragraph*{"Ubung 1:} 
+Welche der Regeln erf"ullt Schach?
+\medskip
+
+Die Endsituationen des Spiels, bei denen man gewonnen oder verloren hat,
+bezeichnet man als Gewinner- bzw.\ Verlierersituation. Ferner hei"st auch jede
+Spielsituation Gewinnersituation {\bf (GS)}, wenn man einen bestimmten Zug
+finden kann, der den Gegner in eine Verlierersituation f"uhrt. Dagegen wird
+jede Spielsituation als Verlierersituation {\bf (VS)} bezeichnet, wenn jeder
+m"ogliche Zug dem Gegner zu einer Gewinnersituation verhilft. Auf diese Weise
+l"asst sich durch R"uckw"artsschlie"sen f"ur jede Spielsituation entscheiden,
+ob es sich um eine Gewinnersituation oder um eine Verlierersituation
+handelt. 
+\begin{quote}\it Der Spieler, der den ersten Zug macht, kann den Sieg genau
+  dann erzwingen, wenn zu Beginn eine Gewinnersituation vorliegt.
+\end{quote}
+
+\paragraph*{"Ubung 2:} 
+Anna und Bruno spielen mit einem St"uck Schokolade, dessen untere rechte Ecke
+verschimmelt ist. Sie brechen die Tafel abwechselnd l"angs der Rippen entzwei
+und essen eine der beiden H"alften auf. Wer das verschimmelte St"uck isst, hat
+verloren. Anna macht den ersten Zug.
+
+Wer kann den Sieg erzwingen, \ldots\
+\begin{itemize}
+\item[(a)] \ldots\ wenn sie mit einem St"uck Ritter-Sport-Schokolade ($4\times
+  4$) beginnen?
+\item[(b)] \ldots\ wenn sie mit einer Tafel Milka-Schokolade ($6\times 10$)
+  beginnen?
+\end{itemize}
+
+\section{L"osungsmethoden f"ur Olympiadeaufgaben}
+
+\subsection{R"uckw"artsarbeiten und Invarianzprinzip}
+
+Dies ist wahrscheinlich die wichtigste Methode, um sukzessive alle Gewinner-
+und Verlierersituationen zu ermitteln: 
+\begin{quote}\it 
+  Berechne durch R"uckw"artsschlie"sen einige GS und VS. Nach einiger Zeit
+  erkennst du ein Muster (d.\,h.\ eine geeignete Invariante), die eine
+  Darstellung von allen Gewinner- und Verlierersituationen liefert.
+\end{quote}
+\paragraph*{"Ubung 3:} Teile und Herrsche
+
+Auf dem Tisch liegen zwei Haufen Kekse. Der eine Haufen besteht aus 31 Keksen,
+der andere aus 43 Keksen. Ein Spielzug besteht darin, die Kekse eines Haufens
+aufzuessen und den anderen in zwei Haufen zu zerteilen. Dabei darf kein Keks
+zerbrochen werden, jedoch d"urfen die beiden neuen Haufen null Kekse
+enthalten. Der Spieler, der bei seinem Zug keinen Keks essen kann, hat
+verloren. Welcher Spieler kann den Sieg erzwingen?
+
+\subsection{Vorw"artsarbeiten}
+\begin{minipage}{.6\textwidth}
+Manchmal gibt es zu viele Endpositionen, um durch R"uckw"artsschlie"sen das
+Problem zu bearbeiten. Mitunter l"asst sich die Anzahl der (sinnvollen) Z"uge
+des Gegners eingrenzen, so dass man ausgehend von der vorliegenden
+Spielsituation durch Vorw"artsarbeiten zum Ziel gelangt. Ein typisches
+Beispiel sind Schachr"atsel wie rechts (Matt in 2 Z"ugen).
+\end{minipage}\hfill
+\begin{minipage}{.35\textwidth}
+\includegraphics[width=.8\textwidth]{bauer-06-1/bauer-06-1.eps}
+\end{minipage}
+
+\subsection{Zerlegung}
+Eine wichtige Strategie ist es, das Spiel in kleine Bereiche zu zerlegen, um
+dann in jedem dieser Bereiche den Sieg zu erzwingen.  Meistens ist folgende
+Idee bereits f"ur die L"osungsfindung ausreichend: 
+\begin{quote}\it
+  Teile alle Spielpositionen in Paare ein, so dass es einen Zug zwischen
+  beiden Elementen eines jeden Paares gibt. Immer wenn der Gegner die Position
+  eines Paares annimmt, ziehst du auf die andere Position des Paares.
+\end{quote}
+\paragraph*{"Ubung 4:} 
+Eine Tafel besteht aus sechs nebeneinander liegenden Feldern.  Zwei Spieler A
+und B tragen abwechselnd so lange je eine der Ziffern $0,1,2,\ldots,9$ in ein
+beliebiges noch freies Feld ein, bis alle Felder besetzt sind; dabei d"urfen
+verschiedene Felder mit derselben Ziffer belegt werden. A f"angt an. Nachdem B
+eine Ziffer in das letzte freie Feld eingetragen hat, werden die sechs
+aneinandergereihten Ziffern als Dezimaldarstellung einer ganzen Zahl $z$
+gedeutet.  B hat gewonnen, wenn $z$ durch eine vorher vereinbarte nat"urliche
+Zahl $n$ teilbar ist. F"ur welche nat"urlichen Zahlen $n$ zwischen 1 und 15
+kann B durch geschicktes Spiel den Gewinn erzwingen, f"ur welche nicht?
+
+\subsection{Symmetrie}
+H"aufig ist es n"utzlich, die symmetrischen Eigenschaften des Spielfelds
+auszunutzen, um gegnerische Z"uge zu kontern. Dies macht sich unter anderem
+auch Stefan in Northcotts Spiel zunutze (Aufgabe 451324).
+
+\subsection{Indirektes Schlie"sen}
+Es ist bekannt, dass bei einem Spiel nach unseren vier Regeln einer der beiden
+Spieler eine Gewinnstrategie haben muss. Man kann daher indirekt beweisen,
+dass ein Spieler bei optimalem Spiel verliert, indem man annimmt, er habe eine
+Gewinnstrategie und dies zu einem Widerspruch f"uhrt.
+
+\paragraph*{"Ubung 5:} Beim Doppelschach machen Schwarz und Wei"s abwechselnd
+zwei g"ultige Z"uge nach den "ublichen Schachregeln, wobei Wei"s beginnt. Man
+zeige, dass Wei"s bei optimalem Spiel Remis erzwingen kann!
+
+\section{Aufgaben}
+
+\paragraph*{Aufgabe 1:} 
+Zwei Spieler spielen ein Spiel, bei dem sie abwechselnd Zahlen aus der Menge
+$\{1,2,3,4,5,6,7,8,9\}$ nehmen.  Jede Zahl darf also nur einmal gew"ahlt
+werden. Besitzt ein Spieler drei Zahlen, die sich zu 15 addieren, so hat er
+gewonnen.  Wer gewinnt bei optimalem Spiel?  Oder gibt es ein Unentschieden?
+\paragraph*{Aufgabe 2:} 
+Beginnend bei 2 ersetzen zwei Spieler abwechselnd die aktuelle Zahl $N$ durch
+$N+d$, wobei $d<N$ irgendein positiver Teiler von $N$ sein muss. Der Spieler,
+bei dem die Zahl nach seinem Zug erstmals gr"o"ser oder gleich 2006 ist, hat
+verloren. Welcher der beiden Spieler gewinnt?
+\paragraph*{Aufgabe 3:} 
+Zwei Personen P und Q spielen das folgende Spiel. In der Gleichung
+$x^3+a\,x^2+b\,x+c=0$ belegt zun"achst P, danach Q und schlie"slich wieder P
+je einen noch nicht belegten der drei Koeffizienten mit einer reellen
+Zahl. Das Spiel ist genau dann f"ur P gewonnen, wenn die so entstandene
+Gleichung drei paarweise verschiedene reelle L"osungen hat. Man untersuche, ob
+P bei jeder Spielweise von Q den Gewinn erzwingen kann.
+\paragraph*{Aufgabe 4:} 
+Zwei Personen A und B machen folgendes Spiel. Sie nehmen aus der Menge
+$\cbr{0, 1, 2, 3, \ldots, 1024}$ abwechselnd 512, 256, 128, 64, 32, 16, 8, 4,
+2, 1 Zahlen weg, wobei A zuerst 512 Zahlen wegnimmt, B dann 256 Zahlen usw. Es
+bleiben zwei Zahlen $a,b$ stehen. B zahlt an A den Betrag $|a-b|$. A m"ochte
+m"oglichst viel gewinnen, B m"oglichst wenig verlieren. Welchen Gewinn erzielt
+A, wenn jeder Spieler seiner Zielsetzung entsprechend optimal spielt?
+\paragraph*{Aufgabe 5:} 
+Clara und Dorothea spielen das Streckenspiel. Dieses Spiel wird mit 64 in
+einem Quadratgitter angeordneten Punkten gespielt.  Clara beginnt das Spiel,
+indem sie zwei senkrecht oder waagerecht unmittelbar benachbarte Punkte
+miteinander verbindet. Im weiteren Spielverlauf besteht ein Zug darin, den
+bestehenden Streckenzug um eine Strecke zu erweitern, indem einer der beiden
+Endpunkte wiederum mit einem senkrecht oder waagerecht unmittelbar
+benachbarten Punkt verbunden wird. Die einzige Einschr"ankung besteht darin,
+dass man nicht zu einem Punkt ziehen darf, der bereits im Streckenzug
+enthalten ist. Verloren hat diejenige, die keinen Zug mehr machen kann. Kann
+eine der Spielerinnen den Sieg erzwingen? Wenn ja, gebe man eine Strategie an,
+die mit Sicherheit zum Sieg f"uhrt.
+\paragraph*{Aufgabe 6:} 
+Wiebke und Stefan spielen mit einem Blatt K"astchenpapier.  Sie beginnen mit
+einem 60 Zeilen und 40 Spalten gro"sen Rechteck und zerschneiden abwechselnd
+in jedem Zug eines der Rechtecke auf dem Tisch entlang der Linien des
+Karopapiers in zwei kleinere Rechtecke. Dabei darf Stefan bei seinen Z"ugen
+nur senkrechte und Wiebke nur waagerechte Schnitte machen. Verloren hat, wer
+keinen g"ultigen Zug mehr machen kann.
+\begin{itemize}
+\item[(a)] Wer kann den Sieg erzwingen, wenn Stefan beginnt?
+\item[(b)] Wer kann den Sieg erzwingen, wenn Wiebke beginnt?
+\end{itemize}
+
+\begin{attribution}
+Beitrag von David Bauer zum Begleitheft 2006 im Vorbereitungslehrgang der
+S"achsischen Mannschaft auf die MO-Bundesrunde.
+\end{attribution}
+\end{document}
+

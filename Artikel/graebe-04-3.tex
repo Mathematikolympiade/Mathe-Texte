@@ -1,0 +1,119 @@
+% Version: $Id: graebe-04-3.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Aussagenlogik\kosemnetlicensemark\\ 
+Arbeitsmaterial für Klasse 7}
+\date{}
+
+\begin{document} 
+\maketitle         
+
+In vielen Aufgaben spielen Aussagekombinationen eine Rolle, von
+denen dar"uberhinaus gesagt wird, dass einige falsch und andere
+richtig sein sollen. Hier ist es oftmals sinnvoll, zuerst die Aussagen
+in solche zu transformieren, die alle wahr sind. Dazu ist meist eine
+Fallunterscheidung sinnvoll, wie etwa in der folgenden 
+\begin{quote}
+\ul{Aufgabe 240631}: Drei Sch"uler Wolfgang, Ralph und Udo belegten bei
+einem Sportfest die ersten drei Pl"atze im Weitsprung. Marcus, der in
+einer anderen Disziplin starten musste, erkundigte sich hinterher bei
+Elke nach dem Ausgang beim Weitsprung. Elke konnte sich nicht mehr
+genau erinnern und sagte: {\glqq}Ich glaube\\
+(a) Wolfgang wurde nicht Erster,\\
+(b) Ralph wurde nicht Zweiter, sondern\\
+(c) Udo wurde Zweiter.{\grqq}
+
+Es stellte sich heraus, dass Elke einmal etwas richtiges gesagt hatte,
+sich aber in den beiden anderen F"allen geirrt hatte. Was kann man
+"uber die Reihenfolge sagen?
+\end{quote}
+Um diese Aufgabe zu lösen, müssen wir die Aussagen (a), (b) und (c)
+entsprechend ihres (uns nicht genau bekannten) Wahrheitsgehalts kombinieren.
+Jede der einzelnen Aussagen kann wahr oder falsch sein (im letzteren Fall ist
+das Gegenteil wahr), und Aussagen können gemeinsam ({\bf und}-verknüpft) oder
+alternativ ({\bf oder}-verknüpft). 
+
+Um in solchen Aussagekombinationen nicht die Übersicht zu verlieren, wollen
+auch wir die folgende in der Mathematik übliche Notation verwenden. Für zwei
+Aussagen (A) und (B) gibt es die folgenden wichtigen Aussagekombinationen:
+\begin{center}
+  \begin{tabular}{c|c|c}
+    Zeichen & Bedeutung & wie das die Mathematiker nennen\\\hline
+    $\neg\,(A)$ & nicht (A) & Negation der Aussage (A)\\
+    $(A) \wedge (B)$ & (A) und (B) & konjunktive Verknüpfung \\
+    $(A) \vee (B)$ & (A) oder (B) & disjunktive Verknüpfung \\
+  \end{tabular}
+\end{center}
+Beachte, dass {\glqq}(A) oder (B){\grqq} den Fall {\glqq}(A) und (B){\grqq}
+einschließen (inklusives oder) oder ausschließen kann (exklusives oder).  Die
+Mathematiker haben sich darauf geeinigt, dass immer das inklusive
+{\glqq}oder{\grqq} gemeint ist, wenn nichts anderes gesagt wird. An diese
+vereinbarung werden wir uns natürlich auch halten. 
+
+Kehren wir zur Analyse von Elkes Aussage zurück. Wir unterscheiden drei
+F"alle, je nachdem, ob (a), (b) oder (c) wahr sind. Unter Verwendung der eben
+eingeführten Symbole und der Buchstaben $W, R, U$ f"ur den Platz des jeweilgen
+Sportlers lauten die Aussagen f"ur die drei F"alle
+\begin{align*}
+\text{(a) wahr:\quad}& (W\neq 1) \wedge (R = 2) \wedge (U \neq 2)\tag{1}\\
+\text{(b) wahr:\quad}& (W = 1) \wedge (R \neq 2) \wedge (U \neq 2)\tag{2}\\
+\text{(c) wahr:\quad}& (W = 1) \wedge (R = 2) \wedge (U = 2)\tag{3}
+\end{align*}
+Wir sehen, dass Fall (2) (kein zweiter Platz) und Fall (3) (zwei
+zweite Pl"atze) ausscheiden. Im Fall (1) schlie"sen wir nacheinander
+$R = 2$, wegen $W\neq 1$ dann $W=3$ und $U=1$. Das w"are die einzig
+m"ogliche Platzverteilung im Fall (1). Nun muss noch gepr"uft werden,
+ob diese M"oglichkeit auch keine der Bedingungen verletzt, also die
+Probe gemacht werden! Das ist hier sehr einfach, deshalb wollen wir es
+so formulieren:
+\begin{center}
+Die Probe zeigt, dass es sich wirklich um eine L"osung handelt.
+\end{center}
+Also nicht zu fr"uh gefreut: {\glqq}Hurra, das ist die L"osung{\grqq}, denn es
+k"onnte ja sein, dass das gefundene Ergebnis an einer Stelle, die noch nicht
+beachtet wurde, ebenfalls nicht passt und die Aufgabe gar keine L"osung
+besitzt.
+
+Eine andere L"osung k"onnte 6 F"alle unterscheiden, n"amlich die 6
+m"oglichen Reihenfolgen, und untersuchen, welche der Aussagen wahr
+bzw. falsch sind:
+\begin{center}
+\begin{tabular}{ccc|ccc}
+W& R& U& (1)&  (2)&  (3)\\\hline
+1& 2& 3& f& f& f\\
+1& 3& 2& f& w& w\\
+2& 1& 3& w& w& f\\
+2& 3& 1& w& w& f\\
+3& 1& 2& w& w& w\\
+3& 2& 1& w& f& f
+\end{tabular}\end{center}
+Nur im letzten Fall sind genau zwei der Aussagen falsch. Eine Probe
+ist in diesem Fall {\bf nicht} notwendig, denn wir haben ja eine
+vollst"andige Fallunterscheidung durchgef"uhrt, d.h. in {\em jedem}
+Fall {\em alle} Bedingungen gepr"uft.
+\medskip
+
+Aussagekombinationen lassen sich nach einfachen Regeln umformen.  Die
+wichtigsten sind die folgenden {\bf de'Morgan-schen Regeln}:
+\begin{center}
+  \begin{tabular}{c|c}
+Regel & Interpretation\\\hline
+$\neg(A\wedge B) \Leftrightarrow (\neg A) \vee (\neg B)$ & Das Gegenteil von
+{\glqq}A {\bf und} B{\grqq} ist {\glqq}nicht A {\bf oder} nicht B{\grqq}.\\
+$\neg(A\vee B) \Leftrightarrow (\neg A) \wedge (\neg B)$ & Das Gegenteil von
+  {\glqq}A {\bf oder} B{\grqq} ist {\glqq}nicht A {\bf und} nicht B{\grqq}.
+  \end{tabular}
+\end{center}
+
+\ul{Beispiel}: {\glqq}$(a=2)$ {\bf und} $(b\neq 3)$ ist falsch{\grqq} hei"st
+{\glqq}$(a\neq 2)$ {\bf oder} $(b=3)${\grqq}.
+
+\begin{attribution}
+graebe (2004-09-02):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 7 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}

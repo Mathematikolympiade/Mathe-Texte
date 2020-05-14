@@ -1,0 +1,259 @@
+% Beitrag f"ur das Heft zum Landesseminar M"arz 2000
+
+\documentclass[11pt]{article}
+\usepackage{graphicx,kosemnet,ko-math,ngerman}
+
+\title{Bewegungsgeometrie\kosemnetlicensemark}
+\author{Hans-Gert Gr"abe, Leipzig}
+\date{23.~Januar 2000}
+
+\newcommand{\Bild}[3]{
+\begin{center}
+\includegraphics[#1]{graebe-00-1/#2}\nopagebreak\\[12pt] #3
+\end{center}
+}
+
+\begin{document}
+\maketitle
+
+Geometrische Argumentationen verwenden an vielen Stellen Kongruenzaussagen,
+die ge\-w"ohn\-lich mit verschiedenen Kongruenzs"atzen begr"undet werden.
+Bekanntlich hei"sen zwei geometrische Figuren {\em kongruent}, wenn es eine
+Bewegung gibt, die die eine Figur mit der anderen zur Deckung bringt.
+
+In diesem Beitrag soll an einigen Beispielen aufgezeigt werden, wie f"ur
+Kongruenzaussagen direkt mit solchen Deckbewegungen argumentiert werden kann.
+
+\begin{aufgabe}
+  Konstruieren Sie ein gleichseitiges Dreieck ${ABC}$, dessen Eckpunkte auf
+  drei vorgegebenen parallelen Geraden $g_A, g_B, g_C$ liegen.
+\end{aufgabe}
+
+\Bild{width=12cm}{Bild1}{Bild 1: Konstruktion des Dreiecks $ABC$}
+
+Wegen der Translationsinvarianz kann man einen der Eckpunkte, etwa $B$, auf
+seiner Geraden beliebig w"ahlen. Sei nun $ABC$ ein Dreieck mit den geforderten
+Eigenschaften. Dreht man die Ebene in $B$ um $60\grad$, so geht $A$ in $C$
+"uber.  $C$ muss also auf $g_C$ und der Bildgeraden $g_A'$ liegen, die man aus
+$g_A$ durch die Drehung erh"alt. Da $g_A'$ nicht parallel zu $g_C$ verl"auft,
+ist $C$ bei fixiertem $B$ als Schnittpunkt dieser beiden Geraden eindeutig
+bestimmt.
+
+Ein Dreieck mit den geforderten Eigenschaften kann man also wie folgt
+konstruieren: 
+\begin{itemize}
+\item[(1)] W"ahle $B\in g_B$ beliebig aus.
+\item[(2)] Konstruiere das Bild $g_A'$ von $g_A$ bei Drehung um $60\grad$ mit
+  Zentrum $B$. (W"ahle dazu zwei Punkte auf der Originalgeraden, konstruiere
+  deren Bilder und verbinde diese zur Bildgeraden).
+  
+  Der Schnittpunkt von $g_A'$ und $g_C$ ist $C$.
+\item[(3)] Der dritte Eckpunkt $A$ ist der Schnittpunkt von $g_A$ mit der
+  Mittelsenkrechten auf $\ksegment{BC}$.
+\end{itemize}
+
+Aus unseren bisherigen Betrachtungen ergibt sich, dass das so konstruierte
+Dreieck $ABC$ die Bedingungen der Aufgabenstellung erf"ullt und umgekehrt
+jedes solche Dreieck auch auf diese Weise konstruiert werden kann. Bei
+fixiertem $B$ erhalten wir zwei L"osungen, da man die Drehung um $60\grad$ mit
+Zentrum $B$ in {\em zwei} Richtungen ausf"uhren kann. Die beiden L"osungen
+liegen symmetrisch bzgl.\ einer Achse durch $B$, die senkrecht zu den drei
+parallelen Geraden verl"auft.
+
+\Bild{width=12cm}{Bild2}{Bild 2: Die beiden L"osungen bei gegebenem $B$}
+
+\begin{aufgabe}
+  In einem regelm"a"sigen Tetraeder $ABCD$ mit der Kantenl"ange $a$ seien
+  $E,F,G$ und $H$ die Mittelpunkte der Kanten $\ksegment{AB}, \ksegment{BC},
+  \ksegment{CD}$ und $\ksegment{DA}$.
+
+Zeigen Sie, dass $EFGH$ ein (ebenes) Quadrat ist.
+\end{aufgabe}
+
+\Bild{width=12cm}{Bild3}{Bild 3: Tetraeder $ABCD$ mit Quadrat $EFGH$}
+
+Da $\kline{EF}$ die Mittellinie im Dreieck $ABC$ ist, gilt
+$\kline{EF}\parallel \kline{AC}$ und $\msegment{EF}=\frac{a}{2}$. Analog
+erhalten wir $\kline{GH}\parallel \kline{AC},\ \kline{EH}\parallel
+\kline{BD}\parallel \kline{FG}$ und
+$\msegment{FG}=\msegment{GH}=\msegment{EH}=\frac{a}{2}$. Die vier Punkte
+liegen also in einer Ebene (die z.B.\ von den parallelen Geraden $\kline{EF}$
+und $\kline{GH}$ bestimmt wird) und spannen ein Rhombus auf. Um zu zeigen,
+dass das Rhombus ein Quadrat ist, zeigen wir, dass es gleichlange Diagonalen
+$\msegment{EG}=\msegment{FH}$ besitzt.
+
+Dazu betrachten wir zun"achst die Deckbewegungen, die ein regul"ares Tetraeder
+in sich selbst "uberf"uhren. Es gibt genau 12 solche Drehbewegungen:
+\begin{itemize}
+\item[(1)] 8 Drehungen, deren Achse durch je einen Eckpunkt und den
+  Mittelpunkt der gegen"uberliegenden Seitenfl"ache verl"auft (es gibt 4
+  solche Achsen; um jede kann man um $\pm 120\grad$ drehen. Bezeichnung:
+  $d_A^+, d_A^-$ f"ur die Drehungen um die Achse durch $A$),
+\item[(2)] 3 Drehungen, deren Achse jeweils durch durch die Mitten
+  gegen"uberliegender Kanten verl"auft (es gibt 3 solche Achsen; um jede muss
+  man um $180\grad$ drehen. Bezeichnung: $d_{AB}^{CD}$ f"ur die Drehung um die
+  Achse durch die Kantenmitten von $AB$ und $CD$) und
+\item[(3)] die identische Bewegung.
+\end{itemize}
+Die Drehung $d_D^+$ vertauscht die Eckpunkte $A,B,C$ zyklisch, bildet damit
+$E$ auf $F$ und $G$ auf $H$ und so auch $\ksegment{EG}$ auf $\ksegment{FH}$
+ab. Die beiden Strecken sind also gleichlang. (NB: Der Schnittpunkt beider
+Strecken ist unter der Drehung invariant, liegt also auf der Drehachse.)
+\medskip
+
+Werden zwei Bewegungen aus obiger Liste nacheinander ausgef"uhrt, so ergibt
+wieder eine Bewegung aus der Liste. F"uhren wir z.B.\ zuerst die Drehung
+$d_D^+$ aus, die $A,B,C$ zyklisch vertauscht, und danach die Drehung $d_B^-$
+um die Achse durch den (neuen\,!) Eckpunkt $B$, so entspricht das genau der
+Drehung $d_{AD}^{BC}$.  In der Tat, die Punkte werden dabei wie folgt
+abgebildet: $A\mapsto B\mapsto D,\ B\mapsto C\mapsto C,\ C\mapsto A\mapsto B,\ 
+D\mapsto D\mapsto A$.
+\begin{quote}
+  {\bf Weiterf"uhrende Aufgabe:} Erstellen Sie eine "Ubersicht, zu welcher
+  Bewegung sich je zwei Bewegungen aus obiger Liste zusammen setzen.
+\end{quote}
+\medskip
+
+Wir wollen nun die Zusammensetzung von Drehungen in der Ebene n"aher
+betrachten. Sei $ABC$ ein {\em gleichseitiges} Dreieck. Bildpunkte nach den
+ersten $k$-ten Drehungen werden wir im Folgenden mit dem Index $k$
+kennzeichnen.
+
+\Bild{width=12cm}{Bild4}{Bild 4: Gleichseitiges Dreieck $ABC$ in
+den verschiedenen Positionen}
+
+Drehen wir die Ebene in $A$ um $120\grad$, so geht $ABC$ in das Dreieck
+$A_1B_1C_1$ mit $A_1=A$ "uber.  Drehen wir weiter in $B_1$ um $120\grad$, so
+geht $A_1B_1C_1$ in das Dreieck $A_2B_2C_2$ mit $B_2=B_1$ und $C_2=C$ "uber.
+Und drehen wir schlie"slich in $C_2$ um $120\grad$, so geht $A_2B_2C_2$ in das
+Ausgangsdreieck $ABC$ "uber. Da eine Bewegung durch die Angabe der Bildpunkte
+von drei nicht kollinearen Punkten eindeutig bestimmt ist, ergibt die
+Nacheinanderausf"uhrung der drei angegebenen Drehungen also die identische
+Abbildung.
+
+\begin{aufgabe}
+  Zeigen Sie, dass eine analoge Aussage f"ur {\em jedes} beliebige Dreieck
+  $ABC$ gilt. Genauer: Zeigen Sie, dass das Nacheinanderausf"uhren der Drehung
+  mit Zentrum $A$ um den Winkel $2\alpha$, der Drehung mit Zentrum $B_1$ um
+  den Winkel $2\beta$ und der Drehung mit Zentrum $C_2$ um den Winkel
+  $2\gamma$ die identische Abbildung ist.
+\end{aufgabe}
+
+\Bild{width=12cm}{Bild5}{Bild 5: Beliebiges Dreieck $ABC$ in den
+verschiedenen Positionen}
+
+Die erste Drehung "uberf"uhrt das Dreieck $ABC$ in das Dreieck $A_1B_1C_1$ mit
+$A_1=A$, wobei nach Konstruktion $\mangle{BAC}= \mangle{CAB_1}=
+\mangle{B_1AC_1} =\alpha$ gilt. Das Dreieck $CAB_1$ ist also nach (sws) zum
+Dreieck $ABC$ kongruent und die zweite Drehung "uberf"uhrt auch im allgemeinen
+Fall das Dreieck $A_1B_1C_1$ in ein Dreieck $B_2C_2A_2$ mit $B_2=B_1$ und
+$C_2=C$ und $\mangle{A_2CB_1}= \mangle{B_1CA}= \mangle{ACB} =\gamma$.  Die
+dritte Drehung "uberf"uhrt das Dreieck also wieder in seine Ausgangslage.
+\medskip
+
+Ein gleichseitiges Dreieck $ABC$ hat eine zweite interessante Eigenschaft.
+F"uhren wir Drehungen um jeweils $60\grad$ um $A,\ B_1,\ C_2,\ A_3,\ B_4,\ 
+C_5$ aus (Bezeichungen wie oben), so erhalten wir ebenfalls die identische
+Abbildung.
+
+\Bild{width=12cm}{Bild6}{Bild 6: Gleichseitiges Dreieck $ABC$ in den
+  verschiedenen Positionen}
+
+Das Dreieck wechselt dabei st"andig zwischen zwei verschiedenen Lagen hin und
+her und ``dreht'' sich um sich selbst.  Die Lagen der drei Eckpunkte nach
+jeder Drehung sind in der folgenden Tabelle aufgelistet.
+\[\begin{array}{lccc}
+\mbox{Ausgangslage : } & A_0=A & B_0=B & C_0=C\\
+\mbox{nach 1. Drehung : } & A_1=A & B_1=C & C_1=D\\
+\mbox{nach 2. Drehung : } & A_2=B & B_2=C & C_2=A\\
+\mbox{nach 3. Drehung : } & A_3=C & B_3=D & C_3=A\\
+\mbox{nach 4. Drehung : } & A_4=C & B_4=A & C_4=B\\
+\mbox{nach 5. Drehung : } & A_5=D & B_5=A & C_5=C\\
+\mbox{nach 6. Drehung : } & A_6=A & B_6=B & C_6=C\\
+\end{array}\]
+
+Auch hier k"onnen wir dasselbe Problem f"ur ein allgemeines Dreieck
+$ABC$ stellen:
+\begin{aufgabe}
+  Welche Bewegung ergibt sich, wenn man die Drehung mit Zentrum $A$ um den
+  Winkel $\alpha$, die Drehung mit Zentrum $B_1$ um den Winkel $\beta$, die
+  Drehung mit Zentrum $C_3$ um den Winkel $\gamma$, die Drehung mit Zentrum
+  $A_3$ um den Winkel $\alpha$, die Drehung mit Zentrum $B_4$ um den Winkel
+  $\beta$ und die Drehung mit Zentrum $C_5$ um den Winkel $\gamma$
+  nacheinander ausf"uhrt\,?
+\end{aufgabe}
+
+Offensichtlich wird insgesamt um den Winkel $2(\alpha+\beta+\gamma) =360\grad$
+gedreht. Die Zusammensetzung all dieser Drehungen ist also eine Verschiebung
+um einen Vektor $\kvector{XX_6}$, wobei $X$ ein beliebiger Punkt und $X_6$
+dessen Bildpunkt unter der zusammen gesetzten Bewegung ist.
+\begin{quote}
+  {\bf Weiterf"uhrende Aufgabe:} Zeigen Sie mit elementargeometrischen
+  Mitteln, dass die Verschiebung in Wirklichkeit die identische Abbildung ist.
+\end{quote}
+
+Wir wollen hier einen anderen Weg beschreiten und eine analytische L"osung
+unter Verwendung der komplexen Zahlen ${\C}$ angeben. Ich setze dabei die
+Kenntnis entsprechender Zusammenh"ange voraus und verweise den unkundigen
+Leser bzw.\ Leserin auf das sch"one Buch \cite{Pieper} von H. Pieper.
+
+Fixieren wir ein Koordinatensystem und identifizieren $x$- bzw.\ $y$-Achse mit
+der reellen bzw.\ imagin"aren Achse der Gau"sschen Zahlenebene, so k"onnen wir
+den Punkt $X=(x,y)$ unserer Ebene als komplexe Zahlen $z=x+i\,y$
+interpretieren (und umgekehrt). Eine Drehung mit Zentrum $z_0\in {\C}$ um den
+Winkel $\alpha$ kann man dann wie folgt beschreiben: Der Bildpunkt $z'\in
+{\C}$ eines Originalpunkts $z\in {\C}$ berechnet sich aus der Formel
+\[z'-z_0=e^{i\,\alpha}(z-z_0)\quad\text{bzw.}\quad z'=e^{i\,\alpha}\,z
++ (1-e^{i\,\alpha})\,z_0,\]
+wobei $e^{i\,\alpha}=\cos(\alpha)+i\,\sin(\alpha)$ eine komplexe Zahl
+vom Betrag 1 ist, die die gegebene Drehung charakterisiert. 
+
+Sind $a_0,b_0,c_0\in {\C}$ die Eckpunkte unseres Dreiecks und $z_0\in {\C}$
+ein beliebiger Punkt, so gilt demnach
+\[\begin{array}{c}
+z_1=e^{i\,\alpha}\,z_0 + (1-e^{i\,\alpha})\,a_0\\
+z_2=e^{i\,\beta}\,z_1 + (1-e^{i\,\beta})\,b_1\\
+z_3=e^{i\,\gamma}\,z_2 + (1-e^{i\,\gamma})\,c_2\\
+z_4=e^{i\,\alpha}\,z_3 + (1-e^{i\,\alpha})\,a_3\\
+z_5=e^{i\,\beta}\,z_4 + (1-e^{i\,\beta})\,b_4\\
+z_6=e^{i\,\gamma}\,z_5 + (1-e^{i\,\gamma})\,c_5\\
+\end{array}\]
+wobei $b_1, c_2,\ldots$ das Bild von $b_0$ unter der ersten Drehung, das Bild
+von $c_0$ unter den ersten beiden Drehungen usw.\ ist. Wir k"onnen diese
+Gleichungen verwenden, um $z_6$ durch die Eckpunkte $a_0,b_0,c_0$ des Dreiecks
+in Ausgangslage und dessen Innenwinkel auszudr"ucken.  Die entsprechenden
+Umformungen sind nicht schwierig, aber langweilig, so dass ich das
+Computeralgebrasystem {\sc Maple} damit beauftragt habe. Zur Abk"urzung ist
+$u=e^{i\,\alpha}, v=e^{i\,\beta}, w=e^{i\,\gamma}$ gesetzt:
+\begin{verbatim}
+z1:=u*z0+(1-u)*a0;
+z2:=expand(v*z1+(1-v)*subs(z0=b0,z1));
+z3:=expand(w*z2+(1-w)*subs(z0=c0,z2));
+z4:=expand(u*z3+(1-u)*subs(z0=a0,z3));
+z5:=expand(v*z4+(1-v)*subs(z0=b0,z4));
+z6:=expand(w*z5+(1-w)*subs(z0=c0,z5));
+\end{verbatim}
+\begin{align*}
+z_1=&u{z_0}+(1-u){a_0}\\ 
+z_2=&(1-u){a_0}+u(1-v){b_0}+vu{z_0}\\
+z_3=&wvu{z_0}+(1-u){a_0}+u(1-v){b_0}+ vu(1-w){c_0}\\
+z_4=&wvu^2{z_0}+(u-1)(1+wvu){a_0}+u(1-v){b_0}+vu(1-w){c_0}\\
+z_5=&wv^2u^2{z_0}+(u-1)(1+wvu){a_0}+u(1-v)(1+wvu){b_0}+vu(1-w){c_0}\\
+z_6=&(u-1)(1+wvu){a_0}+u(1-v)(1+wvu){b_0}+uv(1-w)(1+wvu){c_0}+w^2v^2u^2{z_0}
+\end{align*}
+Beachten wir, dass $uvw=e^{i(\alpha+\beta+\gamma)}=e^{i\,\pi}=-1$ gilt, so
+folgt $z_6=z_0$, d.h.\ die Zusammensetzung der sechs Drehungen ist in der Tat
+die identische Bewegung.
+
+
+\begin{thebibliography}{xxx}
+\bibitem{Pieper} H. Pieper: {\em Komplexe Zahlen}. Verlag der Wissenschaften,
+  Berlin und Harry Deutsch Verlag, Frankfurt/M., 1988.
+\end{thebibliography}
+
+\begin{attribution}
+graebe (2004-09-09): Contributed to KoSemNet
+\end{attribution}
+
+\end{document}
+

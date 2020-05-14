@@ -1,0 +1,251 @@
+% Beitrag f"ur das Heft zum Landesseminar M"arz 1999
+
+\documentclass[11pt]{article}
+\usepackage{ko-math,kosemnet,ngerman,graphicx}
+
+\newcommand{\Bild}[3]{
+\begin{center}
+\includegraphics[#1]{graebe-99-1/#2}\nopagebreak\\[12pt] #3
+\end{center}
+}
+
+\title{Eulersche Gerade und Feuerbachscher Kreis\kosemnetlicensemark}
+\author{Hans-Gert Gr"abe, Leipzig} 
+\date{6. Januar 1999}
+
+\begin{document}
+\maketitle
+
+Tripel von Geraden, wie etwa die H"ohen, Seitenhalbierenden oder die
+Winkelhalbierenden eines Dreiecks $\ktriangle{ABC}$, fasst man unter dem
+Oberbegriff der {\em Ecktransversalen} zusammen. Neben den genannten gibt es
+noch eine Reihe anderer Ecktransversalen, die ebenfalls oft bemerkenswerte
+Eigenschaften besitzen.
+
+Bekanntlich schneiden sich die drei H"ohen, Seitenhalbierenden,
+Winkelhalbierenden und Mittelsenkrechten (letztere geh"oren allerdings nicht
+zu den Ecktransversalen) jeweils in einem Punkt.  Drei solche Geraden, die
+durch einen gemeinsamen Punkt gehen, bezeichnet man als {\em konkurrent}. F"ur
+die Winkelhalbierenden und Mittelsenkrechten ist dies leicht einzusehen, indem
+man ihre Eigenschaften als {\em geometrischer Bestimmungsort} heranzieht.  Sie
+sind bekanntlich die Menge aller Punkte, die von zwei gegebenen Geraden
+(Winkelhalbierende) bzw. zwei gegebenen Punkten (Mittelsenkrechte) gleichweit
+entfernt sind.  Aus diesen Beweisen folgt zugleich die Charakterisierung des
+jeweiligen Schnittpunkts als Mittelpunkt des In- bzw. Umkreises.
+
+Auch f"ur die Seitenhalbierenden ist ein Beweis der Konkurrenz nicht besonders
+schwierig, wenn man den Strahlensatz und seine Umkehrungen zu handhaben wei"s.
+Der Schnittpunkt ist der Schwerpunkt, was sich besonders einfach aus einer
+vektorgeometrischen Interpretation ergibt, auf die wir hier aber nicht weiter
+eingehen wollen.
+
+\begin{aufgabe}
+  "Uberlege Dir die Details der jeweiligen Beweise.
+\end{aufgabe}
+
+\section{Das H"ohenfu"spunktdreieck}
+
+Schwieriger ist es schon zu beweisen, dass sich die drei H"ohen eines Dreiecks
+in einem Punkt schneiden.
+
+\parbox[c]{8cm}{Ein direkter Beweis könnte etwa wie folgt geführt werden:\\
+  Die H"ohen aus $B$ und aus $C$ m"ogen sich im Punkt $H$ schneiden.  Die
+  beiden H"ohenfu"spunkte $E$ und $F$ liegen dann auf zwei Thaleskreisen,
+  einem "uber dem Radius $\ksegment{BC}$ und einem zweiten "uber dem Radius
+  $\ksegment{AH}$.
+  
+  Zeige, dass die jeweils durch $a$ bzw. $b$ markierten Peripheriewinkel in
+  nebenstehender Figur gleichgro"s sind und leite daraus ab, dass
+  $\ksegment{AH}$ die dritte H"ohe des Dreiecks $\ktriangle{ABC}$ ist.
+\begin{aufgabe}
+  "Uberlege Dir die Details dieses Beweises.
+\end{aufgabe}}\hfill \parbox[c]{7cm}{\Bild{width=4cm}{fb3}{Bild 1}}
+
+Neben diesem direkten Beweis gibt es noch zwei weitere Beweise, die
+Eigenschaften der H"ohen nutzen.
+  
+\parbox[c]{8cm}{ Auf den drei H"ohen des Dreiecks $\ktriangle{ABC}$ sei in den
+  Eckpunkten jeweils die Senkrechte errichtet (Bild 2). Diese drei Geraden
+  bilden ihrerseits ein Dreieck $\ktriangle{A''B''C''}$.
+ \begin{aufgabe} Zeige (ohne die Konkurrenz der H"ohen zu verwenden), dass die
+   H"ohen im alten Dreieck die Mittelsenkrechten im neuen Dreieck und somit
+   konkurrent sind.
+\end{aufgabe}}\hfill
+\parbox[c]{7cm}{\Bild{width=5cm}{fb2}{Bild 2}} \vskip1cm
+
+Ein "ahnlich interessantes Dreieck, das sogenannte {\em
+  H"ohenfu"spunktdreieck}, erh"alt man, wenn man die H"ohenfu"spunkte $D,\,E$
+und $F$ miteinander verbindet.
+
+\parbox{8cm}{\begin{aufgabe} Zeige, dass die H"ohen die Winkelhalbierenden im
+    H"ohenfu"spunktdreieck (und damit konkurrent) sind.\end{aufgabe}
+    
+    Zeige dazu, dass die in nebenstehender Figur mit $a$ markierten Winkel
+    alle gleichgro"s sind. (Hinweis: Betrachte die Thaleskreise "uber
+    $\ksegment{AB}$ und $\ksegment{AC}$.)}\hfill
+\parbox{7cm}{\Bild{width=6cm}{fb1}{}}
+
+Dieses H"ohenfu"spunktdreieck hat eine Reihe weiterer bemerkenswerter
+Eigenschaften:
+\begin{enumerate}
+\item Die Dreiecke $\ktriangle{AEF}$, $\ktriangle{BDF}$ und $\ktriangle{CDE}$
+  sind einander "ahnlich.
+\item Die Lote aus $A$ auf $\kline{EF}$, aus $B$ auf $\kline{DF}$ und aus $C$
+  auf $\kline{DE}$ sind konkurrent. (Sie schneiden sich im Umkreismittelpunkt
+    $O$ des Dreiecks $\ktriangle{ABC}$.)
+  \item Bezeichnen wir mit $\alpha,\,\beta,\,\gamma$ die Gr"o"sen der
+    Innenwinkel im Dreieck $\ktriangle{ABC}$, so gilt
+\[\mangle{OAH}=\abs{\beta-\gamma},\ \mangle{OBH}=\abs{\alpha-\gamma},\
+\mangle{OCH}=\abs{\alpha-\beta}.\]
+\end{enumerate}
+
+\begin{aufgabe}
+  Beweise diese Beziehungen.
+\end{aufgabe}
+
+\section{Das Mittendreieck und die Eulersche Gerade}
+
+\noindent\parbox{10cm}{Ein weiteres interessantes Dreieck, das in
+  enger Beziehung zum Dreieck $\ktriangle{ABC}$ steht, erh"alt man, wenn man
+  die drei Seitenmitten $A',B',C'$ miteinander verbindet. Dieses sogenannte
+  {\em Mittendreieck} $\ktriangle{A'B'C'}$ ist dem urspr"unglichen Dreieck
+  nicht nur "ahnlich, sondern kann aus diesem sogar durch eine Streckung um
+  den Faktor $-\frac12$ gewonnen werden, wie man sofort erkennt, wenn man die
+  einander entsprechenden Eckpunkte verbindet. In der Tat, diese
+  Verbindungsgeraden sind die Seitenhalbierenden, die durch einen gemeinsamen
+  Punkt gehen und von diesem im Verh"altnis $2:1$ geteilt werden, woraus die
+  Behauptung nach der Umkehrung des Strahlensatzes folgt. }\hfill
+\parbox{5cm}{\Bild{width=5cm, bblly=4cm, bburx=20cm, bbury=20cm}{fb4}{Das
+    Mittendreieck}}
+
+Zwei Figuren hei"sen {\em in "Ahnlichkeitslage}, wenn man zwischen den Punkten
+der beiden Figuren eine solche Zuordnung treffen kann, dass einander
+entsprechende Strecken parallel sind.  Die beiden Dreiecke $\ktriangle{ABC}$
+und $\ktriangle{A'B'C'}$ befinden sich also in "Ahnlichkeitslage.
+Interessanterweise folgt aus der Parallelit"at homologer Strecken bereits die
+Existenz eines Streckungszentrums wie in unserem Fall (das man "uberdies durch
+Verbinden einander entsprechender Punkte finden kann).
+
+\begin{satz}[Satz von Desargue] Befinden sich die Dreiecks $\ktriangle{ABC}$
+  und $\ktriangle{RST}$ in "Ahnlichkeitslage, d.h. gilt $\kline{AB}\parallel
+  \kline{RS},\ \kline{AC}\parallel \kline{RT}$ und $\kline{BC}\parallel
+  \kline{ST}$, so gehen die drei Geraden $\kline{AR},\ \kline{BS}$ und
+  $\kline{CT}$ durch einen gemeinsamen Punkt (und werden von diesem im selben
+  Verh"altnis geteilt).
+\end{satz}
+\begin{aufgabe}
+  Leite diesen Satz aus dem Strahlensatz her. (Hinweis: Die Geraden
+  $\kline{AR}$ und $\kline{BS}$ m"ogen sich in $O$ schneiden. Zeige, dass dann
+  $\kline{OC}$ durch $T$ geht.)
+\end{aufgabe}
+\vskip1cm
+
+\noindent
+\parbox{7cm}{\Bild{width=7cm, bblly=6cm, bburx=20cm,
+bbury=20cm}{fb5}{}}\hfill
+\parbox{7cm}{\Bild{width=7cm, bblly=6cm, bburx=20cm,
+bbury=20cm}{fb6}{}}
+\begin{center}
+Die Eulersche Gerade
+\end{center}
+
+Wenden wir uns nach diesem kleinen Einschub wieder unserem Mittendreieck zu.
+Um einzusehen, dass sich $\ktriangle{ABC}$ und $\ktriangle{A'B'C'}$ in
+"Ahnlichkeitslage befinden, ben"otigen wir die oben genannte Eigenschaft der
+Seitenhalbierenden nicht. Um etwa die Parallelit"at von $\kline{AB}$ und
+$\kline{A'B'}$ zu zeigen, reicht eine einfache Argumentation in der
+Strahlensatzfigur mit Zentrum $C$ usw.  Hieraus und aus dem Satz von Desargue
+{\em folgt} nun, dass sich die Seitenhalbierenden in einem Punkt $S$ schneiden
+und von diesem im Verh"altnis $2:1$ geteilt werden. Wir erhalten einen neuen
+Beweis f"ur die Konkurrenz der Seitenhalbierenden eines Dreiecks.
+
+Aber auch die Verbindungsstrecke anderer Paare homologer Punkte geht durch
+dieses Streckungszentrum und wird von ihm im selben Verh"altnis geteilt.
+Betrachten wir die Verbindungsstrecke der H"ohenschnittpunkte $H$ und $H'$ der
+beiden Dreiecke. Da die H"ohen im Mittendreieck gerade die Mittelsenkrechten
+im Ausgangsdreieck sind, f"allt $H'$ mit dem Umkreismittelpunkt $O$ des
+Dreiecks $\ktriangle{ABC}$ zusammen. Wir erhalten folgenden
+
+\begin{satz}
+  Die Verbindungsstrecke $\ksegment{OH}$ von Umkreismittelpunkt $O$ und
+  H"ohenschnittpunkt $H$ des Dreiecks $\ktriangle{ABC}$ geht durch dessen
+  Schwerpunkt $S$ und wird von diesem im Verh"altnis $2:1$ geteilt.
+    
+  Die drei Punkte $H,\ S$ und $O$ liegen also auf einer gemeinsamen Geraden,
+  die man als die {\bf Eulersche Gerade} bezeichnet.
+\end{satz}
+
+Den Umkreismittelpunkt $O'$ des Mittendreiecks finden wir auf dieselbe Weise:
+Da die Verbindungsstrecke $\ksegment{OO'}$ ebenfalls durch das gemeinsame
+Streckungszentrum $S$ verlaufen muss und von diesem im Verh"altnis $2:1$
+geteilt wird, liegt $O'$ ebenfalls auf der Eulerschen Geraden und f"allt mit
+dem Mittelpunkt $N$ der Strecke $\ksegment{OH}$ zusammen.  Die Details
+erschlie"sen sich leicht aus nebenstehender Figur.
+
+\section{Der Feuerbachsche Kreis}
+
+Das Mittendreieck entstand aus $\ktriangle{ABC}$ durch Streckung mit dem
+Zentrum $S$. Strecken wir es um den Faktor $\frac12$ mit dem Zentrum $H$, so
+gehen die Eckpunkte $A,B,C$ in die {\em Mitten der oberen H"ohenabschnitte}
+$U,V,W$ "uber. Diese Punkte sind bemerkenswert, weil sich dort die Zentren der
+Thaleskreise befinden, die sich z.B.\ f"ur die L"osung der Aufgabe 2 als
+n"utzlich erwiesen.
+
+Offensichtlich befinden sich das Dreieck $\ktriangle{UVW}$ und das
+Mittendreieck $\ktriangle{A'B'C'}$ in "Ahnlichkeitslage mit dem Faktor
+$\frac12\,:\,-\frac12=-1$, d.h.\ beide Dreiecke gehen durch eine
+Punktspiegelung an ihrem gemeinsamen Streckungszentrum, dessen Lage wir
+sogleich bestimmen wollen, ineinander "uber. Da wir den Streckungsfaktor schon
+kennen, finden wir das Zentrum als Mittelpunkt jeder Strecke, die Original-
+und Bildpunkt miteinander verbinden.  Offensichtlich ist $H$ der
+H"ohenschnittpunkt im Dreieck $\ktriangle{UVW}$. Da wir schon wissen, dass $O$
+der H"ohenschnittpunkt im Dreieck $\ktriangle{A'B'C'}$ ist, erhalten wir also
+als Streckungszentrum in diesem Fall den uns bereits wohlbekannten Punkt $N$.
+$\ktriangle{UVW}$ entsteht also durch Drehung von $\ktriangle{A'B'C'}$ um $N$
+um einen Winkel von $180\grad$.  \medskip
+
+Wir erinnern uns, dass $N$ zugleich der Umkreismittelpunkt von
+$\ktriangle{A'B'C'}$ ist. Der Umkreis dieses Dreiecks ist damit zugleich
+Umkreis des Dreiecks $\ktriangle{UVW}$. Ein Kreis, der durch 6 derart
+bemerkenswerte Punkte in einem Dreieck verl"auft, verdient einen eigenen
+Namen. Man nennt diesen Kreis den {\em Feuerbachschen Kreis}.  Auf
+nebenstehender Figur erkennen wir, dass er (in dieser Figur) drei weitere
+bemerkenswerte Punkte passiert, die H"ohenfu"spunkte. Das ist kein Zufall: Da
+$A'U$ ein Durchmesser des Feuerbachkreises ist, muss nach dem Thalessatz der
+H"ohenfu"spunkt $D$ auf dessen Peripherie liegen.  "Ahnliches gilt f"ur die
+beiden anderen H"ohenfu"spunkte $E$ und $F$.
+
+\Bild{ width=12cm, bblly=4cm, bburx=20cm, bbury=20cm}{fb7}{Der
+Feuerbachsche Kreis}
+
+\begin{satz}
+  Der Feuerbachkreis ist der gemeinsame Umkreis des Mittendreiecks und des
+  H"ohenfu"spunktdreiecks. Er verl"auft weiterhin durch die drei Mittelpunkte
+  der oberen H"ohenabschnitte.
+\end{satz}
+
+Dass der Feuerbachkreis der gemeinsame Umkreis des Mittendreiecks und des
+H"ohenfu"spunktdreiecks ist, wusste schon Euler (1765), weshalb man diesen
+Kreis oft auch den Eulerschen Kreis nennt.  Wahrscheinlich war diese
+Eigenschaft aber bereits vorher bekannt.  Einen vollst"andigen Beweis aller
+Aussagen obigen Satzes findet man erstmals bei Poncelet (1821).
+
+Feuerbach fand eine weitere wirklich bemerkenswerte Eigenschaft dieses
+Kreises, weshalb man heute seinen Namen mit diesem Kreis verbindet: Der
+Feuerbachkreis ber"uhrt den Inkreis und die drei Ankreise des Dreiecks
+$\ktriangle{ABC}$. Ein Beweis kann an dieser Stelle nicht gef"uhrt werden,
+weil dazu weitere (elementargeometrische) Hilfsmittel erforderlich sind.
+
+Da der Feuerbachkreis des Dreiecks $\ktriangle{ABC}$ aber zugleich der
+Feuerbachkreis der Dreiecke $\ktriangle{ABH},\ \ktriangle{ACH}$ und
+$\ktriangle{BCH}$ ist (warum?), ber"uhrt er auch deren In- und Ankreise, also
+insgesamt 16 spezielle Kreise. Ein wirklich bemerkenswertes geometrisches
+Objekt~!
+
+\begin{attribution}
+graebe (2004-09-09): Contributed to KoSemNet
+\end{attribution}
+
+
+\end{document}
+

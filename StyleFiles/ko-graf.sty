@@ -1,0 +1,60 @@
+%############################################################
+%
+% File ko-graf.sty $Id: ko-graf.sty,v 1.8 2011/12/30 15:03:45 graebe Exp $
+%
+
+% Pakete und Grafikkommandos, die ohne weitere Erlaeuterungen verwendet werden
+% duerfen.
+
+\usepackage{pstricks,pst-node,pst-plot}
+\usepackage{pstricks-add} % for algebraic=true in geogebra output
+
+\newcommand{\Hauptlinien}{
+\psset{linewidth=0.5pt, linearc=0.01, showpoints=false, dimen=middle,
+  doubleline=false, border=0, linestyle=solid} 
+}
+% Leitet das Zeichnen von wichtigen Linien ein. Setzt relevante
+% Linienparameter auf Standardwerte.
+
+\newcommand{\Hilfslinien}{
+\Hauptlinien 
+\psset{linewidth=0.1pt, linestyle=dashed, dash=3pt 2pt}
+}
+% Leitet das Zeichnen von Hilfslinien ein.
+
+\newcommand{\Decklinien}{
+\Hauptlinien 
+\psset{border=2pt, bordercolor=white}
+}
+% Leitet das Zeichnen vom Decklinien ein.
+
+\newcommand{\Verdecktlinien}{
+\Hauptlinien 
+\psset{linestyle=dashed, dash=3pt 2pt}
+}
+% Leitet das Zeichnen von verdeckt liegenden Linien ein.
+
+\newcommand{\ZPunkt}[3]{
+\Hauptlinien 
+\uput[#2]{*0}(#1){\ensuremath{#3}} 
+\pscircle[fillstyle=solid,fillcolor=white](#1){2pt}
+}
+% Nutzung: \ZPunkt{x,y}{w}{NAME}, Zeichnet Punkt auf Koordinaten (x,y) aus und
+% bezeichnet ihn mit $NAME$.
+
+\newcommand{\Winkel}[4]{ \psarc(#1){#4}{#2}{#3} }
+
+% Winkel{Zentrum}{von}{bis}{AbstandArc}
+
+\newcommand{\RechterWinkel}[4]{
+  \rput{#1}(#2){\psarc(0,0){#3}{0}{90} \qdisk(#4,#4){.8pt} }
+}
+
+% RechterWinkel{w}{Zentrum}{AbstandArc}{AbstandDot}
+% Winkel von w bis w+90° 
+
+
+%
+% File ko-graf.sty Ende
+%
+%############################################################

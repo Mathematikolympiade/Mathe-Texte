@@ -1,0 +1,293 @@
+% Version: $Id: semmler-05-1.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman,url}  
+
+\author{Gunter Semmler, Freiberg\\\url{semmler@math.tu-freiberg.de}}
+\title{Funktionalgleichungen\kosemnetlicensemark}
+\date{}
+\begin{document}
+\maketitle         
+
+Funktionalgleichungen sind Gleichungen zur Bestimmung oder Charakterisierung
+von unbekannten Funktionen. Dabei kommt die gesuchte Funktion nicht nur in der
+Form $f(x)$ vor, sondern auch mit einer Transformation ihres Argumentes $x$,
+zum Beispiel in der Form $f(x+2)$, $f(3x)$, $f(x+y)$ oder $f(x-y)$. Es gibt
+keine allgemeing\"{u}ltige Technik zur L\"{o}sung jeder beliebig vorgelegten
+Funktionalgleichung, aber eine Reihe von erfolgversprechenden Methoden, die
+wir an Hand einiger Beispiele kennenlernen wollen.
+
+\section{Die Cauchysche Funktionalgleichung}
+
+Im Jahre 1821 besch\"{a}ftigte sich A.L. Cauchy (1789-1857) mit der Bestimmung
+aller auf $\R$ definierten Funktionen, die der Gleichung
+\begin{equation} \label{e.cau}
+f(x+y) = f(x)+ f(y)\;\;\;\forall x,y\in\R
+\end{equation}
+gen\"{u}gen. Nehmen wir nun an, dass $f$ eine L"osung ist und leiten
+Eigenschaften von $f$ ab. Eine wichtige Methode ist das {\bf Einsetzen
+spezieller Werte}:
+\begin{align*}
+&x=y=0\ \yields f(0)=f(0)+f(0)\ \yields f(0)=0.\\
+&x=-y\ \yields f(0)=f(x)+f(-x)\ \yields f(-x)=-f(x).
+\intertext{Jede L"osung ist also eine ungerade Funktion.}
+&y=x\ \yields f(2x)=f(x)+f(x)=2\,f(x).\\
+&y=2x\ \yields f(3x)=f(x)+f(2x)=f(x)+2\,f(x)=3\,f(x).
+\end{align*}
+Induktiv zeigt man f"ur $n\in \N$
+\begin{equation} \label{e.nx}
+f(nx)=n\,f(x).
+\end{equation}
+Wegen $f(x)=-f(x)$ gilt die Formel {(\ref{e.nx})} sogar f"ur alle $n\in\Z$.
+Ist $x=m/n$ ($m,n\in\N$) nun eine rationale Zahl, folgt
+\begin{align*}
+& f(m)=f\br{n\cdot\frac{m}{n}}=nf\br{\frac{m}{n}},
+\intertext{woraus man}
+& f\br{\frac{m}{n}} = \frac{1}{n}f(m) = \frac{m}{n}\cdot f(1)
+\end{align*}
+erh"alt. Damit ist $f$ f"ur alle rationalen Argumente bestimmt, wenn $f(1)=c$
+vorgegeben wird. 
+
+{\bf Fazit}: Wenn $f$ eine L"osung der Funktionalgleichung ist, so gilt f"ur
+rationale $x$
+\begin{equation}\label{e.loe}
+f(x) = c\cdot x,
+\end{equation}
+wobei $c = f(1)$ ist. Setzt man nun $f(x)=c\cdot x$ f"ur alle reellen $x$, so
+zeigt eine {\bf Probe}, da{ss} diese Funktionen L"osungen der Aufgabe sind.
+Allerdings entsteht die Frage, ob noch weitere L\"{o}sungen existieren. Unter
+speziellen Voraussetzungen kann das ausgeschlossen werden, zum Beispiel, wenn
+man zus\"{a}tzlich fordert, da{ss} $f$ stetig ist. F\"{u}r jedes $x\in\R$
+existiert n\"{a}mlich ein Folge rationaler Zahlen $x_n$, die gegen $x$
+konvergieren und man kann schlu{ss}folgern, da{ss}
+\[f(x)=\lim_{n\to\infty} f(x_n)=\lim_{n\to\infty}cx_n=cx.\]
+F\"{u}r schw\"{a}chere Voraussetzungen, unter denen keine weiteren
+L\"{o}sungen als die Funktionen $f(x) = c\,x$ existieren, siehe die Aufgaben
+\ref{a.1} und \ref{a.3}. 
+
+Es ist \"{u}berraschend, da{ss} ohne Zusatzvoraussetzungen tats\"{a}chlich noch
+weitere L\"{o}sungen der Cauchyschen Funktionalgleichung existieren, wie
+G. Hamel (1877-1954) erst 1905 gefunden hat. Deren Konstruktion erfordert aber
+Kenntnisse, die wesentlich \"{u}ber die Schulmathematik hinausgehen und soll
+daher nur angedeutet werden.  Dazu betrachten wir die reellen Zahlen als
+Vektorraum \"{u}ber den rationalen Zahlen, d.h. die reellen Zahlen sind die
+{\glqq}Vektoren{\grqq}, die rationalen Zahlen die {\glqq}Skalare{\grqq}. Sei
+$B=\{b_i:i\in I\}$ eine Basis dieses Vektorraumes, d.h. jedes $x\in\R$ kann
+eindeutig dargestellt werden als Linearkombination $x=r_1b_1+\ldots+r_nb_n$
+mit gewissen $r_1,\ldots,r_n\in\Q$ und $b_1,\ldots,b_n\in B$. Dann l\"{a}{ss}t
+sich zeigen, da{ss} man alle L\"{o}sungen von (\ref{e.cau}) erh\"{a}lt, wenn
+man $f(b_i),i\in I,$ beliebig definiert und $f$ dann auf $\R$ fortsetzt mittels
+\[f(r_1b_1+\ldots+r_nb_n):=r_1f(b_1)+\ldots+r_nf(b_n).\]
+Der Existenznachweis einer Basis $B$ erfordert tiefliegende Hilfsmittel der
+Mengenlehre. Die unstetigen L\"{o}sungen von (\ref{e.cau}) sind allerdings
+extrem pathologische Funktionen, siehe Aufgabe \ref{a.2}.
+
+\section{Substitutionen}
+
+Eine weitere wichtige Methode ist die {\bf Substitution von Argumenten}.  Wir
+demonstrieren dies am Beispiel folgender Verallgemeinerung der Cauchyschen
+Funktionalgleichung
+\begin{equation}\label{e.cal}
+f(ax+by+c)=pf(x)+qf(y)+r\;\;\;\forall x,y\in \R,
+\end{equation}
+wobei $a,b,c,p,q\in\R$ gegebene Konstanten mit $abpq\neq 0$ sind. Wir
+f\"{u}hren nun folgende Substitutionen aus:
+\begin{eqnarray}
+\label{e.4}x=-\frac{c}{a},y=0\;&\yields
+&\;\;f(0)=pf\left(-\frac{c}{a}\right)+q f(0)+r\\
+\label{e.5}x=\frac{u-c}{a},y=0\;&\yields
+&\;\;f(u)=pf\left(\frac{u-c}{a}\right)+q f(0)+r\\
+\label{e.6}x=-\frac{c}{a},y=\frac{v}{b}\;&\yields &\;\;
+f(v)=pf\left(-\frac{c}{a}\right)+qf\left(\frac{v}{b}\right)+r\\
+\label{e.7}x=\frac{u-c}{a},y=\frac{v}{b}\;&\yields &
+\;\;f(u+v)=pf\left(\frac{u-c}{a}\right)+qf\left(\frac{v}{b}\right)+r
+\end{eqnarray}
+Addition von (\ref{e.4}),(\ref{e.7}) und Subtraktion von (\ref{e.5}),
+(\ref{e.6}) f\"{u}hrt auf 
+\begin{equation} 
+f(u+v)+f(0)-f(u)-f(v)=0
+\end{equation}
+Den st\"{o}renden Term $f(0)$ zu beseitigen gelingt uns durch {\bf
+Einf\"{u}hren einer Hilfsfunktion} mittels $g(u):=f(u)-f(0)$. $g$ erf\"{u}llt
+dann die Cauchysche Funktionalgleichung $g(x+y)=g(x)+g(y)$. Als stetige
+L\"{o}sungen der Gleichung (\ref{e.cal}) kommen somit nur die linearen
+Funktionen $f(x)=\alpha x+\beta$ in Frage. Einsetzen ergibt, da{ss} $\alpha $
+und $\beta$ die Gleichungen
+\begin{eqnarray*}
+\alpha a&=&\alpha p\\
+\alpha b&=&\alpha q\\
+\beta(1-p-q)&=&r-\alpha c
+\end{eqnarray*}
+erf\"{u}llen m\"{u}ssen, insbesondere existieren nur f\"{u}r $a=p$ und $b=q$
+nichtkonstante L\"{o}sungen.
+
+Eine weitere Gleichung, die auf die Cauchysche Funktionalgleichung
+zur\"{u}ckgef\"{u}hrt werden kann, befindet sich in Aufgabe \ref{a.4}.
+
+\section{Anwendung der Differentialrechung}
+
+Auch wenn in der Aufgabenstellung nicht vorausgesetzt wurde, dass die gesuchte
+Funktion differenzierbar ist, kann man Differentialrechnung als heuristisches
+Mittel einsetzen und die gegebene Funktionalgleichung unter Anwendung der
+\"{u}blichen Rechenregeln nach einem oder mehreren Argumenten differenzieren.
+Auf diese Weise erh"alt man mitunter sehr schnell eine Vermutung "uber die
+L"osung. Die Probe muss zeigen, ob tats"achlich eine L"osung vorliegt. Wenn es
+dann noch gelingt nachzuweisen, dass au"ser der (oder den) gefundenen
+(differenzierbaren) L"osung keine anderen L"osungen existieren
+(Einzigkeitsnachweis), ist der L"osungsweg komplett. \vspace*{1ex}
+
+\noindent Beispiel: (OJM 241233A) Man bestimme alle auf der Menge der
+rationalen Zahlen definierten Funktionen $f$ mit $f(1)=1$, die der
+Funktionalgleichung
+\[f(x+y)=f(x)+f(y)+xy\,(x+y)\]
+gen"ugen. \vspace*{2ex}
+
+Unter der (vorl"aufigen) Annahme, dass $f$ sogar f"ur alle reellen Zahlen
+definiert und differenzierbar ist, ergibt Differentiation nach $x$
+\begin{align*}
+f'(x+y) &= f'(x) + 2xy + y^2\\
+f''(x+y) &= f''(x) + 2y\\
+f'''(x+y) &= f'''(x).
+\intertext{Setzt man $x=0$, folgt $f'''(y)={\rm  const}$. Also muss $f$ ein 
+Polynom dritten Grades sein, das nun leicht bestimmt werden kann:}
+f(x) &= \frac{1}{3} x^3 + \frac{2}{3} x.
+\end{align*}
+Die Probe best"atigt, dass diese Funktion L"osung ist. Um zu zeigen, dass es
+keine weiteren L"osungen gibt, bezeichnen wir die gefundene L"osung mit
+$f_0(x) = \frac{1}{3} x^3 + \frac{2}{3} x$ und suchen weitere L"osungen in der
+Form $f(x) = f_0(x)+g(x)$, mit einer neuen unbekannten Funktion $g$ (die nun
+nicht mehr als differenzierbar vorausgesetzt wird). Einsetzen in die gegebene
+Funktionalgleichung f"uhrt auf
+\[g(x+y) = g(x) + g(y)\]
+Ferner gilt $g(1)=0$. Da $g$ nur f"ur rationale Argumente zu bestimmen ist,
+folgt aus den Resultaten "uber die Cauchysche Funktionalgleichung $g(x)\equiv
+0$.
+
+Die Technik, sich erst eine spezielle L\"{o}sung zu verschaffen und dann die
+allgemeine L\"{o}sung durch einen Ansatz zu bestimmen ist auch bei Aufgabe
+\ref{a.13} erfolgversprechend.
+
+\section{Periodische Funktionen}
+
+Eine Funktionen $f:\R\to\R$ hei{\ss}t {\it periodisch}, wenn eine reelle Zahl
+$p\neq 0$ existiert, so da{ss}
+\begin{equation} \label{e.per}
+f(x+p)=f(x)
+\end{equation}
+f\"{u}r alle $x\in\R$ gilt. Existiert eine kleinste positive Zahl $p$ mit
+(\ref{e.per}), so hei{\ss}t $p$ die {\it primitive Periode} der Funktion $f$.
+Nicht alle periodischen Funktionen m\"{u}ssen eine primitive Periode haben, so
+ist beispielsweise jede rationale Zahl Periode der Dirichletschen Funktion
+\[f(x)=
+  \begin{cases}
+    0 &  \text{falls $x$ rational} \\
+    1 & \text{falls $x$ irrational.}
+  \end{cases}\]
+Als Beispiel zu periodischen Funktionen betrachten wir die folgendes Problem:
+
+\noindent Aufgabe: (OJM 141236) Es sei $a\neq 0$ reell und $f:\R\to\R$ eine
+Funktion mit der Eigenschaft da{ss} f\"{u}r alle $x\in\R$ gilt
+\[f(x+a)=\frac{f(x)}{3f(x)-1}.\]
+Man zeige  da{ss} $f$ periodisch ist.
+
+L\"{o}sung: Wir zeigen da{ss} $2a$ eine Periode von $f$ ist:
+\[f(x+2a)=f((x+a)+a)=\frac{f(x+a)}{3f(x+a)-1}
+=\frac{\frac{f(x)}{3f(x)-1}}{3\frac{f(x)}{3f(x)-1}-1}
+=\frac{f(x)}{3f(x)-(3f(x)-1)}=f(x).\] Ganz \"{a}hnlich l\"{a}{ss}t sich auch
+Aufgabe \ref{a.10} l\"{o}sen.
+
+\section{Aufgaben}
+\begin{enumerate}
+\item \label{a.1} (J.G. Darboux, 1842-1917) Alle L\"{o}sungen $f$ der
+Cauchyschen Funktionalgleichung (\ref{e.cau}), f\"{u}r die ein $\varepsilon
+>0$ existiert, so da{ss} $f(x)$ nichtnegativ (oder nicht-positiv) ist f\"{u}r
+$0<x<\varepsilon$ sind von der Form (\ref{e.loe}).
+\item (OJM 191233A) \label{a.3} Man ermittle alle reellen Funktionen mit
+(\ref{e.cau}) unter den Zusatzbedingungen $f(1)=1$ und
+\[f\br{\frac{1}{x}} =\frac{1}{x^2}f(x)\;\;\;\forall x\in\R\setminus \{0\}.\]
+\item \label{a.2} Ist die L\"{o}sung $f$ der Cauchyschen Funktionalgleichung
+nicht von der Form {\rm (\ref{e.loe})}, so ist der Graph
+\[\{(x,f(x))\colon\ x\in \R \}\]
+eine in der $x$-$y$-Ebene dichte Menge, d.h. zu jedem $(x_0,y_0)\in\R^2$
+existiert eine Folge $(x_n)$ mit $x_n\to x_0$ und $f(x_n)\to y_0$.
+\item \label{a.4} Die Funktion $g:\R\to\R$ erf\"{u}llt genau dann die
+Funktionalgleichung
+\[g(x+y)=g(x)g(y),\]
+wenn sie entweder identisch verschwindet oder von der Form $g(x)=e^{f(x)}$
+ist, wobei $f$ eine L\"{o}sung von (\ref{e.cau}) ist.
+\item \label{a.6} (OJM 51233) Seien $a,b,c$ reelle Zahlen. Man bestimme in
+Abh\"{a}ngigkeit von $a,b,c$ s\"{a}mtliche Funktionen $f:\R\to\R$, die der
+Funktionalgleichung
+\[af(x-1)+bf(1-x)=cx\]
+gen\"{u}gen.
+\item Man ermittle alle diejenigen Funktionen $f$, die f\"{u}r alle reellen
+Zahlen $x$ definiert sind und den folgenden Bedingungen gen\"{u}gen:
+\begin{enumerate}
+  \item[(1)] F\"{u}r alle $x,y\in\R$ gilt $f(xy)=f(x)f(y)$.
+
+  \item[(2)] F\"{u}r alle reellen Zahlen  $x\neq 0$  gilt
+  \[f(1+x)=f(1)+f(x)\left(1+\frac{2}{x}\right).\]
+
+\end{enumerate}
+\item (OJM 171236A) \label{a.5} Gegeben seien eine nat\"{u}rliche Zahl $n>1$
+und die Funktionalgleichung
+\begin{equation}\label{e.9}
+  f(x^n)=f(x).
+\end{equation}
+\begin{enumerate}
+  \item Man ermittle alle stetigen Funktion $f:\R\to\R$ mit (\ref{e.9}).
+  \item Man gebe eine unstetige L\"{o}sung von (\ref{e.9}) an.
+\end{enumerate}
+\item (Bulgarische MO 1982) Man bestimme alle reellwertigen, an der Stelle
+$x=0$ stetigen Funktionen $f$ mit dem Definitionsbereich $\R$, welche die
+Funktionalgleichung
+\[f(x)=\frac{1}{2}f\left(\frac{x}{2}\right)+x\]
+erf\"{u}llen.
+\item (Russische MO 2000) Gib alle Funktionen $f:\R\to\ R$ an, die f\"{u}r
+alle $x,y,z\in\R$ der Ungleichung
+\[f(x+y)+f(y+z)+f(z+x)\geq 3f(x+2y+3z)\]
+gen\"{u}gen.
+\item (IMO 1992) Bestimme alle Funktionen $f:\R\to\R$, die der
+Funktionalgleichung
+\[f(x^2+f(y))=y+f(x)^2\]
+gen\"{u}gen.
+\item (OJM 141236) \label{a.10} Es sei $a\neq 0$ reell und $f:\R\to\R$ eine
+Funktion mit der Eigenschaft da{ss} f\"{u}r alle $x\in\R$ gilt
+\[f(x+a)=\frac{1+f(x)}{1-f(x)}.\]
+Man zeige, da{ss} $f$ periodisch ist, und gebe ein Beispiel f\"{u}r eine
+solche Funktion an.
+\item \label{a.12} Bestimme alle Funktionen $f:\R\setminus \{0,1\}\to\R$ mit
+\[f(x)+f\left(\frac{1}{1-x}\right)=x\]
+f\"{u}r alle $x\neq 0,1$.
+\item \label{a.13} Man l\"{o}se in der Klasse der stetigen Funktionen die
+Funktionalgleichung
+\[f(x+y)=f(x)+f(y)+f(x)f(y).\]
+\item (Neuseel\"{a}ndische MO 1998) Bestimme alle Funktionen $f:\R\to\R$,
+welche der Funktionalgleichung
+\[f(xf(x)+f(y))=y+f(x)^2\]
+gen\"{u}gen.
+
+\end{enumerate}
+
+\begin{thebibliography}{99}
+\bibitem{Ac} Acz\'{e}l, J.: On Applications and Theory of Functional
+Equations. Birkh\"{a}user Verlag 1969.
+\bibitem{Bu} Burosch, G. u.a.: IMO-\"{U}bungsaufgaben, Heft 20.  Herausgegeben
+vom Zentralen Komitee f\"{u}r die Olympiaden Junger Mathematiker beim
+Ministerium f\"{u}r Volksbildung der DDR.
+\bibitem{En} Engel, A.: Problem Solving Strategies. Springer Verlag 1998.
+\bibitem{ne} \url{http://www.matholymp.com}
+\bibitem{ru} \url{http://www.mccme.ru/olympiads}
+\bibitem{Le} Lehmann, J.: Mathematischer Lesebogen {\glqq}Junge
+Mathematiker{\grqq} Heft 80, herausgegeben vom Bezirkskabinett f\"{u}r
+au{\ss}erunterrichtliche T\"{a}tigkeit, Rat des Bezirkes Leipzig 1987.
+\bibitem{SW} Sprengel, H.-J., Wilhelm, O.: Funktionen und
+Funktionalgleichungen. Mathematische Sch\"{u}lerb\"{u}cherei 114, VEB
+Deutscher Verlag der Wissenschaften 1984.
+
+\end{thebibliography}
+\begin{attribution}
+semmler (Dec 2004): Contributed to KoSemNet
+
+graebe (2005-01-05): Prepared along the KoSemNet rules
+\end{attribution}
+\end{document}

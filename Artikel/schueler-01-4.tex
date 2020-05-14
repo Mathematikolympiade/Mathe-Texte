@@ -1,0 +1,1144 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,times,schueler,url,graphics}
+\usepackage{kosemnet,ko-math}
+
+\title{Baryzentrische Koordinaten\kosemnetlicensemark}
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{Juli 2001}
+
+% emlines.sty  M„rz 1990, Georg Horn / Eberhard Mattes.
+%
+\def\newpic#1{%
+   \def\emline##1##2##3##4##5##6{%
+      \put(##1,##2){\special{em:point #1##3}}%
+      \put(##4,##5){\special{em:point #1##6}}%
+      \special{em:line #1##3,#1##6}}}
+%
+% Standarddefinition von \emline herstellen
+%
+\newpic{}
+%
+% Beispiel: 
+% \input bild1.pic
+% \newpic{1} \input bild2.pic
+%
+
+\newcommand{\bild}[1]{\includegraphics[width=\textwidth]{schueler-01-4/#1}}
+
+
+\begin{document}
+
+\maketitle
+
+Der baryzentrische Kalk"ul ist einzuordnen in die affine analytische
+Geometrie. Den Kern dieses Kalk"uls bildet  das {\em Teilverh"altnis} $\lam $
+eines Punktes $P$ auf einer Geraden $AB$. Der Kalk"ul  ist besonders gut
+geeignet, Strecken- und Fl"achenverh"altnisse zu berechnen. F"ur konkrete
+L"angenberechnungen ist er nicht geeignet. Im {\em reellen } baryzentrischen
+Kalk"ul lassen sich Kreise, Winkel und Orthogonalit"at schlecht
+beschreiben. Ben"otigt man dies, so sollte man den {\em komplexen}
+baryzentrischen Kalk"ul w"ahlen. Ein Beispiel f"ur die sinnvolle Nutzung des
+komplexen Kalk"uls findet ihr in den 
+Aufgaben\,\ref{a-eck} und \ref{a-cox}. 
+
+Beachtet man, dass ein Vektor $\vvec{AB}$ die Differenz aus seinem Endpunkt
+$B$ (Ortsvektor) und seinem Anfangspunkt $A$ (Ortsvektor)  ist
+\[ \vvec{AB}=B-A,\]
+so kann man sich alle wichtigen Formeln des baryzentrischen Kalk"uls aus der
+Vektorrechnung herleiten.  Es sei $P$ ein Punkt der Geraden $AB$ mit
+
+\begin{minipage}{.5\textwidth}
+\begin{center}
+ $\vvec{AP} :\vvec{AB}=\lam.$
+\end{center}
+\end{minipage}
+\quad
+\begin{minipage}{.4\textwidth}\bild{ger.eps}\end{minipage}
+
+Dann gilt also $P-A=\lam(B-A)=\lam B -\lam A$ und somit 
+\begin{align}\label{f1}
+P=(1-\lam)\, A +\lam \, B.
+\end{align}
+Man sagt, dass $A$ und $B$ die Ursprungspunkte unseres eindimensionalen
+reellen baryzentrischen Systems sind; $A$ und $B$ bilden das
+Koordinatensystem. Im allgemeinen haben also Gerade,  Ebene und Raum ein
+baryzentrisches Koordinatensystem aus 2, 3 bzw.{} aus 4 Punkten. L"asst man in
+Gleichung  \rf[f1] den Parameter $\lam $ die ganzen reellen Zahlen
+durchlaufen, dann durchl"auft $P$ alle Punkte der Geraden $AB$. Insbesondere
+werden durch $(1,0)$, $(0,1)$ und $(1/2,1/2)$ die Punkte $A$, $B$ bzw.{} der
+Mittelpunkt der Strecke $\overline{AB}$ beschrieben. Die Punkte $C$ und $D$ auf $AB$
+mit $\vvec{AC}:\vvec{AB}=2$ bzw.{} $\vvec{AD}:\vvec{AB}=-1$ haben dann die
+Koordinaten $C=(-1,2)$ bzw.{} $D=(2,-1)$. 
+{\em Merke:} In jedem baryzentrischen Kalkül ist die Summe aller
+Koordinaten stets gleich $1$.
+
+Durchl"auft $\lam $ in \rf[f1] alle komplexen Zahlen, so durchl"auft $P$  alle
+Punkte der Ebene. Die Mittelsenkrechte von $\overline{AB}$ wird durch
+$\Re(\lam)=1/2$ (Realteil von $\lam $) bestimmt; der Kreis um $A$ mit dem Radius $\overline{AB}$ wird in
+\rf[f1] durch $|\lam |=1 $ gegeben.
+
+\subsection*{Geradengleichungen}\label{ss-Geraden}
+Die allgemeine Geradengleichung einer Geraden durch die Punkte $R$ und $S$
+lautet $(1-t)R +tS$, ${t\in \R}$. Es seien $A$, $B$ und $C$ ein 
+ebenes Koordinatensystem. Wir untersuchen drei wichtige Spezialfälle:
+
+{\em Geraden durch einen Koordinatenpunkt.}  Für jede Gerade durch $A$ gilt,
+ dass das Verhältnis der $B$- und $C$-Koordinaten eine Konstante ist. 
+
+Zum Beispiel
+liegt der Punkt $(0,1/2,1/2)$ auf der Seitenhalbierenden durch $A$. Hier ist
+das genannte Verhältnis gleich $1$, also lautet die Geradengleichung der
+Seitenhalbierenden:
+$$ \left(1-t,\,\frac{t}{2},\,\frac{t}{2}\right),\quad t\in \R.$$  
+
+{\em Geraden, parallel zu einer Koordinatengeraden.}
+ Bei jeder Geraden, die parallel
+zu $BC$ verläuft ist die $A$-Koordinate konstant. 
+Zum Beispiel hat die Gerade $BC$ selbst die Gleichunug $a=0$; die Parallele
+durch $A$ zu $BC$ lautet $(1,t,-t)$ und die Parallele zu $BC$ durch
+den Mittelpunkt von $\overline{AB}$ is $(1/2, 1/2-t,t)$.
+
+
+{\em Drei Punkte auf einer Geraden.} Die drei Punkte $A=(a,b,c)$, $B=(p,q,r)$
+und $X=(x,y,z)$ liegen genau dann auf einer gemeinsamen Geraden, wenn
+die entsprechende Determinante verschwindet:
+\begin{align}\label{e-3punkte}
+0=\begin{vmatrix}a&b&c\\p&q&r\\x&y&z\end{vmatrix}=
+aqz+brx+pcy-cqx-ary-pbz.
+\end{align}
+Dies liegt daran, dass eine Determinante genau dann verschwindet,
+wenn eine Zeile eine Linearkombination der beiden anderen ist, also etwa
+$$
+X=\lam A +\mu B.
+$$
+Wegen $a+b+c=p+q+r=x+y+z=1$, folgt hieraus $1=\lam+\mu$, also 
+$X=(1-\mu)A +\mu B$ und $X$ liegt auf der Geraden $AB$. 
+Der Vorteil von \rf[e-3punkte] ist, dass alle 3 Punkte
+gleichberechtigt sind und nur das Verhältnis der Koordinaten $(a:b:c)$
+ benötigt
+wird.
+
+\subsection*{Aufgaben mit baryzentrischen Koordinaten}
+\begin{aufgabe} Auf den Seiten $\overline{AB}$, $\overline{BC}$ und $\overline{CA}$ eines Dreiecks $ABC$ 
+sind Punkte $D,E$ und $F$ so gew"ahlt, dass sie die zugeh"orige Strecke im 
+Verh"altnis $1:2$ teilen. Die Geraden $AE$, $BF$ und $CD$ schneiden sich in den 
+Punkten $P$, $Q$ und $R$.
+\\
+Bestimmen Sie das Verh"altnis der Dreiecksfl"achen $PQR$ und $ABC$!
+\end{aufgabe}
+
+%\input drittel.pic
+%TexCad Options
+%\grade{\on}
+%\emlines{\on}
+%\beziermacro{\off}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{2.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{1.00}
+\special{em:linewidth 0.4pt}
+\unitlength 1mm
+\linethickness{0.4pt}
+\begin{picture}(72.33,42.67)
+\emline{10.00}{10.00}{1}{70.00}{10.00}{2}
+\emline{70.00}{10.00}{3}{61.00}{40.00}{4}
+\emline{61.00}{40.00}{5}{10.33}{10.00}{6}
+\emline{10.33}{10.00}{7}{67.00}{20.00}{8}
+\emline{70.00}{10.00}{9}{44.33}{30.00}{10}
+\emline{61.00}{40.00}{11}{30.00}{10.00}{12}
+\put(7.33,6.33){\makebox(0,0)[cc]{$A$}}
+\put(29.33,7.00){\makebox(0,0)[cc]{$D$}}
+\put(72.33,6.67){\makebox(0,0)[cc]{$B$}}
+\put(70.67,20.67){\makebox(0,0)[cc]{$E$}}
+\put(62.00,42.67){\makebox(0,0)[cc]{$C$}}
+\put(41.67,33.33){\makebox(0,0)[cc]{$F$}}
+\put(33.00,17.33){\makebox(0,0)[cc]{$P$}}
+\put(59.00,15.33){\makebox(0,0)[cc]{$Q$}}
+\put(52.00,27.33){\makebox(0,0)[cc]{$R$}}
+\end{picture}
+
+
+{\em L"osung.} Es seien $A$, $B$ und $C$ in dieser Reihenfolge die Basispunkte
+unseres Koordinatensystems. Dann gilt 
+$$
+D=\left(\frac{2}{3},\frac{1}{3},0\right),\quad E=\left(0,\frac{2}{3},\frac{1}{3}\right),\quad
+F=\left(\frac{1}{3},0,\frac{2}{3}\right).
+$$
+Wir bestimmen die Teilverh"altnisse $\lam$ und $\mu$ f"ur die Punkte $P$
+bzw.{} $Q$ auf $AE$:
+$$
+P=(1-\lam)A+\lam E=(1-\lam,2\lam/3,\lam/3),\quad
+Q=(1-\mu)A+\mu E=(1-\mu,2\mu/3,\mu/3).
+$$
+Die Gerade $CD$ ist dadurch charakterisiert, dass sich die $A$- und die
+$B$-Koordinaten wie $2:1$ verhalten. Folglich gilt f"ur $P$:
+$$
+\frac{1-\lam}{\frac{2\lam}{3}}=2,\qquad \lam=\frac{3}{7}.
+$$
+Auf der Geraden $BF$ verhalten sich die $C$- und die $A$-Koordinaten wie
+$2:1$, also gilt f"ur $Q$
+$$
+\frac{\frac{\mu}{3}}{1-\mu}=2,\qquad \mu=\frac{6}{7}.
+$$
+Es sei $F_{\triangle ABC}=1$. Dann gilt wegen $CE:EB=2:1$,  $F_{\triangle
+AEC}=\frac{2}{3}$. Wegen $AP:AE =3:7$ (siehe oben) gilt ferner $F_{\triangle
+APC}=\frac{3}{7}\cdot F_{\triangle
+AEC}=\frac{3}{7}\frac{2}{3}=\frac{2}{7}$. Da ferner 
+$$F_{\triangle
+PQR}=1-F_{\triangle APC}-F_{\triangle BCR}-F_{\triangle
+CPA}=1-\frac{6}{7}=\frac{1}{7},$$ hat das gesuchte Dreieck gerade den
+Fl"acheninhalt $\frac{1}{7}F_{\triangle ABC}$.
+
+
+\begin{minipage}{.3\textwidth}\bild{verhaeltnis.eps}\end{minipage}
+\quad
+\begin{minipage}{.6\textwidth}
+\begin{aufgabe}  Auf den Seiten $\overline{AB}$, $\overline{BC}$ und $\overline{CA}$ eines Dreiecks $ABC$ 
+sind Punkte $D$, $E$ und $F$ so gew"ahlt, dass sie die zugeh"origen Strecke im 
+Verh"altnis $q=\overline{AD}\colon \overline{AB}=\overline{BE}\colon\overline{BC}=\overline{CF}\colon\overline{CA}$ teilen. Die Geraden $AE$, $BF$ und $CD$ schneiden sich in den 
+Punkten $P$, $Q$ und $R$.
+\\
+Bestimmen Sie das Verh"altnis der Dreiecksfl"achen $PQR$ und $ABC$!
+\end{aufgabe}
+\end{minipage}
+
+\medskip
+
+{\bf Lösung.}
+$$
+\frac{(1-2q)^2}{q^2-q+1}.
+$$
+
+\begin{aufgabe}  Auf den Seiten $\overline{AB}$, $\overline{BC}$ und $\overline{CA}$ eines Dreiecks $ABC$ 
+sind Punkte $D$, $E$ und $F$ so gew"ahlt, dass sie die zugeh"origen Strecke im 
+Verh"altnis $x=\overline{BE}\colon\overline{EC}$, 
+$y=\overline{CF}\colon\overline{FA}$ und $z=\overline{AD}\colon \overline{DB}$ teilen. Die Geraden $AE$, $BF$ und $CD$ schneiden sich in den 
+Punkten $P$, $Q$ und $R$.
+\\
+Bestimmen Sie das Verh"altnis der Dreiecksfl"achen $PQR$ und $ABC$!
+\end{aufgabe}
+
+{\bf Lösung.}
+$$
+\frac{(1-xyz)^2}{(xy+x+1)(yz+y+1)(zx+z+1)}.
+$$
+
+
+\begin{aufgabe} Gegeben sei ein regul"ares Sechseck $ABCDEF$. Auf den Diagonalen 
+$\overline{AC}$ und $\overline{CE}$ sind Punkte $X$ bzw.{} $Y$ derart gesucht, dass $B$ auf 
+der Geraden $XY$ liegt und dass ${\overline{AX}:\overline{AC}=\overline{CY}:\overline{CE}=q}$ gilt.
+\\
+Ermitteln Sie alle Werte $q$, f"ur die es solche Punkte $X$ und $Y$ gibt!
+\end{aufgabe}
+
+
+
+%\input sechs.pic
+%TexCad Options
+%\grade{\on}
+%\emlines{\on}
+%\beziermacro{\off}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{2.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{1.00}
+\special{em:linewidth 0.4pt}
+\unitlength 1mm
+\linethickness{0.4pt}
+\begin{picture}(67.67,52.99)
+%\circle(40.00,30.00){45.98}
+\emline{40.00}{52.99}{1}{44.05}{52.63}{2}
+\emline{44.05}{52.63}{3}{47.97}{51.56}{4}
+\emline{47.97}{51.56}{5}{51.64}{49.82}{6}
+\emline{51.64}{49.82}{7}{54.95}{47.46}{8}
+\emline{54.95}{47.46}{9}{57.79}{44.56}{10}
+\emline{57.79}{44.56}{11}{60.08}{41.20}{12}
+\emline{60.08}{41.20}{13}{61.74}{37.48}{14}
+\emline{61.74}{37.48}{15}{62.71}{33.54}{16}
+\emline{62.71}{33.54}{17}{62.98}{29.49}{18}
+\emline{62.98}{29.49}{19}{62.53}{25.45}{20}
+\emline{62.53}{25.45}{21}{61.38}{21.55}{22}
+\emline{61.38}{21.55}{23}{59.56}{17.92}{24}
+\emline{59.56}{17.92}{25}{57.12}{14.66}{26}
+\emline{57.12}{14.66}{27}{54.15}{11.89}{28}
+\emline{54.15}{11.89}{29}{50.74}{9.68}{30}
+\emline{50.74}{9.68}{31}{47.00}{8.10}{32}
+\emline{47.00}{8.10}{33}{43.03}{7.21}{34}
+\emline{43.03}{7.21}{35}{38.97}{7.04}{36}
+\emline{38.97}{7.04}{37}{34.94}{7.58}{38}
+\emline{34.94}{7.58}{39}{31.07}{8.82}{40}
+\emline{31.07}{8.82}{41}{27.48}{10.72}{42}
+\emline{27.48}{10.72}{43}{24.28}{13.23}{44}
+\emline{24.28}{13.23}{45}{21.57}{16.26}{46}
+\emline{21.57}{16.26}{47}{19.44}{19.71}{48}
+\emline{19.44}{19.71}{49}{17.95}{23.50}{50}
+\emline{17.95}{23.50}{51}{17.15}{27.48}{52}
+\emline{17.15}{27.48}{53}{17.06}{31.54}{54}
+\emline{17.06}{31.54}{55}{17.69}{35.56}{56}
+\emline{17.69}{35.56}{57}{19.02}{39.40}{58}
+\emline{19.02}{39.40}{59}{21.00}{42.95}{60}
+\emline{21.00}{42.95}{61}{23.58}{46.09}{62}
+\emline{23.58}{46.09}{63}{26.67}{48.73}{64}
+\emline{26.67}{48.73}{65}{30.18}{50.78}{66}
+\emline{30.18}{50.78}{67}{33.99}{52.19}{68}
+\emline{33.99}{52.19}{69}{40.00}{52.99}{70}
+%\end
+\emline{25.00}{12.00}{71}{25.00}{12.00}{72}
+\emline{26.33}{11.33}{73}{53.33}{11.33}{74}
+\emline{53.33}{11.33}{75}{63.33}{29.67}{76}
+\emline{63.33}{29.67}{77}{53.33}{49.00}{78}
+\emline{53.33}{49.00}{79}{26.33}{49.00}{80}
+\emline{26.33}{49.00}{81}{17.00}{30.00}{82}
+\emline{17.00}{30.00}{83}{26.67}{11.33}{84}
+\emline{26.67}{11.33}{85}{63.00}{29.67}{86}
+\emline{63.00}{29.67}{87}{26.00}{49.00}{88}
+\emline{53.67}{11.67}{89}{40.00}{41.67}{90}
+\put(23.67,7.67){\makebox(0,0)[cc]{$A$}}
+\put(55.33,7.33){\makebox(0,0)[cc]{$B$}}
+\put(67.67,29.00){\makebox(0,0)[cc]{$C$}}
+\put(56.00,50.67){\makebox(0,0)[cc]{$D$}}
+\put(24.33,51.33){\makebox(0,0)[cc]{$E$}}
+\put(12.67,29.00){\makebox(0,0)[cc]{$F$}}
+\put(48.33,17.67){\makebox(0,0)[cc]{$X$}}
+\put(36.67,37.67){\makebox(0,0)[cc]{$Y$}}
+\end{picture}
+
+{\em L"osung.} Es seien $A$, $C$ und $E$ die Basispunkte. Da das Sechseck
+regul"ar ist, gilt offenbar 
+\begin{align*}
+2(\vvec{BA}+\vvec{BC})&=\vvec{BE},
+\\
+2A-2B+2C-2B&=E-B,
+\\
+2A+2C-E&= 3B,
+\\
+B&=\frac{1}{3}(2,2,-1).
+\end{align*}
+Wegen $\vvec{AX}=q\cdot\vvec{AC}$ und $\vvec{CY}=q\cdot\vvec{CE}$ gilt
+$X-A=qC-qA$ bzw. $X=(1-q,q,0)$ und $Y=(0,1-q,q)$. Da $B$ auf $XY$ liegen soll,
+gibt es ein $\lam\in\R$ mit $B=(1-\lam)X+\lam Y$ bzw.
+\begin{align*}
+\frac{1}{3}(2,2,-1)&=\bigl((1-\lam)(1-q),(1-\lam)q,0\bigr)+\bigl(0,\lam(1-q),\lam
+q\bigr),
+\\
+&=(1-\lam-q+\lam q,\lam+q-2\lam q,\lam q).
+\end{align*}
+Die letzte Koordinate liefert $\lam q=-\frac{1}{3}$. Die erste Koordinate
+liefert dann $\frac{2}{3}=1-(\lam +q)-\frac{1}{3}$ bzw.{} $\lam+
+q=0$. Folglich ist $q^2=\frac{1}{3}$, und wegen $q>0$ gilt
+$q=\frac{1}{3}\sqrt{3}$.
+
+
+\begin{aufgabe} Gegeben sei eine gerade vierseitige Pyramide $ABCDS$ mit der Spitze 
+$S$ und der Parallelogrammgrundfl"ache $ABCD$. Auf den Kanten $\overline{SA}$, $\overline{SB}$ und  $\overline{SC}$  sind die Punkte 
+$A'$, $B'$, $C'$  derart festgelegt, dass sie  die zugeh"orige Kante im 
+Verh"altnis $1:5$, $1:4$ bzw.{} $1:3$ teilen (d.h. $SA':A'A=1:5$ usw.{}).
+Die Ebene durch $A'$, $B'$ und $C'$ schneide die Kante $\overline{SD}$ im Punkte 
+$D'$.
+\\
+In welchem Verh"altnis teilt $D'$ die Kante $\overline{SD}$?
+\end{aufgabe}
+
+
+%\input pyra.pic
+%TexCad Options
+%\grade{\on}
+%\emlines{\on}
+%\beziermacro{\off}
+%\reduce{\on}
+%\snapping{\off}
+%\quality{2.00}
+%\graddiff{0.01}
+%\snapasp{1}
+%\zoom{1.00}
+\special{em:linewidth 0.4pt}
+\unitlength 1mm
+\linethickness{0.4pt}
+\begin{picture}(102.33,87.00)
+\emline{10.33}{10.00}{1}{79.67}{10.00}{2}
+\emline{79.67}{10.00}{3}{100.00}{25.00}{4}
+\emline{100.00}{25.00}{5}{25.00}{25.00}{6}
+\emline{25.00}{25.00}{7}{10.00}{10.00}{8}
+\emline{10.00}{10.00}{9}{50.33}{83.00}{10}
+\emline{50.33}{83.00}{11}{79.67}{10.00}{12}
+\emline{50.00}{83.00}{13}{99.67}{25.00}{14}
+\emline{50.33}{83.00}{15}{25.00}{25.00}{16}
+\emline{33.67}{53.33}{17}{65.67}{45.00}{18}
+\emline{65.67}{45.00}{19}{80.67}{47.00}{20}
+\emline{80.67}{47.00}{21}{38.67}{56.33}{22}
+\emline{38.67}{56.33}{23}{34.33}{53.33}{24}
+\put(7.00,6.33){\makebox(0,0)[cc]{$A$}}
+\put(80.33,6.67){\makebox(0,0)[cc]{$B$}}
+\put(102.33,22.67){\makebox(0,0)[cc]{$C$}}
+\put(26.67,21.33){\makebox(0,0)[cc]{$D$}}
+\put(50.33,87.00){\makebox(0,0)[cc]{$S$}}
+\put(30.00,52.67){\makebox(0,0)[cc]{$A'$}}
+\put(62.00,40.67){\makebox(0,0)[cc]{$B'$}}
+\put(84.33,48.33){\makebox(0,0)[cc]{$C'$}}
+\put(44.67,59.00){\makebox(0,0)[cc]{$D'$}}
+\end{picture}
+
+{\em L"osung.} Es seien $A$, $B$, $C$ und $S$ die Basispunkte unseres
+Koordinatensystems. Dann gilt wegen $\vvec{AD}=\vvec{BC}$,
+$D=A-B+C=(1,-1,1,0)$.  Es sei $D'=(1-\lam)S+\lam D=(\lam,-\lam,\lam,1-\lam)$
+der gesuchte Punkt. Die Ebene durch
+\begin{align*}
+A'=(1,0,0,5)/{6},
+\quad
+B'=(0,1,0,4)/{5},
+\quad
+C'=(0,0,1,3)/{4}
+\end{align*}
+hat die Gleichung
+$rA'+sB'+tC'$ mit $ r+s+t=1$.
+Folglich gilt f"ur den Punkt $D'$ durch Vergleich der ersten drei Koordinaten:
+$\frac{r}{6}=\lam$ bzw.{} $r=6\lam$, $\frac{s}{5}=-\lam$ bzw.{} $s=-5\lam$ und
+$\frac{t}{4}=\lam$ bzw.{} $t=4\lam$. Mit $r+s+t=1$ folgt $\lam=\frac{1}{5}$
+bzw.{} $D'=\frac{1}{5}(4S+D)$. Der Punkt $D'$ teilt $\overline{SD}$ im Verh"altnis
+$1:4$. 
+
+\begin{minipage}{.3\textwidth}\bild{ceva.eps}\end{minipage}
+\quad
+\begin{minipage}{.65\textwidth}
+\begin{aufgabe} Der Satz von {\sc Ceva}. Es sei $M$ ein innerer Punkt des Dreiecks $ABC$ und $P,Q$ und $R$ seien die Schnittpunkte der Geraden $AM$, $BM$ bzw.{} $CM$
+mit den gegen"uberliegenden Dreiecksseiten. Dann gilt
+\begin{align*}
+\frac{\overline{BP}}{\overline{PC}}\cdot\frac{\overline{CQ}}{\overline{QA}}\cdot\frac{\overline{AR}}{\overline{RB}}&=1\quad
+\text{ und }\quad
+\frac{\overline{AM}}{\overline{AP}}+\frac{\overline{BM}}{\overline{BQ}}+\frac{\overline{CM}}{\overline{CR}}=2.
+\end{align*}
+\end{aufgabe}
+\end{minipage}
+
+
+{\em L"osung.} (a) Wir w"ahlen $A$, $B$ und $C$ als Koordinatensystem. Dann sei 
+${M=(a,b,c)/(a+b+c)}$ der beliebig gew"ahlte Punkt im Innern.  Die Gerade $MA$
+ist dadurch gekennzeichnet, dass sich ihre $B$ und $C$-Koordinaten wie $b:c$
+verhalten, also gilt insbesondere ${P=(0,b,c)/(b+c)}$ und analog ist ${Q=(a,0,c)/(a+c)}$
+ und ${R=(a,b,0)/(a+b)}$. Damit berechnet man sofort
+$$
+ \frac{\overline{BP}}{\overline{PC}}\cdot \frac{\overline{CQ}}{\overline{QA}}\cdot \frac{\overline{AR}}{\overline{RB}}
+= \frac{c}{b}\cdot\frac{a}{c}\cdot\frac{b}{a}=1.
+$$
+(b) Es sei $\lam $ das Teilverh"altnis vom $M$ auf $AP$, also $M=(1-\lam)A+\lam P$. 
+Setzt man den in (a) ermittelten Wert f"ur $P$ ein, so hat man
+$$(a,b,c)/(a+b+c)=M=(1-\lam)A+
+\lam b/(b+c)B+\lam c/(b+c)C.$$
+ Also gilt $\lam=(b+c)/(a+b+c)$. Analog bestimmt man 
+die Teilverh"altnisse von $M$ bez"uglich $\overline{BQ}$ und $\overline{CR}$. Als Summe 
+hat man dann
+$$
+\frac{\overline{AM}}{\overline{AP}}+\frac{\overline{BM}}{\overline{BQ}}+\frac{\overline{CM}}{\overline{CR}}=
+\frac{b+c}{a+b+c}+\frac{a+c}{a+b+c}+\frac{a+c}{a+b+c}=2.
+$$
+In der Praxis braucht man eher die Umkehrung.
+
+\begin{aufgabe}(Umkehrung des Satzes von {\sc Ceva})
+Es sei $ABC$ ein Dreieck und auf den Seiten $BC$, $CA$ und $AB$ seien Punkte
+$P$, $Q$ bzw.{} $R$ so gegeben, dass gilt
+\begin{align*}
+\frac{\vvec{BP}}{\vvec{PC}}\cdot\frac{\vvec{CQ}}{\vvec{QA}}\cdot\frac{\vvec{AR}}{\vvec{RB}}&=1.
+\end{align*}
+Dann schneiden sich die Ecktransversalen $AP$, $BP$ und $CP$ in einem
+gemeinsamen Punkt $M$ oder sie sind parallel.
+\end{aufgabe}
+
+Der Beweis verläuft indirekt mit Hilfe des Satzes von {\sc Ceva}.
+
+\begin{aufgabe}[Eine Anwendung des Satzes von {\sc Ceva}]
+ In einem Dreieck $ABC$ mit dem Umkreismittelpunkt $M$ und dem Umkreisradius $r$ seien $P$, $Q$ und $R$ die Schnittpunkte der Geraden 
+$AM$, $BM$ bzw.{} $CM$ mit den Seiten $\overline{BC}$, $\overline{CA}$ bzw.{} $\overline{AB}$.
+Man zeige, dass dann die Ungleichung 
+$$ \overline{AP}+\overline{BQ}+\overline{CR}\ge \frac{9}{2}r$$
+gilt!
+\end{aufgabe}
+
+\begin{loesung}
+Nach dem Satz von {\sc Ceva} gilt 
+$$
+\frac{r}{\overline{AP}}+\frac{r}{\overline{BQ}}+\frac{r}{\overline{CR}}=2\quad
+\text{bzw.}\quad 
+\left(\frac{1}{\overline{AP}}+\frac{1}{\overline{BQ}}+\frac{1}{\overline{CR}}\right)^{-1}=
+r/2.
+$$
+Nach dem Satz vom arithmetisch-harmonischen Mittel ist dann
+$$
+\left(\overline{AP}+\overline{BQ}+\overline{CR}\right)/3\ge 3\cdot\left(\frac{1}{\overline{AP}}+\frac{1}{\overline{BQ}}+\frac{1}{\overline{CR}}\right)^{-1}=\frac{3r}{2}.  $$
+Multipliziert man die obige Ungleichung mit $3$, so hat man die Behauptung.
+\end{loesung}
+
+\begin{aufgabe} Gegeben sei ein Dreieck $ABC$ mit dem Inkreismittelpunkt $I$ 
+und dem Schnittpunkt der Seitenhalbierennden $S$. Die drei Ankreise berühren
+die Seiten $\overline{AB}$, $\overline{BC}$ bzw.{} $\overline{AC}$ in den Punkten $P$, $Q$
+bzw.{} $R$.
+\\
+(a) Zeigen Sie, dass die drei Ecktransversalen $AP$, $BQ$ und $CR$ durch 
+einen gemeinsamen Punkt $T$ verlaufen.
+\\
+(b) Zeigen Sie, dass $I$, $S$ und $T$ auf einer gemeinsamen Geraden liegen.
+
+{\em Hinweis:} Bestimmen Sie die baryzentrischen Koordinaten von $T$. 
+Benutzen Sie dabei den Satz, dass Tangentenabschnitte gleich lang sind.
+\end{aufgabe} 
+
+
+\begin{minipage}{.6\textwidth}
+\begin{aufgabe}(Der Satz von {\sc Menelaos}) Es sei $g$ eine Gerade, die die
+  Seitengeraden eines Dreiecks $ABC$ in den Punkten $P$, $Q$ bzw.{} $R$ schneidet.
+\\
+Dann gilt
+\begin{align}\label{e-Menelaos}
+\frac{\vvec{BP}}{\vvec{PC}}\cdot \frac{\vvec{CQ}}{\vvec{QA}}\cdot
+\frac{\vvec{AR}}{\vvec{RB}}=-1.
+\end{align}
+\end{aufgabe}
+\end{minipage}
+\quad
+\begin{minipage}{.3\textwidth}\bild{menelaos.eps}\end{minipage}
+
+\medskip
+
+Gilt umgekehrt für drei Punkte $P$, $Q$ und $R$ auf den Seitenlinien $BC$, $CA$
+bzw.{} $AB$ liegen die Gleichgung \rf[e-Menelaos], dann liegen sie auf einer
+gemeinsamen Geraden $g$.
+
+
+\begin{minipage}{.2\textwidth}\bild{ue1.eps}\end{minipage}
+\begin{minipage}{.7\textwidth}
+\begin{aufgabe}(Übung)
+Gegeben sei ein Dreieck $ABC$ und Punkte $M$, $P$ und $N$ auf $\overline{AB}$,
+$\overline{AC} $ und $BC$, so dass gilt $\overline{BC}=\overline{CN}$ und $\overline{AM}=\overline{AB}/3$.
+\\
+In welchem Verhältnis teilt $P$ die Strecke $AC$, wenn $M$, $N$ und $P$ auf
+einer Geraden liegen?
+\end{aufgabe}\end{minipage}
+
+{\bf Lösung.} $P=(1/2,0,1/2)$
+
+
+\begin{minipage}{.3\textwidth}\bild{ue2.eps}\end{minipage}
+\begin{minipage}{.6\textwidth}
+\begin{aufgabe}
+  (Übung) Gegeben sei ein Dreieck $ABC$ und Punkte $M$, $Z$, $P$ und $F$ wie
+  in der Skizze angegeben. Dabei sei $\overline{AF}\colon \overline{FB}=3$,
+  $\overline{PB}=\overline{BC}/6$ und $\overline{CM}=\overline{CA}/6$.
+  \\
+  In welchem Verhältnis teilt $Z$ die Strecken $\overline{FC}$ bzw.
+  $\overline{PM}$?
+\end{aufgabe}\end{minipage}
+
+{\bf Lösung.} $Z$ auf $MP$, $3\colon 5$. $Z$ auf $CF$, $5\colon 7$.
+
+\begin{minipage}{.3\textwidth}\bild{par2.eps}\end{minipage}
+\begin{minipage}{.6\textwidth}
+\begin{aufgabe}
+  (Übung) Gegeben sei ein Paralleleogramm $ABCD$ mit einem Punkt $M$, der
+  $\overline{BC}$ von innen im Verhältnis $3\colon 5$ teilt. Die Gerade $AM $
+  schneide die Diagonale $BD $ in $P$.
+  \\
+  Berechnen Sie das Verhältnis der Viereecksfläche $PMCD$ zur Fläche des
+  Parallelogramms $ABCD$.
+\end{aufgabe}\end{minipage}
+
+{\bf Lösung.} $F=79/176$.
+
+Es seien $A=(1,0,0)$, $B=(0,1,0)$ und $D=(0,0,1)$ die Bezugspunkte sunseres
+baryzentrischen Systems. Dann ist $C=(-1,1,1) $ (wegen
+$B-A=\vvec{AB}=\vvec{DC}=C-D$). Ferner ist nach Voraussetzung
+$$
+M=\frac{5}{8}B +\frac{3}{8} C=\frac{1}{8}(-3,8,3).$$
+Es sei $P=(0,1-\lam, \lam )$ und 
+$$
+AM\colon\quad (1-\mu) A +\mu M=\frac{1}{8}\left( 8(1-\mu)-3\mu, 8\mu,
+  3\mu\right).
+$$ 
+Folglich gilt für $P$ auf $BD$ und auf $AM$, $\lam =\frac{3}{11}$ und
+$\mu=\frac{8}{11}$. Nun ist
+$$
+F_{PMCD}=F_{MCD} +F_{PMD}=\frac{5}{8}\half +\lam F_{AMD}=\frac{5}{16}
++\frac{3}{11} F_{ADB}=\frac{79}{176}.
+$$
+
+Wenn es nur auf die Verhältnisse der Koordinaten ankommt, schreiben wir
+anstelle von
+$$
+\frac{1}{a+b+c}(a,b,c)\quad\text{kurz}\quad  (a:b:c). 
+$$
+
+\begin{aufgabe} 
+  Zeigen Sie, dass die Schnittpunkte der Seitenhalbierenden $S$, Höhen $H$,
+  Winkelhalbierenden $I$, Mittelsenkrechten $U$ die folgenden baryzentrischen
+  Koordinaten besitzen.  Dabei bilden die Eckpunkte des Dreiecks das
+  Koordinatensystem, die Seitenl"angen seien $a$, $b$ und $c$, und die
+  Innenwinkel seien $\alpha $, $\beta $ und $\gamma$.
+\begin{align*}
+S&=\left(1:1:1\right),
+\\
+H&=\left(\tan \alpha: \tan \beta: \tan \gamma\right),
+\\
+I&=(a:b:c),
+\\
+M&=(\sin 2\alpha: \sin 2\beta:\sin 2\gamma).
+\end{align*}
+\end{aufgabe}
+
+\begin{loesung}
+(a) Bei der Seitenhalbierenden durch $A$ ist das Verhältnis der 
+$B$- und $C$-Koordinaten konstant $1$. Bei der Seitenhalbierenden durch
+$B$ ist das Verhältnis der $A$- und $C$-Koordinaten konstant $1$. Also
+müssen beim Schnittpunkt dieser beiden Geraden alle drei Koordinaten
+übereinstimmen. Somit gilt $S=(1,1,1)/3.$ 
+
+\begin{minipage}{.35\textwidth}\bild{dreieck.eps}\end{minipage}
+\quad
+\begin{minipage}{.6\textwidth}
+(b) Wir benutzen den Satz, dass die Winkelhalbierende im Dreieck die Gegenseite
+im Verhältnis der anliegenden Seiten teilt. Also gilt
+$\vvec{BP}\colon \vvec{PC}=c:b$ bzw.{}
+$$
+P=\frac{b}{b+c} B +\frac{c}{b+c} C=(0:b:c).
+$$
+Nach der Bemerkung in Abschnitt\,\ref{ss-Geraden} hat also die Winkelhalbierende
+von $A$, die Eigenschaft, dass das konstante Verhältnis von $B$- und
+$C$-Koordinaten gleich $b:c$ ist. Analog erhält man, dass auf der Winkelhalbierenden von $B$, das Verhältnis von $A$- und $C$-Koordinate gleich $a:c$ ist.
+Fazit, für $I$ gilt, das das Verhältnis der $A$-, $B$- 
+und $C$-Koordinaten gleich  $(a:b:c)$ ist. Folglich gilt, $I=(a,b,c)/(a+b+c)$.
+\end{minipage}
+\\
+(c) Ist $P$ der Höhenfußpunkt von $A$ auf $BC$ und $h$ die Länge der Höhe
+$\overline{AP}$, dann gilt 
+$$
+\overline{BP}\colon \overline{PC}=\frac{h\cot \beta}{h \cot \gamma}=\frac{\tan\gamma}
+{\tan\beta}.
+$$
+Folglich gilt
+$$
+P=\frac{\tan \beta B +\tan \gamma C}{\tan \beta +\tan \gamma}=(0: \tan\beta:
+\tan\gamma).
+$$
+Somit hat der Höhenschnittpunkt die oben angegebene Form.
+
+\begin{minipage}{.5\textwidth}\bild{umkreis.eps}\end{minipage}
+\quad
+\begin{minipage}{.4\textwidth}
+(d) Der  Schnittpunkt $P$ von $CM$ mit $AB$ teile $\overline{AB}$ im
+Verhältnis $x:y$, das wir bestimmen werden. Dazu ist nach dem Thalesssatz
+ $\alpha'=\angle QAB=
+90^\circ -\alpha$ und $\beta'=\angle QBA=90^\circ -\beta$. 
+Die Winkel bei $Q$ sind gleich $\al $ bzw.{} $\beta$ nach dem 
+Peripheriewnkelsatz. Nach dem
+Sinussatz in den Dreiecken $APQ$ und $BPQ$  und $\sin (90^\circ -x)=\cos x$ 
+ist dann
+$$
+\frac{x}{z}=\frac{\sin \beta}{\cos \alpha},\quad \frac{y}{z}=\frac{\sin\alpha}
+{\cos \beta}
+$$ und weiter
+$$
+\frac{x}{y}=\frac{\sin \beta\cos \beta}{\sin \alpha\cos \alpha}=
+\frac{\sin 2\beta}{\sin 2\alpha}.
+$$
+Hieraus folgt die Behauptung.
+\end{minipage}
+\end{loesung}
+
+Bemerkung: Mit Hilfe dieser Koordinaten ließ sich die folgende Aufgabe aus 
+dem Bundeswettbewerb Mathematik, 2002, 2. Runde, lösen:
+
+\begin{aufgabe} In einem spitzwinkligen Dreieck $ABC$ seien $H_a$  und $H_b$ 
+die Fußpunkte der von $A$ bzw.{} $B$ ausgehenden Höhen; $W_a$ und $W_b$
+seien die Schnittpunkte der Winkelhalbierenden durch $A$ bzw. $B$ mit den 
+gegenüberliegenden Seiten.
+\\
+Man beweise: Im Dreieck $ABC$ liegt der Inkreismittelpunkt genau dann
+auf der Strecke $\overline{H_aH_b}$, wenn der Umkreismittelpunkt $U$
+auf der Strecke $\overline{W_aW_b}$ liegt.
+\end{aufgabe}
+
+\begin{loesung} Nach obigen
+Argumenten war
+\begin{align*}
+H_a=(0:\tan \beta:\tan\gamma),\quad
+H_b=(\tan \alpha: 0:\tan\gamma),\quad
+I =(a:b:c)\underset{\mathrm{Sinussatz}}{=}(\sin \alpha:\sin\beta:\sin\gamma).
+\end{align*}
+Diese 3 Punkte liegen nach \rf[e-3punkte] genau dann auf einer Geraden,
+wenn
+\begin{align*}
+0&=\begin{vmatrix}0&\tan\beta &\tan \gamma\\ \tan \alpha&0&\tan \gamma
+\\ \sin \alpha &\sin \beta &\sin \gamma
+\end{vmatrix}
+% \\ &=
+=\sin\al \sin\beta\sin\gamma\left(\frac{1}{\cos \beta\cos\gamma}
++\frac{1}{\cos \al \cos \gamma} -\frac{1}{\cos\al \cos\beta}\right).
+\end{align*}
+Das tritt genau dann ein, wenn $\cos \al +\cos \beta=\cos \gamma$.
+Analog ist die zweite Bedingung äquivalent zu
+\begin{align*}
+0=\begin{vmatrix}
+0&b&c\\ a&0&c\\ \sin 2\al &\sin 2\beta&\sin 2\gamma
+\end{vmatrix}
+=\begin{vmatrix}
+0&\sin \al &\sin \gamma\\ 
+\sin\al &0&\sin \gamma
+\\
+\sin2\al &\sin2\beta& \sin2 \gamma
+\end{vmatrix}
+=4\sin\al\sin\beta\sin\gamma(\cos\al +\cos \beta -\cos\gamma).
+\end{align*}
+Auch dies ist äquivalent zu $\cos \al +\cos \beta=\cos \gamma$.  Hieraus
+folgt die Behauptung.
+\end{loesung}
+
+\begin{aufgabe} Eine Ebene $\eps $ teilt die Kanten
+$\overline{DA}$, $\overline{DB}$ und $\overline{DC}$ eines regul"aren Tetraeders $ABCD$ im Verh"altnis
+$2 {:}3$, $3{:}2$ bzw.{} $4{:}1$. In welchem Verh"altnis teilt $\eps $ die
+K"orperh"ohe $DM$ des Tetraeders?
+\end{aufgabe}
+
+{\em L"osung.} Mit dem Koordinatensystem $A,B,C,D$ hat man f"ur die Schnittpunkte $A'$, $B'$ und $C'$ 
+der Ebene mit den Kanten sowie f"ur den Mittelpunkt $M$ der Grundfl"ache
+ die folgenden Koordinaten
+$$
+A'=(2,0,0,3)/5,\,\,\,B'=(0,3,0,2)/5,\,\,\,C'=(0,0,4,1)/5,\,\,\,M=(1,1,1,0)/3.
+$$
+Die Ebene $\eps$:
+$$ rA'+sB'+tC'=(2r,3s,4t,3r+2s+t)/5,\quad r+s+t=1.
+$$
+Die Gerade ${DM}$:
+$$
+(1-\lam)D+\lam M=(\lam,\lam,\lam,3-3\lam)/3.
+$$
+Gleichsetzen liefert $\lam=36/65$. Die K"orperh"ohe wird im Verh"altnis 
+$36{:}29$ geteilt.
+
+\begin{minipage}{.5\textwidth}\bild{par1.eps}\end{minipage}
+\quad
+\begin{minipage}{.45\textwidth}
+\begin{aufgabe} Gegeben sei ein Parallelogramm $ABCD$ und auf der Verl"angerung
+ von $BC$ "uber $C$ hinaus ein Punkt $R$. Die Schnittpunkte  von $AR$ 
+mit $\overline{CD}$ und $\overline{BD}$ seien $S$ bzw.{} $T$.
+\\
+Man beweise, dass dann gilt
+$$
+\frac{1}{\overline{AT}}=\frac{1}{\overline{AS}}+\frac{1}{\overline{AR}}.
+$$
+\end{aufgabe}
+\end{minipage}
+
+\begin{center}
+{% Picture saved by xtexcad 2.4
+\unitlength=1.000000pt
+\begin{picture}(237.00,123.00)(0.00,0.00)
+\put(83.00,32.00){\makebox(0.00,0.00){$T$}}
+\put(129.00,56.00){\makebox(0.00,0.00){$S$}}
+\put(230.00,116.00){\makebox(0.00,0.00){$R$}}
+\put(26.00,81.00){\makebox(0.00,0.00){$D$}}
+\put(205.00,63.00){\makebox(0.00,0.00){$C$}}
+\put(165.00,0.00){\makebox(0.00,0.00){$B$}}
+\put(0.00,0.00){\makebox(0.00,0.00){$A$}}
+\put(15.00,11.00){\line(1,0){140.00}}
+\put(44.00,67.00){\line(1,0){143.00}}
+\put(154.00,12.00){\line(-2,1){110.00}}
+\put(214.00,111.00){\line(-3,-5){60.00}}
+\put(15.00,11.00){\line(2,1){199.00}}
+\put(45.00,61.00){\line(-3,-5){30.00}}
+\end{picture}}
+%\input parallel.pic
+\end{center}
+
+{\em L"osung.} Wir w"ahlen $A$, $B$ und $D$ als Koordinatensystem. Dann gilt
+wegen $\vvec{AB}+\vvec{AD}=\vvec{AC}$ die Gleichung $B-A+D-A=C-A$ bzw.{} 
+$C=(-1,1,1)$. Die Parallen zur Koordinatenachse $AB$ sind gegeben durch die
+Gleichungen $D=const.$ Insbesondere ist
+\begin{align*}
+\text{Gerade}\quad CD:\, (-\lam,\lam,1),\,\lam\in\R\qquad
+\text{Gerade }\quad BC:\, (-\mu,1,\mu),\,\mu\in\R.
+\end{align*}
+Insbesondere sei $R=(-r,1,r)$. Dann haben alle Punkte $X$ auf $AR$
+die Eigenschaft, dass ihre $B$- und $D$-Koordinaten sich wie $1{:}r$
+verhalten. Insbesondere gilt das 
+f"ur $S\in  CD$, daher ist $S=(-1/r,1/r,1)$. F"ur $T\in BD$ ist 
+die $A$-Koordinate gleich Null, also gilt $T=(0,1,r)/(r+1)$. Die 
+Behauptung ist "aquivalent zu $1=\overline{AT}:\overline{AS}+\overline{AT}:\overline{AR}$.
+Daher bestimmen wir nun die Teilungsverh"altnisse $\lam $
+ von $T$ auf $\overline{AS}$
+und $\mu $ von $T$ auf $\overline{AR}$:
+Sei also $(1-\lam)A+\lam S=T$. Einsetzen von $S$ und $T$ liefert:
+$$
+\left( (1-\lam)-\lam/r,\lam/r,\lam\right)=\left(0,1/(r+1),r/(r+1)\right).
+$$
+Bei der $D$-Koordinate liest man sofort $\lam=r/(r+1)$ ab.
+Sei ferner $(1-\mu)A+\mu R=T$, so hat man
+$$
+\left( (1-\mu)-\mu r,\mu,\mu r\right)= \left(0,1/(r+1),r/(r+1)\right).
+$$
+Bei der $B$-Koordinate liest man sofort ab $\mu=1/(r+1)$. Da f"ur die Summe
+$\lam+\mu=1$ gilt, ist der Beweis erbracht.
+
+\subsection*{Komplexe baryzentrische Koordinaten der Ebene}
+Wählt man 2 Punkte $A$ und $B$ der Ebene, so lässt sich jeder Punkt
+der Ebene eindeutig in der Form $(1-\lam) A+\lam B$ mit einer komplexen
+Zahl $\lam\in\C $ schreiben. Ist $\lam $ reell, so erhält man gerade die Punkte 
+der Geraden $AB$. Der Vorteil dieser komplexen Methode ist, dass
+auch Orthogonalität und Kreise in einfacher Weise beschrieben werden können.
+
+\subsubsection*{Beschreibung eines Beliebigen Punktes
+durch Drehung und Streckung}
+
+Erhält man den Punkt $P$ durch Drehung von $B$ um $A$ um den
+Winkel $\vp $ (entgegen dem Uhrzeiger) 
+ und anschließender Strechung mit dem Faktor $r$, so gilt
+\begin{align*}
+P-A=\lam (B-A),\quad \quad P=(1-\lam) A +\lam B ,
+\end{align*}
+wobei $\lam=r(\cos \vp +\ii \sin \vp) $.
+Je nachdem, welche Menge der komplexe 
+Parameter $\lam $ durchläuft, erhält man als geometrischen 
+Ort aller Punkte $(1-\lam) A+ \lam B$ spezielle Geraden oder Kreise.
+
+\begin{tabular}{ll}
+$\Im \lam =0$ & Gerade $AB$
+\\
+$\Re \lam =\half$& Mittelsenkrechte von $\overline{AB}$
+\\
+$\Re \lam =1$& Senkrechte zu $AB $ durch $A$.
+\\
+$\abs{\lam}=1$ &Kreis um $A$ durch $B$.
+\end{tabular}
+
+\medskip
+
+\begin{minipage}{.4\textwidth}\bild{transversal.eps}\end{minipage}
+\quad
+\begin{minipage}{.55\textwidth}
+\begin{aufgabe}\label{a-eck}
+ Gegeben sei ein Dreieck $ABC$. "Uber seinen Seiten errichten wir "ahnliche 
+gleichschenklige Dreiecke $ABC'$, $BCA'$ und $CAB'$, wobei die Spitzen $C'$,
+$B'$ und $A'$  der
+gleichschenkligen Dreiecke jeweils alle nach au"sen oder alle nach innen
+zeigen. 
+\\
+Beweisen Sie, dass  die drei Ecktransversalen $AA'$, $BB'$ und $CC'$ sich in
+einem gemeinsamen Punkt schneiden oder parallel sind!
+\end{aufgabe}
+\end{minipage}
+
+{\em L"osung.} Es sei $A''$ der  Schnittpunkt von $AA'$ mit  $BC$.
+ Entsprechend definieren wir $B''$ und $C''$.
+ Zur Beschreibung der relativen Lage von $A'$,
+$B'$ und $C'$ bez"uglich $A$, $B$ und $C$ bieten sich komplexe baryzentrische
+Koordinaten an. Betrachtet man n"amlich $C'$ einmal als das Bild der Drehung
+(und Stauchung) von $B$ um $A$ und  zum anderen als das Bild der Drehung von
+$A$ um $B$ um den gleichen negativen Winkel (und mit der gleichen Stauchung),
+so dass es eine komplexe Zahl $\lam  $ gibt, mit
+\begin{align}
+C'-A&=\lam  (B-A),\quad C'-B=\lamq (A-B)\quad \text {bzw.}
+\\
+C'&=(1-\lam  )A+\lam  B=\lamq A+(1-\lamq) B.\label{lam}
+\end{align}
+Da $A$ und $B$ als unabh"angige Ursprungspunkte
+ der komplexen Ebene genommen werden k"onnen, liefert der
+ Koeffizientenvergleich in Gleichung \rf[lam] bei $A$ die Gleichung $1-\lam  =\lamq$.
+Der Realteil von $\lam $ ist also gleich $\half $.
+Wir k"onnen also
+\begin{align}\label{la}
+\lam =\half+b\ii, 
+\end{align} 
+mit einem $b\in\R$ setzen. Da die Punkte  $A'$ und $B'$ v"ollig analog
+konstruiert werden --- die Dreiecke $ABC'$, $BCA'$ und $CAB'$ sollen ja
+"ahnliche gleichschenklige Dreiecke sein ---  hat man
+\begin{align}
+A'=(1-\lam )B+ \lam C,\quad \quad B'=(1-\lam ) C +\lam A.
+\end{align}
+M"oge $C$ die komplexen baryzentrischen Koordinaten $(1-\mu,\mu)$, $\mu\in\C$
+bez"uglich des Koordinatensystems $(A,B)$ haben. Dann gilt
+\begin{align}
+\begin{split}\label{abc}
+C&=(1-\mu)\, A +\mu \, B,
+\\
+A&=\frac{\mu}{\mu-1} \,B +\frac{1}{1-\mu}\, C,
+\\
+B&= \frac{1}{\mu}\, C +\left(1-\frac{1}{\mu}\right)\, A.
+\end{split}
+\end{align}
+Die zweite und dritte Gleichung erh"alt man durch einfaches Umstellen der
+ersten; der Punkt $A$ hat also die komplexen baryzentrischen Koordinaten 
+%$(\frac{\mu}{\mu-1},\ds
+%\frac{1}{1-\mu})$ bez"uglich $(B,C)$ und $B$ hat die komplexen baryzentrischen
+$(\mu/(\mu-1),1/(1-\mu))$ bez"uglich $(B,C)$ und $B$ hat die komplexen baryzentrischen
+Koordinaten  
+%${\ds( \frac{1}{\mu},1-\frac{1}{\mu})}$ bez"uglich $(C,A)$.
+ $(1/\mu,1-1/\mu)$ bez"uglich $(C,A)$.
+\\
+Wir bestimmen nun den Schnittpunkt $C''$. Da $C''$ auf der Geraden $CC'$
+liegt, ist $C''$ eine {\em reelle} baryzentrische Kombination von $C$ und $C'$, etwa
+$C''=(1-t)C+ tC'$. Da $C''$ auch auf der Geraden $AB$ liegt, ist $C''$ auch
+{\em reelle} baryzentrische Kombination von $A$ und $B$, etwa $C''=(1-s)A+sB$.
+ Gesucht sind also $s,t\in \R $ mit:
+$$ 
+(1-t)\,C +t\,C'=C''=(1-s)\,A+ s\,B.
+$$
+Setzt man f"ur die Punkte $C$ und $C'$ die Terme aus \rf[abc] und \rf [lam] ein,
+so hat man 
+\begin{align*}
+(1-t)\,C +t\,C'&=(1-t)(1-\mu)A+(1-t)\mu B+t(1-\lam )A+t\lam B
+\\
+&=A(t(1-\lam )+(1-t)(1-\mu))+B(t\lam +(1-t)\mu ).
+\end{align*}
+Also  liefert der Koeffi\-zien\-ten\-vergleich bei  $B$
+\begin{align}\label{mu}
+s=t\lam +(1-t)\mu.
+\end{align}
+ Wir setzen $\mu=c+d\ii $ mit festen reellen Zahlen $c$ und $d$ und
+ erhalten mit $\lam =0.5+b\ii$:
+$$
+s=t(0.5 +b\ii)+(1-t)(c+d\ii)=0.5 t+(1-t)c+(bt+(1-t)d)\ii.
+$$
+Wegen $s\in \R$ hat man daher $bt+(1-t)d=0$ bzw.{}
+\[
+t=\frac{d}{d-b},\quad 1-t=\frac{-b}{d-b}
+\] und somit nach \rf[mu]
+\begin{align*}
+s&=\frac{d(\half+b\ii)}{d-b}+\frac{-b(c+d\ii)}{d-b}
+=\frac{\half d-bc}{d-b}.
+\end{align*}
+F"ur das reelle Teilverh"altnis $s/(1-s)$ des Punktes $C''$ auf $\overline{AB}$
+gilt dann
+\begin{align}\label{s}
+\frac{s}{1-s}=\frac{\half d-bc}{\half d-b(1-c)}=
+\frac{1-2b\,\frac{c}{d}}{1-2b\,\frac{1-c}{d}}.
+\end{align}
+Nun berechnen wir die beiden anderen Teilverh"altnisse $s'/(1-s')$ und
+$s''/(1-s'')$ von $A''$ und  $B''$ auf $\overline{BC}$ bzw.{} $\overline{CA}$. Dazu
+wechseln wir zu den komplexen Koordinatensystemen $(B,C)$ bzw.{} $(C,A)$. 
+Die Rolle von $\mu $ nimmt dabei wegen \rf[abc] nacheinander $\mu'=1/(1-\mu)$
+bzw.{} $\mu''=1-1/\mu$ ein. Wir fassen das Teilverh"altnis auf der linken
+Seite von \rf[s] als Funktion vom Realteil $c$  und Imagin"arteil $d$ von $\mu
+$ auf (rechte Seite von \rf[s]). Somit gilt
+\begin{align*}
+\mu'&=\frac{1}{1-c-d\ii}=\frac{1-c+d\ii}{(1-c)^2+d^2},
+\\
+c'&=\frac{1-c}{(1-c)^2+d^2},\quad 1-c'=\frac{c^2+d^2-c}{(1-c)^2+d^2},
+\\
+\frac{s'}{1-s'}&=\frac{1-2b\,\frac{1-c}{d}}{1-2b\,\frac{c^2+d^2-c}{d}}.
+\end{align*}
+Analog erh"alt man
+\begin{align*}
+\mu''&=1-\frac{1}{c+d\ii}=1-\frac{c-d\ii}{c^2+d^2}
+=\frac{c^2+d^2-c}{c^2+d^2}+\frac{d}{c^2+d^2}\ii,
+\\
+\frac{s''}{1-s''}&=\frac{1-2b\,\frac{c^2+d^2-c}{d}}{1-2b\,\frac{c}{d}}.
+\end{align*}
+Wir stellen fest, dass das Produkt dieser drei Teilverh"altnisse gleich 1 ist:
+\[
+\frac{s}{1-s}\cdot \frac{s'}{1-s'}\cdot \frac{s''}{1-s''}
+=\frac{1-2b\,\frac{c}{d}}{1-2b\,\frac{1-c}{d}}\cdot
+\frac{1-2b\,\frac{1-c}{d}}{1-2b\,\frac{c^2+d^2-c}{d}}
+\cdot \frac{1-2b\,\frac{c^2+d^2-c}{d}}{1-2b\,\frac{c}{d}}=1.
+\]
+Nach der Umkehrung des Satzes von {\sc Ceva} verlaufen die drei Ecktransversalen
+$AA'$, $BB'$ und $CC'$ durch einen gemeinsamen Punkt.
+
+Bemerkung: 
+In den Spezialf"allen $0^\circ$, $60^\circ$ (nach au"sen) und
+$90^\circ$ erh"alt man den Schnittpunkt der Seitenhalbierenden, den
+{\sc Fermat}-Punkt --- das ist der Punkt des Dreiecks, f"ur den die Abstandssumme zu den
+Eckpunkten minimal wird --- bzw.{} den H"ohenschnittpunkt.
+Es wird vermutet, dass der geometrische Ort der Schnittpunkte eine Hyperbel
+ist.
+
+\begin{aufgabe}\label{a-cox}
+ (aus H. S. M. Coxeter, Unverg"angliche Geometrie, S.~30, Aufgabe~3)
+Gegeben sei ein Parallelogramm $ABCD$ und ein Punkt $P$ der Ebene, so dass
+$\angle PBC=\angle PDC$ gilt.
+\\
+Dann gilt auch $\angle  CPB=\angle DPA$.
+\end{aufgabe}
+
+\begin{minipage}{.4\textwidth}\bild{parallel.eps}\end{minipage}
+\begin{loesung} Anstelle der obigen Behauptung zeigen wir die folgende, aus der
+  aber die obige folgt. W"ahlt man einen Punkt $X$ auf der Strecke $\overline{CD}$
+  so, dass die Dreiecke $XDP$ und $CBP $ einander "ahnlich und umgekehrt
+  orientiert sind, so liegt der Punkt $X$ auf der Geraden $AP$. Den Winkel
+  $\angle PBC =\angle PDX$ bezeichnen wir mit $\beta $.
+Wir verwenden ein komplexes baryzentrisches Koordinatensystem mit
+  den Ursprungspunkten $B$ und $D$. Es sei etwa 
+\begin{align}\label{e11}
+A&=(1-\mu)B +\mu D,\quad\mu\in\C,
+\\
+C&=\mu B+(1-\mu)D.\label{e12}
+\end{align}
+Die zweite Gleichung folgt aus der ersten wegen $B-A=C-D$. 
+Wegen $X\in\overline{CD}$ existiert eine {\em reelle} Zahl $\alpha\in \R$ mit 
+\begin{align}
+X&=(1-\alpha) D +\alpha C=(1-\alpha)D +\alpha \mu B+\alpha(1-\mu)D,\nonumber
+\\
+&=(1-\alpha\mu)D +\alpha\mu B.\label{e21}
+\\
+X-D&=\alpha\mu (B-D).\label{e2}
+\end{align}
+Nun gibt es ein $\lam\in\C $ mit
+\begin{align}\label{d1}
+P-D&=\lam(X-D).
+\end{align}
+Auf Grund der "Ahnlichkeit der Dreiecke $XDP $ und
+$CBP$, sind die folgenden Längenverhältnisse gleich
+$\overline{PD}\colon\overline{XD}= \overline{PB}\colon\overline{CB}$. Also gibt es ein $\lam_1$ mit
+$\abs{\lam}=\abs{  \lam_1}$ mit
+\begin{align}\label{e-1111}
+P-B&=\lam_1(C-B)
+\end{align}
+Da das Argument von $\lam $ gleich $\beta $ ist, wogegen das 
+Argument von $\lam_1$ gleich $-\beta $ ist und wegen $\abs{\lam}=
+\abs{\lam_1}$, gilt
+$
+\lam_1=\lamq,
+$
+und somit wegen \rf[e-1111] und \rf[e12] 
+\begin{align}
+P-B&=\lamq(C-B)=\lamq  (\mu B+(1-\mu) D-B) =\lamq (\mu-1)(B-D),\nn 
+\\
+P&=(1-\lamq +\mu\lamq)B -\lamq(\mu-1) D. \label{d2} 
+\end{align}
+Setzt man \rf[e2] in \rf[d1] ein, so hat man
+\[
+P-D=\alpha\lam\mu (B-D).
+\]
+Durch Koeffizientenvergleich vor $B$ in der obigen Gleichung und in \rf[d2]
+hat man also
+\begin{align}\label{e4}
+\alpha\lam\mu=1+\lamq\mu-\lamq.
+\end{align}
+L"ost man das lineare Gleichungssystem aus Gleichung \rf[e11] und der 
+letzten Gleichung von \rf[d2] nach $B$ und $D$ auf, so erh"alt man
+\begin{align*}
+B&=\detm\left( (1-\alpha\lam\mu)\,A -\mu\, P\right),
+\\
+D&=\detm\left( -\alpha\lam\mu\, A +(1-\mu)\, P\right),
+\end{align*}
+wobei $\det=1-\mu-\alpha\lam\mu$.
+Setzt man diese Werte in \rf[e21] ein, so hat man
+\[
+X=\detm \left( \alpha\mu(1-\lam)\, A+ (1-\alpha\mu-\mu)\, P\right).
+\]
+Wir werden zeigen, dass dies eine {\em reelle} Kombination der Punkte $A$ und
+$P$ ist. Nach \rf[e4] gilt zun"achst
+\begin{align*}
+\alpha=\overline{\alpha}=\frac{1+\lamq\mu-\lamq}{\lam \mu}&=\frac{1+\lam\mq-\lam}{\lamq\mq}
+\quad |\cdot\lam\lamq\mu\mq
+\\
+\lam\mu -\lam^2\mu+\lam^2\mu\mq&=\lamq\mq-\lamq^2\mq+\lamq^2\mu\mq    \quad|-\mu\mq
+\\
+-\mu\mq+\lam\mu -\lam\mu\mq+\lam\mu\mq-\lam^2\mu+\lam\mu\mq&=
+-\mu\mq+\mq\lamq+\lamq\mu\mq-\lamq\mu\mq-\lamq^2\mu+\lamq^2\mu\mq
+\\
+(1-\lam)(-\mu \mq+\lam\mu-\lam\mu\mq)&= (1-\lamq)(-\mu\mq +\lamq\mq-\lamq\mu\mq)
+\\
+\frac{\alpha\mu(1-\lam)}{-\mu+\lamq-\lamq\mu}&=\frac{\alpha\mq(1-\lamq)}{-\mq+\lam
+  -\lam\mq}
+\\
+\detm\alpha\mu(1-\lam)&=\frac{1}{\overline{\det}}\alpha\mq(1-\lamq). 
+\end{align*}
+Die letzte Gleichung folgt aus \rf[e4] wegen $\det
+ =1-\mu-\alpha\lam\mu=-\mu+\lamq-\lamq\mu$. 
+Wegen $\alpha\in \R$ 
+ steht in der letzten Zeile eine reelle Zahl $x$.   Also gilt $X=xA+(1-x)P$ und $X$ liegt auf der Geraden  $AP$.
+\end{loesung}
+ 
+
+\section*{Projekte: Baryzentrische Koordinaten, \\
+Ilmenau 2003, Klasse 10/11}
+ 
+\begin{minipage}{.3\textwidth}\bild{ceva.eps}\end{minipage}
+\quad
+\begin{minipage}{.65\textwidth}
+\begin{aufgabe} 
+  (Jördis Krap, 11) Der Satz von {\sc Ceva}. Es sei $M$ ein innerer Punkt des
+  Dreiecks $ABC$ und $P,Q$ und $R$ seien die Schnittpunkte der Geraden $AM$,
+  $BM$ bzw.{} $CM$ mit den gegen"uberliegenden Dreiecksseiten. Dann gilt
+\begin{align*}
+\frac{\overline{BP}}{\overline{PC}}\cdot\frac{\overline{CQ}}{\overline{QA}}\cdot\frac{\overline{AR}}{\overline{RB}}&=1\quad
+\text{ und }\quad
+\frac{\overline{AM}}{\overline{AP}}+\frac{\overline{BM}}{\overline{BQ}}+\frac{\overline{CM}}{\overline{CR}}=2.
+\end{align*}
+ \end{aufgabe}
+\end{minipage}
+
+\medskip
+
+{\em Hinweis:} Beginnen Sie mit dem Punkt $M=(r,s,t)$, wobei $r+s+t=1$ und
+bestimmen Sie die Koordinaten von $P$, $Q$ und $R$.
+
+\begin{aufgabe}[ (Eine Anwendung des Satzes von Ceva)]\label{a-ceva}
+  In einem Dreieck $ABC$ mit dem Umkreismittelpunkt $M$ und dem Umkreisradius
+  $r$ seien $P$, $Q$ und $R$ die Schnittpunkte der Geraden $AM$, $BM$ bzw.{}
+  $CM$ mit den Seiten $\overline{BC}$, $\overline{CA}$ bzw.{} $\overline{AB}$.
+  Man zeige, dass dann die Ungleichung
+$$ \overline{AP}+\overline{BQ}+\overline{CR}\ge \frac{9}{2}r$$
+gilt!
+
+{\em Hinweis:} Benutzen Sie die Ungleichung von arithmetischen und 
+harmonischen Mittel.
+\end{aufgabe}
+
+
+\begin{minipage}{.3\textwidth}\bild{verhaeltnis.eps}\end{minipage}
+\quad
+\begin{minipage}{.6\textwidth}
+\begin{aufgabe} 
+  (Pia Reuter, 11) Auf den Seiten $\overline{AB}$, $\overline{BC}$ und
+  $\overline{CA}$ eines Dreiecks $ABC$ sind Punkte $D$, $E$ und $F$ so
+  gew"ahlt, dass sie die zugeh"origen Strecke im Verh"altnis
+  $q=\overline{AD}\colon
+  \overline{AB}=\overline{BE}\colon\overline{BC}=\overline{CF}\colon\overline{CA}$
+  teilen. Die Geraden $AE$, $BF$ und $CD$ schneiden sich in den Punkten $P$,
+  $Q$ und $R$.
+  \\
+  Bestimmen Sie das Verh"altnis der Dreiecksfl"achen $PQR$ und $ABC$!
+\end{aufgabe}
+\end{minipage}
+
+\medskip
+
+{\bf Lösung.}
+$$
+\frac{(1-2q)^2}{q^2-q+1}.
+$$
+
+
+
+\begin{aufgabe}
+  (Joseph Goldmann, 11) Gegeben sei ein Dreieck $ABC$ mit dem
+  Inkreismittelpunkt $I$ und dem Schnittpunkt der Seitenhalbierennden $S$. Die
+  drei Ankreise berühren die Seiten $\overline{AB}$, $\overline{BC}$ bzw.{}
+  $\overline{AC}$ in den Punkten $P$, $Q$ bzw.{} $R$.
+  \\
+  (a) Zeigen Sie, dass die drei Ecktransversalen $AP$, $BQ$ und $CR$ durch
+  einen gemeinsamen Punkt $T$ verlaufen.
+  \\
+  (b) Zeigen Sie, dass $I$, $S$ und $T$ auf einer gemeinsamen Geraden liegen.
+
+{\em Hinweis:} Bestimmen Sie die baryzentrischen Koordinaten von $T$. 
+Benutzen Sie dabei den Satz, dass Tangentenabschnitte gleich lang sind.
+\end{aufgabe} 
+
+\begin{comment}
+  todo: geometric markup
+\end{comment}
+
+\begin{attribution}
+F"ur das S"achsische Landesseminar in SAYDA, M"arz 2000, Klasse 11/12
+mit einer Erg"anzung vom 25.07.01 "uber eine WURZEL-Aufgabe zu
+Ecktransversalen mit {\em komplexen} baryzentrischen Koordinaten.
+
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+\end{document}

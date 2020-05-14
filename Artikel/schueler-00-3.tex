@@ -1,0 +1,645 @@
+\documentclass[11pt]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+
+\title{Das Invarianzprinzip\kosemnetlicensemark}  
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{Juli 2000}
+
+
+\begin{document}
+\maketitle
+
+\section*{Das Invarianzprinzip}
+In vielen Bereichen der Mathematik spielen Invarianten eine Rolle. Man denke
+nur an Fixpunkts"atze und Eigenwertaufgaben. Das Invarianzprinzip wird im
+Olympiadebereich meist bei Aufgaben verwendet, in denen Spiele oder
+Algorithmen vorkommen.
+
+Gegeben sind eine {\em Zustandsmenge} und ein {\em Algorithmus}, der die
+Zustandsmenge in sich "uber\-f"uhrt. Gesucht ist eine Funktion, die jedem
+Zustand eine Zahl, eine Restklasse oder einen Wahrheitswert zuordnet. Diese
+Funktion $f$  soll {\em invariant} sein, das hei"st unver"anderlich, unter dem
+Algorithmus. Ferner sind meist noch ein {\em Anfangszustand} $Z_a$ und ein
+angestrebter {\em Endzustand} $Z_e$ gegeben. Gilt f"ur die Invariante $f$
+\[
+f(Z_a)\ne f(Z_e),
+\]
+dann ist es nicht m"oglich, mit Hilfe des Algorithmus', den Anfangszustand
+in einer endlichen Zahl von Schritten in den Endzustand zu "uberf"uhren.
+
+\subsection*{Aufgaben zum Invarianzprinzip}
+
+\begin{aufgabe}
+  In $2n$ kreisf"ormig angeordneten Sch"usseln befinden sich je eine Kugel. In
+  jedem Zug wird in eine Sch"ussel je eine Kugel aus den beiden benachbarten
+  Sch"usseln gelegt.
+  \\
+  Man zeige, da"s zu keinem Zeitpunkt alle Kugeln in einer Sch"ussel liegen!
+\end{aufgabe}
+
+\begin{loesung}
+  Wir setzen $m:=2n$. Den Sch"usseln werden die Restklassen
+  $[0],[1],\dots,[m-1]$ modulo $m$ zugeordnet. Als Zustandssumme definieren
+  wir
+\[
+s:=\sum_{k=0}^{m-1} a_k [k],
+\]
+wobei $a_k$ die Anzahl der Kugeln in der Schale mit der Nummer $k$ ist.  In
+jedem Schritt "andert sich die Zustandssumme wiefolgt. Angenommen, wir
+f"ullten die Schale mit der Nummer $k$ mit je einer Kugel aus den
+Nachbarschalen, dann gilt f"ur die neue Zustandssumme $s'$
+\[
+s':= s-[k-1]-[k+1]+2 [k] =s,
+\]
+das hei"st, $s$ ist invariant. Nun ist aber die Zustandssumme am Anfang gleich
+\[
+s_0=\sum_{k=0}^{m-1}[k]{\cdot}1=m(m-1)/2\not\equiv 0 \mod m,
+\]
+da $(m-1)/2$ keine nat"urliche Zahl ist. Andererseits hat der angestrebte
+Endzustand die Zustandssumme $s_1:=[k]m\equiv 0 \mod m$, was offensichtlich
+von $s_0$ verschieden ist.
+\end{loesung}
+
+\begin{aufgabe}
+  Auf einem Kreisbogen sind $100$ ganze Zahlen angeordnet, deren Summe gleich
+  $1$ ist. Als Kette bezeichnen wir solche Zahlen, die nebeneinander stehen.
+  \\
+  Wieviele Ketten mit positiver Summe gibt es?
+\end{aufgabe}
+
+
+\begin{aufgabe}
+  (Das MU-R"atsel) Gegeben sei das \glqq Alphabet\grqq\ $\{M,U,I\}$ und
+  folgende \glqq Regeln\grqq:
+\begin{enumerate}
+\item $X$ sei ein beliebiges Wort, gebildet aus den Buchstaben des Alphabets.
+  Wenn $MX$ gilt, so gilt auch $MXX$.
+\item Endet ein Wort auf $I$, so kann man ein $U$ anh"angen.
+\item Drei aufeinanderfolgende Buchstaben $I$ oder zwei aufeinanderfolgende
+  Buchstaben $U$ k"onnen gestrichen werden.
+\end{enumerate}
+
+L"asst sich das Wort $MI$ durch Anwenden einer endlichen Zahl von obigen
+Regeln in das Wort $MU$ umwandeln? Wenn ja, so gebe man eine derartige Folge
+an!
+\end{aufgabe}
+
+
+\begin{loesung}
+  Die Invariante ist: Teilbarkeit durch $3$ der Anzahl der Buchstaben $I$ des
+  Wortes.
+\end{loesung}
+
+Die folgenden Aufgaben sind aus Arthur Engels Buch {\glqq}Problem-solving
+Strategies{\grqq} entnommen.
+
+\begin{aufgabe}
+  (a) Es sei $n$ eine ungerade nat"urliche Zahl. Jemand schreibt zun"achst die
+  Zahlen $1,2,\dots, 2n$ an die Tafel. Dann w"ahlt er zwei beliebige Zahlen
+  $a$ und $b$ von ihnen aus, streicht sie und ersetzt sie durch ihre absolute
+  Differenz $|a-b|$. So f"ahrt er fort bis zum Schluss nur noch eine Zahl an
+  der Tafel steht.
+  \\
+  Beweise, dass diese Zahl ungerade ist!
+  
+  (b) Jemand schreibt die Zahlen $1,\dots, n$ auf und streicht immer zwei und
+  ersetzt sie durch ihre absolute Differenz. Bleibt am Schluss eine gerade
+  oder ungerade Zahl stehen?
+\end{aufgabe}
+
+\begin{loesung}
+  (a) Es sei $S$ die Summe der Zahlen an der Tafel, also $S=n(2n+1)$ und damit
+  ungerade, da $n$ ungerade war. In jedem Schritt reduziert sich $S$ um
+  $a+b-|a-b|=2\min(a,b)$, also um eine gerade Zahl. Somit bleibt die
+  Ungeradzahligkeit von $S$ erhalten. Somit ist die letzte Zahl ungerade.
+  
+  (b) Es sei $s$ die Summe der an der Tafel stehenden Zahlen modulo $2$.
+  \\
+  Wegen ${a+b\equiv |a-b|}{ \mod 2}$ ist $s$ invariant und folglich ist
+\[
+s=s_0=\sum_{k=1}^n k=n(n+1)/2\equiv
+\begin{cases}
+  0,&\quad\text{falls }\quad n\equiv 0,3 \mod 4
+  \\
+  1,&\quad \text{falls }\quad n\equiv 1,2 \mod 4
+\end{cases}
+\]
+\end{loesung}
+
+\begin{aufgabe}
+  Ein Kreis ist in $6$ Sektoren eingeteilt. Die Zahlen $1,0,1,0,0,0$ sind
+  entgegen dem Uhrzeiger in dieser Reihenfolge auf die Sektoren geschrieben.
+  In jedem Schritt darf man zwei benachbarte Sektoreninhalte um $1$ erh"ohen.
+  \\
+  Kann man erreichen, dass nach einer gewissen Zahl von Schritten alle Zahlen
+  gleich sind?
+\end{aufgabe}
+
+\begin{loesung}
+  Es seien $a_1,\dots ,a_6$ die aktuellen Zahlen der Sektoren. Dann ist
+  $I:=a_1-a_2+a_3-a_4+a_5-a_6$ eine Invariante des Algorithmus'. Wegen $I_0=2$
+  kann daher das Ziel $I=0$ nie erreicht werden.
+\end{loesung}
+
+\begin{aufgabe}
+  Im Landtag von Sachringen hat jeder Abgeordnete h"ochstens drei Feinde. Man
+  zeige, dass man den Landtag in zwei H"auser einteilen kann, so dass jeder
+  Abgeordnete h"ochstens einen Feind im eigenen Hause hat!
+\end{aufgabe}
+
+\begin{loesung}
+  Anfangs teilen wir die Abgeordneten beliebig ein. Es sei $H$ die Gesamtsumme
+  der Anzahl der Feinde, die jeder in seinem eigenen Haus hat. Angenommen $A$
+  hat zumindest zwei Feinde in seinem eigenen Haus. Wenn $A$ das Haus
+  wechselt, so verringert sich $H$. Dieses Verringern kann nicht beliebig
+  lange fortgesetzt werden. Wenn $H$ sein Minimum angenommen hat, dann ist die
+  gew"unschte Verteilung erreicht.
+\end{loesung}
+
+\begin{aufgabe}
+  Angenommen, die vier ganzen Zahlen $a,b,c,d$ sind nicht alle gleich. Wir
+  starten mit dem Quadrupel $(a,b,c,d)$ und ersetzen es durch
+  $(a-b,b-c,c-d,d-a)$. Dann wird mindestens eine Zahl des Quadrupels beliebig
+  gro"s.
+\end{aufgabe}
+
+\begin{aufgabe}
+  Jede der Zahlen $a_1,\dots, a_n$ ist $1$ oder $-1$ und es gilt
+\[
+S=a_1a_2a_3a_4+a_2a_3a_4a_5+\dots +a_na_1a_2a_3=0.
+\]
+Man beweise, dass $4\teilt n$.
+\end{aufgabe}
+
+\begin{aufgabe}
+  $2\,n$ Botschafter sind zu einem Bankett eingeladen. Jeder Botschafter hat
+  h"ochstens $n-1$ Feinde.
+  \\
+  Man beweise, dass die Botschafter so an einem runden Tisch Platz nehmen
+  k"onnen, dass keiner von ihnen neben einem seiner Feinde sitzt!
+\end{aufgabe}
+
+\begin{aufgabe}
+  Wir starten mit einem Quadrupel $(a,b,c,d)$ von positiven ganzen Zahlen und
+  gehen "uber zu $(|a-b|, |b-c|, |c-d|, |d-a|)$. Endet dieser Prozess stets
+  bei $(0,0,0,0)$?
+\end{aufgabe}
+
+\begin{aufgabe}
+  Auf einem $n\times n$-Feld sind die Zahlen $a_{ij}=\pm 1$ f"ur $i,j=1,\dots
+  ,n$ eingetragen. Wir bezeichnen die Produkte der Zahlen der $i$-ten Zeile
+  mit $\alpha_i$ und die der $j$-ten Spalte mit $\beta_j$. F"ur ungerades $n$
+  beweise man, dass
+\[
+s=\sum_i\alpha_i+\sum_j\beta_j
+\]
+stets von Null verschieden ist!
+\end{aufgabe}
+
+\begin{loesung}
+  F"ur alle $i,j$ sei zun"achst $a_{ij}=+1$. Dann ist $s_0=n+n=2n\equiv 2 \mod
+  4$. Sei nun $(a_{ij})$ beliebig. "Andert man bei genau einem $a_{ij}$ das
+  Vorzeichen, so ver"andern sich $\alpha_i$ und $\beta_j$ jeweils um $2$.
+  Daher gilt $s'-s\in\{-4,0,4\}$. Also ist stets $s'\equiv s \mod 4$ und daher
+  niemals $s_1\equiv 0 \mod 4$.
+\end{loesung}
+
+\begin{aufgabe}
+  Auf einem Kreis seien zyklisch $4$ Einsen und $5$ Nullen angeordnet.
+  Zwischen zwei Zahlen schreibt man nun ihre Summe modulo $2$ und l"oscht die
+  alten Zahlen.
+  \\
+  Man zeige, dass zu keinem Zeitpunkt $9$ Nullen auftauchen!
+\end{aufgabe}
+
+\begin{loesung}
+  Die Invariante ist $s:=\sum_{k=1}^9 a_k \mod 2$, wobei $a_k$ die $k$-te Zahl
+  modulo $2$ auf dem Kreis ist. Nach dem ersten Schritt ist
+\[
+s'=\sum_{k=1}^9 (a_k +a_{k+1})=2\sum_{k=1}^9 a_k\equiv 0 \mod 2.
+\]
+Angenommen, zu einem Zeitpunkt tritt zum ersten Male $(0,0,\dots, 0)$ auf.
+Dann muss der Vorg"anger dieser Konfiguration gerade gleich $(1,\dots, 1)$
+gewesen sein. Die Zusatandssumme dieses Vorg"angers ist aber gleich $s=9\equiv
+1\mod 2$. Hingegen ist $s\equiv 0\mod 2 $ vom zweiten Schritt an.
+\end{loesung}
+
+\begin{aufgabe}
+  Ein Computer kann die folgenden beiden Operationen mit nat"urlichen Zahlen
+  durchf"uhren:
+\begin{enumerate}
+\item Quadrieren,
+\item Eine $n$-stellige Zahl $x$ mit $n>3$ geht "uber in $a+b$, wobei $a$ die
+  aus den ersten $n-3$ und $b$ die aus den letzten $3$ Ziffern von $x$
+  gebildete Zahl ist.
+\end{enumerate}
+
+Kann man mit Hilfe dieses Computers aus der Zahl $604$ die Zahl $703$
+erhalten?
+\end{aufgabe}
+
+\begin{loesung}
+  Wir betrachten die zweite Operation $1000a+b\mapsto a+b$. Die Differenz
+  dieser beiden Zahlen ist $999a$, also durch $27$ und $37$ teilbar. Der Rest
+  modulo $m$, $m\in\{3,9,27,37\}$ bleibt also bei der zweiten Operation
+  erhalten. Bei der ersten Operation bleibt aber nur die Teilbarkeit bzw.
+  Nicht-Teilbarkeit durch $m$ erhalten. Nun sind aber $604$ und $703$ beide
+  durch $9$ und beide nicht durch $27$ teilbar. Aber es ist $703=37*19$ aber
+  $604=37*16+12$. Die gesuchte Invariante ist also die Teilbarkeit durch $37$,
+  die f"ur die eine Zahl erf"ullt ist, f"ur die andere aber nicht. Der
+  Computer kann also nicht die $604$ in die $703$ "uberf"uhren.
+\end{loesung}
+
+\begin{aufgabe}
+  Zwei Personen spielen das folgende Spiel. An der Tafel steht die Zahl $2$.
+  Wer am Zug ist, ersetzt die Zahl $n$ an der Tafel durch die Zahl $n+d$,
+  wobei $d$ ein beliebiger Teiler von $n$ ist mit $1\le d<n$. Verloren hat,
+  wer eine Zahl gr"o"ser als 1991 an die Tafel schreibt.
+  \\
+  a) Wer gewinnt bei genauem Spiel, der Anziehende oder sein Gegner?
+  \\
+  b) Ersetze $1991$ durch $1992$ und beantworte dieselbe Frage!
+\end{aufgabe}
+
+\begin{aufgabe}
+  Gegeben sei eine beliebige Stellung des $15$-er Schiebespiels --- das ist
+  ein $4\times 4$-Quadrat mit $15$ waagerecht oder senkrecht verschiebbaren
+  Plastikquadraten, auf denen die Zahlen von $1$ bis $15$ geschrieben stehen.
+  Das Spiel hat ein (quadratisches) Loch, das das Verschieben erst
+  erm"oglicht.
+  \\
+  Man zeige, dass es nicht m"oglich ist, zwei Zahlen zu vertauschen unter
+  Beibehaltung der Lage aller anderen Zahlen!
+\end{aufgabe}
+
+\begin{loesung}
+  Insbesondere bleibt die Lage des Loches erhalten. Jeder m"oglichen
+  Konfiguration entspricht dann eine Permutation der Zahlen $\{1,\dots ,15\}$.
+  Jede Kette von Operationen, die das Loch in sich selbst "uberf"uhrt, besteht
+  aber aus einer {\em geraden} Anzahl von waagerechten und einer {\em geraden}
+  Anzahl von senkrechten Z"ugen (Vertauschung von Loch und Scheibchen), da das
+  Loch ja wieder seine urspr"ungliche horizontale und vertikale Lage einnehmen
+  soll. Dies liefert somit eine {\em gerade} Permutation der Zahlen
+  $\{1,\dots,15\}$. Die Vertauschung zweier Zahlen allein ist aber eine {\em
+    ungerade} Permutation.
+\end{loesung}
+
+\begin{aufgabe}
+  (Vorschlag $1$ zur Lagerolympiade.) Die Zahlen $1,\dots, 2n$ seien in
+  beliebiger Reihenfolge aufgeschrieben. Nun addiert man zu jeder Zahl seine
+  Nummer in dieser Reihenfolge.
+  \\
+  Man beweise, dass dann mindestens zwei gleiche Summen modulo $2n$ auftreten!
+\end{aufgabe}
+
+\begin{loesung}
+  Die Summe der Summen h"angt nicht von der gew"ahlten Permutation $\pi\in
+  S_{2n}$ ab und betr"agt modulo $2n$
+\[
+s:=\sum_{k=1}^{2n} (k +\pi(k))\equiv 2n(2n+1)\equiv 0\mod{2n}.
+\]
+Angenommen, kein Rest unter diesen Summen $k +\pi(k)$ tritt doppelt auf, dann
+muss jeder Rest genau einmal auftreten, also ist andererseits
+\[
+s=\sum_{k=1}^{2n} k \equiv 2n(2n+1)/2\equiv n\mod{2n}.
+\]
+Dies widerspricht der obigen Rechnung.
+\end{loesung}
+
+\subsection*{Parkettierungen}
+
+\begin{aufgabe}
+  Entfernt man von einem $8\times 8$ Quadrat die gegen"uberliegenden
+  Eckfelder, so l"asst sich die verbleibende Fl"ache nicht mit $31$
+  Dominosteinen "uberdecken.
+\end{aufgabe}
+
+\begin{loesung}
+  $31$ Dominosteine "uberdecken stets $31$ schwarze und $31$ wei"se Felder
+  einer schachbrettartig gef"arbten Fl"ache. Die oben beschriebene Restfl"ache
+  hat jedoch $30$ schwarze und $32$ wei"se Felder.
+\end{loesung}
+
+\begin{aufgabe}
+  (a) Ein $8\times 8$ Brett l"asst sich nicht durch $15$ Rechtecke der Form
+  $4\times 1$ und ein $2\times 2$ Quadrat "uberdecken.
+  \\
+  (b) Ist ein Rechteck mit $2\times 2$ und $4\times 1$ Platten "uberdeckt, so
+  kann man es nicht mehr "uberdecken, wenn man eine Platte der einen Sorte
+  durch eine Platte der anderen Sorte ersetzt.
+\end{aufgabe}
+
+\begin{loesung}
+  Wir "uberdecken das Rechteck regelm"a"sig mit den Resten $0,1,2$ und $3$
+  modulo $4$. Jedes $4\times 1$ Rechteck "uberdeckt dann in jeder Lage genau
+  einen dieser Reste. Jedes $2\times 2$ Quadrat "uberdeckt genau einen Rest
+  zweimal und einen gar nicht. Daher ist ein Austausch nicht m"oglich.
+\end{loesung}
+
+\begin{aufgabe}
+  Kann man ein $8\times 8$ Brett so mit $21$ Rechtecken der Form $3\times 1$
+  so auslegen, dass genau ein $1\times 1$ Quadrat nicht "uberdeckt wird? Wenn
+  ja, wo kann dieses Quadrat liegen?
+\end{aufgabe}
+
+\begin{loesung}
+  Man "uberdecke das Quadrat mit den Resten modulo $3$ in regelm"a"siger
+  Weise. Dabei treten diagonal immer dieselben Reste auf: Beginnt man mit Rest
+  $0$ in der linken oberen Ecke und Rest $1$ darunter, so hat man den Rest $0$
+  genau $1+4+7+6+3=21$ Mal, den Rest $1$ genau $2+5+8+5+2=22$ Mal und den Rest
+  $2$ schlie"slich $3+6+7+4+3=21$ Mal. Bei der "Uberdeckung bleibt also der
+  Rest $1$ einmal "ubrig. Das freie Feld muss also auf der Hauptdiagonalen
+  $a1$ -- $h8$ oder seinen dritten bzw. sechsten Nebendiagonalen (jeweils $2$)
+  liegen. Aus Symmetriegr"unden gilt dasselbe f"ur die Hauptdiagonale $a8$ --
+  $h1$ (was man etwa auch durch eine andere Parkettierung mit den Resten
+  modulo $3$ erreichen kann). Einzig die Felder $c3$, $f3$, $f6$ und $c6$
+  erf"ullen beide Bedingungen. Eine m"ogliche Parkettierung mit $1\times 3$
+  Rechtecken "uberlegt man sich schnell.
+\end{loesung}
+
+\begin{aufgabe}
+  Auf einem $8\times 8$ Brett befindet sich in der rechten oberen Ecke ein
+  schwarzer Spielstein. Mit jedem Zug wird ein wei"ser Spielstein auf ein
+  freies Feld gesetzt. Dabei werden Spielsteine auf den benachbarten Feldern
+  umgef"arbt (schwarz zu wei"s und umgekehrt). Kann man erreichen, dass das
+  ganze Brett mit wei"sen Steinen besetzt ist?
+\end{aufgabe}
+
+(Bem.: Zwei Felder seien benachbart, wenn sie eine gemeinsame Ecke haben).
+
+\begin{loesung}
+  Bei jedem Setzen eines Steins auf ein Feld werde der Mittelpunkt dieses
+  Feldes mit denen der freien Nachbarfeldern verbunden, falls es noch welche
+  gibt.  Offenbar werden dabei beliebige zwei benachbarte Felder (mit Ausnahme
+  des besetzten Eckfeldes) mit genau einer Strecke verbunden.  Die
+  vollst"andige Anzahl der Nachbarschaftsstrecken ist in jeden $n\times n$
+  Quadrat gerade, denn zu den $4$ Eckfeldern geh"oren jeweils $3$ Strecken, zu
+  den $4(n-2)$ Randfeldern jeweils $5$ und zu den $(n-1)^2$ inneren Feldern
+  jeweils $8$ Nachbarn. Da man doppelt gez"ahlt hat, muss man noch durch $2$
+  teilen. Es bleibt dennoch eine gerade Anzahl "ubrig. Durch das schwarze
+  Eckfeld fallen $3$ Nachbarschaften heraus.  Die Gesamtzahl der Strecken ist
+  also ungerade.  Daher muss es einen in einem bestimmten Moment gesetzten
+  Stein geben, der eine ungerade Anzahl von freien Nachbarfelder hat. Nach
+  allen Umf"arbungen (Besetzen der ungeraden Zahl von Nachbarfeldern) wird
+  dieser Stein schwarz sein.
+\end{loesung} 
+
+\begin{aufgabe}
+  Ein Quadrat der Seitenl"ange $2n-1$ wird durch Figuren der folgenden Bauart
+  "uberdeckt
+
+\begin{center}
+%\input steine2.pic
+{% Picture saved by xtexcad 2.4
+  \unitlength=1.000000pt
+\begin{picture}(332.00,33.00)(0.00,0.00)
+\put(319.00,1.00){\line(0,1){31.00}}
+\put(288.00,1.00){\line(1,0){31.00}}
+\put(288.00,16.00){\line(0,-1){15.00}}
+\put(332.00,16.00){\line(-1,0){44.00}}
+\put(332.00,32.00){\line(0,-1){16.00}}
+\put(303.00,32.00){\line(1,0){29.00}}
+\put(303.00,0.00){\line(0,1){32.00}}
+\put(258.00,21.00){\makebox(0.00,0.00){$(3)$}}
+\put(128.00,21.00){\makebox(0.00,0.00){$(2)$}}
+\put(0.00,21.00){\makebox(0.00,0.00){$(1)$}}
+\put(173.00,32.00){\line(0,-1){28.00}}
+\put(159.00,18.00){\line(1,0){30.00}}
+\put(158.00,33.00){\line(0,-1){9.00}}
+\put(189.00,33.00){\line(-1,0){31.00}}
+\put(189.00,4.00){\line(0,1){29.00}}
+\put(158.00,4.00){\line(1,0){31.00}}
+\put(158.00,30.00){\line(0,-1){26.00}}
+\put(63.00,31.00){\line(-1,0){14.00}}
+\put(63.00,17.00){\line(0,1){14.00}}
+\put(34.00,17.00){\line(1,0){29.00}}
+\put(34.00,3.00){\line(0,1){28.00}}
+\put(48.00,3.00){\line(-1,0){14.00}}
+\put(48.00,31.00){\line(0,-1){28.00}}
+\put(34.00,31.00){\line(1,0){14.00}}
+\end{picture}}
+\end{center}
+
+Man beweise, dass dazu mindestens $4n-1$ Figuren vom Typ $(1)$ ben"otigt
+werden!
+\end{aufgabe}
+
+\begin{loesung}
+  Die folgenden $n^2$ Felder des gegebenen Quadrates seien markiert:
+  \\
+  $a1$, $a3,\dots, a(2n-1)$, $c1$, $c3,\dots, c(2n-1)$, usw. Es seien $x$
+  bzw.{} $y$ die Anzahl der Steine vom Typ $(1)$ bzw. vom Typ $(2)$ und $(3)$.
+  Dann gilt
+\[
+3x+4y=4n^2-4n+1.
+\]
+Die drei Steintypen k"onnen aber jeweils h"ochstens ein markiertes Feld
+"uberdecken. Somit gilt
+\[
+x+y\ge n^2
+\]
+Multipliziert man diese Ungleichung mit $4$ und setzt die obige Gleichung ein,
+so hat man:
+\[
+4x+ (4n^2-4n+1)-3x\ge 4n^2.
+\]
+Hieraus folgt sofort $x\ge 4n-1$.
+\end{loesung}
+
+\begin{aufgabe}
+  (a) Gegeben sei ein $6\times 6$ Quadrat oder ein $k\times n$ Rechteck mit
+  $k\le 4$. Diese seien mit Dominos "uberdeckt. Man zeige, dass es stets eine
+  Gittergerade gibt, die kein Domino in der Mitte zerschneidet!
+  
+  (b) Man zeige, dass es f"ur alle anderen Rechtecke "Uberdeckungen mit
+  Dominos derart gibt, so dass alle Gittergeraden zumindest jeweils ein Domino
+  in der Mitte zerteilen!
+\end{aufgabe}
+
+\begin{loesung}
+  (a1) Der Fall des $6\times 6$ Quadrats. Wir zeigen: Schneidet eine
+  Gittergerade ein Domino, so schneidet sie auch ein weiteres Domino. Durch
+  jede Gittergerade wird das Domino in zwei Rechtecke geteilt, die eine {\em
+    gerade} Zahl als Fl"ache besitzen. Zerschnittene Dominos auf einer
+  Gittergeraden m"ussen also immer paarweise auftreten.
+  \\
+  Nun gibt es aber $10$ schneidende Gittergeraden. Angenommen, jede
+  Gittergerade zerschneidet mindestens ein Domino, so schneidet sie auch ein
+  zweites Domino. Da jedes Domino nur von h"ochstens einer Gittergeraden
+  zerschnitten werden kann, existieren also mindestens $20$ Dominos mit einer
+  Fl"ache von $40$. Dies ist aber ein Widerspruch, da das Quadrat nur die
+  Fl"ache $36$ hat.
+  \\
+  (a2) Die F"alle der Rechtecke $1\times n$ und $2\times n$ "uberlegt man sich
+  schnell anhand einer Skizze. Wir betrachten den Fall $3\times 2n$ und nehmen
+  wieder an, dass alle $2n-1$ vertikalen Gittergeraden, mindestens ein Domino
+  zerschneiden. Wie in (a1) argumentiert man, dass die $n-1$ vertikalen
+  Gittergeraden, die das Rechteck in zwei Rechtecke mit gerader Fl"ache
+  zerschneiden wiederum genau $2$ Dominos zerschneiden m"ussen und die anderen
+  $n$ mindestens ein Domino. Die Gesamtzahl der Dominos ist also
+\[
+2{\cdot}(n-1)+1{\cdot} n=3n-2.
+\]
+Andererseits m"ussen aber mindestens $4$ senkrechte Dominos von den beiden
+waagerechten Gittergeraden zerschnitten werden. Somit hat man mindestens
+$3n+2$ Dominos zu zerschneiden, es gibt aber nur $3n$.
+\\
+(a3) Wir betrachten den Fall des $4\times n$ Rechtecks. Die $n-1$ kurzen
+Gittergeraden m"ussen dann immer mindestens $2$ Dominos schneiden. Somit hat
+man mindestens $2n-2$ Dominos, die von den kurzen Gittergeraden geschnitten
+werden. Die drei langen Gittergeraden schneiden jeweils mindestens ein Domino,
+so dass man mindestens $2n+1$ Dominos hat; es gibt aber nur $2n$ Dominos.
+
+(b) Es existieren Zerlegungen der $5\times 6$ und $8\times 6$ Rechtecke, wo
+jede Gittergerade mindestens ein Domino zerschneidet:
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+1&2&2&3&3
+\\ \hline
+1&4&5&5&6
+\\ \hline
+7&4&8&8&6
+\\ \hline
+7&9&9&10&11
+\\ \hline
+12&12&13&10&11
+\\ \hline 
+14&14&13&15&15
+\\
+\hline
+\end{tabular}
+\qquad
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+1&2&2&3&4&4&5&5
+\\ \hline 
+1&6&6&3&7&7&8&9
+\\ \hline
+10&10&11&12&12&13&8&9 
+\\ \hline
+14&15&11&16&16&13&17&17
+\\ \hline
+14&15&18&18&19&20&20&21
+\\ \hline
+22&22&23&23&19&24&24&21
+\\ \hline
+\end{tabular}
+\end{center}
+Jedes andere Rechteck l"asst sich durch schrittweises Hinzuf"ugen von zwei
+Zeilen bzw.{} Spalten aus den obigen beiden Rechtecken $5\times 6$ und
+$6\times 8$ erzeugen. Wir geben nun eine "Uberdeckung des Rechtecks $n\times
+(k+2)$ an, die aus einer "Uberdeckung des Rechtecks $n\times k$ ($n$ Zeilen
+und $k$ Spalten) konstruiert wird und ebenfalls die Eigenschaft hat, dass jede
+Gittergerade mindestens ein Domino schneidet. Wir f"ugen rechts $2$ Spalten
+hinzu.  In der Spalte, rechtsau"sen, des Ausgangsrechtecks findet man ein
+vertikales Domino; (angenommen, es g"abe nur horizontale Dominos in den
+letzten beiden Spalten, dann w"urde die vorletzte vertikale Gittergerade kein
+Domino schneiden, entgegen der Annahme). Dieses vertikale Domino wird um zwei
+Spalten nach rechts verschoben. Alle anderen freien Felder werden durch
+horizontale Dominos aufgef"ullt. Man sieht, dass dadurch die beiden neu
+hinzugekommenen vertikalen Gittergeraden $2$ bzw.{} $n-2$ Dominos
+durchschneiden, wogegen die horizontalen Gittergeraden nach wie vor dieselben
+Dominos zerschneiden.
+\end{loesung}
+
+\begin{aufgabe}
+  (Vorschlag $2$ zur Lagerolympiade.) Ist es m"oglich, ein Rechteck mit den 5
+  verschiedenen Tetraminos zu "uberdecken?
+\end{aufgabe}
+
+\begin{loesung}
+  Nein, es ist nicht m"oglich. Das Rechteck hat $20$ Einheitsquadrate und
+  l"asst sich daher schachbrettartig f"arben: $10$ wei"se und $10$ schwarze
+  Felder hat man. Nun "uberdecken aber das gerade, das quadratische, das L-
+  und das S-Tetramino jeweils zwei schwarze und zwei wei"se Felder. Nur das
+  "ubriggebliebene T-Tetramino "uberdeckt von einer Farbe $3$ Felder und von
+  der anderen nur ein Feld. Daher ist die Bilanz der schwarzen und wei"sen
+  Felder in jeder "uberdecketen Fl"ache unausgeglichen. Die "Uberdeckung ist
+  somit nicht m"oglich.
+\end{loesung}
+
+\begin{aufgabe}
+  Man beweise, dass sich das $10\times 10$ Quadrat nicht mit $25$ T-Tetraminos
+  "uberdecken l"asst!
+\end{aufgabe}
+
+\begin{loesung}
+  (Nach Susanne K"ursten.) Bei der schachbrettartigen F"arbung des Quadrates
+  treten gleich viele schwarze wie wei"se Felder auf. Somit muss die Anzahl
+  der \glqq schwarzen\grqq\ T-Tetraminos gleich der Anzahl der \glqq
+  wei"sen\grqq\ T-Tetraminos in der "Uberdeckung sein (Ein T-Tetramino in der
+  "Uberdeckung hei"se schwarz bzw.{} wei"s, wenn es mehr schwarze bzw.{} mehr
+  wei"se Felder "uberdeckt). Da aber eine ungerade Zahl von T-Tetraminos zur
+  "Uberdeckung verwendet wird, k"onnen nicht gleich viele schwarze wie wei"se
+  T-Tetraminos auftreten.
+\end{loesung}
+
+\begin{aufgabe}
+  Man zeige, dass sich der $10\times 10\times 10$ W"urfel nicht mit $250$
+  Quadern vom Format $4\times 1\times 1$ auslegen l"asst.
+\end{aufgabe}
+
+\begin{loesung}
+  Der $10\times 10\times 10$ W"urfel wird regelm"a"sig mit den Farben $0,1,2$
+  und $3$ so gef"arbt, dass jedes gerade (r"aumliche) Tetramino jeden Rest
+  genau einmal "uberdeckt. Beginnt man in der hinteren, oberen, linken Ecke
+  mit der Farbe $0$ und geht in die $3$ m"oglichen Richtungen jeweils mit $1$,
+  $2$ und $3$ weiter, so erh"alt man eine ausgeglichene Bilanz von gef"arbten
+  Elementarw"urfeln bis auf die vordere, rechte, untere $2\times 2\times
+  2$-Ecke, die in den beiden Schichten, von hinten beginnend, die F"arbung
+\[
+\begin{pmatrix}0&1\\ 1&2\end{pmatrix}
+\quad \text{und}\quad
+\begin{pmatrix}1 &2\\ 2&3\end{pmatrix}
+\]
+hat. Die Farben $1$ und $2$ "uberwiegen also, was bei einer Parkettierung mit
+geraden Tetraminos nicht m"oglich ist.
+\end{loesung}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+
+schueler (2016-01-30): Vermeintliche L\"osung zu Aufgabe 7 wurde zu Aufgabe 8 korrigiert.
+\end{attribution}
+
+\end{document}
+
+
+\nein{
+\aufg{
+{\bf 3.} (Doppeltes Abz"ahlen) Es sei $n$ eine nat"urliche Zahl und
+$A_1,\dots,A_{2n+1}$ Teilmengen einer Menge $B$. Es gelte
+\begin{enumerate}
+\item Jede Menge $A_i$ enth"alt genau $2n$ Elemente.
+\item F"ur alle $i$ und $j$, $i\ne j$, enth"alt die Menge $A_i\cap A_j$ genau
+  ein Element.
+\item Jedes Element von $B$ geh"ort zu mindestens zwei der Mengen $A_i$.
+\end{enumerate}
+(a) Man zeige, dass $B$ genau $n(2n+1)$ Elemente besitzt, dass keine drei
+verschiedenen Mengen $A_i$ gemeinsame Elemente besitzen, und dass
+jedes Element von $B$ in genau 2 der Mengen $A_i$ liegt.
+\\
+(b) F"ur welche $n$ gibt es eine Zuordnung von $B$ nach $\{0,1\}$, so dass
+genau $n$ Elementen jeder Menge $A_i$ die Zahl $0$ zugeordnet wird?
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

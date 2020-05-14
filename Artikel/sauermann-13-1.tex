@@ -1,0 +1,271 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+\usepackage[utf8]{inputenc}
+
+\title{Hilfsmittel bei Geometrieaufgaben.\\ Ein Kompendium für Klasse
+  8\kosemnetlicensemark} 
+\author{Lisa Sauermann}
+\date{März 2013}
+
+\begin{document}
+\maketitle
+
+Geometrie ist ein wichtiges Gebiet bei der Olympiade, das neben viel
+Kreativität und einem geübtem Auge auch einige theoretische Kenntnisse
+erfordert. Im Folgenden sollen deshalb die wichtigsten grundlegenden
+geometrischen Sachverhalte sowie einige Beweisstrategien zusammengefasst
+werden. Es sind dabei auch schwierigere Resultate erwähnt, vielleicht weckt
+dies das Interesse an der selbstständigen Beschäftigung mit diesen. Dazu sei
+beispielsweise das Geometriekapitel des Buches „Ein-Blick in die Mathematik“
+(Richard Bamler, Christian Reiher et al., Aulis Verlag Deubner) empfohlen.
+
+\section{Beweismethoden und Aufgabentypen}
+
+\subsection{Aufgabentypen}
+
+\begin{itemize}
+\item Bei allen Aufgabentypen: Man darf Lagebeziehungen nicht einfach
+  voraussetzen, sondern muss sie gegebenenfalls in einer Lagebetrachtung
+  begründen! Manchmal sind auch Fallunterscheidungen notwendig.
+\item Bestimmungsaufgaben einer Länge oder eines Winkels: Aus den
+  Voraussetzungen ist die gesuchte Größe abzuleiten.
+\item Bestimmungsaufgaben aller möglichen Größen einer Länge oder eines
+  Winkels: Es müssen alle möglichen Werte angegeben werden, gezeigt werden,
+  dass es keine weiteren gibt, und nachgewiesen werden, dass diese Werte
+  tatsächlich möglich sind.
+\item Aussagen vom Typ „Wenn, dann“: Aus den Voraussetzungen muss die
+  Behauptung geschlussfolgert werden.
+\item Aussagen vom Typ „Genau dann, wenn“: Es sind zwei Richtungen zu zeigen.
+\item Aufgaben vom Typ „Bestimme den geometrischen Ort“: Es ist eine Aussage
+  vom Typ „Genau dann, wenn“ (2 Richtungen!) zu zeigen. Die Behauptung muss
+  man aber selbst noch finden. Dazu helfen mehrere Skizzen, um eine Vermutung
+  abzuleiten.
+\item Konstruktionsaufgaben (im Allgemeinen mit Zirkel und Lineal, wenn nicht
+  anders vermerkt):
+\begin{itemize}
+\item Konstruktionsbeschreibung;
+\item Angabe, wann sich bei der Konstruktion wie viele gesuchte Objekte
+  ergeben;
+\item Nachweis, dass es neben den konstruierten keine weiteren Objekte geben
+  kann, die die Bedingungen erfüllen;
+\item Nachweis, dass die konstruierten Objekte tatsächlich die Bedingungen
+  erfüllen;
+\item eventuell Konstruktionszeichnung (Durchführung der Konstruktion an einem
+  Beispiel).
+\end{itemize}
+Absolute Grundkonstruktionen dürfen vorausgesetzt werden (Konstruktion von
+Mittelsenkrechten, Winkelhalbierenden, Senkrechte auf Gerade durch Punkt,
+Parallele zu Gerade durch Punkt)
+\end{itemize}
+
+\subsection{Beweismethoden}
+
+\begin{itemize}
+\item Geometrische Örter: Einige geometrische Objekte lassen sich als
+  geometrische Örter interpretieren. Beispielsweise ist die Mittelsenkrechte
+  einer Strecke $\ksegment{AB}$ der geometrische Ort aller Punkte der Ebene,
+  die von den Punkten $A$ und $B$ den gleichen Abstand haben. Die
+  Innenwinkelhalbierende und die Außenwinkelhalbierende eines Winkels
+  $\kangle{BAC}$ bilden den geometrischen Ort aller Punkte der Ebene, die von
+  den Geraden $\kline{AB}$ und $\kline{AC}$ den gleichen Abstand haben.
+\item „Winkeljagd“: So lange alle Winkel ausrechnen (d.\,h.\ durch andere
+  Winkel, wie beispielsweise die Innenwinkel eines Dreiecks, ausdrücken), bis
+  die Behauptung gezeigt ist.
+\item Herumrechnen mit Streckenlängen: beispielsweise im Zusammenhang mit den
+  Sätzen von Ceva und Menelaos.
+\item Suchen von Sehnenvierecken: Sehnenvierecke spielen in vielen Aufagben
+  den entscheidenden Schritt bei der Lösungsfindung. Auch bei der „Winkeljagd“
+  sind sie hilfreiche Geschütze.
+\item Suchen von ähnlichen oder kongruenten Dreiecken: Aus Aussagen über
+  Strecken ergeben sich so Aussagen über Winkel und umgekehrt.
+\item Betrachten von Drehungen, zentrischen Streckungen oder Drehstreckungen:
+  geht ein Teil der Figur durch eine Drehung, zentrischen Streckung oder
+  Drehstreckung (oder seltener auch Spiegelung) in einen anderen Teil über,
+  lassen sich meist wertvolle Aussagen ableiten.
+\end{itemize}
+
+\subsection{Herangehensweisen beim Finden von Beweisen}
+
+\begin{itemize}
+\item korrekte Skizze!
+\item Wenn man nicht weiter kommt: Neue Skizze machen!
+\item Wie kann man Voraussetzungen benutzen? Was würde reichen, um die
+  Behauptung zu zeigen?
+\item Aufstellen von Zwischenbehauptungen, diesbezügliche Vermutungen anhand
+  von Skizze(n) finden und überprüfen.
+\item Alle Erkenntnisse in Skizze deutlich machen (z.\,B.\ gleich große Winkel
+  mit gleicher Farbe markieren), dafür Bunststifte zu Klausur mitbringen!
+\item Neu eingeführte Punkte sinnvoll benennen.
+\end{itemize}
+
+\section{Sätze und Sachverhalte}
+
+\subsection{Allgemeines}
+
+\begin{itemize}
+\item Nebenwinkelsatz, an parallelen Geraden Stufenwinkelsatz und
+  Wechselwinkelsatz
+\item Kongruenzsätze sss, sws, wsw und SsW
+\item Ähnlichkeitssätze www, sss, sws und SsW (s steht hier für gleiche
+  Seitenverhältnisse)
+\item Strahlensätze: Sind $\kline{AB}$ und $\kline{A'B'}$ parallele Geraden
+  und $P$ der Schnittpunkt der Geraden $\kline{AA'}$ und $\kline{BB'}$, so
+  gilt:
+\begin{itemize}
+\item erster Strahlensatz:
+  \begin{gather*}
+    \frac{\msegment{PA}}{\msegment{PA'}}
+    =\frac{\msegment{PB}}{\msegment{PB'}}\,.
+  \end{gather*}
+\item zweiter Strahlensatz:
+  \begin{gather*}
+    \frac{\msegment{PA}}{\msegment{PA'}}
+    =\frac{\msegment{AB}}{\msegment{A'B'}}\,.
+  \end{gather*}
+\item dritter Strahlensatz: Liegt außerdem noch $C$ auf der Geraden
+  $\kline{AB}$, $C'$ auf der Geraden $\kline{A'B'}$ und $P$ ebenfalls auf der
+  Geraden $\kline{CC'}$, so gilt
+  \begin{gather*}    
+    \frac{\msegment{AB}}{\msegment{A'B'}}
+    =\frac{\msegment{BC}}{\msegment{B'C'}}\,. 
+  \end{gather*}
+\end{itemize}
+Umkehrbar sind nur der erste und der zweite Strahlensatz.
+\end{itemize}
+
+\subsection{Am Kreis}
+
+\begin{itemize}
+\item Ein konvexes Viereck $ABCD$ ist genau dann ein Sehnenviereck
+  (d.\,h.\ alle vier Ecken liegen auf einem gemeinsamen Kreis), wenn
+  $\mangle{CBA} + \mangle{ADC}=180\grad$ gilt.
+\item Peripheriewinkelsatz: Liegen die vier Punkte $A$, $B$, $C$ und $D$ in
+  dieser Reihenfolge auf einem Kreis, so gilt $\mangle{ACB}=\mangle{ADB}$.
+\item Zentri-Peripheriewinkelsatz: Liegen die drei Punkte $A$, $B$ und $C$ auf
+  einem Kreis um den Punkt $O$, so gilt $2\cdot\mangle{ACB}=\mangle{AOB}$.
+\item Sehnentangentenwinkelsatz: Liegen die drei Punkte $A$, $B$ und $C$ auf
+  einem Kreis und der Punkt $P$ auf der Tangenten an diesen Kreis in $A$,
+  wobei $P$ und $C$ auf verschiedenen Seiten der Geraden $AB$ liegen, so gilt
+  $\mangle{ACB}=\mangle{PAB}$.
+\item Tangentenabschnittssatz: Berühren die beiden Tangenten von einem Punkt
+  $P$ an einen Kreis diesen in den Punkten $A$ und $B$, so gilt
+  $\msegment{PA}=\msegment{PB}$.
+\item Sehnen-Satz: Liegen die vier Punkte $A$, $B$, $C$ und $D$ auf einem
+  Kreis und der Schnittpunkt $P$ der Geraden $\kline{AB}$ und $\kline{CD}$
+  innerhalb dieses Kreises, so gilt $\msegment{PA}\cdot \msegment{PB}
+  =\msegment{PC}\cdot \msegment{PD}$.
+\item Sekanten-Satz: Liegen die vier Punkte $A$, $B$, $C$ und $D$ auf einem
+  Kreis und der Schnittpunkt $P$ der Geraden $\kline{AB}$ und $\kline{CD}$
+  außerhalb dieses Kreises, so gilt $\msegment{PA}\cdot \msegment{PC}
+  =\msegment{PB}\cdot \msegment{PD}$.
+\item Sehnen-Sekanten-Satz: Liegen die vier Punkte $A$, $B$, $C$ und $D$ auf
+  einem Kreis und ist $P$ der Schnittpunkt der Geraden $\kline{AB}$ und
+  $\kline{CD}$, so gilt $\msegment{PA}\cdot \msegment{PC} =\msegment{PB}\cdot
+  \msegment{PD}$.
+\end{itemize}
+
+\subsection{Dreiecksgeometrie}
+
+Über Höhenschnittpunkt und Umkreismittelpunkt:
+\begin{itemize}
+\item Die drei Höhen, Seitenhalbierenden, Mittelsenkrechten und
+  Winkelhalbierenden schneiden sich jeweils in einem Punkt (Höhenschnittpunkt,
+  Schwerpunkt, Umkreismittelpunkt bzw.\ Inkreismittelpunkt).
+\item Die Spiegelbilder vom Höhenschnittpunkt an den Dreiecksseiten liegen auf
+  dem Umkreis.
+\item Das Spiegelbild vom Höhenschnittpunkt eines Dreiecks $\ktriangle*{ABC}$
+  am Mittelpunkt der Strecke $\ksegment{BC}$ liegt auf dem Umkreis und bildet
+  verbunden mit dem Punkt $A$ einen Durchmesser des Umkreises.
+\item Das Spiegelbild der Höhe an der Winkelhalbierenden der gleichen Ecke
+  verläuft durch den Umkreismittelpunkt.
+\item Bei zentrischer Streckung am Schwerpunkt mit Streckfaktor $-\frac{1}{2}$
+  geht das Dreieck in sein Seitenmittendreieck über. Der Höhenschnittpunkt
+  geht dabei in den Umkreismittelpunkt über.
+\item Eulergerade: Höhenschnittpunkt, Schwerpunkt und Umkreismittelpunkt
+  liegen auf einer Geraden.
+\item Feuerbachkreis: Die drei Seitenmittelpunkte, die drei Höhenfußpunkte und
+  die drei Mittelpunkte der Verbindungsstrecken des Höhenschnittpunktes mit
+  den Ecken liegen auf einem Kreis. Der Mittelpunkt dieses Kreises liegt
+  ebenfalls auf der Eulergeraden.
+\end{itemize}
+
+Über die Winkelhalbierenden:
+\begin{itemize}
+\item Winkelhalbierende und gegenüberliegende Mittelsenkrechte schneiden sich
+  auf dem Umkreis.
+\item Es seien $a$, $b$, $c$ die Seitenlängen und $s=\frac{a+b+c}{2}$ der
+  Halbumfang eines Dreiecks. Dann betragen die Längen der Tangentenabschnitte
+  von den Ecken an den Inkreis $s-a$, $s-b$ bzw.\ $s-c$. Die
+  Tangentenabschnitte jeder Ecke an den gegenüberliegenden Ankreis haben die
+  Länge $s$.
+\item Ist $r$ der Inkreisradius und $s$ der Halbumfang eines Dreiecks, dann
+  beträgt dessen Fläche $r\cdot s$.
+\item Inkreis- und Ankreisberührpunkt an eine Dreiecksseite liegen bezüglich
+  des Mittelpunkts dieser Dreiecksseite gespiegelt.
+\item Innenwinkelhalbierende und Außenwinkelhalbierende stehen aufeinander
+  senkrecht.
+\item Der Inkreismittelpunkt ist der Höhenschnittpunkt des
+  Ankreisberührpunktdreiecks.
+\item Der Höhenschnittpunkt ist der Inkreismittelpunkt der
+  Höhenfußpunktdreiecks.
+\item Satz von der Winkelhalbierenden: Wenn die Winkelhalbierende durch $A$ in
+  einem Dreieck $\ktriangle*{ABC}$ die Seite $\ksegment{BC}$ im Punkt $D$
+  schneidet, so gilt
+  \begin{gather*}
+    \frac{\msegment{BD}}{\msegment{DC}}=\frac{\msegment{AB}}{\msegment{AC}}\,.
+  \end{gather*}
+\item Die drei Verbindungsstrecken der Ecken mit den jeweils
+  gegenüberliegenden Inkreisberührpunkten schneiden sich in einem Punkt, dem
+  Gergonne-Punkt.
+\item Die drei Verbindungsstrecken der Ecken mit den jeweils
+  gegenüberliegenden Ankreisberührpunkten schneiden sich in einem Punkt, dem
+  Nagelschen Punkt.
+\item Heron-Formel: Die Dreiecksfläche beträgt
+  $\sqrt{s\,(s-a)\,(s-b)\,(s-c)}$.
+\end{itemize}
+
+\subsection{Die Sätze von Ceva und Menelaos}
+
+Ist $P$ ein Punkt auf einer Gerade $\kline{AB}$, so können wir das
+Teilungsverhältnis $t(A,B;P)$ von $P$ bezüglich der Strecke $\ksegment{AB}$
+definieren. Ist $P$ ein innerer Punkt der Strecke $\ksegment{AB}$, so beträgt
+dieses wie gewohnt einfach
+\begin{gather*}
+  t(A,B;P)=\frac{\msegment{AP}}{\msegment{PB}}\,.
+\end{gather*}
+Liegt der Punkt $P$ außerhalb der Strecke $\ksegment{AB}$, so definieren wir
+das Teilungsverhältnis als 
+\begin{gather*}
+  t(A,B;P)=-\frac{\msegment{AP}}{\msegment{PB}}\,.
+\end{gather*}
+
+\begin{satz}[Satz von Ceva] 
+  Es seien $\ktriangle*{ABC}$ ein Dreieck und $D$, $E$ und $F$ von dessen
+  Eckpunkten verschiedene Punkte auf den Geraden $\kline{BC}$, $\kline{CA}$
+  bzw.\ $\kline{AB}$. 
+
+  Die Geraden $\kline{AD}$, $\kline{BE}$ und $\kline{CF}$ schneiden sich genau
+  dann in einem Punkt, wenn 
+  \begin{gather*}
+    t(B,C;D)\cdot t(C,A;E)\cdot t(A,B;F) =1
+  \end{gather*}
+  gilt.
+\end{satz}
+\begin{satz}[Satz von Menelaos] 
+  Es seien $\ktriangle*{ABC}$ ein Dreieck und $D$, $E$ und $F$ von dessen
+  Eckpunkten verschiedene Punkte auf den Geraden $\kline{BC}$, $\kline{CA}$
+  bzw.\ $\kline{AB}$.  
+
+  Die Punkte $D$, $E$ und $F$ liegen nun genau dann auf einer Geraden, wenn
+  \begin{gather*}
+    t(B,C;D)\cdot t(C,A;E)\cdot t(A,B;F) =-1
+  \end{gather*}
+  gilt.
+\end{satz}
+
+\begin{attribution}
+sauermann (März 2013): Für KoSemNet freigegeben.
+
+graebe (2014-01-01): Nach den KoSemNet Regeln aufbereitet.
+\end{attribution}
+\end{document}

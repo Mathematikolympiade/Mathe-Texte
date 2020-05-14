@@ -1,0 +1,392 @@
+\documentclass[11pt]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+
+\date{Juli 2002}
+
+\title{Trugschlüsse im Zusammenhang mit dem Begriff der
+  Stetigkeit\kosemnetlicensemark} 
+\author{Wolfgang Moldenhauer und Axel Schüler}
+
+\begin{document}
+\maketitle
+
+Durch den ständigen Umgang mit stetigen Funktionen im Unterricht vergisst die
+Mehrzahl der Schüler, dass es Funktionen gibt, die diese Eigenschaft nicht
+haben. Im Folgenden möchten wir für einen daraus entstehenden Trugschluss ein
+Beispiel vorstellen. Die Anregung für diese Arbeit verdanken wir einer Arbeit
+von {\sc Ilse} (s. \cite{a-Ilse}) und dem besagten Trugschluss der Schüler.
+Für die Schüler eines Korrespondenzzirkels bestand die Aufgabe, folgenden Satz
+zu beweisen:
+
+\begin{quote}
+Es seien $f$ und $g$ für alle reellen Zahlen definierte Funktionen. $f$ sei
+periodisch mit der rationalen Periode $a$ und $g$ periodisch mit der
+irrationalen Periode $b$. Man zeige, dass die Funktion $f+g$ genau dann
+periodisch ist, wenn $f$ oder $g$ konstant ist.
+\end{quote}
+
+Wir wollen zunächst die Schülerlösung vorstellen und dann
+anschließend Fehler aufdecken. Es besteht somit für den interessierten Leser
+die Möglichkeit, bei der Fehlersuche seine Kenntnisse zu überprüfen.
+
+Es liegt eine {\em genau-dann-wenn}-Aussage vor, so dass der Beweis aus zwei
+Teilen besteht:
+
+\subsubsection*{Schülerbeweis}
+1. Ist $f$ oder $g$ konstant, so ist $f+g$ periodisch.
+
+Dieser Nachweis gelingt leicht. Es sei O.\,B.\,d.\,A. $f(x)=c$ ($c$ sei
+   konstant), so ist
+$$ F(x)=f(x)+g(x)=c+g(x)=c+g(x+b)=f(x+b)+g(x+b)=F(x+b),$$
+d.\,h.{} $f+g$ ist periodisch mit der Periode $b$.
+
+2. Ist $f+g$ periodisch, so ist $f$ oder $g$ konstant.
+
+Diese Beweisführung ist aufwändiger. Es sei $F(x)=f(x)+g(x)$ periodisch mit
+der Periode $c$. Dann gilt:
+\begin{align*}
+&F(x+c)=f(x+c)+g(x+c)=F(x)=f(x)+g(x)\quad \text{bzw.{}}\\
+&f(x+c)-f(x)+g(x+c)-g(x)=0.
+\end{align*}
+
+Wir setzen $f_1(x)=f(x+c)-f(x)$ und $g_1(x)=g(x+c)-g(x)$ und leiten einige
+Eigenschaften dieser neuen Funktionen her.
+\renewcommand{\theenumi}{\Roman{enumi}}
+\renewcommand{\labelenumi}{\theenumi.}
+
+\begin{enumerate}
+\item $f_1$ ist mit der Periode $a$ periodisch, da
+$$ f_1(x+a)=f(x+a+c)-f(x+a)=f(x+c)-f(x)=f_1(x)\quad\text{ist.}$$
+\item $g_1$ ist periodisch mit der Periode $b$, da (analog)
+$$ g_1(x+b)=g(x+b+c)-g(x+b)=g(x+c)-g(x)=g_1(x)\quad\text{gilt.}$$
+\item $f_1$ ist periodisch mit der Periode $b$.
+Nach Definition ist für alle reellen Zahlen $x$:
+$$f_1(x)+g_1(x)=0\quad \text{bzw.{}} \quad f_1(x)=-g_1(x).$$
+Man überzeugt sich schnell, dass der Vorzeichenwechsel die Periode $b$ von
+$g_1$ erhält.
+\end{enumerate}
+Damit hat die Hilfsfunktion $f_1$ die Perioden $a$ und $b$.
+
+Nun gilt bekanntlich der folgende Satz:
+
+\begin{satz}
+Ist eine nicht konstante Funktion periodisch, so hat sie eine kleinste
+Periode.  Jede andere Periode ist ein ganzzahliges Vielfaches dieser kleinsten
+Periode.
+\end{satz}
+
+Wenden wir diesen Satz auf $f_1$ an, wobei $f_1$ nicht konstant sei, so folgt:
+$f_1$ hat eine kleinste Periode, die mit $e$ bezeichnet sei. Weiter gibt es
+ganze Zahlen $m$ und $n$ ($m,n\ne 0$) derart, dass $a=me$ und $b=ne$ gilt.
+Hieraus ergibt sich $an=bm$. Diese Gleichung stellt einen Widerspruch zur
+Irrationalität von $b$ dar. Damit ist $f_1$ konstant.
+
+
+Somit ist $f(x+c)-f(x)=p$, wobei $p$ eine Konstante ist. Ist $p\ne 0$, so ist
+für ein festes $x_0$ (wie man durch vollständige Induktion zeigt)
+$f(x_0+kc)=f(x_0)+kp$, wobei $k$ eine natürliche Zahl ist.Wenn wir $k$
+beliebig groß werden lassen, dann wächst die rechte Seite der Gleichung für
+ein festes $x_0$ über alle Grenzen und dies bedeutet, dass $f$ nicht
+periodisch sein kann.
+
+Damit verbleibt nur der Fall $p=0$. Hieraus ergibt sich sofort
+$f(x+c)=f(x)$. Wir können davon ausgehen, dass $f$ nicht konstant ist. $f$ hat
+aber, wie wir eben nachgewiesen haben, neben $a$ noch die Periode $c$. Infolge
+des oben zitierten Satzes ergibt sich hieraus, dass $c$ rational sein muss. Da
+aber $g_1(x)=-f_1(x)=0=g(x+c)-g(x)$ ist, hat $g$ neben der irrationalen
+Periode $b$ auch die rationale Periode $c$. Auf Grund des oben zitierten
+Schlusses ergibt sich sofort, dass $g$ konstant ist.
+
+Damit ist der Schülerbeweis aufgeführt.
+
+\subsubsection*{Kritische Bemerkungen zur Schülerlösung}
+
+\newcommand{\wz}{\sqrt{2}}
+
+Betrachten wir die Funktionen:
+$$
+f(x)=g(x)=\begin{cases}1,&\quad\text{falls}\quad x=a+b\sqrt{2};a,\,b\in\Q
+\\ 0,& \text{sonst}.
+\end{cases}
+$$
+Die Funktion $f$ hat als Periode die irrationale Zahl $\sqrt{2}$. Ist nämlich
+$x=a+b\wz$, so ist auch $x+\wz=a+(b+1)\wz$, d.\,h.{} $f(x+\wz )=f(x)=1$. Ist
+aber $x\ne a+b\wz $, so ist auch $x+\wz \ne a+(b+1)\wz$ und es ist
+$f(x+\wz)=f(x)=0.$
+
+Die Funktion $g$ hat eine rationale Periode nämlich $1$, da (analog) wegen
+$x+1=(a+1)+b\wz$ für $x=a+b\wz$ auch $g(x+1)=g(x)=1$ folgt. Ist jedoch 
+$x\ne a+b\wz $, so ist auch $x+1\ne (a+1)+b\wz $ und somit $g(x+1)=g(x)=0$.
+
+Die Funktion $f+g$ hat die Perioden $1$ und $\wz$, wie man leicht durch
+analoge Betrachtungen einsieht, aber weder $f$ noch $g$ sind konstant.
+
+Wir haben somit ein Gegenbeispiel konstruiert, so dass die Aussage des zu
+beweisenden Satzes nicht richtig sein kann. Folglich müssen wir in dem
+angegebenen Beweis mindestens einen Fehler gemacht haben.
+
+Hierzu bemerken wir:
+
+I. Die zitierte Aussage ist falsch. Sie gilt zwar für {\em stetige}
+Funktionen, siehe
+Hilfssatz\,\ref{l-stetig} unten, ist aber ohne diese Voraussetzung der
+Stetigkeit falsch. Wir
+betrachten dazu die im Gegenbeispiel angegebene Funktion $f$. Diese Funktion
+hat keine kleinste Periode, da jede Zahl der Form $s+t\wz$ mit $s,t\in\Q$ eine
+Periode von $f$ ist.
+
+Auch  dass alle Perioden ganzzahlige Vielfache einer gewissen Periode seien,
+ist falsch, da $f$ gleichzeitig die Perioden $\wz $ und $1$ hat, die
+bekanntlich keine rationalen Vielfachen voneinander sind. Damit lässt sich
+dann auch nicht $f_1=p$ ($p$ ist konstant) im Beweis folgern.
+
+II. Aus der Beziehung $f(x+c)-f(x)=p\ne 0$ wird im Schülerbeweis gefolgert,
+dass $f$ nicht periodisch sein kann. Auch dies ist falsch, wie wir durch ein
+Gegenbeispiel nachweisen werden. Wiederum gilt dies aber für {\em stetige}
+Funktionen, was leicht aus dem Hilfssatz\,\ref{l-beschr} folgt.  Doch zuvor
+wollen wir noch einen anderen Zusammenhang aufdecken. Interpretieren wir $p$
+als $f(y)$ und $c$ als $y$, so erhalten wir die {\sc Cauchy}sche
+Funktionalgleichung $f(x+y)=f(x)+f(y)$, die bekanntlich eine große Vielfalt
+von unstetigen Lösungen besitzt (siehe \cite{b-aczel, a-Hamel, a-Ilse}). Eine
+sehr elementare Einführung in die Theorie der {\sc Cauchy}schen
+Funktionalgleichung bietet das Buch von {\sc Sprengel} und {\sc Wilhelm}
+(siehe \cite{b-SprengelWilhelm}).
+
+Damit ist nun die Existenz eines solchen Gegenbeispiels verständlich. Die
+Konstruktion werden wir für den Spezialfall $c=\wz $ und $p=1$ durchführen.
+Der interessierte Leser kann die Konstruktion leicht selbst auf den
+allgemeinen Fall übertragen.
+
+\begin{definition} Für zwei reelle Zahlen $a$ und $b$ gilt $a\sim b$, wenn
+  $a-b\in\Q(\wz)$ ist, wobei $\Q $ die Menge der rationalen Zahlen ist.
+\end{definition}
+
+\begin{bemerkung} Jedes Element $w\in \Q(\wz)$ kann eindeutig als $w=u +v\wz $
+  dargestellt  werden, wobei $u$ und $v$ rationale Zahlen sind.
+\end{bemerkung}
+
+Durch die in der Definition vorgestellte Relation wird eine
+Äquivalenzklasseneinteilung vorgenommen. Dazu ist notwendig, dass wir
+Folgendes zeigen:
+\begin{quote}
+1. $x\sim x$\\
+2. Aus $x\sim y$ folgt $y\sim x$.\\
+3. Ist $x\sim y $ und $y\sim z$, so ist auch $x\sim z$.
+\end{quote}
+Diese elementaren Überlegungen führen wir hier nicht aus. Unter Benutzung des
+Auswahlaxioms betrachten wir nun ein vollständiges System $M$ von
+Repräsentanten dieser Äquivalenzklassen. Somit gibt es zu jedem $x$ eine
+Klasse und damit auch genau einen Repräsentanten $y$ aus $M$ mit der
+Eigenschaft $x\sim y$. Ist nun $x=y+a+b\wz $ mit $a,b\in \Q$, so definieren
+wir $f(x)=b$.  
+
+Damit haben wir die Funktion $f$ in Abhängigkeit von der Auswahl der
+Repräsentanten aus $M$ für jedes reelle $x$ eindeutig definiert. Wir behaupten
+nun:
+\begin{quote}
+1. Es gilt $f(x+\wz )-f(x)=1$, und\\
+2. $f$ ist periodisch.
+\end{quote}
+
+{\em Beweis.} Zunächst ist $x=y+a+b\wz $ mit $a,b\in \Q$ und weiter
+$x+\wz=y+a+(b+1)\wz$, also $f(x)=b$ und $f(x+\wz)=b+1$; es gilt also die erste
+Behauptung. Es verbleibt der Nachweis der Periodizität.
+
+Für die reellen Zahlen $x$ und $x+1$ finden wir in $M$ den gleichen
+Repräsentanten $y$. Folglich ist $x=y+a+b\wz $, $a,b\in \Q$ und somit
+$x+1=y+(a+1)+b\wz $. Infolge der Definition von $f$ erhalten wir somit
+$f(x)=f(x+1)$ für alle reellen Zahlen $x$, d.\,h.{} die Funktion $f$ ist
+periodisch. Damit ist der Beweis geführt.
+
+{\em Ergebnis: } Bei der Untersuchung einiger Eigenschaften periodischer
+Funktionen kann man ohne die Voraussetzung der Stetigkeit und oberflächlicher
+Betrachtung leicht einigen Trugschlüssen unterliegen.
+
+In der Klassenstufe 10/11 wurde im Mathematik-Spezialistencamp in Ilmenau im
+Sommer 2002 die folgende Aufgabe zur Mathematik-Olympiade gestellt.
+
+\begin{aufgabe}
+Es sei
+\begin{align*}
+f(x)=\begin{cases} \frac{1}{2+\tan^2 x},&\, x\ne\frac{\pi}{2}+k\pi,\\
+0,&\,x=\frac{\pi}{2}+k\pi. 
+\end{cases}
+\end{align*}
+Man beweise: $F(x)=f(x) +f(ax)$ ist genau dann periodisch, wenn $a$ rational
+ist.
+\end{aufgabe}
+
+\begin{loesung} 1. Es sei $a$ rational, also $a=p/q$ mit $q\in \N $, $p\in
+  \Z$. Dann gilt
+$$
+F(x+q\pi)=f(x+q\pi)+f(p/q(x+q\pi))=f(x)+f(ax+p\pi)=f(x)+f(ax)=F(x),
+$$
+weil $f$ periodisch mit der Periode $\pi $ ist. $F$ ist also periodisch.
+
+2. Es sei nun $F$ periodisch. Dann gibt es eine reelle Zahl $p\ne 0$, so dass
+$F(x+p)=F(x)$ für alle reellen Zahlen $x$. Insbesondere gilt für $x=0$:
+$$ F(p)=f(p)+f(ap)=F(0)=f(0)+f(0)=1.$$ Da nach Definition $f(x)\le 1/2$, gilt
+diese Gleichung nur dann, wenn $\tan^2p=\tan^2 (ap)=0$, also $\tan
+p=\tan(ap)=0$ gilt. Damit gibt es ganze Zahlen $r\ne0$ und $s\in \Z$, so dass
+$p=r\pi $ und $ap=s\pi$. Die Division liefert $a=r/s$; also ist $a$ rational.
+\end{loesung}
+
+Die Aufgabe legt die folgende Verallgemeinerung nahe.
+ 
+\begin{satz} Es sei $f\colon\R\to \R$ eine stetige, nicht-konstante,
+  periodische Funktion 
+
+Dann ist $F(x)=f(x) +f(ax)$, $a\in \R$, periodisch genau dann, wenn $a$
+ rational ist.
+\end{satz}
+
+\begin{beweis} (a) Sei $a=m/n$ rational, dann ist $F$ periodisch mit der
+ Periode $np$, falls $p$ eine Periode von $f$ ist:
+\begin{align*}
+F(x+np)=f(x+np)+f(ax+anp)=f(x)+f(ax+mp)=f(x)+f(ax)=F(x).
+\end{align*}
+
+(b) Beim Beweis der anderen Richtung des Satzes benutzen wir den folgenden
+wichtigen Hilfssatz:
+\medskip
+
+\begin{lemma}\label{l-stetig}
+Eine stetige, nicht-konstante, periodische Funktion $f$ besitzt eine kleinste
+positive Periode $p$.  Alle anderen Perioden von $f$ sind ganzzahlige
+Vielfache dieser kleinsten Periode $p$.
+\end{lemma}
+
+\begin{beweis} [des Hilfssatzes.] Angenommen, $f$ hat keine kleinste positive
+  Periode, dann findet man eine positive monoton gegen Null fallende Folge
+$(p_n)$ von Perioden von $f$. Insbesondere ist f"ur alle $m\in \Z$ und
+$n\in\N$ dann $f(mp_n)=f(p_n)=f(0)=:C$. Da $p_n$ Nullfolge ist, gibt es
+sicherlich f"ur alle $x_0\in \R$ eine Folge $x_k:=m_k p_{n_k}$, $m_k\in \Z$,
+die gegen $x_0$ konvergiert.  Wegen der Stetigkeit von $f$ ist dann aber
+$f(x_0)=\lim_{k\to \infty}f(m_k p_{n_k})=C$. Somit ist $f$ konstant im
+Widerspruch zur Annahme. $f$ hat also eine kleinste positive Periode.  
+
+Wir zeigen die zweite Aussage. Es sei $q$ irgendeine Periode von $f$. Die
+Division mit Rest von $q$ durch $p$ liefert uns ein $a\in\Z$ und ein $r\in \R$
+mit $0\le r<p$, so dass gilt
+$$q=ap+r.$$
+Dann ist aber für alle $x\in \R$ wegen der $p$-Periodizität und
+$q$-Periodizität von $f$
+\begin{align*}
+f(x)=f(x+q)=f(x+ap+r)=f(x+r).
+\end{align*}
+Folglich ist $f$ periodisch mit der Periode $r$. Da $p$ aber nach
+Voraussetzung die kleinste positive Periode war, bleibt nur $r=0$ und $q=ap$
+ist ein ganzzahliges Vielfaches von $p$.
+\end{beweis}
+
+Wir benötigen auch noch eine zweite Aussage.
+
+\begin{lemma}\label{l-beschr}
+Es sei $f$ eine auf ganz $\R $ definierte, periodische, stetige Funktion.
+
+Dann ist $f$ beschränkt, d.\,h. es gibt eine positive Zahl $C$, so dass
+$\abs{f(x)}<C$ für alle $x$.
+\end{lemma}
+
+\begin{beweis} [des Hilfssatzes.] Nach Hilfssatz\,\ref{l-stetig} ist $f$
+  entweder konstant (und damit beschränkt) oder aber es gibt eine kleinste
+positive Periode $p$. Angenommen, $f$ ist nicht beschränkt, dann gibt es eine
+Folge $(x_n)$ mit $\abs{f(x_n)}\to\infty$. Die beschränkte Folge
+$(y_n:=x_n\mod p) $ besitzt aber eine konvergente Teilfolge $(y_{n_k})\to
+y_0$. Dann gilt aber $\lim_{k\to\infty} \abs{f(y_{n_k})}=\infty$, was der
+Stetigkeit von $f$ in $y_0$ widerspricht. Also ist $f$ beschränkt.
+\end{beweis}
+
+Kommen wir nun zum Beweis der zweiten Richtung der eigentlichen Aufgabe.  Wir
+f"uhren einen indirekten Beweis dieser zweiten Richtung.
+
+Annahme: $f$ ist periodisch mit kleinster Periode $p$, $F$ ist periodisch mit
+einer Periode $q$ und $a$ sei irrational. Dann gilt
+\begin{align}
+F(x+q)&=F(x)\quad\quad \text{f"ur alle $x\in \R$, also }\nonumber\\
+f(ax+aq)+f(x+q)&=f(ax) +f(x) \label{e1}.
+\end{align}
+Setzt man $x:=x+p$ in \eqref{e1} ein und beachtet, dass $f$ periodisch mit der
+Periode $p$ ist, so hat man:
+\begin{align}
+f(ax+ap +aq) +f(x+p+q) &= f(ax+ap)+ f(x+p),\nonumber\\
+f(ax+ap+aq)+f(x+q)&=f(ax+ap)+f(x).\label{e2}
+\end{align}
+Bildet man die Differenz \eqref{e2}$-$\eqref{e1} und bezeichnet
+$G(x):=f(x+ap)-f(x)$,  so hat man 
+\begin{align}
+f(ax+ap+aq)-f(ax+aq)&=f(ax+ap)-f(ax),\nonumber\\
+G(ax+aq)&=G(ax).\label{e3}
+\end{align}
+Wegen \eqref{e3} ist $G$ periodisch mit der Periode $aq$. Ferner ist aber $G$,
+als Summe zweier $p$-periodischer Funktionen (nach Definition von $G$)
+auch periodisch mit der Periode $p$. Nat"urlich ist $G$ auch stetig. Somit
+gibt es entsprechend Hilfssatz\,\ref{l-stetig} zwei F"alle.
+
+{\em Fall 1.} $G(x)\equiv C$ ist konstant. Nach Definition von $G$ ist dann
+aber $f(x+ap)=f(x)+C$ und ferner $f(x+kap)=f(x)+kC$ f"ur alle $k\in \Z$.  Da
+$f$ als stetige, periodische Funktion beschr"ankt ist (nach
+Hilfssatz\,\ref{l-beschr}), folgt $C=0$ und $f$ ist periodisch mit der Periode
+$ap$. Diese muss aber ein ganzzahliges Vielfaches der kleinsten Periode $p$
+sein, etwa $ap=sp$ mit $s\in \Z$. Dann ist aber $a=s\in\Z$ ein Widerspruch zur
+Irrationalit"at von $a$.
+
+{\em Fall 2.} $G(x)$ ist nicht konstant und hat also eine kleinste positive
+Periode $r$. Also m"ussen die bereits nachgewiesenen Perioden $p$ und $aq$
+ganzzahlige Vielfache dieser kleinsten Periode sein, etwa
+\begin{align*}
+aq=rs\quad\text{und}\quad p=rt\quad\text{mit $s,t\in\Z$}.
+\end{align*}
+Nach Eleminieren von $r$ ist dann
+\begin{align}\label{aq}
+atq=ps.
+\end{align} Folglich ist wegen der
+$q$-Periodizit"at von $F$
+\begin{align*}
+F(x+tq)&=f(ax+atq)+f(x+tq)= f(ax + ps) +f(x+tq)\\
+&=f(ax) + f(x+tq)\\
+&\overset{!}{=}F(x)=f(ax)+f(x)\quad\text{und somit}\\
+f(x+tq)&=f(x)
+\end{align*}
+Somit hat $f$ die Periode $tq$, die wiederum ein ganzzahliges Vielfaches von
+$p$ sein muss, etwa $tq=up$, $u\in \Z$. Setzt man dies in \eqref{aq} ein, so
+hat man $a=ps/t \cdot t/(up)=s/u\in\Q$. Dies ist erneut ein Widerspruch zur
+Irrationalit"at von $a$.
+\end{beweis}
+
+\begin{thebibliography}{1}
+
+\bibitem{b-aczel}
+Acz{\'e}l, J.: \emph{Vorlesungen {\"u}ber Funktionalgleichungen und ihre
+  Anwendungen}, Nummer~25 in Lehrb{\"u}cher und Monographien aus dem Gebiet der
+  exakten Wissenschaften. Math. Reihe, VEB Deutscher Verlag der Wissenschaften,
+  Berlin, 1961
+
+\bibitem{a-Hamel}
+Hamel, G.: Eine Basis aller reeller Zahlen und die unstetigen L{\"o}sungen der
+  Funktionalgleichung $f(x+y)=f(x)+f(y)$, \emph{Math. Ann.} \textbf{60} (1905),
+  459--462
+
+\bibitem{a-Ilse}
+Ilse, D.: {\"U}ber funktionale Charakterisierungen der direkten
+  Proportionalit{\"a}t $f(x+y)=f(x)+f(y)$, \emph{Math. Schule} \textbf{9}
+  (1971), 16--37
+
+\bibitem{b-SprengelWilhelm}
+Sprengel, H.-J. und O.~Wilhelm: \emph{Funktionen und Funktionalgleichungen},
+  Nummer 114 in Mathematische Schülerbücherei, VEB Deutscher Verlag der
+  Wissenschaften, Berlin, 1984
+
+\end{thebibliography}
+\begin{attribution}
+  Der erste Abschnitt stammt ausschließlich aus einem ganz leicht geänderten
+  Artikel von W.~Moldenhauer.
+  
+  Die Aufgabe wurde bei der LSGM-Mathe-Camp-Olympiade 2002 in Ilmenau von
+  W.~Moldenhauer in 11/12 in "ahnlicher Weise gestellt.
+
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+\end{document}

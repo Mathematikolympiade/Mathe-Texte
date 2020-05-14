@@ -1,0 +1,284 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+\usepackage[utf8]{inputenc}
+
+\title{Zahlentheorie\kosemnetlicensemark}
+\author{Lisa Sauermann}
+\date{März 2013}
+\begin{document}
+\maketitle
+
+Hier sollen einige grundlegende Lösungsmethoden für Zahlentheorieaufgaben bei
+Olympiaden und anderen Wettbewerben vermittelt werden.
+
+\subsection*{Der Chinesische Restsatz}
+\begin{satz}
+Seien $m_{1}$, $m_{2}$, \dots , $m_{k}$ teilerfremde positive ganze Zahlen und
+$M=m_{1}\cdot m_{2}\cdots m_{k}$ deren Produkt.  
+
+Für ganze Zahlen $n_{1}$, $n_{2}$, \dots , $n_{k}$ gibt es genau eine ganze
+Zahl $z$ mit $0\le z<M$ mit
+\begin{align*}
+z&\equiv n_{1}\pmod{m_{1}}\\ z&\equiv n_{2}\pmod{m_{2}}\\ 
+z&\equiv n_{k}\pmod{m_{k}}
+\end{align*}
+\end{satz}
+\begin{beweis}
+Wir zeigen zuerst, dass es mindestens ein solches $z$ gibt. Es ist
+$M_1=m_{2}\cdot m_{3}\cdots m_{k}$ zu $m_{1}$ teilerfremd. Wir wissen, dass
+$m_{2}\cdot m_{3}\cdots m_{k}$ damit ein Inverses modulo $m_{1}$ hat,
+d.\,h.\ es gibt eine ganze Zahl $a_{1}$ mit $a_{1}\cdot M_1\equiv
+1\pmod{m_{1}}$.
+
+Analog ist $M_i=\frac{M}{m_{i}}$ eine positive ganze Zahl und es gibt eine
+ganze Zahl $a_{i}$ mit $a_{i}\cdot M_i\equiv 1\pmod{m_{i}}$, $i=2,\dots,k$.
+
+Nun wähle $z$ mit $0\le z<M$ so, dass
+\begin{gather*}
+  z\equiv n_{1}\cdot a_{1}\cdot M_1 +n_{2}\cdot a_{2}\cdot M_2 +\dots
+  +n_{k}\cdot a_{k}\cdot M_k \pmod{M}
+\end{gather*}
+gilt.  Da $M_j$ für $j\neq i$ durch $m_i$ teilbar ist, ergibt sich $M_j\equiv
+0\pmod{m_i}$ für $j\neq i$ und damit 
+\begin{gather*}
+  z\equiv n_{i}\cdot a_{i}\cdot M_i \equiv n_{i}\cdot 1\pmod{m_{i}}\,.
+\end{gather*}
+Damit erfüllt dieses $z$ die Bedingungen.
+
+Angenommen, es gäbe $z>z'$, die beide die Bedingungen erfüllen. Dann gilt
+$z-z'\equiv n_{i}-n_{i}\equiv 0\pmod{m_{i}}$ für alle $1\leq i\leq k$. Weil
+die $m_{i}$ paarweise teilerfremd sind, folgt daraus $z-z'\equiv 0
+\pmod{M}$. Das ist aber ein Widerspruch zu $1\leq z-z'<M$.
+
+Damit gibt es genau ein solches $z$.
+\end{beweis}
+
+Der Chinesische Restsatz ist sehr wichtig und nützlich. Mit ihm allein kann
+man die folgende IMO-Aufgabe lösen.
+
+\paragraph{Aufgabe 1 (5. Aufgabe der IMO 1989)} 
+Für welche positiven ganzen Zahlen $n$ gibt es eine positive ganze Zahl $N$,
+sodass keine der Zahlen $1+N$, $2+N$, \dots , $n+N$ eine Potenz einer Primzahl
+ist?
+
+\subsection*{Die $\varphi$- und die $\tau$-Funktion}
+
+Für eine positive ganze Zahl $n$ sei mit $\varphi(n)$ die Anzahl der zu $n$
+teilerfremden positiven ganzen Zahlen $\leq n$ bezeichnet. Beispielsweise gilt
+$\varphi(1)=1$, $\varphi(3)=2$ und $\varphi(6)=2$.
+
+Für eine Primzahlpotenz $p^{m}$ (mit $p$ prim, $m\geq 1$ ganz) gilt
+$\varphi(p^{m})=p^{m}-p^{m-1}$. Denn es sind genau die Zahlen zu $p^{m}$
+teilerfremd, die zu $p$ teilerfremd sind und es gibt genau
+$p^{m}\cdot\frac{p-1}{p}=p^{m}-p^{m-1}$ nicht durch $p$ teilbare positive
+ganze Zahlen $\leq p^{m}$.
+
+Für zueinander teilerfremde positive ganze Zahlen $m$, $n$ gilt
+$\varphi(m\cdot n)=\varphi(m)\cdot\varphi(n)$. Denn nach dem Chinesischen
+Restsatz gibt es für jedes Paar von Resten modulo $m$ und $n$ genau einen
+entsprechenden Rest modulo $mn$. Damit gibt es für jedes der
+$\varphi(m)\cdot\varphi(n)$ Paare eines jeweils teilerfremden Restes modulo
+$m$ und $n$ genau einen entsprechenden Rest modulo $mn$. Dies sind aber genau
+die $\varphi(m\cdot n)$ zu $m\cdot n$ teilerfremden Reste.
+
+Sei nun allgemein $n=p_{1}^{a_{1}}p_{2}^{a_{2}}\cdots p_{k}^{a_{k}}$
+($a_{1},\dots ,a_{k}\geq 1$) eine beliebige natürliche Zahl in ihrer
+Primfaktorenzerlegung. Dann gilt 
+\begin{align*}
+  \varphi(n)&= \varphi(p_{1}^{a_{1}})\cdot \varphi(p_{2}^{a_{2}})
+  \cdot\ldots\cdot \varphi(p_{k}^{a_{k}})\\
+  &=\br{p_{1}^{a_{1}}-p_{1}^{a_{1}-1}}\cdot
+  \br{p_{2}^{a_{2}}-p_{2}^{a_{2}-1}}\cdot\ldots\cdot
+  \br{p_{k}^{a_{k}}-p_{k}^{a_{k}-1}}\\
+  &=n\,\br{1-\frac{1}{p_{1}}}\cdot \br{1-\frac{1}{p_{2}}} \cdot\ldots\cdot
+  \br{1-\frac{1}{p_{k}}}\,. 
+\end{align*}
+Im Satz von Euler-Fermat wird die $\varphi$-Funktion noch eine wichtige Rolle
+spielen. Nach ihrem Entdecker wird sie oft auch Eulersche $\varphi$-Funktion
+genannt.
+
+Für eine positive ganze Zahl $n$ sei mit $\tau(n)$ die Anzahl der positiven
+Teiler von $n$ bezeichnet. Beispielsweise gilt $\tau(1)=1$, $\tau(3)=2$ und
+$\tau(6)=4$.
+
+Sei nun allgemein $n=p_{1}^{a_{1}}p_{2}^{a_{2}}\cdots p_{k}^{a_{k}}$ eine
+beliebige natürliche Zahl in ihrer Primfaktorenzerlegung. Dann hat jeder
+Teiler von $n$ die Form $p_{1}^{b_{1}}p_{2}^{b_{2}}\cdots p_{k}^{b_{k}}$ mit
+$b_{i}\leq a_{i}$ für $1\leq i\leq k$. Damit gibt es für $b_{i}$ jeweils
+$a_{i}+1$ Möglichkeiten (nämlich $0,1,2,\dots a_{i}$). Insgesamt beträgt die
+Anzahl der Teiler von $n$ also 
+\[\tau(n)=(a_{1}+1)(a_{2}+1)\cdots(a_{k}+1)\,.\]
+
+Diese sehr nützliche Formel erschlägt die folgende Aufgabe sofort. Nicht ganz
+so leicht ist dagegen Aufgabe 3.
+
+\paragraph{Aufgabe 2} 
+Gibt es eine dreistellige Zahl mit genau 11 Teilern (im Dezimalsystem)? 
+
+\paragraph{Aufgabe 3 (431046)} 
+Beweise: Bei jeder natürlichen Zahl $n$, bei der $n+1$ durch 24 teilbar ist,
+ist auch die Summe aller Teiler von $n$ durch 24 teilbar.
+
+\subsection*{Der Satz von Euler-Fermat}
+
+\begin{satz}
+Sei $m$ eine positive ganze Zahl und $a$ eine zu ihr teilerfremde ganze Zahl.
+Dann gilt \[a^{\varphi(m)}\equiv 1\pmod{m}\,.\]
+\end{satz}
+\begin{beweis}
+Es seien $x_{1}=1, x_{2}, \dots ,x_{\varphi(m)}$ die zu $m$ teilerfremden
+ganzen Zahlen von 1 bis $m$. Nun sind auch $a\,x_{1}, a\,x_{2}, \dots ,
+a\,x_{\varphi(m)}$ zu $m$ teilerfremd. Wegen $x_{j}\not\equiv x_{i}\pmod{m}$
+gilt $a\,x_{j}\not\equiv a\,x_{i}\pmod{m}$ für $1\leq i<j\leq \varphi(m)$.
+Damit haben die zu $m$ teilerfremden Zahlen $a\,x_{1}, a\,x_{2}, \dots ,
+a\,x_{\varphi(m)}$ paarweise verschiedene Reste. Es gibt aber nur die
+$\varphi(m)$ zu $m$ teilerfremden Reste $x_{1},x_{2}, \dots ,
+x_{\varphi(m)}$. Damit sind die Reste von $a\,x_{1}, a\,x_{2}, \dots ,
+a\,x_{\varphi(m)}$ und $x_{1},x_{2}, \dots ,x_{\varphi(m)}$ bei Teilung duch
+$m$ bis auf die Reihenfolge gleich. Also gilt
+\begin{gather*}
+  a^{\varphi(m)}\cdot x_{1}\cdot x_{2}\cdot\ldots\cdot x_{\varphi(m)}\equiv
+  a\,x_{1}\cdot a\,x_{2}\cdots a\,x_{\varphi(m)}\equiv x_{1}\cdot x_{2}
+  \cdot\ldots\cdot x_{\varphi(m)}\pmod{m}\,.
+\end{gather*}
+Daraus folgt $a^{\varphi(m)}\equiv 1\pmod{m}$, da $x_{1}\cdot x_{2}\cdots
+x_{\varphi(m)}$ teilerfremd zu $m$ ist und deshalb auf beiden Seiten der
+Kongruenz gekürzt werden kann. 
+\end{beweis}
+
+Ein bekannter Spezialfall des Satzes von Euler-Fermat ist der kleine Satz von
+Fermat: Für eine Primzahl $p$ und eine nicht durch diese teilbare Zahl $a$
+gilt $a^{p-1}\equiv 1\pmod{p}$.
+
+\subsection*{Die Identität von Sophie Germain}
+
+Es gilt für beliebige ganze Zahlen $a$, $b$
+\begin{gather*}
+  a^{4}+4\,b^{4} =\br{a^{2}+2b^{2}}^{2}-4\,a^{2}\,b^{2}
+  =\br{a^{2}-2\,a\,b+2\,b^{2}}\br{a^{2}+2\,a\,b+2\,b^{2}}\,.
+\end{gather*}
+
+\paragraph{Aufgabe 4 (380942)} 
+In einem Zahlensystem mit der Basis $a$ ($a\in\N$, $a>1$) sei die Zahl
+$z=100\,000\,004$ gegeben. Beweise, dass es keine natürliche Zahl $a$ gibt,
+für die $z$ eine Primzahl ist.
+
+\subsection*{Potenzreste}
+
+\paragraph{Aufgabe 5 (400941)} 
+\begin{itemize}
+\item [(a)] Beweise: Für jede natürliche Zahl ist ihr Quadrat entweder von der
+  Form $4k$ oder von der Form $8\,k+1$, wobei jeweils $k$ eine natürliche Zahl
+  ist.
+\item [(b)] Gibt es eine $n$-stellige Quadratzahl mit $n>1$, die aus lauter
+  gleichen Ziffern besteht? Beweise deine Antwort.
+\end{itemize}
+
+Diese recht einfache Aufgabe regt dazu an, sich mit den möglichen Resten von
+Quadratzahlen oder höheren Potenzen bei der Teilung durch bestimmte Zahlen zu
+befassen.
+
+Durch Ausprobieren für alle Restklassen können wir uns leicht überlegen,
+welche Reste Quadratzahlen modulo 4 und 8 lassen können. Das Ergebnis ist
+durchaus interessant und wurde ja schon in Teil (a) der obigen Aufgabe
+verraten.
+
+Auch die möglichen Reste von Quadratzahlen modulo 3, 9, 5 und 7 sollte man als
+Olympaideteilnehmer immer im Kopf haben. Bei vielen Aufgaben kann man aus den
+möglichen Resten modulo einer geschickt gewählten Primzahl nämlich bedeutende
+Schlüsse ziehen. Die folgenden Aufgaben sollen dies verdeutlichen.
+
+\paragraph{Aufgabe 6 (420944)} 
+Ermittle alle diejenigen Tripel $(a,b,c)$ ganzer Zahlen, für die die Gleichung
+$2\,a^{2}+b^{2}=5\,c^{2}$ gilt.
+
+\paragraph{Aufgabe 7} 
+Ermittle alle diejenigen Paare $(a,b)$ ganzer Zahlen, für die die Gleichung
+$a^{5}=b^{2}+4$ gilt.
+
+\paragraph{Aufgabe 8  (N1 2002)} 
+Was ist die kleinste positive ganze Zahl $t$, sodass es ganze Zahlen $x_{1},
+x_{2},\dots,x_{t}$ mit $x_{1}^{3}+x_{2}^{3}+\dots+x_{t}^{3}=2002^{2002}$ gibt?
+
+\paragraph{Aufgabe 9  (1. Aufgabe der IMO 1986)} 
+Die Menge $S=\cbr{2,5,13}$ hat die Eigenschaft, dass für alle $a,b\in S, a\neq
+b$ die Zahl $a\,b-1$ keine Quadratzahl ist. Zeige, dass für jede nicht in $S$
+enthaltene positve ganze Zahl $d$, die Menge $S\cup \cbr{d}$ diese Eigenschaft
+nicht hat.
+
+\paragraph{Aufgabe 10  (N1 2000)} 
+Finde alle positiven ganzen Zahlen $n\geq 2$, die folgende Bedingung erfüllen:
+Für alle $a$, $b$ teilerfremd zu $n$ gilt
+\[a\equiv b\pmod{n}\quad \text{genau dann wenn}\quad a\,b\equiv 1\pmod{n}\,.\] 
+
+\subsection*{Einschachtelung von Quadratzahlen}
+
+Im vorhergehenden Abschnitt haben wir gesehen, wie man durch Betrachtung von
+Restklassen ausschließen kann, dass eine bestimmte Zahl eine Quadratzahl ist.
+Eine andere Methode ist die Betrachtung der Vielfachheiten ihrer Primfaktoren
+in der Primfaktorenzerlegung.
+
+Eine dritte sehr wichtige und oft benötigte Strategie zum Beweis, dass eine
+Zahl keine Quadratzahl ist, ist die folgende: Wir zeigen, dass unsere Zahl
+zwischen zwei aufeinanderfolgenden Quadratzahlen liegt. Damit kann sie selbst
+keine Quadratzahl sein. Oft muss man etwas rechnen, damit die Einschachtelung
+gelingt, aber der Aufwand lohnt sich.
+
+Hier eine zwei Beispielaufgaben
+
+\paragraph{Aufgabe 11 (480846)} 
+Ermittle alle geordneten Paare $(a,b)$ positiver ganzer Zahlen, für die
+$a^{2}+3\,b$ und $b^2+3\,a$ Quadratzahlen sind.
+
+\paragraph{Aufgabe 12 (471346)} 
+Man bestimme alle reellen Zahlen $x$, für welche die beiden Zahlen
+$4\,x^{5}-7$ und $4\,x^{13}-7$ gleichzeitig Quadrate ganzer Zahlen sind.
+
+\subsection*{Dezimalsystembasteleien}
+
+Bei einigen Aufgaben wird besonderes Augenmerk auf das Dezimalsystem gelegt.
+Bei den folgenden drei Aufgaben muss man geschickt Vielfache, deren
+Dezimaldarstellungen bestimmte Eigenschaften haben, konstruieren. Ein
+wichtiger Trick ist dabei der folgende: Für jede zu 10 teilerfremde natürliche
+Zahl $n$ gibt es eine Zehnerpotenz $10^{m}$, die Rest 1 bei Teilung durch $n$
+lässt (nach Euler-Fermat). Nun ist die Zahl
+$1+10^{m}+10^{2m}+\dots+10^{(n-1)m}$ durch $n$ teilbar und hat eine sehr
+praktische Dezimaldarstellung. Man kann sie nämlich mit irgendeiner
+$m$-stelligen Zahl multiplizieren und erhält deren Dezimaldarstellung $n$ mal
+hintereinander. Oft kann man dadurch die gewünschten Eigenschaften
+erfüllen. Ist die Ausgangszahl $n$ durch 2 oder 5 teilbar, muss man dies durch
+geschickte Wahl von $m$ berücksichtigen.
+
+\paragraph{Aufgabe 13  (BWM 2009 1. Runde)} 
+Eine positive ganze Zahl heiße Dezimal-Palindrom, wenn ihre Dezimaldarstellung
+$z_{n}\dots z_{0}$ mit $z_{0}\neq 0$ spiegelsymmetrisch ist, d.\,h.\ wenn
+$z_{k}=z_{n-k}$ für alle $k=0,\dots,n$ gilt. Zeige, dass jede nicht durch 10
+teilbare ganze Zahl ein positives Vielfaches besitzt, das ein
+Dezimal-Palindrom ist.
+
+\paragraph{Aufgabe 14} 
+Man finde alle positiven ganzen Zahlen $k$ mit folgender Eigenschaft: Jede
+Zahl, die durch Umkehren der Dezimaldarstellung eines Vielfachen von $k$
+entsteht, ist ebenfalls ein Vielfaches von $k$.
+
+\paragraph{Aufgabe 15  (6. Aufgabe der IMO 2004)} 
+Wir nennen eine positive ganze Zahl alternierend, wenn ihre Dezimaldarstellung
+abwechselnd gerade und ungerade Ziffern hat. Finde alle positiven ganzen
+Zahlen, die ein alternierendes Vielfaches besitzen.
+
+\subsection*{Weitere Aufgaben}
+
+\paragraph{Aufgabe 16 (410943)} 
+Bestimme den größten gemeinsamen Teiler aller Zahlen der Form $n^{4}-4\,n^{2}$
+mit $n\in\cbr{1,2,3,\dots}$, welche auf Null enden.
+
+\paragraph{Aufgabe 17 (441044)} 
+Man bestimme alle natürlichen Zahlen $n>1$ mit folgender Eigenschaft: Für
+jeden Teiler $d>1$ von $n$ ist die Zahl $d-1$ ein Teiler von $n-1$.
+
+\begin{attribution}
+sauermann (März 2013): Für KoSemNet freigegeben.
+
+graebe (2014-01-01): Nach den KoSemNet Regeln aufbereitet.
+\end{attribution}
+\end{document}

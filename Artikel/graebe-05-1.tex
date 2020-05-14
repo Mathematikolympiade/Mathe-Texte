@@ -1,0 +1,89 @@
+% Version: $Id: graebe-05-1.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Reguläre Polyeder\kosemnetlicensemark}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Der Eulersche Polyedersatz}
+
+Als {\em konvexes Polyeder} bezeichnet man einen durch endlich viele
+ebene Flä\-chen begrenzten Körper, wo zusammen mit je zwei Punkten
+auch alle Punkte der Verbindungsstrecke zu diesem Körper gehören.
+
+Jede Seitenfläche definiert eine Ebene, die {\em Stützebene} des
+Polyeders zu dieser Seitenfläche, so dass das Polyeder vollständig in
+einem Halbraum bzgl.\ dieser Ebene liegt. Das Polyeder ist als
+Punktmenge genau der Durchschnitt all dieser Halbräume.
+
+\begin{satz}[Polyedersatz, Euler 1758]
+Hat ein konvexes Polyeder $e$ Ecken, $k$ Kanten und $f$ Seitenflächen,
+so gilt stets \[e-k+f=2\,.\]
+\end{satz}
+
+\ul{Beweisskizze}: Es gibt verschiedene Beweise dieses Satzes. Eine
+besonders elementare Über\-legung verwendet das schrittweise
+``Aufschneiden'' in ein ebenes Körpernetz und untersucht, wie sich
+dabei die Zahlen $e,k,f$ und $Z=e-k+f$ verändern. Wir bezeichnen die
+neuen Werte jeweils mit $e',k',f',Z'$.
+
+Zunächst wird eine Seitenfläche herausgeschnitten: $e'=e, k'=k,
+f'=f-1$, also $Z'=Z-1$.
+
+Danach werden weitere Kanten aufgeschnitten, bis das Körpernetz
+schließlich ausgebreitet werden kann. Bei jedem Schnitt wird es eine
+Ecke und eine Kante mehr: $e'=e+1, k'=k+1, f'=f, Z'=Z$.
+
+Das Körpernetz ist ein ebener (überschneidungsfreier) Graph mit Ecken
+und Kanten. Die Seitenflächen nennen wir jetzt ``Gebiete''.  Nun
+werden in diesem Netz nacheinander die inneren Kanten entfernt:
+\begin{itemize}
+\item[(1)] Trennt die innere Kante zwei Gebiete, so werden diese beiden
+  Gebiete vereinigt: $e'=e, k'=k-1, f'=f-1, Z'=Z$.
+\item [(2)] ``Hängt'' die innere Kante nur noch an einer Ecke und ragt
+  in ein Gebiet hinein, so wird beim Entfernen der Kante die Anzahl
+  der Gebiete nicht geändert. Die Kante verschwindet zusammen mit dem
+  an ihr ``hängenden'' Eckpunkt: $e'=e-1,k'=k-1,f'=f, Z'=Z$.
+\end{itemize}
+Schließlich bleibt nur noch ein einziges Gebiet übrig, das von $n$
+Ecken und dann logischerweise auch $n$ Kanten begrenzt wird, die einen
+Ring bilden $e=k=n, f=Z=1$. $\Box$\medskip
+
+\section*{Klassifikation der regulären Polyeder im Raum}
+
+Als {\em reguläres Polyeder} bezeichnet man ein Polyeder, dessen
+Seitenflächen alle zueinander kongruente regelmäßige Vielecke
+($q$-Ecke) sind \ul{und} in jeder Ecke die gleich Anzahl $p$ von
+Kanten zusammenstößt.
+
+$p\cdot e$ ist die Summe der von den Ecken ausgehenden Kanten. Dabei
+haben wir jede Kante doppelt gezählt, denn jede Kante hat zwei
+Endpunkte: $2\,k = p\cdot e$. Genauso bekommen wir $2\,k = q\cdot f$,
+wenn wir die Anzahlen der Kanten aller Flächen aufsummieren, da jede
+Kante an zwei Flächen angrenzt. Zusammen mit der Eulerformel $e-k+f=2$
+begrenzt das die Möglichkeiten, denn es muss gelten (warum?):
+\[\frac{1}{p} + \frac{1}{q} =  \frac12 +\frac{1}{k}\]
+
+Diese Gleichung hat genau die folgenden fünf Lösungen (warum?):
+\begin{center}
+  \begin{tabular}{|cc|ccc|l|}\hline
+    $p$ & $q$ & $e$ & $k$ & $f$ & Name des Polyeders \\\hline
+    3 & 3 &  4 &  6 &  4 & Tetraeder\\
+    3 & 4 &  8 & 12 &  6 & Würfel (Hexaeder)\\
+    4 & 3 &  6 & 12 &  8 & Oktaeder\\
+    3 & 5 & 20 & 30 & 12 & Dodekaeder\\
+    5 & 3 & 12 & 30 & 20 & Ikosaeder\\\hline
+  \end{tabular}
+\end{center}
+
+\begin{attribution}
+graebe (2005-07-24):\\ Dieses Material wurde für die Projektarbeit in Klasse
+11/12 fürs Mathelager 2005 in Ilmenau erstellt und dort auch eingesetzt. 
+\end{attribution}
+
+\end{document}

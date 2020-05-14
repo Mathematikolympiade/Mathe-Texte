@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Bauer_David">
+    <foaf:name>David Bauer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Bitterlich_Norman">
+    <foaf:name>Norman Bitterlich</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Djokic_Jelena">
+    <foaf:name>Jelena Djokic</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Glatz_Peter">
+    <foaf:name>Peter Glatz</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Graebe_HansGert">
+    <foaf:homepage rdf:resource="http://bis.informatik.uni-leipzig.de/HansGertGraebe"/>
+    <foaf:name>Hans-Gert Gräbe</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Graubner_Sonnhard">
+    <foaf:name>Sonnhard Graubner</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Jedrzejewicz_Piotr">
+    <foaf:name>Piotr Jedrzejewicz</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Koenig_Helmut">
+    <foaf:name>Helmut König</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Koksch_Norbert">
+    <foaf:homepage rdf:resource="http://www.math.tu-dresden.de/~koksch"/>
+    <foaf:name>Norbert Koksch</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Lippert_Joachim">
+    <foaf:name>Joachim Lippert</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Moldenhauer_Carsten">
+    <foaf:name>Carsten Moldenhauer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Moldenhauer_Wolfgang">
+    <foaf:name>Wolfgang Modenhauer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Sauermann_Lisa">
+    <foaf:name>Lisa Sauermann</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Schueler_Axel">
+    <foaf:name>Axel Schüler</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Schulze_Christoph">
+    <foaf:name>Christoph Schulze</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Semmler_Gunter">
+    <foaf:homepage rdf:resource="http://www.mathe.tu-freiberg.de/~semmler"/>
+    <foaf:name>Gunter Semmler</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Tancer_Martin">
+    <foaf:name>Martin Tancer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Unger_Alexander">
+    <foaf:name>Alexander Unger</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Waldmann_Johannes">
+    <foaf:homepage rdf:resource="http://www.imn.htwk-leipzig.de/~waldmann"/>
+    <foaf:name>Johannes Waldmann</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Wirth_Jens">
+    <foaf:homepage rdf:resource="http://www.mathe.tu-freiberg.de/~wirth"/>
+    <foaf:name>Jens Wirth</foaf:name>
+  </foaf:Person>
+
+</rdf:RDF>

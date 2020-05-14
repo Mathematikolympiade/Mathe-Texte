@@ -1,0 +1,497 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,schueler,url,curves,graphics}
+\usepackage{kosemnet,ko-math}
+
+\title{Komplexe Zahlen\kosemnetlicensemark}
+\author{Axel Schüler, Leipzig\\[8pt]
+\url{schueler@mathematik.uni-leipzig.de}}
+\date{Juli 2003}
+
+\begin{document}
+
+\maketitle
+
+Da die komplexen Zahlen nicht mehr im Lehrplan stehen, sollen hier die
+Grundlagen gelegt werden. Eine sehr schöne Einführung liefert das Buch von
+Pieper \cite{b-Pieper}. Ein weiterer Beitrag, der die geometrischen
+Anwendungen der komplexen Zahlen veranschaulicht, ist unter dem Titel
+{\glqq}Komplexe Zahlen und Geometrie{\grqq} in der Kleinen Mathematischen
+Bibliothek zu finden.
+
+\section{Einführung der komplexen Zahlen}
+
+\subsection*{Komplexe Zahlen als Zahlenpaare}
+
+Einige algebraische Gleichungen, wie etwa die quadratische Gleichung $x^2-4x
++8=0$, haben keine Lösungen im Bereich der reellen Zahlen. Die Lösungsformel
+liefert formal
+$$x_{1}=2+\sqrt{-4}\quad\text{ und }\quad x_2=2-\sqrt{-4}.$$ 
+Wir werden sehen, dass dies trotzdem noch sinnvoll ist.
+
+\begin{definition}\label{d-complex}
+Eine {\em komplexe Zahl} ist ein geordnetes Paar $(a,b)$ reeller Zahlen. \glqq
+Geordnet\grqq\ bedeutet, dass $(a,b)\ne (b,a)$ falls $a\ne b$.  Zwei
+komplexe Zahlen $x=(a,b)$ und $y=(c,d)$ heißen gleich, genau dann wenn $a=c$
+und $b=d$. Wir definieren die Addition und die Multiplikation komplexer
+Zahlen wie folgt:
+\begin{align*}
+x+y&:= (a+c, b+d),\\ x\cdot y&:= (ac -bd, ad +bc).
+\end{align*}
+\end{definition}
+
+Wir bezeichnen die Menge der komplexen Zahlen mit $\C $.  Mit diesen
+Operationen werden die komplexen Zahlen ein {\em Körper}, d.\,h., die Addition
+und die Multiplikation sind assoziativ und kommutativ und sie sind miteinander
+verträglich, es gilt das Distributivgesetz: $z(u+v)=zu+zv$.  Außerdem sind
+Addition und Multiplikation umkehrbar. Wir können subtrahieren und (außer
+durch $0$) dividieren. Das neutrale Element der Addition, die Null, ist
+$(0,0)$ und das neutrale Element der Multiplikation, die Eins, ist $(1,0)$.
+
+Falls $x=(a,b)$, so ist $-x=(-a,-b)$ und $\dfrac{1}{x}
+=\left(\frac{a}{a^2+b^2},\frac{-b}{a^2+b^2}\right).$ In der Tat gilt mit
+dieser Zahl $x\cdot 1/x=1$.
+
+{\em Bemerkung.} Für beliebige reelle Zahlen $a$ und $b$ gilt
+$(a,0) +(b,0)=(a+b,0)$ und   $(a,0)(b,0)=(ab,0)$.
+Dies zeigt, dass die komplexen Zahlen der Gestalt  $(a,0)$ die selben
+arithmetischen Eigenschaften haben wie die entsprechenden reellen Zahlen $a$.
+Wir können daher  $(a,0)$ mit $a$ identifizieren.
+Dies liefert uns eine Einbettung der reellen Zahlen in die komplexen Zahlen.
+Allerdings verliert man eine Eigenschaft der reellen Zahlen: man kann die
+komplexen Zahlen nicht anordnen; es gibt keine vernünftige Kleiner-Relation.
+Man beachte, dass wir die komplexen Zahlen ohne die \glqq mystische\grqq\
+Wurzel aus $-1$ eingeführt haben. Wir wollen nun zeigen, dass die komplexe
+Zahl $(a,b)$ dasselbe ist wie $a+ b\ii $.
+
+\begin{definition}\label{d-i} $\ii=(0,1)$. \end{definition}
+
+\begin{satz}\label{p-ident}\mbox{}
+\begin{itemize}
+\item[(a)] $\ii ^2 =-1$.
+\item[(b)] Falls $a,b\in \R $, dann ist $(a,b)=a +b\ii$.
+\end{itemize}
+\end{satz}
+
+\begin{beweis}
+(a) $\ii ^2=(0,1)(0,1)=(-1,0)=-1.$ 
+
+(b) $a+b\ii =(a,0) +(b,0)(0,1)= (a,0)+(0,b)=(a,b)$.
+\end{beweis}
+
+\subsection*{Konjugiert komplexe Zahlen. Der Betrag einer komplexen Zahl}
+
+\begin{definition}\label{d-conjugate}
+Sind $a,b$ reelle Zahlen und $z=a +b\ii $, dann heißt $\ol{z} :=a-b\ii $ die
+zu $z$ {\em konjugiert-komplexe} Zahl.  Die Zahlen $a$ und $b$ heißen {\em
+Realteil} bzw.{} {\em Imaginärteil } von $z$ und wir bezeichnen sie mit
+$a=\Re z$ bzw.{} $b=\Im z$.
+\end{definition}
+
+\begin{satz}\label{p-conjugate} Sind 
+$z$ und $w$ komplexe Zahlen, dann gilt \\[12pt]
+\begin{minipage}{.35\textwidth}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item[(a)] $\overline{z+w}=\ol{z} +\ol{w}$, 
+\item[(b)]$\overline{zw}=\ol{z} \cdot \ol{w}$, 
+\end{itemize}
+  \end{minipage}\qquad
+  \begin{minipage}{.45\textwidth}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item[(c)]$z +\ol{z} =2\,\Re z,\ z-\ol{z} =2\ii\, \Im z$,
+\item[(d)]$z\,\ol{z}$ ist reell und nichtnegativ. 
+  \end{itemize}
+  \end{minipage}
+\end{satz}
+
+\begin{definition}\label{d-compabs}
+Ist $z$ eine komplexe Zahl, dann heißt $\abs{z}=\sqrt{z\,\ol{z}}$ der{\em
+absolute Betrag} von $z$.
+\end{definition}
+
+Für reelle Zahlen stimmt diese Definition mit der gewöhnlichen Betragsfunktion
+überein, denn für $x>0$ ist $\sqrt{x\,\ol{x}}=\sqrt{x^2}=x$ und für $x<0$ ist
+$\sqrt{x\,\ol{x}}=\sqrt{x^2}=-x$.
+
+\begin{satz}\label{p-compabs} Es seien $z$ und $w$ komplexe Zahlen. Dann
+gilt \\[12pt]
+  \begin{minipage}[t]{.45\textwidth}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item[(a)] $\abs{z} >0 $ außer für $z=0$,
+\item[(b)] $\abs{\ol{z} }=\abs{z}$,
+\item[(c)] $\abs{zw}=\abs{z}\,\abs{w}$,
+\end{itemize}
+  \end{minipage}\qquad
+  \begin{minipage}[t]{.45\textwidth}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item[(d)] $\abs{\Re{z}} \le \abs {z}$,
+\item[(e)] $\abs{z+w}\le \abs{z} +\abs{w}.$
+\end{itemize}
+  \end{minipage}
+\end{satz}
+
+\begin{beweis} (a) und  (b) sind einfach.  Es sei $z=a+ b\ii $ und 
+$w=c+ d\ii $, mit reellen Zahlen $a,b,c,d $. Dann gilt
+\[\abs{zw}^2=(ac-bd)^2 +(ad+bc)^2=(a^2+b^2)(c^2+d^2)=\abs{z}^2\,\abs{w}^2\]
+oder  $\abs{zw}^2=(\abs{z}\,\abs{w})^2$. Nun folgt (c) durch Wurzelziehen.
+
+Zum Beweis von  (d) beachte man, dass $ a^2 \le a^2 +b^2$, also 
+$$\abs{a}=\sqrt{a^2}\le \sqrt{a^2 +b^2}=\abs{z}.$$
+
+Für (e) beachte man, dass $\ol{z}\, w$ konjugiert zu $z\,\ol{w}$ ist, so dass
+$z\,\ol{w}+\ol{z} w=2\Re(z \,\ol{w})$. Folglich gilt
+\begin{align*}
+\abs{z+w}^2&=(z+w)(\ol{z} +\ol{w})=z\,\ol{z} +z\,\ol{w} +\ol{z}\, w+w\,\ol{w}\\
+&=\abs{z}^2 +2\Re(z\,\ol{w}) +\abs{w}^2\\
+&\le \abs{z}^2 + 2\abs{z}\, \abs{w} +\abs{w}^2=(\abs{z} +\abs{w})^2.
+\end{align*}
+Schließlich folgt (e) durch Wurzelziehen.
+\end{beweis}
+
+\subsection*{Geometrische Bedeutung von Konjugation und Betrag} 
+
+Spiegelt man eine komplexe Zahl $z=a+b\ii$ an der reellen Achse, so erh"alt
+man die konjugierte Zahl $\overline{z}=a-b\ii$.  Der Betrag von $z$ ist die
+L"ange der Strecke vom Nullpunkt bis $z$.  Nach dem Satz des Pythagoras ist
+also $|z|=\sqrt{a^2+b^2}$ oder $|z|^2= z\ol{z}$. Offenbar ist $z$ reell gdw.{}
+$z=\ol{z}$.  Den Realteil $a$ bzw.{} Imagin"arteil $b$ der komplexen Zahl
+$z=a+b\ii$ erh"alt man mit Hilfe der komplexen Konjugation wie folgt:
+$\Re(z)=\half(z+\ol{z})$ bzw.{} $\Im(z)=\frac{1}{2\ii}(z-\ol{z})$.
+
+\section{Die trigonometrische Form der komplexen Zahlen}
+
+Es gibt eine eineindeutige Beziehung zwischen den komplexen Zahlen und den
+Punkten der Ebene. Diese Ebene heißt dann {\em Gau"ssche Zahlenebene}.
+
+\begin{minipage}{0.4\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,40)
+\put(0,10){\vector(1,0){45}}\put(45,5){\Re}
+\put(10,0){\vector(0,1){35}}\put(3,32){\Im}
+\put(10,10){\line(2,1){30}}\put(45,25){$z=a+b\ii$}
+\put(10,10){\arc(15,0){26}}\put(20,12){$\phi$}
+\put(38,5){$a$}\put(5,25){$b$}\put(12,18){$r=\abs{z}$}
+\multiput(10,25)(3,0){10}{\line(1,0){2}}
+\multiput(40,10)(0,4){4}{\line(0,1){3}}
+\end{picture}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}
+Nach dem Satz des Pythagoras ist $\abs{z}=\sqrt{a^2 +b^2} $ der Abstand der
+Zahl $z $ vom Nullpunkt $0$.  
+
+Den Winkel $\varphi $ zwischen der positiven reellen Achse und dem Strahl $0z$
+bezeichnen wir als {\em Argument} von $ z$ und schreiben $\varphi=\arg z$.
+Falls $z\ne 0$, ist das Argument $\varphi $ durch $z$ eineindeutig bis auf ein
+additives Vielfaches von $360\grad $ bestimmt.
+\end{minipage}
+
+Von der Elementargeometrie her ist klar, dass
+\[\sin \varphi =\frac{b}{\abs{z}},\quad \cos\varphi =\frac{a}{\abs{z}}.\]
+Das heißt, mit $r=\abs{z}$ haben wir $a=r \cos \varphi$ und $b=r\sin \varphi
+$.  Setzt man dies in die kartesische Form $z=a+b\ii $ ein, so hat man
+\begin{align}\label{e-polar}
+z=r (\cos\varphi +\ii \sin\varphi).
+\end{align}
+Dies ist die {\em trigonometrische Form} von $z$ oder {\em
+Polarkoordinatenform} von $z$.
+
+\begin{beispiel}\mbox{}
+\begin{itemize}
+\item [a)] $z=1+\ii $. Dann ist $\abs{z}=\sqrt{2}$ und $\sin\varphi
+=1/\sqrt{2}=\cos\varphi $. Hieraus folgt ${\varphi=\pi/4}$. 
+
+Also ist die trigonometrische Form von $z$ gleich ${1+\ii=\sqrt{2}(\cos \pi/4
++\ii \sin\pi/4)}$.
+\item [b)] $z=-\ii$. Es ist $\abs{-\ii}=1$ und $\sin\varphi=-1$, $\cos
+\varphi=0$. 
+
+Somit ist $\varphi=3\pi/2$ und ${-\ii=1(\cos 3\pi/2 +\ii \sin 3\pi/2)}$.
+\item [c)] Die Berechnung von Real- und Imaginärteil aus den Polarkoordinaten
+ist einfacher:
+\[z=32(\cos 7\pi/6 +\ii \sin 7\pi/6)=32(-\sqrt{3}/2 -\ii/2)=
+-16\sqrt{3}-16\ii.\]
+\end{itemize}
+\end{beispiel}
+ 
+\begin{minipage}{0.4\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,40)
+\put(0,10){\vector(1,0){45}}\put(45,5){\Re}
+\put(10,0){\vector(0,1){35}}\put(3,32){\Im}
+\put(10,10){\vector(1,2){10}}
+\put(10,10){\vector(2,1){20}}
+\put(30,20){\vector(1,2){10}}
+\put(20,30){\vector(2,1){20}}
+\put(10,10){\vector(1,1){30}}
+\put(15,30){$z$}\put(32,17){$w$}\put(43,37){$z+w$}
+\end{picture}
+\end{minipage}\hfill
+\begin{minipage}{0.55\textwidth}
+Die Addition komplexer Zahlen entspricht der Vektoraddition in der Ebene.  Die
+geometrische Bedeutung der Ungleichung $\abs{z+w}\le \abs{z} +\abs{w} $
+lautet: die Summe zweier Seiten eines Dreiecks ist größer als die dritte
+Seite.
+\end{minipage}
+
+\begin{minipage}{0.4\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,40)
+\put(0,10){\vector(1,0){45}}\put(45,5){\Re}
+\put(10,0){\vector(0,1){35}}\put(3,32){\Im}
+\put(10,10){\vector(1,1){10}}
+\put(10,10){\vector(3,1){15}}
+\put(10,10){\vector(1,2){12}}
+\put(26,14){$z$}\put(21,19){$w$}\put(23,34){$z\cdot w$}
+\put(10,10){\arc(7,0){44}}\put(10,10){\arc(11,0){18}}
+\end{picture}
+\end{minipage}\hfill
+\begin{minipage}{0.55\textwidth}
+Die Multiplikation der komplexen Zahlen $z=r(\cos\varphi +\ii \sin\varphi)$
+und $w=s(\cos \psi +\ii\sin \psi)$ in ihrer trigonometrischen Form liefert
+\begin{align}
+zw&=rs(\cos \varphi +\ii \sin\varphi)(\cos \psi +\ii \sin\psi)\notag \\
+\begin{split}
+&=rs(\cos \varphi\cos\psi -\sin\varphi \sin\psi) +\notag \\
+&\phantom{(\cos \varphi\cos\psi )}\ii(\cos \varphi\sin\psi +\sin\varphi \cos
+\psi)\end{split}\notag\\
+zw&=rs(\cos(\varphi +\psi)+ \ii \sin(\varphi+\psi)), \label{e-polarm}
+\end{align}
+wobei wir in der letzten Gleichung die Additionstheoreme für Sinus und Kosinus
+ausnutzten.
+\end{minipage}
+
+\medskip
+Der Betrag eines Produkts komplexer Zahlen ist also das Produkt der Beträge,
+und das Argument des Produktes ist die Summe der Argumente.
+
+Die geometrische Bedeutung der Multiplikation mit $w=r(\cos\varphi +\ii \sin
+\varphi)$ ist eine Ähnlichkeitsabbildung der komplexen Ebene auf sich:
+Zunächst wird um den Nullpunkt um $\varphi $ gedreht und dann mit dem Faktor
+$r$ und Zentrum $0$ gestreckt (oder gestaucht).  
+
+Analog erhält man für den Quotienten von komplexen Zahlen, falls $w\ne 0$,
+\begin{align}\label{e-polard}
+\frac{z}{w}=\frac{r}{s}\left( \cos(\varphi -\psi)+\ii \sin (\varphi
+-\psi)\right). 
+\end{align}
+
+\begin{satz}[{\sc Moivre}sche Formel] Es sei  $z=r(\cos \varphi +\ii \sin
+  \varphi)$ eine komplexe Zahl mit dem Betrag $r$ und dem Argument $\varphi $.
+  Dann gilt für alle ganzen Zahlen $n\in\Z $
+\begin{align}\label{e-moivre}
+z^n=r^n(\cos(n\varphi) +\ii \sin(n\varphi)).
+\end{align}
+\end{satz}
+
+\begin{beweis} (a) Zunächst sei  $n>0$. Wir beweisen dies durch vollständige
+  Induktion über $n$.  Für $n=1$ gibt es nichts zu zeigen. Angenommen
+\eqref{e-moivre} gilt für ein festes $n$. Dann zeigen wir die Behauptung für
+$n+1$.  Nach Induktionsvoraussetzung und \eqref{e-polarm} gilt
+\begin{align*}
+  z^{n+1}=z^n\cdot z &=r^n(\cos(n\varphi)+\ii \sin(n\varphi))r(\cos\varphi
+  +\ii \sin\varphi)\\ & =r^{n+1}(\cos(n\varphi+\varphi) +\ii \sin(n\varphi
+  +\varphi)). 
+\end{align*}
+Dies beweist die Behauptung.
+
+(b) Nun sei $ n<0$. Dann ist $z^n=1/(z^{-n})$.  Wegen $1=1(\cos 0 +\ii \sin
+0)$, \eqref{e-polard} und dem Ergebnis von (a) haben wir
+\[
+z^n=\frac{1}{z^{-n}}=\frac{1}{r^{-n}}\left(\cos(0-(-n)\varphi) +\ii
+\sin(0-(-n)\varphi)\right)
+=r^n(\cos(n\varphi) +\ii \sin(n\varphi)).
+\]
+Damit ist der Beweis erbracht.
+\end{beweis}
+
+\begin{beispiel} Bestimme die trigonometrische Form von  $z=\sqrt{3}-3\ii$  und
+  berechne $z^{15}$.
+
+Wir haben $\abs{z}=\sqrt{3+9}=2\sqrt{3}$, $\cos\varphi=1/2 $ und
+$\sin\varphi=-\sqrt{3}/2$. Daher ist $\varphi=-\pi/3$ und $z=2\sqrt{3}(\cos
+(-\pi/3) +\sin(-\pi/3))$. Nach der {\sc Moivre}schen Formel haben wir
+\begin{align*}
+\begin{split}
+z^{15}&=\br{2\sqrt{3}}^{15}\br{\cos\br{-15\frac{\pi}{3}} +\ii
+\sin\br{-15\frac{\pi}{3}}} =2^{15}3^{7}\sqrt{3}\br{\cos(-5\pi) +\ii
+\sin(-5\pi)}\\ z^{15}&= -2^{15}3^{7}\sqrt{3}.
+\end{split}
+\end{align*}
+\end{beispiel}
+
+\section{Wurzeln komplexer Zahlen}
+
+Es sei $z\in\C $ und $n\in\N $. Eine komplexe Zahl $w$ heißt {\em $n$-te Wurzel
+aus $z$}, falls $w^n =z$.  Im Gegensatz zu den positiven reellen Zahlen sind
+die Wurzeln aus komplexen Zahlen nicht eindeutig bestimmt. Wir werden sehen,
+dass es genau $n$ verschiedene Wurzeln gibt für jedes $z\ne 0$.
+
+Es sei $z=r(\cos \varphi +\ii \sin\varphi)$ gegeben, und $w=s(\cos\psi+\ii
+\sin\psi)$ sei eine $n$-te Wurzel aus $z$. Nach der {\sc Moivre}schen Formel
+ist dann $w^n=s^n(\cos n\psi +\ii \sin n\psi)$. Ein Vergleich von $w^n$ und
+$z$ ergibt $s^n=r$ oder $s=\sqrt[n]{r} \ge 0$.  Ferner ist $n\psi =\varphi
++2k\pi$, $k\in \Z$ bzw.{} 
+\[\psi=\frac{\varphi}{n} +\frac{2k\pi}{n},\ k\in\Z.\]  
+Für $k=0,1,\dots, n-1$ erhalten wir {\em verschiedene} Werte
+$\psi_0,\psi_1,\dots,\psi_{n-1}$ modulo $2\pi$. Wir fassen dies zusammen.
+
+\begin{satz}\label{l-croots}
+Es sei $n\in \N$ und  $z=r(\cos \varphi +\ii \sin\varphi)\ne 0$ eine komplexe
+ Zahl. Dann sind die $n$ Zahlen 
+$$w_k=\sqrt[n]{r}\left( \cos\frac{\varphi+2k\pi}{n} +\ii
+  \sin\frac{\varphi+2k\pi}{n}\right),\quad k=0,1,\dots,n-1$$
+genau die $n$ verschiedenen  $n$-ten Wurzeln aus $z$.
+\end{satz}
+
+\begin{beispiel} Berechne die vierten Wurzeln aus  $z=-1$. 
+
+\begin{minipage}{0.4\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,60)
+\put(0,30){\vector(1,0){60}}\put(57,25){\Re}
+\put(30,0){\vector(0,1){60}}\put(23,57){\Im}
+\put(30,30){\bigcircle{45.5}}
+\put(30,30){\line(1,1){16}}\put(30,30){\arc(9,0){45}}\put(40,33){$\psi_0$}
+\put(30,30){\line(-1,1){16}}\put(30,30){\arc(7,0){135}}\put(24,38){$\psi_1$}
+\put(30,30){\line(-1,-1){16}}\put(30,30){\arc(5,0){225}}\put(20,28){$\psi_2$}
+\put(30,30){\line(1,-1){16}}\put(30,30){\arc(3,0){315}}\put(31,23){$\psi_3$}
+\end{picture}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}
+\begin{align*}
+\abs{z}=1 &\yields\ \abs{w}=\sqrt[4]{1}=1,\ \arg z=\varphi=180\grad. 
+\intertext{Folglich ist}
+\psi_0&=\frac{\varphi}{4}=45\grad,\\
+\psi_1&=\frac{\varphi}{4}+\frac{1\cdot360\grad}{4}=135\grad,\\
+\psi_2&=\frac{\varphi}{4}+\frac{2\cdot360\grad}{4}=225\grad,\\
+\psi_3&=\frac{\varphi}{4}+\frac{3\cdot360\grad}{4}=315\grad.
+\end{align*}
+\end{minipage}
+
+Wir erhalten
+\begin{alignat*}{2}
+w_0&=\cos 45\grad +\ii \sin 45\grad &&=\half \sqrt{2} +\ii \half\sqrt{2}
+\\
+w_1&=\cos 135\grad +\ii \sin 135\grad && =-\half \sqrt{2} +\ii \half\sqrt{2},
+\\
+w_2&=\cos 225\grad +\ii \sin 225\grad&& =-\half\sqrt{2} -\ii\half \sqrt{2},
+\\
+w_3&=\cos 315\grad +\ii \sin 315\grad&&=\half \sqrt{2} -\ii \half \sqrt{2}.
+\end{alignat*}
+\end{beispiel}
+
+\subsection*{Geometrische Interpretation der $n$-ten Wurzeln} 
+
+Die $n$-ten Wurzeln von $z\ne0$ bilden ein reguläres $n$-Eck in der komplexen
+Ebene.  Die Ecken liegen alle auf einem Kreis um $0$ mit dem Radius
+$\sqrt[n]{\abs{z}}$.
+
+Als {\em $n$-te Einheiswurzeln} bezeichnet man die $n$ Lösungen der Gleichung
+$z^n=1$, also die $n$ Zahlen
+\[w_k= \cos\frac{2k\pi}{n} +\ii \sin\frac{2k\pi}{n},\quad k=0,1,\dots,n-1.\]
+Diese Zahlen liegen auf dem Einheitskreis und es ist $w_0=1$.
+
+
+\begin{minipage}{0.55\textwidth}
+{\em Etwas Geometrie.}
+Ein {\em Kreis} mit Radius $r$ um den Punkt $z_0$ der Ebene ist die Menge
+aller $z\in\C $ mit  $|z-z_0|=r$.
+
+Eine {\em Gerade} durch $z_1$ und $z_2$ ist die Menge
+$$\left\{z\in\C\,\left|\, \frac{z-z_1}{z-z_2}\in\R\right.\right\}.$$
+
+Eine {\em Drehung} von $z$ um $z_0$ um den Winkel $\varphi$ entgegen dem
+Uhrzeiger: $z^\prime-z_0=(z-z_0)(\cos\varphi +\ii \sin\varphi)$
+\end{minipage}\hfill
+\begin{minipage}{0.4\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(60,60)
+\put(10,10){\vector(2,1){40}}
+\put(10,10){\vector(1,2){20}}
+\put(10,10){\arc(10,5){36}}
+\put(6,6){$z_0$}\put(52,28){$z$}\put(24,50){$z\prime$}\put(14,15){$\phi$}
+\end{picture}
+\end{minipage}
+
+\subsection*{Aufgaben}
+
+\begin{aufgabe} Berechne
+  \begin{center}
+    {\bf (a)} $ (1+\ii)(2+\ii)(3+\ii)$, \qquad {\bf (b)} $\dfrac{1}{1+\ii}
+    \frac{12-5\ii}{5+12\ii}$, \qquad {\bf (c)}
+    $\left(1+\dfrac{\ii}{\sqrt{3}}\right)^{2003}$.
+  \end{center}
+\end{aufgabe}
+
+\begin{aufgabe}
+Löse die folgenden Gleichungen:
+\begin{center}
+  {\bf (a)} $z^2 +2\ii =0$.  \qquad {\bf (b)} $z^2+3(1+\ii)z +5\ii =0$.
+\end{center}
+\end{aufgabe}
+
+\begin{aufgabe}Für  $z\,\ol{z}=1$ berechne man $\abs{1+z}^2 +\abs{1-z}^2$.
+\end{aufgabe}
+
+\begin{aufgabe} Es seien $z_1,\dots, z_n$ komplexe Zahlen.  Beweise:  
+$$ \abs{z_1+z_2+\cdots +z_n}\le \abs{z_1} +\cdots +\abs{z_n}.$$
+\end{aufgabe}
+
+\begin{aufgabe}{\bf (a)}  Berechne den Realteil, den Imaginärteil und den
+  absoluten Betrag der komplexen Zahlen
+\[(1-7\ii )(4+3\ii),\quad \frac{2+3\ii}{1- 4\ii},\quad (1- 7\ii)^2,\quad
+5\left(\cos\frac{5\pi}{3} +\ii\sin  \frac{5\pi}{3}\right).\]
+{\bf (b)} Bestimme die trigonometrische Form von
+\[-2\ii,\quad 1-\ii,\quad -\sqrt{3}-\ii.\]
+\end{aufgabe}
+
+\begin{aufgabe}Welche Teilmengen der komplexen Ebene werden durch die
+  folgenden Ungleichungen beschrieben?
+\begin{center}
+{\bf (a)} $\abs{z-1} \le 3$, \qquad {\bf (b)} $(z-\ii)(\ol{z} +\ii)\ge 1$,
+  \qquad {\bf (c)} $z+\ol{z} \ge -1$.
+\end{center}
+\end{aufgabe}
+
+\begin{aufgabe}
+Benutze die {\sc Moivre}sche Formel um
+$$\cos (3\alpha), \quad\sin (4\alpha)\quad \text{und }\quad \cos(5\alpha) $$
+durch $\cos \alpha$ und $\sin \alpha$ auszudrücken.
+
+Schreibe $\cos 18\grad$ und $\sin 202,5\grad$ als Wurzelausdruck.
+\end{aufgabe}
+
+\begin{aufgabe}
+Für welche $z\in\C $ gilt 
+\begin{center}
+{\bf (a)} $z^6+8\ii =0$, \qquad {\bf (b)} $ z^2 +\ii =0.$
+\end{center}
+\end{aufgabe}
+
+\begin{aufgabe} Finde den Fehler in der folgenden Rechnung:
+Es seien $a,b\in \R$ mit $a> b$. Dann gilt
+\begin{align*}
+\sqrt{a-b}&=\sqrt{(-1)(b -a)}=\sqrt{-1}\sqrt{b-a} \\
+\sqrt{a-b}&=\sqrt{-1}\sqrt{(-1)(a-b)}= 
+\sqrt{-1}\sqrt{-1}\sqrt{a-b}\quad \mid \cdot \frac{1}{\sqrt{a-b}}\\
+1&=\sqrt{-1}\sqrt{-1}=\ii ^2 \\
+1&=\ii ^2.
+\end{align*}
+\end{aufgabe}
+
+\begin{thebibliography}{1}
+\bibitem{b-Pieper}
+H.~Pieper, \emph{{D}ie komplexen {Z}ahlen. {T}heorie -- {P}raxis --
+  {G}eschichte}, {M}athematische {S}ch{\" u}lerb{\" u}cherei, no. 110,
+  Deutscher Verlag der Wissenschaften, Berlin, 1991.
+
+\end{thebibliography}
+
+\begin{attribution}
+schueler (2004-09-14): Contributed to KoSemNet
+
+graebe (2004-09-14): Prepared along the KoSemNet rules
+
+graebe (2005-02-02): editorial revision
+\end{attribution}
+\end{document}
+

@@ -1,0 +1,408 @@
+\documentclass[11pt]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+
+\title{Komplexe Zahlen und Geometrie\kosemnetlicensemark}
+\author{Dr. Axel Sch"uler, Univ. Leipzig}
+\date{M"arz 1998} 
+
+% emlines.sty  MÑrz 1990, Georg Horn / Eberhard Mattes.
+%
+% Makros zum Zeichnen von Linien mit beliebiger Steigung.
+% Nur bei Verwendung der DVI-Treiber von Eberhard Mattes.
+%
+% Der Makro \emline#1#2#3#4#5#6 setzt an die Koordinaten (#1,#2) den
+% Punkt #3 und an die Koordinaten (#4,#5) den Punkt #6. Diese beiden 
+% Punkte werden dann verbunden.
+%
+% TeXcad erzeugt Aufrufe dieses Makros fÅr mit eingeschalteter
+% EMLines-Option gezeichnete Linien.
+% (z.B. \emline{0.0}{0.0}{1}{17.0}{4.0}{2}).
+%
+% Der Makro \newpic#1 definiert den Makro \emline so, dass den
+% Punktnummern ##3 und ##6 die Ziffer #1 vorangestellt wird.
+% Dies ist notwendig, wenn mehr als ein Bild auf einer Seite
+% des Dokuments eingefuegt wird.
+%
+\def\newpic#1{%
+   \def\emline##1##2##3##4##5##6{%
+      \put(##1,##2){\special{em:point #1##3}}%
+      \put(##4,##5){\special{em:point #1##6}}%
+      \special{em:line #1##3,#1##6}}}
+%
+% Standarddefinition von \emline herstellen
+%
+\newpic{}
+%
+% Beispiel: 
+% \input bild1.pic
+% \newpic{1} \input bild2.pic
+%
+
+\def\vp{\varphi}
+\def\zq{\overline{z}}
+\def\half{\frac{1}{2}}
+\def\Re{{\rm Re}}
+\def\Im{{\rm Im}}
+\def\sqq{ \textstyle{  \frac{1}{\sqrt{2}} }}
+\def\sqqq{ \textstyle{ \frac{1}{\sqrt{3}}  } }
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Ziel dieses Beitrages ist es, die komplexen Zahlen bei einfachen
+  geometrischen Aufgaben einzusetzen. Besonderes Augenmerk gilt dabei der {\em
+    Drehung} um einen Winkel $\vp$. Sie l"a"st sich durch Multiplikation mit
+  $e^{\ii\vp}$ beschreiben.
+
+Im ersten Teil wiederholen wir Grundeigenschaften der komplexen
+Zahlen.
+
+Im zweiten Teil "ubersetzen wir geometrische Begriffe, wie
+Gerade, Kreis, L"ange einer Strecke, Teilungsverh"altnis und
+Drehung um einen Winnkel in die Sprache der komplexen Zahlen.
+
+Im dritten Teil werden Beispiele und Aufgaben betrachtet.
+\end{abstract}
+
+\subsection*{Komplexe Zahlen}
+
+{\em Die kartesischen Koordinaten.}
+
+Komplexe Zahlen sind Paare $(a,b)$ reeller Zahlen, kurz $a+b\ii$,
+f"ur die unter Beachtung von $\ii^2=-1$ die folgenden
+Rechenregeln gelten: $${(a+b\ii)\pm(c+d\ii)} ={a\pm c+(b\pm
+d)\ii}$$ und gem"a"s dem Distributivgesetz
+$$(a+b\ii){\cdot}(c+d\ii)=(ac-bd)+(ad+bc)\ii.$$ Es gelten die
+Kommutativgesetze und Assoziativgesetze der Addition und der
+Multiplikation. Man kann sich die komplexen Zahlen als Punkte der
+Gau"sschen Zahlenebene vorstellen.  
+
+\special{em:linewidth 0.4pt} \unitlength 1.00mm
+\linethickness{0.4pt}
+\begin{picture}(58.34,42.67)
+\put(57.33,9.67){\vector(1,0){0.2}}
+\emline{0.00}{9.67}{1}{57.33}{9.67}{2}
+\put(52.00,26.00){\vector(3,1){0.2}}
+\emline{10.67}{9.33}{3}{52.00}{26.00}{4}
+\put(58.34,29.67){\makebox(0,0)[cc]{$a+b\ii$}}
+\put(57.67,4.67){\makebox(0,0)[cc]{Re}}
+\put(6.33,37.00){\makebox(0,0)[cc]{Im}}
+\emline{52.00}{25.67}{5}{52.00}{9.33}{6}
+\put(52.33,5.67){\makebox(0,0)[cc]{$a$}}
+\put(6.00,25.33){\makebox(0,0)[cc]{$b\ii$}}
+\put(29.00,19.67){\makebox(0,0)[cc]{$r$}}
+\emline{25.00}{9.67}{7}{24.67}{12.67}{8}
+\emline{24.67}{12.67}{9}{23.67}{14.33}{10}
+\put(24.00,14.33){\vector(-1,2){0.2}}
+\emline{24.67}{13.00}{11}{24.00}{14.33}{12}
+\put(20.67,11.67){\makebox(0,0)[cc]{$\vp$}}
+\put(10.00,42.67){\vector(0,1){0.2}}
+\emline{10.00}{9.67}{13}{10.00}{42.67}{14}
+\emline{10.00}{26.00}{15}{51.67}{26.00}{16}
+\emline{10.00}{0.00}{17}{10.00}{9.33}{18}
+\end{picture}
+%\input gauss.pic
+
+{\em Konjugation und Betrag.} 
+
+Spiegelt man eine komplexe Zahl $z=a+b\ii$ an der reellen Achse,
+so erh"alt man die {\em komplex konjugierte} Zahl
+$\overline{z}=a-b\ii$.  Der {\em Betrag} von $z$ ist die L"ange der
+Strecke vom Nullpunkt bis $z$.  Nach dem Satz des Pythagoras ist
+also $|z|=\sqrt{a^2+b^2}$ oder $|z|^2= z\zq$. Offenbar ist $z$
+reell gdw.{} $z=\zq$.  Den {\em Realteil} $a$ bzw.{} {\em
+Imagin"arteil} $b$ der komplexen Zahl $z=a+b\ii$ erh"alt man mit
+Hilfe der komplexen Konjugation wie folgt: 
+$$\Re(z)=\half(z+\zq)\ \mbox{ bzw. }\
+\Im(z)=\frac{1}{2\ii}(z-\zq).$$ Die {\em Division} komplexer
+Zahlen l"a"st sich nun durch Erweitern mit $\zq_2$ auf die
+Standardform $a+b\ii$ zur"uckf"uhren:
+$$\frac{z_1}{z_2}=\frac{1}{|z_2|^2}z_1\zq_2.$$
+
+{\em Polarkoordinaten.}  
+
+Die komplexe Zahl $z=a+b\ii$ kann alternativ durch ihren Betrag
+$r$ und ihr {\em Argument} $\vp$, den Winkel von der reellen
+Achse bis zum \glqq Leitstrahl\grqq\ durch $z$ dargestellt
+werden. Es ist dann $z=r(\cos \vp+\ii\sin\vp)$ bzw.{} in
+Exponentialschreibweise $z=re^{\ii\vp}$. In der letzten Formel
+wird $\vp$ im Bogenma"s gemessen, etwa
+$60^\circ=\frac{\pi}{3}$. Die Zahl $e=2,7182818\dots$ ist die
+Eulersche Konstante. Die Multiplikation komplexer Zahlen ist in
+der Exponentialschreibweise besonders einfach, da das
+Potenzgesetz gilt: 
+$$r_1 e^{\ii\vp} {\cdot} r_2 e^{\ii\psi} = r_1 r_2
+e^{\ii(\vp+\psi)}.$$ Die Argumente der beiden komplexen Zahlen
+werden addiert, das hei"st, $z_1$ wird um dem Winkel $\psi$
+(entgegen dem Uhrzeiger) um den Ursprung gedreht. Die Betr"age
+werden wie gew"ohnliche positive reelle Zahlen miteinander
+multipliziert.
+
+\subsection*{Geometrie}
+
+{\em Kreis} mit Radius $r$ um den Punkt $z_0$ der Ebene: $|z-z_0|=r$.
+
+{\em Gerade} durch $z_1$ und $z_2$: $\frac{z-z_1}{z-z_2}\in{\bf R}$.
+
+{\em Teilverh"altnis}. Die Strecke $\overline{AB}$ werde von innen und
+von au"sen durch Punkte $P$ bzw.{} $Q$ im Verh"altnis $t$
+geteilt, das hei"st,
+$$
+\overline{AP}:\overline{PB}=t=-\overline{AQ}:\overline{QB}.
+$$
+Die gerichtete Strecke $\overline{XY}$ ist, als Vektor im ${\bf
+R}^2={\bf C}$, gleich $Y-X$. Daher hat man nach Umstellen
+$P=\frac{1}{1+t}(A+tB)$, $t\ne-1$, und $Q=\frac{1}{1-t}(A-tB)$,
+$t\ne1$.   
+
+{\em Drehung} von $z$ um $z_0$ um den Winkel $\vp$ entgegen dem
+Uhrzeiger:
+
+\special{em:linewidth 0.4pt}
+\unitlength 1.00mm \linethickness{0.4pt}
+\begin{picture}(104.00,41.00)
+\put(52.33,17.33){\vector(4,1){0.2}}
+\emline{10.00}{10.00}{1}{52.33}{17.33}{2}
+\put(40.67,37.67){\vector(1,1){0.2}}
+\emline{10.00}{10.33}{3}{40.67}{37.67}{4}
+\emline{22.33}{12.00}{5}{22.08}{14.48}{6}
+\emline{22.08}{14.48}{7}{21.33}{16.25}{8}
+\emline{21.33}{16.25}{9}{20.08}{17.32}{10}
+\emline{20.08}{17.32}{11}{18.33}{17.67}{12}
+\put(17.00,14.00){\makebox(0,0)[cc]{$\vp$}}
+\put(7.00,6.33){\makebox(0,0)[cc]{$z_0$}}
+\put(57.00,14.33){\makebox(0,0)[cc]{$z$}}
+\put(46.00,41.00){\makebox(0,0)[cc]{$z^\prime$}}
+\put(104.00,23.33){\makebox(0,0)[cc]
+{\fbox{$z^\prime-z_0=(z-z_0)e^{\ii\vp}$}$\qquad (\ast)$}}
+\put(18.00,17.67){\vector(-2,1){0.2}}
+\emline{20.33}{16.67}{13}{18.00}{17.67}{14}
+\end{picture}
+%\input{dreh.pic}
+
+\subsection*{Anwendung der Drehung bei geometrischen Beweisen}
+
+\begin{quote}
+{\bf Beispiel 1} : "Uber den Seiten eines spitzwinkligen Dreiecks
+$ABC$ werden nach au"sen gleichseitige Dreiecke $ABC'$, $BCA'$
+bzw.{} $ACB'$ mit den Mittelpunkten $D$, $E$ bzw.{} $F$ erichtet.
+
+Zeigen Sie, da"s das Dreieck $DEF$ gleichseitig ist!
+\end{quote}
+
+\begin{beweis}
+
+\special{em:linewidth 0.4pt}
+\unitlength 1mm
+\linethickness{0.4pt}
+\begin{picture}(70.00,53.33)
+\emline{20.00}{20.00}{1}{60.00}{20.00}{2}
+\emline{60.00}{20.00}{3}{50.00}{50.00}{4}
+\emline{50.00}{50.00}{5}{20.33}{20.00}{6}
+\emline{20.33}{20.00}{7}{28.00}{44.67}{8}
+\emline{28.00}{44.67}{9}{50.00}{49.67}{10}
+\emline{50.00}{49.67}{11}{66.33}{38.67}{12}
+\emline{66.33}{38.67}{13}{60.33}{20.33}{14}
+\emline{60.33}{20.33}{15}{40.67}{9.33}{16}
+\emline{40.67}{9.33}{17}{20.67}{20.00}{18}
+\put(16.33,15.00){\makebox(0,0)[cc]{$A$}}
+\put(66.00,15.33){\makebox(0,0)[cc]{$B$}}
+\put(50.67,53.33){\makebox(0,0)[cc]{$C$}}
+\put(40.67,4.67){\makebox(0,0)[cc]{$D$}}
+\put(70.00,40.33){\makebox(0,0)[cc]{$E$}}
+\put(23.33,47.67){\makebox(0,0)[cc]{$F$}}
+\end{picture}
+%\input{dreieck.pic}
+
+Wir fassen $A$, $B$ und $C$ als Punkte der komplexen Ebene auf
+und berechnen daraus $D$, $E$ und $F$. Es entsteht $D$ durch
+Drehung von $B$ um $A$ um $-30^\circ$ (im Bogenma"s
+$-\frac{\pi}{6}$) und anschlie"sender Stauchung mit dem Faktor
+$\overline{AD}:\overline{AB}=1:\sqrt{3}$, denn die H"ohe $h$ im
+gleichseitigen Dreieck $ABC^\prime$ ist nach Pythagoras
+$\frac{1}{2}\sqrt{3}|AB|$ und $\overline{AD}= \frac{2}{3}h$. Nach
+Formel $(\ast)$ gilt also
+\begin{eqnarray}
+D-A&=&(B-A)e^{-\ii\frac{\pi}{6}}\sqqq,  \label{1}\\
+D-B&=&(A-B)e^{\ii\frac{\pi}{6}}\sqqq,   \label{2}  \\
+E-B&=&(C-B)e^{-\ii\frac{\pi}{6}}\sqqq,  \label{3}\\
+F-A&=&(C-A)e^{\ii\frac{\pi}{6}}\sqqq.   \label{4}
+\end{eqnarray}
+Dabei steht ein positives Vorzeichen vor dem Drehwinkel, wenn
+entgegen dem Uhrzeiger gedreht wird, ein negatives Vorzeichen,
+wenn mit dem Uhrzeiger gedreht wird. Wir m"ussen zeigen, da"s
+gilt $(E-D) e^{\ii\frac{\pi}{3}}=F-D$, das hei"st, $F$ entsteht
+durch Drehung von $E$ um $D$ um $60^\circ=\frac{\pi}{3}$ entgegen
+dem Uhrzeiger.
+
+Wir bilden die Differenzen der Gleichungen $(3)-(2)$ und
+$(4)-(1)$:
+\begin{eqnarray*}
+E-D&\!\!=\!\!&\sqqq((-e^{-\ii\frac{\pi}{6}}+e^{\ii\frac{\pi}{6})}B
+-e^{\ii\frac{\pi}{6}} A+e^{-\ii\frac{\pi}{6}}  C),
+\\
+F-D&\!\!=\!\!&\sqqq(-e^{-\ii\frac{\pi}{6}} B+
+(-e^{\ii\frac{\pi}{6}} +e^{-\ii\frac{\pi}{6}} )A +e^{\ii\frac{\pi}{6}} C).
+\end{eqnarray*}
+Beachtet man $-e^{\ii\frac{\pi}{6}} + e^{-\ii\frac{\pi}{6}} =-\cos\frac{\pi}{6}
+-\ii\sin\frac{\pi}{6}+\cos(-\frac{\pi}{6})+\ii\sin(-\frac{\pi}{6})=
+-2\half\ii=-\ii$, so ergibt sich
+\begin{eqnarray*}
+e^{\ii\frac{\pi}{3}}{(E-D)}{-}{(F-D)}&\!\!\!=\!\!\!&
+\textstyle{\sqqq}\bigl((-e^{\ii\frac{\pi}{2}}
+{+}e^{\ii\frac{\pi}{6}}{-} e^{-\ii\frac{\pi}{6}} )A {+} 
+({-}e^{\ii\frac{\pi}{6}}{+}e^{\ii\frac{\pi}{2}}{+}e^{-\ii\frac{\pi}{6}})B{+}
+( e^{\ii\frac{\pi}{6}} {-} e^{\ii\frac{\pi}{6}} )C\bigr)\\
+&\!\!\!=\!\!\!&\textstyle{\sqqq}((-\ii+\ii)A + (-\ii+\ii)B)  =0.
+\end{eqnarray*}
+Hieraus folgt die Behauptung.
+\end{beweis}
+
+\begin{quote}
+{\bf Beispiel 2} : "Uber den Seiten $\overline{BC}$ und $\overline{CA}$ eines
+Dreiecks $ABC$ werden nach au"sen Quadrate $BDEC$ und $ACFG$
+errichtet. Ferner sei $M$ der Mittelpunkt von $\overline{AB}$.
+
+Beweisen Sie, da"s die Strecken $\overline{FE}$ und $\overline{CM}$
+aufeinander senkrecht stehen und da"s die erste doppelt so lang
+ist wie die zweite Strecke!
+\end{quote}
+
+\begin{beweis}
+Wir fassen die Punkte $A$, $B$, $C$, $M$, $D$, $E$ und $F$ als
+Punkte der komplexen Ebene auf. Man erh"alt $F$ durch Drehung von
+$A$ um $C$ um $-\frac{\pi}{2}$ und $E$ durch Drehung von $B$ um
+$C$ um $\frac{\pi}{2}$.  Folglich gilt
+\begin{displaymath}
+F-C=e^{-\ii\frac{\pi}{2}}(A-C)  \quad  \mbox{ und }\quad
+E-C=e^{\ii\frac{\pi}{2} }(B-C).
+\end{displaymath}
+Wegen $\ii=-e^{-\ii\frac{\pi}{2}}  = e^{\ii\frac{\pi}{2}} $ 
+erhalten wir als Differenz der  beiden Gleichungen
+$$
+F-E=\ii(-A+C-B+C).
+$$
+Wegen $M=\half(A+B)$ ergibt sich hieraus $\half\ii(F-E)=M-C$. Das
+ist aber gerade die zu zeigende Behauptung.
+\end{beweis}
+
+Die folgende Olympiadeaufgabe besitzt eine einfache
+elementargeometrische L"osung, auf die man unter Zeitdruck aber
+m"oglicherweise nicht kommt.  Die oben beschriebene Methode
+ben"otigt hingegen {\em "uberhaupt keine} Idee, nur die Umsetzung
+der geometrischen Figur in komplexe Zahlen. Wir formulieren die
+Olympiadeaufgabe, beweisen jedoch ihre Verallgemeinerung
+(Beispiel 4).
+
+\begin{quote}
+{\bf Beispiel 3} (351046): Gegeben sei eine Strecke $\overline{AB}$ und
+auf ihr Punkte $X$ und $Y$. "Uber den Strecken $\overline{AX}$ und
+$\overline{XB}$ werden \glqq nach oben\grqq\ Quadrate mit den
+Mittelpunkten $K$ bzw.{} $L$ errichtet. "Uber den Strecken
+$\overline{AY}$ und $\overline{YB}$ werden \glqq nach unten\grqq\ Quadrate
+mit den Mittelpunkten $M$ bzw.{} $N$ errichtet.
+
+Beweisen Sie, da"s die Strecken $\overline{LM}$ und $\overline{KN}$
+orthogonal und gleichlang sind!
+\end{quote}
+
+\begin{quote}
+{\bf Beispiel 4} : "Uber den Seiten eines Vierecks $ABCD$ werden
+nach au"sen Quadrate mit den Mittelpunkten $E$, $F$, $G$ bzw.{}
+$H$ errichtet.
+
+Beweisen Sie, da"s die Strecken $\overline{EG}$ und $\overline{FH}$
+orthogonal und gleichlang sind.
+\end{quote}
+
+\begin{beweis}
+Der Punkt $E$ entsteht durch Drehung von $B$ um $A$ um
+$-45^\circ$ und anschlie"sender Stauchung mit dem Faktor $\sqq$:
+$$
+E-A=\sqq(B-A)e^{-\ii\frac{\pi}{4}}.
+$$
+Analog erh"alt man
+\begin{eqnarray*}
+G-D&=&\sqq(C-D)e^{\ii\frac{\pi}{4}},   \\
+H-A&=&\sqq(D-A)e^{\ii\frac{\pi}{4}},  \\
+F-B&=&\sqq(C-B)e^{-\ii\frac{\pi}{4}}.
+\end{eqnarray*}
+Zu zeigen ist $E-G=\ii(H-F)$. Dann sind die beiden Strecken
+orthogonal und gleichlang.  Aus den obigen Gleichungen ergibt
+sich
+\begin{eqnarray*}
+E-G&=&(1- \sqq e^{-\ii\frac{\pi}{4}})A
+   +\sqq e^{-\ii\frac{\pi}{4}}B
+   -\sqq e^{\ii\frac{\pi}{4}} C
+   +(-1+\sqq e^{\ii\frac{\pi}{4}})D,\\
+H-F&=&(1- \sqq e^{\ii\frac{\pi}{4}} )A
+   + (-1+\sqq e^{-\ii\frac{\pi}{4}})B
+   -\sqq e^{-\ii\frac{\pi}{4}} C
+   +\sqq e^{\ii\frac{\pi}{4}}D.
+\end{eqnarray*}
+Beachtet man $\ii=e^{\ii\frac{\pi}{2}}$, so ergibt sich
+\begin{eqnarray*}
+E-G-\ii(H-F)&=&A(1-\sqq e^{-\ii\frac{\pi}{4}} -\ii +
+\sqq e^{\ii\frac{3\pi}{4}} )
++B(\sqq e^{-\ii\frac{\pi}{4}} +\ii 
+-\sqq e^{\ii\frac{\pi}{4}})
+\\
+&&+C(-\sqq e^{\ii\frac{\pi}{4}} 
++\sqq e^{\ii\frac{\pi}{4}})
++D(-1+\sqq e^{\ii\frac{\pi}{4}}- \sqq
+e^{\ii\frac{3\pi}{4}}).
+\end{eqnarray*}
+Nun gilt aber $-e^{-\ii\frac{\pi}{4}} +
+e^{\ii\frac{3\pi}{4}} =2e^{\ii\frac{3\pi}{4}}=\sqrt{2}(-1+\ii)$
+und $e^{-\ii\frac{\pi}{4}} - e^{\ii\frac{\pi}{4}} =\ii\sqrt{2}$.
+Daher sind alle Koeffizienten vor $A$, $B$, $C$ bzw.{} $D$ 
+Null, und es gilt die Behauptung.
+\end{beweis}
+
+\section*{Aufgaben}
+
+\begin{itemize}
+\item[1.] Gegeben sei ein Quadrat $ABCD$ und ein Punkt $P$ in
+seinem Innern mit $\angle\, PAB=\angle\, PBA=15^\circ$.
+
+Zeigen Sie, da"s das Dreieck $CPD$ gleichseitig ist!
+
+\item[2.] "Uber den Seiten eines Parallelogramms $ABCD$ werden
+nach au"sen Quadrate mit den Mittelpunkten $E$, $F$, $G$ bzw.{}
+$H$ errichtet.
+
+Beweisen Sie, da"s $EFGH$ ein Quadrat ist!
+
+\item[3.] "Uber den Seiten eines spitzwinkligen Dreiecks $ABC$
+sind nach au"sen Dreiecke $ABR$, $BCP$ und $CAQ$ errichtet. Dabei
+sind $\angle\, RAB=\angle\, RBA=15^\circ$, $\angle\, PBC=\angle\,
+QAC=45^\circ$ und $\angle\, PCB=\angle\, QCA=30^\circ$.
+
+Zeigen Sie, da"s das Dreieck $PQR$ rechtwinklig gleichschenklig
+ist!
+\end{itemize}
+
+{\em Hinweis} : Benutzen Sie zur Berechnung der ben"otigten
+Streckungs\-ver\-h"altnisse den Sinussatz. Zeigen Sie zun"achst,
+da"s $\overline{AR}:\overline{AB}=\overline{AQ}:\overline{AC}$ gilt.
+
+\begin{comment}
+  todo: geometric markup
+\end{comment}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+\end{document}
+
+
+
+
+

@@ -1,0 +1,981 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{ngerman,schueler,url}
+\usepackage{kosemnet,ko-math}
+
+\title{Rekursive Folgen\kosemnetlicensemark} 
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:Axel.Schueler@math.uni-leipzig.de}}
+\date{01. März 2010}
+%  Änderung in der Lösung von Aufgabe 2
+\usepackage{times}
+
+%\usepackage{prelim2e}
+%\usepackage{showkeys}
+
+%%%%%%%%%%%%% Seitenformat %%%%%%%%%%%%%%%%%%%%%
+\textwidth 16cm
+\textheight 24cm
+\oddsidemargin 2.3cm
+\evensidemargin 1.5cm
+%\leftmargin 2cm
+\hoffset -2cm
+\voffset -1.6cm
+\sloppy
+\parindent0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%\DeclareGraphicsExtensions{.eps}
+
+
+\begin{document}
+\maketitle
+%%%%%%%%%\tableofcontents
+
+\section{Rekursive Folgen}
+\subsection{Einleitung}
+\nocite{b-Markuschewitsch}
+
+Rekursive Folgen umfassen viele aus dem Unterricht bekannte Folgen:
+geometrische Folgen $(cq^n)$, $c,q\in \R$, arithmetische Folgen
+$(c+dn)_{n\in\N}$, $c,d\in\R $ gegeben, periodische Folgen, wie z.\,B.{}
+$(-1,1,-1,1,\cdots)$ oder arithmetische Folgen höherer Ordnung, wie
+quadratische Folgen $(n^2)$ oder kubische Folgen, wie $(an^3 +bn^2 +cn+d)$,
+$a,b,c,d\in \R $.
+
+Die vorliegende kleine mathematische Theorie ist abgeschlossen, einfach und
+klar.  Ihre Grundzüge wurden vom französischen Mathematiker {\sc Moivre}
+(1720), von {\sc Daniel Bernoulli} und {\sc Leonhard Euler} entwickelt bzw.{}
+weiter entwickelt.
+
+Das lateinische \emph{recurro} bedeutet „umkehren“ oder „zurückgehen“. Grob
+gesprochen erhält man das Glied $a_n$ einer rekursiven Folge, indem man $a_n$
+aus einer festen Anzahl vorhergehender Glieder berechnet, etwa $a_{n+2}=a_{n+1}
++a_n$. Ist hingegen $a_n$ als Funktion von $n$ allein (und nicht in
+Abhängigkeit von $a_{n-1}$, $a_{n-2}$ usw.{}) gegeben, so sagt man, dass die
+Folge $(a_n)$ \emph{explizit} gegeben ist, z.\,B.{} ist $a_n=\sqrt{n^3 -1} $
+eine explizite Bildungsvorschrift.
+
+Die folgenden Aufgabenstellungen treten häufig bei rekursiven Folgen auf:
+\begin{itemize}
+\item Man ermittle aus der rekursiven Vorschrift die explizite
+  Bildungsvorschrift. Dies ist in dieser Allgemeinheit eine sehr schwierige, in
+  vielen Fällen unlösbare Aufgabenstellung.  Wir werden aber sehen, dass sie
+  für die große Klasse der \emph{linearen rekursiven Folgen mit konstanten
+    Koeffizienten} vollständig lösbar ist.
+\begin{align}\label{e-linrek}
+a_{n+k}=c_1 a_{n+k-1} +c_2 a_{n+k-2} +\cdots + c_k a_n,\quad n\in \N.
+\end{align}
+
+\item Man beweise, dass die Glieder einer rekursiv oder explizit gegebenen
+  Folge ganzzahlig, durch $3$ teilbar, paarweise teilerfremd, usw.{} sind.
+
+\item Man bestimme Einerziffer, die Zehnerziffer, die ersten 5 Nachkommastellen
+  eines Folgenelements.
+
+\item Man beweise die Periodizität einer Folge.
+
+\item Mitunter sind mehrere gekoppelte rekursive Folgen gegeben und man soll
+  eine der oben genannten Aufgaben lösen (siehe MO 441134).
+\end{itemize}
+
+\subsection{Beispiele}
+
+\begin{beispiel}\label{b-1}
+(a) $a_n=a_{n-1}$, $a_1:=a$, $a\in \R $ gegeben. Hier erhält man die
+  \emph{konstante Folge} $(a,a,a,\cdots)$.
+
+(b) $a_{n+2}=a_{n}$, $a_1=a$, $a_2=b$, $a,b\in\R $ gegeben. Man erhält hier
+  eine \emph{periodische Folge} der Periodenlänge $1$, falls $a=b$ nämlich die
+  konstante Folge oder eine der Periode $2$, nämlich $(a,b,a,b,\cdots)$.
+
+(c) $a_n=(a_{n-1})^ 2$, $a_1=2$. Man erhäl die Folge $(2,4,16,256,\cdots)$ mit
+  der expliziten Vorschrift $\ds a_n=2^{2^{n-1}}$.  Dies ist ein Beispiel für
+  eine nicht-lineare Rekursionsformel. Der Beweis, dass dies tatsächlich die
+  explizite Bildungsvorschrift ist, erfolgt durch \emph{vollständige
+    Induktion.}  Offenbar ist $a_1=2^{2^0}=2^1=2$ --- der Induktionsanfang ist
+  erfüllt. Nun gelte die explizite Formel für ein festes $n$. Wir zeigen, dass
+  sie auch für $n+1$ gilt, also $a_{n+1}=2^{2^{n}}$.
+
+\begin{beweis} Nach der Rekursionsformel und der Induktionsvoraussetzung ist
+\begin{gather*}
+  a_{n+1}=(a_n)^2 \underset{\mathrm{Ind.Vor}}{=}\left(2^{2^{n-1}}\right)^2
+  =2^{2^{n-1} \cdot 2}= 2^{2^n}\,,
+\end{gather*}
+was zu zeigen war.
+\end{beweis}
+
+(d) $a_{n+1}=q \,a_n$, $a_1=c$.  Wir lösen die Rekursion auf, indem wir in der
+Rekursionsformel nacheinander $n-1$, $n-2,\dots, 1$ anstelle von $n$
+einsetzen. Wir erhalten dadurch $n-1$ Gleichungen: $a_n=q a_{n-1}$, $a_{n-1}=
+qa_{n-2}$,\dots, $a_2 =qa_1$.  Setzt man diese Gleichungen nacheinander in sich
+ein, so erhält man
+\begin{gather*}
+  a_{n+1}=qa_{n}=q^2 a_{n-1} =q^3 a_{n-2}=\cdots =q^{n} a_1= c\, q^n\,.
+\end{gather*}
+Wir erhalten somit die geometrische Folge mit dem Faktor $q$ und dem 
+Anfangsglied $c$. Der genaue Beweis erfolgt wie oben durch vollständige
+Induktion.
+
+(e) $a_{n+2}=2\,a_{n+1} -a_n$. Diese Rekursionsformel wird durch eine beliebige
+arithmetische Folge (erster Ordnung) $a_n=c +d\,(n-1)$, $c,d\in\R $, erfüllt.
+In der Tat ist
+\begin{align*}
+2\,a_{n+1} -a_n& = 2\,(c+ d\,n) -(c + d\,(n-1))= c+2\,d\,n -d\,n +d = c +
+d\,(n+1)= a_{n+2}\,.
+\end{align*}
+Man erkennt, dass es zu einer expliziten Vorschrift durchaus mehrere
+Rekursionen geben kann. So erfüllt $a_n=1$ neben der Rekursion (e) auch die in
+(a).
+
+(f) $a_{n+2}=a_{n+1} +a_n$, $a_1=a_2=1$. Dies ist die {\sc Fibonacci}-Folge.
+Ihre ersten Glieder lauten
+\begin{center}
+\begin{tabular}{l|llllllllllll}
+$n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $ 10$ & $11$ & $12 $
+\\ \hline 
+$a_n$ & $1$ & $1$ & $2$ & $3$ & $5$ & $8$ & $13$ & $21$ & $34$ & $55$ & $89$ & $144$
+\end{tabular}
+\end{center}
+
+Wir werden später die explizite Vorschrift ermitteln und zeigen, dass es zu
+jedem $m\in\N $ ein $n\in \N $ gibt mit $m\mid a_n$. Viele weitere interessante
+Eigenschaften über die Fibonacci-Zahlen findet man in \cite{b-Worobjow}.
+
+\end{beispiel}
+
+\begin{beispiel} \label{b-2}
+Wir betrachten die Folge $a_n=n^2$, $n\in \N $,  der Quadratqzahlen und wollen
+umgekehrt zu dieser expliziten Bildungsvorschrift eine rekursive Vorschrift 
+finden. Zunächst ist
+\begin{gather*}
+  a_{n+1}=(n+1)^2 =n^2 +2\,n +1= a_n +2\,n +1\,.
+\end{gather*}
+Vergrößert man hier $n$ um $1$, so erhält man
+\begin{gather*}
+  a_{n+2} =a_{n+1} +2\,n +3\,.
+\end{gather*}
+Bildet man nun die Differenz aus diesen beiden Gleichungen, so hat man
+\begin{gather*}
+  a_{n+2} -a_{n+1} = a_{n+1}- a_{n} +2 \quad\text{bzw.}\quad a_{n+2}=2a_{n+1} -
+  a_n +2.
+\end{gather*}
+Erhöht man erneut $n$ um $1$, so hat man
+\begin{gather*}
+  a_{n+3}= 2\,a_{n+2} -a_{+1} +2
+\end{gather*}
+und Differenzbildung liefert
+\begin{gather*}
+  a_{n+3} - a_{n+2} = 2\,a_{n+2} -3\, a_{n+1} +a_n \quad\text{bzw.}\quad
+  a_{n+3} = 3\, a_{n+2} -3\, a_{n+1} + a_n\,.
+\end{gather*}
+Somit genügt die Folge der Quadratzahlen einer linearen rekursiven Gleichung
+\emph{dritter Ordnung}. Analog kann man sich überlegen, dass die Folgen $(n^3)$
+der Kuben einer linearen Rekursion vierter Ordnung genügt:
+\begin{gather*}
+  a_{n+4} =4\,a_{n+3} -6\, a_{n+2} +4\, a_{n+1} - a_n\,.
+\end{gather*}
+\end{beispiel}
+
+\begin{beispiel}\label{b-dezimal}
+Wir wollen die Ziffernfolge $0,a_1a_2a_3\cdots $ bei der
+Dezimalbruchentwicklung einer rationalen Zahl
+\begin{gather*}
+  \frac{761}{1332}= 0{,}57\ov{132}\cdots 
+\end{gather*}
+betrachten.  In diesem Beispiel ist $a_1=5$, $a_2=7$, $a_3=a_6=a_9=\cdots =
+1$, $a_4=a_7=a_{10}=\cdots = 3$ und $a_5=a_8=a_{11} =\cdots =2$. Offensichtlich
+ist für alle $n\ge 3$
+\begin{gather*}
+  a_{n+3} = a_n\,.
+\end{gather*}
+Dies ist wieder eine lineare rekursive  Folge dritter Ordnung
+mit konstanten Koeffizienten.
+\end{beispiel}
+
+\begin{beispiel}\label{b-polynom}
+  Dividiert man ein Polynom $p(x)=p_0 +p_1 x +\cdots +p_r x^r $ durch ein
+  Polynom $q(x)=q_0 +q_1 x+ \cdots + q_s x^s $, $q_0\ne 0$, so erhält man
+  i.\,a. als Quotient eine sogenannte \emph{Potenzreihe}
+  \begin{gather*}
+    r(x)=a_0 +a_1 x +a_2 x^2 +\cdots +a_n x^n +\cdots\,,
+  \end{gather*}
+  die nicht notwendig abbricht. Die Koeffizienten $(a_n)$ des Quotienten $r(x)$
+  genügen der linearen Rekursion
+  \begin{gather*}
+    a_{n+s} q_0 +a_{n+s-1} q_1 +\cdots + a_n q_{s} =0,\quad n+s\ge r+1\,.
+  \end{gather*}
+  Dies folgt durch Koeffizientenvergleich vor $x^{n+s}$ nach Ausmultiplizieren
+  der Gleichung $p(x)=q(x)r(x)$.  
+
+Zum Beispiel ist
+\begin{gather*}
+  \frac{1}{1-x-x^2}=1+x+2x^2 +3 x^3 +5x^4 +8 x^5 +\cdots +a_n x^n+ \cdots\,,
+\end{gather*}
+wobei $(a_n)$ die {\sc Fibonacci}-Folge ist. Die Funktion auf der linken Seite
+bezeichnet man dann auch als \emph{erzeugende Funktion} für die Folge $(a_n)$.
+\end{beispiel}
+
+\begin{beispiel}\label{b-Reihe} 
+Genügt $(a_n)$ der linearen Rekursion \rf[e-linrek] der Ordnung $k$ mit
+konstanten Koeffizienten $c_1,\dots, c_k$, so genügt die Folge der
+Partialsummen
+\begin{gather*}
+  s_n= a_1 +a_2 +\cdots +a_n
+\end{gather*}
+einer linearen Rekursion \rf[e-linrek] der Ordnung $k+1$. Es gilt nämlich
+\begin{gather*}
+  s_{n+k+1} =(1+c_1)\,s_{n+k} +(c_2 -c_1)\, s_{n+k-1} +\cdots + (c_k
+  -c_{k-1})\,s_{n+1} -c_k\, s_n\,.
+\end{gather*}
+\end{beispiel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lösung der allgemeinen linearen Rekursion \rf[e-linrek]}
+Die erste wichtige Tatsache ist, dass alle Folgen, die \rf[e-linrek] erfüllen
+einen \emph{linearen Raum} bilden.
+
+\begin{satz} \label{s-1}
+Wenn $(x_n)$ und $(y_n)$ die Rekursion \rf[e-linrek] erfüllen, so auch die
+Folgen
+\begin{gather*}
+  (x_n + y_n) \quad\text{und}\quad (\lam x_n),\quad \lam\in\R.
+\end{gather*}
+\end{satz}
+
+Mit anderen Worten, die Summe $z_n=x_n +y_n$ von Lösungen $(x_n) $ und $(y_n)$
+ist wieder eine Lösung und skalare Vielfache von Lösungen sind wieder Lösungen.
+
+\begin{beweis} Bildet man die Summe von
+\begin{align*}
+x_{n+k}& =c_1\, x_{n+k-1} +c_2\,x_{n+k-2} +\cdots + c_k\,x_n\,,\\
+y_{n+k}&=c_1\, y_{n+k-1} +c_2\, y_{n+k-2} +\cdots + c_k\, y_n\,,
+\end{align*}
+so hat man
+\begin{gather*}
+  x_{n+k} +y_{n+k} = c_1\,(x_{n+k-1} +y_{n+k-1}) +c_2\, (x_{n+k-2} +y_{n+k-2})
+  +\cdots c_k\,( x_n +y_n), \quad n\in \N\,.
+\end{gather*}
+Analog gilt
+\begin{gather*}
+  \lam x_{n+k} =c_1\,(\lam x_{n+k-1}) +c_2\,(\lam x_{n+k-2}) +\cdots + c_k
+  \,(\lam x_n)\,,
+\end{gather*}
+so dass $z_n=\lam x_n$ auch \rf[e-linrek] erfüllt.  
+
+Die Angabe des Lösungsraumes ist daher äquivalent zur Angabe einer \emph{Basis}
+von linear unabhängigen \emph{Fundamentallösungen}. Wir werden sehen, dass die
+Dimension des Lösungsraumes stets mit der Ordnung $k$ der Rekursion überein
+stimmt.
+\end{beweis}
+
+\subsection{Der Ansatz --- geometrische Folgen} Als Ansatz versuchen wir 
+Lösungen der Form $a_n=q^{n}$ (also geometrische Folgen) zu finden.
+Setzt man dies in \rf[e-linrek] ein, so hat man
+\begin{align}
+q^{n+k} &=c_1 q^{n+k-1} +\cdots + c_k q^n\quad \mid :q^n\label{e-char1} \\
+q^k&= c_1q^{k-1} +\cdots +c_{k-1} q + c_k\nn\\
+q^k&-c_1q^{k-1} -c_2 q^{k-2}- \cdots -c_k=0\label{e-char}.
+\end{align}
+Das Polynom $\chi(q) $ auf der linken Seite bezeichnet man als
+\emph{charakteristisches Polynom} der Rekursion \rf[e-linrek]. Es ist ein
+Polynom vom Grade $k$, das nach dem Fundamentalsatz der Algebra genau $k$
+komplexe Nullstellen (gezählt in ihrer Vielfachheit) $q_1,q_2,\cdots ,q_k$
+besitzt.
+
+\subsubsection{Alles einfache Nullstellen}
+Im einfachsten Fall sind diese $k$ Nullstellen alle voneinander verschieden.
+Dann erfüllen die $k$ voneinander verschiedenen geometrischen Folgen
+\begin{gather*}
+(q_1^n),\, (q_2^n),\dots,(q_k)^n
+\end{gather*}
+alle die Rekursion \rf[e-linrek]. Nach Satz\,\ref{s-1}
+ist dann auch
+\begin{align}\label{e-allg}
+x_n=A_1 q_1^n +A_2 q_2^n +\cdots  +A_k q_k^n
+\end{align}
+mit beliebigen Koeffizienten $A_1,\dots ,A_k$ eine Lösung der Rekursion.
+
+Wir wollen zeigen, dass diese $k$ Lösungen tatsächlich eine Basis bilden,
+d.\,h., dass sich \emph{jede} rekursive Folge \rf[e-linrek] in der obigen Form
+\rf[e-allg] mit gewissen Koeffizienten $A_i$, $i=1,\dots , k$ schreiben lässt.
+Dies liefert gleichzeitig eine Vorschrift, wie man die explizite
+Bildungsvorschrift erhält, wenn $(x_n)$ die Rekursion erfüllt und zusätzlich
+die $k$ Anfangsglieder $x_0,x_1,\dots , x_{k-1}$ gegeben sind.  
+
+Zunächst werden in \rf[e-allg] nacheinander $n=0,1,\dots, k-1$ eingesetzt; man
+erhält aus den ersten $k$ Folgenglieder ein $k\times k$ lineares
+Gleichungssystem für die Koeffizienten $A_i$:
+\begin{align*}
+\begin{matrix}
+A_1   &  +& A_2 +\cdots &  +  & A_k & = & x_0,\\
+q_1A_1 & + & q_2 A_2 +\cdots &  +&  q_k A_k &= & x_1,\\
+\vdots &&&&&& \vdots\\
+q_1^{k-1} A_1&  + & q_2^{k-1} A_2 +\cdots & + & q_k^{k-1} A_k & = & x_k.
+\end{matrix}
+\end{align*}
+Man kann zeigen, dass dieses GS für beliebige Wahl der Anfangsglieder
+$x_0,x_1,\dots,x_{k-1}$ eine eindeutige Lösung $(A_1,A_2,\dots A_k)$ besitzt.
+Somit haben wir eine Folge $(x_n')$ gefunden, die die Rekursion \rf[e-linrek]
+erfüllt und außerdem in den ersten $k$ Gliedern von $(x_n)$ überein stimmt.  Da
+durch diese beiden Vorgaben die Folge jedoch schon eindeutig bestimmt ist, gilt
+$(x_n')=(x_n)$.
+
+\begin{beispiel} Die Fibonacci-Folge $a_{n+2}=a_{n+1} +a_n$, $a_1=a_2=1$ hat die 
+charakteristische Gleichung $q^2 =q+1 $ mit den beiden rellen Lösungen $q_{1,2}
+=\half \pm \half \sqrt{5}$. Die allgemeine Lösung lautet also
+\begin{gather*}
+a_n=A \left(\frac{1+\sqrt{5}}{2}\right)^n +B \left(\frac{1-\sqrt{5}}{2}\right)^n
+\end{gather*}
+Beachtet man $a_0=0$, $a_1=1$, so hat man
+\begin{gather*}
+0=A+B,\quad 1=\half\left(A+B\right) +\frac{\sqrt{5}}{2}\left(A-B\right).
+\end{gather*}
+Dies liefert $A=-B=\frac{1}{\sqrt{5}}$, also
+\begin{gather*}
+a_n=\frac{1}{\sqrt{5}} \left(q_1^n -q_2^n\right).
+\end{gather*}
+\end{beispiel}
+
+\subsubsection{Mehrfache Nullstellen}
+Angenommen, das charakteristische Polynom lautet $\chi(x)=(x-q)^m\chi_1(x)$,
+$m\le k$, hat also eine $m$-fache Nullstelle $q$. Wir zeigen, dass dann die $m$
+Folgen
+\begin{gather*}
+(q^n), (nq^n),\cdots, (n^{m-1} \, q^n)
+\end{gather*}
+\rf[e-linrek] erfüllen.
+
+Wir zeigen dies für $m=2$. Die wesentliche Eigenschaft, die benutzt wird: Ist
+$q$ eine $m$-fache Nullstelle von $\chi(x) $, so ist $q$ eine $(m-1)$-fache
+Nullstelle der Ableitung $\chi'(x)$.  Insbesondere gilt für $m=2$
+\begin{gather*}
+kq^{k-1}= c_1 (k-1)q^{k-2} +\cdots + c_{k-2} \cdot 2q +c_{k-1}.
+\end{gather*}
+Multipliziert man diese Gleichung mit $q^{n+1}$ und addiert man hierzu
+das $n$-fache von  \rf[e-char1]
+\begin{gather*}
+n q^{n+k} = nc_1 q^{n+k-1} +nc_2 q^{n+k-2} +\cdots +n c_k q^n,
+\end{gather*}
+so erhält man
+\begin{gather*}
+(n+k)q^{n+k} = c_1 (n+k-1)q^{n+k-1} +c_2 (n+k-2)q^{n+k-2} +\cdots + c_k nq^n,
+\end{gather*}
+mit anderen Worten, $b_n= n\, q^n $ erfüllt die Rekursion \rf[e-linrek].
+
+\begin{beispiel} 
+$a_{n+2}=2a_{n+1} -a_n$. Es ist $\chi(x)=x^2 -2x +1=(x-1)^2 $ mit doppelter
+  Nullstelle $q=1$. Somit bilden $(1) $ und $(n)$ ein Fundamentalsystem von
+  Lösungen.
+\end{beispiel}
+
+Wenn man beide Methoden (einfache Nullstellen und mehrfaache Nullstellen)
+koppelt, erhält man zu jeder charakteristischen Gleichung ein Fundamentalsystem
+von $k$ unabhängigen Folgen, die den Lösungsraum aufspannen.
+
+\emph{Bemerkung:} Die Partialsummen $s_n=a_1 +a_2 +\cdots +a_n$ einer linearen
+rekursiven Folge $k$-ter Ordnung bilden eine lineare rekursive Folge $(k+1)$ter
+Ordnung.
+
+\section{Aufgaben}
+
+\begin{aufgabe} %%% MONOID Heft 83, September 2005
+Es sei $(a_n)$ die Fibonacci-Folge und 
+\begin{gather*} 
+  s=\sum_{n=1}^\infty \frac{a_{n}}{10^{n+1}} =\frac{1}{100} +\frac{1}{1000}
+  +\frac{2}{10000} +\cdots .
+\end{gather*}
+Zeige, dass die Reihe konvergiert und dass $s=\frac{1}{89}$ ist.
+\end{aufgabe}
+
+\begin{beweis}
+Da die Fibonacci-Folge im wesentlichen wie $q^n$ wächst mit $q=(\sqrt{5} +1)/2$
+und $q/10 <1$, kann die Reihe durch eine konvergente geometrische Reihe
+majorisiert werden, also konvergiert sie.
+
+Sei $b_n=\frac{a_n}{10^{n+1}}$. Dann  haben wir eine Rekursion für $b_n$,
+$b_{n+2} =\frac{1}{10} b_{n+1} +\frac{1}{100} b_n$.
+Summiert man diese Gleichung auf für $n=1,\dots , k$, so hat man
+\begin{gather*}
+s_{k+2} - b_1 -b_2 = \frac{1}{10}( s_{k+1} -b_1) + \frac{1}{100} s_k.
+\end{gather*}
+Bildet man nun den Limes $k\to \infty $, so hat man
+\begin{gather*}
+s-0.011 =0.11 s -0.001 \RRA 0.89s=0.1\RRA s=\frac{1}{89}.
+\end{gather*}
+\end{beweis}
+
+\begin{aufgabe} %%% Engel, S. 209 %%%
+Man finde eine explizite Formel für
+\begin{gather*}
+a_{n+1}= \frac{1}{16} \left( 1+4 a_n + \sqrt{1 +24 a_n}\right), \quad a_1=1.
+\end{gather*}
+\end{aufgabe}
+
+\begin{loesung} 
+\begin{gather*}
+a_n=\third +\frac{1}{2^n} +\frac{2}{3\cdot 4^n}.
+\end{gather*}
+Wenn man die ersten Glieder berechnet, könnte man vermuten, dass $a_n$ stets
+\emph{rational} ist, dass
+\begin{gather*}
+b_n= \sqrt{1 +24 a_n}
+\end{gather*}
+stets eine rationale Zahl ist. Mit dieser Substitution wäre $a_n = (b_n^2
+-1)/24$. Setzt man dies in die Rekursion ein, so hat man nach einigen
+Umformungen eine binomische Formel:
+\begin{gather*}
+b_{n+1}^2  = 9/4 + b_n^2/4  +3/2 b_n = (3/2 +b_n/2)^2. 
+\end{gather*} 
+Da alle Glieder positiv sind, kann man die Wurzel ziehen und hat $b_{n+1} =
+b_n/2 + 3/2.$
+
+Setzt man dies immer nacheinander in sich selbst ein und beachtet $b_1 =5$, so
+hat man $b_n=3 + 1/2^{n-2}.$ Dies liefert die Lösung für $a_n$.
+\end{loesung}
+
+\begin{aufgabe}
+Es sei $a_n$ die Anzahl der Möglichkeiten, ein Rechteck vom Format $2\times n$
+in Dominosteine vom Format $2\times 1$ zu zerlegen.
+
+Man bestimme $a_n$.
+\end{aufgabe}
+
+\begin{aufgabe} Gegeben sei eine Folge $(a_n)$ mit $a_1=A$, $a_2=B$ und
+\begin{gather*}
+  a_n=\frac{a_{n-1}^2 +C}{a_{n-2}},\quad n\ge 3.
+\end{gather*}
+Beweisen Sie, dass aus der Ganzzahligkeit von
+\begin{gather*}
+  A, \, B,\,\,\frac{A^2 +B^2 +C}{AB}
+\end{gather*}
+folgt, dass alle Folgenglieder $a_n$ ganzzahlig sind.
+\end{aufgabe}
+
+\subsubsection*{Teleskopsummen}
+
+\begin{aufgabe} 
+Es sei $a_1= \half $ und $\ds a_{n+1} =\frac{n+1}{n^2 +2n} \,a_{n}$, $n\ge 1$.
+
+Ermitteln Sie eine explizite Bildungsvorschrift für $(a_n)$ und berechnen Sie
+$\sum_{n=1}^\infty a_n$.
+\end{aufgabe}
+
+\begin{loesung}
+(a) Zunächst bestimmt man die ersten Folgenglieder; man erkennt schnell, dass
+  es alles Brüche sind mit Zähler $1$, deren Nenner schnell wachsen.
+\begin{center}
+\begin{tabular}{l||lllll}
+$n$ & $1$ & $2$ & $3$ & $4 $ & $5$\\  \hline
+$a_n$ & $\half $ & $\third $ & $\frac{1}{8} $ & $\frac{1}{30} $ & 
+$\frac{1}{144}$ 
+\end{tabular}
+\end{center}
+
+Man kommt somit leicht auf die Vermutung $\ds a_n=\frac{1}{(n-1)! (n+1)}$, die
+man mit vollständiger Induktion beweist: Für $n=1,2,3,4,5$ stimmt die
+Vermutung. Angenommen, die Aussage gilt für ein festes $n$. Wir habe zu zeigen,
+dass sie dann auch für $n+1$ gilt: $\ds a_{n+1}= \frac{1}{n! (n+2)}.$
+
+In der Tat gilt wegen der gegenen Rekursionsformel und nach
+Induktionsvoraussetzung
+\begin{gather*}
+a_{n+1}= \frac{n+1}{n^2 +2n} \,a_{n} = \frac{n+1}{n(n+2)} \, \frac{1}{(n-1)!
+  (n+1)}=\frac{1}{n! (n+2)},
+\end{gather*}
+was zu zeigen war.
+
+(b) Durch Erweitern von $a_n $ mit $n$ hat man $\ds a_n=\frac{n}{(n+1)!}$. Die
+gesuchte unedliche Reihe ließe sich berechnen, wenn man sie als „Teleskopsumme“
+darstellen könnte. Das ist aber der Fall, denn
+\begin{gather*}
+a_n=\frac{n}{(n+1)!} = \frac{(n+1) -1 }{(n+1)!} =\frac{1}{n!}
+-\frac{1}{(n+1)!}.
+\end{gather*} 
+Somit ist
+\begin{gather*}
+\sum_{k=1}^n a_k=\sum_{k=1}^n\left(\frac{1}{k!} -\frac{1}{(k+1)!}\right)
+=1-\frac{1}{(n+1)!}.
+\end{gather*}
+Da der Subtrahend für $n\to \infty $ gegen $0$ geht, ist $\sum_n a_n=1$.
+\end{loesung}
+
+\begin{aufgabe}Man ermittle die Summe der unendlichen Reihe
+\begin{gather*}
+s=\frac{1}{1\cdot 2\cdot 3\cdot 4} +\frac{1}{2\cdot 3\cdot 4\cdot 5} +\cdots.
+\end{gather*}
+\end{aufgabe}
+
+\begin{loesung} Mit Hilfe der \emph{Partialbruchzerlegung} 
+\begin{gather*}
+\frac{1}{(x-2)(x-1)x(x+1)} =\frac{A}{x-2} +\frac{B}{x-1} +\frac{C}{x}
++\frac{D}{x+1}
+\end{gather*}
+erhält man $A=\frac{1}{6}$, $B=-\half$, $C=\half$, $D=-\frac{1}{6}$, so dass
+\begin{gather*}
+\frac{1}{n}{n+1}{n+2}{n+3}=\frac{1}{6} \frac{1}{n} -\half \frac{1}{n+1} +\half
+\frac{1}{n+2} -\frac{1}{6} \frac{1}{n+3}.
+\end{gather*}
+Summiert man von $n=1$ bis $\infty$, so bleiben die ersten 6 Summanden stehen
+(von $n=1,2,3 $ kommend)
+\begin{gather*}
+s=\left(\frac{1}{6} 1 -\half\,\half +\half \third\right) +\left( \frac{1}{6}
+\,\frac{1}{2} -\half\,\third\right) +\frac{1}{6} \,\third = \frac{1}{18}.
+\end{gather*}
+\end{loesung}
+
+\begin{aufgabe}
+Es sei $w_1=1$ und $\ds w_{n+1}= 1 +\frac{n}{w_n}$, für $n\ge 1$.  Zeigen Sie,
+dass stets gilt
+\begin{gather*}
+\sqrt{n} \le w_n \le \sqrt{n}+1.
+\end{gather*}
+\end{aufgabe}
+
+\begin{beweis} Wir beweisen dies durch vollständige Induktion über $n$.
+Offenbar gelten beide Ungleichungen für $n=1$, denn $1 \le w_1 =1 \le 2$.
+Angenommen, beide Ungleichungen gelten für ein festes $n$.  Das heißt,
+\begin{align}\label{u-1}
+\sqrt{n} \le w_{n} \le \sqrt{n} +1
+\end{align}
+Wir müssen dann zeigen, dass sie auch für $n+1$ gelten, dass also
+\begin{align}\label{u-2}
+\sqrt{n+1} \le w_{n+1} \le \sqrt{n+1} +1
+\end{align}
+gilt.  Dazu benutzen wir im wesentlichen die Monotonie und die Positivität der
+Funktion $f(x)=\sqrt{x}$. Durch Reziprokenbildung von \rf[u-1] drehen sich sie
+Relationszeichen um und wir haben:
+\begin{align}
+\frac{1}{\sqrt{n}}& \ge \frac{1}{w_n} \ge \frac{1}{\sqrt{n} +1} 
+\quad \left. \right| \cdot n \quad \quad  \mid +1  \nn\\
+\sqrt{n} +1 &\ge \frac{n}{w_n}+ 1 \ge 1+\frac{n}{\sqrt{n} +1} \nn \\ 
+\sqrt{n} +1 &\ge w_{n+1} \ge 1+\frac{n}{\sqrt{n} +1}.
+\label{u-3}
+\end{align}
+Wegen $\sqrt{n+1}> \sqrt{n} $ können wir auf der linken Seite fortsetzen zu
+$\sqrt{n+1} +1 \ge w_{n+1}$, was den ersten Teil der Induktionsbehauptung
+\rf[u-2] beweist.
+
+Offenbar gilt für alle reellen Zahlen $A$ und $B$ mit $A>B\ge 1$,
+$(A-B)(A-1)\ge 0$. Dies gilt insbesondere für $A=\sqrt{n+1}$ und $B=\sqrt{n}$,
+$n\in\N$, also
+\begin{gather*}
+(\sqrt{n+1}-\sqrt{n})(\sqrt{n+1} -1)=n+1 -\sqrt{n(n+1)} -\sqrt{n+1} +\sqrt{n}
+  \ge 0. 
+\end{gather*}
+Bringt man alle Summanden bis auf den ersten auf die rechte Seite, so hat man
+\begin{align*}
+n&\ge \sqrt{n}\, \sqrt{n+1} -\sqrt{n} +\sqrt{n+1} -1 =
+(\sqrt{n+1} -1)(\sqrt{n} +1)\\
+\RRA \frac{n}{\sqrt{n} +1} &\ge \sqrt{n+1} -1\\
+\RRA 1+  \frac{n}{\sqrt{n} +1} &\ge \sqrt{n+1} .
+\end{align*}
+Zusammen mit \rf[u-3] folgt der zweite Teil $w_{n+1} \ge \sqrt{n+1} $ der
+Induktionsbehauptung \rf[u-2].
+\end{beweis}
+
+\begin{aufgabe} (A 156)  Gegeben sei die Folge $(x_n)$ mit $x_0=5$ und 
+\begin{gather*}
+x_{n+1} = x_n +\frac{1}{x_n}, \quad n\ge 0.
+\end{gather*}
+Beweise, dass
+\begin{gather*}
+45 < x_{1000} < 45{,}1.
+\end{gather*}
+\end{aufgabe}
+
+\begin{beweis} Wir zeigen, dass für alle natürlichen Zahlen $n\in \N $ gilt
+\begin{align}\label{in-1}
+\sqrt{25 +2n} < x_n < 0{,}1 +\sqrt{25 +2n}.
+\end{align}
+Aus $ x_n=x_{n-1} + \frac{1}{x_{n-1}}$ folgt durch Quadrieren $x_n^ 2=x_{n-1}^
+2 +2 +\frac{1}{x_{n-1}^2}> x_{n-1}^ 2 +2$.  Durch Auflösen dieser Rekursion hat
+man
+\begin{gather*}
+x_n^2 > x_0^2 +2n = 25 +2n
+\end{gather*}
+und die linke Seite der Ungleichung folgt.  Da $(x_n)$ streng monoton wachsend
+ist, gilt ${x_n\ge x_0=5}$ und somit $-\frac{1}{x_{n-1}}\ge -0,2$. Also ist
+\begin{gather*}
+x_{n-1}=x_n -\frac{1}{x_{n-1}} \ge x_n -0,2.
+\end{gather*} 
+Hieraus und mit $2x_{n-1}(x_n -x_{n-1})=(x_{n-1} +x_{n-1})(x_n -x_{n-1})=2 $
+folgt
+\begin{gather*}
+2\ge (x_n -0,2 +x_{n-1})(x_n- x_{n-1})=x_n^ 2 -x_{n-1}^2 -0,2 (x_n -x_{n-1}).
+\end{gather*}
+Durch Auflösen dieser Rekursion hat man
+\begin{gather*}
+x_n^2 -0,2 x_n -2n -24 \le 0.
+\end{gather*} 
+Da $0,1 +\sqrt{2n +24,01} $ eine Wurzel der entsprechenden quadratischen
+Gleichung ist, ist
+\begin{gather*}
+x_n\le 0,1 +\sqrt{2n +24,01} < 0,1 +\sqrt{2n +25}.
+\end{gather*} 
+Für $n=1000$ erhält man genau die Behauptung.
+\end{beweis}
+
+%%% Bulgarisches Buch, Seite 16, Aufg. 76 %%%%
+\begin{aufgabe}
+Gegeben sei eine Folge $(a_n)_{n\ge 0}$ von ganzen Zahlen mit
+\begin{gather*}
+3 a_{n}= a_{n-1}  +a_{n+1}, \quad n\ge 1.
+\end{gather*}
+Beweisen Sie, dass $5a_n^2 +4( a_0^2 +a_1^2 -3a_0a_1) $ stets eine Quadratzahl
+ist.
+\end{aufgabe}
+
+%%% Bulg Aufg. 77, S. 16 %%%%%%%%%%%%%%%
+\begin{aufgabe} Gegeben sei die rekursive Folge $(a_n)_{n\in\N } $ mit
+\begin{gather*}
+a_1=a_2=1,\quad \quad a_{n}=\frac{a_{n-1}^2 +2}{a_{n-2}}, \quad n\ge 3.
+\end{gather*}
+Beweisen Sie, dass alle Folgenglieder ganzzahlig sind.
+\end{aufgabe}
+
+\begin{aufgabe} Gegeben sei die rekursive Folge $(a_n)_{n\in\N } $ mit
+\begin{gather*}
+a_1=a_2=a_3=1,\quad a_{n}=\frac{a_{n-1}a_{n-2} +1}{a_{n-3}}, \quad n\ge 4.
+\end{gather*}
+Beweisen Sie, dass alle Folgenglieder ganzzahlig sind.
+\end{aufgabe}
+
+\begin{aufgabe} 
+%%% Bulg Aufgabe 79, S. 17 %%%%
+Es seien $(x_n)$ und $(y_n)$ rekursive Folgen, gegeben durch
+\begin{alignat*}{3}
+x_1&=1,\,\,& x_2& = 1,& \,\, x_{n+2}& =x_{n+1} +2 x_{n} ,\quad n\in\N,\\
+y_1&= 1,&\,\, y_2&= 7,&\,\, y_{n+2}& = 2y_{n+1} +3 y_{n},\quad n\in \N.
+\end{alignat*}
+Beweisen Sie, dass außer $x_1=y_1=1$ die beiden Folgen keine gemeinsamen
+Folgenglieder besitzen.
+\end{aufgabe}
+
+\begin{beweis} Wir betrachten beide Folgen modulo $8$ und erhalten
+\begin{align*}
+x_n&\equiv 1,1,3,5,3,5,\cdots \mod{8},\\
+y_n&\equiv  1,-1,1,-1,\cdots \mod{8}.
+\end{align*}
+Folglich können nur die ersten Folgenglieder übereinstimmen.
+\end{beweis}
+
+%%% Bulgar Aufg. 80 S. 17 %%%%
+\begin{aufgabe} 
+Es sei $f(x) $ ein Polynom mit ganzzahligen Koeffizienten und $f(0)=f(1)=1$ und
+$a_1\in \Z $ beliebig gegeben.  Ferner sei $a_{n+1} =f(a_n)$ für alle $n\ge 1$.
+
+Beweisen Sie, dass die Folgenglieder paarweise teilerfremd sind.
+\end{aufgabe}
+
+%% bulg. Aufg. 81 S.17 %%%%
+\begin{aufgabe} (einfach)
+Gegeben sei die ganzzahlige Folge $a_n=n^2+1$.
+
+Beweisen Sie, dass es unter den Folgengliedern unendlich viele zusammengesetzte
+Glieder der Form $a_n=a_k \,a_l$ gibt.
+\end{aufgabe}
+
+\begin{beweis} Etwa $a_{l^2 +l+1}= a_{l} \,a_{l+1}$ oder 
+$a_{2l^3 + l}=a_l \, a_{2l^2}$.
+\end{beweis}
+
+%% bulg Aufg. 82, S.17 %%%
+\begin{aufgabe}
+Zeigen Sie, dass es unter den Zahlen $2^n-3$, $n\in \N $, unendlich viele gibt,
+die paarweise teilerfremd sind.
+\end{aufgabe}
+
+
+\begin{aufgabe} (einfach)
+%%%% Korrespondenzseminar %
+Die Folge $a_n$ ist bestimmt durch $a_1=1337$ und $a_{2n+1}=a_{2n}=n-a_n$ für
+ganze Zahlen $n>0$.
+
+Bestimme den Wert von $a_{2004}$.
+\end{aufgabe}
+
+\begin{loesung}
+Durch Rückwärtsarbeiten findet man Schritt für Schritt
+\begin{alignat*}{3}
+a_{2004}&= 1002 -a_{1002},&\quad a_{1002}&=501 -a_{501},&\quad
+a_{501}&=a_{500}=250 -a_{250},\\ 
+a_{250}&= 125 -a_{125},&\quad a_{125}&=a_{124}=62 -a_{62},&\quad a_{62}&= 31
+-a_{31},\\
+a_{31}&=a_{30}=15 -a_{15},&\quad a_{15}&=a_{14} = 7- a_7,& \quad
+a_7&=a_6=3-a_3,\\ 
+a_3&=a_2=2-a_1.
+\end{alignat*}
+Setzt man dies nacheinander ineinander ein, so hat man
+\begin{align*}
+a_{2004}&= 1002-501 + 250 -125 +62 -31 +15 -7 +3 -1+ a_1\\
+&= 501 +125 +31 +8 +2 +a_1= 667 +1337 =2004.
+\end{align*}
+\end{loesung}
+
+\begin{aufgabe} 
+%%%  MO 431336 %%%%%
+Die reellen Zahlen $x_1,x_2,\cdots $ seien durch die Bildungsvorschrift
+\begin{gather*}
+x_1=1,\quad x_{k+1} = \frac{1}{1+x_k}, \quad k\in\N
+\end{gather*}
+gegeben. Man untersuche, ob  $x_{2004}^2 +x_{2004} -1 $ positiv, negativ oder
+gleich $0$ ist.
+\end{aufgabe}
+
+\begin{loesung} 
+Es sei $f(x)=x^2 +x -1$ mit den Nullstellen $q_{1,2}=\frac{-1\pm \sqrt{5}}{2}$,
+$q=q_1$. Man zeigt:
+\begin{gather*}
+x_{2n} < q,\quad x_{2n+1} > q.
+\end{gather*}
+Somit gilt für alle geraden Folgenglieder $f(x_{2n}) < 0 $ und für alle
+ungeraden Folgenglieder $f(x_{2n-1}) >0$.
+\end{loesung}
+
+\begin{aufgabe}
+%%%% Vorbereitungsseminar 15.1.2005, Klausur, Klasse 9/10 %%%%%%%%%%
+Bestimme die Einerziffer und die erste Ziffer nach dem Komma von $b_{2005}$,
+wenn
+\begin{quote}
+(a) $ b_n=(2+\sqrt{3})^{n}$.\\
+(b) $ b_{n}= (3+\sqrt{7})^{n}  $.
+\end{quote}
+\end{aufgabe}
+
+\begin{loesung}
+(b) Wir betrachten die rekursive Folge zweiter Ordnung
+\begin{gather*}
+a_n= (3+\sqrt{7})^n + (3-\sqrt{7})^n
+\end{gather*}
+mit $q_{1,2}=3\pm \sqrt{7}$. Wegen $q_1 +q_2 =6 $ und $q_1q_2=2$ lautet die 
+charakteristische Gleichung für $(a_n)$, $0=x^2 -6x +2$ und somit gilt
+\begin{gather*}
+a_{n+2} = 6 a_{n+1} -2 a_n,\quad a_0= 2,\quad a_1=6,\quad a_2=32.
+\end{gather*}
+Wegen der Rekursion gilt $a_n\in \N$ und wegen $c_n=(3-\sqrt{7})^n < 0,1$, hat
+$b_n=a_n -c_n$ als erste Stelle nach dem Komma stets eine $9$.  Um die
+Einerstelle von $b_{2005}$ zu ermitteln betrachten wir $a_n\mod 10$.  Diese
+Folge ist periodisch mit der Periodenlänge $24$:
+\begin{gather*}
+(a_n\mod{10})=(2,6,2,0,6,6,4,2,4,0,2,2,8,8,0,4,4,6,8,6,0,8,8,2,6,\cdots).
+\end{gather*}
+Somit gilt $a_n \equiv a_{n+24} \mod{10}$, also wegen $2005\equiv 13\mod{24} $
+haben wir  $a_{2005}\equiv a_{13} \equiv 4\mod{10}$.
+Somit ist die Einerstelle von $b_{2005} $ gleich $4-1=3$.
+
+\emph{Bemerkung:} Da als Reste modulo $10 $ nur die fünf geraden Zahlen
+$0,2,4,6,8$ in Frage kommen, gibt es maximal $5^2=25 $ Paare $(r_1,r_2)$ von
+Resten modulo $10$, die hier auftreten. Erstaunlicher Weise treten alle Paare
+tatsächlich auf bis auf $(0,0)$, welches ein Orbit für sich ist.
+
+(a) Analog zu (b). Die Rekursion lautet hier $a_{n+2}= 4 a_{n+1} -a_n$.  Die
+Periodenlänge modulo $10$ ist hier gleich $3$.
+\end{loesung}
+
+\begin{aufgabe} Es sei $m\in \N $ eine fixierte natürliche Zahl.
+
+(a) Beweise, dass es eine {\sc Fibonacci}-Zahl $a_n$ gibt, die durch $m$
+  teilbar ist.
+
+(b) Zeige, dass es eine {\sc Fibonacci}-Zahl gibt, die auf $m $ Neunen endet.
+\end{aufgabe}
+
+\begin{beweis} 
+(a) Wir betrachten wieder sämtliche Paare von Resten $(a_n, a_{n+1}) $ modulo
+  $m$. Da es höchstens $m\times m =m^2 $ solcher Paare gibt, ist die
+  Periodenlänge von $(a_n\mod{m})$ höchstens $m^2$. Nun ist aber
+\begin{gather*}
+a_0=0,\quad a_{-1} =1,\quad a_{-2}=-1.
+\end{gather*}
+Daher treten die Reste $0$, $1$ und $-1$ modulo $m$ stets auf.
+
+(b) Man betrachte als Modul $10^m $ und die Folgenglieder, welche kongruent
+$-1$ modulo $10^m$ sind.
+\end{beweis}
+
+\begin{aufgabe} Wie lautet die Einerziffer von $a_{2005}$ bei der 
+Fibonacci-Folge $(a_n)$?
+\end{aufgabe}
+ 
+\begin{aufgabe}
+Die Zahlenfolge $\{a_n\}$ ist gegeben durch die Anfangsbedingungen
+$a_0=1,\ a_1=\frac13$ und die Rekursionsbeziehung
+\[a_n=\frac23\,a_{n-1} - a_{n-2}\quad\text{für } n\ge 2.\]
+
+Zeigen Sie, dass es ein Folgenglied $a_n>0{,}99999$ gibt.
+\end{aufgabe}
+
+\begin{loesung} 
+Die charakteristische Gleichung der linearen Rekursion zweiter Ordnung $ q^2
+=\frac{2}{3}\,q -1 $ hat die komplexen Wurzeln
+\begin{gather*}
+q_{1,2}=\third \pm\sqrt{\frac{1}{9} -\frac{9}{9}} =\third\left( 1\pm
+2\sqrt{2}\ii\right) .
+\end{gather*}
+Man beachte, dass $q_1 q_2=1$ und $q_2=\ov{q_1}$, $q=q_1$, beide auf dem
+Einheitskreis liegen.  Der Ansatz $a_n=Aq_1^n +Bq_2^n $ führt auf $1=A+B$ und
+$\third= \third(A+B) +\third \,2\sqrt{2}\ii (A-B)$ und somit auf
+$A=B=\half$. Somit gilt
+\begin{gather*}
+a_n=\half\left( q^n +\ov{q^n}\right) =\Re (q^n).
+\end{gather*}
+Ist $q=\ee^{\ii \vp}$ eine $N$-te Einheitswurzel, so ist $a_N=1$ und die
+Behauptung ist gezeigt. Ist hingegen $\vp$ kein rationales Vielfaches vom
+$2\pi$, etwa $\vp = 2\pi\al$, $\al\not\in \Q$, dann gibt es zu $\ve>0$ stets
+$N,M\in\N $, so dass $0< N\al -M< \ve$ (rationale Zahlen sind dicht in $\R $
+und approximieren die irrationalen).  Somit gilt $2\pi M < N\vp < 2\pi M +2\pi
+\ve$. Das liefert
+\begin{gather*}
+\Re\left(\ee^{2\pi \ii \ve} \right) < \Re q^N < 1.
+\end{gather*}
+und beweist die Behauptung, da die linke Seite beliebig dicht an $1$ heran
+kommt.
+\end{loesung}
+
+\subsection*{Aufgaben aus dem bulgarischen Aufgabenbuch}
+ \S 3 Folgen, Nr. 2 Rekursive Folgen.
+
+\begin{aufgabe}(A 150, schwer)
+Es sei $x_n$ eine rekursive Folge von Polynomen in $x$, gegeben durch
+\begin{gather*}
+x_{n+1} = x\cdot x_n -x_{n-1}, \quad x_0=2,\quad x_1= x.
+\end{gather*}
+Beweisen Sie, dass das Polynom
+\begin{gather*}
+(x^2-4) (x_n^2 -4)
+\end{gather*}
+ein vollständiges Quadrat ist.
+\end{aufgabe}
+
+\begin{beweis} 
+Das Auflösen der Rekursion liefert $x_n=q_1^n +q_2^n$, wobei
+\begin{gather*}
+q_{1,2}=\half\left(x \pm \sqrt{x^2 -4}\right)
+\end{gather*}
+die Wurzeln der charakteristischen Gleichung $q^2 -xq +1 =0$ sind. Somit gilt
+\begin{gather*}
+x_n^2-4 =(q_1^n +q_2^n)^2 =q_1^{2n} +2 +q_2^{2n } -4 =(q_1^n -q_2^n)^2
+=(q_1 -q_2)^2(q_1^{n-1} +q_1^{n-2}q_2 +\cdots +q_2^{n-1})^2.
+\end{gather*}
+Weil $(q_1 -q_2)^2 = x^2 -4$  und $x_n^2 -4$ beides Polynome sind, ist auch
+\begin{gather*}
+A(x)= q_1^{n-1} +q_1^{n-2}q_2 +\cdots +q_2^{n-1}
+\end{gather*} 
+ein Polynom mit ganzen Koeffizienten (Welche Rekursion?). Also gilt
+\begin{gather*}
+(x^2-4)(x_n^2 -4)=(x^2-4)^2 A(x)^2=((x^2-4) A(x))^2.
+\end{gather*}
+\end{beweis}
+
+\begin{aufgabe} (A 149) Die Folge $a_n$ sei gegeben durch $a_{n+2}=4a_{n+1}
+  -a_n$, $ a_1= 4$, $a_2=14$.
+
+Beweisen Sie, dass das Dreieckk mit den Seitenlängen $a_n-1$, $a_n$, $a_{n} +1$
+einen ganzzahligen Flächeninhalt besitzt.
+\end{aufgabe}
+\begin{beweis} 
+Das folgt mit der {\sc Heron}schen Dreieicksformel und der obigen A 150 mit
+$x=4$.
+\end{beweis}
+
+\begin{aufgabe} (A 153) Beweisen Sie, dass es genau eine Folge 
+$(a_0, a_1,\dots )$ von positiven Zahlen gibt mit $a_0=1$ und 
+$a_{n+2}=-a_{n+1} +a_n$.
+\end{aufgabe}
+
+\begin{beweis} In der expliziten Darstellung $a_n=Aq_1^n  +B q_2 ^n$ mit 
+$q_{1,2}=\half\left(-1 \pm \sqrt{5}\right)$ ist $0< q_1 < 1$ und $q_2 <-1$.
+  Daher muss der Koeffizient $B$ vor $q_2^n $ verschwinden und es bleibt $A=1$
+  wegen $a_0=1=Aq_1^0$.
+\end{beweis}
+
+\begin{aufgabe} (A 168) Es  sei $(a_n)$ eine Folge mit $0\le a_n \le 1 $ und
+$a_{n+2} -2a_{n+1} +a_n \ge 0$ für alle $n\in \N $. Man beweise, dass $0\le
+  a_{n}-a_{n+1} \le \frac{2}{n+1}$.
+\end{aufgabe}
+
+\begin{aufgabe} (MO 331336) Man ermittle für jede natürliche Zahl $n$ die
+größte Zweierpotenz, die ein Teiler  der Zahl $\left[(4+\sqrt{18})^n\right]$
+ist.
+
+\emph{Hinweis:} Für eine reelle Zahl $r$ bezeichnet $[r] $ die größte ganze
+Zahl, kleiner oder gleich $r$, also $[r]\le r < [r] +1$ und $[r]\in \Z $.
+\end{aufgabe}
+
+\begin{loesung} Es sei $a_n=(4+\sqrt{18})^n + (4-\sqrt{18})^n$. Dann gilt
+$a_0=2$, $a_1=8$ und $a_{n+2}= 8 a_{n+1} + 2 a_n$, $n\ge 2$. Wegen $ -1 <
+  4-\sqrt{18} <0$ ist $b_n= (4+\sqrt{18})^n$ für gerades $n$ immer etwas
+  kleiner und für ungerades $n$ immer etwas größer als die nächstgelegene ganze
+  Zahl $a_n$. Da $a_n$ immer gerade ist, ist $[b_n]$ für gerades $n$ immer
+  ungerade. Für ungerades $n =2k -1$ vermutet man nach erstem Probieren, dass
+  die maximale Zweierpotenz $2^{k+2}$ ist und in $a_{2k} $ ist sie $2^{k+1}$.
+  Dies beweist man mit vollständiger Induktion mittels Rekursionsformel.
+\end{loesung}
+
+\begin{aufgabe} (MO 381323)
+Eine Zahlenfolge $(x_n)$ sei durch das rekursive Bildungsgesetz
+\begin{gather*}
+x_{n+1} = \left( \frac{n}{3} +\frac{1}{n}\right) x_n ^2 -\frac{n^3}{3} +1,
+\quad n=1,2,\dots
+\end{gather*}
+und ihr Anfangsglied $x_1=1 $ gegeben. Bestimmen Sie $x_{1999} $.
+\end{aufgabe}
+
+\begin{aufgabe} (60th William Putnam Mathematical Competition 1999)
+A-3. Betrachten Sie die Reihenentwicklung
+\begin{gather*}
+\frac{1}{1-2x -x^2} =\sum_{n=0}^\infty a_n x^n.
+\end{gather*}
+Zeigen Sie, dass für alle natürlichen Zahlen $n\in\N_0$ gilt
+\begin{gather*}
+a_n^2 +a_{n+1} ^2 = a_m
+\end{gather*}
+für ein gewissens $m\in \N $.
+\end{aufgabe}
+
+\begin{loesung}
+Man hat für $(a_n)$ die Rekursion 2.Ordnung:
+\begin{gather*}
+a_{n+1} = 2 a_{n} + a_{n-1},\quad a_0=1, \, a_1 = 2.
+\end{gather*}
+Definiert man $ b_{2n}= a_{n}^2 +a_{n-1}^2 $ und $ b_{2n+1}= a_n\,(a_{n-1}
++a_{n+1})$, so hat man $2\,b_{2n+1} +b_{2n} = b_{2n+2}$ und $2\,b_{2n}+b_{2n-1}
+= b_{2n+1} $, so dass $(b_n)$ dieselbe Rekusion wie $(a_n)$ erfüllt. Ferner ist
+$b_0=1$ und $b_1=2$ und damit $a_n=b_n$.
+\end{loesung}
+
+%\nein{
+
+\begin{thebibliography}{Wor77}
+
+\bibitem[Eng98]{b-Engel} A.~Engel.  \newblock \emph{Problem-solving
+  strategies}.  \newblock Springer, New York, 1998.
+
+\bibitem[Mar77]{b-Markuschewitsch} A.~I. Markuschewitsch.  \newblock
+  \emph{{R}ekursive {F}olgen}.  \newblock Number~xi in Kleine
+  Erg{\"a}nzungsreihe zu den Hochschulb{\"u}chern f{\"u}r Mathematik. VEB
+  Deutscher Verlag der Wissenschaften, Berlin, 4 edition, 1977.
+
+\bibitem[Wor77]{b-Worobjow} N.~N. Worobjow.  \newblock \emph{Die Fibonaccischen
+  Zahlen}.  \newblock Number~1 in Kleine Erg{\"a}nzungsreihe zu den
+  Hochschulb{\"u}chern f{\"u}r Mathematik. VEB Deutscher Verlag der
+  Wissenschaften, Berlin, 1977.
+
+\end{thebibliography}
+%} %%% ende nein
+
+
+\nocite{b-Engel}
+
+%\bibliographystyle{alpha}
+%\bibliographystyle{/home/schueler/latex/axel}
+%\bibliography{bibdat}
+
+\begin{attribution}
+schueler (2005-04-14): Contributed to KoSemNet
+\end{attribution}
+
+ 
+\end{document}
+
+
+
+

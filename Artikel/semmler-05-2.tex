@@ -1,0 +1,357 @@
+% Version: $Id: semmler-05-2.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman,url}  
+
+\author{Gunter Semmler, Freiberg\\\url{semmler@math.tu-freiberg.de}}
+\title{Kombinatorik\kosemnetlicensemark}
+\date{}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\begin{document}
+\maketitle         
+
+\section{Kombinatorische Grundformeln}
+Kombinatorik besch\"{a}ftigt sich mit der Anzahlbestimmung gewisser
+Anordnungen von Objekten. In Olympiaden ist dieses Thema deshalb so beliebt,
+weil man ohne gro{\ss}e Vorkenntnisse Aufgaben bearbeiten kann. Die
+eingerahmten Formeln dieses Artikels sind so n\"{u}tzlich, da{ss} sie jeder
+Olympiadeteilnehmer auswendig wissen sollte.
+
+\begin{beispiel}
+Wieviele M\"{o}glichkeiten gibt es, die Buchstaben des Wortes ''CANTOR''
+anzuordnen?
+\end{beispiel}
+ 
+Es gibt $6$ M\"{o}glichkeiten, den ersten Buchstaben auszusuchen, f\"{u}r jede
+Wahl eines ersten Buchstaben $5$ M\"{o}glichkeiten, den zweiten Buchstaben zu
+w\"{a}hlen, usw. Insgesamt gibt es also $6\cdot 5\cdot 4\cdots 1=6!$
+Anordnungsm\"{o}glichkeiten f\"{u}r die sechs Buchstaben von ''CANTOR''.  Eine
+jede Umordnung der Buchstaben hei{\ss}t auch {\em Permutation}. Allgemein kann
+man sich genauso \"{u}berlegen, da{ss} die
+\begin{center}
+\fbox{Zahl der Permutationen von $n$ paarweise verschiedenen Objekten gleich
+$n!$}
+\end{center}
+ist.
+\begin{beispiel}
+Auf wieviele Arten lassen sich die Buchstaben des Wortes ''EULER'' anordnen?
+\end{beispiel} 
+Obwohl das Wort ''EULER'' $5$ Buchstaben hat, lautet die Antwort nicht $5!$,
+denn der Buchstabe E kommt doppelt vor. Bei $5!$ M\"{o}glichkeiten hat man
+jede Anordnungsm\"{o}glichkeit doppelt gez\"{a}hlt, denn die beiden E's lassen
+sich vertauschen, ohne das Wort zu \"{a}ndern. Die richtige Antwort lautet
+also $5!/2$. Auch diese Beipiel ist ein Spezialfall einer allgemeineren
+Formel: Gegeben seien $n$ Objekte, die aus $k$ Gruppen von
+$n_1,n_2,\ldots,n_k$ jeweils gleichen Objekten bestehen. Es gilt also
+$n=n_1+\ldots+n_k$ und die Zahl der Anordnungsm\"{o}glichkeiten ist die
+\begin{center}
+\fbox{Zahl der Permutationen mit Wiederholungen gleich $\dfrac{n!}{n_1!\cdots
+    n_k!}. $} 
+\end{center}
+\begin{aufgabe} Auf wieviele Arten lassen sich die Buchstaben  des Wortes
+  ''RAMANUJAN'' anordnen? 
+\end{aufgabe}
+\begin{beispiel}
+Eine Pizza ist mit 8 verschiedenen Zutaten verf\"{u}gbar: K\"{a}se, Knoblauch,
+Ananas, Wurst, Pepperoni, Pilze, Oliven, gr\"{u}ner Pfeffer. Wieviele
+M\"{o}glichkeiten gibt es, eine Pizza mit genau drei Beilagen zu w\"{a}hlen?
+\end{beispiel}
+Um die Aufgabe zu l\"{o}sen, wenden wir ein ebenso einfaches wie
+n\"{u}tzliches Prinzip an:
+\begin{quote}
+\fbox{\parbox{13cm}{Besteht zwischen zwei Mengen $A$ und $B$ eine bijektive
+(d.h. eineindeutige) Abbildung, so gen\"{u}gt es, eine der beiden Mengen
+abzuz\"{a}hlen, die andere enth\"{a}lt genau so viele Elemente.}}
+\end{quote}
+Wir betrachten alle verschiedenen Anordnungen der Ziffern aus $11100000$. Eine
+Bijektion auf wie Menge der Zutatenkombinationen wird durch folgende
+Vorschrift gegeben: Steht in einer Permutation von $11100000$ an $n$-ter,
+$m$-ter und $k$-ter Stelle eine Eins, so nehme man die $n$-te, $m$-te und
+$k$-te Zutat entsprechend der obigen Reihenfolge. Z.B. bedeutet $01001100$
+eine Pizza mit Knoblauch, Pepperoni und Pilzen (geschmackliche Aspekte spielen
+bei dieser Aufgabe selbstverst\"{a}ndlich keine Rolle). Die
+Anordnungsm\"{o}glichkeiten der Ziffern sind aber Permutationen mit
+Wiederholung, also $\dfrac{8!}{5!3!}=\binom{8}{3}$. Diese \"{U}berlegung
+f\"{u}hrt uns allgmein darauf, da{ss} die
+\begin{center}
+\fbox{Zahl der Kombinationen von $k$ aus $n$ Elementen ohne Wiederholungen
+  gleich $\binom{n}{k} $}
+\end{center}
+ist, d.h. es wird die Anzahl der M\"{o}glichkeiten gez\"{a}hlt, aus $n$
+verschiedenen Objekten genau $k$ auszuw\"{a}hlen, ohne da{ss} ein Objekt
+mehrfach gew\"{a}hlt werden kann. Dabei ist die Reihenfolge egal. Wird sie
+zus\"{a}tzlich ber\"{u}cksichtigt, so ist das Ergebnis noch mit der Anzahl
+$k!$ von Permutationen von $k$ Objekten zu multiplizieren, d.h.  man findet
+da{ss} die
+\begin{center}
+\fbox{ Zahl der Variationen von $k$ aus $n$ Elementen ohne Wiederholung gleich
+$\dfrac{n!}{(n-k)!}$}
+\end{center} 
+ist.
+
+Wenn man 
+\[(x+y)^n=(x+y)(x+y)\cdots (x+y)\]
+ausmultipliziert, so w\"{a}hlt man aus jedem Faktor entweder $x$ oder $y$ aus,
+multipliziert diese Auswahl von Variablen miteinander und addiert
+anschlie{\ss}end alle dabei entstehenden Produkte.  Das Produkt $x^{k}y^{n-k}$
+entsteht dabei, wenn man genau $k$-mal $x$ w\"{a}hlt (und notwendigerweise
+$(n-k)$ mal $y$). Dazu gibt es nach obigem $\binom{n}{k}$ M\"{o}glichkeiten.
+Folglich tritt das Produkt $x^ky^{n-k}$ mit dem Koeffizient $\binom{n}{k}$
+auf. F\"{u}r $k$ sind alle Werte von 0 bis $n$ m\"{o}glich. Damit ist ein
+kombinatorischer Beweis des wichtigen binomischen Satzes
+\begin{center}
+  \fbox{$(x+y)^n=\sum_{k=0}^n\binom{n}{k} x^k y^{n-k}$}
+\end{center}
+geliefert. Auch viele andere Formeln lassen sich statt durch algebraische
+Rechnungen durch kombinatorische Interpretation begr\"{u}nden. Dabei geht man
+von dem allgemeinen Grundsatz
+\begin{center}
+  \fbox{Z\"{a}hle dieselben Objekte auf zweierlei Weise ab!}
+\end{center}
+aus.
+\begin{beispiel} Man finde einen kombinatorischen Beweis f\"{u}r die  Formel
+\[\binom{2n}{2}=2 \binom{n}{2}+n^2.\]
+\end{beispiel}
+In einem Raum mit $n$ Frauen und $n$ M\"{a}nnern sollen zwei Personen
+ausgew\"{a}hlt werden. Da insgesamt $2n$ Personen anwesend sind, gibt es dazu
+$\binom{2n}{2}$ M\"{o}glichkeiten. Die Zahl der M\"{o}glichkeiten, zwei Frauen
+auszuw\"{a}hlen, ist gleich $\binom{n}{2}$, die Zahl der M\"{o}glichkeiten,
+zwei M\"{a}nner auszuw\"{a}hlen, ist ebenfalls $\binom{n}{2}$. Schlie{\ss}lich
+gibt es $n^2$ M\"{o}glichkeiten, ein Paar aus einer Frau und einem Mann
+auszusuchen. Andere L\"{o}sungsm\"{o}glichkeit: Man betrachte die Anzahl der
+m\"{o}glichen Verbindungslinien zwischen den Eckpunkten eines $2n$-Ecks, wobei
+$n$ Punkte rot und $n$ Punkte gr\"{u}n gef\"{a}rbt sind...
+\begin{aufgabe}
+Man leite folgende Formeln durch kombinatorische Interpretation her:
+\begin{enumerate}
+\item \[\binom{2n+2}{n+1}=\binom{2n}{n+1}+2\binom{2n}{n}+\binom{2n}{n-1}\]
+\item \[\binom{n}{s}=\frac{n}{s}\binom{n-1}{s-1} \]
+\item \[\binom{n}{r}\binom{r}{k}=\binom{n}{k}\binom{n-k}{r-k}\]
+\item \[ \sum_{i=0}^n{\binom{n}{i}\binom{n}{n-i}} =\binom{2n}{n}
+  =\sum_{i=0}^n{\binom{n}{i}^2}\] 
+\item \[\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\ldots+\binom{n}{n}=2^n\]
+\end{enumerate}
+\end{aufgabe}
+\begin{aufgabe}
+Von $3n+1$ Objekten seien $n$ ununterscheidbar, die restlichen alle von diesen
+$n$ und auch untereinander verschieden. Man zeige, da{ss} es genau $2^{2n}$
+M\"{o}glichkeiten gibt, $n$ Objekte auszuw\"{a}hlen.
+\end{aufgabe}
+\begin{aufgabe}
+Wieviele M\"{o}glichkeiten gibt es, zwei disjunkte nichtleere Teilmengen aus
+der Menge $\{1,\ldots,n\}$ auszuw\"{a}hlen?
+\end{aufgabe}
+\begin{aufgabe} 
+Wieviele Diagonalen hat ein konvexes $n$-Eck? Und wieviele
+Diagonalenschnittpunkte, vorausgesetzt, keine drei Diagonalen gehen durch
+einen Punkt?
+\end{aufgabe}
+\begin{aufgabe}
+In der Ebene sei ein kartesisches Koordinatensystem festgelegt. Es werden Wege
+entlang der Gitterpunkte (das sind Punkte mit ganzzahligen Koordinaten)
+betrachtet, bei denen vom Punkt $(i,j)$ ein Schritt nur nach $(i+1,j)$ oder
+$(i,j+1)$ m\"{o}glich ist. Wieviele solcher Wege gibt es vom Punkt $(0,0)$ zum
+Punkt $(m,n)$, die v\"{o}llig unterhalb der Geraden $y=x+1$ liegen?
+\end{aufgabe}
+%\section{Aufgaben}
+%\begin{enumerate}
+%\item
+%\end{enumerate}
+\section{Die Formel von Vereinigung und Durchschnitt}
+
+Mit $\card{A}$ bezeichnen wir die Anzahl der Elemente einer endlichen Menge
+$A$. F\"{u}r zwei Mengen $A$ und $B$ findet man leicht
+\[\card{A\cup B}=\card{A}+\card{B}-\card{A\cap B}.\]
+
+F\"{u}r drei Mengen $A,B$ und $C$ illustriert das Mengendiagramm (zu ergänzen)
+die Formel
+\[\card{A\cup B\cup C}=\card{A}+\card{B}+\card{C}-\card{A\cap B}-\card{B\cap
+  C}-\card{A\cap C}+\card{A\cap B\cap C}\] 
+
+Die Verallgemeinerung auf $n$ Mengen sieht folgenderma{\ss}en aus:
+
+\begin{center}
+\framebox{
+\begin{minipage}{12cm}
+\begin{align*}
+ \card{A_1\cup\ldots \cup A_n} &= \sum_{i=1}^n{\card{A_i}}-\sum_{1\leq
+ i<j\leq n}{\card{A_i\cap A_j}}+\ldots \\ &+(-1)^{k-1}\sum_{1\leq i_1<i_2<
+ \ldots i_k\leq n}{\card{A_{i_1}\cap A_{i_2}\cap \ldots \cap A_{i_k}}}\\ 
+ & +\ldots +(-1)^{n-1}\card{A_1\cap\ldots\cap A_n}
+\end{align*}
+\end{minipage}}
+\end{center}
+
+\bigskip 
+Um diese Formel zu beweisen betrachten wir ein beliebiges Element $x\in
+A_1\cup \ldots \cup A_n$. Auf der linken Seite wird dieses Element genau
+einmal gez\"{a}hlt. Angenommen, $x$ ist in genau $r$ Mengen aus $A_1,\ldots,
+A_n$ enthalten. Das bedeutet, da{ss} $x$ in der Summe $\sum_{i=1}^n\card{A_i}$
+genau $r$-fach mitgez\"{a}hlt wurde. In der zweiten Summe $\sum_{1\leq i<j\leq
+n} \card{A_i\cap A_j}$ wurde $x$ so oft mitgez\"{a}hlt, wie es Kombinationen
+von zwei Mengen gibt, die beide $x$ enthalten, also $\binom{r}{2}$ mal. In der
+dritten Summe wurde $x$ entsprechend $\binom{r}{3}$ mal mitgez\"{a}hlt,
+usw. Es gen\"{u}gt also die Identit\"{a}t
+\[1=r-\binom{r}{2}+\binom{r}{3}-\ldots+(-1)^{r-1}\binom{r}{r}\]
+zu beweisen. Wegen $\binom{r}{0}=1$ und $\binom{r}{1}=r$ folgt diese aber
+unmittelbar aus dem binomischen Satz:
+\[\binom{r}{0}-\binom{r}{1}+\binom{r}{2}-\binom{r}{3} +\ldots +(-1)^r
+\binom{r}{r}=(1-1)^r=0.
+\] 
+Bei Anwendungen dieser Formel kommt es darauf an, die Mengen $A_i$
+m\"{o}glichst geschickt zu w\"{a}hlen. Wie \"{u}brigens bei allen
+kombinatorischen Aufgaben halte man sich immer vor Augen:
+\begin{center}
+  \fbox{Manchmal ist es einfacher, das Komplement einer Menge abzuz\"{a}hlen.}
+\end{center}
+
+\begin{beispiel}
+Wieviele M\"{o}glichkeiten gibt es, aus einem Kartenspiel mit 52 Karten
+f\"{u}nf auszuw\"{a}hlen, so da{ss} alle vier Farben Karo, Herz, Pique, Kreuz
+vertreten sind?
+\end{beispiel}
+Insgesamt gibt es $\binom{52}{5}$ M\"{o}glichkeiten, f\"{u}nf Karten
+auszuw\"{a}hlen. Bedeute nun $A_1,A_2,A_3 $ bzw. $A_4$ die Menge derjenigen
+F\"{u}nfkartenauswahlen, die kein Karo, Herz, Pique bzw.  Kreuz enthalten.
+$A_1$ umfa{ss}t beispielsweise alle Auswahlen von 5 Karten aus den 3 Farben
+Herz, Pique, Kreuz, also aus 39 Karten:
+\[\card{A_1}=\card{A_2}=\card{A_3}=\card{A_4}=\binom{39}{5}\;\;\Rightarrow
+\;\;\sum_{i=1}^4 \card{A_i}=4\cdot\binom{39}{5}.
+\] 
+$A_i\cap A_j\,(i\neq j)$ stellt die Menge derjenigen F\"{u}nferauswahlen dar,
+die zwei Farben nicht enthalten, es wird also aus 26 Karten ausgew\"{a}hlt:
+\[\card{A_i\cap A_j}=\binom{26}{5}\,(i\neq j)\;\;\Rightarrow\;\;\sum_{1\leq
+  i<j\leq 4}\card{A_i\cap A_j}=\binom{4}{2}\binom{26}{5}.
+\] 
+Genauso folgt
+\[\sum_{1\leq i<j<k\leq 4}\card{A_i\cap A_j\cap
+  A_k}=\binom{4}{3}\binom{13}{5},\] 
+w\"{a}hrend $A_1\cap A_2\cap A_3\cap A_4$ leer ist, denn es k\"{o}nnen nicht
+alle Farben gleichzeitig fehlen. Die Formel von Vereinigung und Durchschnitt
+liefert aber nun
+\[\card{A_1\cup A_2\cup A_3\cup A_4}= \binom{4}{1}\binom{39}{5}
+-\binom{4}{2}\binom{26}{5} +\binom{4}{3}\binom{13}{5}-0
+\] 
+$A_1\cup A_2\cup A_3\cup A_4$ stellt die Menge derjenigen F\"{u}nferauswahlen
+dar, in der mindestens eine Farbe fehlt, also gerade das Komplement der
+gesuchten Menge. Somit ist die Anzahl der F\"{u}nferauswahlen, in denen alle
+Farben vertreten sind, gleich
+\[\binom{52}{5} -\binom{4}{1}\binom{39}{5} +\binom{4}{2}\binom{26}{5}
+-\binom{4}{3}\binom{13}{5}.\] 
+
+\begin{aufgabe}
+Wieviele ganze Zahlen zwischen 1 und 1000 (beide inbegriffen) sind weder durch
+2,3, noch 5 teilbar?
+\end{aufgabe}
+\begin{aufgabe}
+Jedes von $n$ Kindern soll ein Eis einer von $k$ verf\"{u}gbaren Sorten
+bekommen. Wieviele M\"{o}glichkeiten gibt es, die Eissorten zu verteilen, wenn
+jede Sorte mindestens einmal ausgegeben werden soll?
+\end{aufgabe}
+\begin{aufgabe}
+Man berechne die Anzahl der M\"{o}glichkeiten, wie 4 Ehepaare auf einer Reihe
+von 8 St\"{u}hlen Platz nehmen k\"{o}nnen, ohne da{ss} jemand nebem seinem
+eigenen Ehepartner sitzt!
+\end{aufgabe}
+\begin{aufgabe}
+Wieviele M\"{o}glichkeiten gibt es, da{ss} $n$ Personen miteinander
+telefonieren, so da{ss} jeder mit genau einem anderen spricht und keiner sich
+selbst anruft?
+\end{aufgabe}
+\section{Rekursionen und erzeugende Funktionen}
+Bei schwierigen Aufgaben ist es oft einfacher, f\"{u}r gesuchte Anzahlen
+zun\"{a}chst rekursive Beziehungen aufzustellen. Um daraus eine explizite
+Formel zu machen, lernen wir die Methode der erzeugenden Funktionen kennen.
+\begin{beispiel}
+Auf wieviele Weisen kann ein konvexes $n$-Eck trianguliert werden, d.h. durch
+Diagonalen in Dreiecke zerlegt werden?
+\end{beispiel} 
+Die gesuchte Anzahl sei $t_n$. Offenbar gilt $t_3=1, t_4=2, t_5=5$, siehe
+folgendes Bild: ({fuenf.bmp} fehlt) 
+
+Fixieren wir im Sechseck eine Seite und betrachten alle m\"{o}glichen Dreicke
+mit dieser Seite als Grundseite, so finden wir
+\[ t_6=t_5 +t_4+t_4+t_5=14\] 
+Bild {sechs.bmp} fehlt.
+
+Im Siebeneck gilt  die Formel
+\[t_7=t_2t_6+t_3t_5+t_4t_4+t_5t_3+t_6t_2,\]
+wobei $t_2=1$ gesetzt worden ist. Bild {sieben.bmp} fehlt.
+
+Allgemein  folgt
+\[t_n=t_2t_{n-1}+t_3t_{n-2}+\ldots+t_{n-1}t_2=\sum_{k=2}^{n-1}t_kt_{n+1-k}.\]
+Damit ist eine rekursive Darstellung gewonnen. Die Zahlen $C_n=t_{n+2}$ (die
+Indexverschiebung hat historische Gr\"{u}nde) sind als {\em Catalansche
+Zahlen} bekannt. Um aus der Rekursionsformel
+\[C_{n+1}=\sum_{k=0}^{n} C_kC_{n-k}\]
+eine explizite zu gewinnen, ordnen wir dieser Folge eine Potenzreihe mit den
+Catalanschen Zahlen als Koeffizienten zu, n\"{a}mlich
+\[f(x)=C_0+C_1x+C_2x^2+\ldots.\]
+Solange man keine konkreten Werte f\"{u}r $x$ einsetzt, braucht man sich um
+Konvergenzfragen nicht k\"{u}mmern, sondern kann mit diesen Potenzreihen
+formal wie mit endlichen Polynomen rechen. (Es gibt eine mathematische
+Theorie, die das streng begr\"{u}ndet.) Wir quadrieren:
+\[f(x)^2=C_0^2+(C_1C_0+C_0C_1)x+(C_2C_0+C_1C_1+C_0C_2)x^2+\ldots
+=C_1+C_2x+C_3x^2+\ldots\]
+Also gilt
+\[xf(x)^2=f(x)-C_0=f(x)-1\]
+Das ist eine quadratische Gleichung f\"{u}r $f(x)$ mit der L\"{o}sung
+\[f(x)=\frac{1\pm \sqrt{1-4x}}{2x}\]
+Wegen $f(0)=C_0$ ist das negative Vorzeichen zu w\"{a}hlen. Wir m\"{u}ssen
+also
+\[f(x)=\frac{1- \sqrt{1-4x}}{2x}\]
+in eine Potenzreihe entwickeln und k\"{o}nnen dann an den Koeffizienten eine
+explizite Darstellung der Catalanschen Zahlen ablesen. Wir erinneren uns an
+die Binominalreihe
+\begin{equation}\label{1}
+\fbox{$(1+x)^\alpha=\sum_{n=0}^\infty \binom{\alpha}{n} x^n$.}
+\end{equation}
+Dabei ist der Binominalkoeffizient definiert durch
+\[\binom{\alpha}{n}= \frac{\alpha(\alpha-1)\cdots (\alpha-n+1)}{n!}.\]
+F\"{u}r nat\"{u}rliches $\alpha$ verschwindet $\binom{\alpha}{n}$ f\"{u}r
+$n>\alpha$, so da{ss} (\ref{1}) in eine endliche Summe \"{u}bergeht. Die
+Binominalreihe ist also eine Verallgemeinerung des binomischen Satzes auf
+reelle Exponenten. Man rechnet
+\begin{eqnarray*}
+\sqrt{1-4x}&=&1+\sum_{n=1}^\infty
+\frac{\left(\frac{1}{2}\right)\left(\frac{1}{2}-1\right)\cdots
+\left(\frac{1}{2}-n+1\right)}{n!}(-4x)^n\\ &=&1+\sum_{n=1}^\infty
+(-1)^{n-1}\frac{1\cdot 1\cdot 3\cdot 5\cdots (2n-3)}{2^n n!}(-4)^nx^n\\
+&=&1-2x\sum_{n=1}^\infty \frac{1\cdot 3\cdot 5\cdots
+(2n-3)2^{n-1}(n-1)!}{n\cdot (n-1)!(n-1)!}x^{n-1}\\ &=&1-2x\sum_{n=1}^\infty
+\frac{(2n-2)!}{n\cdot (n-1)!(n-1)!} x^{n-1}
+\end{eqnarray*}
+Damit folgt 
+\[f(x)=\frac{1- \sqrt{1-4x}}{2x}=\sum_{n=1}^\infty\frac{1}{n}\binom{2n-2}{n-1}
+x^{n-1}.\] 
+Der Koeffizient  vor $x^n$ ist
+\[C_n=\frac{1}{n+1}\binom{2(n+1)-2}{(n+1)-1}=\frac{1}{n+1}\binom{2n}{n}.\]
+\begin{aufgabe} 
+Unter einem Dominostein verstehen wir ein $1\times 2 $-Rechteck. Zeige da{ss}
+die Anzahl $f_n$ der m\"{o}glichen \"{U}berdeckungen eines $1\times
+n$-Rechtecks durch Dominosteine der Rekursion
+\[f_{n+2}=f_{n+1}+f_n\]
+gen\"{u}gt. Die Folge $f_n$ hei{\ss}t auch Fibonacci-Folge. Mit Hilfe von
+erzeugenden Funktionen gewinne man die Formel
+\[f_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-
+  \left(\frac{1-\sqrt{5}}{2}\right)^n\right].\] 
+\end{aufgabe}
+\begin{aufgabe} 
+Wieviele $n$-Tupel aus den Zahlen $1,2,3,4$ gibt es, in denen $1$ und $2$
+nirgends benachbart sind?
+\end{aufgabe} 
+ 
+\begin{thebibliography}{99}
+\bibitem{En} Engel: IMO-\"{U}bungsaufgaben, Heft 22. Herausgegeben vom
+Zentralen Komitee f\"{u}r die Olympiaden Junger Mathematiker beim Ministerium
+f\"{u}r Volksbildung der DDR.
+\bibitem{E2} Engel, A.: Problem Solving Strategies. Springer Verlag 1998.
+\bibitem{Ze} Zeitz, P.: The art and craft of problem solving. John Wiley \&
+Sons 1999.
+\end{thebibliography}
+
+\begin{comment}
+graebe (2005-01-05): Es fehlen noch einige Bilder.
+\end{comment}
+
+\end{document}

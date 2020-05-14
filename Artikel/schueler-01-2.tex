@@ -1,0 +1,555 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,schueler,url}
+\usepackage{kosemnet,ko-math}
+
+\title{Zerlegung von natürlichen Zahlen in die Summe von
+  Quadratzahlen\kosemnetlicensemark}  
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{Februar 2001}
+
+\begin{document}
+\maketitle
+
+Die Zerlegung von nat"urlichen Zahlen in die Summe von Quadratzahlen ist eine
+alte, abgeschlossene Theorie, die schon von {\sc Fermat} im 17. Jahrhundert
+und sp"ater von {\sc Euler}, {\sc Lagrange} und {\sc Jacobi} bearbeitet wurde;
+die wichtigsten Resultate gehen auf die oben genannten zur"uck.
+
+\subsection*{Die pythagor"aischen Tripel}
+Wir suchen L"osungen der Gleichung
+\begin{align}\label{p}
+x^2+y^2=z^2,\quad\text{mit}\quad x,y,z\in \N.
+\end{align}
+Diese Tripel $(x,y,z)$ nat"urlicher Zahlen hei"sen {\em pythagor"aische
+  Zahlentripel}. Sicherlich kennt jeder das Tripel $(3,4,5)$, es gilt die
+  Gleichung $3^2+4^2=9+16=25=5^2$. Vielleicht kennen ja auch einige das Tripel
+  $(5, 12, 13)$ --- es ist $5^2+12^2=25+144=169=13^2$. Es stellt sich nun die
+  Frage nach {\em allen} L"osungen der obigen Gleichung. Als erstes beobachtet
+  man, dass mit $(x,y,z)$ auch $(tx, ty, tz)$, $t\in \N$ eine L"osung
+  von \rf[p] ist. Haben umgekehrt zwei der Zahlen $x,y,z$ einen gemeinsamen
+  Teiler $t$, so ist auch die dritte Zahl durch $t$ teilbar und man kann
+  \rf[p] duch $t^2$ dividieren und erh"alt eine kleinere L"osung. Das kann man
+  so lange machen, bis $\ggT(x,y,z)=1$. Solche L"osungen hei"sen {\em
+  primitiv}. Als zweites stellt man fest, dass in einer primitiven L"osung
+$  (x,y,z)$ immer genau eine der Zahlen $x$, $y$ gerade ist, die andere
+  und $z$ sind stets ungerade. W"aren n"amlich  $x$ und $y$ gerade, dann hat
+  man keine primitive L"osung mehr, da man das Tripel durch $2$ teilen kann, w"aren beide ungerade, etwa $x=2a+1$,
+  $y=2b+1$, dann w"are $z^2=4(a(a+1)+b(b+1))+2$. Eine Quadratzahl kann aber
+  nicht den Rest $2$ bei der Division durch $4$ lassen.
+
+Gibt es endlich oder unendlich viele primitive pythagor"aische Tripel? Eine
+einfache Beobachtung der Folge der Quadratzahlen und ihrer Differenzenfolge
+beantwortet die Frage sofort.
+\begin{center}
+\begin{tabular}{l|llllllll}
+$n$&1&2&3&4&5&6&7&8
+\\ \hline
+$n^2$&1&4&9&16&25&36&49&64
+\\ \hline
+Differenz&&3&5&7&9&11&13&15
+\end{tabular}
+\end{center}
+Die Differenzenfolge der  aufeinanderfolgenden Quadratzahlen durchl"auft also
+alle ungeraden nat"urlichen Zahlen. Jede ungerade Quadratzahl $(2n+1)^2$ in der
+Differenzenfolge liefert also ein  pythagor"aisches Tripel $(2n(n+1), 2n+1,
+2n(n+1)+1)$. Dies ist primitiv, da $x$ und $z$ aufeinanderfolgend und damit
+teilerfremd sind. Unsere obigen beiden Beispiel sind genau von dieser
+Gestalt. Gibt es aber noch andere primitive Tripel? Mit etwas Geschick oder mit dem
+Computer findet man  das primitive Tripel $(8,15,17)$, das offenbar keine
+aufeinanderfolgenden Quadratzahlen enth"alt. Nun ist es an der Zeit eine
+vollst"andige L"osung anzugeben.
+
+\begin{satz}\label{s-p}
+F"ur beliebige paarweise teilerfremde nat"urliche Zahlen $m$ und $n$ mit
+$m>n$, wobei eine von beiden gerade und die andere ungerade ist, liefern die
+Formeln
+\begin{align}
+\begin{split}
+\label{los-p}
+x&=2mn,
+\\
+y&=m^2-n^2,
+\\
+z&=m^2+n^2
+\end{split}
+\end{align}
+eine primitive L"osung von \rf[p]. Umgekehrt ist jede primitive L"osung von
+\rf[p] mit geradem $x$ von dieser Gestalt.
+\end{satz}
+
+\begin{beweis} (nach \cite[\S 2]{b-Postnikov}) Die leicht nachzurechnende Identit"at
+$$ (2mn)^2 +(m^2-n^2)^2=(m^2+n^2)^2 $$
+beweist, dass \rf[los-p] ein pythagor"aisches Tripel von  positiven
+ganzen Zahlen $(x,y,z)$ liefert. H"atten die drei Zahlen einen gemeinsamen
+Teiler $t\ge 2$, so h"atten auch
+\begin{align*}
+2m^2&=y+z=(m^2-n^2)+(m^2+n^2)\quad \text{und}\quad 2n^2=z-y=(m^2+n^2)-(m^2-n^2)
+\end{align*}
+diesen gemeinsamen Teiler. Da aber $m$ und $n$ teilerfremd sind, muss $t=2$
+gelten. Dann ist aber $y=m^2-n^2$ gerade. Also sind $m$ und $n$ beide gerade oder
+beide ungerade, was unserer Voraussetzung widerspricht. Es gibt daher keinen
+echten gemeinsamen Teiler; die angegebene L"osung ist primitiv.
+\\
+Sei umgekehrt $(x,y,z)$ eine primitive L"osung von \rf[p] mit positiven ganzen
+Zahlen. O.\,B.\,d.\,A. sei $x=2a$ die gerade Zahl und $y$ und $z$
+ungerade. Dann sind $z+y=2b$ und $z-y=2c$ gerade Zahlen mit
+$a,b,c\in\N$. Jeder gemeinsame Teiler $d$ von $b$ und $c$ ist auch gemeinsamer
+Teiler von $y$ und $z$, also sind $b$ und $c$ teilerfremd. Andererseits ist
+nach \rf[p]
+$$
+4a^2=x^2=z^2-y^2=(z+y)(z-y)=4bc\quad\text{also}\quad a^2=bc.
+$$
+Wegen der eindeutigen Primfaktorzerlegung der nat"urlichen Zahlen und wegen
+der Teilerfremdheit von $b$ und $c$, m"ussen $b$ und $c$ bereits f"ur
+sich Quadratzahl sein, also $b=m^2$ und $c=n^2$. Dann ergibt sich $a^2=m^2n^2$
+und somit $a=mn$. Wir erhalten insgesamt $x=2mn$, $z=b+c=m^2+n^2$ und
+$y=b-c=m^2-n^2$. Wegen $b>c$ gilt auch $m>n$.
+\end{beweis}
+
+\begin{aufgabe} Man zeige, dass jedes primitive pythagor"aische Tripel $(m,n)$ 
+mit $m>n$ genau 3 primitive Tripel als Nachfolger hat und, falls es von
+$(1,0,0)$ veschieden ist, genau einen Vorg"anger. Keine zwei Nachfolger fallen
+dabei zusammen.
+\end{aufgabe}
+
+\begin{loesung} Es sei $M=\{(m,n)\in\N\times\N\,|\,m>n, \ggT(m,n)=1, m\not\equiv n\mod 2\}$
+die Menge der Paare, die die primitiven pythagor"aischen Tripel
+parametrisiert. Man "uberzeugt sich leicht davon, dass die drei Funktionen
+$f(m,n):=(2n+m,n)$, $g(m,n):=(2m+n,m)$ und $h(m,n):=(2m-n,m)$ die Menge $M$ in
+sich selbst abbilden, denn der $\ggT{}{}$ bleibt erhalten, die verschiedene
+Parit"at und die erste Komponente ist noch immer gr"o"ser als die zweite.
+Zur Eindeutigkeit des Nachfolgers. Es sei $(m',n')$ der Nachfolger von $(m,n)$
+unter $f,\,g$ bzw.{} $h$. F"ur die Abbildung $f$ gilt $m'>3n'$, f"ur $g$ gilt
+$3n'>m'>2n'$ und f"ur $h$ gilt schlie"slich $2n'>m'$. Die
+Gr"o"senverh"altnisse von $m'$ und $n'$ bestimmen also den Vorg"anger
+eindeutig. Man "uberzeugt sich auch davon, dass diese R"uckabbildung stets
+m"oglich ist.
+
+Im Falle $a>3b$ w"ahle man $\tilde{a}:=a-2b$ und $\tilde{b}:=b$; im Falle
+$3b>a>2b$ w"ahle man $\tilde{a}:=b$ und $\tilde{b}:=a-2b$; im Falle $2b>a$
+w"ahle man $\tilde{a}:=b$ und $\tilde{b}:=2b-a$.
+
+\end{loesung}
+
+
+\subsection*{Die Methode des unendlichen Abstiegs und die L"osungen der
+  Gleichung $x^4+y^4=z^4$}
+
+Schon {\sc Fermat} war 1637 in der Lage zu zeigen, dass diese Gleichung
+keine L"osung besitzt. Er benutzte dabei die {\em Methode des unendlichen
+  Abstiegs}, die {\em Descendenzmethode}, die in der Olympiademathematik auch
+einfach unter dem Namen {\em Extremalprinzip} bekannt ist. Ein weiterer Name ist  --- {\em die Suche nach dem kleinsten Verbrecher}. Diese Prinzip beruht ganz
+einfach auf der Tatsache, dass jede Teilmenge nat"urlicher Zahlen ein 
+kleinstes Element besitzt. In folgender Gestalt wird es meist verwendet:
+\begin{quote}
+Wir wollen zeigen, dass eine Aufgabe keine L"osung besitzt. Dazu nehmen wir an,
+sie h"atte eine. Wir  w"ahlen uns unter allen hypothetischen  L"osungen eine
+minimale (bez"uglich einer geeigneten Ordnung). Wenn es uns dann gelingt, eine
+kleinere L"osung zu konstruieren, dann sind wir offensichtlich an einem
+Widerspruch angelangt. Die Aufgabe hat keine L"osung.
+\end{quote}
+
+Als Beispiel geben wir einen recht ungew"ohnlichen Beweis f"ur die Tatsache,
+dass $\sqrt{2}$ irrational ist, siehe \cite[Kapitel~3]{b-Engel}. Dazu sei $M=\{n\sqrt{2}\,|\, n\in\N\}\cap\N$
+die Menge der Vielfachen von $\sqrt{2}$, die nat"urliche Zahlen liefern. Wir
+m"ussen zeigen, dass $M$ leer ist. Ist $M$ nichtleer, so gibt es eine {\em
+  kleinste } nat"urliche Zahl $k\in M$. Wir betrachten die Zahl
+$n=(\sqrt{2}-1)k$. Dann gilt
+$$
+n\sqrt{2}=(\sqrt{2}-1)k \sqrt{2}=2k-k\sqrt{2}.
+$$
+Nach Definition der Menge $M$ und wegen $k\in M$ sind  sowohl $(\sqrt{2}-1)k$
+als  auch $2k-k\sqrt{2}$ nat"urliche Zahlen. Folglich, wieder nach Definition
+von $M$, ist auch $(\sqrt{2}-1)k\in M$. Nun ist aber $(\sqrt{2}-1)k<k$, was der
+Minimalit"at von $k$ widerspricht. Also ist $M$ leer und $\sqrt{2}$
+irrational. 
+
+\begin{satz}  Die Gleichung
+\begin{align}\label{4}
+x^4+y^4=z^2
+\end{align}
+hat keine von Null verschiedene ganzzahlige L"osung.
+\end{satz}
+
+\begin{beweis}[(nach \cite{b-Postnikov})] Angenommen, es gibt L"osungen der
+  obigen Gleichung. Dann  k"onnen wir wieder unsere Betrachtungen auf
+  teilerfremde (primitive) Tripel von nat"urlichen Zahlen beschr"anken. Unter
+  allen primitiven Tripeln w"ahlen wir dasjenige $(x,y,z)$, wo $z$ am
+  kleinsten (aber von Null verschieden) ist. Wie schon bei der L"osung von
+  \rf[p] schlie"st man, dass genau eine der Zahlen $x$  und $y$ gerade, die
+  andere ungerade sein muss. O.\,B.\,d.\,A.{} sei $x$ gerade. Wegen
+  $(x^2)^2+(y^2)^2=z^2$ bilden $(x^2,y^2,z)$ ein primitives pythagor"aisches
+  Tripel. Also gibt es teilerfremde nat"urliche Zahlen $m,n$, $n>m$, verschiedener
+  Parit"at (gerade/ungerade) mit
+$$ x^2=2mn,\quad y^2=m^2- n^2,\quad z=m^2+n^2.
+$$
+Falls $m$ gerade und $n$ ungerade, dann ist $y^2\equiv -1\mod 4$, was nicht
+m"oglich ist. Also ist $m$ ungerade und $n=2q$ gerade.
+Also gilt $x^2=4qm$ bzw.{} $(x/2)^2=qm$. Wegen der Teilerfremdheit von $m$ und
+$n$ sind auch $q$ und $m$ teilerfremd, also m"ussen sie bereits beide einzeln
+Quadratzahlen sein, etwa
+$$
+m=s^2,\quad q=t^2,
+$$
+wobei $s$ und $t$ gewisse teilerfremde positive ganze Zahlen sind. Wir
+sehen, dass
+$$
+y^2=(s^2)^2-(2t^2)^2\quad \text{bzw.}\quad (2t^2)^2+y^2=(s^2)^2
+$$
+gilt. Da $t$ und $s$ teilerfremd sind, k"onnen wir erneut Satz\,\ref{s-p}
+anwenden und folglich gibt es teilerfremde nat"urliche Zahlen $a$ und $b$
+verschiedener Parit"at mit $a>b$ und 
+$$
+2t^2=2ab,\quad y=a^2-b^2,\quad s^2=a^2+b^2.
+$$
+ Da $a$ und $b$ teilerfremd sind, folgt aus der ersten Gleichung wieder
+ $a=u^2$ und $b=v^2$ und somit aus der letzten Gleichung
+$$ s^2=u^4+v^4,$$
+wobei $u$, $v$ und $s$ paarweise teilerfremde nat"urliche Zahlen sind.
+Dabei ist
+$$z=m^2+n^2>m=s^2>s.$$ Dies widerspricht aber der minimalen Wahl von
+$z$. Somit hat Gleichung \rf[4] keine L"osung.
+\end{beweis}
+
+Mit Hilfe des Extremalprinzips l"ose man die folgende Aufgaben
+
+\begin{aufgabe} Es gibt kein Quadrupel $(x,y,z,u)$ von nat"urlichen Zahlen mit 
+$$x^2+y^2=3(z^2+u^2).$$
+\end{aufgabe}
+
+\begin{aufgabe} Finde alle Paare $(x,y)$ von nat"urlichen Zahlen mit
+  $2x^2-3y^2=0$!
+\end{aufgabe}
+
+\begin{aufgabe} Zeige, dass die Gleichung $x^2+y^2+z^2=2xyz$ keine ganzzahlige
+  L"osung bis auf $x=y=z=0$ besitzt.
+\end{aufgabe}
+
+\begin{aufgabe} 
+  Die Menge $\Z\times \Z$ hei"st {\em ebenes Gitter}. Man zeige, dass es f"ur
+  $n\ne 4$ kein regul"ares $n$-Eck gibt, dessen Ecken auf dem ebenen Gitter
+  liegen!
+\end{aufgabe}
+
+\begin{loesung} 
+  Die Drehung um $90^\circ$ um einen Punkt aus $\Z/2\times \Z/2$ "uberf"uhrt
+  das Gitter $\Gamm=\Z\times \Z$ in sich. Es sei $P_0\cdots P_{n-1}$ ein
+  regul"ares $n$-Eck minimaler Kantenl"ange mit $P_i\in \Gamm$. Wir betrachten
+  die $n$ Drehungen um die Mittelpunkte $(P_i+P_{i+1})/2$, $i=0,\dots, n-1$ um
+  $+90^\circ$. Das Bild von $P_{i+1}$ bei der zugeh"origen Drehung sei
+  $P_{i+1}^\prime$ und liegt echt im Innern von $P_0\cdots P_{n-1}$. Dann ist
+  das $n$-Eck $P'_0\cdots P'_{n-1}$ wieder regul"ar und liegt auf dem Gitter
+  $\Gamm $. Dies ist aber ein Widerspruch zur Minimalit"at der Seitenl"ange.
+  Nur f"ur $n=4$ fallen die 4 Bildpunkte zusammen und es ergibt sich kein
+  Widerspruch.
+\end{loesung}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Unm"oglichkeitss"atze zu Zerlegungen}
+Wir werden sp"ater sehen, dass jede nat"urliche Zahl als Summe von h"ochstens
+vier Quadratzahlen darstellbar ist. Dies wurde schon von {\sc Fermat}
+vermutet und sp"ater von {\sc Lagrange} bewiesen. Die Anzahl dieser
+Darstellungen bestimmte {\sc Jacobi}, siehe Satz\,\ref{j2}.
+\nocite{b-Pieper}
+
+\begin{satz} 
+{\em (a)} Eine Primzahl der Form $4k+3$ l"asst sich nicht als Summe von zwei
+Quadratzahlen schreiben
+\\
+{\em(b)} Eine Zahl der Form $4^n(8k+7)$ l"asst sich nicht als Summe von
+  drei Quadratzahlen schreiben.
+\end{satz}
+
+
+\begin{beweis} (a) Die quadratischen Reste modulo 4 sind 0 und 1. Somit l"a"st
+  sich 3 nicht als Summe zweier solcher Reste schreiben.
+\\
+(b) Mit vollst"andiger Induktion "uber $n$. Im Falle $n=0$ betrachten wir die
+quadratischen Reste modulo 8; das sind 0, 1 und 4. Die Summe dreier solcher
+Reste kann aber niemals den Rest 7 ergeben. Nehmen wir jetzt an, die Zahl
+$4^a(8k+7)$ ist nicht als Summe von drei Quadraten darstellbar. Wir haben zu
+zeigen, dass dann auch $4^{a+1}(8k+7)$ nicht als Summe von drei Quadratzahlen
+darstellbar ist. Angenommen, es gibt doch eine derartige Darstellung
+$$
+4^{a+1}(8k+7)=u^2+v^2+w^2.
+$$
+Dann folgt aus $u^2+v^2+w^2\equiv 0\mod 4$ sofort $u\equiv v\equiv w\equiv
+0\mod 2$, denn der Rest $0$ l"asst sich nur als $0=0+0+0\mod 4$ mit drei
+quadratischen Resten modulo $4$ darstellen. Dann kann man aber die obige
+Gleichung durch $4$ dividieren und man erh"alt einen Widerspruch zur
+Induktionsannahme, \cite[Abschnitt 6.2]{b-Kraetzel}.
+\end{beweis}
+
+\begin{bemerkung} Es ist erw"ahnenswert, dass alle Zahlen, die nicht von der
+  Form $4^n(8k+7)$ sind, als Summe von 3 Quadratzahlen darstellbar sind. Dies
+  ist  schwierig zu zeigen. Den Beweis findet man etwa in \cite[Band
+  I, Teil III, Kap. 4]{b-Landau}
+\end{bemerkung}
+
+\begin{aufgabe} Die Gleichung $x_1^4+ x_2^4+\cdots +x_{14}^4=1599$ hat keine
+  ganzzahlige L"osung.
+\end{aufgabe}
+
+\begin{aufgabe} Zahlen der Form $8k+6$ sind nicht als Summe von zwei Quadratzahlen
+  darstellbar.
+\end{aufgabe}
+
+\begin{loesung} Die quadratischen Reste modulo 8 sind 0,1,4. Die Summe zweier
+  solcher Reste ist niemals gleich 6.
+\end{loesung}
+
+\subsection*{Die Darstellung nat"urlicher Zahlen als Summe von Quadraten}
+
+Im folgenden Abschnitt werden wir die Frage beleuchten, wann eine nat"urliche
+Zahl als Summe von zwei bzw.{} vier Quadratzahlen darstellbar ist. Zum Schluss
+werden wir --- allerdings  ohne Beweis --- auch Formeln f"ur die Anzahl
+solcher Zerlegungen angeben. Haben wir im vorigen Abschnitt einfache
+Negativ-Resultate bewiesen, so wollen wir uns nun den etwas schwierigeren
+Existenz- und Eindeutigkeitss"atzen f"ur Zerlegungen zuwenden.
+
+\begin{satz} {\em (a)} Es seien $m=a^2+b^2$ und $n=x^2+y^2$. Dann ist
+$$mn=(ax+by)^2 +(ay-bx)^2=(ax-by)^2+(ay+bx)^2.$$
+Ferner gilt $2m=(a-b)^2+(a+b)^2$.
+\\
+{\em (b)} Es seien $m=a^2+b^2+c^2+d^2$ und $n=x^2+y^2+z^2+u^2$. Dann gilt
+\begin{xalignat*}{2}
+mn&=A^2+B^2+C^2+D^2,\,\text{wobei}&&
+\\
+A&=ax+by+cz+du,& B&=ay-bx-cu+dz,
+\\
+C&=az+bu-cx-dy,& D&=au-bz+cy-dx.
+\end{xalignat*}
+Ferner gilt $2m=(a-b)^2+(a+b)^2+(c-d)^2+(c+d)^2$.
+\end{satz}
+
+\begin{beweis} Man erh"alt die Identit"aten unmittelbar durch Ausmultiplizieren
+  (binomische Formel). Nat"urlich gibt es auch bei (b) mehrere M"oglichkeiten,
+  der Darstellung des Produkts. Wie viele eigentlich? 
+\end{beweis}
+
+Somit kann man sich in beiden F"allen auf die Zerlegung von Primzahlen
+zur"uckziehen. Oben haben wir gesehen, dass sich die Primzahlen der Form
+$4k+3$ nicht als Summe von zwei Quadraten schreiben lassen.
+
+\begin{satz}\label{2qs} Jede Primzahl der Form $4n+1$ l"asst sich eindeutig als Summe von
+  zwei Quadratzahlen schreiben.
+\end{satz}
+
+Bevor wir diesen Satz beweisen, m"ussen wir noch einige Hilfsmittel zur
+Verf"ugung stellen.
+
+\begin{satz}[ (Wilson)] F"ur jede Primzahl $p$ ist
+$$ (p-1)!\equiv -1 \mod p.  $$
+Wenn umgekehrt diese Kongruenz besteht, dann ist $p$ eine Primzahl.
+\end{satz}
+
+\begin{beweis} F"ur $p=2$ und $p=3$ ist der Satz sofort einzusehen. Es sei also
+  $p>3$. Keine der Zahlen
+$$2,3,\dots, p-2$$ gen"ugt der Kongruenz $x^2\equiv 1\mod p$. Denn diese
+ Kongruenz ist gleichwertig mit der Aussage ${p\vert (x-1)(x+1)}$ und, da $p$
+ Primzahl ist, sind $x\equiv \pm 1\mod p$ die einzigen beiden L"osungen.  In
+ der oben genannten Folge von Resten gibt es also zu jedem $x$ ein $x'$ mit $x
+ x'\equiv 1\mod p$, wobei $x'\not\equiv x\mod p$. Die obigen $p-3$ Reste
+ lassen sich also zu Paaren anordnen, deren Produkt immer kongruent $1$ modulo
+ $p$ ist. Somit gilt
+$$ (p-2)!\equiv 1\mod p,\quad\text{bzw.}\quad (p-1)!\equiv -1\mod p.
+$$
+F"ur jede zusammengesetzte Zahl $n=ab$ ist $(n-1)!\equiv 0\mod n$, da die
+Faktoren $a$ und $b$ beide in  den Zahlen $1,\dots, n-1$ als Faktoren
+aufgehen. 
+\end{beweis}
+
+\begin{satz} \label{hs} Ist $p$ eine Primzahl der Form $4n+1$, so ist
+$$\left[ \left( \frac{p-1}{2}\right)!\right]^2\equiv -1 \mod p.
+$$
+\end{satz}
+
+\begin{beweis} Nach dem {\sc Wilson}schen Satz gilt
+\begin{align*}
+-1&\equiv (p-1)!\equiv 1{\cdot} 2\cdots 2n{\cdot}(2n+1)\cdots 4n
+\equiv 1\cdots 2n (-2n)(-2n+1)\cdots (-1)
+\\
+&\equiv (2n)!(-1)^{2n}
+\equiv\left[ \left( \frac{p-1}{2}\right)!\right]^2\mod  p
+\end{align*}
+\end{beweis}
+
+Dieser Satz zeigt insbesondere, dass f"ur die Primzahlen der Form $4n+1$ die
+Kongruenz ${x^2\equiv -1\mod p}$ stets eine L"osung hat.
+
+\begin{satz}[ (Thue)] Es sei $p$ eine Primzahl, $e$ und $f$ zwei ganze Zahlen mit
+  $1<e,f<p$ und $p<ef$. Dann lassen sich alle Reste $r$ modulo $p$ auf die
+  folgende Gestalt bringen:
+$r\equiv 0\mod p$ oder 
+$$ r\equiv\pm \frac{x}{y}\mod p,\quad\text{ wobei }\quad
+0<x<e\quad\text{und}\quad 0<y<f.
+$$
+\end{satz}
+
+\begin{beweis} Es sei  $r\not\equiv 0\mod p$. Wir betrachten die $ef$ Reste
+  $v+rw$, wobei $0\le v<e$ und $0\le w <f$ gelte. Weil $ef>p$, m"ussen
+  mindestens zwei dieser Reste "ubereinstimmen, etwa
+$$ v_1+rw_1\equiv v_2+rw_2 \mod p.$$
+Der Fall $w_1=w_2$ ist aber unm"oglich, da sonst auch $v_1=v_2$ gelten w"urde,
+und die Paare sind gleich. Es gilt also
+$$
+r\equiv \frac{v_2-v_1}{w_1-w_2}\equiv \pm\frac{v_1-v_2}{w_1-w_2}\mod p
+$$
+und $\abs{v_1-v_2}<e$ und $\abs{w_1-w_2}<f$.
+\end{beweis}
+
+\begin{beweis}[(von Satz\,\ref{2qs})] Wir richten uns nach \cite[Kapitel VII,
+  Abschnitt 3]{b-Neiss}.
+Nach Satz\,\ref{hs} gibt es eine L"osung der Kongruenz $z^2\equiv -1\mod
+p$. Wir wenden den Satz von {\sc Thue} mit $e=f$ an, so dass $e^2>p$
+gilt. Dabei sei $e$ die kleinste derartige Zahl. Es gibt also zwei nat"urliche
+Zahlen $x$ und $y$ mit $0<x,y<e$, so dass $z\equiv \pm x/y\mod p$ gilt. Dann
+ist aber
+$$ \left(\frac{x}{y}\right)^2\equiv z^2\equiv-1\mod p$$
+und somit $x^2+y^2=pr$ f"ur eine gewisse nat"urlichen Zahl $r$. Wegen $x,y<e$
+ist $x^2<p$ und auch $y^2<p$, denn sonst w"are $e$ nicht die kleinste Zahl
+mit $e^2>p$. Somit ist $x^2+y^2=pr<2p$. Also gilt $r=1$ und somit $x^2+y^2=p$.
+\\
+Zur Eindeutigkeit. Angenommen, $p=x^2+y^2=u^2+v^2$ sind zwei Darstellungen
+f"ur $p$. Dann gilt $-1\equiv x^2/y^2\equiv u^2/v^2\mod p$. Hieraus folgt
+$$\frac{x}{y}\equiv \pm \frac{u}{v}\equiv \mp \frac{v}{u}\mod p.$$
+Durch Vertauschung von $u$ und $v$ kann man jedenfalls erreichen, dass
+$x/y\equiv u/v\mod p$ bzw.{} $xv-yu\equiv 0\mod p$ gilt.
+Nun ist aber 
+$$ p^2=(x^2+y^2)(u^2+v^2)=(xu+yv)^2+(xv-yu)^2.$$
+Da der letzte Summand durch $p^2$ teilbar sein muss, muss er sogar gleich 0
+sein, also $xv=yu$. Wegen $\ggT(x,y)=1$ und $\ggT(u,v)=1$ folgt hieraus $x=u$
+und $y=v$.
+\end{beweis}
+
+In sch"onster Allgemeinheit lautet der 2-Quadrate Satz dann
+ 
+\begin{satz}\label{d1} Ist $n=2^ep_1^{f_1}\cdots p_k^{f_k}q_1^{h_1}\cdots
+  q_{s}^{h_s}$ mit Primzahlen $p_1, \dots, p_k$ der Form $4m+1$ und Primzahlen
+  $q_1,\dots, q_s$ der Form $4m+3$ und gilt
+$$
+2\vert h_1,\dots, 2\vert h_s,
+$$
+so kann man $n$ als Summe zweier Quadrate --- Null ist auch ein Quadrat ---
+darstellen.
+\\
+Gilt f"ur ein $j$ unter gleichen Voraussetzungen ${2\nmid h_j}$, so l"asst
+sich $n$ nicht als Summe zweier Quadrate darstellen.
+\end{satz}
+
+
+\subsubsection*{Potenzreihen} 
+
+In diesem Abschnitt soll ganz knapp angedeutet
+werden, wie man Potenzreihen zum Abz"ahlen von L"osungen nutzen kann.
+\renewcommand{\d}[2][n]{\mathrm{d}_{#2,4}(#1)}
+
+\begin{satz}[ (Jacobi, 1828)]\label{j1} Die Anzahl der Darstellungen  einer nat"urlichen
+  Zahl $n$ als Summe von 2 Quadraten ist gleich
+$$ 4(\d{1}-\d{3}).$$
+Dabei ist $\d{r} $ die Anzahl der Teiler von $n$ (einschlie"slich $1$ und
+$n$), die bei der Division durch $4$ den Rest $r$ lassen.
+\end{satz}
+
+\begin{satz}[ (Jacobi, 1829)] \label{j2} Die Anzahl der Darstellungen einer nat"urlichen
+  Zahl $n$ als Summe von 4 Quadraten ist gleich 
+$$ 8\sum_{d\vert n,\, 4\nmid d} d.$$
+\end{satz}
+
+\begin{bemerkung} In beiden S"atzen z"ahlen die Darstellungen
+  $5=1^2+2^2=(-1)^2+2^2=1^2+(-2)^2=(-1)^2+(-2)^2=2^2+1^2=2^2+(-1)^2=(-2)^2+1^2=(-2)^2+(-1)^2$
+  alle  als verschiedene Darstellungen. Tats"achlich ist $\d[5]{1}=2$, da 1
+  und 5 beides Teiler  von 5 sind, die den Rest 1 lassen. Ferner ist
+  $\d[5]{3}=0$ und somit kommt man auf 8 Darstellungen. Darstellungen mit 0
+  als Summand werden ebenfalls mitgez"ahlt: $4=(\pm 1)^2 +(\pm 1)^2 +(\pm 1)^2
+  +(\pm 1)^2$ (16 M"oglichkeiten) und $4=(\pm 2)^2+0^2+0^2+0^2= 0^2+(\pm
+  2)^2+0^2+0^2=0^2+0^2+(\pm 2)^2+0^2= 0^2+0^2+0^2+(\pm 2)^2$ (8
+  M"oglichkeiten). Tats"achlich ist $\sum_{d\vert 4,\, 4{\nmid} d}
+  d=1+2=3$ und es gibt 24 Zerlegungen von 4 in 4 Quadrate.
+\end{bemerkung}  
+
+\begin{bemerkung} Der Satz\,\ref{j2} hat den Satz von {\sc Lagrange} zur Folge: Jede
+  nat"urliche Zahl l"asst sich als Summe von 4 Quadratzahlen schreiben. Denn
+  die im Satz angegebene Anzahl von Zerlegungen ist f"ur alle $n$ eine {\em
+  positive} nat"urliche Zahl, da $d=1$ als Teiler stets mitgez"ahlt
+  wird.
+\end{bemerkung}
+
+Der Ausgangspunkt f"ur unseren Beweis ist dabei der folgende
+Satz.  Einen elementaren Beweis dieses Satzes --- durch reines Abz"ahlen von
+Partitionen ---  findet
+man in \cite[Chapter~2.2]{b-Bressoud}.
+
+\begin{satz}[ Jacobi-Tripelprodukt-Identit"at] \label{s-jacobi}
+F"ur $\abs{q} <1$ und alle $x$ gilt:
+\begin{align}\label{e-jacobi}
+\prod_{i=1}^\infty (1+q^i
+x)(1+q^{i-1}x^{-1})(1-q^i)=\sum_{n\in\Z}q^{n(n+1)/2}x^n.
+\end{align}
+\end{satz}
+ 
+Durch trickreiche Umformungen \cite{a-Hirschhorn} leitet man hieraus  die
+folgenden beiden Identit"aten ab
+\begin{align}
+\left(\sum_{n\in\Z}q^{n^2}\right)^2&=1+4\sum_{k\ge1, l\ge
+  0}(q^{k(4l+1)}-q^{k(4l+3)})=1+4\sum_{n\ge 1}(\d{1}-\d{3})q^n,
+\label{e2}
+\\
+\left(\sum_{n\in\Z}q^{n^2}\right)^4&=
+1+8\sum_{n\ge 1}\left(\sum_{d\vert n,\, 4{\nmid} d}d \right) q^n.\label{e4}
+\end{align}
+
+Schauen wir uns die linke Seite von \rf[e2] einmal genauer an. Nach formalem 
+Ausmultiplizieren der beiden unendlichen Reihen lautet der allgemeine Summand 
+$a_rq^r$, wobei f"ur ein festes $r$ alle Summanden ${q^r=q^{n_1^2} q^{n_2^2}}$ mit
+$n_1,n_2\in \Z$ zu ber"ucksichtigen sind. Jede L"osung $(n_1, n_2)$ der
+Gleichung $r=n_1^2+n_2^2$ liefert also einen Summanden $q^r$. Also ist  $a_r$
+die gesuchte Anzahl.
+
+%\bibliographystyle{../hab/mybst}
+%\bibliography{../hab/bibdat}
+\begin{thebibliography}{1}
+\bibitem{b-Bressoud}
+Bressoud, D.~M.: \emph{Proofs and confirmations. The story of the alternating
+  sign matrix conjecture}, MAA Spectrum, Cambridge University Press, Cambridge,
+  1999
+
+\bibitem{b-Engel}
+Engel, A.: \emph{Problem-solving strategies}, Springer, New York, 1998
+
+\bibitem{a-Hirschhorn}
+Hirschhorn, M.~D.: Partial fractions and four classical theorems of number
+  theory, \emph{Amer. Math. Monthl.} \textbf{107} (2000), 260--264
+
+\bibitem{b-Kraetzel}
+Kr{\" a}tzel, E.: \emph{Zahlentheorie}, Nummer~19 in Studienb{\" u}cherei.
+  Mathematik f{\" u}r Lehrer, VEB Deutscher Verlag der Wissenschaften, Berlin,
+  1981
+
+\bibitem{b-Landau}
+Landau, E.: \emph{Vorlesungen {\" u}ber Zahlentheorie}, Chelsea Publishing Co.,
+  New York, 1969
+
+\bibitem{b-Neiss}
+Nei{\ss }, F.: \emph{Einf{\" u}hrung in die Zahlentheorie}, S. Hirzel Verlag,
+  Leipzig, 1952
+
+\bibitem{b-Pieper}
+Pieper, H.: \emph{{D}ie komplexen {Z}ahlen. {T}heorie -- {P}raxis --
+  {G}eschichte}, Nummer 110 in {M}athematische {S}ch{\" u}lerb{\" u}cherei,
+  Deutscher Verlag der Wissenschaften, Berlin, 1991
+
+\bibitem{b-Postnikov}
+Postnikov, M.~M.: \emph{{Vvedenie v teoriyu algebraicheskikh chisel} (Russian)
+  [Introduction to algebraic number theory]}, Nauka, Moscow, 1982
+
+\end{thebibliography}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+\end{document}

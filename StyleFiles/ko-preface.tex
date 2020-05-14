@@ -1,0 +1,21 @@
+%############################################################
+%
+% $Id: ko-preface.tex,v 1.6 2007/02/10 21:27:55 graebe Exp $
+%
+
+% Preface for the standalone compilation of a problem record.
+
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{kosemnet,ko-math,ko-graf}
+
+% The key should match the file name and the regexp (\w+)-\d\d-\d\d
+% where the semantics is nickname-year-nr
+
+\def\key#1{\section*{\centering Problem #1}}
+
+\newenvironment{problem}{\subsection*{Problem:}}{}
+\newenvironment{solution}{\subsection*{Solution:}}{}
+
+\begin{document}
+{\kosemnetlicensemark}

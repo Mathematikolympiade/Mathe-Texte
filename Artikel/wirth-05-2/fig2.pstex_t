@@ -1,0 +1,23 @@
+\begin{picture}(0,0)%
+\includegraphics{fig2.pstex}%
+\end{picture}%
+\setlength{\unitlength}{1579sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(5269,5172)(1179,-4771)
+\put(3811,-4756){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}B\special{ps: grestore}}}}
+\put(3211,-4741){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}A\special{ps: grestore}}}}
+\put(3301,-781){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}Q\special{ps: grestore}}}}
+\put(5251,-3691){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}P\special{ps: grestore}}}}
+\put(5086,-4771){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}C\special{ps: grestore}}}}
+\put(2086,-4411){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$\phi$\special{ps: grestore}}}}
+\put(3316,-2326){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$\phi$\special{ps: grestore}}}}
+\put(1516,-4156){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}$\psi$\special{ps: grestore}}}}
+\put(3916,-3751){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}E\special{ps: grestore}}}}
+\put(3031,-3871){\makebox(0,0)[lb]{\smash{\SetFigFont{7}{8.4}{\familydefault}{\mddefault}{\updefault}\special{ps: gsave 0 0 0 setrgbcolor}D\special{ps: grestore}}}}
+\end{picture}

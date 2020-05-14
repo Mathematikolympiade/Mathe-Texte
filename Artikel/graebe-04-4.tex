@@ -1,0 +1,198 @@
+% Version: $Id: graebe-04-4.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Rechnen mit Kongruenzen\kosemnetlicensemark\\
+Arbeitsmaterial für Klasse 7}
+\date{}
+
+\begin{document} 
+\maketitle         
+
+Kongruenzen oder Restklassen sind ein sehr wichtiges Hilfsmittel, mit
+dem sich viele "Uberlegungen, in denen in der einen oder anderen Form
+Teilbarkeitsaussagen auftreten, besonders elegant formulieren
+lassen. Hat man einmal die grundlegenden Prinzipien dieser {\em
+Modulrechnung} verstanden, dann ist sie auch ein wichtiges Hilfsmittel
+zum Auffinden von L"osungen entsprechender Aufgaben.
+\medskip
+
+Im weiteren sei eine ganze Zahl $m>1$ fixiert, der {\em Modul},
+bez"uglich welcher wir Teilbarkeitsaussagen untersuchen wollen.
+
+Wir sagen, dass zwei ganze Zahlen $a,b\in {\Z}$ {\em kongruent
+modulo $m$} sind, und schreiben
+\[a\equiv b\pmod{m}\qquad \mbox{oder kurz}\qquad a\equiv b\ (m),\]
+wenn $a$ und $b$ {\glqq}bei Division durch $m$ denselben Rest
+lassen{\grqq}. So gilt etwa $73\equiv 38\ (7)$, denn beide Zahlen lassen
+bei Division durch 7 den Rest 3. "Ahnlich gilt $71\equiv 23\ (8)$,
+weil beide Zahlen bei Division durch 8 den Rest 7 lassen.
+
+Diese Definition, unter der ihr euch hoffentlich etwas vorstellen
+k"onnt, ist zwar sehr einpr"agsam und f"ur positive $a,b$ auch
+verst"andlich, aber entbehrt doch der f"ur exakte mathematische
+Argumentation notwendigen Strenge. Eine dem urspr"unglichen Anliegen
+entsprechende Aussage, die dem Anspruch an eine solche Strenge
+gen"ugt, ist die "Uberlegung, dass zwei Zahlen bei Division durch $m$
+genau dann denselben Rest lassen, wenn deren Differenz durch $m$
+teilbar ist. Auf diese Weise verbinden wir den neuen Begriff
+{\glqq}kongruent{\grqq} mit dem bereits bekannten Begriff der Teilbarkeit:
+\[a\equiv b\pmod{m}\ :\Leftrightarrow\ m\,|\,(a-b)\]
+Eine solche Beziehung zwischen zwei Zahlen (und allgemeiner mathematischen
+Größen) bezeichnet man auch als {\em Relation} und $\equiv$ als die {\em
+Kongruenzrelation}.  Die Kongruenzrelation hat drei grundlegende
+Eigenschaften; sie ist 
+\begin{itemize}
+\item reflexiv (das heißt $a\equiv a\pmod{m}$), 
+\item transitiv (das heißt $a\equiv b\pmod{m}, b\equiv c\pmod{m} \Rightarrow
+  a\equiv c\pmod{m}$)   
+\item und symmetrisch (das heißt $a\equiv b\pmod{m}\Rightarrow b\equiv
+  a\pmod{m}$). 
+\end{itemize}
+Relationen mit diesen drei Eigenschaften bezeichnet man auch als {\em
+Äquivalenzrelationen}. Wir wollen diese drei Eigenschaften hier beweisen,
+indem wir die jeweilige Aussage "uber Kongruenzen in eine solche "uber
+Teilbarkeit umformulieren und dann unser Wissen "uber Teilbarkeitsaussagen
+anwenden:
+\begin{quote}
+{\em Reflexivit"at}: Es gilt stets $a\equiv a\pmod{m}$, denn $m\,|\,(a-a)=0$
+(bekanntlich ist jede Zahl Teiler der Zahl 0).
+
+{\em Symmetrie}: Wenn $a\equiv b\pmod{m}$ gilt, so gilt auch $b\equiv a\
+(m)$: Ist $m$ ein Teiler von $(a-b)$, so ist $m$ auch ein Teiler von
+$(b-a)$.
+
+{\em Transitivit"at} oder {\em Drittengleichheit}: Wenn $a\equiv b\
+(m)$ und $b\equiv c\pmod{m}$ gilt, so gilt auch $a\equiv c\pmod{m}$: Ist $m$
+sowohl ein Teiler von $(a-b)$ als auch von $(b-c)$, so ist $m$ auch
+ein Teiler von $(a-c)=(a-b)+(b-c)$.
+\end{quote}
+An dieser Stelle sei daran erinnert, wie Teilbarkeit definiert ist:
+Eine ganze Zahl $u\in {\Z}$ hei"st {\em Teiler} einer Zahl $v\in
+{\Z}$, wenn es eine dritte Zahl $t\in {\Z}$ gibt, so dass
+$v=u\cdot t$ gilt (z.B. gilt $3\,|\,12$, weil es die Zahl $t=4$ gibt mit
+$3\cdot 4=12$). $m$ ist also genau dann Teiler der Zahl $(a-b)$, wenn
+es eine Zahl $t\in {\Z}$ mit $a-b=m\cdot t$ gibt, oder anders
+\[a\equiv b\ (mod\ m)\ \Leftrightarrow\ m\,|\,(a-b)\ \Leftrightarrow\
+\exists\,t\in {\Z}\ :\ a=b+m\cdot t 
+\] 
+Oft ist es wichtig, zwischen diesen drei M"oglichkeiten, die
+Kongruenzeigenschaft zu formulieren, zu wechseln. So sind etwa die
+drei folgenden Aussagen "aquivalent:
+\[z\equiv 5\ (8)\ \Leftrightarrow\ 8\,|\,(z-5)\ \Leftrightarrow\
+\exists\,t\in {\Z}\ :\ z=8t+5 
+\]
+Mit Kongruenzen kann man fast genauso wie mit Gleichungen rechnen. Es
+gilt
+\[a\equiv b\pmod{m},\ c\equiv d\pmod{m}\ \Rightarrow\ \left\{\ 
+\parbox{8cm}{$\begin{array}{cccc} a+c &\equiv& b+d& \pmod{m}\\ a-c&\equiv&
+b-d& \pmod{m}\\a\cdot c&\equiv& b\cdot d& \pmod{m} \end{array}$}\right.
+\] 
+Nur bei der Division muss man vorsichtig sein~!
+
+Wir wollen die erste Aussage beweisen: Ist $a\equiv b\pmod{m}$, also
+$m\,|\,(a-b)$, so gilt auch $a+c\equiv b+c\pmod{m}$, denn die Differenz
+$(a+c) -(b+c)$ beider Seiten ist genau $(a-b)$, also durch $m$
+teilbar. Genauso zeigen wir, dass aus $c\equiv d\pmod{m}$ die Kongruenz
+$b+c\equiv b+d\pmod{m}$ folgt, womit sich schlie"slich $a+c \equiv b+d\
+\pmod{m}$ nach der Drittengleichheit ergibt.
+\begin{aufgabe}
+Beweise auch die anderen beiden Aussagen sowie die vierte wichtige
+Beziehung 
+\[a\equiv b\pmod{m}\ \Rightarrow\ \forall\,n\in {\N}\ a^n\equiv b^n\
+\pmod{m}. \]
+\end{aufgabe}
+Wir k"onnen also in jedem {\em arithmetischen Ausdruck}, d.h. in einem
+solchen, wo die einzelnen Gr"o"sen nur durch die vier Grundrechenarten
+verbunden sind, und in dem keine Division vorkommt, Zahlen durch
+andere Zahlen mit demselben Rest $\pmod{m}$ ersetzen, ohne dass sich
+der Rest des Ausdrucks "andert. Insbesondere kann man eine Zahl stets
+durch ihren {\em kleinsten nichtnegativen Rest} ersetzen, d.h. durch
+eine Zahl im Intervall $[0,m-1]$. Es spielen aber auch negative Reste
+mit kleinem Absolutbetrag (z.B. der Rest $m-1\equiv (-1)\pmod{m}$) eine
+wichtige Rolle.
+\medskip
+
+Wir k"onnen damit Aufgaben der folgenden Art einfach l"osen:
+\begin{aufgabe}
+    Zeige, dass $z=43^7-87^{13}$ durch 44 teilbar ist.
+  \end{aufgabe}
+Zum Beweis dieser Aussage m"ussen wir die Zahl $z$ zum Gl"uck nicht
+ausrechnen\footnote{Es gilt $z=-16358756351530025699161940$}, sondern
+nur $z\equiv 0\ (44)$ zeigen. Dazu k"onnen wir alle Summanden und
+Faktoren durch einfachere Zahlen ersetzen, wenn diese nur bei Division
+durch 44 denselben Rest lassen. Nun gilt aber $87\equiv 43\equiv (-1)\
+(44)$ (letzteres, weil 44 ein Teiler von $(43-(-1))=(43+1)$ ist) und
+folglich
+\[z\equiv (-1)^7-(-1)^{13} = (-1)-(-1) = 0\ (44).\]
+Beachte den Wechsel von $\equiv$ und $=$ in dieser Kette~! $\equiv$
+wird verwendet, wenn die Ausdr"ucke links und rechts des Zeichens nur
+denselben Rest lassen, $=$ dagegen, wenn die Ausdr"ucke wirklich
+gleich sind.
+
+\begin{aufgabe}
+    Auf welche 3 Ziffern endet die Zahl $2^{100}$~?
+  \end{aufgabe}
+Rechnet man diese 30-stellige Zahl auf einem Taschenrechner aus, so
+erh"alt man je nach Anzeige die {\em ersten} 8 -- 12 Ziffern, aber
+keine Information "uber die {\em letzten} Ziffern. Informationen "uber
+diese Ziffern erh"alt man aber aus der Modulrechnung, denn {\em die
+letzten drei Ziffern einer Zahl sind gerade deren Rest bei Division
+durch 1000}. Bei den folgenden Rechnungen leistet ein Taschenrechner
+trotzdem gute Dienste. Wir schreiben zuerst
+$2^{100}=(2^{10})^{10}=1024^{10}$ (gruppiere die 100 Faktoren 2 zu 10
+Gruppen zu je 10 Faktoren) und ersetzen $1024\equiv 24\ (1000)$. Dies
+liefert
+\[2^{100}\equiv 24^{10}=(24^3)^3\cdot 24\ (1000).\]
+Der Taschenrechner hilft weiter: $24^3=13\,824\equiv 824\ (1000)$,
+also 
+\[2^{100}\equiv 824^3\cdot 24=(824^2)\cdot(824\cdot 24)\ (1000).\]
+Weiter mit dem Taschenrechner: $824^2=678\,976\equiv 976\ (1000)$ und
+$824\cdot 24= 19\,776\equiv 776\ (1000)$, also
+\[2^{100}\equiv 976\cdot 776 = 757\,376\equiv 376\ (1000).\]
+Die Zahl endet also auf die drei Ziffern 376. 
+
+Nat"urlich ist es heute nicht schwer, Software f"ur einen Computer zu
+finden, die eine solche Zahl exakt berechnet. Man erh"alt dann
+\[2^{100} = 1\,267\,650\,600\,228\,229\,401\,496\,703\,205\,376\]
+
+\begin{aufgabe}
+Finde die letzten drei Ziffern der beiden Zahlen $2^{1000}$ und
+$3^{1000}$~!
+\end{aufgabe}
+(Antwort, zum Vergleich: 376 und 001)
+\medskip
+
+Eine weitere Besonderheit des Rechnens mit Kongruenzen beruht auf der
+Tatsache, {\em dass es nur endlich viele verschiedene Klassen von
+Resten gibt.}  Teilbarkeitsaussagen kann man deshalb oft durch eine
+Fallunterscheidung beweisen, wie in der folgenden Aufgabe.
+\begin{aufgabe}
+    Zeige, dass eine Quadratzahl bei Division durch 4 nur den Rest 0 oder
+    1 lassen kann~!
+  \end{aufgabe}
+Eine Quadratzahl hat immer die Gestalt $a^2$ mit einer nat"urlichen
+Zahl $a\in {\N}$. Da es bei ihrem Rest $(mod\ 4)$ nur auf den Rest
+von $a$ ankommt, k"onnen wir die Aussage durch vollst"andige
+Fallunterscheidung (in Tabellenform) l"osen:
+\[\begin{array}{c|c}
+a\pmod{4} & a^2\pmod{4}\\\hline 0&0\\ 1&1\\ 2&4\equiv 0\\
+3&9\equiv 1\\ \end{array}
+\]
+\begin{aufgabe}
+Zeige, dass die Summe zweier ungerader Quadratzahlen niemals eine
+Quadratzahl sein kann.
+\end{aufgabe}
+\begin{aufgabe}
+Beweise folgende Aussage: Ist die Summe zweier Quadratzahlen durch 3
+teilbar, so auch jeder der beiden Summanden.
+\end{aufgabe}
+
+\begin{attribution}
+graebe (2004-09-02):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 7 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}

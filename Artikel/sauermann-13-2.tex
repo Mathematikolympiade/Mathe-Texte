@@ -1,0 +1,168 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+\usepackage[utf8]{inputenc}
+
+\title{Sätzesammlung Elementargeometrie.\\ Ein Kompendium für Klasse
+  10\kosemnetlicensemark} 
+\author{Lisa Sauermann}
+\date{März 2013}
+
+\begin{document}
+\maketitle
+
+Grundlage zum Lösen elementargeometrischer Aufgaben ist die Kenntnis
+geometrischer Sachverhalte und Sätze, von denen einige hier überblicksartig
+aufgeführt sind. Die Beweise lassen sich bei Bedarf in zahlreichen
+Geometriebüchern oder im Internet nachlesen. Besonders empfohlen sei das
+Geometriekapitel von Christian Reiher in „Ein-Blick in die Mathematik“ (von
+Richard Bamler, Christian Reiher et al., Aulis Verlag Deubner).
+
+\subsection*{Dreiecksgeometrie}
+
+\begin{itemize}
+\item Die Winkelhalbierende und die Mittelsenkrechte der gegenüberliegenden
+  Seite eines Dreiecks schneiden sich auf dem Umkreis.
+\item Der Bildpunkt des Höhenschnittpunkts eines Dreiecks bei Spiegelung an
+  einer Dreiecksseite liegt auf dem Umkreis. Der Bildpunkt des
+  Höhenschnittpunkts bei Spiegelung an einem Seitenmittelpunkt liegt ebenfalls
+  auf dem Umkreis und liegt dem der Dreiecksseite gegenüberliegenden Eckpunkt
+  auf dem Umkreis diametral gegenüber.
+\item Der Inkreismittelpunkt eines Dreiecks ist der Höhenschnittpunkt des
+  zugehörigen Dreiecks aus den drei Ankreismittelpunkten.
+\item Der Höhenschnittpunkt eines Dreiecks ist der Inkreismittelpunkt des
+  zugehörigen Dreiecks aus den drei Höhenfußpunkten.
+\item Der Umkreismittelpunkt eines Dreiecks ist der Höhenschnittpunkt des
+  zugehörigen Dreiecks aus den drei Seitenmittelpunkten.
+\item \textbf{Euler-Gerade:} Höhenschnittpunkt, Schwerpunkt,
+  Feuerbachkreismittelpunkt und Umkreismittelpunkt eines Dreiecks liegen auf
+  einer Gerade, der Euler-Gerade. Dabei wird die Strecke vom
+  Umkreismittelpunkt zum Höhenschnittpunkt vom Schwerpunkt im Verhältnis $1:2$
+  geteilt und der Feuerbachkreismittelpunkt ist ihr Mittelpunkt.
+\item \textbf{Feuerbachkreis:} Die drei Seitenmittelpunkte, die drei
+  Höhenfußpunkte und die drei Mittelpunkte der oberen Höhenabschnitte
+  (d.\,h.\ der Strecken zwischen Eckpunkt und Höhenschnittpunkt) liegen auf
+  einem Kreis, welcher Feuerbachkreis oder Neun-Punkte-Kreis genannt wird.
+\item \textbf{Simson-Gerade:} Für ein Dreieck $\ktriangle*{ABC}$ und einen
+  Punkt $P$ liegen die Lotfußpunkte von $P$ auf die Geraden $\kline{AB}$,
+  $\kline{BC}$ und $\kline{CA}$ durch die Seiten des Dreiecks genau dann auf
+  einer Geraden, wenn $P$ auf dem Umkreis des Dreiecks $\ktriangle*{ABC}$
+  liegt.
+\item \textbf{Satz von Ceva:} Für ein Dreieck $\ktriangle*{ABC}$ und von den
+  Ecken verschiedene Punkte $X$, $Y$ und $Z$ auf den Geraden $\kline{BC}$,
+  $\kline{CA}$ bzw.\ $\kline{AB}$ schneiden sich die Geraden $\kline{AX}$,
+  $\kline{BY}$ bzw.\ $\kline{CZ}$ genau dann in einem Punkt, wenn 
+  \begin{gather*}
+    \frac{\msegment{BX}}{\msegment{XC}}\cdot
+    \frac{\msegment{CY}}{\msegment{YA}}\cdot
+    \frac{\msegment{AZ}}{\msegment{ZB}}=1
+  \end{gather*}
+  gilt.  Die Streckenlängen sind dabei als orientierte Streckenlängen zu
+  verstehen. 
+\item \textbf{Trigonometrischer Ceva:} Für ein Dreieck $\ktriangle*{ABC}$ und
+  von den Ecken verschiedene Punkte $X$, $Y$ und $Z$ auf den Geraden
+  $\kline{BC}$, $\kline{CA}$ bzw.\ $\kline{AB}$ schneiden sich die Geraden
+  $\kline{AX}$, $\kline{BY}$ bzw.\ $\kline{CZ}$ genau dann in einem Punkt,
+  wenn 
+  \begin{gather*}
+    \frac{\sin\br{\kangle{BAX}}}{\sin\br{\kangle{XAC}}}\cdot
+    \frac{\sin\br{\kangle{CBY}}}{\sin\br{\kangle{YBA}}}\cdot
+    \frac{\sin\br{\kangle{ACZ}}}{\sin\br{\kangle{ZCB}}}=1
+  \end{gather*}
+  gilt. Die Winkelgrößen sind dabei als orientierte Winkelgrößen zu verstehen.
+\item \textbf{Satz von Menelaos:} Für ein Dreieck $\ktriangle*{ABC}$ liegen
+  von den Ecken verschiedene Punkte $X$, $Y$ und $Z$ auf den Geraden
+  $\kline{BC}$, $\kline{CA}$ bzw.\ $\kline{AB}$ genau dann auf einer Gerade,
+  wenn 
+  \begin{gather*}
+    \frac{\msegment{BX}}{\msegment{XC}}\cdot
+    \frac{\msegment{CY}}{\msegment{YA}}\cdot
+    \frac{\msegment{AZ}}{\msegment{ZB}}=-1
+  \end{gather*}
+  gilt.  Die Streckenlängen sind dabei als orientierte Streckenlängen zu
+  verstehen. 
+\item \textbf{Satz von Carnot:} Für ein Dreieck $\ktriangle*{ABC}$ und Punkte
+  $X$, $Y$ und $Z$ schneiden sich die drei Senkrechten zu den Geraden
+  $\kline{BC}$, $\kline{CA}$ und $\kline{AB}$ durch $X$, $Y$ bzw.\ $Z$ genau
+  dann in einem Punkt, wenn 
+  \begin{gather*}
+    \msegment{BX}^{2}-\msegment{XC}^{2} +\msegment{CY}^{2}-\msegment{YA}^{2}
+    +\msegment{AZ}^{2}-\msegment{ZB}^{2}=0
+  \end{gather*}
+  gilt.
+\item \textbf{Satz von Stewart:} Für ein Dreieck $\ktriangle*{ABC}$ und einen
+  Punkt $P$ auf der Geraden $\kline{BC}$ gilt 
+  \begin{gather*}
+    \msegment{AC}^{2}\cdot \msegment{BP} +\msegment{AB}^{2}\cdot \msegment{CP}
+    =\msegment{BC}\cdot\br{\msegment{BP}\cdot
+      \msegment{CP}+\msegment{AP}^{2}}\,.
+  \end{gather*}
+\item \textbf{Dreiecksfläche:} Die Fläche eines Dreiecks mit Seitenlängen $a$,
+  $b$, $c$, Umkreisradius $R$, Inkreisradius $r$, und Halbumfang
+  $s=\frac{a+b+c}{2}$ beträgt 
+  \begin{gather*}
+    \sqrt{s\,(s-a)\,(s-b)\,(s-c)}=r\cdot s=\frac{a\,b\,c}{4\,R}\,.
+  \end{gather*}
+\end{itemize}
+\subsection*{Vierecke}
+\begin{itemize}
+\item \textbf{Satz von Ptolemäus:} Für ein Sehnenviereck $ABCD$ gilt
+  \begin{gather*}
+    \msegment{AB}\cdot \msegment{CD} +\msegment{BC}\cdot \msegment{DA}
+    =\msegment{AC}\cdot \msegment{BD}\,.
+  \end{gather*}
+\item \textbf{Ungleichung von Ptolemäus:} Für ein beliebiges Viereck $ABCD$
+  gilt 
+  \begin{gather*}
+    \msegment{AB}\cdot \msegment{CD}+\msegment{BC}\cdot \msegment{DA}
+    \geq\msegment{AC}\cdot \msegment{BD}
+  \end{gather*}
+  mit Gleichheit genau dann, wenn $A$, $B$, $C$, $D$ in dieser Reihenfolge auf
+  einem Kreis oder auf einer Geraden (als entartetem Kreis) liegen.
+\item \textbf{Satz von Newton:} Für ein Viereck $ABCD$, dessen
+  gegenüberliegende Seiten sich in $E$ bzw.\ $F$ schneiden, liegen die
+  Mittelpunkte der Strecken $\msegment{AC}$, $\msegment{BD}$ und
+  $\msegment{EF}$ auf einer Geraden.
+\item \textbf{Parallelogrammungleichung:} Für ein beliebiges Viereck $ABCD$
+  gilt
+  \begin{gather*}
+    \msegment{AB}^{2}+\msegment{BC}^{2}+\msegment{CD}^{2}+\msegment{DA}^{2}
+    \geq \msegment{AC}^{2}+\msegment{BD}^{2}
+  \end{gather*}
+  mit Gleichheit genau dann wenn $ABCD$ ein Parallelogramm ist.
+\end{itemize}
+
+\subsection*{Wichtige Sätze der projektiven Geometrie}
+
+\begin{itemize}
+\item \textbf{Satz von Pappos:} Gegeben sind zwei Geraden und $A$, $B$, $C$
+  bzw.\ $D$, $E$, $F$ drei Punkte auf jeweils einer der Geraden. Dann liegen
+  die drei Schnittpunkte von $\kline{AE}$ mit $\kline{BD}$, $\kline{AF}$ mit
+  $\kline{CD}$ bzw.\ $\kline{BF}$ mit $\kline{CE}$ auf einer Geraden.
+\item \textbf{Satz von Pascal:} Seien $A$, $B$, $C$, $D$, $E$ und $F$ sechs
+  Punkte auf einem Kreis. Dann liegen die drei Schnittpunkte von $\kline{AE}$
+  mit $\kline{BD}$, $\kline{AF}$ mit $\kline{CD}$ bzw.\ $\kline{BF}$ mit
+  $\kline{CE}$ auf einer Geraden. Das heißt, die drei Schnittpunkte der drei
+  Paare gegenüberliegender Seiten eines Sehnensechsecks (hier $AECDBF$) liegen
+  auf einer Geraden.
+\item \textbf{Satz von Briançon:} Sei $ABCDEF$ ein Tangentensechseck. Dann
+  schneiden sich die drei Geraden $\kline{AD}$, $\kline{BE}$ und $\kline{CF}$
+  in einem Punkt.
+\item In den Sätzen von Pascal und Briançon dürfen auch Punkte des Kreises
+  bzw.\ Berührpunkte am Kreis doppelt benutzt werden.
+\end{itemize}
+
+\subsection*{weitere Hilfsmittel}
+\begin{itemize}
+\item zentrische Streckungen
+\item ähnliche Dreiecke
+\item Sehnenvierecke suchen
+\item eine gute Skizze (!!)
+\item scharfes Hinschauen und ein geübter Blick
+\end{itemize}
+
+\begin{attribution}
+sauermann (März 2013): Für KoSemNet freigegeben.
+
+graebe (2014-01-01): Nach den KoSemNet Regeln aufbereitet.
+\end{attribution}
+\end{document}

@@ -1,0 +1,401 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: Bild3.eps
+%%Creator: Cinderella Version 1.0
+%%Port: de.cinderella.ports.EuclideanPort
+%%CreationDate: 24.01.2000 20:15:46
+%%Orientation: Portrait
+%%BoundingBox: -13 274 607 566
+%%Pages: 0
+%%EndComments
+%%EndPageSetup
+gsave
+
+-13 274 translate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drawing mode:                                 %
+% mode=0: color  /  mode=1: gray  /  mode=2: bw %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/mode 1 def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use original colors:                          %
+% origcol=0: yes  /  origcol=1: no              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/origcol 1 def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Background color  (default white)             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/background { 1 1 1 } def
+/origBack { 0.65882 0.69019 0.75294 } def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Text and Mesh color                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/black { 0 0 0 } def
+/origBlack { 0 0 0 } def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Weight for gray conversion                    %
+% Only relevant in mode=1                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/rweigth {.3} def
+/gweigth {.5} def
+/bweigth {.2} def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Opacity of the sphere                         %
+% Only relevant for spherical view              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/opaque 0.2 def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dashing Type                                  %
+% Used for the background of the sphere in b/w  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/dash {[1 2] 0 setdash} def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/labelFont {/Times-BoldItalic findfont 12.0 scalefont setfont} def
+/textFont {/Helvetica findfont 12.0 scalefont setfont} def
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF SETUP                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% evetually switch do original colors
+origcol 0 eq {/background {origBack} def /black {origBlack} def} if
+% extract background colors
+background /blue exch def /green exch def /red exch def
+/backgroundfill {blue 1 eq green 1 eq red 1 eq and and
+       {newpath} {background setrgbcolor fill} ifelse} def
+% define color modes
+/rgb0 {setrgbcolor} def
+/rgb1 {bweigth mul 3 1 roll
+       gweigth mul 3 1 roll
+       rweigth mul add add setgray} def
+/rgb2 {blue eq 3 1 roll 
+       green eq 3 1 roll 
+       red eq and and {background} {black} ifelse setrgbcolor} def
+% set color mode
+mode 0 eq {/rgb {rgb0} def} if
+mode 1 eq {/rgb {rgb1} def} if
+mode 2 eq {/rgb {rgb2} def} if
+% redefine of fillcolors for polygons
+mode 0 eq {/fillit {eofill} def} if
+mode 1 eq {/fillit {eofill} def} if
+mode 2 eq {/fillit {myfill} def} if
+% reset states
+/backmode 0 def
+/lastgray 0 def
+% special setlinewidth and fill
+1 setlinecap
+/setlw {backmode 1 eq mode 2 eq and {opaque mul dash} if setlinewidth} def
+/circlefill {backmode 1 eq mode 2 eq and {fill} {fill} ifelse} def
+/pointfill {backmode 1 eq mode 2 eq and {opaque mul 0 360 arc fill} {0 360 arc fill} ifelse} def
+% rgb with alpha
+/rgbalpha {
+  backmode 1 eq {opaque mul} if /alpha exch def /alpha1 1 alpha sub def
+  alpha mul blue  alpha1 mul add 3 1 roll
+  alpha mul green alpha1 mul add 3 1 roll
+  alpha mul red   alpha1 mul add 3 1 roll
+  rgb
+} def
+% special fill for polygons
+/myfill {
+   /col {1 1 1} def
+   lastgray 0 eq {/diff 1000 def /angle1 0 def /angle2 0 def /col {1 1 1} def } if
+   lastgray 1 eq {/diff 1000 def /angle1 0 def /angle2 0 def /col {0 0 0} def } if
+   lastgray 2 eq {/diff 2 def /angle1 30 def /angle2 30 def} if
+   lastgray 3 eq {/diff 2 def /angle1 -30 def /angle2 30 def} if
+   lastgray 4 eq {/diff 2 def /angle1 -30 def /angle2 -30 def} if
+   lastgray 5 eq {/diff 4 def /angle1 60 def /angle2 60 def} if
+   lastgray 6 eq {/diff 4 def /angle1 -60 def /angle2 60 def} if
+   lastgray 7 eq {/diff 4 def /angle1 -60 def /angle2 -60 def} if
+   lastgray 8 eq {/diff 6 def /angle1 90 def /angle2 90 def} if
+   lastgray 9 eq {/diff 6 def /angle1 -90 def /angle2 -90 def} if
+   lastgray 10 eq {/diff 6 def /angle1 -90 def /angle2 90 def} if
+   lastgray 11 eq {/diff 8 def /angle1 30 def /angle2 30 def} if
+   lastgray 12 eq {/diff 8 def /angle1 -30 def /angle2 30 def} if
+   lastgray 12 eq {/diff 8 def /angle1 -30 def /angle2 -30 def} if
+   lastgray 13 eq {/diff 8 def /angle1 45 def /angle2 45 def} if
+   lastgray 14 eq {/diff 8 def /angle1 45 def /angle2 -45 def} if
+   lastgray 15 eq {/diff 8 def /angle1 -45 def /angle2 -45 def} if
+   eoclip
+   col setrgbcolor
+   clippath fill
+   0 0 0 setrgbcolor
+   gsave
+   angle1 rotate
+   0.5 setlinewidth
+   -586 diff 586 {
+      /tmp exch def
+      -1240 tmp neg moveto
+      2480 0 rlineto stroke
+   } for
+   grestore
+   gsave
+   angle2 rotate
+   0.5 setlinewidth
+   -586 diff 586 {
+      /tmp exch def
+      -1240 tmp neg moveto
+      2480 0 rlineto stroke
+   } for
+   grestore
+} def
+% allow special iso characters
+/reencodeISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding ISOLatin1Encoding def
+        currentdict end definefont
+} def
+% set font
+/Times-Roman reencodeISO def
+/Times-Bold reencodeISO def
+/Times-Italic reencodeISO def
+/Times-BoldItalic reencodeISO def
+/Helvetica reencodeISO def
+/Helvetica-Bold reencodeISO def
+/Helvetica-Oblique reencodeISO def
+/Helvetica-BoldOblique reencodeISO def
+/Courier reencodeISO def
+/Courier-Bold reencodeISO def
+/Courier-Oblique reencodeISO def
+/Courier-BoldOblique reencodeISO def
+textFont
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF PROGRAMS                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Here starts the individual view code
+gsave
+0 0 moveto
+0 293 rlineto
+620 0 rlineto
+0 -293 rlineto
+closepath
+clip newpath
+0 0 moveto
+0 293 rlineto
+620 0 rlineto
+0 -293 rlineto
+closepath
+backgroundfill
+% Color map for Point
+/ColPoint0 { 1 1 1 } def
+/ColPoint1 { 0 0 0 } def
+/ColPoint2 { 1 0 0 } def
+/ColPoint3 { 0 0 1 } def
+/ColPoint4 { 0 1 0 } def
+/ColPoint5 { 1 1 0 } def
+/ColPoint6 { 1 0.68627 0.68627 } def
+/ColPoint7 { 0 1 1 } def
+/ColPoint8 { 1 0.78431 0 } def
+/ColPoint9 { 0.09803 0.61960 0.30588 } def
+/ColPoint10 { 0.71764 0.33333 0 } def
+/ColPoint11 { 0.46666 0 0.71764 } def
+/ColPoint12 { 1 0.49803 0 } def
+/ColPoint13 { 0.01176 0.65490 0.73725 } def
+/ColPoint14 { 0.75686 0 0 } def
+/ColPoint15 { 0.50196 0.50196 0.50196 } def
+/ColPoint16 { 1 1 1 } def
+/ColPoint17 { 0 0 0 } def
+/ColPoint18 { 0.65882 0.69019 0.75294 } def
+% Color map for Line
+/ColLine0 { 1 1 1 } def
+/ColLine1 { 0 0 0 } def
+/ColLine2 { 1 0 0 } def
+/ColLine3 { 0 0 1 } def
+/ColLine4 { 0 1 0 } def
+/ColLine5 { 1 1 0 } def
+/ColLine6 { 1 0.68627 0.68627 } def
+/ColLine7 { 0 1 1 } def
+/ColLine8 { 1 0.78431 0 } def
+/ColLine9 { 0.09803 0.61960 0.30588 } def
+/ColLine10 { 0.71764 0.33333 0 } def
+/ColLine11 { 0.46666 0 0.71764 } def
+/ColLine12 { 1 0.49803 0 } def
+/ColLine13 { 0.01176 0.65490 0.73725 } def
+/ColLine14 { 0.75686 0 0 } def
+/ColLine15 { 0.50196 0.50196 0.50196 } def
+/ColLine16 { 1 1 1 } def
+/ColLine17 { 0 0 0 } def
+/ColLine18 { 0.65882 0.69019 0.75294 } def
+% Color map for Polygon
+/ColPolygon0 { 1 1 1 } def
+/ColPolygon1 { 0 0 0 } def
+/ColPolygon2 { 1 0 0 } def
+/ColPolygon3 { 0 0 1 } def
+/ColPolygon4 { 0 1 0 } def
+/ColPolygon5 { 1 1 0 } def
+/ColPolygon6 { 1 0.68627 0.68627 } def
+/ColPolygon7 { 0 1 1 } def
+/ColPolygon8 { 1 0.78431 0 } def
+/ColPolygon9 { 0.50196 0.50196 0.50196 } def
+/ColPolygon10 { 1 0.29019 0.29019 } def
+/ColPolygon11 { 0.98039 1 0.61960 } def
+/ColPolygon12 { 0.71372 1 0.66666 } def
+/ColPolygon13 { 0.50980 0.94901 1 } def
+/ColPolygon14 { 0.83137 0.63921 1 } def
+/ColPolygon15 { 1 0.74117 0.46666 } def
+/ColPolygon16 { 1 1 1 } def
+/ColPolygon17 { 0 0 0 } def
+/ColPolygon18 { 0.65882 0.69019 0.75294 } def
+% Color map for Locus
+/ColLocus0 { 1 1 1 } def
+/ColLocus1 { 0 0 0 } def
+/ColLocus2 { 1 0 0 } def
+/ColLocus3 { 0 0 1 } def
+/ColLocus4 { 0 1 0 } def
+/ColLocus5 { 1 1 0 } def
+/ColLocus6 { 1 0.68627 0.68627 } def
+/ColLocus7 { 0 1 1 } def
+/ColLocus8 { 1 0.78431 0 } def
+/ColLocus9 { 0.09803 0.61960 0.30588 } def
+/ColLocus10 { 0.71764 0.33333 0 } def
+/ColLocus11 { 0.46666 0 0.71764 } def
+/ColLocus12 { 1 0.49803 0 } def
+/ColLocus13 { 0.01176 0.65490 0.73725 } def
+/ColLocus14 { 0.75686 0 0 } def
+/ColLocus15 { 0.50196 0.50196 0.50196 } def
+/ColLocus16 { 1 1 1 } def
+/ColLocus17 { 0 0 0 } def
+/ColLocus18 { 0.65882 0.69019 0.75294 } def
+%  PS code for "S0"
+ColLine5 1 rgbalpha
+1 setlw
+142.18831 6.88235 moveto 286.78571 285.23235 lineto stroke
+%  PS code for "S1"
+ColLine5 1 rgbalpha
+1 setlw
+267.80730 275.57667 moveto 432.28685 154.47635 lineto stroke
+%  PS code for "S2"
+ColLine5 1 rgbalpha
+1 setlw
+418.96866 171.34604 moveto 471.38522 17.71130 lineto stroke
+%  PS code for "S3"
+ColLine5 1 rgbalpha
+1 setlw
+481.48484 10.27532 moveto 264.58874 285.01038 lineto stroke
+%  PS code for "S4"
+ColLine5 1 rgbalpha
+1 setlw
+441.16563 171.56801 moveto 132.08869 14.31834 lineto stroke
+%  PS code for "S5"
+ColLine5 1 rgbalpha
+1 setlw
+128.87012 23.75205 moveto 490.36363 27.36699 lineto stroke
+%  PS code for "S6"
+ColLine3 1 rgbalpha
+1 setlw
+300.12767 20.73168 moveto 454.66615 99.35652 lineto stroke
+%  PS code for "S7"
+ColLine3 1 rgbalpha
+1 setlw
+451.83603 86.09383 moveto 343.38798 223.46136 lineto stroke
+%  PS code for "S8"
+ColLine3 1 rgbalpha
+1 setlw
+359.53628 219.85435 moveto 204.99780 141.22951 lineto stroke
+%  PS code for "S9"
+ColLine3 1 rgbalpha
+1 setlw
+207.82792 154.49220 moveto 316.27597 17.12467 lineto stroke
+%  PS code for "S10"
+ColLine2 1 rgbalpha
+1 setlw
+306.78676 12.29683 moveto 352.87719 228.28920 lineto stroke
+%  PS code for "S11"
+ColLine2 1 rgbalpha
+1 setlw
+461.32524 90.92167 moveto 198.33871 149.66436 lineto stroke
+%  PS code for "A"
+black 1 rgbalpha
+151.06709 23.97402 5  pointfill
+ColPoint2 1 rgbalpha
+151.06709 23.97402 4  pointfill
+%  PS code for "B"
+black 1 rgbalpha
+468.16666 27.14502 5  pointfill
+ColPoint2 1 rgbalpha
+468.16666 27.14502 4  pointfill
+%  PS code for "C"
+black 1 rgbalpha
+422.18722 161.91233 5  pointfill
+ColPoint2 1 rgbalpha
+422.18722 161.91233 4  pointfill
+%  PS code for "D"
+black 1 rgbalpha
+277.90692 268.14069 5  pointfill
+ColPoint2 1 rgbalpha
+277.90692 268.14069 4  pointfill
+%  PS code for "E"
+black 1 rgbalpha
+309.61688 25.55952 5  pointfill
+ColPoint2 1 rgbalpha
+309.61688 25.55952 4  pointfill
+%  PS code for "F"
+black 1 rgbalpha
+445.17694 94.52867 5  pointfill
+ColPoint2 1 rgbalpha
+445.17694 94.52867 4  pointfill
+%  PS code for "G"
+black 1 rgbalpha
+350.04707 215.02651 5  pointfill
+ColPoint2 1 rgbalpha
+350.04707 215.02651 4  pointfill
+%  PS code for "H"
+black 1 rgbalpha
+214.48701 146.05735 5  pointfill
+ColPoint2 1 rgbalpha
+214.48701 146.05735 4  pointfill
+%Now printing labels
+labelFont
+black 1 rgbalpha
+151.06709 23.97402 8 add exch 8 add exch moveto (A) show
+newpath
+black 1 rgbalpha
+468.16666 27.14502 8 add exch 8 add exch moveto (B) show
+newpath
+black 1 rgbalpha
+422.18722 161.91233 8 add exch 8 add exch moveto (C) show
+newpath
+black 1 rgbalpha
+277.90692 268.14069 8 add exch 8 add exch moveto (D) show
+newpath
+black 1 rgbalpha
+309.61688 25.55952 8 add exch 8 add exch moveto (E) show
+newpath
+black 1 rgbalpha
+445.17694 94.52867 8 add exch 8 add exch moveto (F) show
+newpath
+black 1 rgbalpha
+350.04707 215.02651 8 add exch 8 add exch moveto (G) show
+newpath
+black 1 rgbalpha
+214.48701 146.05735 8 add exch 8 add exch moveto (H) show
+newpath
+grestore
+%Here ends the individual view code
+grestore
+showpage
+%%Trailer

@@ -1,0 +1,101 @@
+% Version: $Id: graebe-09-1.tex,v 1.2 2010/12/16 17:37:07 graebe Exp $
+\documentclass[10pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman} 
+\usepackage[utf8]{inputenc}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Eine Anmerkung zum Aufsatz [1] von P.~Gallin\kosemnetlicensemark}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+Der Artikel [1] bietet ein weiteres schönes Beispiel, dass sich rekursive
+Abzählaufgaben am besten über {\em erzeugende Funktionen} lösen lassen.
+
+Gallin leitet dort mit $a=\frac16$, $b=\frac56$ für den Fall des
+Doppelsechsers die Rekursionsformel 
+\begin{gather*}
+  P_0=1,\ P_1=b,\quad P_{k}=P_{k-1}\m b+P_{k-2}\m a\,b\quad \text{für $k\ge
+    2$}\tag{1} 
+\end{gather*}
+her und findet einen komplizierten expliziten Ausdruck für $P_k$ als Summe vom
+Binomialkoeffizienten, mit dem sich kaum weiterrechnen lässt. Verwendet man
+stattdessen die erzeugende Funktion
+\begin{align*}
+  &P(t)=\sum_{k=0}^\infty{P_k\m t^k}\,,
+  \intertext{so ergibt (1), aufsummiert über $k\ge 2$,}
+  &\sum_{k=2}^\infty{P_k\m t^k}= \sum_{k=2}^\infty{P_{k-1}\m b\m
+    t^k}+\sum_{k=2}^\infty{P_{k-2}\m a\,b\m t^k}\\[1em]
+  &P(t)-1-b\,t=(P(t)-1)\m b\,t+P(t)\m a\,b\,t^2
+  \intertext{und schließlich}
+  &P(t)=\frac{1}{1-b\,t-a\,b\,t^2}\,.
+\end{align*}
+Aus dieser Formel lassen sich für die gegebenen rationalen Werte für $a$ und
+$b$ mit einem CAS nun die {\em exakten} Werte von $P_k$ über eine
+Taylorreihenentwicklung für eine Reihe größerer $k$ schnell bestimmen, etwa
+mit MuPAD
+\begin{quote}\tt
+    taylor(subs(P(t),a=1/6,b=5/6),t=0,8);
+\end{quote}
+\begin{gather*}
+  1 + \frac{5}{6}\, t + \frac{5}{6}\, t^2 + \frac{175}{216}\, t^3 +
+  \frac{1025}{1296}\, t^4 + \frac{125}{162}\, t^5 + \frac{35125}{46656}\, t^6
+  + \frac{205625}{279936}\, t^7 + \frac{66875}{93312}\, t^8 + \ldots
+\end{gather*}
+
+Für die Berechnung des Erwartungswerts $E=a^2\,\sum_{k=0}^\infty{(k+2)\,P_k}$
+ist dieser Umweg allerdings ebenfalls nicht erforderlich, wenn zunächst die
+Funktion
+\begin{align*}
+  E(t)&=a^2\,\sum_{k=0}^\infty{(k+2)\,P_k\,t^{k+1}}\\& =a^2\,\left(P(t)\m
+  t^2\right)' = \frac{2\, t-b\, t^2}{a^2\, b^2\, t^4 + 2\, a\, b^2\, t^3 - 2\,
+    a\, b\, t^2 +\ b^2\, t^2 - 2\, b\, t + 1}
+  \intertext{oder mit den Zahlenwerten für $a$ und $b$}
+  E(t)&=\frac{72\, t - 30\, t^2}{25\, t^4 + 300\, t^3 + 540\, t^2 - 2160\, t +
+    1296} 
+\end{align*}
+betrachtet wird. Hierbei wird verwendet, dass die erzeugende Funktion $P(t)$
+eine genügend glatte analytische Funktion ist. $'$ bezeichnet die Ableitung
+nach $t$. Der gesuchte Erwartungswert $E$ ergibt sich nun als (Grenz)-Wert
+$E=E(1)=42$. 
+
+Ähnlich ergibt sich für den Dreifachsechser die Rekursionsformel 
+\begin{gather*}
+  P_0=1,\ P_1=b,\ P_2=a\,b+b^2,\quad P_{k}=P_{k-1}\m b+P_{k-2}\m
+  a\,b+P_{k-3}\m a^2\,b\quad \text{für $k\ge 3$}\tag{2}
+\end{gather*}
+und daraus für die erzeugende Funktion $P(t)=\sum_{k=0}^\infty{P_k\m t^k}$
+nacheinander
+\begin{align*}
+  &\sum_{k=3}^\infty{P_k\m t^k}= \sum_{k=3}^\infty{P_{k-1}\m b\m t^k}
+  +\sum_{k=3}^\infty{P_{k-2}\m a\,b\m t^k} 
+  +\sum_{k=3}^\infty{P_{k-3}\m a^2\,b\m t^k}\\[1em]
+  &P(t)-1-b\,t-(a\,b+b^2)\,t^2=(P(t)-1-b\,t)\m b\,t+(P(t)-1)\m a\,b\,t^2
+  +P(t)\m a^2\,b\,t^3
+  \intertext{und schließlich}
+  &P(t)=\frac{1}{1-b\,t-a\,b\,t^2-a^2\,b\,t^3}\,.
+\end{align*}
+Zur Berechnung des Erwartungswerts $E=a^3\,\sum_{k=0}^\infty{(k+3)\,P_k}$
+bestimmen wir wieder zunächst
+\begin{align*}
+  E(t)&=a^3\,\sum_{k=0}^\infty{(k+3)\,P_k\,t^{k+2}} =a^3\,\left(P(t)\m
+  t^3\right)'
+  \intertext{und erhalten mit den gegebenen Zahlenwerten unmittelbar}
+  E(t)&=\frac{648\, t^2 - 360\, t^3 - 30\, t^4}{25\, t^6 + 300\, t^5 + 2700\,
+    t^4 + 8640\, t^3 + 19440\, t^2 - 77760\, t + 46656}
+\end{align*}
+und daraus $E=E(1)=258$.
+
+
+\begin{enumerate}
+\item{[1]} Peter Gallin: Erleichterung durch Markow-Prozesse. Wurzel {\bf 43},
+  Heft 6 (2009), S.\ 130\,--\,137
+\end{enumerate}
+
+
+\begin{attribution}
+graebe (2009-08-04)
+\end{attribution}
+
+\end{document}

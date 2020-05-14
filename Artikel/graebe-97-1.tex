@@ -1,0 +1,273 @@
+% Beitrag f"ur das Heft zum Landesseminar M"arz 1997
+
+\documentclass[11pt]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+
+\title{Einige wichtige Ungleichungen\kosemnetlicensemark}
+\author{Hans-Gert Gr"abe, Leipzig\\[8pt]
+\url{http://www.informatik.uni-leipzig.de/~graebe}}
+\date{1.~Februar 1997}
+
+\begin{document}
+\maketitle
+
+Ziel dieser kurzen Note ist es, einige wichtige Ungleichungen, die in
+verschiedenen Olympiadeaufgaben immer wieder zur Anwendung kommen,
+einschlie"slich ihrer Beweise zusammenzustellen.
+
+\section{Die Ungleichung vom arithmetisch-geometrischen Mittel}
+
+Gut bekannt d"urfte den meisten Sch"ulern mit einigem Olympiadetraining die
+Ungleichung
+\[\frac{a}{b}+\frac{b}{a}\geq 2\]
+sein, die bekanntlich f"ur alle $a,b>0$ gilt und leicht aus der Beziehung
+$(a-b)^{2}\geq 0$ hergeleitet werden kann. Diese Herleitung zeigt auch, dass
+in obiger Ungleichung Gleichheit genau dann gilt, wenn $a=b$ ist.
+
+Eine schon weniger triviale Ungleichung ist die folgende:
+\begin{satz} F"ur alle $a,b,c>0$ gilt stets die Ungleichung
+\[\frac{a}{b}+\frac{b}{c}+\frac{c}{a}\geq 3.\]
+\end{satz}
+
+\begin{aufgabe}
+  Zeige die G"ultigkeit dieser Ungleichung, ohne auf die folgende allgemeine
+  Theorie zur"uckzugreifen.
+\end{aufgabe}
+
+Diese beiden Ungleichungen sind Spezialf"alle der folgenden allgemeinen
+Ungleichung
+\begin{satz} Sind $x_{1},\ldots,x_{n}$ nichtnegative reelle Zahlen, deren
+  Produkt gleich 1 ist, so gilt f"ur ihre Summe \[\sum_{i=1}^{n}{x_{i}} = x_{1}
+  + x_{2} + \ldots + x_{n}\geq n.\]
+Gleichheit gilt genau dann, wenn $x_{1}= \ldots = x_{n} =1$ ist.
+\end{satz}
+
+\begin{beweis} (nach \cite{Kor}) Wir f"uhren den Beweis mit vollst"andiger
+Induktion. F"ur $n=2$ ist seine Aussage Gegenstand der oben betrachteten
+Ungleichung. Sei nun die folgende Aussage richtig: F"ur beliebige $k$
+nichtnegative reelle Zahlen $y_{1},\ldots,y_{k}$ gilt
+\[y_{1}\cdot\ldots\cdot y_{k}=1\quad\Rightarrow\quad y_{1}+ \ldots + y_{k}\geq
+k. \] 
+
+Wir betrachten $k+1$ Zahlen $x_{1},\ldots,x_{k+1}$ (von denen wir ohne
+Beschr"ankung der Allgemeinheit annehmen wollen, dass sie der Gr"o"se nach
+geordnet sind), deren Produkt ebenfalls gleich 1 ist und wollen zeigen, dass
+dann $x_{1}+\ldots +x_{k+1}\geq k+1$ gilt.
+
+Fassen wir die Faktoren $x_{1}$ und $x_{k+1}$ zu einem gemeinsamen Faktor
+$y_{1} = x_{1}x_{k+1}$ zusammen, so haben wir ein Produkt aus $k$ Faktoren und
+nach Induktionsvoraussetzung gilt 
+\begin{align*}
+  k\leq &\ y_{1} + x_{2} + x_{3} + \ldots + x_{k} \\ &\ = x_{1}x_{k+1} + x_{2}
+  + x_{3} + \ldots + x_{k} \\ &\ = x_{1}+\ldots +x_{k+1} + x_{1}x_{k+1} -x_{1}
+  - x_{k+1}, 
+\intertext{also (wegen $x_{1}x_{k+1} -x_{1} - x_{k+1} +1 =
+(x_{1}-1)(x_{k+1}-1)$)} 
+ k+1 \leq &\ x_{1}+\ldots +x_{k+1} + (x_{1}-1)(x_{k+1}-1)
+\intertext{Da $x_{1}$ die kleinste und $x_{k+1}$ die gr"o"ste der $k+1$ Zahlen
+ist, ihr Produkt aber gleich 1, so folgt, dass $x_{1}\leq 1\leq x_{k+1}$ sein
+muss.  Damit ist der Korrektursummand in obiger Ungleichung nichtpositiv und
+es gilt erst recht}
+k+1 \leq &\ x_{1}+\ldots +x_{k+1}.
+\end{align*}
+Gleichheit erhalten wir h"ochstens, wenn $(x_{1}-1)(x_{k+1}-1)=0$, also
+entweder $x_{1}=1$ oder $x_{k+1}=1$ gilt. Dann ergibt das Produkt der
+restlichen $k$ Zahlen aber bereits 1 und der zweite Teil der Behauptung folgt
+ebenfalls aus der Induktionsvoraussetzung.
+\end{beweis}
+
+Als Folgerung erhalten wir insbesondere die G"ultigkeit der Ungleichung
+\[\frac{x_{1}}{x_{2}} + \frac{x_{2}}{x_{3}} + \ldots + \frac{x_{n-1}}{x_{n}} +
+\frac{x_{n}}{x_{1}}\geq n\]
+f"ur positive reelle Zahlen $x_{1},\ldots,x_{n}$.
+\medskip
+
+\begin{aufgabe} Beweise die Ungleichungen
+\begin{align*}
+\textbf{(a)}\ \frac{x^{2}+2}{\sqrt{x^{2}+1}}\geq 2\qquad
+\textbf{(b)}\ \log_{a}(b) + \log_{b}(c) + \log_{c}(a) \geq 3\qquad
+\textbf{(c)}\ \frac{x^{2}}{1+x^{4}}\leq \frac12
+\end{align*}
+\end{aufgabe}
+
+Seien im folgenden $x_{1},\ldots,x_{n}$ stets nichtnegative reelle
+Zahlen. Als ihr {\em arithmetisches Mittel} bezeichnet man die Zahl
+\[A(x_{1},\ldots,x_{n}):=\frac{x_{1}+\ldots +x_{n}}{n},\]
+als ihr {\em geometrisches Mittel} die Zahl
+\[G(x_{1},\ldots,x_{n}):=\sqrt[n]{x_{1}\cdot\ldots\cdot x_{n}}.\]
+Beide Zahlen liegen zwischen der kleinsten und der gr"o"sten der $n$ Zahlen
+und fallen mit diesen zusammen, wenn alle $n$ Zahlen gleich sind.
+
+Eine weitere Folgerung aus der oben bewiesenen Ungleichung ist der 
+\begin{satz}[Ungleichung zwischen arithmetischem und geometrischem Mittel] 
+\mbox{}\\[8pt] Es gilt stets
+\[A(x_{1},\ldots,x_{n})\geq G(x_{1},\ldots,x_{n})\]
+und Gleichheit tritt genau dann ein, wenn alle $n$ Zahlen "ubereinstimmen. 
+\end{satz}
+
+\begin{beweis} Wir betrachten die $n$ reellen Zahlen
+  $\frac{{x_1}}{G}, \ldots, \frac{{x_n}}{G}$, deren Produkt ganz
+  offensichtlich gleich 1 ist.  Die Aussage des Satzes ergibt sich dann durch
+  ein einfaches Umstellen der Ungleichung
+\[\frac{{x_1}}{G} + \ldots + \frac{{x_n}}{G}\geq n.\]
+\end{beweis}
+
+\begin{aufgabe} Zeige, dass unter allen Quadern mit gleicher Summe der
+  Kantenl"angen der W"urfel das gr"o"ste Volumen hat.
+\end{aufgabe}
+
+\begin{aufgabe}$^{*}$ Zeige, dass unter allen Quadern mit gleicher Oberfl"ache
+  der W"urfel das gr"o"ste Volumen hat.
+\end{aufgabe}
+
+\section{Andere Mittel zwischen poitiven reellen Zahlen}
+
+Es gibt noch weitere Mittel der Zahlen $x_{1},\ldots,x_{n}$, die man
+betrachten kann. Auch f"ur sie gilt die Aussage, dass sie zwischen der
+kleinsten und der gr"o"sten der $n$ Zahlen liegen und mit diesen
+zusammenfallen, wenn alle $n$ Zahlen gleich sind.
+
+So bezeichnet man f"ur $\alpha\neq 0$ die Zahl
+\[M_{\alpha}(x_{1},\ldots,x_{n}):=\left(\frac{x_{1}^{\alpha} + \ldots +
+    x_{n}^{\alpha }}{n}\right)^\frac{1}{\alpha}\]
+als {\em das Mittel vom Grad $\alpha$} der Zahlen $x_{1},\ldots,x_{n}$. F"ur
+$\alpha=1 $ erhalten wir wieder das arithmetische Mittel. Das Mittel vom Grad
+2 nennt man das {\em quadratische Mittel} der genannten Zahlen und das Mittel
+vom Grad $\alpha=-1$ das harmonische Mittel. Beide spielen in Anwendungen eine
+wichtige Rolle. 
+
+Als Folgerung aus unserem Satz k"onnen wir die folgende Beziehung zwischen 
+dem geometrischen Mittel $G(x_{1},\ldots,x_{n})$ und dem entsprechenden Mittel
+vom Grad $\alpha$ herleiten:
+
+\begin{satz} F"ur positive reelle Zahlen $x_{1},\ldots,x_{n}$ gilt
+\begin{align*}
+&M_{\alpha}(x_{1},\ldots,x_{n})\geq G(x_{1},\ldots,x_{n})\quad \text{f"ur
+ $\alpha >0$}
+\intertext{und }
+&M_{\alpha}(x_{1},\ldots,x_{n})\leq G(x_{1},\ldots,x_{n})\quad \text{f"ur
+ $\alpha <0$}.
+\end{align*}
+Gleichheit gilt in beiden Ungleichungen genau f"ur $x_{1}=\ldots = x_{n}$.
+\end{satz}
+\begin{beweis} Wende den Satz "uber das arithmetisch-geometrische Mittel auf
+  $x_{1}^{\alpha},\ldots,x_{n}^{\alpha}$ an.
+\end{beweis}
+
+Die bewiesenen Ungleichungen legen es nahe, das geometrische Mittel als das
+{\em Mittel vom Grad 0} zu bezeichnen. Eine weitere Folgerung aus diesen
+beiden Ungleichungen ist in der folgenden Aufgabe zu beweisen:
+
+\begin{aufgabe} Zeige, dass f"ur positive reelle Zahlen $x_{1},\ldots,x_{n}$
+  stets 
+\[\left(x_{1}+\ldots+x_{n}\right)
+\left(\frac{1}{x_{1}}+\ldots+\frac{1}{x_{n}}\right)\geq n^{2}\] gilt. 
+\end{aufgabe}
+
+\section{Die Bernoullischen Ungleichungen}
+
+EIne weitere wichtige Gruppe von Ungleichungen wollen wir nun herleiten.
+
+\begin{satz} Ist $x\geq -1$ und $\alpha>0$ eine reelle Zahl, so gilt
+\begin{align*}
+&(1+x)^{\alpha} \leq 1+\alpha x\qquad \text{wenn $0<\alpha<1$} 
+\intertext{und}
+&(1+x)^{\alpha} \geq 1+\alpha x\qquad \text{wenn $\alpha>1$.}
+\end{align*}
+In beiden Ungleichungen gilt wieder Gleichheit genau dann, wenn $x=0$.
+\end{satz}
+
+\begin{beweis} F"ur diese Ungleichung wollen wir eine Beweistechnik verwenden,
+  die oft in der Analysis angewendet wird und die wir hier nicht bis ins
+  letzte Detail exakt begr"unden k"onnen. Wir beweisen die erste Ungleichung
+  zuerst f"ur rationale Exponenten $\alpha=\frac{p}{q}$. Wegen $\alpha<1$ ist
+  dann $p<q$. Es ist
+\[(1+x)^\frac{p}{q}=\sqrt[q]{(1+x)^{p}\cdot 1^{q-p}},\]
+wobei wir den zweiten Faktor hinzugef"ugt haben, um zu verdeutlichen, dass wir
+die Ungleichung vom arithmetisch-geometrischen Mittel anwenden k"onnen, da
+unter dem Wurzelzeichen genau $q$ Faktoren stehen. Wir erhalten
+\[(1+x)^\frac{p}{q}\leq \frac{p\cdot (1+x)+(q-p)\cdot 1}{q} = 1+\frac{p}{q}x,\]
+das hei"st, die zu beweisende Ungleichung einschlie"slich der Zusatzaussage
+"uber die G"ultigkeit des Gleichheitszeichens.
+
+Nun argumentiert man in der Analysis, dass man jede reelle Zahl durch
+rationale Zahlen beliebig genau approximieren kann. Da sich andererseits alle
+in der Ungleichung vorkommenden Ausdr"ucke stetig "andern, bleibt die
+Ungleichung auch f"ur reelle Zahlen richtig.
+
+Die zweite Ungleichung bekommt man nun aus der ersten, indem man $y=\alpha x$
+setzt.
+\end{beweis}
+
+\begin{aufgabe} F"uhre diesen Teil des Beweises aus.
+\end{aufgabe}
+
+Diese Gruppe von Ungleichungen nennt man die {\em Bernoullischen
+  Ungleichungen}. \medskip
+
+Damit k"onnen wir die Ungleichung vom arithmetisch-geometrischen Mittel in der
+folgenden Weise verallgemeinern:
+\begin{satz} 
+  F"ur positive reelle Zahlen $x_{1},\ldots,x_{n}$ gilt
+\[M_{\alpha}(x_{1},\ldots,x_{n})\leq M_{\beta}(x_{1},\ldots,x_{n}),\]
+wenn $\alpha < \beta$ (und Gleichheit gilt genau dann, wenn $x_{1}=\ldots =
+x_{n}$). 
+\end{satz}
+
+\begin{beweis} Haben $\alpha$ und $\beta$ unterschiedliches Vorzeichen, so
+  liegt zwischen ihnen das geometrische Mittel. Wir wollen also im Weiteren
+  $\alpha, \beta >0$ annehmen und "uberlassen den Beweis im verbleibenden Fall
+  $\alpha, \beta <0$ dem Leser. Da au"serdem mit $\gamma=\frac{\beta}{\alpha }$
+\[M_{\beta}(x_{1},\ldots,x_{n}) =
+M_{\alpha}(x_{1}^{\gamma},\ldots,x_{n}^{\gamma})^\frac{1}{\gamma}\] 
+gilt, k"onnen wir statt der zu beweisenden Ungleichung auch
+\[M_{1}(x_{1}^{\alpha},\ldots,x_{n}^{\alpha}) \leq
+M_{\gamma}(x_{1}^{\alpha},\ldots,x_{n}^{\alpha})\] 
+zeigen, d.h. uns auf den Beweis der Tatsache beschr"anken, dass
+$M_{\gamma}\geq M_{1}$ ist f"ur $\gamma>1$, d.h. ($y_{i}:=x_{i}^{\alpha}$)
+\[\left(\frac{y_{1}+\ldots +y_{n}}{n}\right)^{\gamma}\leq
+\frac{y_{1}^{\gamma} +\ldots +y_{n}^{\gamma}}{n}\] gilt oder mit
+$A=\dfrac{y_{1}+\ldots + y_{n}}{n}$ 
+\[n\leq \left(\frac{{y_1}}{A}\right)^{\gamma} +\ldots
++\left(\frac{{y_n}}{A}\right)^{\gamma}.\] 
+Setzen wir in der rechten Seite $z_{i}:=\frac{{y_i}}{A}-1$, so k"onnen wir die
+eben bewiesene Benoullische Ungleichung anwenden:
+\[\left(\frac{{y_1}}{A}\right)^{\gamma} +\ldots
++\left(\frac{{y_n}}{A}\right)^{\gamma} = (1+z_{1})^{\gamma} +\ldots
++(1+z_{n})^{\gamma} \geq (1+\gamma\,z_{1}) +\ldots + (1+\gamma\,z_{n}) =n,\]
+weil ja $z_{1} +\ldots + z_{n} = 0$ ist. Damit haben wir die Aussage des
+Satzes bewiesen.
+\end{beweis}
+
+\section{Gewichtete Mittel}
+
+Eine noch weitergehende Verallgemeinerung stellt die Betrachtung gewichteter
+Summen dar, in die die einzelnen Zahlen nicht wie bisher gleichberechtigt,
+sondern mit unterschiedlichen Gewichten eingehen. Daf"ur betrachten wir
+positive reelle Zahlen $w_{1},\ldots, w_{n}$, die {\em Gewichte}, und
+definieren 
+\[M_{\alpha}^{(\bf w)}:=\left( \frac{w_{1}\,x_{1}^{\alpha} + \ldots +
+  w_{n}\,x_{n}^{\alpha}}{w_{1} + \ldots + w_{n}}\right)^\frac{1}{\alpha} \] 
+als das {\em mit ({\bf w}) gewichtete Mittel vom Grad $\alpha$} der
+positiven reellen Zahlen $x_{1},\ldots,x_{n}$. Sind die Gewichte
+wieder s"amtlich rational, wobei wir oBdA einen gemeinsamen
+Hauptnenneer voraussetzen k"onnen, so ist leicht einzusehen, dass alle
+bisher bewiesenen Ungleichungen "uber Mittel auch in dieser
+Verallgemeinerung richtig bleiben. F"ur reelle Zahlen als Gewichte
+k"onnen wir denselben Grenz"ubergangsprozess heranziehen wie bereits
+im Beweis der Bernoullischen Ungleichungen.
+
+\begin{thebibliography}{xxx}
+\bibitem{Kor} P.P.Korowkin: Ungleichungen. Dt. Verlag der Wissenschaften,
+  Berlin 1970, Math. Sch"ulerb"ucherei, Band 9.
+\end{thebibliography}
+
+
+\begin{attribution}
+graebe (2004-09-03): Contributed to KoSemNet\\
+graebe (2005-02-02): Revision\\
+graebe (2016-06-27): Small bug fix
+\end{attribution}
+
+\end{document}
+

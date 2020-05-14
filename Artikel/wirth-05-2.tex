@@ -1,0 +1,327 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+\usepackage[utf8]{inputenc}  
+\newtheorem{uebung}{\"{U}bung}
+\author{Jens Wirth, Freiberg\\ \url{wirth@math.tu-freiberg.de}}
+\title{Von Winkelfunktionen zur Dreiecksgeometrie\kosemnetlicensemark}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Definition}
+\parbox{6cm}{\input{fig1.pstex_t}} 
+\hfill
+\parbox{6cm}{Es sei $P$ ein Punkt auf dem Einheitskreis, $\angle{10P}=\phi$.
+  Dann besitzt $P$ die Koordinaten $(\cos(\phi),\sin(\phi))$. Dies kann man
+  nutzen, um durch periodische Fortsetzung auf ganz $\R$ die Funktionen
+  $\sin(\phi)$ und $\cos(\phi)$ zu definieren.}
+
+Mit dem Satz des Pythagoras gilt offensichtlich
+$\msegment{0P}^2=1=\sin^2(\phi)+\cos^2(\phi$). Diese Formel wird als
+trigonometrischer Pythagoras bezeichnet.
+
+\begin{uebung}
+  Man skizziere die Funktionen $\sin(\phi)$ und $\cos(\phi)$. Dabei verwende
+  man zum Messen von Winkeln die Konvention, dass ein rechter Winkel das Ma"s
+  $\frac\pi2$ hat.
+\end{uebung}
+\begin{uebung}\label{u2}
+  Man {\glqq}beweise{\grqq}, dass
+  \[\cos(\phi)=\sin(\phi+\frac\pi2),\qquad
+  \cos(\phi)=\cos(-\phi)\qquad\text{und}\qquad\sin(\phi)=-\sin(-\phi)\]  
+  gelten.
+\end{uebung}
+
+\section{Dreiecksberechnung mit Winkelfunktionen}
+Wie der Name schon vermuten l"asst, eignen sich trigonometrische Funktionen in
+besonderer Weise zur Berechnung von und in Dreiecken. In rechtwinkligen
+Dreiecken $\ktriangle*{ABC}$ mit $\mangle{ABC}=\frac\pi2$ gilt (schon allein
+wegen der "Ahnlichkeit zu einem Dreieck mit $\msegment{AC}=1$ und der
+Definition der Winkelfunktionen)
+\[c=b\,\cos(\alpha)\quad\text{und}\quad a=b\,\sin(\alpha), \]
+wobei wir wie "ublich die Bezeichnungen $a=\msegment{BC}$ und
+$\alpha=\mangle{CAB}$ usw.\ verwenden.  Uns interessieren aber Formeln die in
+allen Dreiecken gelten.
+
+\subsection{Erweiterter Sinussatz}
+\parbox{6cm}{\input{fig3.pstex_t}}
+\hfill 
+\parbox{6cm}{Ein allgemeines Dreieck wird durch die H"ohe in rechtwinklige
+  Teildreiecke zerlegt. Es gilt also insbesondere
+\[ b\,\sin(\alpha)=h_c=a\,\sin(\beta)\]
+und damit
+\[ \frac{a}{\sin(\alpha)}=\frac{b}{\sin(\beta)}=\frac{c}{\sin(\gamma)}\,. \]
+}
+
+{\bf Frage:} Welchen Wert hat $\frac{a}{\sin(\alpha)}$ am allgemeinen Dreieck?
+Wir suchen eine geometrische Interpretation.
+
+\parbox{6cm}{\input{fig4.pstex_t}}
+\hfill 
+\parbox{6cm}{ Sei o.B.d.A.\ $\alpha<\frac\pi2$. Dann k"onnen wir nach dem
+  Peripheriewinkelsatz $A$ auf dem Umkreis des Dreiecks $\ktriangle*{ABC}$
+  verschieben, ohne $\alpha$ (und $a$) zu "andern. W"ahlen wir $A'$ so, dass
+  $\mangle{BCA}=\frac{\pi}{2}$ ein rechter Winkel ist. Dann gilt mit der
+  Umkehrung vom Satz des Thales f"ur den Umkreismittelpunkt
+  $M\in\ksegment{BA'}$ und somit
+\[\frac{a}{\sin(\alpha)}=\msegment{A'B}=2\,R\,,\] 
+wobei $R$ der Umkreisradius des Dreiecks ist.}
+
+Es gilt also der erweiterte Sinussatz
+\begin{center}
+  \framebox{$ \dfrac{a}{\sin(\alpha)} =\dfrac{b}{\sin(\beta)}
+    =\dfrac{c}{\sin(\gamma)} =2\,R.$}
+\end{center}
+
+\subsection{Additionstheoreme I}
+\label{sec.3.add1}
+Die Innenwinkel im Dreieck erf"ullen $\alpha+\beta+\gamma=\pi$. Damit ergeben
+sich auf elementare Weise „Additionstheoreme“ f"ur Winkelfunktionen
+\begin{align*}
+  \sin(\alpha+\beta)=\sin(\pi-\alpha-\beta)=\sin(\gamma)
+\intertext{und entsprechend}
+\cos(\alpha+\beta)=-\cos(\gamma)
+\end{align*}
+unter der Nebenbedingung $\alpha+\beta<\pi$. Um dies sch"oner zu gestalten,
+wenden wir den erweiterten Sinussatz an. Es gilt
+\[  2\,R\,\sin(\gamma)=c =\msegment{AH_c}+\msegment{BH_c}
+=b\,\cos(\alpha)+a\,\cos(\beta)
+=2\,R\,(\sin(\beta)\,\cos(\alpha)+\sin(\alpha)\,\cos(\beta))
+\] 
+wobei $H_c$ der entsprechende H"ohenfu"spunkt ist. Wir haben also
+\begin{center}
+  \framebox{$\sin(\alpha+\beta)
+    =\sin(\alpha)\,\cos(\beta)+\sin(\beta)\,\cos(\alpha)$}
+\end{center}
+bewiesen.
+
+Insbesondere ergibt sich die Doppelwinkelformel
+\begin{center}
+  \framebox{$\sin(2\,\alpha)=2\,\sin(\alpha)\,\cos(\alpha)$.}
+\end{center}
+
+Um entsprechende Beziehungen f"ur den Cosinus zu bekommen, m"ussen wir
+entweder verstehen, warum das Additionstheorem f"ur \emph{alle}
+$\alpha,\beta\in\R$ gilt, oder eine bessere geometrische Interpretation f"ur
+den Cosinus finden. Wir werden letzteres tun. An der Stelle soll nur vorab auf
+die Doppelwinkelformel f"ur den Cosinus hingewiesen werden. Es gilt
+\[ \framebox{$\cos(2\,\alpha) =\cos^2(\alpha)-\sin^2(\alpha)
+  =2\cos^2(\alpha)-1$.} \] 
+Ein Beweis erfolgt in Abschnitt \ref{sec.3.5}.
+
+\subsection{Fl"acheninhalt}
+\label{sec.3.2}
+Auch der Fl"acheninhalt ist eine Invariante des Dreiecks. Wir wollen die
+„unsymmetrischen“ Formel $A=\frac12\,a\,h_a$ umformen. Es gilt
+$A=\frac12\,a\,h_a=\frac12\,a\,b\,\sin(\gamma)$ und wegen dem erweiterten
+Sinussatz $a\,b=4\,R^2\,\sin(\alpha)\,\sin(\beta)$.  Somit ergibt sich
+\begin{center}
+  \framebox{$\displaystyle A =2\,R^2\sin(\alpha)\,\sin(\beta)\,\sin(\gamma)
+    =\frac{a\,b\,c}{4\,R}.$}
+\end{center}
+
+\subsection{Zusammenhang zu Inkreisradius und Umfang}
+\label{sec.3.3}
+\parbox{6cm}{Der Inkreismittelpunkt ist der Schnittpunkt der
+  Winkelhalbierenden.  Diese zerlegen wie in der Skizze das Dreieck in drei
+  Teilfl"achen $\ktriangle*{ABW}$, $\ktriangle*{BCW}$ und $\ktriangle*{CAW}$,
+  die H"ohen der Teildreiecke sind jeweils die Radien des Inkreises. Damit
+  ergibt sich eine einfache Fl"achenformel } 
+\hfill
+\parbox{6cm}{ \input{fig5.pstex_t}}
+
+\[\framebox{$A=p\,r$,}\]
+in der $p=\frac12\,(a+b+c)$ der halbe Umfang des Dreiecks ist. 
+
+Mit dem Sinussatz 
+\[ a=2\,R\,\sin(\alpha), \quad b=2\,R\,\sin(\beta), \quad
+c=2\,R\,\sin(\gamma) \] 
+folgt
+\[\framebox{$\displaystyle p=R\,(\sin(\alpha)+\sin(\beta)+\sin(\gamma)),$}\]
+was sich mit den Doppelwinkelformeln 
+\[ \sin(\alpha)=2\,\sin\br{\frac\alpha2}\,\cos\br{\frac\alpha2}\quad
+\text{und} \quad\cos(\alpha)=2\,\cos^2\br{\frac\beta2}-1\] 
+"uber die Zwischenschritte
+\begin{align*}
+ &=R\,(\sin(\alpha) +\sin(\beta)+\sin(\alpha+\beta))\\ 
+ &=R\,(\sin(\alpha)+\sin(\beta) +\sin(\alpha)\,\cos(\beta)
+  +\sin(\beta)\,\cos(\alpha))\\ 
+ &=R\,(\sin(\alpha\,(1+\cos(\beta)+\sin(\beta\,(1+\cos(\alpha))\\
+ &=4\,R\,\br{\sin\br{\frac\alpha2}\,\cos\br{\frac\alpha2}\,
+    \cos^2\br{\frac\beta2} +\sin\br{\frac\beta2}\, \cos\br{\frac\beta2}\,
+    \cos^2\br{\frac\alpha2}}\\  
+ &=4\,R\,\cos\br{\frac\alpha2}\,\cos\br{\frac\beta2}\,
+  \br{\sin\br{\frac\alpha2}\,\cos\br{\frac\beta2}
+    +\sin\br{\frac\beta2}\,\cos\br{\frac\alpha2}}\\ 
+ &=4\,R\,\cos\br{\frac\alpha2}\,\cos\br{\frac\beta2}\,
+  \sin\br{\frac{\alpha+\beta}2}
+  =4\,R\,\cos\br{\frac\alpha2}\,\cos\br{\frac\beta2}\,\cos\br{\frac\gamma2} 
+\end{align*}
+umformen l"asst in
+\[\framebox{$\displaystyle  p=4\,R\,\cos\br{\frac\alpha2}\,
+  \cos\br{\frac\beta2}\, \cos\br{\frac\gamma2}$} 
+\] 
+und mit $A=p\,r$ in
+\[\framebox{$\displaystyle   r=4\,R\,\sin\br{\frac\alpha2}\,
+  \sin\br{\frac\beta2}\,\sin\br{\frac\gamma2}.$} \] 
+
+\subsection{Cosinussatz}
+Etwas aus der Rolle f"allt der Cosinussatz, er ist unsymmetrisch, soll aber
+trotzdem nicht unerw"ahnt bleiben.
+
+\parbox{6cm}{\input{fig6.pstex_t}}\hfill\parbox{6cm}{
+Es gilt mit dem Satz des Pythagoras
+\begin{align*}
+  a^2&=h_c^2+\msegment{H_cB}^2\\
+  &=b^2-\msegment{AH_c}^2+\msegment{H_cB}^2\\
+  &=b^2+(c-\msegment{AH_c})^2-\msegment{AH_c}^2\\
+  &=b^2+c^2-2c\msegment{AH_c}
+\end{align*}}
+
+und damit der Cosinussatz
+\[\framebox{$\displaystyle a^2=b^2+c^2-2\,b\,c\cos(\alpha)$.}\]
+
+Der Cosinussatz ist nichts wirklich Neues. Er ergibt sich wie so vieles aus
+dem Sinussatz, wie folgende "Ubung zeigt (zeigen soll).
+
+\begin{uebung}
+  Man folgere den Cosinussatz aus dem Sinussatz und dem trigonometrischen
+  Pythagoras (als {\glqq}Definition{\grqq} der Cosinus-Funktion).
+\end{uebung}
+
+\subsection{H"ohen und H"ohenabschnitte}
+
+Die H"ohen eines Dreiecks erf"ullen 
+\[ h_c=b\,\sin(\alpha)=2\,R\,\sin(\alpha)\,\sin(\beta). \]
+F"uhrt man die halbe H"ohensumme als neue Hilfsgr"o"se ein, so ergibt sich
+damit
+\[q =\frac12\,\br{h_a+h_b+h_c} =R\,\br{\sin(\alpha)\,\sin(\beta)
+  +\sin(\beta)\,\sin(\gamma) +\sin(\gamma)\,\sin(\alpha)}. \] 
+
+Mit den Formeln aus Abschnitt \ref{sec.3.2} und \ref{sec.3.3} erh"alt man
+damit
+\begin{align*}
+   \frac{A}{2\,R^2}&=\sin(\alpha)\,\sin(\beta)\,\sin(\gamma),\\
+   \frac{q}{R}&=\sin(\alpha)\,\sin(\beta)+\sin(\beta)\,\sin(\gamma)
+   +\sin(\gamma)\,\sin(\alpha),\\ 
+   \frac{p}{R}&=\sin(\alpha)+\sin(\beta)+\sin(\gamma).   
+\end{align*}
+
+"Ahnliche Beziehungen gelten auch f"ur die Cosini der Winkel.  Aufgabe 1 a)
+macht deutlich, dass f"ur die H"ohenabschnitte die Beziehungen
+\[ \msegment{AH}=2\,R\,\cos(\alpha),\quad
+   \msegment{BH}=2\,R\,\cos(\beta),\quad
+   \msegment{CH}=2\,R\,\cos(\gamma),\]
+und 
+\[ \msegment{HH_a}=2\,R\,\cos(\beta)\,\cos(\gamma),\quad
+   \msegment{HH_b}=2\,R\,\cos(\gamma)\,\cos(\alpha),\quad
+   \msegment{HH_c}=2\,R\,\cos(\alpha)\,\cos(\beta)
+\]
+gelten.
+
+Insbesondere ist das Produkt der H"ohenabschnitte konstant,
+\[
+\framebox{$
+\msegment{AH}\,\msegment{HH_a} =\msegment{BH}\,\msegment{HH_b}
+=\msegment{CH}\,\msegment{HH_c}
+=4\,R^2\,\cos(\alpha)\,\cos(\beta)\,\cos(\gamma).$} \] 
+
+\subsection{Additionstheoreme II}
+\label{sec.3.5}
+Wir gehen wieder vor wie in Abschnitt \ref{sec.3.add1}, ersetzen nur den
+erweiterten Sinussatz durch die Formeln aus dem vorigen Abschnitt. Es gilt
+\begin{align*}
+2\,R\,\cos(\gamma)&=\msegment{CH}=\msegment{CH_c}-\msegment{HH_c}\\
+&=b\,\sin(\alpha)-2\,R\,\cos(\alpha)\,\cos(\beta)\\
+&=2\,R\,\br{\sin(\alpha)\,\sin(\beta)-\cos(\alpha)\,\cos(\beta)}
+\end{align*}
+und damit 
+\[\framebox{$\cos(\alpha+\beta)
+  =\cos(\alpha)\,\cos(\beta)-\sin(\alpha)\,\sin(\beta)$,}\] 
+vorausgesetzt, dass $\alpha+\beta<\pi$ ist. 
+
+\begin{uebung}
+  Man komplettiere den Beweis durch jeweils eine Skizze f"ur den Fall
+  $\gamma<\frac\pi2$ und $\gamma>\frac\pi2$.
+\end{uebung}
+
+\section{Aufgaben}
+\begin{aufgabe}
+ Man zeige in einem Dreieck $\ktriangle*{ABC}$ (mit den "ublichen
+ Bezeichnungen) die folgenden Beziehungen:
+ \begin{enumerate}
+ \item[a)] 
+\[\msegment{AH} =2\,R\,\cos(\alpha),\qquad\qquad\msegment{HH_a}
+=2\,R\,\cos(\beta)\,\cos(\gamma)\]
+   f"ur den H"ohenschnittpunkt $H$ und den H"ohenfu"spunkt $H_a\in\kline{BC}$.
+ \item[b)] Der Fu"spunkt der Winkelhalbierenden $\kline{AW_a}$ teilt die Seite
+   $\ksegment{BC}$ im Verh"altnis $\sin(\gamma):\sin(\beta)$.
+ \item[c)] 
+\[ \frac{\sin(\alpha)+\sin(\beta)+\sin(\gamma)}
+  {\sin(\alpha)\,\sin(\beta)\,\sin(\gamma)}=2\,\frac{R}{r} \] 
+ \item[d)] ($\sqrt{\mbox{WURZEL}}$, $\iota31$)
+   \[ R\,(\cos(\alpha)+\cos(\beta)+\cos(\gamma))=R+r\,. \]
+ \end{enumerate}
+\end{aufgabe}
+\begin{aufgabe} (A411345,\cite{MO})\\
+  Man beweise, dass ein Dreieck genau dann rechtwinklig ist, wenn f"ur seine
+  Innenwinkel $\alpha$, $\beta$ und $\gamma$
+  \[ \frac{\sin^2(\alpha)+\sin^2(\beta)+\sin^2(\gamma)}
+     {\cos^2(\alpha)+\cos^2(\beta)+\cos^2(\gamma)}=2
+  \]
+  gilt.
+\end{aufgabe}
+\begin{aufgabe}
+  In einem Dreieck $\ktriangle*{ABC}$ gelten stets die folgenden drei
+  Ungleichungen
+  \begin{enumerate}
+  \item[a)] 
+\[\sin\br{\frac\alpha2}\cdot \sin\br{\frac\beta2}\cdot \sin\br{\frac\gamma2}
+\leq\frac18\] 
+  \item[b)] 
+\[\frac12 \leq\cos\br{\frac\alpha2}\cdot \cos\br{\frac\beta2}\cdot
+\cos\br{\frac\gamma2} \leq\frac34\,\sqrt3\]
+  \item[c)] 
+\[0<\sin(\alpha)+\sin(\beta)+\sin(\gamma)\leq\frac32\,\sqrt{3}\]
+  \end{enumerate}
+\end{aufgabe}
+\begin{aufgabe} (A171335, \cite{Lesebogen} A85)\\
+  Man beweise folgenden Satz:\\
+  Sind $u$ den Umfang, $R$ der Umkreis- und $r$ der Inkreisradius des Dreiecks
+  $\ktriangle*{ABC}$, so gilt
+  \[ R>\frac13\,\sqrt{3}\,\sqrt{u\,r}.\]
+  Ist das Dreieck insbesondere rechtwinklig, so gilt sogar
+  \[ R\geq\frac12\,\sqrt2\,\sqrt{u\,r}. \]
+\end{aufgabe}
+\begin{aufgabe}
+  Die durch die Fu"spunkte der Dreieckstransversalen gebildeten Dreiecke
+  werden als Fu"spunktdreiecke bezeichnet. Die Transversalen des
+  Ausgangsdreicks sind dann wieder (andere) Transversalen des
+  Fu"spunktdreiecks. So sind die Seitenhalbierenden eines Dreiecks
+  gleichzeitig Seitenhalbierende seines Mittendreiecks.
+  
+  Man zeige: Die H"ohen eines Dreiecks $\ktriangle*{ABC}$ bilden
+  Winkelhalbierende seines H"ohenfu"spunktdreiecks $\ktriangle*{H_aH_bH_c}$.
+\end{aufgabe}
+\begin{aufgabe}
+  Der Umkreis des H"ohenfu"spunktdreiecks hat den Radius $\frac12\,R$.
+\end{aufgabe}
+\begin{thebibliography}{99}
+\bibitem{Lesebogen} Mathematischer Lesebogen {\glqq}Junge Mathematiker{\grqq},
+  Heft 80\\ Bezirkskabinett f"ur au"serunterrichtliche T"atigkeit, Rat des
+  Bezirkes Leipzig, 1987
+\bibitem{WURZEL} WURZEL, 5/97, \url{http://www.wurzel.org}
+\bibitem{MO} \url{http://www.mathematik-olympiaden.de}
+\end{thebibliography}
+
+\begin{comment}
+  to do: convert pictures
+\end{comment}
+
+\begin{attribution}
+wirth (Dec 2004): Contributed to KoSemNet
+
+graebe (2005-02-11): Prepared along the KoSemNet rules
+\end{attribution}
+\end{document}

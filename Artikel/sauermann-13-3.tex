@@ -1,0 +1,463 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+\usepackage[utf8]{inputenc}
+
+\title{Kombinatorik für Klasse 8\kosemnetlicensemark}
+\author{Lisa Sauermann}
+\date{März 2013}
+\begin{document}
+\maketitle
+
+Kombinatorik ist ein Gebiet, das oft bei Mathematikolympiaden vorkommt. Es
+gibt dabei Aufgaben in beliebigen Schwierigkeitsstufen. In unteren
+Klassenstufen werden oft Aufgaben vom Typ der Aufgaben 2--4 gestellt. Solche
+Aufgaben löst man wie weiter unten erklärt wird, aber wie euch sicherlich
+schon bekannt ist. Deshalb sollen diese Aufgabentypen hier nicht weiter
+besprochen werden, wer sich darin unsicher fühlt, findet unter den
+Bundesrundenaufgaben Klasse 8 aus den vergangenen Jahren zahlreiche
+Beispiele. Oft sind diese noch mit Wahrscheinlichkeitsüberlegungen bei
+irgendwelchen Spielen mit bunten Kugeln in verschiedenen Töpfen
+verbunden. Dies macht die Aufgaben aber auch nicht interessanter.
+
+Für einen zweiten, bei Bundesrunden Klasse 8 oft vorkommender Aufgabentyp ist
+Aufgabe~1 ein Beispiel. Auch diese Logikrätsel könnt ihr bei Bedarf anhand von
+alten Aufgaben üben.
+
+Hier sollen dagegen Kombinatorikaufgaben, die nicht so standardmäßig mit
+diesem Lösungsprinzipien durchgehen, besprochen werden. Denn auch solche
+Aufgaben findet man in Bundesrunden Klasse 8. Es gibt einige Lösungstricks,
+die dafür und auch für Olympiadeaufgaben in den kommenden Jahren wichtig und
+nützlich sind.
+
+\subsection*{Logik-Rätsel}
+
+\paragraph{Aufgabe 1 (400841)} 
+Beim großen Preis von Schönheide wurde unter den Springreitern ein Stechen
+erforderlich, an dem nur noch Alex, Boris, Chris und Danny teilnahmen. Bei
+einem solchen Stechen erreicht jeder der vier Reiter genau eine Platznummer
+(Erster, Zweiter, Dritter, Vierter). Einige Fans machten Vorhersagen, etwas
+nebulös, wie sie es gewohnt waren. Sie sagten:
+\begin{itemize}
+\item[(1)] Jede der vier Platznummern wird genau einmal erreicht.
+\item[(2)] Wenn Alex nicht erster wird, dann wird Chris Vierter.
+\item[(3)] Und wenn Chris Dritter wird, dann wird Alex sogar Letzter.
+\item[(4)] Nun, jedenfalls wird Alex, verglichen mit Danny, einen besseren
+  Platz erreichen.
+\item[(5)] Immerhin: Wenn Boris nicht Erster wird, dann wird Alex Dritter.
+\item[(6)] Wenn Chris Zweiter wird, dann wird Danny gewiss nicht Vierter.
+\item[(7)] Wenn Chris sogar Erster wird, dann wird Danny Zweiter.
+\item[(8)] Wenn aber Danny nicht Zweiter wird, dann wird auch Boris nicht
+  Zweiter.
+\end{itemize}
+Ein weiterer Fan, der das hörte, meinte: Wenn alle Vorhersagen wahr sind, dann
+gibt es ja höchstens eine Möglichkeit, wie sich die Plätze verteilen! Zeige,
+dass er recht hat! Wie lautet diese Platzverteilung? Weise auch nach, dass in
+der Tat bei dieser Platzverteilung alle Vorhersagen (1) bis (8) wahr
+sind!
+
+\textit{Hinweis:} Eine Aussage vom Typ „Wenn-dann“, in der die mit „Wenn“
+eingeleitete --- und ohne dieses „Wenn“ betrachtete --- Aussage falsch ist,
+ist wahr.
+
+Bei solchen Aufgaben empfiehlt es sich, eine Tabelle mit den Zeilen Alex,
+Boris, Chris, Danny und den Spalten Erster, Zweiter, Dritter, Vierter
+anzulegen und die einzelnen Aussagen dort einzutragen. Mit verschiedenen
+Farben (deshalb immer Buntstifte oder Fineliner zu Klausuren mitnehmen!) kann
+man dann die Aussagen vom Typ „Wenn-dann“ eintragen. So behält man die
+Übersicht und kommt zügig zur Lösung.
+
+\subsection*{Permutationen, Variationen, Kombinationen}
+
+\paragraph{Aufgabe 2} 
+Die 16 Bundesländer nehmen bei der Bundesrunde in der (inoffiziellen)
+Länderwertung eine eindeutige Rangfolge von 1 bis 16 ein. Wie viele
+Möglichkeiten gibt es für die Reihenfolge der Platzierung von Sachsen,
+Sachsen-Anhalt, Thüringen, Brandenburg, Berlin und Mecklenburg-Vorpommern? Wie
+viele Möglichkeiten gibt es, wenn Sachsen die Bundesrunde gewinnt?
+
+\paragraph{Aufgabe 3} 
+Sachsen und NRW sind bei der Bundesrunde besondere Konkurrenten. Wie viele
+Möglichkeiten für die Platzierungen von Sachsen und NRW innerhalb der 16
+Bundesländer gibt es insgesamt?
+
+\paragraph{Aufgabe 4 (360941, Aufgabentext geändert)} 
+Ein Fotoklub möchte eine Serie von Blättern zum Verteilen herstellen. Auf
+jedem Blatt sollen 6 Bilder sein. Für solche Bilder stehen insgesamt 10
+verschiedene Motive zur Verfügung. Jede mögliche Zusammenstellung von 6
+verschiedenen dieser Motive soll in einer beliebigen Reihenfolge auf genau
+einem Blatt vorkommen. Wie viele solche Blätter gibt es dann? Wieviele
+Exemplare (kleinstmöglihe Anzahl) von jedem der Motive reichen aus?  
+
+In Aufgabe 2 geht es um die möglichen Reihenfolgen der 6 genannten
+Bundesländer. Für Sachsen gibt es 6 Möglichkeiten (Erster dieser 6, Zweiter
+dieser 6, \dots). Für Sachsen-Anhalt verbleiben noch 5 Möglichkeiten (eine hat
+Sachsen ja schon belegt). Für Thüringen gibt es also noch 4, für Brandenburg
+3, für Berlin 2 und für Mecklenburg-Vorpommern 1 Möglichkeit. Das macht
+insgesamt $6\cdot 5\cdot 4\cdots 1=720$ Möglichkeiten.
+
+Wissen wir schon, dass Sachsen Erster ist, müssen wir die Anzahl der möglichen
+Reihenfolgen der anderen 5 Bundesländer festlegen. Nach dem gleichen Prinzip
+ergeben sich dafür $5\cdot 4\cdots 1=120$ Möglichkeiten.
+
+Diese Aufgabe kann man natürlich auch für jede beliebige positive ganze Zahl
+$n$ lösen. Das Produkt der ganzen Zahlen von 1 bis $n$ bezeichnet man als $n!$
+($n$ Fakultät). Die Anzahl der Möglichkeiten, $n$ Objekte in eine Mögliche
+Reihenfolge zu bringen, ist also $n!$. Diese möglichen Reihenfolgen bezeichnet
+man auch als \textit{Permutationen}. Es gibt also $n!$ verschiedene
+Permutationen einer Menge aus $n$ Objekten.
+
+Die Zahl $0!$ bezeichnet das leere Produkt (es gibt ja keinen Faktor). Deshalb
+wird $0!=1$ definiert.
+
+In Aufgabe 3 kann man die gleiche Lösungsidee anwenden: Für die Platzierung
+von Sachsen gibt es 16 Möglichkeiten und für die Platzierung von NRW dann noch
+15.  Also gibt es insgesamt $16 \cdot 15=240$ Möglichkeiten.
+
+Es wird also der Reihenfolge nach erst für Sachsen eine der 16 Platznummern
+ausgewählt und dann für NRW eine davon verschiedene. Unter Beachtung der
+Reihenfolge aus $n$ Objekten $k$ verschiedene auszuwählen, gibt es also
+$n\cdot (n-1)\dots (n-k+1)=\frac{n!}{(n-k)!}$ Möglichkeiten. Diese heißen
+\textit{Variationen}. In Aufgabe 3 war $n=16$ und $k=2$.
+
+In Aufgabe 4 geht es um \textit{Kombinationen} von 6 verschiedenen Bildern aus
+10. Beachten wir ihre Reihenfolge auf den Blättern, erhalten wir die
+$\frac{10!}{4!}$ verschiedenen Variationen. Jede Kombination kommt in $6!$
+verschiedenen Reihenfolgen vor, die Reihenfolge ist uns aber egal. Also müssen
+wir die Anzahl der Variationen durch $6!$ teilen und erhalten
+$\frac{10!}{4!\cdot 6!}=210$ verschiedene Blätter.
+
+Nun ist die Anzahl der Exemplare von jedem Bild gefragt. Jedes Bild soll mit
+jeder Kombination aus 5 der übrigen 9 Bilder genau einmal auftauchen. Für die
+Anzahl dieser Kombinationen gibt es nun $\frac{9!}{4!\cdot 5!}=126$
+Möglichkeiten, also braucht man von jedem Bild 126 Exemplare.
+
+Aus $n$ Objekten $k$ verschiedene ohne Beachtung der Reihenfolge auszuwählen,
+gibt es also $\frac{n!}{k!\cdot (n-k)!}$ Möglichkeiten.
+
+\paragraph{Aufgabe 5 (American High School Mathematics Examination 1989)} 
+Herr und Frau Zeta wollen ihrem Baby zwei Vornamen geben, sodass die drei
+Initialien paarweise verschieden und in alphabetischer Reihenfolge sind. Wie
+viele Möglichkeiten gibt es für das Monogramm ihres Babys?
+
+\paragraph{Aufgabe 6 (American High School Mathematics Examination 1988)} 
+Am Ende eines Bowling-Turniers gibt es ein Endspiel der besten 5 Bowler der
+Vorrunde. Zuerst spielt der Fünfte gegen den Vierten. Der Verlierer bekommt
+den 5. Preis und der Gewinner spielt ein Spiel gegen den Dritten. Dabei
+bekommt der Verlierer den 4. Preis und der Gewinner spielt gegen den
+Zweiten. Dabei bekommt der Verlierer den 3. Preis und der Gewinner spielt
+gegen den Ersten. Der Gewinner dieses Spiels bekommt den 1. Preis und der
+Verlierer den 2. Preis. Wie viele verschiedene Verteilungen der Preise gibt es
+auf die 5 Besten der Vorrunde?
+
+\paragraph{Aufgabe 7 (American Mathematics Contest 12 2001)} 
+Eine Spinne hat einen Strumpf und einen Schuh für jedes ihrer 8 Beine. In wie
+vielen verschiedenen Reihenfolgen kann sich die Spinne ihre Strümpfe und
+Schuhe anziehen, wenn an jedem Bein der Strumpf vor dem Schuh angezogen werden
+muss?
+
+\paragraph{Aufgabe 8 (American Invitational Mathematics Examination 1996)} 
+Zwei Felder eines $7\times 7$-Quadrates sind gelb gefärbt, die anderen grün.
+Zwei Färbungen werden als gleich angesehen, wenn man sie durch Drehung
+auseinander erhalten kann. Wie viele verschiedene Färbungen gibt es?
+
+\subsection*{Binomialkoeffizienten}
+Die Anzahl $\frac{n!}{k!\cdot (n-k)!}$ der Kombinationen von $k$ Objekten aus
+$n$ gegebenen bezeichnet man als $\binom{n}{k}$ (lies: $n$ über $k$). Wir
+definieren also
+\[\binom{n}{k}=\frac{n!}{k!\cdot (n-k)!}\,.\]
+Diese Schreibweise $\binom{n}{k}$ wird als Binomialkoeffizient bezeichnet.
+
+Wieviel ist $\binom{n}{0}$, $\binom{n}{1}$, $\binom{n}{k}$,
+$\binom{n}{n-2}$, $\binom{n}{n-1}$ und $\binom{n}{n}$?
+
+Diese Schreibweise wollen wir nun bei der Beantwortung folgender Frage
+benutzen: Was ergibt sich beim Ausmultiplizieren von $(a+b)^{n}$?
+
+Es ergibt sich sicherlich eine Summe lauter Terme der Form $a^{i}b^{n-i}$,
+denn jeder Faktor $(a+b)$ der Potenz steuert entweder ein $a$ oder ein $b$
+bei.  Wie viele Summanden $a^{i}b^{n-i}$ gibt es für eine feste ganze Zahl
+$0\leq i\leq n$? Es muss bei jedem solchen Summanden genau $i$ Faktoren
+$(a+b)$ der Potenz geben, die ein $a$ beisteuern. Wie viele Möglichkeiten gibt
+es für diese $i$ Faktoren? Nun, das ist eine beliebige Kombination von $i$ der
+insgesamt $n$ Faktoren. Es gibt also $\binom{n}{i}$ Möglichkeiten. Damit
+taucht der Summand $a^{i}b^{n-i}$ genau $\binom{n}{i}$ mal in der Summe
+auf. Es gilt
+also 
+\begin{gather*}
+  (a+b)^{n}=\binom{n}{0}\,a^{0}b^{n-0} +\binom{n}{1}\,a^{1}b^{n-1}
+  +\binom{n}{2}\,a^{2}b^{n-2}+\dots +\binom{n}{n}\,a^{n}b^{n-n}\,.
+\end{gather*}
+Dies können wir auch schreiben als
+\begin{gather*}
+  (a+b)^{n}=\sum_{i=0}^{n} \binom{n}{i}\,a^{i}b^{n-i}\,.
+\end{gather*}
+
+Das Summenzeichen ist die Abkürzung einer Summe mit vielen Summanden. Es wird
+für die Laufvariable, hier $i$, der Reihe nach 0 (siehe unter dem
+Summenzeichen) bis $n$ (über dem Summenzeichen) eingesetzt und jedesmal der
+Term $\binom{n}{i}\,a^{i}b^{n-i}$ gebildet. All diese Terme werden
+summiert. Ausgeschrieben heißt das Summenzeichen also tatsächlich
+\begin{gather*}
+  \sum_{i=0}^{n} \binom{n}{i}\,a^{i}b^{n-i} =\binom{n}{0}\,a^{0}b^{n-0}
+  +\binom{n}{1}\,a^{1}b^{n-1} +\binom{n}{2}\,a^{2}b^{n-2} +\dots
+  +\binom{n}{n}\,a^{n}b^{n-n}\,.
+\end{gather*}
+Somit haben wir den Binomischen Lehrsatz hergeleitet.
+\begin{satz}
+  Für reelle Zahlen $a$ und $b$ und eine nicht negative ganze Zahl $n$
+  gilt
+  \begin{gather*}
+    (a+b)^{n}=\sum_{i=0}^{n} \binom{n}{i}\,a^{i}b^{n-i}\,.
+  \end{gather*}
+\end{satz}
+Der Spezialfall $n=2$ des Binomischen Lehrsatzes ist die erste binomische
+Formel.  Wie erhält man die zweite binomische Formal aus dem Binomischen
+Lehrsatz?
+
+Zwischen den Binomialkoeffizienten gibt es zahlreiche Identitäten und
+Beziehungen, von denen hier nur sehr wenige behandelt werden. Solche
+Beziehungen kann man durch eine kombinatorische Interpretation oder durch
+Herumrechnen mit den Fakultätsausdrücken nachweisen.
+
+Eine direkt aus der Definition der Binomialkoeffizienten folgende Identität
+ist diese: Für $n$ nichtnegativ, ganz und $0\leq k\leq n$ ganz gilt
+\[\binom{n}{k}=\binom{n}{n-k}\]
+
+Setzen wir im Binomischen Lehrsatz $a=b=1$, erhalten wir folgende sehr hübsche
+Identität für alle nichtnegativen ganzen Zahlen $n$
+\begin{gather*}
+  \binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\dots +\binom{n}{n}
+  =\sum_{i=0}^{n} \binom{n}{i}=2^{n}\,.
+\end{gather*}
+
+Für $n\geq 1$ ganz und $0\leq k\leq n-1$ ganz gilt
+\[\binom{n+1}{k+1}=\binom{n}{k}+\binom{n}{k+1}\,.\]
+Dies Formel lässt sich am einfachsten durch eine kombinatorische
+Interpretation zeigen. Tipp: Stelle dir $n$ Schüler beim Landesseminar vor,
+von denen einer zu spät zum Vortrag kommt.
+
+\paragraph{Aufgabe 9 (Rumänische Mathematikzeitschrift)} 
+Sei $n$ eine ungerade Zahl größer~1. Zeige, dass die Folge
+\[\binom{n}{1}, \binom{n}{2}, \dots ,\binom{n}{\frac{n-1}{2}}\]
+eine ungerade Anzahl ungerader Zahlen enthält.
+
+Binomialkoeffizienten kommen auch vor, wo man sie gar nicht vermutet:
+
+\paragraph{Aufgabe 10} 
+Finde einen Ausdruck als Binomialkoeffizienten für die Anzahl der
+Möglichkeiten, 2009 als Summe von 48 positiven ganzzahligen Summanden
+darzustellen (zwei Darstellungen gelten hier auch als verschieden, wenn sie
+sich nur in der Reihenfolge der Summanden unterscheiden)!
+
+\paragraph{Aufgabe 11 (American Invitational Mathematics Examination 1998)} 
+Finde die Anzahl geordneter Quadrupel $\br{x_{1}, x_{2}, x_{3}, x_{4}}$
+positiver ungerader Zahlen mit $x_{1}+x_{2}+x_{3}+x_{4}=98$.
+
+\paragraph{Aufgabe 12 (American High School Mathematics Examination 1994)} 
+Neun Stühle in einer Reihe sollen von 6 Schülern und den drei Lehrern Herrn
+Alpha, Herrn Beta und Herrn Gamma belegt werden. Die drei Lehrer betreten den
+Raum zuerst und wollen sich so hinsetzen, dass jeder neben zwei Schüler sitzen
+wird. Wie viele Möglichkeiten haben die drei Lehrer, sich hinzusetzen?
+
+\paragraph{Aufgabe 13} 
+Finde die Anzahl der Möglichkeiten, aus den ganzen Zahlen von 1 bis 18 fünf
+Zahlen auszuwählen, so dass sich je zwei davon um mindestens 2 unterscheiden.
+
+\subsection*{Doppeltes Abzählen und Permutationen}
+
+Eine sehr wichtige Beweismethode bei Kombinatorikaufgaben ist doppeltes
+Abzählen. Die Idee ist einfach: Wir zählen die Anzahl bestimmter Dinge auf
+zwei verschiedene Weisen. Dann müssen beide Anzahlen gleich sein. Dies kann
+man beispielsweise benutzen um Identitäten zu zeigen, die man dazu
+kombinatorisch interpretiert. Oder aber man kann zeigen, dass beispielsweise
+irgendwelche Anzahlen gerade sein müssen, weil sie sich auf eine andere Art
+und Weise abzählen lassen, bei der offensichtlich eine gerade Anzahl
+herauskommt.
+
+Man benutzt doppeltes Abzählen oft schon intuitiv ohne es zu merken,
+z.\,B.\ wenn man einen Haufen Bonbons in Fünferhäufchen zerlegt, um leichter
+nachzählen zu können. Um das Prinzip also gut zu verdeutlichen, behandeln wir
+eine schwere Beispielaufgabe, die man ohne bewusstes Anwenden dieser Tehnik
+vermutlich nur sehr umständlich lösen kann.
+
+Beschäftigen wir uns aber zunächst noch einmal etwas näher mit Permutationen,
+die ja ein wichtiges Thema in der Kombinatorik sind. Betrachten wir eine
+Permutation $P$ der Menge $\cbr{1,2,3,\dots ,n}$. Diese können wir nun
+folgendermaßen interpretieren: Die Zahlen von 1 bis $n$, die anfangs geordnet
+sind, vertauschen sich nun und stellen sich in der von $P$ vorgegebenen
+Reihenfolge auf. Dabei laufen sie wild durcheinander. Aber betrachten wir nun
+die Art und Weise ihrer Vertauschung anhand eines Beispiels:
+
+Es sei $n=7$ und $P=3524176$. Die 1 geht zum Platz der 5. Die 5 hat diesen
+Platz verlassen und ist nun auf dem Platz der 2. Die 2 ist auf dem Platz der 3
+und die 3 ist auf dem Platz der 1. So haben die Zahlen 1,5,2,3 zyklisch
+getauscht (also einen Ringtausch gemacht). Auch 6,7 bilden einen Zyklus (in
+Form einer einfachen Vertauschung dieser zwei Zahlen). 4 bildet alllein einen
+Zyklus, diese Zahl ist stehen geblieben. Das nennt man auch Fixpunkt.
+
+Auf diese Art und Weise lässt sich jede Permutaion in Zyklen zerlegen. Wie
+sieht eine Permutation von $\cbr{1,2,3,\dots ,n}$ aus, bei der jede Zahl
+allein in einem solchen Zyklus liegt? Finde ein Beispiel einer Permutation,
+die insgesamt ein Zyklus ist (sich also nicht in noch kleinere zerlegen
+lässt)!
+
+Von besonderem Interesse sind die Fixpunkte, d.\,h.\ die Zahlen $k$, die bei
+der Permutation an der $k$-ten Stelle stehen (also ihren Platz nicht ändern).
+Dazu folgende Aufgabe, die man mit doppeltem Abzählen lösen kann.
+
+\paragraph{Aufgabe 14 (1. Aufgabe IMO 1987)} 
+Sei $S$ die Menge $\cbr{1,2,3,\dots ,n}$. Wir bezeichnen die Anzahl der
+Permutationen von $S$, die genau $k$ Fixpunkte haben, mit $p_{n}(k)$. Zeige,
+dass
+\[\sum_{i=0}^{n} k\,p_{n}(k)=n!\]
+gilt.  Tipp: Interpretiere die Summanden als Anzahlen.
+
+\subsection*{Graphen}
+
+Graphen sind ein gutes Mittel zur Veranschaulichung von Freundschafts- oder
+Feinschaftsbeziehungen zwischen Personen. Grob gesagt besteht ein Graph aus
+einer endlichen Anzahl von Ecken (auch Knoten gennnt) und Kanten als Linien
+zwischen zwei Ecken. Beispielsweise könnten wir einen Graphen mit den gerade
+anwesenden Personen als Ecken zeichnen, bei dem je zwei Ecken genau dann
+verbunden sind, wenn sich die entsprechenden Personen schon vor dem
+Landesseminar kannten.
+
+Folgende Aufgabe lässt sich leicht mithilfe von Graphen und doppeltem Abzählen
+lösen
+
+\paragraph{Aufgabe 15} 
+In einem Raum befinden sich gewisse Personen, von denen sich einige per
+Handschlag begrüßt haben und einige nicht. Zeige, dass die Anzahl der
+Personen, die ungerade vielen anderen die Hand gegeben hat, gerade ist.
+
+\paragraph{Aufgabe 16} 
+Auf einer Party sind $2\,n\geq 2$ Personen und jede Person hat eine gerade
+Anzahl an Freunden. (Wenn A mit B befreundet ist, dann ist auch B mit A
+befreundet; keiner ist mit sich selbst befreundet). Zeige, dass es zwei
+Personen mit einer geraden Anzahl gemeinsamer Freunde auf der Party gibt.
+
+In einem Graphen kann man auch Kanten färben, wie in dieser Aufgabe:
+
+\paragraph{Aufgabe 17} 
+6 Punkte in der Ebene sind paarweise durch Strecken verbunden. Jede dieser 15
+Strecken ist rot oder blau gefärbt. Zeige, dass es ein einfarbiges Dreieck
+gibt.
+
+\paragraph{Aufgabe 18} 
+17 Mathematiker korrespondieren paarweise miteinander über jeweils genau eines
+der folgenden drei Medien: Post, Fax, Email. Zeige, dass es drei dieser 17
+Mathematiker gibt, die paarweise mit dem gleichen Medium korrespondieren.
+
+\subsection*{Invarianzprinzip}
+
+Das Invarianzprinzip als wichtige Methode soll hier nicht fehlen. Das Finden
+von Invarianten (Größen, die während eines Prozesses gleich bleiben) oder
+Halbinvarianten (Größen, die sich bei einem Prozess stets verkleinern oder
+stets vergrößern) ist bei manchen Aufgabe zur Lösung unumgänglich.
+
+\paragraph{Aufgabe 19} 
+In einem $4\times 4$-Quadrat steht auf 15 Feldern 1 und auf einem Feld $-1$.
+In einem Schritt darf man in einer Zeile, einer Spalte oder einem $2\times
+2$-Quadrat alle Vorzeichen ändern. Kann man dadurch erreichen, dass überall
+Einsen stehen?
+
+\paragraph{Aufgabe 20 (Klausur beim Landesseminar 2004 Klasse 8)} 
+Auf einer abgelegenen Insel leben 50 braune, 57 grüne, 62 gelbe und 68 rote
+Frösche. Immer, wenn sich drei Frösche unterschiedlicher Farbe begegnen,
+verwandeln sie sich in zwei Exemplare der vierten Farbe. Irgendwann hat man
+festgestellt, dass alle verbleibenden Frösche die gleiche Farbe haben. Welche
+Farbe ist das?
+
+\subsection*{Kombinatorische Geometrie}
+
+In den letzten Jahren kamen in den Bundesrunden Klasse 8 erstaunlich viele
+Aufgaben aus dem Bereich der kombinatorischen Geometrie vor, deshalb wollen
+wir uns auch damit noch ein wenig beschäftigen.
+
+\paragraph{Aufgabe 21} 
+In der Ebene seien $n$ Geraden in allgemeiner Lage (d.\,h.\ keine zwei
+parallel und keine drei schneiden sich in einem Punkt). Wie viele
+Schnittpunkte gibt es? In wie viele Teilstücke wird die Ebene zerlegt?
+
+\paragraph{Aufgabe 22 (420845)} 
+Im Innern eines Quadrats seien genau 187 Punkte markiert. Es sollen Dreiecke
+gezeichnet werden, die einander nicht überdecken und folgende Forderungen
+erfüllen:
+\begin{itemize}
+\item[(1)] Eckpunkte eines Dreiecks sind entweder markierte Punkte oder
+  Eckpunkte des Quadrats.
+\item[(2)] Mindestens ein Eckpunkt eines Dreiecks muss einer der markierten
+  Punkte sein.
+\end{itemize}
+Wie viele Dreiecke lassen sich unter diesen Voraussetzungen höchstens bilden?
+
+\paragraph{Aufgabe 23 (430845)} 
+In einem Land seien die gegenseitigen Entfernungen aller Städte verschieden
+groß. Eines Tages startet in jeder Stadt ein Flugzeug und fliegt nach der
+nächstgelegenen Stadt. Nach der Landung aller Flugzeuge stellt sich heraus,
+dass in keiner Stadt mehr als fünf Flugzeuge gelandet sind. Zeige, dass das
+kein Zufall ist.
+
+\emph{Hinweis:} Es ist zu beweisen, dass unter den genannten Voraussetzungen
+höchstens fünf Flugzeuge in dersellben Stadt landen können.
+
+\paragraph{Aufgabe 24 (440842)} 
+Wir betrachten in einer Ebene rote und blaue Punkte, von denen niemals mehr
+als zwei Punkte auf einer Geraden liegen.
+\begin{itemize}
+\item[a)] Zeichne 4 rote und 2 blaue Punkte so, dass jedes aus 3 roten Punkten
+  gebildete Dreieck, wir werden es rotes Dreieck nennen, genau einen der
+  blauen Punkte in seinem Innern enthält.
+\item[b)] Zeichne 4 rote und 4 blaue Punkte so, dass jedes rote Dreieck genau
+  einen blauen Punkt und jedes blaue Dreieck genau einen roten Punkt in seinem
+  Innern enthält.
+\item[c)] Welche Bedingung müssen die 4 roten Punkte erfüllen, damit die in
+  Teil a) und Teil b) genannten Forderungen erfüllbar sind?
+\end{itemize}
+
+\paragraph{Aufgabe 25 (470845)} 
+Der Mathematiker Dr. Eieck veranstaltet eine Denkerparty. Dazu treib er in
+jede Ecke seines dreieckigen Gartens einen Pflock und schlägt zusätzlich
+insgesamt $n$ weitere Pflöcke am Rand oder im Innern der Rasenfläche ein.
+Innerhalb des Rasens seien genau $k$ Pflöcke ($0\leq k\leq n$) eingesetzt, und
+von ihnen liegen keine drei auf einer gemeinsamen Geraden. Nun befestigt er
+möglichst viele, nicht unbedingt gleich lange Hängematten an den Pflöcken, die
+einander nicht überschneiden dürfen. Auf diese Weise wird das Rasendreieck in
+Teildreiecke zerlegt, in die er jeweils einen Stehtisch mit Papier,
+Schreibzeug und Getränken stellt.
+\begin{itemize}
+\item[a)] Ermittle die Anzahl $s$ der Stehtische und die Anzahl $h$ der
+  Hängematten für folgende konkrete Fälle:
+  \begin{itemize}
+  \item $n=3$ und $k=$0, 1, 2 oder 3 
+  \item $n=4$ und $k=0$
+  \end{itemize}
+  \emph{Hinweis:} Dabei reicht es, jeweils einen solchen Fall zu betrachten,
+  obwohl es verschiedene Möglichkeiten für die Platzierung der Pflöcke gibt.
+\item[b)] Gib jeweils eine Formel für die Anzahl $s(n,k)$ von Stehtischen und
+  die Anzahl $h(n,k)$ von Hängematten in Abhängigkeit von $n$ und $k$ an und
+  berechne $s(33,22)$ und $h(33,22)$.
+\item[c)] Beweise die Richtigkeit dieser beiden Formeln.
+\end{itemize}
+
+\subsection*{Weiteres Training}
+
+Die beste Vorbereitung auf die Bundesrunde oder kommende Olympiaden ist meiner
+Meinung nach das Training anhand von alten Aufgaben. Auf der Internetseite des
+Mathematikolympiadevereins findet sich das Aufgabenarchiv mit den Aufgaben der
+vergangenen zehn Jahre (www.mathematik-olympiaden.de).
+
+Ein Klassiker zum Olympiadetraining ist „Problem Solving Strategies“ von
+Arthur Engel, Springer-Verlag. Vor dem Englisch sollte man keine Angst haben,
+da der Autor ein Deutscher ist, ist es sehr verständlich geschrieben.
+
+Als gutes Buch voller Kombinatorikaufgaben kann ich „102 Combinatorial
+Problems“ von Titu Andreescu, Zuming Feng (Birkhäuser) empfehlen, viele
+Aufgaben dieses Vortrags entstammen diesem Buch (frei übersetzt).
+
+\begin{attribution}
+sauermann (März 2013): Für KoSemNet freigegeben.
+
+graebe (2014-01-01): Nach den KoSemNet Regeln aufbereitet.
+\end{attribution}
+\end{document}

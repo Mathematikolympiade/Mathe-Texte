@@ -1,0 +1,325 @@
+% Version: $Id: wirth-05-1.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman,url}  
+\usepackage{curves}
+\newtheorem{uebung}{\"{U}bung}
+
+\author{Jens Wirth, Freiberg\\ \url{wirth@math.tu-freiberg.de}}
+\title{Trigonometrische Funktionen\kosemnetlicensemark}
+\date{}
+
+\def\Re{{\sf Re}\,}
+\def\Im{{\sf Im}\,}
+
+\begin{document} 
+\maketitle         
+%
+\section{Bezeichnungen, komplexe Zahlen}
+Im folgenden bezeichnet $\C$ die Menge der komplexen Zahlen $z=x+\ii y$ mit
+$x,y\in\R$, $\ii^2=-1$. Die Zahl $x=\Re z$ bezeichnet den Realteil, $y=\Im z$
+den Imagin"arteil von $z$.
+
+\begin{minipage}{5cm}
+\unitlength1mm
+\begin{picture}(50,40)
+  \put(5,10){\vector(1,0){40}}
+  \put(42,5){$\Re$}
+  \put(15,5){\vector(0,1){30}}
+  \put(8,32){$\Im$}
+  \put(15,10){\vector(3,2){15}}
+  \put(32,22){$z$}
+  \put(30,8){\line(0,1){4}}
+  \put(30,5){$x$}
+  \put(13,20){\line(1,0){4}}
+  \put(10,20){$y$}
+  \put(15,10){\arc(10,0){33.7}}
+  \put(21,11.5){$\phi$}
+\end{picture}
+\end{minipage}
+\hfill
+\begin{minipage}{8cm}
+Weitere wichtige Begriffe sind 
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item $\phi=\arg z$, das Argument von $z$
+\item $\overline z=x-\ii y$, die zu $z$ konjugierte Zahl
+\item $|z|=\sqrt{x^2+y^2}=\sqrt{z \overline z}$, der Betrag von $z$ 
+\end{itemize}
+\end{minipage}
+
+Ein wichtiges Hilfsmittel ist die f"ur alle komplexen Zahlen definierte
+Exponentialfunktion 
+\begin{equation}
+  e^{z_1+z_2}=e^{z_1}e^{z_2},\qquad e^{1}=e,\qquad e^{\ii\frac\pi2}=\ii.
+\end{equation}
+Damit gilt f"ur jede komplexe Zahl $z$ 
+\begin{equation}
+  z=|z|\,e^{\ii\arg z},
+\end{equation}
+beziehungsweise dazu "aquivalent der folgende Satz.
+\begin{satz}{\bf[Eulersche Relation]}
+\label{satz1}
+\begin{equation}
+  e^{\ii\phi}=\cos\phi+\ii\sin\phi,\qquad \phi\in\R
+\end{equation}
+\end{satz}
+%
+\section{Anwendung 1: Additionstheoreme f"ur Winkelfunktionen}
+Satz \ref{satz1} ist ein wichtiges Hilfsmittel um Beziehungen zwischen
+Winkelfunktionen zu verstehen. Zum Aufw"armen deshalb eine erste Anwendung.
+
+Wir versuchen die bekannten Additionstheoreme f"ur $\sin$ und $\cos$
+abzuleiten, der Bequemlichkeit halber beide gleichzeitig. Es gilt
+\begin{align}
+  \cos(\phi+\psi)&+\ii\sin(\phi+\psi)=e^{\ii(\phi+\psi)}
+  =e^{\ii\phi}e^{\ii\psi}\notag\\
+  =&(\cos\phi+\ii\sin\phi)(\cos\psi+\ii\sin\psi)\\
+  =&(\cos\phi\,\cos\psi-\sin\phi\,\sin\psi)
+  +\ii(\sin\phi\,\cos\psi+\cos\phi\,\sin\psi)\notag
+\end{align}
+und ein Vergleich der Real- und Imagin"arteile ergibt die gesuchten
+Beziehungen. 
+
+\begin{uebung}
+  Man nutze die Additionstheoreme um die Beziehungen
+  \begin{align}
+    \sin\phi+\sin\psi&=2\sin\frac{\phi+\psi}2\,\cos\frac{\phi-\psi}2\notag\\
+    \cos\phi+\cos\psi&=2\cos\frac{\phi+\psi}2\,\cos\frac{\phi-\psi}2\\
+    \cos\phi-\cos\psi&=-2\sin\frac{\phi+\psi}2\,\sin\frac{\phi-\psi}2\notag
+  \end{align}
+  abzuleiten!
+\end{uebung}
+
+Komplexe Zahlen sind auch gut geeignet, Probleme der ebenen Geometrie zu 
+behandeln. 
+\begin{uebung}
+  Man nutze komplexe Zahlen um einen Beweis des Cosinussatzes
+  \begin{equation*}
+    c^2=a^2+b^2-2ab\cos\angle(a,b)
+  \end{equation*}
+  f"ur ein Dreieck mit den Seiten $a,b,c$ zu finden.
+\end{uebung}
+%
+\section{Anwendung 2: Winkelvielfache}
+Aufgrund der Additionstheoreme gilt
+\begin{align}
+  &\cos 2\phi=2\cos^2\phi-1\\
+  &\sin 2\phi=2\sin\phi\,\cos\phi.
+\end{align}
+Wir wollen eine entsprechende Relation f"ur allgemeine ganzzahlige Vielfache
+suchen. Auch hier hilft wiederum Satz \ref{satz1}. Es gilt
+\begin{align*}
+  cos(n\phi)+\ii\sin(n\phi)
+  &=\left(e^{\ii\phi}\right)^n=(\cos\phi+\ii\sin\phi)^n\\
+  &=\sum_{k=0}^n\binom{n}{k} \ii^k \cos^{n-k}\phi\,\sin^k\phi.
+\end{align*}   
+Interessiert man sich nur f"ur $\cos(n\phi)$, so haben wir den Realteil zu
+bestimmen. Dazu setzen wir $k=2l$ und erhalten
+\begin{align*}
+  \cos(n\phi)&=\sum_{l=0}^{\lfloor\frac n2\rfloor}
+  \binom{n}{2l}(-1)^l\cos^{n-2l}\phi\,\sin^{2l}\phi\\
+  &=\sum_{l=0}^{\lfloor\frac n2\rfloor}
+  \binom{n}{2l}(-1)^l\cos^{n-2l}\phi\,(1-\cos^2\phi)^l\\
+  &=\sum_{l=0}^{\lfloor\frac n2\rfloor}\sum_{k=0}^l
+  \binom{n}{2l}\binom{l}{k}(-1)^{l+k}\cos^{n-2l+2k}\phi.
+\end{align*}
+Die Funktion $\cos(n\phi)$ ist also insbesondere ein Polynom in
+$\cos\phi$. Dieses Polynom $T_n$ hat den Grad $n$ und wird als
+Tschebyscheff-Polynom $n$-ter Ordnung bezeichnet. Es gilt
+\begin{equation}
+  \cos(n\phi)=T_n(\cos\phi).
+\end{equation}
+Die Tschebyscheff-Polynome bis zur Ordnung 5 sind
+\begin{equation}
+  1,\;\;x,\;\;2x^2-1,\;\;4x^3-3x,\;\;8x^4-8x^2+1,\;\;16x^5-20x^3+5x.
+\end{equation}
+\begin{uebung}
+  Eine "ahnliche Betrachtung f"ur Vielfache des Sinus ist m"oglich. Allerdings
+  sind nur die ungeraden Vielfachen als Polynome in $\sin\phi$ darstellbar, die
+  geraden enthalten $\cos\phi$ als Faktor.
+
+  "Ublich ist eine andere Vorgehensweise. Man eliminiert so viele
+  $\sin$-Potenzen wie m"oglich (d.h. alle bis auf eine) und schreibt
+  \begin{equation}
+    \sin(n\phi)=\sin(\phi)\,U_{n-1}(\cos\phi)
+  \end{equation}
+  mit dem Tschebyscheff-Polynom $n$-ter Ordnung und zweiter Art $U_n$.
+\end{uebung}
+\begin{uebung}
+  Der h"ochste Koeffizient der Tschebyscheff-Polynome $T_{n+1}$ und $U_n$ 
+  ist $2^n$ f"ur alle $n\geq0$. 
+\end{uebung}
+%
+\section{Regelm"a"sige $n$-Ecke und Nullstellen von $T_n$}
+Wir suchen nach einer Interpretation der Nullstellen des Polynoms $T_n$. Das
+sind gerade die Werte $\cos\phi$, f"ur die $\cos(n\phi)=0$ gilt,
+d.h. $n\phi=\frac\pi2 +k\pi$. Es gen"ugt nach denjenigen $\phi$ zu suchen, die
+in einem Monotonie-Intervall der Cosinus-Funktion liegen. Das sind im
+Intervall $[0,\pi]$
+\begin{equation}
+  \frac\pi{2n},\;\;
+  \frac{3\pi}{2n},\;\;
+  \frac{5\pi}{2n},\;\;
+  \dots,\;\;
+  \frac{(2n-1)\pi}{2n}.
+\end{equation}
+Diese sind paarweise verschieden. Da es $n$ St"uck sind, handelt sich bei den
+betreffenden Cosinus-Werten
+\begin{equation}
+  \cos\left(\frac1{2n}\,\pi\right),\;\;
+  \cos\left(\frac{3}{2n}\,\pi\right),\;\;
+  \dots,\;\;
+  \cos\left(\frac{2n-1}{2n}\,\pi\right)
+\end{equation}
+um alle Nullstellen von $T_n$.
+
+\begin{minipage}{.45\textwidth}
+  \begin{uebung}
+    Diese Werte lassen sich als $x$-Koor\-dinaten der Eckpunkte eines
+    regel\-m"a"sigen $2n$-Ecks deuten.  Wie und warum? (vgl. Skizze)
+  \end{uebung}
+\end{minipage}
+\begin{minipage}{.52\textwidth}\centering
+\unitlength2mm
+\begin{picture}(40,40)
+  \put(10,20){\vector(1,0){30}}
+  \put(38,17){$\Re$}
+  \put(25,5){\vector(0,1){30}}
+  \put(22,34){$\Im$}
+  \put(16.3,10){\line(0,1){20}}
+  \put(16.5,21){$\zeta_1$}
+  \put(23,21){$\zeta_2$}
+  \put(33.6,10){\line(0,1){20}}
+  \put(31.8,21){$\zeta_3$}
+  \thinlines
+  \put(25,10){\curve(0,0,8.6,15)}
+  \put(25,10){\curve(0,0,-8.6,15)}
+  \put(16.3,25){\line(1,0){17.2}}
+  \put(25,20){\bigcircle{20}}
+  \thicklines
+  \put(25,30){\curve(0,0,8.6,-15)}
+  \put(25,30){\curve(0,0,-8.6,-15)}
+  \put(16.3,15){\line(1,0){17.2}}
+\end{picture}
+\end{minipage}
+%
+\section{Trigonometrische Polynome}
+Ein Ausdruck der Form
+\begin{equation}\label{trigPol}
+  f(x)=a+\sum_{k=1}^n \big(b_k\sin kx+c_k\cos kx\big)
+\end{equation}
+wird als trigonometrisches Polynom bezeichnet. 
+\begin{satz}
+  \label{satz2}
+  Eine Funktion $f(x)$ ist ein trigonometrisches Polynom genau dann, wenn 
+  sie sich als Polynom $f(x)=P(\cos x,\sin x)$ schreiben l"asst.
+\end{satz}
+\begin{uebung}
+  Man schreibe $f(x)=\cos^5x$ als trigonometrisches Polynom!
+\end{uebung}
+\begin{uebung}
+  Man beweise Satz \ref{satz2}, indem man einen Algorithmus zur Bestimmung des
+  Polynoms $P$ angibt!
+\end{uebung}
+\begin{uebung}
+  Das Polynom $P$ in Satz \ref{satz2} ist nicht eindeutig bestimmt. Vielmehr
+  l"asst sich immer die (dann eindeutig bestimmte) Struktur
+  \begin{equation}
+    f(x)=P_1(\cos x)+\sin x\,P_2(\cos x)
+  \end{equation}
+  erzeugen. Welche Forderung muss man an die Koeffizienten $a,b_k,c_k$ in
+  (\ref{trigPol}) Stellen, dass $P_2\equiv0$ gilt?
+\end{uebung}
+%
+\section{Aufgabensammlung}
+\begin{aufgabe}(391333A, \cite{MO})\\
+  Es seien $\alpha$,$\beta$ und $\gamma$ nichtnegative Zahlen mit
+  $\alpha+\beta+\gamma\leq2\pi$. \\
+  Beweisen Sie
+  \begin{equation*}
+    \cos\alpha+\cos\beta+\cos\gamma
+    \geq\cos(\alpha+\beta)+\cos(\beta+\gamma)+\cos(\gamma+\alpha) .
+  \end{equation*}
+  In welchen F"allen gilt Gleichheit?
+\end{aufgabe}
+\begin{aufgabe}(61236, \cite[A 24]{Lesebogen})\\
+  Die Zahl 
+  $\;\sin\left(\frac\pi{18}\right)\;$%$\sin 10^\circ$ 
+  gen"ugt einer Gleichung dritten Grades mit
+  ganzzahligen Koeffizienten.
+  
+  Man stelle diese (bis auf einen gemeinsamen Teiler aller Koeffizienten
+  eindeutig bestimmte) Gleichung auf und ermittle ihre beiden anderen Wurzeln.
+\end{aufgabe}
+\begin{aufgabe}\hspace*{1cm}\\
+  a) Man berechne den Wert von $\cos\frac\pi5$.\\
+  b) Gesucht ist ein Algorithmus zur Konstruktion eines regelm"a"sigen 10-Ecks
+  mit Zirkel und Lineal.
+\end{aufgabe}
+\begin{aufgabe}(71232, \cite[A 25]{Lesebogen})\\
+  Es ist das Produkt 
+  \begin{equation*}
+    \sin %\left(\frac\pi{36}\right)
+    5^\circ  
+    \sin %\left(\frac{3\pi}{36}\right)\,
+    15^\circ  
+    \sin %\left(\frac{5\pi}{36}\right)\,
+    25^\circ
+    \sin %\left(\frac{7\pi}{36}\right)\,
+    35^\circ
+    \sin %\left(\frac{9\pi}{36}\right)\,
+    45^\circ  
+    \sin %\left(\frac{11\pi}{36}\right)\,
+    55^\circ  
+    \sin %\left(\frac{13\pi}{36}\right)\,
+    65^\circ 
+    \sin %\left(\frac{15\pi}{36}\right)\,
+    75^\circ  
+    \sin %\left(\frac{17\pi}{36}\right)\,
+    85^\circ
+  \end{equation*}
+  in einen Ausdruck umzuformen, der aus nat"urlichen Zahlen lediglich durch
+  Anwendung der Rechenoperationen des Addierens, Subtrahierens,
+  Multiplizierens, Dividierens sowie des Radizierens mit nat"urlichen
+  Wurzelexponenten gebildet werden kann.\\
+  (Beispiel daf"ur $\sin30^\circ\,\sin60^\circ=\frac14\sqrt3$)
+\end{aufgabe}
+\begin{aufgabe}($\sqrt{\mbox{WURZEL}}$, $\delta 19$)\\
+  Man bestimme alle reellen $x$ mit
+  \begin{equation*}
+    4\cos x\,\cos 2x\,\cos 5x+1=0.
+  \end{equation*}
+\end{aufgabe}
+\begin{aufgabe}\hspace*{1cm}\\
+  Man beweise die Relation
+  \begin{equation*}
+    8 \cos\left(\frac\pi8\right)\,
+    \cos\left(\frac{3\pi}8\right)\,
+    \cos\left(\frac{5\pi}8\right)\,
+    \cos\left(\frac{7\pi}8\right)=1.
+  \end{equation*}
+\end{aufgabe}
+% \begin{aufgabe}\hspace*{1cm}\\
+%   Sei $f(x)$ ein trigonometrisches Polynom ohne Absolutglied
+%   (d.h. (\ref{trigPol}) mit $a=0$). Man zeige
+%   $$
+%   f(x)\geq0\qquad\Longrightarrow\qquad f\equiv0
+%   $$
+%   auf elementare Weise.
+% \end{aufgabe}
+%
+\begin{thebibliography}{99}
+\bibitem{} Herbert Pieper: Die komplexen Zahlen\\ VEB Deutscher Verlag der
+  Wissenschaften, Berlin 1988
+\bibitem{Lesebogen} Mathematischer Lesebogen "`Junge Mathematiker"', Heft 80\\
+  Bezirkskabinett f"ur au"serunterrichtliche T"atigkeit, Rat des Bezirkes
+  Leipzig, 1987
+\bibitem{WURZEL} $\sqrt{\mbox{WURZEL}}$, 5/97, \url{http://www.wurzel.org}
+\bibitem{MO} \url{http://www.mathematik-olympiaden.de}
+\end{thebibliography}
+
+\begin{attribution}
+wirth (Dec 2004): Contributed to KoSemNet
+
+graebe (2005-01-05): Prepared along the KoSemNet rules
+\end{attribution}
+\end{document}

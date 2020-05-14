@@ -1,0 +1,71 @@
+%############################################################
+%
+% $Id: ko-math.sty,v 1.44 2011/12/30 15:03:45 graebe Exp $
+%
+
+% Packages and mathematical markup that can be used in problems without
+% further comments.
+
+% All stuff concerning management of graphics is not yet defined.
+\usepackage{amsmath,amssymb,bbm} 
+
+% All theorem stuff moved to kosemnet.sty -- hgg 2014-12-13
+
+% Markup for geometric objects
+\newcommand{\geo}[1]{{\mathnormal{#1}}}
+\newcommand{\ksegment}[1]{\overline{\geo{#1}}}
+\newcommand{\kray}[1]{\overrightarrow{\geo{#1}}}
+\newcommand{\kline}[1]{\geo{#1}}
+\newcommand{\kplane}[1]{\ifx*#1\expandafter\geo\else{\varepsilon(\geo{#1})}\fi}
+\newcommand{\kangle}[1]{\ifx*#1\expandafter\geo\else{\angle\,\geo{#1}}\fi}
+\newcommand{\ktriangle}[1]{\ifx*#1\expandafter\geo\else{\triangle\,\geo{#1}}\fi}
+\newcommand{\kquad}[1]{\ifx*#1\expandafter\geo\else\geo{#1}\fi}
+\newcommand{\kvector}[1]{\overrightarrow{\rule{0pt}{8pt}\geo{#1}}}
+\newcommand{\karc}[1]{\overset{\frown}{\geo{#1}}}
+
+% Markup for geometric values
+\newcommand{\m@ss}[1]{\left\vert #1\right\vert}
+\newcommand{\msegment}[1]{\m@ss{\geo{#1}}}
+\newcommand{\mangle}[1]{\m@ss{\kangle\geo{#1}}}
+\newcommand{\marea}[1]{F(\geo{#1})}
+
+% Infix and postfix operations 
+\def\lt{<}
+\def\gt{>}
+\def\m{\cdot}
+\def\grad{^{\circ}}
+\def\teilt{{\,\mid\,}}
+
+% Markup for functions
+\newcommand{\abs}[1]{\left\vert #1\right\vert}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\def\gauss{\floor} % deprecated
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\card}[1]{\left| #1\right|}
+\renewcommand{\mod}[1]{~(\mathrm{mod}~ #1)}
+\def\Re{{\sf Re}\,}
+\def\Im{{\sf Im}\,}
+
+% Markup for sets of numbers
+\def\N{\mathbbm{N}}
+\def\Z{\mathbbm{Z}}
+\def\Q{\mathbbm{Q}}
+\def\R{\mathbbm{R}}
+\def\C{\mathbbm{C}}
+\def\ee{\,\mathrm{e}}
+\def\ii{\,\mathrm{i}\,}
+\newcommand{\mwu}[2]{#1\,\mathrm{#2}}  % measure with unit
+
+% shortcuts
+\def\br#1{\left(#1\right)}             % brackets
+\def\sbr#1{\left[#1\right]}            % square brackets
+\def\cbr#1{\left\{#1\right\}}          % curly brackets
+\def\iff{\Leftrightarrow\ }
+\def\yields{\Rightarrow\ }
+\def\pw{{\char94}}
+\def\dq{{\char34}}
+
+%
+% File ko-math.sty End
+%
+%############################################################

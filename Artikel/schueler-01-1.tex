@@ -1,0 +1,918 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,schueler,url}
+\usepackage{kosemnet,ko-math}
+\title{Zahlentheorie\kosemnetlicensemark} 
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{24.10.2002}
+
+
+\begin{document}
+
+\maketitle
+
+Zur Zahlentheorie rechnen wir Aufgaben, die über dem Bereich $\N=\{1,2,\dots\}
+$ der natürlichen oder über den ganzen Zahlen $\Z=\{0,\pm 1,\pm2,\dots\} $ zu
+lösen sind. In vielen Olympiadeaufgaben kommen ganze oder nat"urliche Zahlen
+vor. Daher sollte man das entsprechende Handwerkszeug --- die Eigenschaften
+des größten gemeinsamen Teilers und die Kongruenzrechnung --- beherrschen und
+sicher anwenden k"onnen. Dies verk"urzt lange L"osungswege enorm.
+
+\subsection*{Die Grundgleichung der Zahlentheorie}
+
+Zu jeder ganzen Zahl $a$ und jeder natürlichen Zahl $m$ gibt es stets ein Paar
+$q,r$ von ganzen Zahlen, so dass gilt:
+$$
+a=qm+r\quad \text{mit\quad  $0\le r<m$}\quad \text{\em Grundgleichung der
+  Zahlentheorie.}
+$$
+Dabei heißt $r$ der {\em kleinste Rest} zu gegebenem $a$ und $m$.
+
+\begin{beispiel} Wenn $a=8$ und $m=5$, so sind $q=1$ und $r=3$, denn $8=1{\cdot}
+  5+3$.
+\\
+Wenn $a=8$ und $m=9$, so sind $q=0$ und $r=8$, denn $8=0{\cdot} 9+8$.
+\\
+Wenn $a=-5$ und $m=3$, dann sind $q=-2$ und $r=1$, denn $-5=(-2)3+1$.
+\end{beispiel}
+
+Diese Grundgleichung der Zahlentheorie, die man auch einfach als Division mit
+Rest bezeichnen kann, bildet die Grundlage für den {\sc Euklid}ischen
+Algorithmus zur Bestimmung des größten gemeinsamen Teilers zweier Zahlen $a$
+und $b$ (siehe unten).
+
+\subsection*{Teilbarkeitslehre}
+Man sagt, dass die ganze Zahl $a\in \Z$ durch die ganze Zahl $m\in \Z$
+{\em teilbar} ist, wenn $a$ ohne Rest durch $m$ teilbar ist; d.\,h. es gibt
+ein $q\in \Z$ mit
+$$ a=qm.$$
+Wir sagen {\em $m$ teilt $a$}, symbolisch $m\mid a$.
+
+\begin{definition}
+Es seien $a,m\in \Z$. Dann gilt {\em $m$ teilt $a$}, falls es eine ganze Zahl $q$
+gibt mit $a=qm$.
+\end{definition}
+
+Als {\em Teiler} einer Zahl $a$ betrachtet man  üblicherweise nur die
+natürlichen Zahlen, die $a$ teilen (nicht aber die negativen ganzen Zahlen,
+die $a$ teilen).
+
+\begin{bemerkung} Null teilt keine ganze Zahl außer Null selbst.  Jede ganze Zahl
+  teilt  aber die Null.
+\end{bemerkung}
+
+\begin{satz} Es seien $a,$ $b$ und $c$ ganze Zahlen. Dann gilt
+\begin{enumerate}
+\item Wenn $a\mid b$ und $b\mid c$, dann auch $a\mid c$ (Transitivität der
+  Teilbarkeitsbeziehung).
+\item Wenn $a\mid b$ und $a\mid c$, so $a\mid (b+c)$.
+\item Wenn $a\mid b$ und $a\mid (b+c)$, so $a\mid c$.
+\item Wenn $a\mid b$ oder $a\mid c$, so $a\mid bc$.
+\item Wenn $a\mid c $ und $b\mid c$ und $a$ und $b$ sind teilerfremd, so $ab
+  \mid c$.
+\item Wenn $ab\mid c$, so $a\mid c$ und $b\mid c$.
+\end{enumerate}
+\end{satz}
+
+\begin{definition} Eine natürliche Zahl heißt {\em Primzahl}, wenn sie genau
+  zwei verschiedene Teiler hat, nämlich $1$ und sich selbst.
+\end{definition}
+
+\begin{satz} (a) Jede natürliche Zahl größer als $1$ ist entweder Primzahl oder
+  sie lässt sich abgesehen von der Reihenfolge auf genau eine Art als Produkt
+  von Primzahlen schreiben.
+\\
+(b) Es gibt unendlich viele Primzahlen.
+\end{satz}
+
+ \subsection*{Der gr"o"ste gemeinsame Teiler}
+\begin{definition}
+Die nat"urliche Zahl $d$ hei"st gr"o"ster gemeinsamer Teiler der ganzen Zahlen
+$a$ und $b$, falls gilt:
+\begin{quote}
+(a) $d\mid a$ und $d\mid b$ und
+\\
+(b) f"ur alle $t\in \Z$ gilt, wenn $t\mid a$ und $t\mid b$, so $t\mid  
+d$.
+\end{quote}
+Symbolisch schreiben wir dafür $d=\ggT(a,b)$. 
+\end{definition}
+
+
+Man kann sich die Eigenschaft (b) leicht mit Hilfe der {\em Menge der
+  gemeinsamen Teiler} veranschaulichen. Die Menge der gemeinsamen Teiler von
+  $a=48$ und $b=60$ ist
+$$
+\{1,2,3,4,6,12\}.
+$$
+Tatsächlich gilt für $t=1,2,3,4,6$ und $12$, dass $t\mid 12$ erfüllt
+ist. Also ist $12$ der größte gemeinsame Teiler. Natürlich ist $12$ auch \glqq
+größer\grqq\ als alle anderen Teiler. Doch die {\em  Größerrelation}  soll
+hier keine Rolle spielen, sondern ausschließlich die Teilbarkeitsrelation.
+
+ Der größte gemeinsame Teiler (ggT) zweier Zahlen ist also derjenige gemeinsame Teiler, der von
+allen anderen gemeinsamen Teilern geteilt wird. Das Wesen des {\sc
+  Euklid}ischen Algorithmus zur Bestimmung des ggT liegt in der simplen
+Formel 
+$$\ggT(a,b)=\ggT(a-b,b),$$
+ die man anhand der obigen Definition leicht
+nachweist (Wie? --- Zeige dass die beiden Mengen der gemeinsamen Teiler übereinstimmen!). Es sei $a>b>0$, dann kann man die obige Differenzbildung so lange
+fortsetzen bis $a-b-b-\cdots-b<b$. Dies entspricht aber gerade der Division
+von $a$ durch $b$ mit Rest, $a=q{\cdot} b+r$ und wir haben gezeigt, dass gilt 
+$$\ggT(a,b)=\ggT(a-b,b)=\ggT(a-2b, b)=\cdots =\ggT(a-qb,b)=\ggT(r,b).$$ 
+Nun ist $r$ die kleinere Zahl und man kann $r$ solange
+von $b$ abziehen, bis der Rest $b-r-r\cdots-r$ kleiner als $r$ ist usw.{} Als
+Ergenbis erhalten wir immer kleinere Zahlen bis schlie"slich die Division
+aufgeht und wir haben dann $\ggT(a,b)=\dots =\ggT(d,0)=d$. Verfolgt man die
+Rechnung zur"uck, so erkennt man außerdem, dass sich $d$ ganzzahlig aus $a$ und $b$
+kombinieren l"asst, das heißt, es existieren $A$, $B \in\Z$ mit 
+\begin{align}\label{dar}
+d=Aa+Bb.
+\end{align}
+
+\begin{beispiel}  Bestimmung von $\ggT(87,51)$.
+
+$$
+\ggT(87,51)=\ggT(87-51,51)=\ggT(36,51)=\ggT(36, 15)=\ggT(36-2{\cdot}15,15)=
+\ggT(6,15)=\ggT(6,3)=3.
+$$
+Das selbe als Divisionsschema:
+\begin{xalignat*}{2}
+87&=1\cdot 51 +36,&36&=87-1\cdot 51,
+\\
+51&=1\cdot 36 +15,&15&=51-1\cdot 36,
+\\
+36&=2\cdot 15+6,&6&=36-2\cdot 15,
+\\
+15&=2\cdot 6 +\ul{3},&3&=15-2\cdot 6,
+\\
+6&=2\cdot 3,&    
+\end{xalignat*}
+
+Setzt man nun nacheinander von oben nach unten die rechten Seiten des obigen
+Systems ineinander ein, so erh"alt man schrittweise $15=2\cdot 51 -87$,
+$6=3\cdot 87-5\cdot 51$ und schlie"slich $3=12\cdot 51-7\cdot 87$. 
+\end{beispiel}
+
+Tats"achlich hat  unter allen gemeinsamen Teilern von $a$ und $b$ nur der ggT 
+$\ggT(a,b)$ eine Darstellung wie in \rf[dar]. Dies zeigt man wieder einfach
+mit der obigen Definition des ggT (Wie?). Insbesondere sind $a$ und $b$
+genau dann teilerfremd, wenn es ganze Zahlen $A$ und $B$ gibt mit $1=Aa+Bb$. 
+
+\begin{satz} Es seien $a,b\in \Z$. Dann gilt $d=\ggT(a,b)$ genau dann, wenn
+\begin{quote}
+{\em (a)}  $d\mid a$ und $d\mid b$ und
+\\
+{\em (b)} Es gibt ganze Zahlen $A$ und $B$ mit $d=Aa + Bb$.
+\end{quote}
+Die ganzen Zahlen $a$ und $b$ sind genau dann teilerfremd, d.\,h.{}
+$\ggT(a,b)=1$, wenn es  ganze Zahlen $A$ und $B$ gibt mit $1=Aa + Bb$.
+\end{satz}
+
+Das allgemeine Schema des {\sc Euklid}ischen Algorithmus lautet:
+\begin{xalignat*}{2}
+a&=bq_1 +r_2,&  0&<r_2 <b,
+\\
+b&=r_2 q_2 + r_3,& 0&<r_3<r_2,
+\\
+r_2&= r_3 q_3 + r_4, &0&<r_4 <r_3,
+\\
+&\cdots&& 
+\\
+r_{n-2}&=r_{n-1}q_{n-1} +\ul{r_n},& 0&<r_n<r_{n-1},
+\\
+r_{n-1}&=r_nq_n.&&
+\end{xalignat*}
+
+Der letzte auftretende Rest ist 0 und der ggT ist der letzte von Null
+verschiedene Rest. Wir haben also
+$$
+\ggT(a,b)=\ggT(b,r_2)=\ggT(r_2, r_3)=\cdots=\ggT(r_{n-1},r_n)=r_n.
+$$
+
+\begin{aufgabe} Bestimme $\ggT(1573, 637)$ und stelle den ggT als ganzzahlige
+  Linearkombination von $1576$ und $637$ dar!
+\end{aufgabe}
+
+\begin{loesung}
+\begin{xalignat*}{2}
+1573&=637\cdot 2 + 299,& 299&= 1573-637 \cdot 2,
+\\
+637&=299\cdot 2 + 39,& 39&=637 - 299\cdot 2,
+\\
+299&= 39\cdot 7 +26, & 26&=299 - 39 \cdot 7,
+\\
+39&=26\cdot 1 +\ul{13}, & 13&=39 - 26\cdot 1,
+\\
+26&=13\cdot 2.
+\end{xalignat*}
+Die schrittweise Rückrechnung liefert die Darstellung des ggT als
+Linearkombination von $a$ nud $b$:
+\begin{alignat*}{2}
+13&=39 - 299 +39\cdot 7& &= 39\cdot 8 -299,
+\\
+&= (637 -299\cdot 2)\cdot 8 -299&&= 637\cdot 8 -299\cdot 17,
+\\
+&= 637\cdot 8 - (1573 -637\cdot 2)\cdot 17&&= 637\cdot 42 -1573\cdot 17.
+\end{alignat*}
+\end{loesung}
+
+\begin{aufgabe} Mit Hilfe des {\sc Euklid}ischen Algorithmus bestimme man den
+  größten gemeinsamen Teiler von $6188 $ und $4709$ und stelle ihn als
+  ganzzahlige Linearkombination von $6188 $ und $4709$ dar.
+\end{aufgabe}
+
+\begin{satz}
+Eigenschaften des größten gemeinsamen Teilers: 
+\begin{xalignat*}{2}
+\ggT(n,ab)&=\ggT(n,b),&\text{falls}&\quad \ggT(n,a)=1,
+\\
+n\mid ab &\Rightarrow n\mid b,&\text{falls}& \quad \ggT(n,a)=1,
+\\
+\ggT(a,m){\cdot}\ggT(a,n)&\mid\, \ggT(a,mn),&\text{falls}&\quad \ggT(m,n)=1,
+\\
+\text{Wenn}\quad \ggT(a,b)&=d,&\quad\text{so}\quad &\ggT(a/d, b/d)=1.
+\end{xalignat*}
+\end{satz}
+
+
+\subsection*{Rechnen mit Kongruenzen}
+Es sei $m$ eine feste nat"urliche Zahl. F"ur zwei ganze Zahlen $a$ und $b$
+schreiben wir
+$$
+a\equiv b\mod m\quad \text{sprich: \glqq $a$ ist kongruent $b$ modulo
+$m$\grqq},
+$$
+falls 
+$$m\mid(b-a)$$
+ oder anders ausgedr"uckt, es gibt ein $q\in\Z$ mit $a=b+qm$. Mit anderen
+ Worten: $a$ ist kongruent $b$ modulo $m$, wenn $a$ und $b$ bei der Division
+ durch $m$ den selben Rest lassen.
+
+\begin{beispiel} $73\equiv 38\mod 7$, weil $7\mid (73-38)$, d.\,h.{} $7\mid 35$.
+\\
+$29\equiv -59 \mod 11$, weil $11\mid (29+59)$, d.\,h.{} $11\mid 88$.
+\\
+Man schreibt auch $71\equiv 23\equiv 7\equiv -1\equiv -9\mod 8$, weil alle
+diese Zahlen bei Division durch $8$ den selben Rest lassen.
+\\
+Nach Definition ist $a\equiv 0\mod m$ gleichbedeutend mit $m\mid a$.
+\end{beispiel}
+
+
+Zum Beweis von Eigenschaften von Kongruenzen ist es wichtig, dass man sie in
+Gleichungen zurück verwandeln kann: $a\equiv b\mod m $ heißt, dass es eine
+ganze Zahl $q\in \Z $ gibt mit $a=qm+b$.
+
+\subsubsection*{Eigenschaften von Kongruenzen}
+\begin{satz} Es sei  $m\in\N $ eine natürliche Zahl und es seien $a,b,c\in \Z$
+  ganze Zahlen. Dann gilt:
+
+$a\equiv a \mod m$~~(Reflexivität).  
+\\
+Wenn $a\equiv b\mod m$, dann $b\equiv a \mod m$~~(Symmetrie).
+\\
+ Wenn $a\equiv b\mod m$ und $b\equiv c\mod m$, dann
+$a\equiv c\mod m$~~(Transitivität).
+\end{satz}
+
+Beweise diese Eigenschaften! Benutze den obigen Hinweis!
+\\
+ Man überzeugt sich leicht davon, dass die
+folgenden Rechenregeln gelten: 
+
+\begin{satz}
+(a) Es seien $a,b,c,d\in \Z$,  $m, n\in \N$ und
+\begin{align*}
+a&\equiv b\mod m,
+\\
+c&\equiv d\mod m.
+\end{align*}
+ Dann gilt:
+\begin{align*}
+a\pm c&\equiv b\pm d\mod m,
+\\
+ac&\equiv bd\mod m,
+\\
+a^n&\equiv b^n\mod m,
+\\
+an&\equiv bn \mod {mn}.
+\end{align*}
+(b) Es sei $p$ eine Primzahl und $a,b,c\in \Z$.
+\begin{align}
+\text{Wenn} \quad ab&\equiv 0\mod p,\quad\text{ dann gilt}\quad a\equiv 0\mod p
+\quad\text{oder}\quad b\equiv 0\mod p,\nn
+\\
+\text{Wenn}\quad an&\equiv bn\mod{mn}, \quad\text{dann}\quad a\equiv b\mod m.\label{div1}
+\\
+\text{Wenn}\quad ac&\equiv bc\mod m \quad \text{und}\quad \ggT(c,m)=d,\quad\text{so}\quad
+a\equiv b\mod{m/d}\label{div2}
+\\
+\text{Wenn}\quad ac&\equiv bc\mod m \quad \text{und}\quad \ggT(c,m)=1,\quad\text{so}\quad
+a\equiv b\mod m.\label{div3}
+\end{align}
+\end{satz}
+
+{\em Beweisskizze.} Als Beispiel beweisen wir die zweite Behauptung von (a) . Die Voraussetzungen besagen,
+dass es ganze Zahlen $p$ und $q$ gibt mit
+$$a=pm +b\quad\text{und}\quad c=qm+d.$$
+Multipliziert man diese beiden Gleichungen miteinander, so hat man
+$$
+ac=pqm^2 +pmd +qmb +bd= m(pqm + pd +qb) +bd.$$
+Die bedeutet aber, dass es eine ganze Zahl $r=pqm + pd +qb$ gibt mit
+$ac=mr+bd$ oder $ac\equiv bd\mod m $, was zu zeigen war. Wir zeigen \rf[div3]: Wegen $\ggT(m,c)=1 $ gibt es ganze Zahlen $A$ und
+$B$ mit
+$$cA+mB=1\quad \text{(Charakterisierung der Teilerfremdheit)}.
+$$
+Multipliziert man diese Gleichung mit $a-b$ und beachtet, dass nach
+Voraussetzung $m\mid (a-b)c$ gilt, also ein $q\in \Z$ existiert mit
+$(a-b)c=qm$, so hat man
+\begin{align*}
+(a-b)cA+ (a-b)mB&=a-b
+\\
+qmA + (a-b)mB&=a-b
+\\ 
+m(qA +(a-b)B)&= a-b.
+\end{align*}
+Das heißt aber $a\equiv b\mod m$.
+Die Behauptung \rf[div2] folgt nun, wenn man beachtet, dass $\ggT(c/d,
+m/d)=1$ genau dann, wenn $\ggT(c,m)=d$ gilt und außerdem \rf[div1] benutzt
+(was sehr leicht zu zeigen ist).
+
+Man beachte, dass man eine Kongruenz nur dann durch die ganze Zahl $c$ kürzen
+darf --- bei unverändertem Modul $m$ ---, wenn $c$ und der Modul $m$ teilerfremd sind.  Beispiele zu den letzten
+beiden Eigenschaften:
+
+$45\equiv 27\mod 6$ und $\ggT(9,6)=3$, also $5\equiv 3\mod 2$ (Division durch $9$).
+\\
+$72\equiv 27\mod 5$ und $\ggT(9,5)=1$, also $8\equiv 3\mod 5$ (Division durch $9$).
+
+
+\begin{beispiel} 1. Auf welche Ziffer endet $7^7$? {\em Lösung.} Man erhält die
+  letzte Ziffer einer Zahl, wenn man sie modulo $10$ betrachtet. So ist zum
+  Beispiel $1234\equiv 44 \equiv 64\equiv 2004\equiv 4\mod {10}$, da alle diese
+  Zahlen auf $4$ enden. Wir gehen schrittweise vor und multiplizieren die
+  vorangegangene Kongruenz immer weiter mit $7$:
+\begin{xalignat*}{2}
+7^1&\equiv 7\mod{10},& 7^2&\equiv 49 \equiv 9\mod{10}
+\\
+7^3&\equiv 9\cdot 7\equiv 3\mod{10},& 7^4&\equiv 3\cdot 7\equiv 1\mod{10}
+\\
+7^7&\equiv 7^4\cdot 7^3\equiv 3\cdot 1\equiv 3\mod{10}.
+\end{xalignat*}
+Also endet $7^7$ auf $3$.
+
+2. Auf welche Ziffer endet $999^{999}$? Es gilt
+\begin{align*}
+999^{999}\equiv 9^{999}\equiv (-1)^{999}\equiv -1\equiv 9\mod{10}.
+\end{align*}
+
+3. Ist $21^{39} + 39^{21}$ durch $45$ teilbar? 
+\\
+\begin{loesung} Eine Zahl ist durch
+   $45$ teilbar genau dann, wenn sie durch $5$ und durch $9$ teilbar ist. 
+Wir betrachten die Teilbarkeit von $z=21^{39} + 39^2$ durch $9$ ohne Kongruenzrechnung. Offenbar sind
+   $21$ und $39$ beide durch $3$ teilbar, also sind $21^2$ und $39^2$ beide
+   durch $9$ teilbar und somit auch die höheren Potenzen. Also ist $9\mid
+   z$. Ferner gilt
+$$ 21^{39} +39^{21}\equiv 1^{39} + (-1)^{21}\equiv 1 +(-1) \equiv 0\mod{10}.
+$$
+Also ist auch $9\mid z$ und somit $45\mid  z$.
+\end{loesung}
+\end{beispiel}
+
+\begin{beispiel}($9$er- und $11$er-Regel) 
+ F"ur eine nat"urliche Zahl $z=\overline{a_n a_{n-1}\cdots a_1 a_0}$ sei
+  $${A(z)=a_0-a_1+a_2-+\cdots +(-1)^{n}a_n}$$ die alternierende Quersumme;
+ die Quersumme sei ${Q(z)=a_0+\cdots +a_n}$. Dann gilt:
+\begin{xalignat*}{2}
+z&\equiv Q(z)\mod 9&\text{und}\quad z\equiv A(z)\mod {11}
+\end{xalignat*}
+Insbesondere gilt $9{\mid} z$ genau dann, wenn $9{\mid} Q(z)$ und $11{\mid} z$ 
+genau dann, wenn $11{\mid} A(z)$.
+
+\begin{loesung} Es gilt im Dezimalsystem:
+$$z=\overline{a_n a_{n-1}\cdots a_1 a_0}=10^n a_n +10^{n-1}a_{n-1}+\cdots +10a_1+a_0.
+$$
+Betrachtet man diese Gleichung modulo $9$ und beachtet dabei, dass für alle
+$k\in\N $ gilt $10^k\equiv 1^k\equiv 1\mod 9$, so hat man
+$$
+z\equiv a_n+a_{n-1}+\cdots +a_1+a_0=Q(z)\mod9.
+$$
+Beachtet man dagegen $10^k\equiv (-1)^k\mod{11}$ und betrachtet die obige
+Gleichung modulo $11$, so hat man
+$$
+z\equiv (-1)^na_n+(-1)^{n-1}a_{n-1}+\cdots -a_1+a_0\equiv A(z)\mod{11}.
+$$
+Die zweite Behauptung folgt nun einfach aus der Transitivität der
+Kongruenzrelation: Wenn $9\mid Q(z)$, so $Q(z)\equiv 0\mod 9$. Also ist
+$z\equiv 0\mod 9$ und somit $9\mid z$. Die Umkehrung folgt analog und auch der
+Beweis für die $11$er-Regel.
+\end{loesung}
+\end{beispiel}
+
+\begin{beispiel}
+Überprüfe die Richtigkeit der folgenden Rechnungen modulo $9$ und modulo $11$!
+$z=24^4\cdot 12 +17^3\cdot 21+32^5\cdot 4= 138302213$
+
+\begin{loesung} Wir benutzen die Quersumme bei der $9$er-Regel:
+\begin{align*}
+z&\equiv 6^4\cdot3 + 8^3\cdot 3+5^5\cdot4\overset{?}{\equiv} 1+3+8+3+2+2+1+3\mod 9
+\\
+&\equiv 36^2\cdot 3+ (-1)^3\cdot 3+
+25\cdot 125\cdot 4\overset{?}{\equiv} 5\mod 9
+\\
+&\equiv 0+ (-1)\cdot 3+7\cdot8\cdot 4 \overset{?}{\equiv} 5\mod 9
+\\
+&\equiv 0 -3 +7\cdot(-1)\cdot4 \equiv -3 -28\equiv -4\overset{?}{\equiv} 5\mod 9
+\end{align*}
+Die Kongruenz modulo $9$ ist erfüllt.
+Wir benutzen die alternierende Quersumme fürs Überprüfen modulo $11$:
+\begin{align*}
+z&\equiv 2^4\cdot 1+6^3\cdot(-1) +(-1)^5\cdot4\overset{?}{\equiv}3-1+2-2+0-3
++8-3+1\mod{11}
+\\
+&\equiv 5+36\cdot 6\cdot(-1) -4\overset{?}{\equiv}5\mod{11}
+\\
+&\equiv 5-18-4\equiv -17\equiv 5\overset{?}{\equiv}5\mod{11}
+\end{align*}
+Die Kongruenz modulo $11$ ist ebenfalls erfüllt. Die Gleichung 
+könnte also richtig sein. (Sie ist es!)
+\end{loesung}
+\end{beispiel}
+
+\begin{beispiel}($7$er-Regel)
+ Es sei $n$ eine natürliche
+  Zahl. Trennt man von $n$ die letzte Ziffer ab, multipliziert sie mit $2$ und
+  subtrahiert das Ergebnis vom  verbliebenen Teil von $n$, so erhält man $n'$.
+\\
+Beweise, dass $n$ genau dann durch $7$ teilbar ist, wenn $n'$ durch $7$
+  teilbar ist!
+\\
+Ist etwa $n=1001$, dann ist $n'=100-2\cdot 1=98$ und $n''= 9-2\cdot 8=-7$. Weil
+  $n''$ durch $7$ teilbar ist, so auch $98$ und $1001$.
+\\
+\begin{loesung} Ist $a$ die letzte Ziffer von $n$, so kann man $n$ schreiben als
+  $n=10A +a$ mit einer natürlichen Zahl $A$, die eine Stelle weniger hat als
+  $n$. Nach der Regel ist dann $n'=A-2a$ und die Behauptung lautet: $7\mid
+  10A+a$ genau dann, wenn $7\mid A-2a$.
+Nun gilt aber 
+$$10n'+21a=10(A-2a) +21a=10A-20a +21a=10A+a=n.$$
+Betrachtet man nun diese Gleichung modulo $7$, so  hat man
+$$3n'\equiv n\mod 7.$$
+Insbesondere folgt aus $n'\equiv 0\mod 7$ sofort $n\equiv 0\mod 7$ und aus
+$n\equiv 0\mod 7$ folgt $3n'\equiv 0\mod 7$. Wegen $\ggT(3,7)=1$ kann man aber
+die letzte Kongruenz durch $3$ teilen und hat dann $n'\equiv 0\mod 7$, was zu
+zeigen war.
+\end{loesung}
+\end{beispiel}
+%%%%%%%%%%%%%%% Das folgende Aufgabenmaterial stammt aus Chemnitz, Klasse 8
+
+\begin{aufgabe} Bestimme den ggT von folgenden Zahlenpaaren mit  Hilfe des {\sc
+    Euklid}ischen Algorithmus!
+\\
+a) (869, 553) b) (4743, 4123) c) (1632, 833) d) (4140, 3666)
+\end{aufgabe}
+
+\begin{aufgabe} Bestimme den ggT der 4 Zahlen $3774, 2886, 1702 $ und $ 777$!
+\end{aufgabe}
+
+\begin{aufgabe} (a) Beweise: Jede Primzahl $p>3$ lässt bei der Division durch $6$ den
+  Rest $1$ oder $-1$!
+\\
+(b)Beweise: Für jede Primzahl $p>3$ gilt $24\mid (p^2-1)$!
+\end{aufgabe}
+
+
+\begin{aufgabe} Wahr oder falsch? Begründe!
+\begin{align*}
+-14&\equiv 46 \mod 5
+\\
+42&\equiv -21\mod 7
+\\
+6538& \equiv 6508 \mod 6
+\\
+875&\equiv 161\mod 9
+\\
+875&\equiv 161\mod 3
+\\
+401276&\equiv 25362\mod {11}
+\\
+401276&\equiv 25362\mod {9}
+\\
+401276&\equiv 25362\mod {99}
+\\
+1728435&\equiv 1464315 \mod{6}
+\\
+1728435&\equiv 1464315 \mod{15}
+\\
+1728435&\equiv 1464315 \mod{18}
+\\
+1728435&\equiv 1464315 \mod{20}
+\\
+1728435&\equiv 1464315 \mod{22}
+\end{align*}
+\end{aufgabe}
+
+\begin{aufgabe} Wahr oder falsch? Begründe!
+\\
+(a) $1111\equiv 111\equiv 11\mod {100}$  (b) $1001\equiv 10011001\equiv 0\mod
+{13}$
+\\
+(c) $2^{10} \equiv 1 \mod {11}$ (d) $2^{12}\equiv 1\mod {13}$ (e) $2^{14} \equiv 1\mod {15}$
+\end{aufgabe}
+
+\begin{aufgabe} Beweise die Transitivität der Kongruenzrelation, d.\,h.{} für alle
+  natürliche Zahlen $m\in\N $ und alle ganzen Zahlen $a,b,c\in \Z$ gilt:
+\\
+Wenn $a\equiv b\mod m$ und $b\equiv c\mod m$, dann $a\equiv c\mod m$!
+\end{aufgabe}
+
+\begin{aufgabe}
+Vereinfache durch Division auf beiden Seiten!
+\begin{xalignat*}{2}
+64&\equiv 40\mod {12}& 32&\equiv -16\mod{12}
+\\
+21&\equiv 6 \mod{15}& 135&\equiv 15\mod{8}
+\\
+-45 &\equiv 60\mod{7}& 196&\equiv 378\mod{91}
+\\
+65&\equiv 117\mod{26}& 906&\equiv 663\mod{243}
+\\
+-11&\equiv 121\mod{6} & 306&\equiv 663\mod{357}
+\\
+56&\equiv -24\mod{16}&&
+\end{xalignat*}
+\end{aufgabe}
+
+\begin{aufgabe} Gegeben seien zwei ganze Zahlen $a,b\in \Z$, die bei der Division
+  durch $24$ die Reste $5$ bzw.{} $7$ lassen.
+Beweise, dass die  Differenz ihrer Quadrate durch $24$ teilbar ist!
+\end{aufgabe}
+
+\begin{aufgabe} Gegeben seien zwei ganze Zahlen $a,b\in \Z$, die bei der Division
+  durch $7$ die Reste $3$ bzw.{} $4$ lassen.
+Beweise, dass die  Differenz ihrer Quadrate durch $7$ teilbar ist!
+\end{aufgabe}
+
+\begin{aufgabe}
+Überprüfe die Richtigkeit der folgenden Rechnungen modulo $9$ und modulo $11$!
+\\
+a) $56903\cdot 48721= 2772371063$
+\\
+b) $47773\cdot 535353= 25577708869$
+\\
+c) $91453\cdot 60817= 5561890171 $ oder $5561897101$
+\\
+d) $1683^2 +79^4 +17^9 +23^8= 196940644348$
+\\
+e) $138^2\cdot 21 +46^3\cdot 19 +37^4\cdot 23= 45361311$
+\\
+f) $24^4\cdot 12 +17^3\cdot 21+32^5\cdot 4= 138302213$
+\end{aufgabe}
+
+\begin{aufgabe}
+Auf welche Ziffer enden die folgenden Produkte?
+\\
+a) $z= 3826^{12}\cdot 417^5\cdot 1992^{6}\cdot 2439^5$
+\\
+b) $z= 3826^{12}\cdot 574^8\cdot 2964^9\cdot 39^{26}$
+\\
+c) $z= 741^7\cdot 543\cdot 39726^{13}$
+\end{aufgabe}
+
+\begin{aufgabe}
+Beweise folgende Sätze:
+\\
+a) $44\mid 43^7 -87^{13}$.
+\\
+b) $51\mid 171^n-33^{2n}$ für alle natürlichen Zahlen $n\in\N$.
+\\
+c) $55\mid 5324^{2n+1}+396^{2n}$ für alle natürlichen Zahlen $n\in\N$.
+\\
+d) $63\mid 154^{2n}+98^{2n+1}$ für alle natürlichen Zahlen $n\in\N$.
+
+\end{aufgabe}
+
+\begin{aufgabe}
+Es sei $z=n^3+2n$. Durch welche natürliche Zahl (gößer als $1$) ist $z$ dann
+stets teilbar? Beweise Deine Vermutung!
+\end{aufgabe}
+
+\begin{aufgabe} Beweise: Wenn die Summe $a^3+b^3+c^3$ dreier Kubikzahlen durch $7$ teilbar ist,
+  so ist wenigstens eine der Ausgangszahlen $a,b$ oder $c$ durch $7$ teilbar.
+\end{aufgabe}
+
+\begin{aufgabe} Es sei $z=n^{12}-n^8-n^4+1$ und $n$ nicht durch $3$ teilbar.
+\\
+a) Zeige, dass dann gilt $3\mid z$!
+\\
+b) Zeige, dass dann gilt $9\mid z$!
+\end{aufgabe}
+
+\begin{aufgabe} ($13$er-Regel) Es sei $n$ eine natürliche
+  Zahl. Trennt man von $n$ die letzte Ziffer ab, multipliziert sie mit $4$ und
+  addiert das Ergebnis zum verbliebenen Teil von $n$, so erhält man $n'$.
+\\
+Beweise, dass $n$ genau dann durch $13$ teilbar ist, wenn $n'$ durch $13$
+  teilbar ist!
+\\
+Finde selbst eine $17$er-Regel und beweise sie!
+\end{aufgabe}
+
+\subsection*{Lineare diophantische Gleichungen und lineare Kongruenzen}
+Eine lineare diophantische Gleichung $ax+by=c$ mit gegebenen
+  $a,b,c\in \Z$  ist genau dann  l"osbar, wenn $\ggT(a,b)\mid c$. Diese
+  Bedingung ist offensichtlich notwendig, denn wenn $t\mid a$ und $t\mid b$,
+  dann teilt $t$ auch die gesamte linke Seite, also $t\mid c$.
+\\
+Eine l"osbares diophantisches Gleichungssystem mit $n$ (unabh"angigen)
+  Gleichungen und $m$ Variablen hat i.\,a. $m-n$ freie Parameter. Ziel ist es,
+  diese ganzzahlige parametrische L"osung zu finden. Dazu gibt es ein
+  systematisches Verfahren, das auf dem Euklidischen Algorithmus beruht. Man
+  kann aber auch durch geeignete Wahl des Moduls die Gleichung schrittweise
+  vereinfachen. 
+
+
+\begin{aufgabe} Welche Paare $(x,y)$ von ganzen Zahlen erf"ullen die diophantische
+  Gleichung $47x-111y=89$?
+\end{aufgabe}
+\begin{loesung} Wir betrachten die obige Gleichung modulo $3$ und erhalten $2x\equiv 2\mod3$
+  und wegen $\ggT(2,3)=1$ also $x\equiv 1\mod3$ bzw.{} $x=3t+1$. Setzt man
+  dies in die Ausgangsgleichung ein, fasst zusammen und dividiert durch $3$,
+  so hat man $47t-37y=14$. Wir betrachten diese Gleichung modulo $37$ und
+  haben $10t\equiv 14\mod 37$ oder $5t\equiv 7\mod 37$. Um weiter durch $5$
+  teilen zu k"onnen, m"ussen wir einen Repr"asentanten von $7 \mod 37$
+  finden, der durch $5$ teilbar ist, etwa $7\equiv 7+4\cdot 37\equiv 155\equiv 5\cdot
+  31\mod 37$. Also gilt $t\equiv 31\mod 37$ bzw.{} $t=37s-6$ und somit
+  $x=111s-17$. Setzt man dies ein, so hat man $y=47s-8$.
+\end{loesung}
+
+\begin{aufgabe} $36$ Sch"uler sollen mit je einem Buch ausgezeichnet wrden. Es
+  gibt B"ucher f"ur $9,50\DM$, $11,00\DM$ und $13,75\DM$. Insgesamt stehen
+  $400\DM$ zur Verf"ugung, die restlos aufgebraucht werden  sollen. Welche
+  Varianten zum Kauf der B"ucher gibt es?
+\end{aufgabe}
+
+
+\begin{aufgabe} Bestimme die Lösungsmenge der folgenden linearen Kongruenzen!
+
+\begin{tabular}{ll}
+a) $2x\equiv 4\mod 5$&  h)$ 24x\equiv 13\mod 4$
+\\
+b) $3x\equiv 4\mod 5$ & i) $121x \equiv 88\mod{22}$
+\\
+c) $5x\equiv 6\mod 7$& k) $25x\equiv 12\mod 5$
+\\
+d) $ 23x\equiv 42\mod 5$ &l) $23x\equiv 13\mod 9$
+\\
+e) $56x \equiv 10\mod{84}$& m) $39x\equiv 30\mod{51}$
+\\
+f) $19x\equiv 18\mod{17}$& n) $45x\equiv 27\mod{6}$
+\\
+g) $123x\equiv 87 \mod{10}$ &o) $10x\equiv 16\mod{28}$
+\end{tabular}
+\end{aufgabe}
+
+\begin{aufgabe} L"ose in nat"urlichen Zahlen
+  $10x+18y+15z=404$!
+\end{aufgabe}
+
+\begin{aufgabe} Wie viele L"osungen in nat"urlichen Zahlen besitzt 
+$9x+11y=1996$?
+\end{aufgabe}
+
+\begin{aufgabe} Man beweise: Es seien $a$ und $b$ ganze Zahlen und $11a  +2b$ ist
+  durch $19$ teilbar. Dann ist auch $18a +5b$ durch $19$ teilbar.
+\end{aufgabe}
+
+\subsection*{Teilbarkeit durch 3, 5 und 11, Quersummen}
+\begin{aufgabe}
+Man denke sich alle nat"urlichen Zahlen von $ 1$ bis $1000$ fortlaufend auf
+folgende Weise hingeschrieben
+$$
+1234567891011\cdots 9991000.
+$$
+Beweise, dass die so entstandene Zahl nicht durch $2001$ teilbar ist!
+\end{aufgabe}
+\begin{loesung} Die obige Zahl hat die Gestalt $z=\sum_{n=1}^{1000} n{\cdot}
+  10^{a_n}$ mit gewissen Exponenten $a_n$. Wir berechnen ihren Rest modulo $3$:
+$$ z\equiv \sum_{n=1}^{1000} n\equiv \half 1000{\cdot} 1001\equiv 500 {\cdot}
+2\equiv 1\mod 3.
+$$
+Somit ist $z$ nicht durch $3$ teilbar, also auch nicht durch $2001$.
+\end{loesung}
+
+\begin{aufgabe}
+Bildet man aus einer im 10er System geschriebenen Zahl durch beliebiges
+Vertauschen der ersten, dritten, f"unften usw.{} Ziffer und beliebiges
+Vertauschen der zweiten, vierten, usw.{} Ziffer eine neue Zahl, dann ist die
+Differenz aus der Ausgangszahl und der neuen Zahl durch $99$ teilbar.
+\end{aufgabe}
+
+\begin{loesung} F"ur eine nat"urliche Zahl $z=\overline{a_n a_{n-1}\cdots a_1 a_0}$ sei
+  $A(z)=a_0-a_1+a_2-+\cdots +(-1)^{n}a_n$ die alternierende Quersumme und
+  $Q(z)=a_0+\cdots +a_n$ die Quersumme. Wegen $10^k\equiv (-1)^k \mod 11 $ und
+  $10^k\equiv 1\mod 9$ gilt $z\equiv A(z)\mod 11$ und $z\equiv Q(z)\mod
+  9$. Durch die oben beschriebene Vertauschung der Ziffern "andert sich aber
+  die alternierende Quersumme $A(z)$ der Zahl nicht und nat"urlich auch  nicht
+  die Quersumme $Q(z)$. Also gilt f"ur die vertauschte Zahl $z'$, dass
+  $z'\equiv A(z')= A(z)\equiv z\mod 11$, $z'\equiv Q(z')= Q(z)\equiv z\mod 9$.
+Hieraus folgt $9\mid (z'-z)$ und $11\mid (z'-z)$. Wegen der Teilerfremdheit
+  $\ggT(9,11)=1$ folgt $99\mid (z'-z)$ und damit die Behauptung.
+\end{loesung}
+
+
+
+\subsection*{Quadratreste}
+\begin{aufgabe} Die nat"urlichen Zahlen $(x,y,z)$ hei"sen {\em pythagor"aisches
+    Tripel}, wenn $x^2+y^2=z^2$ gilt. Beweise, dass in jedem pythagor"aischen
+    Tripel eine durch $5$ teilbare Zahl vorkommt!
+\end{aufgabe}
+
+\begin{aufgabe} 
+(a) Jede nat"urliche Zahl der Form $4k+3$ l"asst sich nicht als Summe von zwei
+Quadraten schreiben.
+\\
+(b) Jede nat"urliche Zahl der Form $8k+6$ l"asst sich nicht als
+    Summe von zwei Quadraten schreiben.
+\\
+(c) Jede nat"urliche Zahl der Form $8k+7$ l"asst sich nicht als Summe von drei
+Quadraten schreiben.
+\end{aufgabe}
+
+\begin{aufgabe} (a) Man beweise, dass f"ur alle nat"urliche Zahl $n$ die Zahlen
+  $3n-1$, $5n\pm 2$, $6n+2$, $7n-1$, $7n-2$ und $7n+3$ keine Quadratzahlen sind!
+\\
+(b) F"ur welche nat"urlichen Zahlen $n$ sind die Zahlen $6n+2$ und $7n+3$
+nicht teilerfremd?
+\\
+(c) Beweise, dass f"ur keine nat"urliche Zahl $n$ das Produkt $(6n+2)(7n+3)$
+eine Quadratzahl ist!
+\end{aufgabe}
+
+\begin{aufgabe} Es gibt keine Quadratzahl $A$, die aus genau 600 Sechsen und einigen
+  Nullen besteht. 
+\end{aufgabe}
+ 
+\begin{loesung} 
+Wenn $A$ eine Quadratzahl ist, so endet $A$ auf eine gerade Anzahl
+von Nullen. Streicht man diese Endnullen, so erh"alt man eine Quadratzahl
+$2B$, wobei $B$ aus lauter Dreien besteht, also ungerade ist. $2B$ enth"alt
+also nur einen Faktor $2$ und ist somit keine Quadratzahl. 
+\end{loesung}
+
+\begin{aufgabe} Eine $9$-stellige nat"urliche Zahl $A$, die auf $5$ endet und alle
+  Ziffern bis auf die $0$ enth"alt, kann keine Quadratzahl sein.
+\end{aufgabe}
+\begin{loesung} Da $A$ auf $5$ endet, ist
+  $A=x^2=(10a+5)^2=100a^2+100a+25=100a(a+1)+25$. Nun ist aber $a(a+1)\equiv 0,2,6
+  \mod 10$. Auf $0$ und $2$ kann $a(a+1)$ nicht enden, also ist die drittletzte
+  Ziffer $6$. Damit gilt $125=5^4\mid A=1000B+625$; also $25\mid x$. Somit
+  gilt $x=100b+25$ oder $x=100b+75$. Quadriert man dies, so erh"alt man wie oben, dass die
+  viertletzte Ziffer $0$ oder $5$ ist.
+\end{loesung}
+
+\subsection*{Potenzreste}
+Es sei $p$ eine Primzahl und $a\in \N$. Dann gilt $a^p\equiv a\mod p$
+({\sc Fermat}scher Satz). Ist $a$ nicht durch $p$ teilbar, so kann man k"urzen und
+es gilt $a^{p-1}\equiv 1\mod p$. Ist $m\in \N$ und $\vp(m)$ die Anzahl der zu
+$m$ teilerfremden Restklassen modulo $m$ ({\em prime Restklassen}), dann gilt
+f"ur alle $a\in \N$ mit $\ggT(a,m)=1$
+\begin{align}\label{fe}
+ a^{\vp(m)}\equiv 1\mod m.
+\end{align}
+ Dies ist der {\sc Euler-Fermat}sche Satz. F"ur
+Primzahlpotenzen gilt $\vp(p^\alpha)=p^{\alpha-1}(p-1)$ und f"ur teilerfremde
+Zahlen $m$, $n$ ist $\vp(mn)=\vp(m)\vp(n)$. Diese Funktion $\vp(n)$ hei"st
+ {\sc Euler}sche Funktion. Im allgemeinen ist $\vp(m)$ nicht die kleinste Zahl $k$
+ mit $a^k\equiv 1\mod m$. Zum Beispiel ist $3^5\equiv 243\equiv 1 \mod 11$,
+ aber es gilt $\vp(11)=10$. Diese kleinste Zahl $k$ ist aber stets ein Teiler
+ von $\vp(m)$. Damit ist klar, dass die Folge der Potenzreste $(a^n \mod m)$
+ periodisch mit der Periode $k$ ist (vorausgesetzt, dass $\ggT(a,m)=1$).
+
+
+\begin{aufgabe} 
+Welchen Rest l"asst $2^{32}$ bei der Division durch $641$?
+\end{aufgabe}
+
+
+\begin{aufgabe} Es sei $A=3^{105}+4^{105}$. Beweise, dass $7\mid A$. Bestimme die
+  Reste von $A$ bei der Division durch $11$ und $13$!
+\end{aufgabe}
+
+\begin{aufgabe}
+(a) Wenn die Summe zweier nat"urlicher Zahlen durch $7$ teilbar ist, so ist die
+Summe ihrer siebenten Potenzen durch $49$ teilbar.
+\\
+(b) Ist die Summe von drei Kubikzahlen durch $7$ teilbar, so ist mindestens
+eine von ihnen durch $7$ teilbar.
+\end{aufgabe}
+
+\begin{aufgabe} Auf welche beiden Ziffern endet $7^{7^{7^7}}-7^{7^7}$? \end{aufgabe}
+
+\begin{loesung} Wir berechnen die Periode von $7^n\mod{100}$:
+$$7^1\equiv 7\mod{100},\quad 7^2\equiv 49\mod{100},\quad 7^3\equiv
+43\mod{100},
+\quad 7^4\equiv 01 \mod{100}
+$$
+Also ist die Periodenlänge $4$. Nun ist $7^n\equiv (-1)^n\equiv -1\mod{4}$
+wenn $n$ eine ungerade Zahl ist. Folglich gilt $7^{7^{7^7}}\equiv 7^{7^7}\equiv
+7^3\equiv 43 \mod{100}$ und damit endet $7^{7^{7^7}}-7^{7^7}$ auf zwei Nullen.
+\end{loesung}
+
+\subsection*{Teilbarkeit und Primfaktorzerlegung}
+Primzahlen gr"o"ser als $3$ haben die Gestalt $6n\pm 1$. Quadrate von
+ungeraden nat"urlichen Zahlen sind stets kongruent $1$ modulo $8$. Die folgenden Formeln
+spielen immer wieder eine wichtige Rolle beim Ausklammern von Faktoren.
+\begin{align*}
+a^n-b^n&=(a-b)(a^{n-1}+a^{n-2}b+\cdots +b^{n-1},
+\\
+a^u+b^u&=(a+b)(a^{u-1}-a^{u-2}b+-\cdots +b^{u-1}),\quad\text{falls $u$
+  ungerade,}
+\\
+(a+b)^n&=\sum_{k=0}^n\binom{n}{k}a^k b^{n-k}.
+\end{align*}
+
+
+\begin{aufgabe} (a) Man beweise, dass f"ur jede nat"urliche Zahl $n$ die Zahl 
+ $n^6-n^2$ durch $10$ teilbar ist!
+\\
+(b) Man beweise, dass f"ur jede ungerade nat"urliche Zahl $n$ die Zahl
+$n^{12}-n^8-n^4+1$ durch $512$ teilbar ist!
+\end{aufgabe}
+
+
+\begin{aufgabe} Man denke sich die Primzahlen $\ge 5$ der Gr"o"se nach fortlaufend
+  nummeriert:
+\begin{center}
+\begin{tabular}{l|lllllll}
+Primzahl& $5$&$7$& $11$&$13$&$17$&$19$&$\cdots$
+\\
+\hline
+Nummer&1&2&3&4&5&6&$\cdots$
+\end{tabular}
+\end{center}
+Man beweise, dass jede Primzahl gr"o"ser ist als das Dreifache ihrer Nummer.
+\end{aufgabe}
+
+\begin{aufgabe} (a) Ist die Summe dreier Primzahlen, jede gr"o"ser als $3$, durch $3$
+  teilbar, dann sind die  Differenzen je zweier dieser Primzahlen durch $6$
+  teilbar.
+\\
+(b) Sind $p$ und $q$ Primzahlen gr"o"ser als $3$, dann ist die Differenz ihrer
+  Quadrate durch $24$ teilbar.
+\end{aufgabe}
+
+\begin{aufgabe} Es gibt kein Polynom  $f(x) $ mit ganzzahligen Koeffizienten, so
+  dass $f(7)=11$ und $f(11)=13$ gilt.
+\end{aufgabe}
+\begin{loesung} F"ur jedes Polynom $f$ mit ganzzahligen Koeffizienten gibt es ein
+  Polynom $q(x)$ mit ganzzahligen Koeffizienten, so dass
+  $f(x)=f(a)+(x-a)q(x)$. Setzt man insbesondere $x=b$ ein, so hat man
+  $(b-a)\mid (f(b)-f(a))$. Dies ist aber f"ur die oben gegebenen Werte nicht
+  erf"ullt, da $11-7=4\not\vert(13-11)$.
+\end{loesung}
+
+\begin{aufgabe} Die Gleichung $x^2+y^2+z^2=2xyz$ hat keine L"osung in ganzen
+  Zahlen bis auf $x=y=z=0$.
+\end{aufgabe}
+\begin{loesung} Es sei $2^k$ die h"ochste Zweierpotenz, die in $\ggT(x,y,z)$
+  auftritt, also $x=2^kx_1, y=2^ky_1$ und $z=2^kz_1$. Setzt man dies ein, so
+  erh"alt man $x_1^2+y_1^2+z_1^2=2^{k+1}x_1y_1z_1$. Somit ist die linke Seite
+  durch $2$ teilbar. Wegen der Wahl von $k$ ist genau eine der Zahlen, etwa
+  $x_1$, gerade und die anderen beiden ungerade; $x_1=2x_2$. Dann ist aber
+$$
+y_1^2+z_1^2=2^{k+2}x_2y_1z_1-4x_2^2\equiv 0\mod 4.
+$$
+Dies widerspricht aber $y_1^2+z_1^2\equiv 2\mod 4$.
+\end{loesung}
+
+\begin{aufgabe} Ist  $2^n-1$ eine Primzahl, so auch $n$.  Ist  $2^n+1$  eine
+  Primzahl, so ist   $n$ eine Zweierpotenz.
+\end{aufgabe}
+
+\begin{aufgabe} Eine Zahl aus  $3^n$ gleichen Ziffern ist durch $3^n$ teilbar.
+\end{aufgabe}
+\begin{loesung} Induktiv. Offenbar gen"ugt es, die Aufgabe f"ur die Ziffer $1$ zu
+  zeigen. F"ur $n=1$ gilt $3^1\mid 111$. Nun sei die Zahl $z$ aus $3^n$ Einsen
+  bereits durch $3^n$ teilbar. Die Zahl $z'$ aus $3^{n+1}$ Einsen hat dann die
+  Gestalt
+$$ z'=\overline{zzz}= z 10^{2\cdot 3^n}+z10^{3^n}+z=z(10^{2\cdot 3^n}+10^{3^n}+1).
+$$
+Da $3^n\mid z$ und der Ausdruck in der Klammer durch $3$ teilbar ist, folgt
+die Behauptung.
+\end{loesung}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+\end{document}
+
+
+
+
+

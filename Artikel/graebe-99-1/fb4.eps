@@ -1,0 +1,94 @@
+%!
+%%Title: 
+%%Creator: MapleV 
+%%Pages:  1
+%%BoundingBox: 0 0 500 500
+%%DocumentNeededResources: font Helvetica
+%%EndComments
+20 dict begin
+gsave
+/drawborder false def
+/m {moveto} def
+/l {lineto} def
+/C {setrgbcolor} def
+/Y /setcmykcolor where { %%ifelse Use built-in operator
+       /setcmykcolor get
+   }{ %%ifelse Emulate setcmykcolor with setrgbcolor
+       { %%def
+           1 sub 3 { %%repeat
+               3 index add neg dup 0 lt { pop 0 } if 3 1 roll
+           } repeat setrgbcolor
+       } bind
+   } ifelse def
+/G {setgray} def
+/S {stroke} def
+/NP {newpath} def
+%%%%This draws a filled polygon and avoids bugs/features
+%%%%   of some postscript interpreters
+%%%%GHOSTSCRIPT: has a bug in reversepath - removing
+%%%%the call to reversepath is a sufficient work around
+/P {gsave fill grestore reversepath stroke} def
+%%%%This function is needed for drawing text
+/stringbbox {gsave NP 0 0 m false charpath flattenpath
+   pathbbox 4 2 roll pop pop 1.1 mul cvi exch 1.1 mul 
+   cvi exch grestore} def
+/thin 3 def
+/medium 7 def
+/thick 16 def
+/boundarythick 20 def % thichess of bounding box
+%%IncludeResource: font Helvetica
+23.000000 113.000000 translate
+/defaultTitleFont {/Helvetica findfont 181 scalefont setfont} def
+/defaultFont {/Helvetica findfont 128 scalefont setfont} def
+0.1132 0.1132 scale
+1 setlinejoin
+1 setlinecap
+0.0 setgray
+/inch {72 mul} def
+/fheight 0.35 inch neg def
+    0 G
+medium setlinewidth
+[] 0 setdash defaultFont
+NP 4215 845 m 1383 2409 l
+S
+NP 782 845 m 3099 2409 l
+S
+NP 1984 3974 m 2499 845 l
+S
+NP 1383 2409 m 2499 845 l
+S
+NP 3099 2409 m 1383 2409 l
+S
+NP 2499 845 m 3099 2409 l
+S
+NP 4215 845 m 1984 3974 l
+S
+NP 782 845 m 4215 845 l
+S
+NP 1984 3974 m 782 845 l
+S
+(C') dup stringbbox 2 idiv 2543 exch sub exch 2 idiv 1194 exch sub exch m show
+(S) dup stringbbox 2 idiv 1873 exch sub exch 2 idiv 2052 exch sub exch m show
+(B') dup stringbbox 2 idiv 2543 exch sub exch 2 idiv 3323 exch sub exch m show
+(A') dup stringbbox 2 idiv 576 exch sub exch 2 idiv 2499 exch sub exch m show
+(C) dup stringbbox 2 idiv 576 exch sub exch 2 idiv 4421 exch sub exch m show
+(B) dup stringbbox 2 idiv 576 exch sub exch 2 idiv 576 exch sub exch m show
+(A) dup stringbbox 2 idiv 4421 exch sub exch 2 idiv 1984 exch sub exch m show
+boundarythick setlinewidth
+% The following draws a box around the plot,
+% if the variable drawborder is true
+drawborder { 
+/bd boundarythick 2 idiv def
+[] 0 setdash 
+NP bd bd m bd 5000 bd sub l 
+5000 bd sub 5000 bd sub l 
+5000 bd sub bd l 
+bd bd l S
+} if % end of if to draw the border
+
+showpage
+grestore
+end
+%%Trailer
+%%BoundingBox: 0 0 618 528 
+%%EOF

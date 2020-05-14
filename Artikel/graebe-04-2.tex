@@ -1,0 +1,149 @@
+% Version: $Id: graebe-04-2.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\def\gcd{{\rm ggT}}
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Berechnung des gr"o"sten gemeinsamen Teilers (ggT)\\ mit
+dem Euklidschen Algorithmus\kosemnetlicensemark\\
+Arbeitsmaterial für Klasse 7}
+\date{}
+
+\begin{document} 
+\maketitle         
+
+Das hier besprochene Verfahren basiert auf dem {\em Satz von der
+Division mit Rest}:
+\begin{satz}
+Zu zwei positiven nat"urlichen Zahlen $a,b$ gibt es eindeutig
+bestimmte nat"urliche Zahlen $q,r$ mit $0\leq r<b$, so dass 
+\[a=q\cdot b+r\]
+gilt. $q$ nennt man den {\bf Quotienten} und $r$ den {\bf Rest} bei
+Division von $a$ durch $b$. 
+\end{satz}
+Die beiden Gr"o"sen $q$ und $r$ kann man leicht bestimmen: $q$ ist
+gerade der Vorkommaanteil, wenn man die Division $a/b$ auf dem
+Taschenrechner ausf"uhrt. Die Mathematiker haben f"ur diesen
+Vorkommateil einer (positiven reellen) Kommazahl $x$ das spezielle
+Symbol $[x]$ eingef"uhrt (sprich: der ganze Teil von $x$). Wir k"onnen
+also schreiben
+\[q:=\left[\frac{a}{b}\right].\]
+Der Rest $r$ ergibt sich dann eindeutig aus der Beziehung
+\[r:=a-q\cdot b,\]
+was man wieder auf dem Taschenrechner ausrechnen kann. 
+
+Weil beide Funktionen so einfach sind, spielen sie auch in Computern
+und Programmiersprachen eine wichtige Rolle. In Pascal kann man
+z.B. $q$ und $r$ mit den Funktionen {\tt q:=a div b} und {\tt r:=a mod b}
+berechnen und damit den Euklidschen Algorithmus sehr einfach
+programmieren. 
+\medskip
+
+Zur ggT-Berechnung verwenden wir die folgende wichtige Eigenschaft,
+die $a,\ b$ und $r$ verbindet: Es gilt $\gcd(a,b)=\gcd(b,r)$. Warum gilt
+diese Beziehung?  Betrachten wir die Relation $a=q\,b+r$, so sehen
+wir, dass {\em jeder} gemeinsame Teiler von $a$ und $b$ auch ein
+Teiler von $r$ ist und umgekehrt jeder gemeinsame Teiler von $b$ und
+$r$ auch ein gemeinsamer Teiler von $a$ ist. Die {\em Mengen} der
+gemeinsamen Teiler von $a$ und $b$ bzw. von $b$ und $r$ stimmen also
+"uberein und damit auch der {\em gr"o"ste} gemeinsame Teiler.
+\medskip
+
+Betrachten wir nun ein \ul{Beispiel}. Wir wollen $\gcd(99,69)$
+berechnen. Nach dem aus der Schule bekannten Verfahren w"urden wir
+dazu jede der beiden Zahlen in Faktoren $${99=3^2\cdot 11,\quad
+69=3\cdot 23}$$ zerlegen und gew"annen durch Vergleich der Exponenten
+die Antwort $ggT=3$.
+
+Stattdessen k"onnen wir auch fortgesetzte Division mit Rest anwenden: 
+\[\begin{array}{rcl}
+99=1\cdot 69+30,&\mbox{also gilt}& \gcd(99,69)=\gcd(69,30)\\
+69=2\cdot 30+9,&\mbox{also gilt}& \gcd(69,30)=\gcd(30,9)\\
+30=3\cdot 9+3,&\mbox{also gilt}& \gcd(30,9)=\gcd(9,3)\\
+9=3\cdot 3,&\mbox{also gilt}& \gcd(9,3)=3,
+  \end{array}
+\]
+denn die letzte Division geht ja auf. Setzen wir die Beziehungen, die jeweils
+hinter den Worten {\glqq}also gilt{\grqq} stehen, zusammen, so erhalten wir
+schlie"slich $\gcd(99,69)=3$. Dieses Verfahren der fortgesetzten Division mit
+Rest bezeichnet man als den {\bf Euklidschen Algorithmus}. Da die Reste in
+jedem Schritt kleiner werden, landen wir nach endlicher Zeit {\em immer} bei
+einer Division mit Rest 0.
+
+Beachte, dass wir bei den Rechnungen keine Zerlegung in Faktoren
+verwendet haben. In einfachen Beispielen wie dem hier betrachteten ist
+eine solche Zerlegung schnell zu finden. Allgemein muss man daf"ur
+aber ziemlichen Aufwand betreiben.
+
+\begin{aufgabe}
+  Bestimme $\gcd(2021027,3028009)$. Versuche, eine Zerlegung in Faktoren zu
+  finden, ohne das Ergebnis unserer weiteren Rechnung zu betrachten.
+\end{aufgabe}
+
+Der Euklidsche Algorithmus, den man bei diesen Zahlen noch ohne
+Probleme mit dem Taschenrechner bew"altigen kann, liefert nacheinander
+\begin{align*}
+3028009=&1\cdot 2021027 +1006982,\\
+&\qquad\text{also }\gcd(3028009,2021027)=\gcd(2021027,1006982)\\ 
+2021027=&2\cdot 1006982 + 7063,\\
+&\qquad\text{also }\gcd(2021027,1006982)=\gcd(1006982,7063)\\ 
+1006982=&142\cdot 7063 + 4036,\\&\qquad\text{ also }
+\gcd(1006982,7063)=\gcd(7063,4036)\\ 
+7063 =& 1\cdot 4036 + 3027,\\&\qquad\mbox{  also  }
+\gcd(7063,4036)=\gcd(4036, 3027)\\  
+4036 =& 1\cdot 3027 + 1009,\\&\qquad\mbox{  also  } 
+\gcd(4036, 3027)=\gcd(3027, 1009)\\  
+3027 =& 3\cdot 1009,\\&\qquad\mbox{  also  }\gcd(3027, 1009) = 1009\\ 
+\end{align*}
+Mit Hilfe des Euklidschen Algorithmus kann man sogar ganze Klassen von
+Aufgaben wie zum Beispiel die folgende l"osen:
+\begin{aufgabe}
+  Untersuche, welchen gr"o"sten gemeinsamen Teiler die Zahlen
+  $2n+3$ und $3n+2$ f"ur verschiedene nat"urliche Zahlen $n$ haben. 
+\end{aufgabe}
+Um uns ein Gef"uhl f"ur die Aufgabenstellung zu verschaffen, wollen wir zuerst
+einmal den ggT f"ur einige Werte von $n$ bestimmen. Die entsprechenden
+Aufgaben und L"osungen lauten ($n=0,\ldots,10$):
+\[\begin{array}{ccc}\gcd(3,2)=1,& \gcd(5,5)=5,& \gcd(7,8)=1\\
+\gcd(9,11)=1,& \gcd(11,14)=1,& \gcd(13,17)=1\\ \gcd(15,20)=5,&
+\gcd(17,23)=1,& \gcd(19,26)=1\\ \gcd(21,29)=1,& \gcd(23,32)=1 \end{array}
+\]
+Wir erkennen, dass die beiden Zahlen meist teilerfremd sind, aber
+manchmal auch einen gemeinsamen Teiler 5 haben.
+
+Der Euklidsche Algorithmus hilft uns weiter, diese Beobachtung in eine
+Gesetzm"a"sigkeit zu gie"sen: Egal, welchen Wert die Zahl $n$ annimmt,
+es gilt immer 
+\[\begin{array}{ccc}
+3n+2 = 1\cdot (2n+3) + (n-1),&\mbox{  also  }& 
+\gcd(3n+2,2n+3)=\gcd(2n+3,n-1)\\ 
+2n+3 = 2\cdot (n-1) + 5,&\mbox{  also  }& 
+\gcd(2n+3,n-1)=\gcd(n-1,5)
+  \end{array}
+\]
+Das ist zwar nicht genau der Euklidsche Algorithmus, denn f"ur $n=3$
+steht etwa in der zweiten Zeile $9=2\cdot 2+5$ und nicht $9=4\cdot
+2+1$. Aber die Tatsache, dass $r<b$ sein soll, haben wir ja beim
+Beweis, dass $\gcd(a,b)=\gcd(b,r)$ gilt, nicht verwendet, sondern erst,
+als es darum ging, zu zeigen, dass der Euklidsche Algorithmus immer
+auf eine exakte Division st"o"st und damit terminiert. Wir k"onnen
+also f"ur unsere Aufgabe wenigstens sagen, dass f"ur jedes $n$
+\[\gcd(3n+2,2n+3)=\gcd(n-1,5)\]
+gilt. Da 5 aber nur die Teiler 1 und 5 hat, erkennen wir: Wenn $n-1$
+nicht durch 5 teilbar ist, dann sind die beiden Ausgangszahlen
+teilerfremd. Ist dagegen $n-1$ durch 5 teilbar, so ist der gesuchte
+$ggT=5$. Die Antwort lautet also 
+\[\gcd(3n+2,2n+3) =
+  \begin{cases}
+    5 & \text{wenn } 5\,|\,n-1 \\ 1 & \text{sonst}
+\end{cases}\] 
+
+\begin{attribution}
+graebe (2004-09-02):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 7 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}
+

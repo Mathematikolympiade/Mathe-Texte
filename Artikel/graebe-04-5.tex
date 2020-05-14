@@ -1,0 +1,99 @@
+% Version: $Id: graebe-04-5.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Ortslinien in der Geometrie\kosemnetlicensemark\\
+Arbeitsmaterial für Klasse 7}
+\date{}
+
+\begin{document} 
+\maketitle         
+
+Ortslinien haben eine gro"se Bedeutung in der Geometrie, da sie es
+erlauben, logische Bedingungen in geometrische Aussagen zu verwandeln
+und umgekehrt. So kann man etwa die Aussage
+\begin{center}
+$X$ ist von $A$ und $B$ gleichweit entfernt
+\end{center}
+umformulieren zu 
+\begin{center}
+$X$ liegt auf der Mittelsenkrechten der Strecke $\ksegment{AB}$,
+\end{center}
+denn die Mittelsenkrechte ist gerade der entsprechende geometrische
+Ort. 
+
+Soll ein Punkt $X$ mehrere Bedingungen erf"ullen (wie z.B. in einer
+Konstruktionsaufgabe), so ergibt sich aus der Umformulierung in die
+Sprache der geometrischen Orte, dass $X$ der Schnittpunkt der
+entsprechenden Linien ist, was man oft zu dessen Konstruktion
+verwenden kann.
+\begin{aufgabe}
+  Konstruiere ein Dreieck $\ktriangle{ABC}$, von dem die L"ange $c$ der Seite
+  $AB$, die Gr"o"se $\alpha$ des Winkels $\kangle{CAB}$ und die L"ange $R$ des
+  Umkreisradius gegeben sind.
+\end{aufgabe}
+
+\ul{L"osung:} Wir beginnen mit der Seite $\ksegment{AB}$, die wir entsprechend
+der vorgegebenen L"ange zeichnen. Der fehlende Punkt $C$ wird durch zwei
+Bedingungen bestimmt: $\mangle{CAB}=\alpha$ und die Gr"o"se $R$ des
+Umkreisradius. Die zugeh"origen geometrischen Orte sind der Schenkel eines
+Winkels und eine Kreislinie. Den Schenkel des Winkels kann man sofort
+konstruieren, indem man $\alpha$ an der Seite $\ksegment{AB}$ in $A$ abtr"agt.
+Etwas schwieriger wird es mit dem Umkreis, von dem wir wissen, dass er durch
+$A,B$ geht und den Radius $R$ hat. Wo liegt sein Mittelpunkt $M$~?  Antwort,
+wieder mit Ortslinien: $M$ ist erstens von $A,B$ gleichweit entfernt (liegt
+also auf der Mittelsenkrechten der Strecke $\ksegment{AB}$) und zweitens gilt
+$\msegment{AM}=R$, d.h. $M$ liegt auf dem Kreis um $A$ mit dem Radius
+$R$. Damit bekommen wir $M$ als Schnitt der beiden genannten Linien. Nun
+k"onnen wir den Umkreis des gesuchten Dreiecks zeichnen und finden
+schlie"slich $C$ als Schnittpunkt des Schenkels des in $A$ angetragenen
+Winkels und des Umkreises.
+
+\begin{aufgabe}
+  Beachte, dass die L"osung nicht eindeutig ist. Wieviel zueinander nicht
+  kongruente L"osungen hat die Aufgabe? An welcher Stelle muss man genauer
+  argumentieren, um diese weiteren L"osungen nicht zu "ubersehen.
+\end{aufgabe}
+
+Umgekehrt kann man in geometrischen Beweisen, in denen Linien
+vorkomemn, die geometrische Orte sind, oft die logischen Eigenschaften
+verwenden, die sich mit ihnen verbinden. Erinnern wir uns an den
+\begin{satz}[Satz vom Schnittpunkt der Mittelsenkrechten] In jedem Dreieck
+gehen die drei Mittelsenkrechten durch einen gemeinsamen Punkt, den
+Umkreismittelpunkt des Dreiecks.
+\end{satz}
+und dessen \ul{Beweis:} Sei $M$ der Schnittpunkt der Mittelsenkrechten auf
+$\ksegment{AB}$ und $\ksegment{AC}$. Weil $M$ auf der Mittelsenkrechten von
+$\ksegment{AB}$ liegt, ist er von $A$ und $B$ gleichweit entfernt,
+d.h. $\msegment{AM}=\msegment{BM}$. Weil $M$ auf der Mittelsenkrechten von
+$\ksegment{AC}$ liegt, ist er von $A$ und $C$ gleichweit entfernt, d.h.\
+$\msegment{AM}=\msegment{CM}$. Damit ist auch $\msegment{BM}=\msegment{CM}$
+und folglich liegt $M$ auf der Mittelsenkrechten der Strecke
+$\ksegment{BC}$. Daraus folgen alle getroffenen Aussagen unmittelbar.
+\medskip
+
+Du siehst also, dass der Wechsel zwischen logischer und geometrischer
+Formulierung desselben Sachverhalts in vielen Aufgabenstellungen
+hilfreich ist. Eine {\bf Aufstellung aus der Schule bekannter
+geometrischer Ortslinien} wäre hier noch zu ergänzen.
+
+\subsubsection*{Wie findet man eine Ortslinie~?}
+
+Die folgenden Regeln helfen oft, eine passende Ortslinie zu finden:
+\begin{enumerate}
+\item Suche zuerst nach einzelnen Punkten, die auf der Ortslinie liegen
+m"ussen.
+\item Stelle eine Vermutung "uber die Art der Ortslinie auf (meist sind es
+Geraden oder Kreise; sonst kann man damit wenig anfangen).
+\item Und zuletzt: Beweise Deine Vermutung.
+\end{enumerate}
+
+
+\begin{attribution}
+graebe (2004-09-02):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 7 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}

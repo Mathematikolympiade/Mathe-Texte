@@ -1,0 +1,440 @@
+\documentclass{zirkelblatt1415}
+
+\usepackage[bottom=4cm]{geometry}
+\usepackage{textcomp}
+\usepackage{booktabs}
+%\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{enumerate,caption}
+\usepackage{amsthm,float}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+%\newcommand{\K}{\mathbb{K}}
+\newcommand{\PP}{\mathbb{P}}
+%\newcommand{\CP}{\mathbb{CP}}
+%\newcommand{\RP}{\mathbb{RP}}
+\newcommand {\kk} {\Bbbk}
+\newcommand{\VV}{\mathbb V}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\AM}{\operatorname{AM}}
+\newcommand{\GM}{\operatorname{GM}}
+\newcommand{\HM}{\operatorname{HM}}
+\newcommand{\QM}{\operatorname{QM}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\ol}[1]{\overline{#1}}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{definition}
+\newtheorem*{beispiel}{Beispiel}
+
+\theoremstyle{definition}
+\newtheorem*{thm}{Satz}
+
+\theoremstyle{definition}
+\newtheorem*{lem}{Lemma}
+
+\theoremstyle{remark}
+\newtheorem*{rmk}{Bemerkung}
+
+\begin{document}
+
+
+\maketitle{Wahlmathematik}{Vierter}
+
+\tableofcontents
+
+
+
+\section{Was sind Wahlen?}
+
+Bei Wahlen geht es darum aus einer Menge von Meinungen oder Pr??ferenzen eine Entscheidung zu treffen. Dies kann einerseits die Antwort auf die Frage sein, welche Pizza drei Freunde am Abend bestellen wollen, kann aber auch andererseits die Wahl eines neuen bayrischen Ministerpr??sidenten sein, wo Millionen von Menschen sich zwischen mehreren Alternativen entscheiden m??ssen. Dar??ber hinaus werden manchmal ganze Mengen von Menschen gew??hlt, also zum Beispiel bei der Wahl eines Komitees.
+
+Mathematisch gesprochen gibt es eine endliche Menge von W??hlern (engl.\ \emph{voters}) $V$ sowie eine endliche Menge von Kandidaten (engl.\ \emph{candidates}) $C$. In einer \emph{einfachen} Wahl geht es darum genau eine Person zu w??hlen. Dazu hat jeder W??hler $v\in V$ ein Ranking der $n$  Kandidaten $c_1,\ldots,c_n\in C$, zum Beispiel k??nnte $v$ denken, dass $c_3>c_1>c_{1000}>\cdots >c_n$ ist. Wir wollen annehmen, dass jeder W??hler eine echte Reihung vornimmt und nicht zwei Kandidaten als gleichwertig betrachtet. Wie ein W??hler zu dieser Reihung kommt ist nat??rlich eine andere Frage, die stark vom Problem sowie dem individuellen W??hler abh??ngt und soll hier nicht weiter betrachtet werden. Eine \emph{Wahlprozedur} ist jetzt ein Algorithmus, der aus der Menge der Reihungen der Kandidaten durch alle W??hler einen Gewinner aus der Menge der Kandidaten bestimmt.
+
+Gemeinhin k??nnte man denken, dass es offensichtlich ist, wie das geht. Schauen wir uns doch dazu mal ein paar Beispiele an.
+
+\begin{beispiel}
+  Es gibt genau zwei Kandidaten und $N$ W??hler. Es gewinnt, wer mehr Stimmen hat. Falls $N$ gerade ist, kann es offensichtlicherweise ein Unentschieden geben.
+\end{beispiel}
+
+\begin{beispiel}
+  Drei W??hler Anna, Bert und Cleopatra stimmen ??ber drei "`Kandidaten"' Apfelsaft, Birnensaft und Clementinensaft ab. Was passiert, wenn die Pr??ferenzen der drei wie folgt aussehen:
+  \begin{tabbing}
+    Anna: \qquad \quad\= Apfelsaft \= \qquad \quad \= $>$ \= \qquad \quad \=  Birnensaft \= \qquad \quad \= $>$ \= \qquad \quad \= Clementinensaft \\
+    Bert: \> Birnensaft \> \> $>$ \> \> Clementinensaft \> \> $>$ \> \> Apfelsaft \\
+    Cleopatra: \> Clementinensaft \> \> $>$ \> \> Apfelsaft \> \> $>$ \> \> Birnensaft \\
+  \end{tabbing}
+Wir sehen, dass es schwierig ist, hier einen Gewinner auszumachen. Da alle Getr??nke gleichoft "`am meisten"' gemocht werden, bekommen wir ein Unentschieden. Doch egal wie wir die weiteren Pr??ferenzen miteinbeziehen, wir bekommen kein zufriedenstellendes Ergebnis solange wir fordern, dass die individuellen Wahlen gleich mit einbezogen werden sollen.
+\end{beispiel}
+
+\begin{rmk}
+  Falls wir im letzten Beispiel die Meinung von Anna einfach ??bernehmen und die von Bert und Cleopatra ignorieren, erhalten wir nat??rlich ein Ergebnis -- n??mlich das von Anna. Das ist zwar nicht demokratisch, aber a priori auch erlaubt als Wahlsystem. Man w??rde dieses System wohl eher mit "`Dikatur"' umschreiben. Grunds??tzlich sind jedoch auch solche Sachen als Wahlsysteme zugelassen.
+\end{rmk}
+
+% Beispiel, das mit zwei verschiedenen sinnvollen Wahlsystemen verschiedene Ergebnisse liefert
+
+\section{Wahlsysteme}
+
+Ein \emph{Wahlsystem} ist eine Abbildung oder Vorschrift, die aus den individuellen Vorlieben oder Pr??ferenzen der W??hler ein Ergebnis produziert. Hier werden wir keine sogenannten Verh??ltniswahlsysteme anschauen, bei denen zum Beispiel Pl??tze in einem Parlament an Parteien verteilt werden, sondern so genannte einfache Wahlen. Dies bedeutet, dass das Ergebnis aus einer Reihung der Kandidaten besteht, zum Beispiel bei einer Pr??sidentschaftswahl, bei einem Sportwettkampf oder einer Gruppenentscheidung zum Pizza essen.
+
+Im folgenden werden wir einige einfache und bekannte Wahlsysteme f??r solche einfachen Wahlen ansprechen. Die meisten sind recht naheliegend und einige w??rden euch mit Sicherheit auch selbst einfallen.
+
+Wir  bezeichnen wieder mit $V$ die Menge der W??hler, mit $C$ die Menge der Kandidaten und benutzen $>$ und $<$ um Pr??ferenzen f??r Kandidaten sowie Wahlergebnisse zu beschreiben.
+
+\subsection{Absolute und einfache Mehrheit}
+
+Bei der \emph{absoluten Mehrheitswahl} gewinnt derjenige, der mehr als die H??lfte aller Stimmen bekommt. Das hei??t, dass alle W??hler genau einen Kandidaten nennen, f??r welchen sie abstimmen und dann wird ausgez??hlt. Offensichtlicherweise ist es m??glich, dass bei zwei Kandidaten beide gleich viele Ergebnisse erhalten und bei drei oder mehr Kandidaten k??nnte niemand mehr als die H??lfte der Stimmen bekommen. In diesen F??llen gibt es kein Ergebnis was offensichtlich schlecht ist.
+
+Eine sehr einfache Methode, dies zu verbessern, ist die \emph{einfache Mehrheitswahl}. Bei dieser gibt wieder jeder W??hler eine Stimme ab und danach gewinnt derjenige Kandidat, welcher die meisten Stimmen bekommt. Gleichheit ist m??glich, aber bei gr????eren W??hlermengen sehr unwahrscheinlich. Das Problem mit dieser Methode ist, dass es m??glich ist, dass ein Kandidat knapp gewinnt, welcher von allen anderen W??hlern jedoch sehr wenig gemocht wird. Dadurch denken viele W??hler, dass die "`falsche"' Person gew??hlt wurde. Dies ist tats??chllich ein h??ufig beobachtetes Ph??nomen.\footnote{Quelle?}
+
+\subsection{Fortlaufende Wahl}
+
+Eine weitere M??glichkeit ist, eine einfache Mehrheitswahl durchzuf??hren, danach die Kandidatenliste zu verkleinern (zum Beispiel nur die beiden besten Kandidaten zu behalten) und danach noch einmal zwischen diesen "`Gewinnern"' der ersten Runde abzustimmen. Dies kann nat??rlich beliebig oft wiederholt werden. Ein solches Wahlsystem nennt man \emph{fortlaufendes Wahlsystem}.
+
+Ein bekanntes Beispiel daf??r ist die amerikanische Pr??sidentschaftswahl, wo die einzelnen Parteien sogenannte "`primaries"' abhalten und am Ende nur zwischen deren Gewinnern gew??hlt wird. Dies schw??cht einige negative Effekte des einfachen Mehrheitswahlrechtes f??r mehr als zwei Kandidaten ab. In der Realit??t gibt es einen Zeitraum zwischen den Wahlen, in welchem die W??hler ihre Meinung aufgrund der ersten Wahl wieder ??ndern k??nnen. Wir wollen hier zur Vereinfachung annehmen, dass dies nicht der Fall ist.
+
+\subsection{Hare-Methode}
+
+Bei der \emph{Hare-Methode} gibt jeder W??hler eine Pr??ferenzliste der Kandidaten ab. Bei uns soll eine solche Liste alle Kandidaten in eine Reihenfolge bringen, wobei keine Unentschieden erlaubt sind. Als Ergebnis liefert Hare uns eine Liste der Kandidaten und nicht nur einen Gewinner.
+
+Zun??chst wird der Kandidat mit den wenigsten ersten Pl??tzen auf den abgegebenen Listen auf den letzten Platz des Wahlergebnisses gesetzt. Danach wird dieser Kandidat aus allen Listen entfernt und man schaut, welcher Kandidat jetzt die wenigsten ersten Pl??tze auf den neuen Listen hat. Dieser Kandidat wird ??ber den zuerst entfernten Kandidaten gesetzt und dann aus den Listen entfernt. So verf??hrt man bis nur noch zwei Kandidaten ??brig bleiben, zwischen welchen man eine einfache Mehrheitswahl durchf??hrt. Nat??rlich ben??tigt man spezielle Regeln f??r gleiche Anzahlen von ersten Pl??tzen. Zum Beispiel k??nnte man zwei Kandidaten auf dem gleichen Listenplatz erlauben.
+
+Der Vorteil vom Hare-System ist, dass zum Beispiel die folgende Situation besser gel??st wird. In der folgenden Tabelle gibt es drei Kandidaten und in der ersten Reihe stehen die Anteile der W??hler welche sich f??r die jeweilige Reihung ausgesprochen haben.
+
+\begin{center}
+    \begin{tabular}{ccc}
+    \toprule
+     $29\% $ & $31\% $ & $40\% $ \\ \midrule
+    A & B & C \\[5pt]
+    B & A & A \\[5pt]
+    C & C & B \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+
+Wenn man ein einfaches Wahlsystem anwendet, gewinnt offensichtlicherweise $C$. Es k??nnte aber sein, dass die Kandidaten A und B zum linken Lager und C zum rechten Lager geh??rt. Daher bevorzugen insgesamt 60\% einen der Kandidaten A und B deutlich vor C. Wendet man die Hare-Methode an, wird zun??chst A rausgeschmissen, das hei??t auf den letzten Platz gesetzt, und im zweiten Ausz??hlen gewinnt B mit 60:40 vor A. Das Ph??nomen, dass die gesamte Pr??ferenzliste relevant ist, passiert in der Realit??t recht h??ufig, weshalb viele Menschen bei einfachen Mehrheitswahlen das Gef??hl bekommen, dass die falsche Person gew??hlt wurde.
+ 
+\subsection{Coombs-Methode}
+
+Die Coombs-Methode ??hnelt Hare, jedoch funktioniert sie "`r??ckw??rts"'. Alle W??hler geben wieder vollst??ndige Pr??ferenzlisten ab. Als erstes wird ??berpr??ft ob ein Kandidat eine absolute Mehrheit hat. Falls ja, gewinnt dieser die Wahl, falls nicht wird zun??chst  derjenige Kandidat mit den meisten \emph{letzten} Pl??tzen entfernt und auf den insgessamt letzten Platz gesetzt. Danach wird der letzte Schritt wiederholt mit den aktualisierten Pr??ferenzlisten.
+
+\begin{aufgabe}{Ein erstes Beispiel}
+Wer gewinnt bei den folgenden Verteilungen von $31$ Pr??ferenzlisten mit der einfachen Mehrheitsmethode, der fortlaufenden Wahl, der Hare und der Coombs-Mehtode?
+
+\begin{center}
+    \begin{tabular}{cccc}
+    \toprule
+     $10$ & $8$ & $7$ & $6$ \\ \midrule
+    A & B & C & D \\[5pt]
+    D & D & B & C \\[5pt]
+    B & C & D & B \\[5pt]
+    C & A & A & A \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\end{aufgabe}
+
+\subsection{Condorcet-Methode}
+
+\begin{definition}[Condorcet-Gewinner und -Verlierer]
+Bei einem Wahlsystem, in welchem vollst??ndige Pr??ferenzlisten abgegeben werden ist ein \emph{Condorcet-Gewinner} (benannt nach dem franz??sischen Philosophen und Mathematiker Nicolas de Condorcet) ein Kandidat, welcher in allen paarweisen \emph{runoffs} gegen alle anderen Kandidaten gewinnt. Analog ist ein \emph{Condorcet-Verlierer} ein Kandidat, der gegen alle anderen Kandidaten in runoffs verliert.
+\end{definition}
+
+\begin{rmk}
+Es muss nicht immer einen Condorcet-Gewinner oder -Verlierer geben. Zum Beispiel gibt es keinen Condorcet-Gewinner beim folgenden Wahlergebnis:
+\begin{center}
+    \begin{tabular}{ccc}
+    \toprule
+     $5$ & $4$ & $3$ \\ \midrule
+    A & B & C \\[5pt]
+    B & C & A \\[5pt]
+    C & A & B \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\end{rmk}
+
+Die Condorcet-Methode besteht nun darin, einen Condorcet-Gewinner als Gewinner der Wahl zu deklarieren. Da dies den offensichtlichen Nachteil hat, dass das nicht immer geht, gibt es auch noch die \emph{erweiterte Condorcet-Methode}: Dabei f??hren wir zun??chst alle paarweisen runoffs durch. Danach ordnen wir diese nach der Gr????e des Vorsprungs. Dann gehen wir diese Liste Schritt f??r Schritt durch und bauen uns eine Ergebnisliste nach der folgenden Regel zusammen. Wenn $X>Y$ gilt, dann muss im Ergebnis auch $X>Y$ sein, au??er aus den bisherigen Schritten folgte bereits $Y>X$. Wenn wir dies bis zum Schluss durchgehen erhalten wir gen??gend Bedingungen um die Endliste eindeutig festzulegen.
+
+\begin{beispiel}
+Aus dem Umfrageergebnis
+\begin{center}
+    \begin{tabular}{cccc}
+    \toprule
+     $5$ & $7$ & $4$ & $3$ \\ \midrule
+    A & B & A & C \\[5pt]
+    B & A & C & B \\[5pt]
+    C & C & B & A \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+folgt die Liste $A>C$ mit $16:3$, $B>C$ mit $12:7$ sowie als letztes $B>A$ mit $10:9$. Im ersten Schritt sehen wir also $A>C$ und im zweiten $B>C$. Da dies die Reihenfolge von A und B noch nicht festlegt, geschieht dies erst im dritten Schritt. Das Endergebnis ist also $B>A>C$.
+\end{beispiel}
+
+\subsection{Bucklin-Methode}
+
+Die \emph{Bucklin-Methode} besteht darin, wieder einen Gewinner aus den vollst??ndigen Pr??ferenzlisten der W??hler zu erzeugen. Dazu werden zun??chst nur die ersten Pl??tze zusammengez??hlt. Hat ein Kandidat dabei eine absolute Mehrheit, gewinnt dieser die Wahl. Falls nicht, werden im n??chsten Schritt die zweiten Pl??tze dazu addiert. Jetzt wird wieder ??berpr??ft, ob ein Kandidat eine absolute Mehrheit hat, wobei immer noch die H??lfte der W??hler als Quorum oder als notwendiges Minimum an Stimmen n??tig ist. Dies wird so lange wiederholt bis es einen Gewinner gibt, wobei bei Erreichen des Quorums von mehreren Kandidaten, derjenige gewinnt, welcher mehr Stimmen hat.
+
+\subsection{Die Borda-Methode}
+
+Eine weitere naheliegende Wahlmethode ist die \emph{Borda-Methode}\footnote{Unter anderem entwickelt in 1770 von Jean-Charles de Borda, einem franz??sischem Mathematiker und Sozialforscher.}, welche euch wohl aus dem Sport bekannt vorkommen d??rfte.
+
+Dabei erh??lt jeder Kandidat von jeder abgegeben Pr??ferenzliste aller Kandidaten Punkte nach einem vorher festgelegten Muster, zum Beispiel bei $n$ Kandidaten $n$ Punkte f??r den ersten Platz, $n-1$ f??r den zweiten und so weiter bis $1$ Punkt f??r den letzten. Dann werden alle Punkte addiert und die Kandidaten nach der Anzahl der erzielten Punkte gereiht.
+
+\begin{beispiel}
+Aus dem Umfrageergebnis
+\begin{center}
+    \begin{tabular}{cccc}
+    \toprule 
+     $5$ & $7$ & $4$ & $3$ \\ \midrule
+    A & B & A & C \\[5pt]
+    C & C & C & B \\[5pt]
+    B & A & B & A \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+mit der Borda-Z??hlung $3,2,1$ erh??lt $A$ $37$ Punkte, $B$ $36$ und $C$ $41$, also gewinnt $C$. Wenn man aber mit $4,2,1$ z??hlt, um dem Gewinner einen Bonus zu geben, so ist das Endergebnis $A:46,B:43,C:44$, so dass $A$ gewinnt.
+\end{beispiel}
+
+\section{Eigenschaften von Wahlen}
+
+In diesem Kapitel werden wir ein paar sinnvolle Eigenschaften von Wahlmethoden kennenlernen und sehen, welche Wahlmethoden diese erf??llen. Im Kapitel danach werden wir dann untersuchen ob es ??berhaupt Wahlverfahren gibt, die alle diese Eigenschaften erf??llen. Ein \emph{Profil} bezeichnet die Menge der abgegebenen Pr??ferenzlisten, also ein m??gliches Wahlergebnis.
+
+\begin{aufgabe}{}
+Wer gewinnt beim folgenden Ergebnis im Falle eines absoluten Mehrheitswahlrechts, eines einfachen Mehrheitswahlrechts, einer fortlaufenden Wahl, der Hare-Methode, des Borda-Z??hlens und der Condorcet-Methode?
+\end{aufgabe}
+
+\begin{center}
+    \begin{tabular}{cccccc}
+    \toprule
+     $36$ & $24$ & $20$ & $18$ & $8$ & $4$ \\ \midrule
+    A & B & C & D & E & E \\[5pt]
+    D & E & B & C & B & C \\[5pt]
+    E & D & E & E & D & D \\[5pt]
+    C & C & D & B & C & B \\[5pt]
+    B & A & A & A & A & A \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+
+\subsection{Allgemeine Eigenschaften und Annahmen}
+
+% Unrestricted Domain
+
+\subsection{Konkrete sinnvolle Eigenschaften von Wahlsystemen}
+
+Eine sehr wichtige Annahme ist, dass unser betrachtetes Wahlsystem sich nicht daf??r interessiert, \emph{welcher genaue} Kandidat ein Ergebnis erzielt. Wenn ich also in einem Profil $P$ die Kandidaten $A$ und $B$ vertausche, dann sollte das Wahlsystem die Ergebnisse von $A$ und $B$ genau vertauschen. Dieses Axiom werden wir mit INV abk\"urzen.
+
+\subsubsection*{Condorcetgewinner- und Condorcetverliererkriterium}
+
+Da Condorcet-Gewinner und -Verlierer recht nat??rliche Kandidaten f??r echte Gewinner bzw. Verlierer sind, macht es Sinn, das folgende Kriterium zu definieren.
+
+\begin{definition}
+Ein Wahlverfahren erf??llt das \emph{Condorcet-Gewinnerkriterium} (repektive das \emph{Condorcet-Verliererkriterium}), wenn bei jedem Abstimmungsergebnis ein Condorcet-Gewinner (bzw. Condorcet-Verlierer) auch vom Wahlverfahren als Gewinner (bzw. Verlierer) bestimmt wird.
+\end{definition}
+
+\begin{aufgabe}{}
+Welches der folgenden Wahlsysteme erf??llt das Condorcet-Gewinner bzw. -Verliererkriterium? Finde entweder ein Gegenbeispiel oder einen Beweis.
+\begin{enumerate}[a)]
+\item Hare-Methode
+\item Borda-Z??hlung
+\item Einfache Mehrheitswahl
+\item Absolute Mehrheitswahl
+\item Bucklin-Methode
+\end{enumerate}
+\end{aufgabe}
+
+%\subsubsection*{Strategisches W??hlen}
+
+% Beispiele und Definition!!!!!
+
+\subsubsection*{Kein-Diktator-Annahme}
+
+Die \emph{Kein-Diktator-Annahme} besagt, dass kein W??hler die F??higkeit besitzt, das Wahlergebnis zu bestimmen. Angenommen, wir betrachten ein Profil $P$ und einen W??hler $X$ sowie zwei Kandidaten $A$ und $B$. $X$ ist \emph{pivotal} bez??glich $A$ und $B$ im Profil $P$, wenn im Fall, dass alle W??hler au??er $X$ genauso abstimmen wie in $P$ das Wahlsystem $A$ und $B$ immer genauso anordnet wie es bei $X$ der Fall ist. Ein W??hler $X$ hei??t \emph{sehr pivotal} bez??glich $A$, wenn $X$ pivotal bez??glich aller Paare von Kandidaten mit $A$ ist. Ein W??hler $X$ ist ein \emph{lokaler Diktator} im Profil $P$, falls $X$ pivotal f??r alle Paare von W??hlern in $P$ ist. Ein \emph{Diktator} ist ein W??hler, welcher ein lokaler Diktator f??r alle Profile $P$ ist.
+
+Die Kein-Diktator-Annahme besagt nun, dass es keinen Diktator geben darf. 
+
+\subsubsection*{Annahme ??ber die Unabh??ngigkeit von irrelevanten Alternativen (IIA)}
+
+Die Annahme ??ber \emph{Unabh??ngigkeit von irrelevanten Alternativen} ist eine weit verbreitete Annahme in der Sozialtheorie. F??r uns besagt sie folgendes. Sei $P$ ein Profil und $A$ und $B$ beliebige Kandidaten. Angenommen das Wahlsystem bevorzugt $A>B$ in $P$. Jetzt sei $P'$ ein Profil, das sich von $P$ unterscheiden darf au??er was die individuellen Pr??ferenzen von $A$ und $B$ betrifft. Das hei??t, dass jeder einzelne W??hler $A$ und $B$ genauso vergleicht wie in $P$, aber der Rest darf beliebig sein. Unabh??ngigkeit von irrelevanten Alternativen besagt jetzt, dass das Wahlsystem f??r $P'$ dann immer noch $A>B$ ausgibt. 
+
+\subsubsection*{Pareto-Effizienz}
+
+Mit \emph{Pareto-Effizienz} bezeichnet man die Eigenschaft, dass wenn alle W??hler in eine Profil $A>B$ bevorzugen, dann darf das Wahlsystem nicht $B>A$ ausgeben.
+
+\subsubsection*{Monotonie}
+
+Angenommen	man betrachtet ein Profil $P$ sowie einen Kandidaten $A$. Dieser Kandidat wird vom Wahlsystem auf einen gewissen Platz gesetzt. ??ndert man nun das Profil dahingehend ab, dass ein oder mehrere W??hler $A$ h??her einsch??tzen als zuvor (und niemand $A$ nach unten setzt), dann sollte das Wahlsystem $A$ im neuen Profil nicht schlechter bewerten als zuvor. Dies nennt man \emph{Monotonie}. Anschaulich bedeutet dies, dass die Position einen Kandidaten nicht dadurch verschlechtert werden kann, indem f??r ihn besser abgestimmt wird.
+
+\subsubsection*{Nichtaufzwingungsannahme}
+
+Mit \emph{Nichtaufzwingung} meint man, dass das Wahlystem jede m??gliche Ergebnisliste ausgeben kann. Wenn es also $n$ Kandidaten gibt, existieren Profile, sodass alle $n!$ m??glichen Wahlergebnisse angenommen werden.
+
+\section{Die S??tze von Arrow und Gibbard--Satterthwaite}
+
+\subsection{Der Satz von Arrow}
+
+\begin{lem}
+Ein Wahlsystem, welches (IIA), (INV) sowie Monotonie erf??llt, ist Pareto-effizient.
+\end{lem}
+
+\begin{proof}
+Wir beweisen die Aussage indirekt. Sei also $P$ ein Profil, in welchem alle W\"ahler $A>B$ ranken, das Wahlsystem jedoch $B>A$ entscheidet.  Wegen IRR k\"onnen wir $A$ in allen Pr\"aferenzlisten nach unten verschieben bis es direkt \"uber $B$ liegt. Dann erhalten wir ein Profil $P'$, welches immer noch zu $B>A$ f\"uhrt. Jetzt \"andern wir das Profil weiter ab, so dass $B$ \"uber $A$ in allen Reihungen rutscht. Wegen der Monotonievoraussetzung muss $B$ im Endergebnis immer noch an der gleichen Stelle sein. Wegen IRR wiederum ist die Reihenfolge von $B$ und allen Kandidaten, welche oberhalb von $B$ waren immer noch die gleiche, woraus folgt, dass $A$ Kandidat $B$ nicht \"uberholt haben kann, es gilt also immer noch $B>A$. Danach nutzen wir wieder IRR um $A$ an die Stellen in den Rankings zu bewegen, wo $B$ am Anfang war. Das Endergebnis ist ein Profil $P'$, welches identisch zu $P$ ist, au\ss er dass $A$ und $B$ vertauscht sind und das Wahlergebnis sagt $B>A$. Andererseits muss wegen INV $A>B$ gelten, was einen Widerspruch darstellt. 
+\end{proof}
+
+\begin{lem}
+Pareto-Effizienz impliziert Nichtaufzwingung.
+\end{lem}
+
+\begin{aufgabe}{Ein kleiner Beweis}
+Beweise das letzte Lemma.
+\end{aufgabe}
+
+\begin{lem}
+Betrachte ein Wahlsystem mit Pareto-Effizienz sowie Unabh??ngigkeit von irrelevanten Alternativen. Angenommen in einem Profil $P$ gibt es einen Kandidaten $C$, welcher von allen W??hlern entweder ganz oben oder ganz unten eingeordnet wird. Dann wird $C$ entweder auf den ersten oder den letzten Platz gesetzt.
+\end{lem}
+
+\begin{proof}
+Angenommen nicht, dann g??be es Kandidaten $A$ und $B$, welche im Endergebnis des Wahlsystems f\"ur $P$ gereiht werden als $A>C>B$. Dann kann man $A$ und $B$ in allen Rankings so ab\"andern, dass immer $B>A$ gilt. Da $C$ jeweils ganz oben oder ganz unten ist, hat sich also nichts zwischen $C$ und $B$ beziehungsweise $C$ und $A$ ge\"andert, weshalb wegen (IRR) immer noch $A>C$ und $C>B$ gilt und demnach $A>B$. Wegen Pareto-Effizienz gilt aber in dem neuen Profil $B>A$, was offensichtlich ein Widerspruch ist.
+\end{proof}
+
+
+\begin{thm}
+Jedes Rangordnungswahlsystem mit mindestens drei Kandidaten, welches Pareto-effizient ist und Unabh??ngigkeit von irrelevanten Alternativen erf??llt, besitzt einen Diktator.
+\end{thm}
+
+\begin{rmk}
+Urspr??nglich hatte Arrow diesen Satz mit den Bedingungen Unabh??ngigkeit von irrelevanten Alternativen, Monotonie und Nichtaufzwingung formuliert. Laut den vorherigen Lemmata ist diese Version mit Pareto-Effizienz also eine st??rkere Aussage.
+\end{rmk}
+
+\begin{proof}
+ Angenommen, es gibt $m \geq 2$ W??hler. Wir stellen uns vor, dass die W??hler in einer festen Reihenfolge aufgestellt und durchnummeriert sind mit den Bezeichnungen $X_1$ bis $X_m$. Zuerst nehmen wir an, dass Kandidat $B$ auf jedem Stimmzettel den letzten Platz belegt. Dann ist auf jedem Stimmzettel Kandidat $B$ schlechter als jeder andere Kandidat und muss daher auch in der Gesamtreihenfolge den letzten Platz belegen (wegen der Pareto-Effizienz). Wir betrachten nacheinander die Profile $P_1$ bis $P_m$, wobei in dem Szenario $P_k$ die Wahl wie folgt ausgeht.
+
+\begin{center}
+    \begin{tabu}{ >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} }
+      \text{W??hler $1$} & \text{W??hler $2$} & ... & \text{W??hler $k$} & \text{W??hler $k{+}1$} & ... & \text{W??hler $m$}\\
+      \hline
+      B > \cdots & B > \cdots & ... & B > \cdots & \cdots > B & ... & \cdots > B
+    \end{tabu}
+\end{center}
+
+In dieser Tabelle steht $\cdots$ f\"ur die gleiche Reihung der restlichen Kandidaten. Kurz zusammengefasst: Im Profil $P_k$ stimmen die ersten $k$ W??hler mit ihrer ersten Stimme f??r den Kandidaten $B$, die restlichen $m{-}k$ haben Kandidat $B$ an den Schluss ihrer Liste gesetzt.
+
+Wegen des vorigen Lemmas muss in allen $m$ Profilen im Wahlergebnis $B$ entweder am Anfang oder am Schluss der Liste sein. Wegen Pareto-Effizienz gilt, dass $B$ im Profil $P_0$ an die letzte Stelle gew\"ahlt wird und in $P_m$ an die erste Stelle. Daher gibt es ein Profil $P_k$, bei welchem $B$ das erste Mal auf den ersten Platz gew\"ahlt wird. $B$ ist damit letzter Platz in den Profilen $P_0$ bis $P_{k-1}$ und erster in $P_k$.
+
+\emph{$X_k$ ist sehr pivotal f\"ur Kandidat $B$ in $P_{k-1}$:} Wir sehen, dass der W\"ahler $X_j$ sehr pivotal f\"ur Kandidat $B$ im Profil $P_{k-1}$ ist, denn f\"ur jeden anderen Kandidaten $A$ gilt, dass wenn wir alle Wahlen der anderen Kandidaten gleich lassen, das Wahlergebnis nur von W\"ahler $X_k$ abh\"angt.
+
+\emph{$X_k$ ist pivotal f??r alle Paare von Kandidaten, die nicht $B$ beinhalten, im Profil $P_k$:} Betrachte wieder das Profil $P_k$ sowie zwei beliebige Kandidaten $A$ und $C$ mit $A>C$ in der Wahl von $X_k$. Dann ver\"andern wir das Profil $P_k$ zum Profil $Q$, indem wir nur f\"ur $X_k$ $A$ auf den ersten Platz verlegen. Da sich das relative Ranking von $A$ und $C$ nicht ver\"andert hat, ist die Reihung von $A$ und $C$ in $Q$ die gleiche wie in $P_k$. Die Wahlergebnisse sehen jetzt also wie folgt aus:
+
+\begin{center}
+    \begin{tabular}{ >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} | >{$}c<{$} }
+      \text{$X_1$} & ... & \text{$X_{k-1}$} & \text{$X_k$} & \text{$X_{k+1}$} & ... & \text{$X_m$}\\
+      \hline
+      B > \cdots & ... & B > \cdots & B > \cdots > A > \cdots > C > \cdots & \cdots > B & ... & \cdots > B\\
+      \hline
+      B > \cdots & ... & B > \cdots & A > B > \cdots > C > \cdots & \cdots > B & ... & \cdots > B
+    \end{tabular}
+\end{center}
+
+Wieder sind alle nicht notierten Abstimmungen bei beiden Profilen identisch. Das zweite Profil $Q$ ergibt jetzt im Wahlergebnis $A>B$, weil die Reihung $A>B$ genau die gleiche ist wie in $P_{k-1}$ und das Wahlsystem (IIA) erf??llt. Au??erdem gilt in $Q$, dass $B>C$ gew??hlt wird, weil $B>C$ in allen Wahlergebnissen genauso wie in $P_k$. Daraus folgt also $A>C$, wenn $X_k$ in $P_k$ $A>C$ gew??hlt hat. Da man $A$ und $C$ vertauschen kann, geht das Argument genauso durch, womit man zeigt, dass $X_k$ ein Paardiktator f??r alle Paare, die $B$ nicht beinhalten, ist.
+
+\emph{$X_k$ ist pivotal f??r alle Paare von Kandidaten $A$ und $C$, die nicht $B$ beinhalten, in allen Profilen:} Wir wissen, dass $X_k$ pivotal f??r alle Paare von Kandidaten $A$ und $B$ in $P_k$ sind, die nicht $B$ beinhalten. Indem wir $B$ in den Pr??ferenzlisten im Profil $P_k$ beliebig verschieben, k??nnen wir beliebige Profile erzeugen, da die einzige Bedingung war, dass $B$ von $X_1,\ldots,X_k$ als erstes und von $X_{k+1},\ldots,X_m$ als letztes gew??hlt wurde. Dabei verschieben wir nur $B$ und ??ndern somit die Reihenfolgen von $A$ und $C$ nicht, wodurch das Wahlergebnis f??r $A$ und $C$ wegen (IIA) immer noch das gleiche ist wie das von $X_k$.
+
+Wir bezeichnen jetzt $X_k$ mit $X_B$, da $k$ durch die anfangs gew??hlte Nummerierung sowie das Element $B$ bestimmt wird. Alle bisherigen Argumente funktionieren f??r beliebige Kandidaten $B$!
+
+\emph{Es gilt f??r alle Kandidaten $A$ und $B$, dass $X_A=X_B$:} Betrachte einen dritten Kandidaten $C\neq A,B$. Dann muss $X_C$ ein Paardiktator f??r $A$ und $B$ sein nach dem letzten Schritt. Wir haben aber auch bewiesen, dass $X_B$ ein Paardiktator im Profil $P_k$ f??r alle Paare mit $B$ ist, also zum Beispiel das Paar $A$ und $B$. Daher muss $X_B=X_C$ sein.\footnote{Dies gilt, weil es nicht "`zu viele"' Diktatoren geben kann. Angenommen, zwei verschiedene W??hler $X$ und $Y$ sind Paardiktatoren f??r ein Paar von Kandidaten $A$ und $B$. Die Situation, dass $X$ w??hlt $A>B$ und $Y$ w??hlt $B>A$ ergibt einen Widerspruch.} Dies gilt f??r beliebige Kandidaten $B$ und $C$. Dieser W??hler ist nun Paardikator f??r alle Paare in allen Profilen und damit ein Diktator.
+\end{proof}
+
+
+XXX Wahlsysteme aus Abschnitt 2 auf die Voraussetzungen ??berpr??fen
+
+% \subsection{Der Satz von Gibbard--Satterthwaite}
+
+% \begin{definition}
+% Ein Wahlsystem hei??t \emph{unanimous}, falls f??r jedes Profil $P$, in dem Kandidat $A$ von allen W??hlern an erste Stelle gesetzt wird, auch $A$ gewinnt. Ein Wahlsystem hei??t \emph{nicht-manipulierbar}, falls strategisches W??hlen nicht m??glich ist.
+% \end{definition}
+
+% Wir nehmen jetzt f??r den Rest dieses Kapitels an, dass es mindestens drei Kandidaten gibt, das Wahlsystem ist Pareto-effizient, unanimous und nicht-manipulierbar. Wie bisher gibt jeder W??hler eine vollst??ndige Liste aller Kandidaten ohne Gleichstand ab.
+
+% \begin{definition}
+% Sei $S\subset V$ eine Menge von W??hlern und $A,B\in C$ Kandidaten. Man sagt, dass \emph{$S$ $A$ benutzen kann um $B$ zu blocken}, falls in jedem Profil $P$, so dass alle Mitglieder von $S$ $A>B$ abstimmen, dass dann $B$ nicht gewinnt. Man schrebt $A>_S B$.
+% \end{definition}
+
+% \begin{lem}
+% Angenommen es existiert ein Profil $P$, so dass
+% \begin{enumerate}[(i)]
+% \item jeder W??hler in $S$ w??hlt $A>B$,
+% \item jeder W??hler in $C\setminus S$ w??hlt $B>A$,
+% \item $B$ gewinnt nicht die Wahl.
+% \end{enumerate}
+% Dann gilt $A>_SB$.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{lem}
+% Seien $A,B$ und $C$ drei Kandidaten und sei $S$ eine Menge von W??hlern, so dass $A>_SB$ gilt. Sei $S=P\cup Q$ eine Zerlegung von $S$ in zwei disjunkte Teilmengen. Dann gilt entweder $A>_PC$ oder $C>_QB$.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{lem}
+% Seien $A$ und $B$ Kandidaten und $S$ eine Menge von W??hlern, so dass $A>_SB$. Dann kann $S$ $A$ benutzen um jeden weiteren Kandidaten zu blockieren und $S$ kann jeden weiteren Kandidaten benutzen um $B$ zu blocken.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{lem}
+% Wenn Kandidaten $A$ und $B$ existieren, so dass $A>_SB$ gilt, dann gilt auch $B>_SA$.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{definition}
+% Eine Menge $S\subset C$ hei??t \emph{diktatorisch}, falls gilt $A>_SB$ f??r alle Paare von Kandidaten $A$ und $B$.
+% \end{definition}
+
+% \begin{lem}
+% Wenn Kandidaten $A$ und $B$ existieren, so dass $A>_SB$ gilt, dann ist $S$ eine diktatorische Menge.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{lem}
+% Sei $S$ eine diktatorische Menge und sei $S=P\cup Q$ eine disjunkte Zerlegung von $S$. Dann ist entweder $P$ oder $Q$ auch eine diktatorische Menge.
+% \end{lem}
+
+% \begin{proof}
+
+% \end{proof}
+
+% \begin{thm}
+% Wenn es mindestens drei Kandidaten gibt und das Wahlsystem von jedem W??hler eine vollst??ndige Reihung aller Kandidaten ohne Gleichstand erfordert und dieses Wahlsystem unanimous, nicht-manipulierbar und Pareto-effizient ist, dann gibt es einen Diktator.
+% \end{thm}
+
+% \begin{proof}
+
+% \end{proof}
+
+\end{document}

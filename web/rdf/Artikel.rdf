@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/terms/"
+         xmlns:ksn="http://kosemnet.de/Data/Model#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/bauer-06-01">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/bauer-06-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Nach einer Einführung in Zweipersonenspiele und gewinnerzwingende Strategien werden Zugänge unter methodischen Gesichtspunkten besprochen. Der Aufsatz schließt mit einer Reihe von Olympiadeaufgaben zum Thema.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-10-3"/>
+    <dc:created>2006-01-31</dc:created>
+    <dc:creator>
+      <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Bauer_David">
+        <foaf:name>David Bauer</foaf:name>
+      </foaf:Person>
+    </dc:creator>
+
+    <dc:subject>Spiele; Strategien; Heuristiken</dc:subject>
+    <dc:title>Spieltheorie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/djokic-05-01">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/djokic-05-01.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:abstract>Es gibt Aufgaben zu Summenformneln, Ungleichungen, Teilbarkeitsaussagen, rekursiven Folgen, trigonometrischen Summen, Komposition von Abbildungen, Zerlegung der Ebene durch Geraden und Kreise.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-3"/>
+    <dc:created>2005-04-29</dc:created>
+    <dc:creator>
+      <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Djokic_Jelena">
+        <foaf:name>Jelena Djokic</foaf:name>
+      </foaf:Person>
+    </dc:creator>
+
+    <dc:subject>Vollständige Induktion</dc:subject>
+    <dc:title>Aufgabensammlung zur vollständigen Induktion</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-00-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-00-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Im Text werden Beweise geometrischer Sätze und geometrische Konstuktionen mit Hilfe von verschiedenen Abbildungen der Euklidschen Ebene (Drehungen, Verschiebungen, Spiegelungen) ausgeführt.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Geometrie; Abbildungen; Spiegelungen; Beweise durch Abbildungen; Geometrie und komplexe Zahlen</dc:subject>
+    <dc:title>Bewegungsgeometrie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-01-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-01-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden praktikable Primtestverfahren vorgestellt, die in Computeralgebra-Systemen implementiert sind. Wir starten mit dem Probedivisions-Verfahren, diskutieren den Fermat-Test, Carmichael-Zahlen als Beispiele zusammengesetzter Zahlen, die der Fermat-Test nicht von Primzahlen unterscheiden kann, den Rabin-Miller-Test und Primzahlzertifikate.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Primzahlen; Primtest-Algorithmen; Carmichael-Zahlen; Zahlentheorie</dc:subject>
+    <dc:title>Primzahl-Testverfahren</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über Beweistechniken für das Seminar in Klasse 7.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-7-3"/>
+    <dc:created>2004-09-02</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Beweistechniken</dc:subject>
+    <dc:title>Mathematische Aussagen und mathematische Beweise</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über die Berechnung des ggT mit dem Euklidschen Algorithmus für das Seminar in Klasse 7.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-7-3"/>
+    <dc:created>2004-09-02</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>ggT; Euklidscher Algorithmus</dc:subject>
+    <dc:title>Berechnung des größten gemeinsamen Teilers mit dem Euklidschen Algorithmus</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-3">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-3.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über logische Kombination von Aussagen für das Seminar in Klasse 7.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-7-3"/>
+    <dc:created>2004-09-02</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Aussagenlogik</dc:subject>
+    <dc:title>Aussagenlogik</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-4">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-4.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Einführendes Material in die modulare Arithmetik für das Seminar in Klasse 7.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-7-3"/>
+    <dc:created>2004-09-02</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Kongruenzen; Modulare Arithmetik</dc:subject>
+    <dc:title>Rechnen mit Kongruenzen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-5">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-5.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über das Konzept der Ortslinien in geometrischen Argumentationen für das Seminar in Klasse 7.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-7-3"/>
+    <dc:created>2004-09-02</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Geometrie; Ortslinien</dc:subject>
+    <dc:title>Ortslinien in der Geometrie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-6">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-6.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Einführender Text zum Schubfachprinzip für das Seminar in Klasse 8.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2004-09-03</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Schubfachprinzip</dc:subject>
+    <dc:title>Das Dirichletsche Schubfachprinzip</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-7">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-7.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ergänzendes Material zu modularer Arithmetik und linearen Kongruenzen für das Seminar in Klasse 8.  Baut auf graebe-04-4 auf.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2004-09-03</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Kongruenzen; Äquivalenzrelationen; Modulare Arithmetik; Lineare Diophantische Gleichungen</dc:subject>
+    <dc:title>Das Rechnen mit Kongruenzen. Teil 2</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-04-8">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-04-8.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Sehr elementares Material über Ähnlichkeit von Dreiecken für das Seminar in Klasse 8.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2004-09-03</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Geometrie; Ähnlichkeit; Dreiecke</dc:subject>
+    <dc:title>Ähnlichkeit von Dreiecken</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-05-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-05-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über konvexe Polyeder, den Beweis der Eulerformel und die Herleitung der Klassifikation regulärer Polyeder.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-3"/>
+    <dc:created>2005-07-24</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Reguläre Polyeder; Eulerformel; Klassifikation von Polyedern</dc:subject>
+    <dc:title>Reguläre Polyeder</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-05-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-05-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Beweis des Polyaschen Abzählsatzes und dessen (kursorische) Anwendung auf die Frage nach der Anzahl von Färbungen regulärer Polyeder.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-07-24</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Polyascher Abzählsatz; Symmetrien regulärer Polyeder; Färbungen regulärer Polyeder</dc:subject>
+    <dc:title>Der Polyasche Abzählsatz und Färbungen regulärer Polyeder</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-06-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-06-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Material über lineare diophantische Gleichungen für das Seminar in Klasse 8.  Betrachtet werden die Beziehung zu linearen modularen Gleichungen, Eulers Reduktionsmethode und ein Beweis des Strukturtheorems der Lösungsmenge.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2006-01-04</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Lineare diophantische Gleichungen</dc:subject>
+    <dc:title>Lineare diophantische Gleichungen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-06-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-06-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Material über den Beweis elementarer agM-artiger Ungleichungen mit 2 und 3 Unbestimmten.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2006-03-16</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Ungleichungen</dc:subject>
+    <dc:title>Beweisen von Ungleichungen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-09-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-09-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>In der Anmerkung wird die Nützlichkeit des Konzepts der erzeugenden Funktionen für die geschlossene Darstellung von Folgengliedern rekursiv gegebener Folgen gezeigt.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2009-08-04</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Erzeugende Funktionen</dc:subject>
+    <dc:title>Eine Anmerkung zu einem Aufsatz von P. Gallin</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-10-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-10-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>In der Anmerkung wird die Nützlichkeit des Konzepts der erzeugenden Funktionen für die geschlossene Darstellung von Folgengliedern rekursiv gegebener Folgen gezeigt.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2010-12-16</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Erzeugende Funktionen</dc:subject>
+    <dc:title>Eine Anmerkung zu einem Aufsatz von M. Dostal</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-15-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-15-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>In diesem Aufsatz wird gezeigt, wie man mit algebraischen Zahlen rechnen kann, deren Minimalpolynom bekannt ist. Insbesondere wird besprochen, wie man rationale Ausdrücke, die algebraische Zahlen enthalten, in eine Linearkombination reduzierter Terme transformieren kann.  Dieses Verfahren ist eine Verallgemeinerung des „Rationalmachens von Nennern”.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2015-01-11</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Algebraische Zahlen</dc:subject>
+    <dc:title>Zur Vereinfachung von Wurzelausdrücken</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-97-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-97-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden Informationen und Beweise der Ungleichung vom arithmetisch-geometrischen Mittel zusammengetragen und einige wichtige Verallgemeierungen (Mittel beliebigen Grads, Bernoulli-Ungleichung, gewichtete Mittel) diskutiert.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Analysis; Ungleichungen</dc:subject>
+    <dc:title>Einige wichtige Ungleichungen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-98-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-98-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es wird ein Beweis sowie Anwendungen der Jensenschen Ungleichung diskutiert.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-12-3"/>
+    <dc:created>2004-09-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Analysis; Ungleichungen</dc:subject>
+    <dc:title>Die Jensensche Ungleichung</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-99-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/graebe-99-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden fortgeschrittene geometrische Argumentationen behandelt, die Thaleskreise und Dreiecke in Ähnlichkeitslage verwenden, um Schnittpunktsätze für Ecktransversalen (Höhen, Winkelhalbierende), Eigenschaften des Höhenfußpunktdreiecks, der Eulergeraden und des Feuerbachkreises zu beweisen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Geometrie; Eulergerade; Feuerbachkreis; Satz von Desargue</dc:subject>
+    <dc:title>Eulersche Gerade und Feuerbachscher Kreis</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/koenig-05-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/koenig-05-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein kurzer Text über verbreitete Fehlargumentationen in geometrischen Beweisen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-2"/>
+    <dc:created>2005-02-04</dc:created>
+    <dc:creator>
+      <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Koenig_Helmut">
+        <foaf:name>Helmut König</foaf:name>
+      </foaf:Person>
+    </dc:creator>
+
+    <dc:subject>Beweistechniken; Geometrie</dc:subject>
+    <dc:title>Wo steckt der Fehler?</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/moldenhauer-06-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/moldenhauer-06-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein allgemeiner Text über Gauss, dessen Beiträge zu und Interessen an verschiedenen Gebieten der Wissenschaften sowie einige Bemerkungen zu dessen Theorem über die Konstruierbarkeit mit Zirkel und Lineal.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-10-2"/>
+    <dc:created>2006-05-12</dc:created>
+    <dc:creator>
+      <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Glatz_Peter">
+        <foaf:name>Peter Glatz</foaf:name>
+      </foaf:Person>
+    </dc:creator>
+
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Moldenhauer_Wolfgang"/>
+    <dc:subject>Gauss; Geschichte der Mathematik</dc:subject>
+    <dc:title>Zum 150. Todestag des Princeps mathematicorum</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/moldenhauer-06-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/moldenhauer-06-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Welches ist das „allgemeinste“ Dreieck, also jenes, dessen Winkel am weitesten von „speziellen“ Situationen (rechtwinklig, gleichschenklig) entfernt sind?</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-2"/>
+    <dc:created>2006-08-10</dc:created>
+    <dc:creator>
+      <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Moldenhauer_Carsten">
+        <foaf:name>Carsten Moldenhauer</foaf:name>
+      </foaf:Person>
+    </dc:creator>
+
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Moldenhauer_Wolfgang"/>
+    <dc:subject>Dreiecke</dc:subject>
+    <dc:title>Die „bestmöglichen“ Dreiecke</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/sauermann-13-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/sauermann-13-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Zusammenstellung wichtiger geometrischer Beziehungen zum Lösen von Olympiadeaufgaben Klasse 8.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2014-01-01</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Sauermann_Lisa"/>
+    <dc:subject>Geometrie</dc:subject>
+    <dc:title>Hilfsmittel bei Geometrieaufgaben. Ein Kompendium für Klasse 8</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/sauermann-13-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/sauermann-13-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Zusammenstellung wichtiger geometrischer Beziehungen zum Lösen von Olympiadeaufgaben Klasse 10.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-10-3"/>
+    <dc:created>2014-01-01</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Sauermann_Lisa"/>
+    <dc:subject>Geometrie</dc:subject>
+    <dc:title>Hilfsmittel bei Geometrieaufgaben. Ein Kompendium für Klasse 8</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/sauermann-13-3">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/sauermann-13-3.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden verschiedene Zugänge zu kombinatorischen und Logikaufgaben besprochen, zu Logikrätseln, Permutationen, Variationen, Kombinationen. Weiter werden Binomialkoeffizienten eingeführt, der binomische Lehrsatz hergeleitet und daraus einige wichtige Identitäten abgeleitet. Im letzten Teil geht es um Abzählaufgaben auf Graphen und das Invarianzprinzip sowie um kombinatorische Geometrie.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2014-01-01</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Sauermann_Lisa"/>
+    <dc:subject>Logikaufgaben; Permutationen; Variationen; Kombinationen; Binomialkoeffizienten; binomischer Lehrsatz; binomische Identitäten; Abzählaufgaben; Graphen; Invarianzprinzip; kombinatorische Geometrie</dc:subject>
+    <dc:title>Kombinatorik für Klasse 8</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/sauermann-13-4">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/sauermann-13-4.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden grundlegende Lösungsmethoden für Zahlentheorieaufgaben bei Olympiaden und anderen Wettbewerben vermittelt wie Anwendungen des Chinesischen Restsatzes, zahlentheoretische Funktionen (Eulersche Phi-Funktion und Teilersumme), der Satz von Euler-Fermat, die Identität von Sophie Germain, Potenzreste, Einschachtelungen von Quadratzahlen und Aufgaben zu Positionssystemen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-10-3"/>
+    <dc:created>2014-01-01</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Sauermann_Lisa"/>
+    <dc:subject>Chinesischer Restsatz; Eulersche Phi-Funktion; Teilersumme; Satz von Euler-Fermat; Identität von Sophie Germain; Potenzreste; Quadratzahlen; Positionssysteme</dc:subject>
+    <dc:title>Zahlentheorie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-00-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-00-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Im Text wird der Begriff des (univariaten) Polynoms eingeführt, Division mit Rest sowie der Zusammenhang zwischen Linearfaktoren und Nullstellen betrachtet, damit der Fundamentalsatz der Algebra, der Vietasche Wurzelsatz und symmetrische Polynome sowie die Newtonschen Relationen abgeleitet und Anwendungen auf verschiedene Aufgaben aus mathematischen Wettbewerben vorgestellt.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Polynome; Nullstellen; symmetrische Polynome</dc:subject>
+    <dc:title>Polynome</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-00-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-00-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden Schlussfolgerungen präsentiert, die sich aus der Darstellung von komplexen Zahlen in der trigonometrischen Form ableiten lassen (Moivres Formel, Einheitswurzeln, Vietas Wurzelsatz).  Weiterhin werden auf dieser Basis trigonometrische und binominiale Identitäten bewiesen. Der Text setzt grundlegende Kenntnisse über komplexe Zahlen voraus.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Komplexe Zahlen; Polynome; Einheitwurzeln</dc:subject>
+    <dc:title>Einheitswurzeln und Polynome</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-00-3">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-00-3.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es werden etwa 20 Probleme aus den Bereichen Zahlentheorie, Kombinatorik und Parkettierungen vorgestellt, die sich mit dem Invarianzprinzip lösen lassen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Invarianzprinzip</dc:subject>
+    <dc:title>Das Invarianzprinzip</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-01-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-01-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Im Text werden einige grundlegende Aussagen über Teilbarkeit, ggT, ggT-Berechnung mit Hilfe des Euklidschen Algorithmus, modulare Arithmetik, lineare diophantische Gleichungen und lineare Kongruenzen, quadratische Reste und Potenzrestfolgen zusammengetragen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-8-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Zahlentheorie; Modulare Arithmetik; Teilbarkeit, ggT</dc:subject>
+    <dc:title>Zahlentheorie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-01-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-01-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über die Darstellbarkeit natürlicher Zahlen als Summe von vier Quadraten. Es wird das Bildungsgesetz für Pythagoräische Tripel, die Methode des unendlichen Abstiegs, die Lösbarkeit der Gleichung x^4+y^4=z^2 und der allgemeine Satz über die Darstellbarkeit von Zahlen als Summe von zwei bzw. vier Quadraten besprochen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Zahlentheorie; Quadratsummen</dc:subject>
+    <dc:title>Zerlegung von natürlichen Zahlen in die Summe von Quadratzahlen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-01-3">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-01-3.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Überichtsartikel über den Beweis des Großen Fermatschen Satzes.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Zahlentheorie; Großer Fermatscher Satz</dc:subject>
+    <dc:title>Der Große Fermatsche Satz</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-01-4">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-01-4.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Anwendung baryzentrischer Koordinaten als allgemeines geometrisches Konzept in der analytischen Geometrie.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Analytische geometrie; Baryzentrische Koordinaten</dc:subject>
+    <dc:title>Baryzentrische Koordinaten</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-02-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-02-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über Mehrfachschnittpunkte in regelmäßigen n-Ecken, inspiriert von Problem 2 in Coxeters Buch. Die Argumentation stützt sich stark auf trigonometrische Funktionen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-14</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Geometrie; Regelmäßige n-Ecke</dc:subject>
+    <dc:title>Über Schnittpunkte von Diagonalen in regulären n-Ecken</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-02-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-02-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über falsche Schlüsse und pathologische Gegenbeispiele zu Stetigkeit und Periodizität von Funktionen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Analysis; Stetigkeit; Gegenbeispiele</dc:subject>
+    <dc:title>Trugschlüsse im Zusammenhang mit dem Begriff der Stetigkeit</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-03-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-03-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein text über quadratische Reste, die Darstellbarkeit von Zahlen als Summe von Quadraten und die Pellsche Gleichung. Es werden quadratische Reste verwendet, die modulare Testformel eingesetzt, das Bildungsgesetz für Pythagoräische Tripel hergeleitet, unendlicher Abstieg eingesetzt, die Lösbarkeit der Gleichung x^4+y^4=z^2 sowie die Darstellung von Zahlen als Summe von zwei oder vier Quadraten besprochen. Der letzte Teil befasst sich mit der Lösungsstrategie für Pellsche Gleichungen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Zahlentheorie; Quadratische Reste; Quadratsummen; Pellsche Gleichung</dc:subject>
+    <dc:title>Quadratische Reste</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-03-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-03-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein einführender Text über komplexe Zahlen, trigonometrische Form, komplexe Wurzeln, die geometrische Interpretation komplexer Zahlen mit Beispielen und Aufgaben.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-14</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Komplexe Zahlen</dc:subject>
+    <dc:title>Komplexe Zahlen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-05-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-05-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:abstract>Geometrische, arithmetische und periodische Folgen können als lineare rekursive Flgen mit konstanten Koeffizienten geschrieben werden. Wir präsentieren eine allgemeine Methode, mit der explizite Formeln für die Glieder einer solchen rekursiv gegebenen Folge hergeleitet werden können. 24 Aufgaben und einige Lösungen sind enthalten.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-04-15</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>konstante Koeffizienten; Fibonaccizahlen</dc:subject>
+    <dc:title>Rekursive Folgen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-06-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-06-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:abstract>Das Burnside Lemma wird bewiesen und angewandt auf Würfelfärbungen und das Abzählen von 3x3 ID-Karten.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2006-03-29</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Aktion endlicher Gruppen; abzählende Kombinatorik; Burnside-Lemma; Cauchy-Frobenius-Lemma</dc:subject>
+    <dc:title>Abzählen von Färbungen - Das Cauchy-Frobenius- oder Burnside-Lemma</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-06-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-06-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:abstract>Geeignet für Mathematiklehrer in Klasse 2-4 und für Eltern mit Kindern in Klasse 2-4.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-2-2"/>
+    <dc:created>2006-05-29</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Mathematische Spiele auf kariertem Papier; mathematische Kartenspiele; Knobelbücher; Internet-Angebote</dc:subject>
+    <dc:title>Mathematik in der Unterstufe</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-98-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-98-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Zum Einsatz komplexer Zahlen in Geometriebeweisen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Geometrie; komplexe Zahlen</dc:subject>
+    <dc:title>Komplexe Zahlen und Geometrie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/schueler-99-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/schueler-99-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Zum Einsatz des Skalarprodukts als analytisches Instrument in Geometriebeweisen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2004-09-09</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
+    <dc:subject>Analytische Geometrie; Skalarprodukt</dc:subject>
+    <dc:title>Das Skalarprodukt und seine Anwendungen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/semmler-05-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/semmler-05-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über das Lösen von Funktionalgleichungen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-01-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Semmler_Gunter"/>
+    <dc:subject>Funktionalgleichungen; Cauchysche Funktionalgleichung; periodische Functionen</dc:subject>
+    <dc:title>Funktionalgleichungen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/semmler-05-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/semmler-05-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über grundlegende Abzählprinzipien (Abzählformeln, Einschluss-Ausschluss-Prinzip, erzeugene Funktionen) und Anwendungen auf Binomial-Identitäten.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-01-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Semmler_Gunter"/>
+    <dc:subject>Kombinatorik; Abzählformeln; Binomial-Identitäten; Einschluss-Ausschluss-Prinzip; Rekursion; erzeugene Funktionen; verallgemeinerte binomische Formel</dc:subject>
+    <dc:title>Kombinatorik</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/semmler-05-3">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/semmler-05-3.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über Funktionen in der Zahlentheorie: multiplikative Funktionen, Teileranzahlen und Teilersummen, die Möbiusfunktion und die Möbius-Inversionformel.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-01-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Semmler_Gunter"/>
+    <dc:subject>Floor-Function; Zahlentheorie; multiplikative Funktionen; Teilersummen; Möbiusfunktion; Eulerfunktion</dc:subject>
+    <dc:title>Funktionen in der Zahlentheorie</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/wirth-05-1">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/wirth-05-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Ein Text über Anwendungen komplexer Zahlen in trigonometrischer Form auf trigonometrische Identitäten, reguläre n-Ecke und die Tschebyschew-Polynome.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-01-05</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Wirth_Jens"/>
+    <dc:subject>Komplexe Zahlen; Trigonometrische Funktionen; Reguläre n-Ecke; Tschebyschew-Polynome</dc:subject>
+    <dc:title>Trigonometrische Funktionen</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/wirth-05-2">
+    <ksn:availableAsPDF rdf:resource="http://lsgm.de/KoSemNet/pdf/wirth-05-2.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Wirth_Jens"/>
+    <dc:abstract>Ein Text über trigonometrische Funktionen und deren Anwendung in der Geometrie. Es werden der Sinussatz, der Cosinussatz, Winkelsummen, die Dreiecksflächenformel abc/4R, Inkreisradien und einige trigonometrische Ungleichungen besprochen.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2005-01-31</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Wirth_Jens"/>
+    <dc:subject>Trigonometrische Funktionen; Geometrie</dc:subject>
+    <dc:title>Von Winkelfunktionen zur Dreiecksgeometrie</dc:title>
+  </dc:BibliographicResource>
+
+  <owl:Ontology rdf:about="http://kosemnet.de/Data/Artikel/">
+    <rdfs:comment>Mathematische Miniaturen und Aufsätze</rdfs:comment>
+    <rdfs:label>KoSemNet: Aufsätze</rdfs:label>
+  </owl:Ontology>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Bitterlich_Norman">
+    <foaf:name>Norman Bitterlich</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Graebe_HansGert">
+    <foaf:homepage rdf:resource="http://bis.informatik.uni-leipzig.de/HansGertGraebe"/>
+    <foaf:name>Hans-Gert Gräbe</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Graubner_Sonnhard">
+    <foaf:name>Sonnhard Graubner</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Jedrzejewicz_Piotr">
+    <foaf:name>Piotr Jedrzejewicz</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Koksch_Norbert">
+    <foaf:homepage rdf:resource="http://www.math.tu-dresden.de/~koksch"/>
+    <foaf:name>Norbert Koksch</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Lippert_Joachim">
+    <foaf:name>Joachim Lippert</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Moldenhauer_Wolfgang">
+    <foaf:name>Wolfgang Modenhauer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Sauermann_Lisa">
+    <foaf:name>Lisa Sauermann</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Schueler_Axel">
+    <foaf:name>Axel Schüler</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Schulze_Christoph">
+    <foaf:name>Christoph Schulze</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Semmler_Gunter">
+    <foaf:homepage rdf:resource="http://www.mathe.tu-freiberg.de/~semmler"/>
+    <foaf:name>Gunter Semmler</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Tancer_Martin">
+    <foaf:name>Martin Tancer</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Unger_Alexander">
+    <foaf:name>Alexander Unger</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Waldmann_Johannes">
+    <foaf:homepage rdf:resource="http://www.imn.htwk-leipzig.de/~waldmann"/>
+    <foaf:name>Johannes Waldmann</foaf:name>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://kosemnet.de/Data/Person/Wirth_Jens">
+    <foaf:homepage rdf:resource="http://www.mathe.tu-freiberg.de/~wirth"/>
+    <foaf:name>Jens Wirth</foaf:name>
+  </foaf:Person>
+
+  <owl:Class rdf:about="http://purl.org/dc/terms/BibliographicResource">
+    <rdfs:label>Mathematischer Aufsatz</rdfs:label>
+  </owl:Class>
+
+</rdf:RDF>

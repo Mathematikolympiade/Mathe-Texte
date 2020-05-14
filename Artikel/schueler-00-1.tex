@@ -1,0 +1,608 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,schueler,url}
+\usepackage{kosemnet,ko-math}
+
+\title{Polynome\kosemnetlicensemark} 
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+
+\date{März 2000} 
+
+\begin{document}
+\maketitle
+
+{\em Polynome}, auch {\em ganzrationale Funktionen} genannt, sind die
+einfachsten Funktionen "uberhaupt. Sie treten sowohl in der Analysis, eben als
+Funktionen, als auch als auch in der Algebra, als Elemente von
+{\glqq}abstrakten Ringen{\grqq}, auf. In Olympiadeaufgaben tauchen sie
+entweder direkt bei der Restberechnung in der Polynomdivision, bei der
+Nullstellenbestimmung oder als symmetrisches Gleichungssystem auf.  Man
+benutzt Polynome in Verbindung mit dem {\sc Vieta}schen Wurzelsatz auch zur
+Berechnung von Summen von Binomialkoeffizienten oder von trigonometrischen
+Summen.
+
+\subsubsection*{Division mit Rest, Nullstellen und der Identit"atssatz}
+\begin{definition} Eine Funktion $f\colon\R\to\R$ der Gestalt
+\[f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots +a_1x+a_0,\quad a_n\ne 0\]
+hei"st {\em Polynom vom Grad} $n$ (Schreibweise: $\deg(f)=n$). Die festen
+Zahlen $a_0,\dots, a_n$ hei"sen {\em Koeffizienten} von $f$ und k"onnen
+komplex, reell, rational oder ganzzahlig sein.
+\end{definition}
+
+\begin{beispiel} Das (lineare) Polynom $f(x)=mx+n$, $m\ne0$, hat den Grad
+  $1$. F"ur $f(x)=(x+1)^n-x^n-1$, $n\ge2$, gilt $\deg(f)=n-1$.
+  Vereinbarungsgem"a"s hat das Nullpolynom $f\equiv 0$ den Grad $-1$. Die
+  Polynome vom Grad $0$ sind genau die konstanten Polynome $f(x)=c$, $c\ne0$.
+\end{beispiel}
+
+Der folgende einfache Satz geh"ort zu den wichtigsten Aussagen "uber Polynome.
+Aus ihm lassen sich viele interessante S"atze ableiten.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{satz}[Division mit Rest] Es seien $f(x)$ und $g(x)$ Polynome. Dann
+  existieren Polynome $q(x)$ und $r(x)$ mit
+\begin{equation}\label{div}
+f(x)=g(x)q(x)+r(x),\quad \deg(r)<\deg(g).
+\end{equation}
+Die Polynome $q(x)$ und $r(x)$ hei"sen {\em Quotient} bzw.\ {\em Rest} bei der
+Division von $f(x)$ durch $g(x)$. Ist $r(x)\equiv 0$, dann sagen wir {\em
+  $g(x)$ teilt $f(x)$} und schreiben $g(x){\teilt}f(x)$.
+\end{satz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{beispiel}
+  Die aus der Schule bekannte Methode der Division mit Rest f"ur ganze Zahlen
+  l"asst sich auf Polynome "ubertragen. Man erh"alt etwa mit $f(x)=x^7-1$ und
+  $g(x)=x^3+x+1$
+$$
+x^7-1=(x^3+x+1)(x^4-x^2-x+1)+2x^2-2.
+$$
+Wenn $\deg(f)\ge \deg(g)$ gilt, dann ist  offensichtlich
+$\deg(f)=\deg(g)+\deg(q)$.  
+\end{beispiel}
+
+\begin{aufgabe}
+  Gesucht sind alle reellen Zahlen $a$ und $b$ mit $x^2-2ax+2\teilt
+  x^4+3x^2+ax+b$.
+\end{aufgabe}
+% L. a=0, b=1 und $a=\pm\frac{1}{2\sqrt{2}}$, $b=3$
+
+
+\begin{aufgabe}
+\label{division} Es seien $a,\,b,\,r$ und $s$ reelle Zahlen mit
+$a\ne b$. Welchen Rest l"asst das Polynom $f(x)$ bei der Division durch
+$(x-a)(x-b)$, wenn bekannt ist, dass $f(a)=r$ und $f(b)=s$ gilt?
+\end{aufgabe}
+
+{\em L"osung.} Da durch ein quadratisches Polynom dividiert wird, ist der Rest
+h"ochstens linear, etwa $r(x)=Ax+B$. Wir wollen $A$ und $B$ ermitteln.  Nach
+(\ref{div}) gilt also
+$$
+f(x)=(x-a)(x-b)q(x)+Ax+B
+$$
+mit einem gewissen Polynom $q(x)$ als Quotient.  Setzt man in diese
+Gleichung nacheinander $x=a$ und $x=b$ ein, so erh"alt man das lineare
+Gleichungssystem in den Variablen $A$ und $B$:
+$$r=Aa+B,\qquad s=Ab+B.$$ Es besitzt die eindeutig bestimmte L"osung
+$$A=\frac{s-r}{b-a},\qquad B=\frac{rb-sa}{b-a}.$$
+
+Nun ein konkretes Beispiel: 
+\begin{aufgabe}
+  Welchen Rest l"asst $x^{100}-2x^{51}+1$ bei der Division durch $x^2-1$?
+\end{aufgabe}
+
+{\em L"osung.} Wegen $x^2-1=(x-1)(x+1)$ hat man $a=1$ und $b=-1$. Somit ist
+$r=f(1)=1-2+1=0$ und $s=f(-1)=1+2+1=4$. Damit ergibt sich nach den obigen
+Formeln $A=-2$ und $B=2$. Der Rest bei der Division durch $x^2-1$ ist also
+gleich $-2x+2$.
+\medskip
+
+Die Zahl $\alpha$ hei"st {\em Nullstelle} des Polynoms $f$, wenn $f(\alpha)=0$
+gilt.
+
+Es sei $f$ ein Polynom vom Grad $n$ und $a\in\R$. Die Division mit Rest von
+$f$ durch $x-a$ f"uhrt auf
+\begin{align}\label{lin1}
+f(x)=(x-a)q(x)+r(x),
+\end{align}
+wobei $r(x)$ ein konstantes Polynom ist, da $\deg(r)<\deg(x-a)=1$, also
+$\deg(r)\le 0$.  Setzt man $x=a$ in (\ref{lin1}) ein, so erh"alt man
+$f(a)=r(a)$ also $r(x)\equiv f(a)$ und somit
+\begin{equation}\label{lin2}
+f(x)=(x-a)q(x)+f(a).
+\end{equation}
+
+\begin{aufgabe}
+  Es sei $f(x)$ ein Polynom mit ganzzahligen Koeffizienten und $f(0)$ und
+  $f(1)$ seien beide ungerade. Dann hat $f(x)$ keine ganzzahlige Nullstelle.
+\end{aufgabe}
+
+Nach (\ref{lin2}) gilt
+\begin{align*}
+  f(x)=x q(x)+f(0)\quad\text{ und }\quad f(x)=(x-1)p(x)+f(1).
+\end{align*}
+Dabei sind $q(x)$ und $p(x)$ wieder Polynome mit ganzzahligen Koeffizienten,
+da die Divisoren $x$ bzw.{} $x-1$ Polynome mit h"ochstem Koeffizienten gleich
+Eins sind.  Ist nun $f(a)=0$ f"ur ein $a\in\Z$, so liefern die obigen
+Gleichungen modulo $2$:
+$$
+0\equiv a q(a) +1\quad\text{ und }\quad 0\equiv (a-1)p(a) +1.
+$$
+Da jedoch entweder $a$ oder $a-1$ gerade ist, ergibt sich hier ein
+Widerspruch. Das Polynom $f(x)$ hat also keine ganzzahligen Nullstellen.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{folgerung}\label{ab} Es sei $f(x)$ ein Polynom, das nicht identisch Null
+  ist.  Die Zahl $a$ ist genau dann Nullstelle von $f(x)$, wenn $f(x)$ ohne
+  Rest durch $x-a$ teilbar ist, d.\,h.{}, wenn es ein Polynom $q(x)$ gibt mit
+\begin{equation}\label{abspalten}
+f(x)=(x-a)q(x).
+\end{equation}
+Dabei gilt $\deg(q)=\deg(f)-1$.
+\end{folgerung}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{aufgabe}
+  (a) F"ur welche nat"urlichen Zahlen $n\in\N$ ist $x^2+x+1$ ein Teiler von
+  $f_n(x):=x^{2n}+x^n+1$?
+  
+  (b) F"ur $n\in\N$ mit $3\not\teilt (n+1)$ gilt $37\teilt
+  1\underbrace{0\dots0}_{n}1\underbrace{0\dots 0}_n 1$.
+\end{aufgabe}
+
+{\em L"osung.} (a) Es gilt die folgende Zerlegung in Linearfaktoren
+$x^2+x+1=(x-\omega)(x-\omega^2)$, wobei $\omega=\half(-1+\ii \sqrt{3})$
+($\ii^2=-1$ ist die imagin"are Einheit). Nach Folgerung\,\ref{ab} ist $f_n(x)$
+genau dann durch $x-\omega$ und $x-\omega^2$ teilbar, wenn $f_n(\omega)=0$ und
+$f_n(\omega^2)=0$. Es sei \mbox{$n=3k\pm1$}. Dann gilt wegen $\omega^3=1$
+zun"achst
+$f_n(\omega)=\omega^{6k\pm2}+\omega^{3k\pm1}+1=\omega^{\pm2}+\omega^{\pm1}+1=0$
+und analog $f_n(\omega^2)=0$. Jedoch f"ur $n=3k$ ist
+$f_n(\omega)=f_n(\omega^2)=3$. Somit teilt $x^2+x+1$ genau dann $f_n(x)$, wenn
+$n$ nicht durch $3$ teilbar ist.
+
+(b) Es gilt $1\underbrace{0\dots0}_{n}1\underbrace{0\dots 0}_n
+1=10^{2n+2}+10^{n+1}+1$. Setzt man in (a) $x=10$ ein und beachtet
+$10^2+10+1=3\cdot 37$, so ergibt sich die Behauptung.
+\medskip
+
+Man sagt {\em $f$ hat bei $x=a$ eine $m$-fache Nullstelle}, falls es ein
+Polynom $q(x)$ mit 
+$$f(x)=(x-a)^mq(x),\quad \text{und}\quad q(a)\ne0$$
+ gibt. 
+
+\begin{beispiel} Das Polynom $f(x)=x^2(x-1)^2$ hat eine doppelte Nullstelle bei
+  $x=0$   und eine weitere doppelte Nullstelle bei $x=1$.
+\end{beispiel}
+
+\ul{Bemerkung} (zum Beispiel~\ref{division}): Treten im Divisor mehrfache
+Nullstellen auf, so kommt man mit dem obigen Ansatz nicht weiter. Ist etwa $a$
+eine $m$-fache Nullstelle von $g(x)$, so muss man die Werte
+$f(a),\,f^\prime(a),\dots,f^{(m-1)}(a)$ kennen, um den Rest von $f(x)$ bei der
+Division durch $g(x)$ zu ermitteln. Dabei bezeichnet $f^{(k)}(a)$ die {\em
+  $k$-te Ableitung} von $f(x)$ an der Stelle $a$. Die erste Ableitung von
+$f(x)=a_nx^n+\cdots a_1x+a_0$ ist definiert als
+$f^\prime(x)=na_nx^{n-1}+(n-1)a_{n-1}x^{n-2}+\cdots +a_1$. Der neue Ansatz
+ergibt sich aus der {\em Taylorentwicklung} von $f(x)$ in $a$:
+\begin{align*}\label{taylor}
+f(x)=f(a)+(x-a)f^\prime(a)+\frac{f^{\prime\prime}(a)}{2!}(x-a)^2 +\dots+
+\frac{f^{(m-1)}(a)}{(m-1)!} (x-a)^{m-1}+ q(x)(x-a)^m.
+\end{align*}
+Wir bestimmen etwa den Rest von $f(x)=x^{100}-2x^{51}+1$ bei der Division
+durch $g(x)=(x-1)^2$. Der Ansatz lautet nun mit $a=1$ als doppelter Nullstelle
+von $g(x)$:
+$$
+f(x)=f(1)+(x-1)f'(1)+(x-1)^2q(x).
+$$
+Die ersten beiden Summanden auf der rechten Seite liefern den Rest bei der
+Division durch $(x-1)^2$.  Wir bestimmen den Rest von $f(x)$ bei der Division
+durch $(x-a)^2(x-b)$. Der Ansatz liefert ein quadratisches Polynom $Ax^2+Bx+C$
+als Rest:
+$$
+f(x)=(x-a)^2(x-b)q(x)+Ax^2+Bx+C.
+$$
+Setzt man hier $x=a$ und $x=b$ ein, so erh"alt man 2 lineare Gleichungen
+f"ur die 3 Variablen $A$, $B$ und $C$. Die fehlende dritte Gleichung
+verschafft man sich durch Differentiation der obigen Gleichung und erneutes
+Einsetzen von $x=a$:
+$$ f'(a)=2A a+B a.
+$$
+Kennt man also $f(a),\,f'(a)$ und $f(b)$, so kann man den gesuchten Rest
+ermitteln.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{folgerung}\label{maximal} Es sei $f(x)$ ein Polynom vom  Grad $n$,
+  $n\in\N$. Dann besitzt $f(x)$ h"ochstens $n$ Nullstellen gez"ahlt in ihrer
+  Vielfachheit.
+\end{folgerung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{beweis} Wir benutzen vollst"andige Induktion "uber den Grad des
+  Polynoms. F"ur Polynome vom Grad Null ist die Aussage sicher richtig, denn
+  die konstanten, von Null verschiedenen Polynome haben keine Nullstellen. Nun
+  gelte der Satz bereits f"ur alle Polynome vom Grad $n-1$. Es sei $x=a$ eine
+  Nullstelle von $f(x)$. Dann gibt es nach Folgerung\,\ref{ab} ein Polynom
+  $q(x)$ mit (\ref{abspalten}). Ferner gilt $\deg(q)=n-1$. Also hat nach
+  Induktionsvoraussetzung $q(x)$ h"ochstens $n-1$ Nullstellen, gez"ahlt in
+  ihrer Vielfachheit. Nun sind aber alle Nullstellen von $f(x)$ entweder
+  Nullstellen von $q(x)$ oder vom $x-a$ oder von beiden. War $x=a$ bereits
+  Nullstelle von $q(x)$, so erh"oht sich deren Vielfachheit (beim "Ubergang zu
+  $f(x)$) um genau Eins. War $x=a$ keine Nullstelle von $q(x)$, so hat $f(x)$
+  genau eine Nullstelle mehr als $q(x)$, also h"ochstens $n$ Nullstellen.
+\end{beweis}
+
+Aus Folgerung\,\ref{ab} ergibt sich durch schrittweises Abspalten von
+Linearfaktoren die
+
+\begin{folgerung}\label{zerlegung}
+  Es sei $f(x)$ ein Polynom $n^{\mathrm{ten}}$ Grades mit den Nullstellen
+  $a_1,\dots, a_n$, gez"ahlt in ihrer Vielfachheit. Dann existiert eine
+  Konstante $c$, $c\ne0$, so dass
+\begin{align*}
+f(x)=c(x-a_1)\cdots (x-a_n).
+\end{align*}
+\end{folgerung}
+
+\begin{folgerung}[Identit"atssatz]\label{ident} 
+  {\em (i)} Es sei $f(x)$ ein Polynom mit $\deg(f)\le n$. Besitzt $f(x)$ mehr
+  als $n$ paarweise verschiedene Nullstellen, so gilt $f(x)\equiv0$.
+
+  {\em (ii)} Stimmen zwei Polynome $f(x)$ und $g(x)$, beide vom Grade kleiner
+  oder gleich $n$, an $n+1$ verschiedenen Stellen "uberein, so stimmen sie an
+  allen Stellen "uberein, d.\,h., sie sind identisch $f(x)\equiv g(x)$.
+\end{folgerung}
+
+\begin{beweis}
+  (i) Das Polynom kann nicht den Grad $k$, $k\in\{0,\dots,n\}$ besitzen, da es
+  sonst nach Folgerung\,\ref{maximal} h"ochstens $k$ verschiedene Nullstellen
+  bes"a"se. Da $\deg(f)\le n$ bleibt nur noch $f(x)\equiv 0$.
+
+  (ii) Wir setzen $h(x):=f(x)-g(x)$. Dann ist $\deg(h)\le n$, jedoch hat
+  $h(x)$ mindestens $n+1$ verschiedene Nullstellen. Nach (i) ist dann
+  $h(x)\equiv0$, also $f(x)\equiv g(x)$.
+\end{beweis}
+
+\begin{beispiel} Es seien $a$, $b$ und $c$ paarweise verschiedene reelle
+  Zahlen. Die quadratische Gleichung  
+\begin{equation}\label{bsp}
+\frac{(x-a)(x-b)}{(c-a)(c-b)}+\frac{(x-b)(x-c)}{(a-b)(a-c)}+\frac{(x-c)(x-a)}{(b-c)(b-a)}=1
+\end{equation}
+hat offensichtlich die L"osungen $x_1=a$, $x_2=b$ und $x_3=c$. Was folgt
+daraus?
+
+Antwort: Auf der linken und rechten Seite von (\ref{bsp}) stehen Polynome
+h"ochstens zweiten Grades, die aber in 3 verschiedenen Stellen
+"ubereinstimmen. Nach Folgerung\,\ref{ident}\,(ii) stimmen sie dann f"ur alle
+$x$ "uberein.
+\end{beispiel}
+
+Den Rahmen dieses Beitrages sprengen w"urde der Beweis des {\em
+  Fundamentalsatzes der Algebra}, der streng genommen gar kein algebraischer
+Satz ist, sondern in die Analysis geh"ort.
+
+\begin{satz}[Fundamentalsatz der Algebra] 
+  Jedes Polynom $n^{\mathrm{ten}}$ Grades, $n\ge1$, mit komplexen
+  Koeffizienten besitzt mindestens eine komplexe Nullstelle.
+\end{satz}
+
+Zusammen mit der Folgerung\,\ref{maximal} ergibt sich damit
+
+\begin{satz} 
+  Jedes Polynom $n^{\mathrm{ten}}$ Grades, $n\ge1$, mit komplexen
+  Koeffizienten besitzt genau $n$ komplexe Nullstellen.
+\end{satz}
+
+\subsubsection*{Der Vietasche Wurzelsatz}
+Hat das Polynom
+\begin{align}\label{v1}
+f(x)=x^n+a_1x^{n-1}+a_2x^{n-2}+\cdots+a_{n-1}x+a_n
+\end{align}
+die Nullstellen $x_1,\dots,x_n$, gez"ahlt in ihrer Vielfachheit, dann liefert
+Folgerung\,\ref{zerlegung}
+\[f(x)=(x-x_1)(x-x_2)\cdots(x-x_n).\]
+Multipliziert man dies aus und fasst die $2^n$ Summanden nach Potenzen von
+$x^k$, $k=0,\dots,n$,  zusammen, so liefert der Koeffizientenvergleich mit
+(\ref{v1})
+\begin{align*}
+a_1&=-(x_1+x_2+\dots+x_n),\\
+a_2&=x_1x_2+x_1x_3+\cdots +x_{n-1}x_n,\\
+&\,\vdots\\
+a_n&=(-1)^{n}x_1x_2\cdots x_n.
+\end{align*}
+Die auf der rechten Seite auftretenden Polynome $\sigma_k$, $k=1,\dots,n$, in
+den Ver"anderlichen $x_1,\dots, x_n$
+\begin{align*}
+\sigma_k(x_1,\dots,x_n):=\sum_{1\le i_1<\dots< i_k\le n}x_{i_1}\cdots x_{i_k}
+\end{align*}
+hei"sen {\em elementarsymmetrische Funktionen} der $x_1,\dots, x_n$. Wir haben
+also gesehen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{satz}[{\sc Vieta}scher Wurzelsatz] 
+  Sind $x_1,\dots, x_n$ die Nullstellen des Polynoms
+  $f(x)=x^n+a_1x^{n-1}+\cdots +a_n$, so gilt f"ur $k=1,\dots,n$
+\begin{align*}
+a_k=(-1)^k\sigma_k(x_1,\dots,x_n).
+\end{align*}
+Dabei sind die $\sigma_k$ die elementarsymmetrischen Funktionen. 
+\end{satz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}
+Eine Funktion $f(x_1,\dots,x_n)$ hei"st {\em symmetrisch}, falls sie unter
+allen Vertauschungen der Variablen $x_1,\dots, x_n$ invariant,
+d.\,h. unver"andert, bleibt. Mit anderen Worten, es gilt f"ur alle
+$k\in\{1,\dots,n-1\}$
+\begin{align*}
+f(x_1,\dots,x_n)=f(x_1,\dots,x_{k-1},x_{k+1},x_k,x_{k+2},\dots,x_n).
+\end{align*}
+\end{definition}
+
+\begin{beispiel} Symmetrisch sind etwa die Funktionen $f(x,y)=\cos(x-y)$,
+  $f(x,y,z)=1+xyz+x^2+y^2+z^2$, $g(x,y,z)=(x-y)^2(x-z)^2(y-z)^2$. Nicht
+  symmetrisch dagegen sind $f(x,y)=\sin(x-y)$, $g(x,y,z)=xy+xz$ und
+  $h(x,y,z)=(x-y)(x-z)(y-z)$, weil $\sin(y-x)=-\sin(x-y)$, zwar
+  $g(x,y,z)=g(x,z,y)$ aber $g(x,y,z)\ne g(y,x,z)$ und weil
+  $h(x,y,z)=-h(y,x,z)$.
+\end{beispiel}
+
+Eine weitere wichtige Klasse von symmetrischen Funktionen sind die {\em
+Potenzsummen} $$p_k(x_1,\dots,x_n)=x_1^k+\cdots+x_n^k,\ k\in\N.$$ Der
+Hauptsatz "uber die symmetrischen Funktionen besagt, dass sich jedes
+symmetrische Polynom ausdr"ucken l"asst durch die elementarsymmetrischen
+Funktionen.  Insbesondere lassen sich die Potenzsummen durch die
+elementarsymmetrischen Funktionen ausdr"ucken:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{satz}[{\sc Newton}sche Relationen]  
+  Zwischen den elementarsymmetrischen Funktionen\linebreak
+  $\sigma_k(x_1,\dots,x_n)$ und den Potenzsummen $p_k(x_1,\dots,x_n)$ gelten die
+  folgenden Relationen
+\begin{alignat}{2}
+  0&=p_k-\sigma_1p_{k-1}+-\cdots+(-1)^{k-1}\sigma_{k-1}p_1+(-1)^kk\sigma_k
+  &\quad\text{f"ur} \quad k&\le  n,\label{n1}\\
+  0&=p_k-\sigma_1p_{k-1}+-\cdots+(-1)^{n}\sigma_{n}p_{k-n}&\quad\text{f"ur} \quad
+  k&> n.\label{n2}
+\end{alignat}
+\end{satz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{beweis} Wir zeigen (\ref{n2}). Dazu sei $f(x)=(x-x_1)(x-x_2)\cdots
+  (x-x_n)$. Nach dem {\sc Vieta}schen Wurzelsatz gilt dann
+\[
+f(x)=x^n-\sigma_1 x^{n-1}+-\cdots +(-1)^n\sigma_n.
+\] 
+Setzt man in die obige Gleichung $x=x_i$ ein und  multipliziert mit
+$x_i^{k-n}$, so erh"alt man, da $x_i$ eine Nullstelle von $f(x)$ ist,
+$$
+0=x_i^k-\sigma_1x_i^{k-1}+\dots+(-1)^n\sigma_nx_i^{k-n}.
+$$
+Summiert man schlie"slich "uber $i=1,\dots,n$, so erh"alt man die
+Behauptung.
+
+Der Beweis von (\ref{n1}) ist etwa  schwieriger. Wir zeigen daher nur den
+Spezialfall $k=2$. Offenbar ist $\sigma_1=p_1$ und daher
+$\sigma_1p_1=(x_1+\cdots+x_n)^2=x_1^2+x_2^2+\cdots x_n^2+2(x_1x_2+x_1x_3+\cdots
+x_{n-1}x_n)=p_2+2\sigma_2$. Dies ist die Behauptung.
+\end{beweis}
+
+\begin{aufgabe}
+  Es seien $x_1\,x_2$ und $x_3$ die Nullstellen von $x^3+3x^2-7x+1$. Man
+  berechne $x_1^2+x_2^2+x_3^2$.
+\end{aufgabe}
+
+{\em L"osung.}  Nach dem {\sc Vieta}schen Wurzelsatz ist $\sigma_1=-3$ und
+$\sigma_2=-7$. Nach dem letzten Teil des obigen Beweises gilt
+$p_2=\sigma_1^2-2\sigma_2=9+14=23$.
+
+\begin{aufgabe}
+  Es seien $x_1$ und $x_2$ die L"osungen der Gleichung $x^2-6x+1=0$. Man
+  zeige, dass $x_1^n+x_2^n$ stets ganzzahlig und nicht durch 5 teilbar ist.
+\end{aufgabe}
+
+{\em L"osung.} Es ist $\sigma_1=x_1+x_2=6$, $\sigma_2=x_1x_2=1$ und nach obigem
+$p_2=\sigma_1^2-2\sigma_2=36-2=34$. Nun gilt
+\[
+p_1p_n=(x_1^n+x_2^n)(x_1+x_2) =x_1^{n+1}+x_2^{n+1}+x_1x_2(x_1^{n-1}+x_2^{n-2})
+=p_{n+1}+\sigma_2p_{n-1}. 
+\]
+Wir erhalten also die Rekursion $p_{n+1}=\sigma_1 p_n-\sigma_2 p_{n-1}$. Hieraus
+folgt zun"achst die Ganzzahligkeit von $p_n$. Wegen $\sigma_1\equiv \sigma_2\equiv
+1 \pmod{5}$ ergibt sich daraus $p_{n+1}\equiv p_n-p_{n-1} \pmod 5$. Als
+periodische Folge der Reste  $(p_n \pmod{5})$ erhalten wir also
+$1$, $-1$, $-2$, $ -1$, $1$, $2$, $1$, $-1, \dots$.
+
+\begin{aufgabe}
+  Man finde alle reellen L"osungen des Gleichungssystems $x+y+z=1$,
+  $x^3+y^3+z^3+xyz=x^4+y^4+z^4+1$.
+\end{aufgabe}
+
+{\em L"osung.} Nach (\ref{n2}) mit $n=3$ und $k=4$ ist
+\[p_4=\sigma_1 p_3-\sigma_2p_2+\sigma_3 p_1.\]
+Beachtet man $\sigma_1=p_1=1$ und setzt dies in die zweite gegebene Gleichung
+ein, so hat man $p_3+\sigma_3=p_4+1=p_3-\sigma_2p_2+\sigma_3+1$ bzw.{} $\sigma_2
+p_2=1$. Andererseits war aber $1=p_1^2=p_2+2\sigma_2$, also
+$p_2=1-2\sigma_2$. Setzt man dies wiederum oben ein, so hat man
+$1=\sigma_2(1-2\sigma_2)$ bzw.{} $\sigma_2^2-\half \sigma_2+\half=0$, was keine reelle
+L"osung $\sigma_2$ besitzt. Folglich gibt es auch keine reelle L"osung $(x,y,z)$
+des gegebenen Gleichungssystems.
+
+%\newpage
+\subsection*{Anwendungen}
+
+\begin{aufgabe}
+  Dem Einheitskreis sei ein regul"ares $n$-Eck $P_1P_2\cdots P_n$
+  einbeschrieben. Man zeige, dass das Produkt aller Streckenlängenquadrate
+  $\msegment{P_iP_j}^2$, $1\le i<j\le n$, gleich $n^n$ ist!
+\end{aufgabe}
+
+{\em L"osung.} Wir legen das regul"are $n$-Eck so in die komplexe Ebene, dass
+$P_i=\nu_{i-1}$, $i=1,\dots,n$, wobei die $\nu_i$ gerade die $n$-ten
+Einheitswurzeln sind; $\nu_0=1$. Wegen $\overline{\nu_i}=\nu_{-i}$ gilt dann
+f"ur $D=\prod_{1\le i<j\le n}(\nu_i-\nu_j)$
+\begin{align}
+|D|^2&=D\overline{D}=\prod_{i<j}(\nu_i-\nu_j)(\nu_{-i}-\nu_{-j})\notag\\
+&=\prod_{i<j}\nu_i(1-\nu_{j-i})\nu_{-i}(1-\nu_{i-j})\notag\\
+&=\prod_{i\ne j}(1-\nu_{i-j})=\prod_{k=1}^{n-1}\prod_{i=1}^n(1-\nu_k)\notag\\
+&=\left(\prod_{k=1}^{n-1}(1-\nu_k)\right)^n\label{gl}
+\end{align}
+Nun gilt aber
+$f(x)=x^{n-1}+x^{n-2}+\cdots+x+1=(x-\nu_1)(x-\nu_2)\cdots(x-\nu_{n-1})$ wegen
+$x^n-1=(x-1)(x^{n-1}+\cdots+1)$. Setzt man hier $x=1$ ein und vergleicht dies
+mit (\ref{gl}), so erh"alt man $|D|^2=f(1)^n=n^n$.
+
+\subsubsection*{Aufgaben}
+\begin{enumerate}
+\item Welchen Rest l"asst $p(x)=x^7-1$ bei der Division durch $q(x)=x^3+x+1$?
+
+%L $r=2x^2-2$
+  
+\item Es seien $x_1,x_2,x_3$ die Nullstellen des Polynoms $x^3+3x^2-7x+1$. Man
+  ermittle $x_1^3+x_2^3+x_3^3$!
+
+%L 23
+
+\item  
+  \begin{itemize}
+  \item [(a)] F"ur welche nat"urlichen Zahlen $n\in\N$ ist $x^2+x+1$ ein
+    Teiler von $x^{2n}+x^n+1$?
+  \item [(b)] F"ur welche $n\in\N$ gilt
+    $37\teilt 1\underbrace{0\dots0}_{n}1\underbrace{0\dots 0}_n 1$ ?
+\end{itemize}
+
+%L (a) $3\not| n$  (b) $ n\not\equiv 2\mod 3$
+
+\item Es seien $P(x)$, $Q(x)$, $R(x)$ und $S(x)$ Polynome mit 
+$$
+P(x^5)+xQ(x^5)+x^2R(x^5)=(x^4+x^3+x^2+x+1)S(x).
+$$
+Zeigen Sie, dass $x-1$ ein Teiler von $P(x)$ ist!
+
+\item Es sei $P(x)$ ein Polynom vom Grad $n$ mit $P(k)=\frac{k}{k+1}$,
+  $k=0,\dots,n$. Man finde $P(n+1)$!
+
+%L
+%$$
+%P(n+1)=\begin{cases}1&\text{f"ur ungerades }\quad n\\
+%\frac{n}{n+2}& \text{f"ur gerades } \quad n
+%\end{cases}
+%$$
+  
+\item Es seien $a,\,b$ und $c$ paarweise verschiedene ganze Zahlen und $P$ ein
+  Polynom mit ganzzahligen Koeffizienten.  Zeigen Sie, dass die Gleichungen
+$$
+P(a)=b,\quad P(b)=c,\quad P(c)=a
+$$
+nicht gleichzeitig erf"ullt werden k"onnen!
+
+\item Man l"ose das folgende Gleichungssystem
+$$ x^5+y^5=33,\quad x+y=3.$$
+
+%L Wir setzen $\sigma_1=x+y$ und $sig_2=xy$. Dann gilt
+%$p_5=\sigma_1^5-5\sigma_1^3\sigma_2+5\sigma_1\sigma_2^2$. Setzt man $p_5=33$
+%und $\sigma_103$ ein, so hat man $\sigma_2^2-9\sigma_2+14=0$. mit den
+%L"osungen $\sigma_2=2$ und $\sigma_2=7$. Also m"ussen wir die Systeme
+%$x+y=3,\quad xy=2$ und $x+y=3\quad xy=7$ l"osen. Dies liefert $(2,1)$,
+%$(1,2)$, $x,y=\half(3\pm\sqrt{19}\ii)$
+
+\item Welche reellen L"osungen $x$ hat die Gleichung
+$$
+\sqrt[4]{97-x}+\sqrt[4]{x}=5?
+$$
+
+%L Wir setzen $\sqrt[4]{x}=y$ und $\sqrt[4]{97-x}=z$ und erhalten
+%$y^4+z^4=x+97-x=97$ also 
+%$$
+%y+z=5,\quad y^4+z^4=97
+%$$
+%Dies f"uhrt auf $\sigma_2\in\{6,44\}$ mit den L"osungen $x_1=16$, $x_2=81$
+%und 2 weiteren komplexen L"osungen.
+
+\item Welcher Relation m"ussen $a,\,b$ und $c$ gen"ugen, damit das System
+$$
+x+y=a,\quad x^2+y^2=b, \quad x^3+y^3=c
+$$
+eine (komplexe) L"osung besitzt.
+
+%L $a^3-3ab+2c=0$
+
+\item Man l"ose das Gleichungssystem
+$$
+x+y+z=a,\quad x^2+y^2+z^2=b^2, \quad x^3+y^3+z^3=a^3!
+$$
+
+\item Man ermittle alle L"osungen des Systems $x+y+z=1$,
+$x^3+y^3+z^3+xyz=x^4+y^4+z^4+1$!
+
+%L keine L"osung.
+
+\item Gegeben seien $2n$ paarweise verschiedene Zahlen $a_1,\dots,a_n$ und
+  $b_1,\dots,b_n$. Ein $n\times n$-Feld wird nun mit den Zahlen $a_i+b_j$ in
+  der $i^{\rm ten}$ Zeile und $j^{\rm ten}$ Spalte gef"ullt. 
+  
+  Beweise: Stimmen die Produkte der Zahlen in jeder Spalte "uberein, so
+  stimmen auch die Zeilenprodukte "uberein!
+  
+\item Man dr"ucke $x^3+y^3+z^3-3xyz$ durch elementarsymmetrische Funktionen
+  aus!
+  
+\item F"ur welche $a\in\R$ ist die Quadratsumme der Nullstellen von
+  $x^2-(a-2)x-a-1$ minimal?
+  
+\item Sind $x_1$ und $x_2$ die Nullstellen des Polynoms $x^2-6x+1$, dann ist
+  f"ur jede nat"urliche Zahl $n$ die Zahl $x_1^n+x_2^n$ ganzzahlig und nicht
+  durch $5$ teilbar.
+  
+\item Das Polynom $x^{2n}-2x^{2n-1}+3x^{2n-2}-\cdots-2nx+2n+1$ hat keine
+  reellen Wurzeln.
+  
+\item Ein Polynom $f(x,y)$ hei"st {\em antisymmetrisch}, falls
+  $f(x,y)=-f(y,x)$. 
+  
+  Zeigen Sie, dass jedes antisymmetrische Polynom $f$ die Gestalt
+  $f(x,y)=(x-y)g(x,y)$ mit einem symmetrischen Polynom $g$ hat!
+  
+\item Ist $f(x,y)$ symmetrisch und $(x-y)\teilt f(x,y)$, dann gilt
+  $(x-y)^2\teilt f(x,y)$.
+
+\item Man l"ose die Gleichung $z^8+4z^6-10z^4+4z^2+1=0$!
+
+\item Man l"ose die Gleichung
+$$
+4z^{11}+4z^{10}-21z^9-21z^8+17z^7+17z^6+17z^5+17z^4-21z^3-21z^2+4z+4=0!
+$$
+
+\item Welchen Rest l"asst $x^{100}-2x^{51}+1$ bei der Division durch $x^2-1$?
+
+\item Zeigen Sie:  $(x^4+x^3+x^2+x+1)\teilt (x^{44}+x^{33}+x^{22}+x^{11}+1)$.
+
+\item Man l"ose die Gleichung $x^4+a^4-3ax^3+3a^3x=0$ bei gegebenem $a$.
+
+\item Man bestimme $a$ und $b$ so, dass $(x-1)^2\teilt (ax^4+bx^3+1)$!
+
+\item F"ur welche $n\in\N$ gilt 
+  \begin{itemize}
+  \item[(a)] $(x^2+x+1)\teilt \left((x+1)^n-x^n-1\right)$?
+  \item[(b)] $(x^2+x+1)\teilt \left((x+1)^n+x^n+1\right)$?
+\end{itemize}
+
+\item Man beweise, dass $(x^k-a^k)\teilt (x^n-a^n)$ genau dann, wenn $k\teilt
+  n$!
+  
+\item Man ermittle $a$, so dass $-1$ eine mehrfache Nullstelle von
+  $x^5-ax^2-ax+1$ ist!
+\end{enumerate}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+
+\end{document}
+
+
+
+
+

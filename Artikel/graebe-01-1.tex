@@ -1,0 +1,731 @@
+\documentclass{article}
+\usepackage{kosemnet,ko-math,ngerman,url}
+
+\title{Primzahl-Testverfahren\kosemnetlicensemark} 
+\author{Hans-Gert Gr"abe, Leipzig\\[8pt]
+\url{http://www.informatik.uni-leipzig.de/~graebe}}
+
+\date{2.~Februar 2005} 
+
+\begin{document} 
+
+\maketitle
+
+\section{Einfache Primzahl-Testverfahren}
+
+Ist eine gro"se ganze Zahl gegeben, so ist es in vielen F"allen einfach zu
+erkennen, dass es sich um eine zusammengesetzte Zahl handelt. So sind
+z.B. 50\,\% aller Zahlen gerade. Eine Probedivision durch die 4 Primzahlen
+$<10$ l"asst uns bereits 77\,\% aller Zahlen als zusammengesetzt
+erkennen. "Ubrig bleibt eine Grauzone von m"oglichen Kandidaten von
+Primzahlen, f"ur die ein aufwändigeres Verfahren herangezogen werden muss, um
+die Primzahleigenschaft auch wirklich zu beweisen.
+
+Ein erstes solches Verfahren ist die {\bf Methode der Probedivision}.  Die
+folgenden Prozeduren sind in {\bf MuPAD} \cite{MuPAD} geschrieben, sehen aber
+in jedem anderen Computeralgebra-System (CAS) "ahnlich aus.
+\begin{verbatim}
+primeTestByTrialDivision:=proc(m:Dom::Integer) local z;
+begin  
+  if (m<3) then return(bool(m=2)) end_if;
+  z:=2;
+  while z*z<=m do 
+      if m mod z = 0 then return(FALSE) end_if; z:=z+1;
+  end_while;
+  TRUE; 
+end;
+\end{verbatim}
+oder in etwas effizienterer Form (Aufwand auf $\frac13$ reduziert, indem nur
+auf Faktoren der Form $6k\pm 1$ getestet wird)
+\begin{verbatim}
+moreEfficientPrimeTestByTrialDivision:=proc(m:Dom::Integer) local z;
+begin 
+  if (m<2) then return(FALSE)
+    elif (m mod 2 = 0) then return(bool(m=2));
+    elif (m mod 3 = 0) then return(bool(m=3))
+  end_if;
+  z:=5;
+  while z*z<=m do
+      if m mod z = 0 then return(FALSE) end_if; z:=z+2;
+      if m mod z = 0 then return(FALSE) end_if; z:=z+4;
+  end_while;
+  TRUE;
+end;
+\end{verbatim}
+{\tt bool} erzwingt dabei die boolesche Auswertung des zur"uckzugebenden
+Ausdrucks, da sonst standardm"a"sig angenommen wird, dass es sich um eine
+Gleichung handelt, der man in einem symbolischen Kontext nur dann einen
+Wahrheitswert zuordnen kann, wenn in ihr keine (ungebundenen) Symbole
+auftreten.
+
+Der Aufwand f"ur dieses Verfahren ist am gr"o"sten, wenn $m$ eine Primzahl
+ist, d.h. wirklich alle Tests bis zum Ende durchgef"uhrt werden m"ussen. Die
+Laufzeit ist dabei von der Gr"o"senordnung $O(\sqrt{m})$, also exponentiell in
+der Bitl"ange $l(m)=\log_2(m)$ der zu untersuchenden Zahl
+($\sqrt{m}=2^{l(m)/2}$).
+
+Dieses Verfahren liefert uns allerdings f"ur eine zusammengesetzte Zahl neben
+der Antwort auch einen Faktor, so dass eine rekursive Anwendung nicht nur die
+Primzahleigenschaft pr"ufen kann, sondern f"ur Faktorisierungen geeignet
+ist. Experimente mit CAS zeigen dagegen, dass Faktorisieren offensichtlich um
+Gr"o"senordnungen schwieriger ist als der reine Primzahltest.
+
+Gleichwohl wird in allen CAS der Test mit Probedivision f"ur eine Liste von
+kleinen Primzahlen als Vortest angewendet und die aufwändigeren Verfahren nur
+f"ur solche Zahlen eingesetzt, die {\glqq}nicht offensichtlich{\grqq} keine
+Primzahlen sind. In der folgenden Prozedur ist {\tt smallPrimes} eine Liste
+aller {\glqq}kleinen{\grqq} Primzahlen:
+\begin{verbatim}
+smallPrimesTest:=proc(m:Dom::Integer) local i,smallPrimes;
+begin
+  smallPrimes:=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+  if (m<2) then return(FALSE) end_if;
+  for i in smallPrimes do
+       if (m mod i = 0) then return(bool(m=i)) end_if;
+  end_for;
+  FAIL;
+end;
+\end{verbatim}
+In dieser Prozedurdefinition wird eine dreiwertige Logik ausgenutzt, die neben
+den (sicheren) Wahrheitswerten {\tt TRUE} und {\tt FALSE} auch noch die
+M"oglichkeit {\tt FAIL} ({\glqq}nicht entschieden{\grqq}) erlaubt.
+
+\section{Der Restklassenring ${\Z}_m$}
+
+Die weiteren Primtestverfahren beruhen alle auf zahlentheoretischen
+Zusammenh"angen, die sich beim Rechnen mit Resten ergeben.
+
+Bekanntlich nennt man zwei Zahlen $a,b\in {\Z}$ {\em kongruent modulo m} (und
+schreibt $a\equiv b\pmod{m}$), wenn ihre Differenz durch $m$ teilbar ist, also
+bei Division durch $m$ der Rest $0$ bleibt. So gilt $127\equiv 1\pmod{7}$,
+aber ebenso $127\equiv 8\pmod{7}$, denn in beiden F"allen ist die Differenz
+durch $7$ teilbar.
+
+Die eingef"uhrte Relation ist eine "Aquivalenzrelation, so dass wir die
+zugeh"origen "Aquivalenzklassen betrachten k"onnen, die als {\em Restklassen}
+bezeichnet werden. Die Restklasse $\pmod{7}$, in der sich die Zahl $1$
+befindet, besteht etwa aus den Zahlen
+\[[1]_7=\{\ldots,-20,-13,-6,1,8,15,\ldots,127,\ldots\} = \{7k+1\teilt
+k\in {\Z}\}.
+\] 
+Die Darstellungen $z\equiv 1\pmod{7},\ 7\teilt (z-1),\ z=7k+1,\ z\in [1]_7$
+und $[z]_7 = [1]_7$ sind also "aquivalent zueinander. Wir werden diese
+unterschiedlichen Schreibweisen im Weiteren frei wechselnd verwenden.  Die
+Menge der Restklassen modulo $m$ bezeichnen wir mit ${\Z}_m$.
+
+Addition und Multiplikation sind mit der Restklassenbildung vertr"aglich, so
+dass die Menge ${\Z}_m$ sogar einen Ring bildet.  Im Gegensatz zu den ganzen
+Zahlen kann dieser Ring aber Nullteiler besitzen. So ist etwa $2,3\not\equiv
+0\pmod{6}$, dagegen $2\cdot 3 = 6 \equiv 0\pmod{6}$.
+
+\subsection{Ein wichtiger Satz "uber endliche Mengen}
+
+In den weiteren Betrachtungen wird mehrfach der folgende wichtige Satz
+"uber endliche Mengen angewendet.
+\begin{satz}
+Sei $\phi:\ M_1\longrightarrow M_2$ eine Abbildung zwischen zwei
+gleichm"achtigen endlichen Mengen
+in sich selbst. Dann gilt
+\begin{align*}
+&\phi\ \text{ist injektiv, d.h.}\ \phi(x_1)=\phi(x_2)\ \Rightarrow
+    x_1=x_2\tag{1} 
+\intertext{genau dann, wenn}
+&\phi\ \text{ist surjektiv, d.h.}\ \forall\ y\in M_2\ \exists\ x\in M_1\,:\, 
+    y=\phi(x)\tag{2}
+\end{align*}
+\end{satz}
+
+\begin{beweis}
+Offensichtlich, denn
+\begin{quote}
+(1) hei"st: jedes $y\in M_2$ hat {\em h"ochstens} ein Urbild,
+
+(2) hei"st: jedes $y\in M_2$ hat {\em mindestens} ein Urbild
+\end{quote}
+In Wirklichkeit hat wegen der Gleichm"achtigkeit in beiden F"allen
+jedes $y\in M_2$ {\em genau} ein Urbild $x\in M_1$.
+\end{beweis}
+
+Dieser Satz ist f"ur unendliche Mengen falsch. So ist z.B. die Abbildung
+$\phi_1: {\N}\rightarrow {\N}$ via $\phi_1(n)=2\,n$ zwar injektiv, aber nicht
+surjektiv, die Abbildung $\phi_2: {\N}\rightarrow {\N}$ via $\phi_2(n)=n\ div\ 
+10$ surjektiv, aber nicht injektiv.
+
+\subsection{Die Gruppe der prime Restklassen}
+
+Eine Restklasse $[a]_m$ hei"st {\em prim}, wenn ein (und damit jeder)
+Vertreter dieser Restklasse zu $m$ teilerfremd ist, wenn also $\gcd(a,m)=1$
+gilt. So sind etwa $\pmod{7}$ alle Restklassen verschieden von $[0]_7$ prim,
+$\pmod{8}$ dagegen nur die Restklassen $[1]_8, [3]_8, [5]_8$ und $[7]_8$ und
+$\pmod{6}$ gar nur die beiden Restklassen $[1]_6$ und $[5]_6$. Wir bezeichnen
+die Menge der primen Restklassen mit ${\Z}_m^\ast$.
+
+Prime Restklassen haben bzgl. der Multiplikation eine besondere
+Eigenschaft. Es gilt f"ur eine prime Restklasse $a\pmod{m}$ die {\em
+K"urzungsregel} 
+\[a\cdot x\equiv a\cdot y\pmod{m}\ \Rightarrow\ x\equiv y\pmod{m}.\] 
+Dies l"asst sich sofort aus $m\teilt (a\,x-a\,y)=a\,(x-y)$ und $\gcd(a,m)=1$
+herleiten. 
+
+Anders formuliert: Die Multiplikationsabbildung
+\[\phi_a:\ {\Z}_m\longrightarrow {\Z}_m\quad \text{via}\quad
+x\pmod{m}\mapsto a\,x\pmod{m}
+\] 
+ist injektiv und somit nach obigem Satz als Abbildung zwischen
+gleichm"achtigen endlichen Mengen auch surjektiv. Zu einer primen Restklasse
+$a\in {\Z}_m$ gibt es also stets ein (eindeutig bestimmtes) $a'\in {\Z}_m$, so
+dass $\phi_a(a')=a\cdot a'\equiv 1\pmod{m}$ gilt. $a'$ (auch $a^{-1}$)
+bezeichnet man als die zu $a$ {\em inverse Restklasse}.
+
+Da die Menge aller Restklassen ${\Z}_m$ endlich ist, ist es auch
+die Menge der primen Restklassen ${\Z}_m^\ast$. Ihre Anzahl
+bezeichnet man mit dem Symbol $\phi(m)$. Die zugeh"orige Funktion in
+Abh"angigkeit von $m$ bezeichnet man als die {\em Eulersche
+$\phi$-Funktion}. 
+
+Produkt- und Inversenbildung f"uhren nicht aus der Menge der primen
+Restklassen ${\Z}_m^\ast$ heraus. Eine solche unter Multiplikation
+und Inversenbildung abgeschlossene Struktur bezeichnet man auch als
+{\bf Gruppe}. Die Gruppe ${\Z}_m^\ast$ enth"alt genau $\phi(m)$
+Elemente.  Allgemeine Gruppeneigenschaften spezifizieren zu
+interessanten zahlentheoretischen S"atzen.
+
+So bezeichnet man etwa f"ur ein Element $a$ einer Gruppe $G$ die
+M"achtigkeit der von $a$ erzeugten Untergruppe $\langle a \rangle =
+\{1,a,a^2,\ldots\} \subset G$ als die {\em Ordnung} $ord(a)$ von
+$a$. Im Falle endlicher Gruppen ist diese Ordnung immer endlich und es
+gilt
+\[ord(a)=n_0=\min\{n>0\ :\ a^n=1\}.\]
+Weiter gilt
+\[a^n=1\ \Rightarrow\ n_0\teilt n,\]
+denn aus $n=q\,n_0+r$ mit $0\leq r<n_0$ (Division mit Rest) und
+$1=a^n=(a^{n_0})^q\cdot a^r = 1\cdot a^r$ folgt $r=0$.
+
+\begin{satz}[Satz von Lagrange]
+Ist $H$ eine Untergruppe von $G$, so ist $|H|$ ein Teiler von $|G|$.
+\end{satz}
+
+\begin{beweis}
+F"ur $a\in G$ betrachten wir die Mengen $aH=\{ah\teilt h\in H\}$, die
+man auch als {\em Nebenklassen} von $a$ bzgl. $H$ bezeichnet. Zwei
+solche Nebenklassen $a_1H$ und $a_2H$ sind
+\begin{quote}
+(1) gleichm"achtig (die Multiplikationsabbildung $\phi_{a}$ bildet $H$
+    umkehrbar eindeutig auf $aH$ ab, Umkehrabbildung ist
+    $\phi_{a^{-1}}$) 
+
+(2) disjunkt, wenn $a_1^{-1}a_2\not\in H$ (w"are $a\in a_1H\cap a_2H$,
+    also $a=a_1h_1=a_2h_2$, so w"are $a_1^{-1}a_2= h_1h_2^{-1}\in H$)
+
+(3) und fallen f"ur $a_1^{-1}a_2\in H$ zusammen ($a_2\cdot h= a_1\cdot
+    (a_1^{-1}a_2h$).
+\end{quote}
+$G$ zerf"allt also in paarweise disjunkte gleichgro"se Teile, von
+denen ein Teil $H=1\cdot H$ ist.
+\end{beweis}
+
+Insbesondere ist die Gruppenordnung $|G|$ durch die Ordnung $ord(a)$
+jedes Elements teilbar und es gilt stets $a^{|G|}=1$. F"ur die Gruppe
+der primen Restklassen bedeutet das:
+
+\begin{folgerung}[Satz von Euler]
+Ist $(a,m)=1$, so gilt $a^{\phi(m)}\equiv 1\pmod{m}$.
+\end{folgerung}
+
+Ein Spezialfall dieses Satzes:
+\begin{folgerung}[Kleiner Satz von Fermat]
+  Ist $m$ eine Primzahl und $1<a<m$, so gilt\\ $a^{m-1}\equiv 1\pmod{m}$.
+\end{folgerung}
+
+\section{Der Fermat-Test}
+
+Den kleinen Satz von Fermat kann man zu einem Verfahren ausbauen, mit
+dem zusammengesetzte Zahlen sicher erkannt werden k"onnen, ohne deren
+Faktorzerlegung zu berechnen. Dieser Test beruht auf der folgenden
+Umkehrung des Satzes:
+\begin{quote}\it 
+Gilt f"ur {\bf eine} Zahl $a$ mit $1<a<m$ {\bf nicht} $a^{m-1}\equiv
+1\pmod{m}$, so kann $m$ keine Primzahl sein.
+\end{quote}
+Eine Realisierung in MuPAD h"atte etwa folgende Gestalt:
+\begin{verbatim}
+singleFermatTest:=proc(m:Dom::Integer, a:Dom::Integer) local D;
+begin 
+D:=Dom::IntegerMod(m); 
+iszero(D(a)^(m-1)-1);
+end;
+\end{verbatim}
+Hierbei wird das Potenzieren in $\Z_m$ ausgeführt, d.h. in jedem
+Zwischenschritt sofort $\pmod{m}$ reduziert und nicht zuerst $a^{m-1}$ als
+ganze Zahl berechnet (was zu einer Riesenzahl führen würde) und dann erst
+$\pmod{m}$ reduziert. Wir haben dabei die Möglichkeiten des Domain-Konzepts
+von MuPAD genutzt, das so in anderen CAS nicht zur Verfügung steht.
+
+Mit bin"arem Potenzieren (wiederholtes Quadrieren) sind die Kosten dieses
+Verfahrens von der Gr"o"senordnung $O(l(m)^3)$ ($\phi(m)\sim m$, $\log(m)$
+Multiplikationen von Zahlen der L"ange $l(m)$ mit anschlie"sender
+Restreduktion), also polynomial in der Bitl"ange der zu untersuchenden Zahl.
+
+Der Fermat-Test ist allerdings nur ein notwendiges Kriterium. Genauer
+gesagt k"onnen wir aus $a^{m-1}\not\equiv 1\pmod{m}$ mit Sicherheit
+schlie"sen, dass $m$ eine zusammengesetzte Zahl ist. Ansonsten k"onnen
+wir den Test mit einer anderen Basis $a$ wiederholen, weil vielleicht
+zuf"allig $ord(a)\teilt m-1$ galt.
+
+Auf dieser Basis kann man folgenden {\bf Las-Vegas-Test} ansetzen:
+\begin{quote}\it
+Mache den Fermat-Test f"ur $c$ verschiedene (zuf"allig gew"ahlte)
+Basen $a_1,\ldots,a_c$.
+
+Ist einmal $a_i^{m-1}\not\equiv 1\pmod{m}$, so ist $m$ garantiert
+eine zusammengesetzte Zahl.
+
+Ist stets $a_i^{m-1}\equiv 1\pmod{m}$, so ist $m$ wahrscheinlich
+(hoffentlich mit gro"ser Wahrscheinlichkeit) eine Primzahl.
+\end{quote}
+Eine MuPAD-Implementierung h"atte etwa folgende Gestalt:
+\begin{verbatim}
+LasVegasFermatTest:=proc(m:Dom::Integer, c:Dom::Integer)
+  local D,i,a,r;
+begin
+  D:=Dom::IntegerMod(m);
+  r:=random(m); /* r ist Zufallszahlengenerator */
+  for i from 1 to c do
+      a:=r();
+      if igcd(a,m) <> 1 then return(FALSE) end_if;
+         /* a ist keine prime Restklasse, m also zusammengesetzt */
+      if not iszero(D(a)^(m-1)-1) then return(FALSE) end_if;
+         /* der FermatTest schlägt zu */
+  end_for;
+  TRUE;
+end;
+\end{verbatim}
+{\tt r:=random(m)} gibt dabei gem"a"s der Dokumentation keine Zufallszahl,
+sondern eine (nullstellige) Funktionsdefinition zur"uck, {\tt r()} ruft diese
+auf.  Ist $a$ zuf"allig keine prime Restklasse, dann ist $m$ zusammengesetzt
+und der berechnete gcd sogar ein echter Teiler von $m$. Dieser (sehr selten
+auftretende) Fall wird gesondert abgefangen.
+\medskip
+
+Was k"onnen wir "uber die Wahrscheinlichkeit im unsicheren Zweig dieses Tests
+aussagen?
+
+\begin{satz}
+Die Menge 
+\[P_m:=\{a\in {\Z}_m^\ast\ :\ a^{m-1}\equiv 1\pmod{m}\}\]
+der Restklassen $\pmod{m}$, f"ur welche der Fermat-Test kein Ergebnis liefert,
+ist eine Untergruppe der Gruppe der primen Restklassen ${\Z}_m^\ast$.
+\end{satz}
+
+Nach dem Satz von Lagrange ist somit $|P_m|$ ein Teiler von $\phi(m) =
+|{\Z}_m^\ast|$.  Ist $m$ also zusammengesetzt und $P_m\neq {\Z}_m^\ast$, dann
+erkennt der Fermat-Test f"ur eine zuf"allig gew"ahlte Basis in wenigstens der
+H"alfte der F"alle, dass $m$ zusammengesetzt ist.
+
+In diesem Fall ist die Wahrscheinlichkeit, dass im unsicheren Zweig
+des LasVegas-FermatTests $m$ keine Primzahl ist, h"ochstens $2^{-c}$, also
+bei gen"ugend vielen Tests verschwindend klein.
+\medskip
+
+Ist andererseits $m$ eine zusammengesetzte Zahl und $P_m = {\Z}_m^\ast$, so
+kann der Fermat-Test $m$ prinzipiell nicht von Primzahlen unterscheiden. Gibt
+es solche Zahlen ?  \medskip
+
+Antwort: Ja, z.B. die Zahl $561=3\cdot 11\cdot 17$, denn f"ur
+$a\in{\Z}_{561}^\ast$ gilt 
+\[a^{560} \equiv 1\pmod{3},\ a^{560} \equiv 1\pmod{11}\ \text{und}\ a^{560}
+\equiv 1\pmod{17},\ \text{also}\ a^{560} \equiv 1\pmod{561}.\]
+
+\section{Der Satz von Carmichael}
+
+Dieses Beispiel, in welchem der Fermat-Test fehlschl"agt, ist nicht zuf"allig
+gefunden worden, sondern ergibt sich aus folgenden "Uberlegungen:
+
+Ist $m=p_1^{a_1}\ldots p_k^{a_k}$ die Primfaktorzerlegung von $m$ und
+$m_i=p_i^{a_i}$, so gilt mit $x^{\phi(m_i)}\equiv 1\pmod{m_i}$ auch f"ur jedes
+Vielfache $c$ von $m_i$ die Beziehung $x^c\equiv 1\pmod{m_i}$. Nehmen wir
+insbesondere ein {\bf gemeinsames} Vielfaches der $m_i$, etwa $c = {\rm
+lcm}(\phi(m_1), \ldots, \phi(m_n))$, so gilt $x^c\equiv 1\pmod{m_i}$ f"ur {\bf
+alle} $i=1,\ldots,n$, also $x^c-1\teilt {\rm lcm}(m_1,\ldots,m_n)=m$, denn die
+Faktoren $m_i$ sind paarweise teilerfremd. 
+\begin{satz}[Satz von Carmichael]
+Ist $m=p_1^{a_1}\ldots p_k^{a_k}$ die Primfaktorzerlegung von $m$, so gilt
+\begin{align*}
+&a^{\psi(m)} \equiv 1\pmod{m}
+\intertext{mit}
+&\psi(m)={\rm lcm}(p_1^{a_1-1}(p_1-1),\ldots,p_k^{a_k-1}(p_k-1))
+\end{align*}
+Die Zahl $\psi(m)$ bezeichnet man auch als die {\em Carmichael-Zahl} von $m$.
+\end{satz}
+\begin{beweis}
+F"ur eine Primzahlpotenz $p^a$ gilt offensichtlich $\phi(p^a)=p^a-p^{a-1}$.
+\end{beweis}
+
+\begin{beispiel}
+  $\psi(12)=2,\ \psi(18)=6,\ \psi(24)=4,\ \psi(36)=6$. 
+\end{beispiel}
+
+$c=\psi(m)$ ist für zusammengesetzte Zahlen $m$ also ein deutlich kleinerer
+Exponent als $\phi(m)$, für welchen immer noch 
+\[a\in\Z_m^\ast\ \yields a^c\equiv 1\pmod{m}\]
+gilt und welcher damit ein gemeinsames Vielfaches der Gruppenordnungen
+\ul{aller} Elemente $a\in\Z_m^\ast$ ist.  Es stellt sich heraus, dass $c$ in
+vielen Fällen der kleinste solche Exponent ist und in anderen Fällen der
+kleinste solche Exponent gerade gleich $\frac{c}{2}$ ist.  Damit k"onnen wir
+auch genauer sagen, f"ur welche Zahlen der Fermat-Test fehlschl"agt.
+\begin{satz}
+F"ur die ungerade zusammengesetzte Zahl $m$ schl"agt der Fermat-Test genau
+dann systematisch fehl, wenn $\psi(m)$ ein Teiler von $m-1$ ist.
+
+Solche Zahlen kann der Fermat-Test also prinzipiell nicht von Primzahlen
+unterscheiden, wenn der Test mit einem $a\in\Z_m^\ast$ ausgeführt wird.
+\end{satz}
+Zusammengesetzte Zahlen dieser Art nennt man {\em Carmichael-Zahlen}.  Weitere
+Carmichael-Zahlen sind $1105=5\cdot 13\cdot 17$ und $1729=7\cdot 13\cdot 19$.
+
+\begin{aufgabe}\mbox{}
+\begin{itemize}
+\item[a)] Zeigen Sie, dass Carmichael-Zahlen $m$ stets quadratfrei
+sind und immer wenigstens 3 Primfaktoren haben. F"uhren Sie dazu die
+Annahmen $m=p^a\cdot q$ und $m=p\cdot q$ jeweils zum Widerspruch.
+\item[b)] Zeigen Sie, dass $N=(6t+1)(12t+1)(18t+1)$ eine
+Carmichaelzahl ist, wenn $6t+1, 12t+1$ und $18t+1$ Primzahlen sind.
+\end{itemize}
+\end{aufgabe}
+
+Carmichaelzahlen sind unter den Primzahlen also recht selten. So gibt es unter
+den Zahlen $<10^{15}$ nur etwa $10^5$ solcher Zahlen.  Andererseits gibt es
+unendlich viele solche Zahlen und Alford, Granville und Pomerance (1994) haben
+sogar gezeigt, dass sich die Anzahl $C(x)$ der Carmichaelzahlen kleiner $x$
+durch $C(x)\geq x^{2/7}$ nach unten hin absch"atzen l"asst, d.h. ihre Zahl
+exponentiell mit der Bitl"ange von $x$ w"achst.
+
+\section{Der Rabin-Miller-Test} 
+
+Ein Primzahltest ohne solche systematischen Ausnahmen beruht auf der folgenden
+Verfeinerung des Fermat-Tests: F"ur eine Primzahl $m$ und eine zuf"allig
+gew"ahlte Zahl $1<a<m$ muss $a^{m-1}\equiv 1\pmod{m}$ gelten. Ist
+$m-1=2^t\cdot q$ die Zerlegung des Exponenten in eine Zweierpotenz und einen
+ungeraden Anteil $q$, so ergibt die Restklasse $b=a^q\pmod{m}$ nach
+$t$-maligem Quadrieren den Rest $1$. Bezeichnet $u$ das Element in der Folge
+$\{b, b^2, b^4, b^8, \ldots, b^{2^t}\}$, wo erstmals $u^2\equiv 1\pmod{m}$
+gilt, so muss, wenn $m$ eine Primzahl ist, $u\equiv -1\pmod{m}$ gelten. Ist
+dagegen $m$ keine Primzahl, so hat die Kongruenz $u^2\equiv 1\pmod{m}$ noch
+andere L"osungen.
+
+In der Tat, ist $m=p\cdot q$ f"ur zwei teilerfremde Faktoren $p,q$, so gibt es
+nach dem chinesischen Restklassensatz eine Restklasse $a_1\pmod{m}$ mit
+$a_1\equiv 1\pmod{p}$ und $a_1\equiv -1\pmod{q}$ und eine weitere Restklasse
+$a_2\pmod{m}$ mit $a_2\equiv -1\pmod{p}$ und $a_2\equiv 1\pmod{q}$. F"ur beide
+gilt $a_i^2\equiv 1\pmod{p}$ und $a_i^2\equiv 1\pmod{q}$, also auch
+$a_i^2\equiv 1\pmod{m}$, aber $a_i\not\equiv \pm\,1\pmod{m}$.
+
+W"ahlt man $a$ zuf"allig aus, so ist die Wahrscheinlichkeit, dass $u$
+bei zusammengesetztem $m$ auf eine solche Restklasse trifft, d.h.
+$u\not\equiv -1\pmod{m}$, aber $u^2\equiv 1\pmod{m}$ gilt, gro"s.
+Eine genauere Analyse zeigt, dass diese Wahrscheinlichkeit sogar
+wenigstens $\frac34$ betr"agt, d.h. ein Las-Vegas-Test auf dieser
+Basis mit $c$ Durchl"aufen nur mit der Wahrscheinlichkeit $4^{-c}$
+fehlerhaft antwortet.
+
+Auf der beschriebenen Verfeinerung beruht der folgende {\bf
+Rabin-Miller-Test} 
+\begin{verbatim}
+primeTestRabinMiller:=proc(m:Dom::Integer,c:Dom::Integer) 
+  local a,q,b,t,i,j,r,D;
+begin
+  D:=Dom::IntegerMod(m);
+  q:=m-1; t:=0; r:=random(m);
+  while q mod 2 = 0 do q:=q/2; t:=t+1 end_while;
+        /* nun ist  m-1 = 2^t * q */
+  for i from 1 to c do
+    a:=r(); b:=D(a)^q;
+    if iszero(b-1) or iszero(b+1) then next end_if;
+    /* keine Information, wenn b = 1 oder b = -1 (mod m) */
+    for j from 1 to (t-1) do
+      /* nun ist  b <> 1 oder -1 (m) */
+      b:=b*b;
+        if iszero(b-1) then return(FALSE) end_if;
+        if iszero(b+1) then break end_if;   /* keine Information */
+    end_for;
+    if iszero(b+1) then next;         /* keine Information */
+    else return(FALSE) end_if;
+  end_for;
+  TRUE;
+end_proc;
+\end{verbatim}
+Die Hauptschleife (Iterationsvariable $i$) f"uhrt den eigentlichen Test f"ur
+$c$ verschiedene zuf"allig gew"ahlte Basen $a$ aus. In jedem dieser Tests wird
+zun"achst $b\equiv a^q\pmod{m}$ berechnet. Ist bereits $b\equiv \pm
+1\pmod{m}$, so kann f"ur diese Basis keine Aussage getroffen werden. Ansonsten
+quadrieren wir $b$:
+\begin{quote}
+Erhalten wir den Rest $1$, so war $b\not\equiv \pm 1\pmod{m}$, aber $b^2\equiv
+1\pmod{m}$, also ist $m$ nicht prim.
+
+Erhalten wir den Rest $-1$, so wird im n"achsten Schritt $b^2\equiv
+1\pmod{m}$, woraus wir jedoch kein Kapital schlagen k"onnen. Aus der
+gew"ahlten Basis $a$ kann keine Aussage getroffen werden.
+
+Anderenfalls quadrieren wir noch einmal.
+\end{quote}
+Das Quadrieren ist nach $(t-1)$ Schritten abzubrechen, denn $b^{2^t}
+\equiv a^{m-1}\pmod{m}$. Da nach Verlassen der inneren Schleife
+stets $b\not\equiv 1\pmod{m}$ gilt, kommen folgende F"alle in Frage:
+\begin{quote}
+$b^2\not\equiv 1\pmod{m}$, also $m$ nicht prim nach dem Fermat-Test.
+
+$b\not\equiv - 1\pmod{m}$, aber $b^2\equiv 1\pmod{m}$, also ist
+$m$ nicht prim.
+
+$b\equiv - 1\pmod{m}$. In diesem Fall kann aus der gew"ahlten Basis
+$a$ keine Aussage getroffen werden.
+\end{quote}
+
+\section{Primzahl-Zertifikate}
+
+Neben dem Rabin-Miller-Test gibt es noch eine Reihe weiterer Primzahltests,
+die andere zahlentheoretische Zusammenh"ange (etwa "uber quadratische Reste --
+der Solovay-Strassen-Test) verwenden. All diesen Tests haftet der Makel an,
+dass Primzahlen zwar mit hoher Wahrscheinlichkeit korrekt erkannt werden, aber
+nicht mit Sicherheit bekannt ist, ob es sich wirklich um Primzahlen handelt.
+Die genannten Algorithmen sind f"ur praktische Belange, d.h. in Bereichen, in
+denen sie noch mit vertretbarem Zeitaufwand angewendet werden k"onnen,
+ausreichend und wurden auch in der Form in den verschiedenen CAS
+implementiert.
+\bigskip
+
+Aus dem Axiom-Handbuch:
+\begin{quote}
+{\tt prime?(n)} returns true if n is prime and false if not.  The algorithm
+used is Rabin's probabilistic primality test.  If {\tt prime? n} returns
+false, $n$ is proven composite.  If {\tt prime? n} returns true, {\tt prime?}
+may be in error however, the probability of error is very low and is zero
+below $25*10^9$ (due to a result of Pomerance et al), below $10^{12}$ and
+$10^{13}$ due to results of Pinch, and below 341550071728321 due to a result
+of Jaeschke.  Specifically, this implementation does at least 10 pseudo prime
+tests and so the probability of error is $< 4^{-10}$\ldots
+\end{quote}
+
+Aus dem Maple-Handbuch:
+\begin{itemize}
+\item The function {\tt isprime} is a probabilistic primality testing routine.
+\item It returns false if $n$ is shown to be composite within one strong
+pseudo-primality test and one Lucas test and returns true otherwise. If {\tt
+isprime} returns true, $n$ is {\glqq}very probably prime - see
+\cite{Knuth_91a}, Band 2, Section 4.5.4, Algorithm P for a reference and
+\cite{Riesel:94}. No counter example is known and it has been conjectured that
+such a counter example must be hundreds of digits long.
+\end{itemize}
+
+Aus dem Mathematica-Handbuch:
+\begin{itemize}
+\item {\tt PrimeQ} first tests for divisibility using small primes, then uses
+the Miller-Rabin strong pseudoprime test base 2 and base 3, and then uses a
+Lucas test.
+\item As of 1997, this procedure is known to be correct only for $n<10^{16}$,
+and it is conceivable that for larger $n$ it could claim a composite number to
+be prime.
+\end{itemize}
+M"ochte man f"ur gewisse Anwendungen sicher gehen, dass es sich bei der
+untersuchten Zahl garantiert um eine Primzahl handelt, ben"otigen wir ein {\em
+Zertifikat} f"ur die Primzahleigenschaft.
+\medskip
+
+Ein solches Zertifikat kann erstellt werden, wenn man zu der vermuteten
+Primzahl $m$ ein Erzeugendes $a$ der zyklischen Gruppe ${\Z}_m^\ast$ angibt
+(zusammen mit einem Beweis, dass dieses Element die behauptete Eigenschaft
+besitzt).
+
+\begin{satz}
+  Die ungerade Zahl $m$ ist genau dann eine Primzahl, wenn ${\Z}_m^\ast$ eine
+  zyklische Gruppe der Ordnung $m-1$ ist, d.h. wenn es ein Element $a\in
+  {\Z}_m^\ast$ gibt, so dass $ord(a)=m-1$ gilt.
+
+Ein Element $a\in {\Z}_m^\ast$ hat genau dann die Ordnung $ord(a)=m-1$, wenn
+$a^{m-1}\equiv 1\pmod{m}$, aber f"ur alle Primteiler $p$ der Zahl $m-1$ die
+Beziehung $a^\frac{m-1}{p}\not\equiv 1\pmod{m}$ gilt.
+\end{satz}
+
+Die letzte Bedingung sichert, dass $ord(a)$ durch $m-1$, aber keinen Teiler
+von $m-1$ teilbar ist.
+\medskip
+
+Betrachten wir als Beispiel die Primzahl $m=55499821019$. F"ur einen {\em
+Beweis} der Primzahleigenschaft pr"ufen wir die Voraussetzungen des Satzes
+f"ur $a=2$. Mit MuPAD erhalten wir
+\begin{verbatim}
+m:=55499821019;
+Z:=Dom::IntegerMod(m);
+u:=Factored::factors(factor(m-1));
+\end{verbatim}
+\[\sbr{2,17,1447,1128091}\]
+\begin{verbatim}
+map(u,p->Z(2)^((m-1)/p));
+\end{verbatim}
+\[\sbr{55499821018, 44871471456, 31660914932, 44713683701}\]
+\begin{verbatim}
+Z(2)^(m-1);
+\end{verbatim}
+\[1\]
+Die Voraussetzungen des Satzes sind also erf"ullt, so dass $2$ die Gruppe
+${\Z}_m^\ast$ erzeugt.
+\medskip
+
+Oftmals ist allerdings f"ur eine konkrete Restklasse $a$ die Beziehung
+$a^\frac{m-1}{p}\not\equiv 1\pmod{m}$ nur f"ur einige der Primfaktoren von
+$m-1$ erf"ullt und es ist schwierig, eine Restklasse zu finden, die f"ur {\em
+alle} Primteiler passt.
+\begin{verbatim}
+m:=nextprime(2*10^10); // = 20000000089
+Z:=Dom::IntegerMod(m);
+u:=Factored::factors(factor(m-1));
+\end{verbatim}
+\[[2, 3, 67, 1381979]\]
+\begin{verbatim}
+for c in [2,3,5,7,11,13,17,23,29] do
+print(map(u,p->mods(expr(Z(c)^((m-1)/p)),m)))
+end_for;
+\end{verbatim}
+\begin{gather*} 
+[1, 1, 3108157330, -2457953819]\\
+[1, 1, -4865156001, -7521929036]\\
+[1, 5697767833, 6300564838, -3927279952]\\
+[-1, 1, 1, -855778974]\\
+[1, 1, 8042780317, -7269258111]\\
+[1, -5697767834, 8735956541, -5244188757]\\
+[1, 1, -2293750453, 9516320400]\\
+[1, 5697767833, -8450150690, -4573270973]\\
+[-1, -5697767834, 8111724708, -1296001895]
+\end{gather*}
+Erst $a=29$ hat die geforderte Eigenschaft, dass $a^\frac{m-1}{p}\neq 1$ f"ur
+{\em alle} Primteiler $p$ von $m$ gilt.  Es stellt sich, mit Blick auf den
+Chinesischen Restklassensatz nicht verwunderlich, heraus, dass es gen"ugt,
+f"ur jeden Primteiler {\em seine} Restklasse $a$ zu finden, womit die
+Rechnungen in diesem Beispiel bereits f"ur $a=7$ beendet werden k"onnen.
+
+\begin{satz} 
+Seien $\{p_1,\ldots,p_k\}$ die (verschiedenen) Primfaktoren von $m-1$. Dann
+gilt
+\begin{align*}
+&\exists\, a\in {\Z}_m^\ast\ \forall i\ a^\frac{m-1}{p_i}\not\equiv 1\pmod{m}
+\intertext{genau dann, wenn}
+&\forall i\ \exists\, a_i\in {\Z}_m^\ast\ a_i^\frac{m-1}{p_i} \not\equiv
+  1\pmod{m},
+\end{align*}
+d.h. es gibt eine gemeinsame Basis f"ur alle Primteiler von $m-1$, wenn es
+f"ur jeden Primteiler einzeln eine passende Basis gibt.
+\end{satz}
+Zur Bestimmung eines Primzahlzertifikats f"ur die primzahlverd"achtige Zahl
+$m$ reicht es also aus, f"ur jeden Teiler $p$ der Zahl $m-1$ in einer Liste
+von kleinen Zahlen eine solche Zahl $a_p$ zu finden, dass
+$a_p^\frac{m-1}{p}\not\equiv 1\pmod{m}$ gilt:
+\begin{verbatim}
+certifyPrime:=proc(m) local u,v,p,a,D;
+begin
+  if not isprime(m) then error(expr2text(m)." ist nicht prim") end_if;
+  D:=Dom::IntegerMod(m);
+  u:=null(); v:=Factored::factors(factor(m-1));
+  for p in v do
+    for a in [2,3,5,7,11,13,17,19,23] do
+       if not iszero(D(a)^((m-1)/p)-1) then u:=u,[p,a]; break end_if;
+    end_for;
+  end_for;
+  if nops([u])<>nops(v) then 
+    error("Kein Zertifikat für ".expr2text(m)." gefunden");
+  end_if;
+  [u];
+end_proc;
+\end{verbatim}
+Auf obiges Beispiel angewendet erhalten wir damit folgendes
+Zertifikat:
+\begin{verbatim}
+certifyPrime(m);
+\end{verbatim}
+\[[[2, 7], [3, 5], [67, 2], [1381979, 2]]\]
+Der erste Eintrag gibt dabei jeweils den Primfaktor von $m-1$, der zweite die
+f"ur diesen Primfaktor $p$ geeignete Basis $a_p$ an.
+\medskip
+
+Dieses Kriterium geht also davon aus, dass eine Faktorzerlegung der Zahl $m-1$
+berechnet werden kann. F"ur Zahlen in der Nachbarschaft einer Primzahl $m$ ist
+das erstaunlicherweise oft m"oglich.
+
+Besonders einfach ist ein solcher Nachweis f"ur Primzahlen der Form $m=2^a+1$,
+da hier die Zahl $m-1$ nur durch 2 teilbar ist. Allerdings stellt es sich
+heraus, dass dies h"ochstens dann der Fall ist, wenn $a$ selbst Zweierpotenz
+ist. Zahlen der Form $F_n:=2^{2^n}+1$ bezeichnet man als {\em Fermatzahlen},
+da sie erstmals von Fermat untersucht wurden, der in einem Brief an Mersenne
+die Behauptung aufstellte, dass alle Zahlen $F_n$ prim sind. Er konnte dies
+f"ur die ersten 5 Fermatzahlen $3, 5, 17, 257$ und $65537$ nachweisen,
+vermerkte allerdings, dass er die Frage f"ur die n"achste Fermatzahl
+$F_5=4294967297$ nicht entscheiden k"onne. Dies w"are allerdings mit dem
+Fermat-Test f"ur die Basis $a=3$ (vom Rechenaufwand abgesehen) gar nicht so
+schwierig gewesen:
+\begin{verbatim}
+m:=2^(2^5)+1;
+Z:=Dom::IntegerMod(m);
+Z(3)^(m-1);
+\end{verbatim}
+\[3029026160\]
+Die Basis 3 kann man generell f"ur den Fermattest von $F_n$ verwenden und
+zeigen, dass auch die n"achsten Fermatzahlen (deren Stellenzahl sich
+allerdings jeweils verdoppelt) zusammengesetzt sind.
+
+Primzahlen dieser Gestalt spielen eine gro"se Rolle in der Frage der
+Konstruierbarkeit regelm"a"siger $n$-Ecke mit Zirkel und Lineal. So konnte
+Gauss die Konstruierbarkeit des regelm"a"sigen 17-Ecks nachweisen, weil die
+Primzahl 17 in dieser Reihe auftritt, vgl. etwa \cite{Kunz:91}.
+
+Die Faktorisierung $F_5=641\cdot 6700417$ fand erstmals Euler, allerdings
+scheiterte er bereits an der n"achsten Zahl $F_6=18446744073709551617$, deren
+Faktorisierung
+\[F_6=67280421310721\cdot 274177\] 
+erst im Jahre 1880 entdeckt wurde.  Ein modernes CAS berechnet diese Zerlegung
+heute im Bruchteil einer Sekunde, kommt aber bei der n"achsten Fermatzahl
+\[F_7=340282366920938463463374607431768211457\] 
+bereits in Schwierigkeiten. Man geht heute davon aus, dass es au"ser den
+bereits gefundenen keine weiteren primen Fermatzahlen gibt. F"ur einen Beweis
+dieser Vermutung gibt es jedoch nicht einmal ansatzweise Ideen,
+vgl. \cite{Riesel:94}.
+\medskip
+
+Neben den Fermatzahlen spielen auch Primzahlen der Form $m=2^a-1$ eine
+wichtige Rolle. Die gr"o"sten heute bekannten Primzahlen haben diese Gestalt.
+Da $m-1$ keine so einfache Faktorisierung wie f"ur Fermatzahlen besitzt, ist
+hier die Erstellung eines Primzahlzertifikats schwieriger, jedoch hat
+$m-1=2\,(2^{a-1}-1)$ wieder einen Faktor derselben Gestalt, was f"ur eine
+teilweise Faktorisierung oft sehr hilfreich ist.  Primzahlen der Form
+$M_p=2^p-1$ bezeichnet man als {\em Mersennesche Primzahlen}.
+\medskip
+
+Moderne Primtestverfahren verwenden auch andere Gruppen als ${\Z}_m^\ast$ zum
+Test, insbesondere solche, die mit elliptischen Kurven verbunden sind.
+Allerdings kennt man bis heute noch keinen sicheren Primzahltest mit
+garantiert polynomialem (in $l(m)$) Laufzeitverhalten.
+
+\begin{thebibliography}{1}
+
+\bibitem{Knuth_91a} D.E. Knuth.  \newblock {\em The art of computer
+programming}.  \newblock Addison Wesley, 1991.
+
+\bibitem{Kunz:91} E.~Kunz.  \newblock {\em Algebra}.  \newblock Vieweg, 1991.
+
+\bibitem{MuPAD} Das Computeralgebra-System MuPAD, \url{http://www.mupad.de}.
+
+\bibitem{Riesel:94} H.~Riesel.  \newblock {\em Prime numbers and computer
+methods for factorization}.  \newblock Birkh\"auser, 1994.
+
+\end{thebibliography}
+
+\begin{attribution}
+graebe (2004-09-03): Contributed to KoSemNet
+
+graebe (2005-02-02): Revision and translation to MuPAD
+\end{attribution}
+
+\end{document}
+
+
+
+

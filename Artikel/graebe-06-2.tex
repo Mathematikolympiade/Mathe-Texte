@@ -1,0 +1,137 @@
+% Version: $Id: graebe-06-2.tex,v 1.2 2008/09/30 10:41:15 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Beweisen von Ungleichungen\kosemnetlicensemark\\ 
+Arbeitsmaterial für Klasse 8}
+\date{}
+
+\newcommand{\merke}[1]{
+  \begin{center}\fboxsep8pt
+    \fbox{\begin{minipage}{.9\textwidth}#1\end{minipage}}
+  \end{center}
+}
+
+\begin{document} 
+\maketitle 
+
+\merke{Statt die Ungleichung $A(x)\ge B(x)$ zu beweisen, ist es oft einfacher,
+  die Ungleichung $A(x)-B(x)\ge 0$ zu beweisen.}
+
+\begin{quote}\it 
+  Zeige für reelle Zahlen $a,b\ge 0$, dass $\frac{a+b}{2}\ge \sqrt{a\,b}$
+  gilt.
+\end{quote}
+{\bf Vorüberlegung}: Die Ungleichung kann in die Form 
+\[\br{\frac{a+b}{2}}^2-a\,b = \frac{a^2+2\,a\,b+b^2}{4}-a\,b\ge 0\] 
+gebracht werden. Umformen der linken Seite ergibt den Ausdruck 
+\[\frac{a^2+2\,a\,b+b^2}{4}-a\,b=\frac{a^2-2\,a\,b+b^2}{4}
+=\br{\frac{a-b}{2}}^2\] 
+Dieser ist als Quadrat einer rellen Zahl stets nicht-negativ.  Mehr noch,
+Gleichheit gilt genau dann, wenn $a=b$ ist.
+\medskip
+
+Dies ist jedoch erst die Analyse der Aufgabe durch Rückwärtsarbeiten, wobei
+wir von der Behauptung ausgegangen sind.  Ein {\bf mathematischer Beweis} ist
+in umgekehrter Richtung zu führen, also von einer wahren Aussage ausgehend
+durch eine logisch einwandfreie Schlusskette die behauptete Aussage
+abzuleiten.   Hier könnte wie folgt argumentiert werden: 
+\medskip
+
+{\bf Beweis}: Da das Quadrat einer rellen Zahl stets nichtnegativ ist, gilt
+nacheinander
+\begin{align*}
+  &\br{\frac{a-b}{2}}^2\ge 0\\
+  \yields\quad&\frac{a^2-2\,a\,b+b^2}{4}\ge 0\\
+  \yields\quad&\frac{a^2+2\,a\,b+b^2}{4}-a\,b\ge 0\\
+  \yields\quad&\br{\frac{a+b}{2}}^2\ge a\,b\\
+  \yields\quad&\frac{a+b}{2}\ge \sqrt{a\,b}\,,\\
+\end{align*}
+wobei die letzte Umformung wegen $a,b\ge 0$ möglich ist.\quad$\Box$ 
+\medskip
+
+Die eben bewiesene Ungleichung ist eine spezielle Form der {\em Ungleichung
+  vom arithmetisch-geometrischen Mittel} (a.-g. M.).  Für Zahlen
+$a_1,\dots,a_n\ge 0$ bezeichnet man
+\[A(a_1,\dots,a_n) = \frac{a_1+\dots+a_n}{n}\]
+als {\em arithmetisches Mittel} und 
+\[G(a_1,\dots,a_n) = \sqrt[n]{a_1\cdot\ldots\cdot a_n}\]
+als {\em geometrisches Mittel}.  
+
+Offensichtlich liegt jedes dieser Mittel zwischen der größten
+$\max(a_1,\dots,a_n)$ und der kleinsten $\min(a_1,\dots,a_n)$ dieser Zahlen.
+Andere Quellen bezeichnen $A(a_1,\dots,a_n)$ als Mittel vom Grad 1 und
+$G(a_1,\dots,a_n)$ als Mittel vom Grad 0.
+
+Die eben bewiesene Ungleichung kann als $A(a,b)\ge G(a,b)$ angeschrieben
+werden. 
+
+Allgemein gilt für $a_1,\dots,a_n\ge 0$ die Ungleichung
+\[A(a_1,\dots,a_n)\ge G(a_1,\dots,a_n)\]
+und Gleichheit tritt genau für den Fall $a_1=a_2=\dots=a_n$ ein.  Diese
+Aussage werden wir hier nicht beweisen\footnote{Ein Beweis dieser Ungleichung
+wird etwa im KoSemNet-Aufsatz [graebe-97-1] gegeben.}.
+
+\merke{Eine Ungleichung $A(x)\ge 0$ kann oft durch Zerlegung von $A(x)$ in
+  Faktoren auf andere Ungleichungen zurückgeführt werden.}
+
+\begin{quote}\it 
+  Beweise für $a,b,c\ge 0$ die Gültigkeit der Ungleichung
+\[a^3+b^3+c^3\ge 3\,a\,b\,c\tag{1}\]
+\end{quote}
+Die Umformung in $a^3+b^3+c^3-3\,a\,b\,c\ge 0$ legt eine Faktorzerlegung von
+$a^3+b^3+c^3-3\,a\,b\,c$ nahe.  Diese ist nicht offensichtlich, aber man kann
+etwa durch Ausmultiplizieren prüfen, dass  
+\[a^3+b^3+c^3-3\,a\,b\,c = (a + b + c)\cdot (a^2 - a\,b - a\,c + b^2 - b\,c + 
+c^2)
+\] 
+gilt. Folglich reicht es aus, die Ungleichung 
+\[a^2+b^2+c^2\ge a\,b + a\,c +  b\,c\tag{2}\]
+zu beweisen.  Diese lässt sich durch eine weitere Methode herleiten:
+
+\merke{Viele Ungleichungen lassen sich durch geschickte Zerlegungen auf eine
+  der grundlegenden Ungleichungen, vor allem die Ungleichung vom
+  arithmetisch-geometrischen Mittel, zurückführen. }
+
+In der Tat gilt $a^2+b^2\ge 2\,a\,b$, $a^2+c^2\ge 2\,a\,c$ und  $b^2+c^2\ge
+2\,b\,c$ nach der Ungleichung vom a.-g. M. Addieren wir die drei
+Ungleichungen, so ergibt sich
+\[2\br{a^2+b^2+c^2}\ge 2\,a\,b + 2\,a\,c + 2\,b\,c\]
+und damit die Ungleichung (2).  Da wegen $a,b,c\ge 0$ auch $a+b+c\ge 0$ gilt,
+können wir die Ungleichung 
+\[a^2+b^2+c^2- \br{a\,b + a\,c +  b\,c}\ge 0\tag{3}\]
+mit $(a+b+c)$ multiplizieren, erhalten
+\[(a + b + c)\cdot (a^2 - a\,b - a\,c + b^2 - b\,c + c^2) =
+a^3+b^3+c^3-3\,a\,b\,c \ge 0\]
+und schließlich einen Beweis der Ungleichung (1).
+
+\merke{Oft lassen sich Aufgaben, die auf den ersten Blick gar nicht danach
+  aussehen, auf bekannte Ungleichungen zurückführen.}
+
+\begin{quote}\it 
+  Für zwei reelle Zahlen $x,y>0$ sei $\frac1x+\frac1y=3$.  Zeige, dass dann
+  $x\,y\ge \frac49$ gilt.
+\end{quote}
+Diese Aufgabe {\glqq}riecht{\grqq} nach der Ungleichung vom a.-g.\,M., denn
+für $x=y\,(=\frac23)$  gilt gerade $x\,y=\frac49$.  Und in der Tat erhalten
+wir nacheinander 
+\begin{align*}
+  3&=1/x+1/y\\
+  \yields\quad\frac32&=\frac{1/x+1/y}{2}\ge \sqrt{\frac1x\,\frac1y} =
+  \frac{1}{\sqrt{x\,y}}
+\intertext{Wir bilden nun das Reziproke beider Seiten, wobei sich das
+  Relationszeichen umkehrt (hier ist auch wesentlich, dass beide Seiten der
+  Ungleichung positive Zahlen sind).}
+  \yields\quad\frac23&\le{\sqrt{x\,y}}\\
+\intertext{Schließlich quadrieren wir diese Ungleichung und haben die
+  Behauptung bewiesen.}
+  \yields\quad\frac49&\le{x\,y}
+\end{align*}
+
+\begin{attribution}
+  graebe (2006-03-16):\\ Begleitmaterial für den LSGM-Korrespondenzzirkel in
+  der Klasse 8
+\end{attribution}
+\newpage \mbox{}
+\end{document}

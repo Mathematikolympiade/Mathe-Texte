@@ -1,0 +1,320 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Abzähltheorie in Anlehnung an Känguru der Mathematik 2006, Klasse 11/13,
+%  Aufgabe 26: Werden die Seitenflächen eines Würfels mit 6 Farben gefärbt, so
+%  gibt es 30 Möglichkeiten, die nicht durch Drehung ineinander über gehen.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{schueler}
+\usepackage{kosemnet,ko-math}
+\usepackage[utf8]{inputenc}    
+
+\newcommand{\D}{\mathrm{D}}
+
+\title{Abzählen von Färbungen ---\\ Das Cauchy-Frobenius- oder
+  Burnside-Lemma\kosemnetlicensemark} 
+\author{Axel Schüler}
+\date{Leipzig, 2006}
+
+\begin{document}
+\maketitle
+
+Wir wollen hier das Burnside Lemma formulieren und beweisen.  Dann wollen wir
+es anwenden auf das Abzählen von Färbungen eines symmetrischen Körpers.
+Hierbei wollen wir nicht den Begriff des Zyklenzeigers verwenden.
+
+\section{Bezeichnungen}
+Im folgenden sei $X$ eine Menge, $G$ eine endliche Gruppe, die auf $X$ wirkt,
+das heißt, jedem Gruppenelement $g\in G $ entspricht eine Abbildung,
+bezeichnet durch $g.$, von $X$ in $X$ mit ${e.x=x}$ und $(gh).x=g.(h.x)$ für
+alle $g,h\in G $ und alle $x\in X$.  Für jedes $g\in G $ bezeichne
+${X^g=\{x\in X\mid g.x=x\}}$, die Teilmenge der Elemente von $X$, die unter
+der Wirkung von $g$ fest bleiben.  Für jedes $x\in X$ sei $G_x=\{g\in G\mid
+g.x =x\}$ der {\bf Stabilisator} von $x$ ($G_x $ ist eine Untergruppe in $G$)
+und $G(x)=\{g.x\mid g\in G\}$ das {\bf Orbit} von $x$ unter $G$.  Schließlich
+sei $X/G$ die Menge der Orbits der Gruppenwirkung.  Die Anzahl der Elemente
+einer Menge $A$ sei mit $\abs{A} $ bezeichnet.
+\begin{lemma}\label{l-1}
+Es sei $G$ eine endliche Gruppe, die auf der Menge $X$ wirkt. Dann 
+gilt für jedes $x\in X$
+\begin{align*}
+\abs{G}=\abs{G(x)} \cdot \abs{G_x}.
+\end{align*}
+\end{lemma}
+
+\begin{beweis}
+Wir benutzen das doppelte Abzählen der Relation $S=\{(g,y)\in G\times X\mid
+y=g.x\}$. Klar ist, für jedes $g\in G$ gibt es genau ein $y\in X $ mit $y=g.x$
+und somit ist $\abs{S}=\abs{G}$. Umgekehrt gibt für $y\in G(x)$, etwa $y=g_0.x
+$, genau $\abs{G_x} $ Elemente $h\in G$ mit $h.x=y$. Das sind nämlich genau
+die Elemente $h= g_0g $ mit $g\in G_x$. Liegt $y$ nicht im Orbit von $x$, so
+gibt es kein $(g,y)\in S$. Folglich ist
+\begin{gather*}
+  \abs{S}=\abs{G} = \sum_{y\in G(x)} \abs{G_x} =\abs{G(x)}\,\abs{G_x}.
+\end{gather*}
+\end{beweis}
+
+\begin{lemma}\label{l-stabilizer}
+Unter den Voraussetzungen von Lemma\,\ref{l-1} gilt
+\begin{align}\label{e-s-o}
+\sum_{g\in G} \abs{X^g} =\sum_{x\in X} \abs {G_x}.
+\end{align}
+\end{lemma}
+
+\begin{beweis}
+Wir benutzen das doppelte Abzählen für die Relation $T=\{(g,x)\in G\times
+X\mid g.x = x\}$.  Für ein festes $h\in G$ ist $\{(h,x)\mid x\in X^{h}\}$
+gerade die Menge der Paare in $T$ mit erster Koordinate gleich $h$. Umgekehrt
+ist für ein festes $z\in X$ die Menge der Paare in $T$ mit zweiter Koordinate
+gleich $z$ gerade $\{(g,z)\mid g\in G_z\}$. Folglich gilt
+\begin{gather*}
+  \sum_{h\in G} \abs{X^h} =\abs{T} =\sum_{z\in X} \abs{ G_z}.
+\end{gather*}
+\end{beweis}
+
+\begin{lemma}[Lemma von Burnside]
+\label{l-burnside}
+Für die Anzahl der Orbits $\abs{X/G}$ der Gruppenwirkung von $G$ auf $X$ gilt
+\begin{align}\label{e-burn}
+\abs{X/G} =\frac{1}{\abs{G} } \sum_{g\in G} \abs{X^g}.
+\end{align}
+\end{lemma}
+
+\begin{beweis} 
+Wir benutzen die Formel \rf[e-s-o] und sortieren die Summanden auf der rechten
+Seite nach gleichen Stabilisatoren; insbesondere haben alle Elemente $y\in
+G(x)$ eines Orbits gleich große Stabilisatoren $G_x$. In der Tat, wenn $g\in
+G_x$ und $y=g_0. x$, dann ist $g.x=x $ und damit $(g_0 g).x =g_0.x$, also
+$(g_0g g_0^{-1}).(g_0.x ) = g_0.x$. Durchläuft also $g$ den Stabilisator
+$G_x$, so durchläuft $g_0 G_x g_0^{-1} $ den Stabilisator von $y=g_0.x$.
+Diese Mengen sind aber gleich groß, sie haben $\abs{G_x} $ Elemente.
+
+Nach Lemma\,\ref{l-1} ist $\abs{G_x}= \abs{G} /\abs{G(x)} $ und weiter:
+\begin{gather*}
+  \sum_{h\in G} \abs{X^ h} =\sum_{A\in X/G} \sum_{x\in A} \abs{G_x} = \sum
+  _{A\in X/G} \abs{A}\,\frac{\abs{G}}{\abs{A}}= \sum_{A\in X/g} \abs{G}
+  =\abs{X/G}{\cdot } \abs{G}.
+\end{gather*}
+Teilt man durch $\abs{G}$, so erhält man die Behauptung.
+\end{beweis}
+
+\begin{bemerkung}
+William Burnside schrieb diese Formel um 1900 auf. Mathematikhistoriker jedoch
+fanden diese Formel auch schon bei Cauchy (1845) und Frobenius (1887). Daher
+wird diese Formel auch mitunter bezeichnet als die {\em Formel, die nicht von
+  Burnside stammt}.
+\end{bemerkung}
+
+
+\section{Anwendungen}
+\begin{beispiel}
+Wir wählen als $G$ die drei Drehungen eines Würfels $ABCDEFGH$ um die
+Raumdiagonale $AG$ und $X$ sei die Eckenmenge des Würfels. Dann ist $X^{e}=
+E$, $X^{D_{2\pi/3}} = X^{D_{4\pi/3}} =\{A,G\}$. Folglich ist die Anzahl der
+Orbits gleich
+\begin{gather*}
+  \abs{X/G} =\frac{1}{3} \left( 8 + 2 +2 \right)= 4.
+\end{gather*}
+In der Tat sind die vier Orbits gleich $\{A\}$, $\{G\}$, $\{B,E,D\} $ und
+$\{C, F, H\}$.
+\end{beispiel}
+
+\begin{aufgabe}[Känguru-Wettbewerb 2006, Klasse 11/13, A26]
+Auf wie viele Arten lassen sich die sechs Flächen eines Würfels mit sechs
+verschiedenen Farben färben?  Jede Farbe tritt dabei genau einmal auf. Zwei
+Färbungen heißen gleich, wenn sie durch Drehung ineinander überführt werden
+können.
+\end{aufgabe}
+
+\begin{loesung} 
+Es sei $G=S_4$ die Würfelgruppe bestehend aus den 24 Drehungen des Würfels und
+$X$ die Menge der $6!$ verschiedenen Färbungen der Seitenflächen. Bei jeder
+{\em echten} Drehung bleibt keine Färbung fixiert, also ist $X^g=\emptyset $
+für alle $g\ne e$. Für das Einselement hingegen ist $X^e=X$. Somit gibt es
+\begin{gather*}
+  \abs{X/G} =\frac{\abs{X}}{\abs{G}} = \frac{6!}{4!} =30
+\end{gather*}
+verschiedene Färbungen.
+\end{loesung}
+
+\begin{aufgabe} 
+Bestimme alle möglichen Färbungen der Würfelecken mit rot und blau, wobei zwei
+Ecken rot und sechs Ecken blau gefärbt sein sollen.
+\end{aufgabe}
+
+\begin{loesung}
+Es ist klar, dass es nur drei solche Färbungen geben kann, denn die beiden
+roten Ecken können entweder benachbart sein, oder sie sind flächendiagonal
+gegenüberliegend oder raumdiagonal gegenüberliegend.  Wir wollen trotzdem das
+Burnside Lemma anwenden.  Wieder ist $G=S_4$ die Würfelgruppe und $X$ die
+Menge der $\binom{8}{2} = 28$ rot-blau-Färbungen der Eckenmenge.  Bei jeder
+$\pm 90^\circ$-Drehung bleibt keine Färbung fix. Bei jeder der $9$ Drehungen
+um $180^\circ $ bleiben immer vier Färbungen fix und zwar gibt es immer vier
+Paare von Ecken, die gegenseitig auf sich abgebildet werden, immer ein Paar
+kann man als rotes Paar auswählen.  Schließlich gibt es bei den acht $\pm
+120^\circ $-Drehungen jeweils eine fest bleibende Färbung, wobei die beiden
+diagonalen Punkte auf der Drehachse rot gefärbt sind.  Folgich erhalten wir
+als Anzahl der Orbits
+\begin{gather*}
+  \frac{1}{24}\left( 28 +  9\cdot 4 + 8\cdot 1\right) = 3.
+\end{gather*}
+\end{loesung}
+
+\begin{aufgabe}  
+Bestimme die Anzahl aller möglichen Färbungen der Würfelflächen mit drei
+Farben.
+\end{aufgabe}
+
+\begin{loesung}
+Es sei $G=S_4$ die Würfelgruppe und $X$ die Menge aller $6^3 $ Färbungen der
+sechs Würfelflächen mit drei Farben. Wir betrachten die Fixelemente der
+einzelnen Würfeldrehungen:
+\begin{center}
+\begin{tabular}{|l||cl|l|}
+\hline {\bf Drehung $g$} & {\bf konj. El.}  & {\bf einfarbig} & {\bf
+  $\abs{X^g}$} \\\hline\hline 
+Identität & 1 & egal &$3^6$ \\ \hline 
+Drehung um $90^\circ $ & 6 & Deckel(1) , Boden(1), Mantel(4) & $3^3$ \\\hline
+Drehung um $180^\circ $ um Achsen & 3 & Deckel(1), Boden(1), M(2), M(2)& $3^4$
+\\\hline Drehungen um $120^\circ$ & 8 & Deckel(3), Boden(3) & $3^2$\\\hline
+Drehungen um $180^\circ $ & 6 & Deckel(2), Mantel(2) , Boden(2) & $3^3$
+\\\hline\hline
+\end{tabular}
+\end{center}
+Die Anzahl der Färbungen beträgt daher 
+\begin{gather*}
+  \frac{1}{24} \left( 3^6 +6\cdot 3^3 + 3\cdot 3^4 + 8\cdot 3^2 + 6\cdot
+  3^3\right) =57.
+\end{gather*}
+\end{loesung}
+
+\bilda{0.2}{0.7}{loch}{
+\begin{aufgabe}[Lochkartenproblem] 
+Aus quadratischen $3\times 3$-Kärtchen sollen durch Ausstanzen von genau zwei
+Löchern Identitätskarten hergestellt werden.  \\ Wie viele unter Drehen und
+Wenden verschiedene Karten lassen sich herstellen?
+\end{aufgabe}
+}
+
+\medskip
+
+\begin{loesung} 
+Es ist $G=D_4$ -- die Diedergruppe mit $\abs{D_4}=8 $ Elementen.  Der
+Konfigurationsraum $X$ besteht aus den $\binom{9}{2}= 36$ möglichen
+Kombinationen von zwei Löchern auf $9$ Feldern.  In $G$ gibt es fünf
+verschiedene Klassen von Elementen: die Identität $e$, zwei Drehungen $d_+$
+und $d_-$, um $90^\circ $ bzw. um $-90^\circ$, eine Drehung $d_2$ um
+$180^\circ$, zwei Spiegelungen an achsenparallenen Geraden und zwei
+Spiegelungen an Diagonalen.
+
+Wie immer lässt die Identität alle $\abs{X}=36 $ Elemente fix, wogegen die
+beiden Drehungen $d_\pm $ gar keine Konfiguration fest lassen, da genau ein
+Kästchen in sich geht und alle anderen 8 Kästchen erst nach vier Drehungen
+wieder an ihrem Ort sind.
+
+\smallskip
+
+\begin{minipage}{0.4\textwidth}
+\bilda{0.2}{0.7}{lochDrehung}{Bei der $180^\circ$-Drehung bleiben genau die
+  nebenstehenden vier Muster fest}
+\end{minipage}
+\quad
+\begin{minipage}{0.55\textwidth}
+\bilda{0.4}{0.5}{lochSpiegelung}{Bei den Diagonal- und Achsenspiegelungen
+  bleiben jeweils $6$ Muster fix.}
+\end{minipage}
+
+\medskip
+
+\begin{minipage}{0.55\textwidth}
+Damit ergeben sich nach dem Lemma von Burnside
+\begin{gather*}
+  \abs{X/G}= \frac{1}{8}\left(36 +4 +4\cdot 6\right) =\frac{64}{8}= 8
+\end{gather*}
+verschiedene Muster.  Dies sind genau die neben stehenden.
+\end{minipage}
+\quad 
+\begin{minipage}{0.4\textwidth}
+\bilda{0.6}{0.4}{loch1}{}
+\end{minipage}
+\end{loesung}
+
+\begin{aufgabe}\label{a-kette1}
+Wie viele verschiedene Perlenketten lassen sich aus zwei roten, 
+drei blauen und vier grünen Perlen zusammenstellen, wenn
+\begin{itemize}
+\item [a)] die Ketten einen Anfang und ein Ende haben (lineare Kette) bzw.\
+\item [b)] die Ketten geschlossen sein sollen (zyklisch). 
+\end{itemize}
+\end{aufgabe}
+
+\begin{loesung}
+Der Konfigurationsraum $X$ besteht aus allen 
+\begin{gather*}
+  \frac{ 9!}{2!3!4!}  =\frac{9\cdot 8\cdot 7\cdot 6\cdot 5}{2\cdot 3\cdot 2}=
+  63 \cdot 20= 1260
+\end{gather*}
+Permutationen von 9 Elementen mit Wiederholung.
+
+a) Die Symmetriegruppe ist $G=\Z_2$, denn man kann nur Anfang und Ende der
+Kette vertauschen --- das sei $g\in \Z_2$.  Wir ermitteln die Mutser, die unter
+$g$ fest bleiben.  Da eine ungerade Anzahl von blauen Perlen existieren, muss
+die mittelste Perle blau sein und die vier ersten Positionen mit zwei grünen
+und jeweils einer blauen und roten Perle besetzt sein. Dafür gibt es
+$\frac{4!}{1!1!2!}= 12 $ Möglichkeiten. Nach Frobenius gibt es also
+\begin{gather*}
+  \half\left( 1260 + 12\right)= \frac{1272}{2} = 636
+\end{gather*}
+verschiedene Ketten.
+
+b) Bei einer geschlossenen Kette ist die Symmetriegruppe die $D_9$ mit 18
+Elementen -- 9 Drehungen und 9 Spiegelungen. Da es keine Drehung der Ordnung 2
+gibt, kann keine Anordnung der zwei roten Kugeln stabilisiert werden.  Bei den
+9 Spiegelungen muss in der Mitte (auf der Spielgelungsachse) wieder eine blaue
+Perle sein und rechts von der Achse wieder zwei grüne, eine blaue und eine
+rote Perle, was wie in a) 12 Anordnungen liefert. Demnach gibt es
+\begin{gather*}
+  \frac{1}{18} \left(1260 + 9 \cdot 12\right)=\frac{9\cdot 7\cdot 20}{2\cdot
+    9} + 6= 76
+\end{gather*}
+verschiedene Muster für geschlossenen Ketten.
+\end{loesung}
+
+\nocite{b-PolyaRead}
+\nocite{b-PolyaTarjan}
+\nocite{a-Polya}
+\nocite{b-Burnside}
+
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\begin{thebibliography}{1}
+
+\bibitem{b-Burnside}
+W.~Burnside, \emph{Theory of Groups of Finite Order}, 2 ed., Dover
+  Publications, New York, 1955.
+
+\bibitem{b-PolyaTarjan}
+R.~Tarjan G.~P{\'o}lya and D.~R. Woods, \emph{Notes on introductory
+  combinatorics}, Progress in Computer Science, no.~4, Birkh{\"a}ser, Boston,
+  1983.
+
+\bibitem{a-Polya}
+G.~P{\'o}lya, \emph{Kombinatorische {A}nzahlbestimmungen f{\"u}r {G}ruppen,
+  {G}raphen und chemische {V}erbindungen}, Acta Math. \textbf{68} (1937),
+  145--254.
+
+\bibitem{b-PolyaRead}
+G.~P{\'o}lya and R.~C. Read, \emph{Combinatorial enumeration of groups, graphs,
+  and chemical compounds}, Springer-Verlag, New York, 1987.
+
+\end{thebibliography}
+
+Siehe auch 
+\begin{itemize}
+\item \url{http://lsgm.uni-leipzig.de/KoSemNet/pdf/graebe-05-2.pdf}
+\item \url{http://encyclopedia.thefreedictionary.com/Cauchy-Frobenius%20lemma}
+\end{itemize}
+
+\end{document}
+
+
+

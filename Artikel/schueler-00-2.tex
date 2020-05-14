@@ -1,0 +1,437 @@
+\documentclass[11pt]{article}
+\usepackage{ngerman,schueler,url,curves}
+\usepackage{kosemnet,ko-math}
+
+\title{Einheitswurzeln und Polynome\kosemnetlicensemark}  
+\author{Axel Schüler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\url{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{Gr"unheide, 14.3.2000}
+
+
+\begin{document}
+\maketitle
+
+
+\subsection*{Konjugation und Betrag} 
+Spiegelt man eine komplexe Zahl $z=a+b\ii$ an der reellen Achse, so erh"alt
+man die {\em konjugiert komplexe} Zahl $\overline{z}=a-b\ii$.  Der {\em
+Betrag} von $z$ ist die L"ange der Strecke vom Nullpunkt bis $z$.  Nach dem
+Satz des Pythagoras ist also $\abs{z}=\sqrt{a^2+b^2}$ oder $\abs{z}^2=
+z\zq$. Offenbar ist $z$ reell gdw.{} $z=\zq$.  Den {\em Realteil} $a=\Re(z)$
+bzw.{} {\em Imagin"arteil} $b=\Im(z)$ der komplexen Zahl $z=a+b\ii$ erh"alt
+man mit Hilfe der komplexen Konjugation wie folgt: $\Re(z)=\half(z+\zq)$
+bzw.{} $\Im(z)=\frac{1}{2\ii}(z-\zq)$.
+
+\begin{minipage}{0.33\textwidth}
+\setlength{\unitlength}{1mm}
+\begin{picture}(50,40)
+\put(0,10){\vector(1,0){45}}\put(45,5){\Re}
+\put(10,5){\vector(0,1){30}}\put(3,32){\Im}
+\put(10,10){\line(2,1){30}}\put(30,30){$z=a+b\ii$}
+\put(10,10){\arc(15,0){26}}\put(20,12){$\phi$}
+\put(38,5){$a$}\put(5,25){$b$}\put(12,18){$r=\abs{z}$}
+\multiput(10,25)(3,0){10}{\line(1,0){2}}
+\multiput(40,10)(0,4){4}{\line(0,1){3}}
+\end{picture}
+\end{minipage}\hfill
+\begin{minipage}{0.65\textwidth}
+  {\em Polarkoordinaten.}  Die komplexe Zahl $z=a+b\ii$ kann alternativ durch
+  ihren Betrag $r=\abs{z}$ und ihr {\em Argument} $\vp=\arg(z)$, den Winkel
+  von der reellen Achse bis zum \glqq Leitstrahl\grqq\ durch $z$, dargestellt
+  werden. Es ist dann $z=r(\cos \vp+\ii\sin\vp)$.  Man kann sich die komplexen
+  Zahlen als Punkte der Gau"sschen Zahlenebene vorstellen.
+\end{minipage}
+
+Die Multiplikation komplexer Zahlen ist in der Polarkoordinatenschreibweise
+sehr einfach. Die Betr"age werden multipliziert und die Argumente werden
+addiert:
+\begin{align}\label{e-pp}
+\abs{z_1 z_2}=\abs{z_1}\abs{z_2}\quad\text{ und } \quad
+\arg(z_1z_2)=\arg(z_1)+\arg(z_2). 
+\end{align}
+F"ur die komplexen Zahlen $z_1=r_1(\cos \vp+\ii \sin \vp)$ und $z_2=r_2(\cos
+\psi+\ii \sin \psi)$ gilt also $z_1z_2=r_1r_2(\cos (\vp+\psi)+\ii \sin(\vp
++\psi))$. 
+
+\begin{satz}\label{l-moivre}
+{\em (i)} F"ur alle  $n\in\N$ und $\vp\in\R$ gilt die
+Moivresche Formel
+\begin{align}\label{e-moivre}
+(\cos \vp+\ii \sin\vp)^n=\cos(n\vp)+\ii \sin (n\vp).
+\end{align}
+{\em (ii)} Die $n$ komplexen Nullstellen des Polynoms $z^n-1$ sind die Zahlen
+\begin{align}\label{e-einheit}
+\ve_k=\cos\frac{2k\pi}{n}+\ii \sin \frac{2k\pi}{n},\quad k=0,\dots, n-1.
+\end{align}
+\end{satz}
+
+\begin{beweis} Die Moivresche Formel (i) folgt sofort aus der Produktformel.
+\\ Insbesondere ist $\arg
+  (z^n)=n\arg(z)$ und $\abs{\cos\vp +\ii\sin \vp}=1.$
+\\
+(ii) Es sei $c$ eine Nullstelle von $z^{n}-1$, also $c^n=1$. Folglich gilt
+$1=\abs{c^n}=\abs{c}^n$ und somit $\abs{c}=1$, etwa $c=\cos \vp+\ii
+\sin\vp$. Nach (i) ist dann $1=(\cos \vp +\ii \sin \vp)^n=\cos(n\vp)+\ii
+\sin(n\vp)$. "Aquivalent dazu ist $\cos (n\vp)=1$ bzw.{} $n\vp=2k\pi$,
+$k\in\Z$. Folglich ist $\vp=2k\pi/n$, $k\in\Z$ die allgemeine L"osung f"ur das
+Argument. Unterscheiden sich aber die Argumente zweier komplexer Zahlen
+um ein ganzzahliges Vielfaches von $2\pi$ (bei gleichem Betrag), so sind die
+komplexen Zahlen gleich. F"ur $k=0,\dots, n-1$ erh"alt man die $n$
+verschiedenen komplexen L"osungen $\ve_k$ aus  \rf[e-einheit]. 
+\end{beweis}
+
+Das Polynom $z^n-1$ hei"st {\em Kreisteilungspolynom}. Seine  $n$ Nullstellen  hei"sen
+{\em $n$-te   Einheitswurzeln}. Man beachte, dass
+$\ve_0=\ve_n$, $\ve_1=\ve_{n+1}$ usw. In der komplexen Ebene bilden die $n$-ten Einheitswurzeln ein regul"ares $n$-Eck mit dem Mittelpunkt $0$ und
+einer Ecke $\ve_0=1$. 
+
+
+\subsection*{Der Vietasche Wurzelsatz}
+\begin{satz} Es sei $p(z)=z^n-a_1z^{n-1}+a_2z^{n-2}-\cdots+(-1)^n a_n$ ein Polynom $n$-ten
+Grades mit den Nullstellen $z_1,\dots, z_n$. Dann lassen sich die
+Koeffizienten $(-1)^ka_k$ wie folgt durch die Nullstellen ausdr"ucken:
+\begin{align*}
+a_1&=z_1+\cdots z_n,
+\\
+a_2&=z_1 z_2 +z_1 z_3+\cdots z_{n-1}z_{n},
+\\
+\vdots&
+\\
+a_n&=z_1z_2\cdots z_n.
+\end{align*}
+\end{satz}
+
+Der Beweis ergibt sich einfach durch Ausmultiplizieren der Identit"at
+$p(z)=(z-z_1)(z-z_2)\cdots {(z-z_n)}$ und anschlie"sendem Koeffizientenvergleich
+mit dem gegebenen Polynom.
+
+\subsection*{Erste einfache Anwendungen}
+\begin{beispiel} F"ur alle nat"urlichen Zahlen $n\in\N$ gilt 
+\begin{align*}
+\cos \frac{2\pi}{n}+\cos \frac{ 4\pi}{n}+\cdots +\cos\frac{2(n-1)\pi}{n}=0.
+\end{align*}
+
+{\em L"osung.} Wir wenden den Vietaschen Wurzelsatz auf das Polynom $z^n-1$
+und den Koeffizienten vor $z^{n-1}$ an:
+\[
+0=\ve_0+\ve_1+\cdots +\ve_{n-1}=\sum_{k=0}^{n-1}\bigl(\cos\frac{2k\pi}{n}+\ii
+\sin\frac{2k\pi}{n}\bigr).
+\]
+Insbesondere ist der Realteil gleich Null. Spaltet man den Summanden $1$ f"ur
+$k=0$ ab, so ergibt sich die Behauptung.
+\end{beispiel}
+
+
+\begin{beispiel} Beweisen Sie die folgenden Identit"aten:
+\begin{align*}
+\text{(a)}\quad \cos \frac{2\pi}{7} +\cos \frac{4\pi}{7} +\cos
+\frac{8\pi}{7}=-\half, \qquad
+\text{(b)}\quad \sin\frac{2\pi}{7} +\sin\frac{4\pi}{7}
++\sin\frac{8\pi}{7}=\half\sqrt{7}.
+\end{align*}
+
+{\em L"osung.} Wir betrachten die $7$-ten Einheitswurzeln
+$\ve_k=\cos\frac{2k\pi}{7}+\ii \sin\frac{2k\pi}{7}$, $k=0,\dots,6$ und setzen 
+\[
+e_1=\ve_1+\ve_2+\ve_4,\quad e_2=\ve_3+\ve_5+\ve_6.
+\]
+Die Behauptung ist dann "aquivalent zu $e_1=-\half+\frac{\ii}{2}\sqrt{7}$. Wir
+suchen eine quadratische Gleichung $t^2+pt+q$ mit den Nullstellen $e_1$ und
+$e_2$. Nach dem Vietaschen Wurzelsatz ist dann
+\begin{align*}
+p&=-(e_1+e_2)=-(\ve_1+\cdots\ve_6)=1
+\end{align*}
+und 
+\begin{align*}
+q&=e_1e_2=(\ve_1\ve_3+\ve_1\ve_5+\ve_1\ve_6)+(\ve_2\ve_3+\ve_2\ve_5+\ve_2\ve_6)+(\ve_4\ve_3+\ve_4\ve_5+\ve_4\ve_6)
+\\
+&=\ve_4+\ve_6+1+\ve_5+1+\ve_1+1+\ve_2+\ve_3
+\\
+&=3+\ve_1+\cdots+\ve_6=2.
+\end{align*}
+Somit sind $e_1$ und $e_2$ die Nullstellen von $t^2+t+2$ und damit
+$e_{1,2}=\half(-1\pm\ii \sqrt{7})$. Wegen $\Im (e_1)>0$ ergibt sich die
+Behauptung.
+\end{beispiel}
+
+\begin{beispiel} Dem Einheitskreis sei ein regul"ares $n$-Eck $P_1P_2\cdots P_n$
+  einbeschrieben. Man zeige, dass das Produkt aller Streckenquadrate
+  $\overline{P_iP_j}^2$, $1\le i<j\le n$, gleich $n^n$ ist! 
+
+{\em L"osung.} Wir legen das regul"are $n$-Eck so in die komplexe Ebene, dass
+  $P_i=\ve_{i-1}$, $i=1,\dots,n$, wobei die $\ve_i$ gerade die $n$-ten
+  Einheitswurzeln sind. Wegen $\overline{\ve_i}=\ve_{-i}$ gilt dann f"ur
+  $D=\prod_{1\le i<j\le n}(\ve_i-\ve_j)$
+\begin{align}
+|D|^2&=D\overline{D}=\prod_{i<j}(\ve_i-\ve_j)(\ve_{-i}-\ve_{-j})=\prod_{i<j}\ve_i(1-\ve_{j-i})\ve_{-i}(1-\ve_{i-j})\notag
+\\
+&=\prod_{i\ne j}(1-\ve_{i-j})=\prod_{k=1}^{n-1}\prod_{i=1}^n(1-\ve_k)=\bigl(\prod_{k=1}^{n-1}(1-\ve_k)\bigr)^n\label{gl}
+\end{align}
+Wegen $x^n-1=(x-1)(x^{n-1}+\cdots+1)$  gilt nun aber
+$f(x):=x^{n-1}+x^{n-2}+\cdots+x+1=(x-\ve_1)(x-\ve_2)\cdots(x-\ve_{n-1})$.
+ Setzt man hier $x=1$ ein und vergleicht dies
+mit \rf[gl], so erh"alt man $|D|^2=f(1)^n=n^n$.
+\end{beispiel}
+
+
+
+\subsection*{Summen von Binomialkoeffizienten}
+\begin{beispiel}  Man zeige, dass f"ur
+alle nat"urlichen Zahlen $n\in\N$ gilt
+\begin{align}\label{e-binom}
+s_n:=\binom{n}{0}+\binom{n}{3}+\binom{n}{6}+\cdots=\frac{1}{3}(2^n+2\cos\frac{n\pi}{3})
+\end{align}
+{\em L"osung.} Es sei $\ve=\half(-1+\ii\sqrt{3})$ die erste primitive dritte
+Einheitswurzel. Wir berechnen nach der binomischen Formel
+\begin{alignat*}{2}
+(1+1)^n&=\sum_{k=0}^n\binom{n}{k}&&=\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\binom{n}{3}+\cdots,
+\\
+(1+\ve)^n&=\sum_{k=0}^n\ve^k\binom{n}{k}&&=\binom{n}{0}+\ve\binom{n}{1}+\ve^2\binom{n}{2}+\binom{n}{3}+\cdots,
+\\
+(1+\ve^2)^n&=\sum_{k=0}^n\ve^{2k}\binom{n}{k}&&=\binom{n}{0}+\ve^2\binom{n}{1}+\ve^4\binom{n}{2}+\binom{n}{3}+\cdots.
+\end{alignat*}
+Wegen $1+\ve^k+\ve^{2k}=0$ f"ur $k\not\equiv 0 \mod (3)$ ist die Summe der drei
+rechten Seiten gleich $3s_n$. Beachtet man, dass $\eta:=1+\ve$ und
+$\eta^{-1}=1+\ve^2$ primitive sechste Einheitswurzeln sind, was man sich am
+besten mit einer Skizze verdeutlicht, so lassen sich die linken Seiten, nach
+Moivre,  wie folgt vereinfachen:
+\begin{align*}
+(1+\ve)^n&=\cos\frac{2\pi n}{6}+\ii \sin\frac{2\pi n}{6},
+\\
+(1+\ve^2)^n&=\cos\frac{2\pi n}{6}-\ii \sin\frac{2\pi n}{6}.
+\end{align*}
+Hieraus ergibt sich die Behauptung.
+\end{beispiel}
+
+\begin{aufgabe} Man zeige, dass f"ur alle nat"urlichen Zahlen $n\in\N$ gilt
+\begin{align*}
+\binom{n}{1}+\binom{n}{5}+\binom{n}{9}+\binom{n}{13}+\cdots=2^{n-1}+2^{n/2-1}\sin\frac{n\pi}{4}.
+\end{align*}
+\end{aufgabe}
+
+{\em L"osungsidee.} Analog zur vorigen Aufgabe setzten wir nun mit den vierten
+Einheitswurzeln $\ve_k$, $k=0,\dots,3$,
+$(\ve_0,\ve_1,\ve_2,\ve_3)=(1,\ii,-1,-\ii)$, die Binomialausdr"ucke $(1+\ve_k)^n$ an.  Anstelle der Summe dieser
+$4$ Ausdr"ucke, welche uns $\sum_{k\ge 0}\binom{n}{4k}$ liefern w"urden,
+multiplizieren wir die erste Gleichung mit $1$, die zweite Gleichung mit $-\ii$, die dritte Gleichung mit
+$-1$ und schlie"slich die vierte Gleichung mit $\ii$ und bilden  jetzt die
+Summe. Dabei bleiben einzig die zweiten, f"unften, neunten usw.{} Summanden
+der Binomialkoeffizientensummen "ubrig; alle anderen heben sich weg wegen $1+\ii-1-\ii=0$. Beachtet man ferner,
+dass $1+\ii=\sqrt{2}\,\ve_8$ und $1-\ii=\sqrt{2}\,\ve_8^{-1}$ gilt, mit der
+primitiven achten Einheitswurzel $\ve_8=\cos\frac{\pi}{4}+\ii
+\sin\frac{\pi}{4}$, dann ergibt sich die Behauptung.
+
+\begin{aufgabe} Man beweise f"ur alle $n\in\N$ die folgenden Identit"aten:
+\begin{align}
+\binom{n}{0}+\binom{n}{4}+\binom{n}{8}+\cdots&=
+2^{n-2}+2^{\frac{n}{2}-1}\cos\frac{n\pi}{4}\tag{a}
+\\
+\binom{n}{2}+\binom{n}{6}+\binom{n}{10}+\cdots
+&=2^{n-2}-2^{\frac{n}{2}-1}\cos\frac{n\pi}{4}\tag{b}
+\\
+\binom{n}{3}+\binom{n}{7}+\binom{n}{11}+\cdots&=2^{n-2}-2^{\frac{n}{2}-1}\sin\frac{n\pi}{4}\tag{c}
+\end{align}
+\end{aufgabe}
+
+\subsection*{Das  Kreisteilungspolynom in  reellen Faktoren}
+Zur Berechnung von Summen oder Produkten trigonometrischer Ausdr"ucke ist es
+oftmals von Vorteil, das Kreisteilungspolynom $z^n-1$ in seine {\em reellen}
+Faktoren zu zerlegen. Fasst  man n"amlich immer die Linearfaktoren $(z-\ve_k)$
+und $(z-\ve_{n-k})$, $\ve_k\ne 1,-1$ zu einem quadratischen Polynom zusammen,
+so wird dieses Polynom wegen $\ve_k+\ve_k^{-1}=2\cos\frac{2k\pi}{n}$ reell:
+\begin{align*}
+(z-\ve_k)(z-\ve_k^{-1})=z^2-2z\cos\frac{2k\pi}{n}+1.
+\end{align*}
+F"ur $n=2m$ bzw.{} $n=2m+1$ erhalten wir somit
+\begin{align}\label{e-gerade}
+z^{2m}-1&=(z^2-1)\prod_{k=1}^{m-1}(z^2-2\cos\frac{2k\pi}{2m} z+1),
+\\
+z^{2m+1}-1&=(z-1)\prod_{k=1}^{m}(z^2-2\cos\frac{2k\pi}{2m+1} z+1).\label{e-ungerade}
+\end{align}
+
+\begin{beispiel} Man beweise f"ur alle $m\in\N$ die folgenden beiden Identit"aten:
+\begin{align*}
+\sin\frac{\pi}{2m}\sin\frac{2\pi}{2m}\cdots\sin\frac{(m-1)\pi}{2m}&=\frac{\sqrt{m}}{2^{m-1}}, \tag{a}
+\\
+\sin\frac{\pi}{2m+1}\sin\frac{2\pi}{2m+1}\cdots\sin\frac{m\pi}{2m+1}&=\frac{\sqrt{2m+1}}{2^{m}}. \tag{b}
+\end{align*}
+
+{\em L"osung.} (a) Wir dividieren \rf[e-gerade] durch $z^2-1$ und erhalten
+\begin{align}\label{e-ger1}
+z^{2m-2}+z^{2m-4}+\cdots+1=\prod_{k=1}^{m-1}(z^2-2\cos\frac{2k\pi}{2m} z+1).
+\end{align}
+Setzt man $z=1$ oben ein und beachtet, dass $1-\cos(2\alpha)=2\sin^2\alpha$,
+so hat man
+\begin{align*}
+m&=\prod_{k=1}^{m-1}\bigl(2(1-\cos\frac{2 k\pi}{2m})\bigr)
+=2^{m-1}\prod_{k=1}^{m-1}(2\sin^2\frac{k\pi}{2m})
+=2^{2m-2}\bigl(\prod_{k=1}^{m-1}\sin\frac{k\pi}{2m}\bigr)^2
+\end{align*}
+Da $\sin k\pi{/}({2m})>0$ f"ur alle $k=1,\dots, m-1$, folgt hieraus die Behauptung.
+
+(b) Man dividiert \rf[e-ungerade] durch $z-1$ und erh"alt
+\begin{align}\label{e-ung1}
+z^{2m}+z^{2m-1}+\cdots +1&=\prod_{k=1}^m(z^2-2\cos\frac{2k\pi}{2m+1} z+1).
+\end{align}
+Setzt man hier $z=1$ ein, so erh"alt man wie in (a) die Behauptung. 
+\end{beispiel}
+
+\begin{beispiel} Man zeige f"ur alle $m\in\N$:
+\begin{align*}
+\prod_{k=1}^{2m}\cos\frac{k\pi}{2m+1}=\frac{(-1)^m}{4^m}.
+\end{align*}
+{\em L"osung.} Wir setzen in \rf[e-ung1] $z=-1$ ein  und erhalten, da links
+eine ungerade Anzahl von Summanden steht,
+\begin{align*}
+1&=2^m\prod_{k=1}^m(1+\cos\frac{2k\pi}{2m+1}).
+\end{align*}
+Beachtet man diesmal $1+\cos(2\alpha)=2\cos^2\alpha$, so ergibt sich
+\[ 
+4^{-m}=\prod_{k=1}^m\cos^2\frac{k\pi}{2m+1}.
+\]
+Wegen $\cos\alpha=-\cos(\pi-\alpha)$ ist
+$\cos\frac{(2m+1-k)\pi}{2m+1}=-\cos\frac{k\pi}{2m+1}$. Wir zerlegen somit
+$\cos^2\alpha=-\cos\alpha\cos(\pi-\alpha)$ und erhalten
+\begin{align*}
+4^{-m}&=(-1)^m\prod_{k=1}^m\cos\frac{k\pi}{2m+1}\cos\frac{(2m+1-k)\pi}{2m+1}
+\\
+4^{-m}&=(-1)^m\prod_{k=1}^{2m}\cos\frac{k\pi}{2m+1}.
+\end{align*}
+Hieraus folgt die Behauptung.
+\end{beispiel}
+
+\subsection*{Trigonometrische Summen}
+Wir betrachten die Moivresche Formel \rf[e-moivre] und wollen nun den Realteil und den
+Imagin"arteil einzeln behandeln.
+Es gilt
+\begin{align*}
+\cos(n\vp)+\ii\sin(n\vp)&=(\cos\vp+\ii\sin\vp)^n=\sum_{k=0}^n\binom{n}{k}\cos^{n-k}(\vp)\,\ii
+^k\sin^k(\vp).
+\end{align*}
+Wegen $(\ii^k)=(1,\ii,-1,-\ii,1,\dots)$ erh"alt man daraus
+\begin{align}\label{cos}
+\cos(n\vp)&=\cos^n\vp-\binom{n}{2}\cos^{n-2}\vp\sin^2\vp+\binom{n}{4}\cos^{n-4}\vp\sin^4\vp-\cdots,
+\\
+\sin(n\vp)&=\binom{n}{1}\cos^{n-1}\vp\sin\vp-\binom{n}{3}\cos^{n-3}\vp\sin^3\vp+\cdots.\label{sin}
+\end{align}
+
+\begin{beispiel}\label{bsp3}  Man beweise, dass f"ur alle $n\in\N$ gilt:
+\begin{align*}
+\sum_{k=1}^n\cot\frac{(2k-1)\pi}{2n}&=0.  
+\end{align*}
+
+{\em L"osung.} Da die ungeradzahligen Vielfachen von $\pi/2$ die Nullstellen
+der $\cos$-Funktion sind, hat man ${\cos(n\vp_k)=0}$ f"ur
+$\vp_k=(2k-1)\pi/(2n)$, $k=1,\dots,n$. Dividiert man also \rf[cos] durch
+$\sin^n\vp$ und setzt $\vp=\vp_k$ ein, so erh"alt man mit der Setzung $y=\cot
+\vp$, dass die Gleichung
+\begin{align}\label{cos1}
+0&=y^n-\binom{n}{2}y^{n-2}+\binom{n}{4}y^{n-4}-\cdots
+\end{align}
+ genau die Nullstellen $\cot \vp_k$, $k=1,\dots,n$ hat. Nach dem Vietaschen
+Wurzelsatz ist die Summe der Nullstellen gleich dem Koeffizienten vor
+$y^{n-1}$, also gleich Null.
+\end{beispiel}
+
+
+\begin{beispiel}\label{bsp4} Man beweise, dass f"ur alle $n\in\N$ gilt:
+\begin{align}
+\sum_{k=1}^{n-1}\cot \frac{k\pi}{n}&=0.\tag{a}
+\\
+\sum_{k=1}^{n-1}\cot^2\frac{k\pi}{n}&=\frac{1}{3}(n-1)(n-2).
+\tag{b}
+\end{align}
+
+{\em L"osung.} Die Winkel $\vp_k:=k\pi/n$, $k=1,\dots, n-1$  sind gerade
+Nullstellen von $\sin(n\vp)$. Wir dividieren daher die Gleichung \rf[sin]
+durch $\sin^{n}\vp$ und erhalten mit $z:=\cot\vp$, dass $z_k=\cot\vp_k$
+gerade die $n-1$ Nullstellen der Gleichung
+\[
+0=\binom{n}{1}z^{n-1}-\binom{n}{3}z^{n-3}+\cdots
+\]
+sind. Nach dem Vietaschen Wurzelsatz ergibt sich wieder die Behauptung
+(a). Normiert man das obige Polynom, mittels Division durch $n$, so lie"st man
+di zweite elementarsymmetrische Funktion ab: 
+\begin{align*}
+\sig_2=-\frac{\binom{n}{3}}{n}=-\frac{1}{6}(n-1)(n-2).
+\end{align*}
+Nun l"a"st sich aber die Quadratsumme $\sum_k z_k^2$  bekanntlich durch die
+ersten beiden elementarsymmetrischen Funktionen $\sig_1=z_1+\cdots +z_n$ und
+$\sig_2=z_1z_2+z_1z_3+\cdots z_{n-1}z_n$
+ausdr"ucken: $\sum_k z_k^2=\sig_1^2-2\sig_2$. Somit erhalten  wir
+$\sum_k z_k^2=0+2/6(n-1)(n-2)$ und (b) ist gezeigt.
+\end{beispiel}
+
+Die Aufgaben  A\ref{bsp3} und  A\ref{bsp4}\,(a) folgen nat"urlich auch aus der elementaren Tatsache,
+dass $\cot(\pi-\alpha)=-\cot\alpha$ gilt, denn in A\ref{bsp3} erg"anzen sich die
+ $k$ und $n-k+1$ entsprechenden Winkel  $(2k-1)\pi{/}(2n)$ bzw.{}  $(2n-2k+1)\pi{/}(2n)$ zu $\pi$  und in
+der Aufgabe A\ref{bsp4}\,(a) sind es die $k$ und $n-k$ entsprechenden Winkel
+$k\pi{/}n$ bzw.{}  $(n-k)\pi{/}n$.
+
+\begin{beispiel} Man beweise, dass f"ur alle nat"urlichen Zahlen $n\in\N$ gilt:
+\begin{align}\label{g1}
+\sum_{k=0}^{n-1}\cot\frac{(4k-3)\pi}{4n}=n.
+\intertext{Man beweise:}
+\cot 1^\circ+\cot 5^\circ+\cdots+\cot 177^\circ=45.\label{e-cot}
+\end{align}
+
+
+
+{\em L"osung.} Wir  dividieren  die Gleichung \rf[cos] durch die Gleichung \rf[sin] und
+erhalten nach anschlie"sendem K"urzen duch $\sin^n\vp$ die Gleichung
+\begin{align}\label{cot}
+\cot(n\vp)&=\frac{\cot^n\vp-\binom{n}{2}\cot^{n-2}\vp+\cdots}
+{\binom{n}{1}\cot^{n-1}\vp-\binom{n}{3}\cot^{n-3}+\cdots}.
+\end{align}
+Setzt man hier nacheinander $\vp_k=(\alpha +k\pi)/n$, $k=0,\dots,n-1$ ein, wobei
+$\alpha \in\R$ eine feste von $\pi/2+m\pi$, $m\in\Z$ verschiedene Zahl ist, so bleibt die linke Seite konstant gleich $\cot
+\alpha $. Beseitigt man den Nenner und setzt $y:=\cot\vp$, so erkennt man, dass die
+Gleichung
+\begin{align}\label{poly}
+\cot \alpha \bigl( \binom{n}{1}y^{n-1}-\binom{n}{3}y^{n-3}+\cdots\bigr)&=
+y^n-\binom{n}{2}y^{n-2}+\binom{n}{4}y^{n-4}-\cdots
+\end{align}
+genau die $n$ L"osungen $\cot\vp_k$, $k=0,\dots, n-1$ besitzt. 
+Wir wenden wieder den Vietaschen Wurzelsatz auf den Koeffizienten vor
+$y^{n-1}$ an und erhalten
+\begin{align}\label{cot1}
+\sum_{k=0}^{n-1}\cot\frac{\alpha +k\pi}{n}&=n\cot \alpha .
+\end{align}
+Erweitert man den Bruch mit $4$ und setzt $4\alpha =-3\pi$, also $\alpha =-3/4\pi$ bzw.{}
+$\cot \alpha =1$, so ergibt sich \rf[g1]. Setzt man  in
+\rf[cot1] $n=45$ und $\alpha =45^\circ$ ein, so erh"alt man $\vp_k=1^\circ+k 4^\circ$,
+$k=0,\dots, 44$ und \rf[e-cot] folgt.
+\end{beispiel}
+
+\begin{beispiel} Man beweise dass f"ur alle nat"urlichen Zahlen  $n\in\N$ die
+  folgende Identit"at gilt:
+\begin{align}
+\sum_{k=1}^n\frac{1}{\sin^2\frac{(2k-1)\pi}{2n}}=n^2.
+\label{g2}
+\end{align}
+
+{\em L"osung.} Wir betrachten die Gleichung \rf[cos1] mit den Nullstellen
+$\cot(2k-1)\pi/({2n})$, $k=1,\dots, n$. Wegen
+$\sin^{-2}\alpha=1+\cot^2\alpha$ ist die gesuchte Summe der reziproken
+Sinusquadrate gleich
+\begin{align}\label{sin2}
+\sum_{k=1}^n(1+y_k^2)=n+(y_1^2+\cdots y_n^2).
+\end{align}
+Zur Berechnung der Quadratsumme benutzten wir wieder die Relation
+$\sum_ky_k^2=\sig_1^2-2\sig_2$.  Nach \rf[cos1] und dem Vietaschen
+Wurzelsatz, angewandt auf die Koeffizienten vor  $y^{n-1}$ und $y^{n-2}$, ist
+aber $\sig_1=0$ und $\sig_2=-\half n(n-1)$. Setzt man dies in \rf[sin2] ein,
+so ergibt sich
+\begin{align*}
+\sum_{k=1}^n\frac{1}{\sin^2\frac{(2k-1)\pi}{2n}}=n+2\half n(n-1)=n^2.
+\end{align*}
+\end{beispiel}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+
+\end{document}

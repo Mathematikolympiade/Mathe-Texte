@@ -1,0 +1,100 @@
+\documentclass[10pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman} 
+\usepackage[utf8]{inputenc}    
+
+\author{Dr. Wolfgang Moldenhauer (Bad Berka), Carsten Moldenhauer (Dresden)}
+\title{Die {\glqq}bestmöglichen{\grqq} Dreiecke\kosemnetlicensemark}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+Zur Lösung einer Geometrieaufgabe {\glqq}Gegeben sei ein Dreieck $ABC$
+\ldots{\grqq} fertigt man zumeist eine Skizze an. Das Dreieck wird gezeichnet.
+Doch es wird gleichseitig. Die nächste Skizze zeigt ein gleichschenkliges. Ein
+weiterer Versuch ergibt ein rechtwinkliges -- wieder ein Spezialfall. Es wirkt
+Murphys Gesetz: Wenn etwas schief gehen kann, dann wird es auch schief gehen.
+(If anything can go wrong, it will.)
+
+Aber: Welches ist denn nun das {\glqq}beste{\grqq} Dreieck?  Die Suche nach
+diesem bestmöglichen nicht-speziellen Dreieck basiert auf dem Grundsatz von
+G.~Polya: {\glqq}Die Figur darf nicht eine unangebrachte Spezialisierung nahe
+legen{\grqq} ([1, S.~108]).
+
+Es seien $\alpha,\, \beta,\, \gamma$ die Größen der Innenwinkel eines
+spitzwinkligen Dreiecks mit o.\,B.\,d.\,A. $90\grad>\alpha>\beta>\gamma$.
+Dann misst $90\grad-\alpha$ die Differenz zu einem rechtwinkligen und
+$\alpha-\beta$ bzw.\ $\beta-\gamma$ die Differenz zu einem gleichschenkligen
+bzw.\ gleichseitigen Dreieck. Es sei $\delta = \min(90\grad-\alpha,\,
+\alpha-\beta,\, \beta-\gamma)$. Da $\delta$ den kleinsten Abstand zu den
+Spezialfällen (rechtwinklig, gleichschenklig, gleichseitig) misst,
+unterscheidet sich das Dreieck mit dem größten $\delta$ dann am meisten von
+den Spezialfällen.
+
+Nun gilt für das gewichtete arithmetische Mittel der Differenzen
+$90\grad-\alpha,\, \alpha-\beta,\, \beta-\gamma$ die Beziehung
+\begin{gather*}
+  \frac{3\,\br{90\grad-\alpha} + 2\,\br{\alpha-\beta} + \br{\beta-\gamma}}{6}
+  = \frac{270\grad-\br{\alpha+\beta+\gamma}}{6} = 15\grad\,.
+\end{gather*}
+Ist $\alpha=75\grad,\, \beta=60\grad,\, \gamma=45\grad$, so gilt
+$\delta=15\grad$.  Gilt aber nicht $\alpha=75\grad,\, \beta=60\grad,\,
+\gamma=45\grad$, so ist eine der drei genannten Differenzen nach dem
+Schubfachschluss kleiner als $15\grad$.
+
+Mithin:
+\begin{satz}
+  Das bestmögliche nicht-spezielle spitzwinklige Dreieck hat die Innenwinkel
+  $\alpha=75\grad,\, \beta=60\grad,\, \gamma=45\grad$ und es ist
+  $\delta=15\grad$.
+\end{satz}
+
+Jetzt seien $\alpha,\, \beta,\, \gamma$ die Größen der Innenwinkel eines
+stumpfwinkligen Dreiecks mit o.\,B.\,d.\,A. $\alpha>90\grad>\beta>\gamma$.
+Das Minimum der Differenzen $\alpha-90\grad,\, 90\grad-\beta,\,
+\beta-\gamma,\, \gamma-0\grad$ (sie messen wieder die Abweichungen von den
+Spezialfällen.)  muss wieder möglichst groß sein. Mit
+$\alpha=180\grad-\beta-\gamma$ ist $\alpha-90\grad = 90\grad-\beta-\gamma <
+90\grad-\beta$, so dass die Differenz $90\grad-\beta$ nicht weiter
+einzubeziehen ist.
+
+Für das gewichtete arithmetische Mitte der Differenzen $\alpha-90\grad,\,
+\beta-\gamma,\, \gamma-0\grad$ gilt
+\begin{gather*}
+  \frac{\br{\alpha-90\grad}+\br{\beta-\gamma}+2\,\br{\gamma-0\grad}}{4} =
+  \frac{\alpha+\beta+\gamma-90\grad}{4}=22,5\grad\,. 
+\end{gather*}
+Für $\alpha=112,5\grad,\, \beta=45\grad,\, \gamma=22,5\grad$ ist
+$\delta=22,5\grad$.  Gilt aber nicht $\alpha=112,5\grad,\, \beta=45\grad,\,
+\gamma=22,5\grad$, so ist eine der drei genannten Differenzen nach dem
+Schubfachschluss kleiner als $22,5\grad$.
+
+Also gilt:
+\begin{satz}
+  Das bestmögliche nicht-spezielle stumpfwinklige Dreieck hat die Innenwinkel
+  $\alpha=112,5\grad$, $\beta=45\grad,\, \gamma=22,5\grad$ und es ist
+  $\delta=22,5\grad$.
+\end{satz}
+
+In [2] wird $\alpha=80\grad,\, \beta=60\grad,\, \gamma=40\grad$ mit dem
+Abstand $\delta=10\grad$ zu den Spezialfällen (gleichseitig, rechtwinklig und
+gleichschenklig) und für stumpfwinklige Dreiecke $\alpha=108\grad,\,
+\beta=54\grad,\, \gamma=18\grad$ mit $\delta=18\grad$ angegeben. Diese
+angegebenen Werte führen nicht auf das beste $\delta$.
+
+\subsection*{Literatur:}
+\begin{itemize}
+\item[{[1]}] Polya, George: Schule des Denkens. A.~Franke Verlag, Tübingen und
+  Basel 1995.
+\item[{[2]}] Hendriks, Björn, Schöbel, Konrad: Immer Ärger mit den Dreiecken\
+  \ldots. Wurzel 9+10/02, S.~226 -- 229. 
+\end{itemize}
+
+
+\begin{attribution}
+moldenhauer (2006-07-20): Text für KoSemNet freigegeben. 
+
+graebe (2006-08-10): Umsetzung in \LaTeX\ für das KoSemNet-Projekt.
+\end{attribution}
+
+\end{document}

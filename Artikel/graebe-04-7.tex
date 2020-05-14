@@ -1,0 +1,198 @@
+% Version: $Id: graebe-04-7.tex,v 1.1 2008/09/05 09:52:58 graebe Exp $
+\documentclass[11pt]{article}  
+\usepackage{kosemnet,ko-math,ngerman}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Das Rechnen mit Kongruenzen. Teil 2\kosemnetlicensemark\\ 
+Arbeitsmaterial für Klasse 8}
+\date{}
+
+\begin{document} 
+\maketitle 
+
+Dieser Text baut auf dem Text {\glqq}Rechnen mit Kongruenzen{\grqq}
+(graebe-04-4) auf.   
+
+\subsection*{Die Kürzungsregeln}
+
+Wir wollen das Arbeitsblatt {\glqq}Rechnen mit Kongruenzen{\grqq} noch
+um zwei Rechenregeln erweitern, die das {\glqq}Dividieren{\grqq} von Resten
+betreffen. Da Restklassen aus dem Bereich der ganzen Zahlen entstanden sind,
+in dem man bekanntlich Divisionen nicht uneingeschr"ankt ausf"uhren kann (dazu
+muss man sie zu den rationalen Zahlen erweitern), ist dabei jedoch Vorsicht am
+Platze! Insbesondere, da Reste ja ein Ausdruck daf"ur sind, wie sehr die
+Division nicht aufgeht, wollen wir den Begriff {\glqq}Division{\grqq} im
+Zusammenhang mit Resten g"anzlich vermeiden und von {\em K"urzungsregeln}
+sprechen.
+\medskip
+
+\begin{quote} {\bf 1. K"urzungsregel}: Enthalten in der Kongruenz
+\[a\equiv b\pmod{m}\]
+die Zahlen $a,b,m$ alle einen gemeinsamen Faktor $d$, d.h. lassen sie
+sich als $a=d\cdot a',\  b=d\cdot b',\  m=d\cdot m'$ darstellen, so
+gilt auch
+\[a'\equiv b'\pmod{m'}.\]
+\medskip
+
+ {\bf 2. K"urzungsregel}: Enthalten in der Kongruenz
+\[a\equiv b\pmod{m}\]
+die Zahlen $a,b$ einen gemeinsamen Faktor $d$, d.h. lassen sie sich
+als $a=d\cdot a',\ b=d\cdot b'$ darstellen, und sind weiterhin $d$ und
+$m$ teilerfremd, so gilt auch
+\[a'\equiv b'\pmod{m}.\]
+\end{quote}
+
+Zum {\bf Beweis} beider Aussagen erinnern wir uns daran, dass wir
+$a\equiv b\pmod{m}$ auf drei verschiedene Arten aufschreiben
+k"onnen:
+\[a\equiv b\pmod{m}\ \Leftrightarrow\ m\teilt (a-b)\ \Leftrightarrow\
+\exists\,t\in {\Z}\ :\ a=b+m\cdot t.\] 
+In beiden K"urzungsregeln gilt $a=d\cdot a',\ b=d\cdot b'$, also
+$(a-b)=d\cdot(a'-b')$. F"ur die K"urzungsregel 1 schlie"sen wir weiter
+\[m=d\cdot m'\teilt d\cdot(a'-b')\ \Rightarrow\ m'\teilt (a'-b')\ \Rightarrow\ 
+a'\equiv b'\ (mod\ m') \]
+und f"ur die K"urzungsregel 2 folgt aus $m\teilt d\cdot(a'-b')$, dass
+$m\teilt (a'-b')$, denn $m$ und $d$ waren als teilerfremd vorausgesetzt
+worden. 
+\medskip
+
+{\bf Beispiel :} Aus $30\equiv 105\pmod{25}$ k"onnen wir also den Faktor 5
+nach der 1.~K"urzungsregel herausk"urzen, womit sich $6\equiv 21\pmod{5}$
+ergibt.  Weiter kann man den gemeinsamen Faktor 3 nach der zweiten
+K"urzungsregel herausk"urzen. Man erh"alt schlie"slich $2\equiv 7\pmod{5}$.
+
+\subsection*{\centering Lineare Kongruenzen}
+
+Lineare Kongruenzen sind, sehr "ahnlich zu gew"ohnlichen Gleichungen,
+Bestimmungsaufgaben, bei denen alle ganzen Zahlen zu finden sind, deren Rest
+eine bestimmte Bedingung erf"ullt. Eine typische Aufgabe hat die Gestalt
+\[71\,x\equiv 12\pmod{93}.\]
+Gesucht sind dabei alle diejenigen ganzen Zahlen $x$, f"ur die $71\,x$ bei
+Division durch $93$ den Rest $12$ l"asst.
+\medskip
+
+Eine L"osung dieser Aufgabe ist $x=84$. Wie man darauf kommt m"oge an dieser
+Stelle offenbleiben. Dass es wirklich eine L"osung ist, kannst Du aber einfach
+durch eine Probe sehen.
+
+Da es bei einer linearen Kongruenz nicht auf die Zahl $x$ selbst, sondern nur
+auf deren Rest (hier $\pmod{93}$) ankommt, ist auch jede andere Zahl mit
+demselben Rest eine L"osung, also etwa $x=177, x=270, x=363$ usw., aber auch
+$x=-102, x=-9$ usw.\ und insgesamt jede Zahl der Form $x=84+k\cdot 93, k\in
+{\Z}$. Gibt es eine ganzzahlige L"osung, so gibt es also gleich unendlich
+viele. Deshalb fragen wir nicht nach den ganzzahligen L"osungen einer linearen
+Kongruenz, sondern nach entsprechenden Restklassen. Wir schreiben also
+stattdessen:
+\begin{quote}
+Die Restklasse $x\equiv 84\pmod{93}$ oder kurz $x\equiv 84\pmod{93}$ ist eine
+L"osung obiger linearer Kongruenz.
+\end{quote}
+\medskip
+
+Wie findet man nun alle L"osungen einer linearen Kongruenz. Die sicherste,
+aber auch aufwändigste Methode ist {\bf das (vollst"andige\,!)  Probieren}. Da
+wir wissen, dass es (ganz im Gegensatz zu den ganzen Zahlen) nur {\bf endlich
+viele} Restklassen gibt, brauchen wir nur alle durchzuprobieren und die
+herausfiltern, f"ur welche die Kongruenz erf"ullt ist.
+
+Dieses Verfahren ist nat"urlich recht aufwändig und nur dann sinnvoll, wenn es
+nur wenige Restklassen gibt, wenn also der Modul klein ist.  Daf"ur kann man
+es nicht nur f"ur lineare, sondern f"ur beliebige Kongruenzen anwenden. Daf"ur
+drei Beispiele:
+
+\begin{aufgabe}
+  Bestimme die L"osungen der linearen Kongruenz $2x\equiv 1\pmod{3}$.
+\end{aufgabe}
+
+\ul{L"osung}: Es gibt $\pmod{3}$ die Restklassen $0,1,2$ als m"ogliche Werte
+f"ur $x$. Einsetzen zeigt, dass genau f"ur $x\equiv 2\pmod{3}$ die obige
+Kongruenz erf"ullt ist.
+
+\begin{aufgabe}
+  Bestimme die L"osungen der linearen Kongruenz $3x\equiv 5\pmod{13}$. 
+\end{aufgabe}
+
+\ul{L"osung}: F"ur die verschiedenen Restklassen $x$ stellen wir die Werte
+in einer Tabelle zusammen:
+\begin{center}
+\begin{tabular}{c*{13}{|c}}
+$x$ & 0& 1& 2& 3& 4& 5& 6& 7& 8& 9& 10& 11& 12  \\\hline
+$3x\pmod{13}$ & 0& 3& 6& 9& 12& 2& 5& 8& 11& 1& 4& 7& 10
+\end{tabular}
+\end{center}
+Wir sehen, dass $x\equiv 6\pmod{13}$ die einzige L"osung ist.
+
+\begin{aufgabe}
+  Untersuche, f"ur welche Zahlen $n$ die Zahl $n^3+2n^2+4$ durch 7 teilbar
+  ist.
+\end{aufgabe}
+
+\ul{L"osung}: Die Aufgabe kann man umformulieren: Es sind alle Restklassen
+$n\pmod{7}$ mit $n^3+2n^2+4\equiv 0\pmod{7}$ gesucht. Stellen wir f"ur die 7
+m"oglichen Reste wieder eine Tabelle auf:
+\begin{center}
+\begin{tabular}{c*{7}{|c}}
+$n$ & 0& 1& 2& 3& 4& 5& 6 \\\hline
+$n^3+2n^2+4\pmod{7}$ & 4& 0& 6& 0& 2& 4& 5
+\end{tabular}
+\end{center}
+Damit haben also genau diejenigen ganzen Zahlen $n$, die bei Division
+durch 7 einen der Reste 1 oder 3 lassen, die Eigenschaft, dass
+$n^3+2n^2+4$ durch 7 teilbar ist.
+\medskip
+
+Manche lineare Kongruenz hat "uberhaupt keine L"osung. Besitzen
+n"amlich in
+\[a\cdot x\equiv b\pmod{m}\]
+$a$ und $m$ einen gemeinsamen Teiler $d$, so muss f"ur die Existenz
+einer L"osung auch $d\teilt b$ gelten. Das sieht man am besten, wenn man
+die Kongruenz in der alternativen Form
+\[a\cdot x\equiv b\pmod{m}\ \Leftrightarrow\ \exists\,t\in {\Z}\
+:\ a\cdot x=b+m\cdot t   \] 
+darstellt. Wegen $b=ax-mt$ ist also $gcd(a,m)\teilt b$ eine {\em
+notwendige} Bedingung f"ur die Existenz einer L"osung.
+\medskip
+
+\ul{Beispiel}:  
+\[12x\equiv 7\ (10)\]
+besitzt keine L"osung, denn $gcd(12,10)=2$ ist kein Teiler von 7. Und
+tats"achlich ist $12x$ immer eine gerade Zahl, kann also niemals auf 7
+enden (genau das bedeutet ja {\glqq}$\equiv 7\ (10)${\grqq}).
+\medskip
+
+Ist die notwendige Bedingung erf"ullt und der Modul so gro"s, dass
+vollst"andiges Probieren zu aufwändig wird, so empfiehlt es sich, die
+lineare Kongruenz zun"achst zu vereinfachen.
+\medskip
+
+\ul{Beispiel}: 
+\[12x\equiv 8\ (10)\]
+Wir reduzieren auf kleinstm"ogliche Reste
+\[2x\equiv 8\ (10)\]
+und wenden die 1.~K"urzungsregel an, um den gemeinsamen Faktor 2
+herauszuk"urzen. Wir erhalten
+\[x\equiv 4\ (5)\]
+als L"osung.
+ \medskip
+
+\ul{Beispiel}: 
+\[27x\equiv 9\ (21)\]
+Wir reduzieren auf kleinstm"ogliche Reste
+\[6x\equiv 9\ (21)\]
+und wenden die 1. K"urzungsregel an, um den gemeinsamen Faktor 3
+herauszuk"urzen. Wir erhalten
+\[2x\equiv 3\ (7).\]
+Die L"osung dieser linearen Kongruenz k"onnte man durch vollst"andiges
+Probieren ermitteln. Stattdessen k"onnen wir aber auch die rechte
+Seite gezielt durch einen gleichwertigen Rest ersetzen, der gerade
+ist, um dann die 2.~K"urzungsregel anwenden zu k"onnen:
+\[2x\equiv 3\equiv 10\ (7)\ \Rightarrow\ x\equiv 5\ (7).\]
+Damit haben wir die L"osung gefunden.
+
+\begin{attribution}
+graebe (2004-09-03):\\ Dieses Material wurde vor einiger Zeit als
+Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 8 erstellt und
+nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+\end{attribution}
+
+\end{document}

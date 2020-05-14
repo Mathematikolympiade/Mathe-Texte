@@ -1,0 +1,433 @@
+\documentclass[11pt]{article}
+\usepackage{kosemnet,ko-math,ngerman,url} 
+
+\title{Das Skalarprodukt und seine Anwendungen\kosemnetlicensemark}  
+\author{Axel Sch¸ler, Mathematisches Institut, Univ. Leipzig\\[8pt]
+\texttt{mailto:schueler@mathematik.uni-leipzig.de}}
+\date{Schmalzgrube, M‰rz 1999}
+
+
+% emlines.sty  MÑrz 1990, Georg Horn / Eberhard Mattes.
+%
+% Makros zum Zeichnen von Linien mit beliebiger Steigung.
+% Nur bei Verwendung der DVI-Treiber von Eberhard Mattes.
+%
+% Der Makro \emline#1#2#3#4#5#6 setzt an die Koordinaten (#1,#2) den
+% Punkt #3 und an die Koordinaten (#4,#5) den Punkt #6. Diese beiden 
+% Punkte werden dann verbunden.
+%
+% TeXcad erzeugt Aufrufe dieses Makros fÅr mit eingeschalteter
+% EMLines-Option gezeichnete Linien.
+% (z.B. \emline{0.0}{0.0}{1}{17.0}{4.0}{2}).
+%
+% Der Makro \newpic#1 definiert den Makro \emline so, dass den
+% Punktnummern ##3 und ##6 die Ziffer #1 vorangestellt wird.
+% Dies ist notwendig, wenn mehr als ein Bild auf einer Seite
+% des Dokuments eingefuegt wird.
+%
+\def\newpic#1{%
+   \def\emline##1##2##3##4##5##6{%
+      \put(##1,##2){\special{em:point #1##3}}%
+      \put(##4,##5){\special{em:point #1##6}}%
+      \special{em:line #1##3,#1##6}}}
+%
+% Standarddefinition von \emline herstellen
+%
+\newpic{}
+%
+% Beispiel: 
+% \input bild1.pic
+% \newpic{1} \input bild2.pic
+%
+% Hier ist emlines.sty zu Ende
+
+\newcommand{\ppp}{\bullet}
+\newcommand{\rf}[1][]{\textup{\eqref{#1}}}
+\newcommand{\bd}{\boldsymbol{\cdot}}
+\newcommand{\ft}{{\tt t}}
+\newcommand{\dvec}[3]{{(#1, #2, #3)^\ft}}
+\newcommand{\evec}[2]{{(#1,#2)^\ft}}
+\newcommand{\norm}[1]{{\|\vec #1 \|}}
+\newcommand{\vvec}{\overrightarrow}
+\newcommand{\nnorm}[1]{{\|\vvec #1 \|}}
+
+\begin{document}
+\maketitle
+
+\subsection*{Das Skalarprodukt}
+Das Skalarprodukt von Vektoren kann ein elegantes und n"utzliches Hilfsmittel
+beim L"osen von geometrischen Aufgaben sein. In den folgenden Situationen
+k"onnte die Benutzung des Skalarproduktes erfolgversprechend sein:
+\begin{enumerate}
+\item Nachweis von Identit"aten, in denen {\em Quadrate von Streckenl"angen}
+auftauchen,
+\item Nachweis der {\em Orthogonalit"at} von Vektoren,
+\item Berechnung oder Vergleich von {\em Winkelgr"o"sen}.
+\end{enumerate}
+In Hinblick auf Formel \rf[skp1] macht das Skalarprodukt Aussagen "uber den
+Winkel zwischen den beiden Vektoren und "uber deren L"ange. 
+\\
+Die {\em "Ubungen} sind gedacht zur Festigung des Umgangs mit dem
+Skalarprodukt w"ahrend die {\em Aufgaben} einen L"osungsansatz bzw.{} eine
+Idee erfordern, wie es in der Olympiade "ublich ist. 
+%Mit den "Ubungen erlernt man das Handwerk.
+Zu den Aufgaben mit $\ppp$ ist die L"osung selbst zu finden.
+
+Das Skalarprodukt  ist eine Abbildung $\R^3\times\R^3\to \R$
+und wird f"ur Vektoren $\vec{x}=
+\left(\begin{matrix}x_1\\ x_2\\x_3\end{matrix}\right)=
+x_1\vec{e_1}+x_2\vec{e_2}+x_3\vec{e_3}$ 
+und $\vec{y}=\left(\begin{matrix}y_1\\ y_2
+\\y_3\end{matrix}\right)=
+y_1\vec{e_1}+y_2\vec{e_2}+y_3\vec{e_3}$ wie folgt definiert
+\begin{align}\label{skp}
+\boxed{
+\vec{x}\bd\vec{y}=x_1y_1+x_2y_2+x_3y_3.}
+\end{align}
+Dabei sind $\vec{e_1}=\left(\begin{matrix}1\\ 0\\0\end{matrix}\right)
+$, $\vec{e_2}=\left(\begin{matrix}0\\ 1\\0\end{matrix}\right)
+$ und $\vec{e_3}=\left(\begin{matrix}0\\ 0\\1\end{matrix}\right)$ die Einheitsvektoren im 
+$\R^3$.
+\\
+Vereinbarung: Vektoren werden bei uns prinzipiell als {\em Spalten}vektoren 
+geschrieben. Da dies  viel Platz in Anspruch nimmt, benutzen 
+wir die Transposition $^\ft$, also $\left(\begin{matrix}a\\b\\c 
+\end{matrix}\right)=(a,b,c)^\ft$. Entsprechende Formeln mit nur zwei
+Koordinaten gelten f"ur das Skalarprodukt von Vektoren im $\R^2$.
+
+
+{\bf "Ubung 1$\ppp$} Berechnen Sie  die Skalarprodukte der folgenden Vektoren
+\\
+\begin{tabular}{llll}
+a) $\dvec{1}{2}{3}\bd\dvec{1}{1}{-1}$ &
+b) $\dvec{1}{1}{1}\bd\dvec{4}{5}{6}$&
+c) $\dvec{1}{1}{1}\bd\dvec{1}{1}{1}$&
+d) $\evec{2}{3}\bd\evec{1}{2}$
+\end{tabular}
+
+\subsection*{Eigenschaften des Skalarproduktes}
+\begin{enumerate}
+\item Bilinearit"at (Distributivgesetze)
+\begin{align*}
+(\vec{x}+\vec{y})\bd\vec{z}&=\vec{x}\bd\vec{z}+\vec{y}\bd\vec{z}\\
+\vec{x}\bd(\vec{y}+\vec{z})&=\vec{x}\bd\vec{y}+\vec{x}\bd\vec{z}\\
+(\alpha\vec{x})\bd\vec{y}&=\vec{x}\bd(\alpha\vec{y})=\alpha(\vec{x}\bd\vec{y})
+\end{align*}
+\item Symmetrie (Kommutativit"at)
+$$
+\vec{x}\bd\vec{y}=\vec{y}\bd\vec{x}.
+$$
+\item{Positivit"at}
+\begin{align*}
+\vec{x}\bd\vec{x}&\ge0,\\
+\vec{x}\bd\vec{x}&=0\quad\text{ genau dann, wenn }\quad \vec{x}=\vec{0}.
+\end{align*}
+Bezeichnet $\norm{x}$ die {\em L"ange} (oder auch {\em Norm}) des Vektors 
+$\vec{x}$, dann gilt $\norm{x}^2=\vec{x}\bd\vec{x}$.
+\item Die Cauchy-Schwarzsche-Ungleichung
+$$
+|\vec{x}\bd\vec{y}|\le\norm{x}\norm{y}.
+$$
+\item  Es sei $\gamma$ der Winkel zwischen den (von Null verschiedenen) Vektoren  
+$\vec{x}$ und $\vec{y}$. Dann gilt 
+\begin{align}
+\cos \gamma&=\frac{ \vec{x}\bd\vec{y} } {\norm{x}\norm{y}},
+\\
+\vec{x}\bd\vec{y}&=\cos\gamma\norm{x}\norm{y}.
+\label{skp1}
+\end{align}
+\end{enumerate}
+
+{\bf "Ubung 2$\ppp$} Berechnen Sie die L"angen der folgenden Vektoren
+
+\begin{tabular}{lllll}
+a) $\dvec{1}{2}{3}$& b) $\dvec{1}{1}{-1}$& c) $\dvec{1}{1}{1}$ &d) 
+$\evec{1}{2}$
+ &e) $\evec{2}{3}$.
+\end{tabular}
+
+Berechnen Sie  den Kosinus des von den Vektoren $\vec{x}$ und $\vec{y}$ 
+eingeschlossenen Winkels. Entscheiden Sie, ob der Winkel kleiner, gleich oder
+gr"o"ser als  $90^\circ$ ist!
+
+a) $\vec{x}=\dvec{1}{2}{3}$, $\vec{y}=\dvec{1}{1}{-1}$, b) $\vec{x}=
+\evec{1}{0}$, 
+$\vec{y}=\evec{-\half}{\half\sqrt{3}}$, c) $\vec{x}=\evec{1}{2}$, 
+$\vec{y}=\evec{2}{3}$.
+
+{\bf Aufgabe 1.} Gegeben sei ein Einheitsw"urfel $ABCDEFGH$ sowie ein Punkt $P$ 
+auf $\overline{AB}$ mit $|\overline{PB}|=p$, $0<p<1$, und ein Punkt $Q$ auf $\overline{DE}$, der 
+von der Kante $\overline{AE}$ ebenfalls den Abstand $p$ hat. Ermittle alle Werte von 
+$p$, f"ur die die Strecken $\overline{PQ}$ und $\overline{ED}$ aufeinander senkrecht 
+stehen! Hinweis: Zwei Vektoren sind genau dann orthogonal, wenn ihr 
+Skalarprodukt gleich Null ist.
+
+{\em L"osung.}  Wir plazieren den W"urfel in einem rechtwinkligen 
+Koordinatensystem, so dass $A=(0,0,0)$, $B=(1,0,0)$, $D=(0,1,0)$ und 
+$E=(0,0,1)$ gilt. Nach Voraussetzung sind  dann $P=(1-p,0,0)$ und 
+$Q=(0,p,1-p)$.\\
+Jetzt berechnen wir das Skalarprodukt der Vektoren 
+$\vvec{{PQ}}\bd\vvec{{DE}}=(Q-P)\bd(E-D)=(p-1,p,1-p)^\ft\bd(0,-1,1)^\ft=
+-p+1-p=1-2p$. Die Vektoren sind demnach genau dann senkrecht, wenn $1-2p=0$ 
+bzw.\ $p=\half$.
+
+
+{\bf Aufgabe 2.} Gegeben sei das untenstehende Quadrat $ABCD$ mit den 
+Seitenmittelpunkten $E$, $F$, $G$ und $H$. Verbindet man die Seitenmittelpunkte 
+jeweils mit den gegen"uberliegenden Eckpunkten des Quadrates, so entsteht als 
+symmetrische Schnittpunktefigur ein Achteck. Entscheiden Sie, ob dieses Achteck 
+regelm"a"sig ist! (Hinweis: Ein $n$-Eck hei"st regelm"a"sig, wenn alle Seiten 
+gleichlang und alle Innenwinkel gleichgro"s sind.)
+
+\special{em:linewidth 0.4pt}
+\unitlength 1mm
+\linethickness{0.4pt}
+\begin{picture}(54.00,53.67)
+\emline{10.00}{10.00}{1}{50.00}{10.00}{2}
+\emline{50.00}{10.00}{3}{50.00}{49.67}{4}
+\emline{50.00}{49.67}{5}{10.33}{49.67}{6}
+\emline{10.33}{49.67}{7}{10.33}{10.33}{8}
+\emline{10.33}{10.33}{9}{50.33}{29.67}{10}
+\emline{50.33}{29.67}{11}{10.33}{49.67}{12}
+\emline{10.33}{49.67}{13}{30.00}{10.00}{14}
+\emline{30.00}{10.00}{15}{50.00}{49.67}{16}
+\emline{50.00}{49.67}{17}{10.33}{29.67}{18}
+\emline{10.33}{29.67}{19}{50.00}{10.00}{20}
+\emline{50.00}{10.00}{21}{30.00}{49.67}{22}
+\emline{30.00}{49.67}{23}{10.33}{9.67}{24}
+\emline{10.33}{9.67}{25}{10.33}{9.67}{26}
+\emline{10.33}{9.67}{27}{10.33}{9.67}{28}
+\emline{10.33}{9.67}{29}{10.33}{9.67}{30}
+\emline{10.33}{9.67}{31}{10.33}{9.67}{32}
+\put(7.33,5.67){\makebox(0,0)[cc]{$A$}}
+\put(53.00,5.67){\makebox(0,0)[cc]{$B$}}
+\put(54.00,53.33){\makebox(0,0)[cc]{$C$}}
+\put(7.33,53.67){\makebox(0,0)[cc]{$D$}}
+\put(30.00,5.67){\makebox(0,0)[cc]{$E$}}
+\put(54.00,29.33){\makebox(0,0)[cc]{$F$}}
+\put(29.67,53.67){\makebox(0,0)[cc]{$G$}}
+\put(7.33,30.00){\makebox(0,0)[cc]{$H$}}
+\end{picture}
+
+{\em L"osung.}  Aus Symmetriegr"unden ist das entstandene 8-Eck gleichseitig. Wir 
+pr"ufen die Gleichheit der Winkel "uber den Vergleich ihrer Kosinus. Da der 
+Winkel zwischen Vektoren definitionsgem"a"s immer zwischen $0^\circ$ und 
+$180^\circ$ liegt und die Kosinusfunktion in diesem Bereich eineindeutig ist,
+stimmen die Winkel genau dann "uberein, wenn ihre Kosinus "ubereinstimmen. Wir 
+bezeichnen $\angle(DE,AG)=\alpha$ und $\angle(HC,GA)=\beta$. Ferner seien
+$A=(0,0)$, $B=(1,0)$ und $D=(0,1)$. Dann gilt
+\\
+$\cos\alpha=\vvec{{DE}}\bd\vvec{{AG}}\nnorm{{DE}}^{-1}\nnorm{{AG}}^{-1}=
+(E-D)\bd(G-A)(\frac{
+5}{4})^{-1}=(\half,-1)^\ft\bd(\half,1)^\ft\frac{4}{5}=
+-\frac{3}{4}{\cdot}\frac{4}{5}=-\frac{3}{5}.$ Weiter hat man
+\\
+$\cos\beta=\vvec{{HC}}\bd\vvec{{GA}}\frac{4}{5}=
+(C-H)^\ft\bd (A-G)^\ft\frac{4}{5}=
+(1,\half)^\ft\bd(-\half,-1)^\ft\frac{4}{5}=-\frac{4}{5}$. 
+Folglich ist das 8-Eck {\em nicht} regelm"a"sig.
+
+{\bf Aufgabe 3$\ppp$} Gegeben sei ein Rechteck $ABCD$ und ein Punkt $P$. Beweisen Sie, 
+dass gilt
+$$\overline{PA}^2+\overline{PC}^2=\overline{PB}^2+\overline{PD}^2.
+$$
+(Verwenden Sie, dass $\overline{XY}^2=\vvec{{XY}}\bd\vvec{XY}$ und
+$\vvec{{AB}}\bd\vvec{{BC}}=0$.)
+
+{\bf Aufgabe 4.} "Uber der Seite $\overline{AB}$ eines Quadrates $ABCD$ wird nach 
+innen ein gleichseitiges Dreieck $ABE$ errichtet. Ermittlen Sie die Gr"o"se des 
+Winkels $\angle EDC$! 
+
+{\em L"osung.} Das Koordinatensystem liege so wie in Aufgabe 2. Dann gilt 
+$E=(\half,\half\sqrt{3})$. Dann gilt 
+$\vvec{{DE}}=E-D=(\half,\half\sqrt{3}-1)^\ft$, $\vvec{{DC}}=(1,0)^\ft$
+und weiter
+\begin{align*}
+\cos\angle EDC&=
+\frac{
+      \vvec{{DE}}\bd\vvec{{DC}}
+      }  
+      { 
+          \nnorm{{DE}} \nnorm{{DC}}
+      }
+=\frac{\half}{ 
+               \sqrt{
+                      \frac{1}{4}+\frac{3}{4}-\sqrt{3}+1
+                    }
+              }
+\\
+&=\frac{1}
+       {
+           2\sqrt{  2-\sqrt{3}  }
+       }
+ =\half\sqrt{ 2+\sqrt{3}      }.              
+\end{align*}
+
+Der Taschenrechner liefert die Vermutung $\angle EDC=15^\circ$. Zum Beweis 
+benutzt man $\cos 30^\circ=\half\sqrt{3}$ sowie den Doppelwinkelsatz 
+$\cos(2\alpha)=2\cos^2\alpha-1$. Also $\cos 
+15^\circ=\sqrt{\frac{1+\half\sqrt{3}}{2}}=\half\sqrt{2+\sqrt{3}}$.
+
+{\bf Aufgabe 5$\ppp$} Gegeben sei ein Rhombus $ABCD$ mit $\angle BAC=60^\circ$ und 
+$k$ sei der Inkreis von $ABCD$ mit dem Mittelpunkt $M$. Ferner gelte 
+$\overline{MD}=1$. Man zeige, dass f"ur jeden Punkt $P$ auf $k$ gilt
+$$
+\overline{PA}^2+\overline{PB}^2+\overline{PC}^2+\overline{PD}^2=11.
+$$
+
+{\bf "Ubung 3.} Ein Vektor hei"st {\em Einheitsvektor} oder {\em normiert}, wenn er die L"ange 
+$1$ hat. Berechnen Sie die Koordinaten desjenigen Einheitsvektors $\vec{a}$, der 
+senkrecht auf den Vektoren $\vec{b}=(1,1,0)^\ft$ und $\vec{c}=(0,1,1)^\ft$ 
+steht!
+
+{\em L"osung.} 
+Die Koordinaten des gesuchten Vektors seien 
+$\vec{a}=(a_1,a_2,a_3)^\ft$. Die Orthogonalit"at von $\vec{a},\vec{b}$ bzw.\ 
+$\vec{a},\vec{c}$ sowie die Normiertheit von $\vec{a}$ (L"ange gleich 1) lassen 
+sich unter Verwendung des Skalarprodukts wie folgt schreiben
+$$
+\vec{a}\bd\vec{b}=0,\quad \vec{a}\bd\vec{c}=0,\quad\vec{a}\bd\vec{a}=1.
+$$
+Nach Einsetzen der Koordinaten hat  man
+$$
+a_1+a_2=0,\quad a_2+a_3=0,\quad a_1^2+a_2^2+a_3^2=1.
+$$
+Die ersten beide Gleichungen liefern $a_2=-a_3=-a_1$. Einsetzen in die letzte 
+Gleichung liefert {\em zwei} L"osungen, 
+$\vec{a}=(\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}})$ 
+sowie $\vec{a}=(-\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}},-\frac{1}{\sqrt{3}})$.
+Bemerkung: Auf einer Ebene des Raumes gibt es immer zwei senkrechte Vektoren 
+der L"ange Eins, die entgegengesetzt gerichtet sind.
+
+{\bf "Ubungen$\ppp$}
+\\
+4. Die Vektoren $\vvec{AB}=(3,-2,2)^\ft$ und $\vvec{BC}=(-1,0,-2)^\ft$ sind die 
+benachbarten Seiten eines Parallelogramms $ABCD$. Bestimmen Sie  den Winkel 
+zwischen den Diagonalen!
+
+
+5. F"ur welchen Wert $z$ stehen die Vektoren $\vec{a}=(6,0,12)^\ft$ und 
+$\vec{b}=(-8,13,z)^\ft$ senkrecht aufeinander?
+
+6. Vom Parallelogramm $ABCD$ sind die folgenden Koordinaten bekannt: 
+$A=(3,2,1)$, $B=(0,-1,-1)$ und $C=(-1,1,0)$. Ermitteln Sie die L"ange der 
+Diagonalen $\overline{BD}$!
+
+%7. Beweisen Sie, dass die Punkte $A=(1,-1,1)$, $B=(1,3,1)$, $C=(4,3,1)$ und 
+%$D=(4,-1,1)$ die Eckpunkte eines Rechtecks bilden.
+%
+%8. Gegeben seien die Punkte $B=(1,-3)$ und $D=(0,4)$ eines Rhombus' $ABCD$. 
+%Berechnen Sie die Koordinaten der Eckpunkte $A$ und $C$, wenn $\angle 
+%BAD=60^\circ$!
+
+
+{\bf Aufgabe 6.}  Gegeben seien eine nat"urliche Zahl $n\ge3$ und ein 
+regelm"a"siges $n$-Eck $P_1P_2\cdots P_n$ mit Umkreis $k$ 
+vom Radius $r$. Zeigen Sie, dass f"ur alle Punkte $P$ auf $k$ die Summe
+$$                                       
+\overline{PP_1}^2+\overline{PP_2}^2+\cdots +\overline{PP_n}^2
+$$
+einen konstanten Wert hat, der nur von $r$ und $n$ nicht aber von der Lage des
+Punktes $P$ auf $k$ abh"angt, und ermittlen Sie diesen Wert!
+
+{\em L"osung.}  Der Mittelpunkt des regul"aren $n$-Ecks 
+$P_1P_2\cdots P_n$ sei $O$.
+Wir schreiben $\vec{p_i}=\vvec{OP_i}$, $i=1,\dots,n$ und $\vec{p}=\vvec{OP}$.
+Dann gilt wegen der  Regelm"a"sigkeit des $n$-Ecks 
+\begin{align}\label{sum}
+\vec{p_1}+\vec{p_2}+\cdots+\vec{p_n}=\vec{0}.
+\end{align}
+ Ferner ist $\vvec{PP_i}=\vec{p_i}-\vec{p}$. Wegen 
+$\overline{AB}^2=\vvec{AB}\bd\vvec{AB}$ hat die  gesuchte Summe hat nun den Wert
+\begin{align*}
+s=&(\vec{p_1}-\vec{p})\bd(\vec{p_1}-\vec{p}) 
++(\vec{p_2}-\vec{p})\bd(\vec{p_2}-\vec{p}) +\cdots 
++(\vec{p_n}-\vec{p})\bd(\vec{p_n}-\vec{p})
+\\
+=&(\vec{p_1}^2-2\vec{p_1}\bd\vec{p}+\vec{p}\,^2)+
+\cdots+(\vec{p_n}^2-2\vec{p_n}\bd\vec{p}+\vec{p}\,^2) 
+\\
+=&(\vec{p_1}^2+\cdots+\vec{p_n}^2)-2(\vec{p_1}+\cdots+\vec{p_n})\bd \vec{p}+n\vec{p}\,^2.
+\end{align*}
+Nun verwenden wir in der ersten Klammer, dass $\vec{p_i}^2=r^2=\vec{p}\,^2$ gilt, und in der 
+zweiten Klammer (\ref{sum}). Damit ergibt sich $s=nr^2+nr^2=2nr^2$. Aus der 
+letzten Formel erkennt man die Unabh"angigkeit der Summe $s$ von der Lage des 
+Punktes $P$ auf dem Kreis $k$. 
+
+{\bf Aufgabe 7$\ppp$} Gegeben sei ein Dreieck $ABC$ mit $\overline{BC}^2+\overline{CA}^2=5\overline{AB}^2$. Zeigen 
+Sie, dass die Seitenhalbierenden durch $A$ und $B$ aufeinander senkrecht 
+stehen!
+
+{\bf Aufgabe 8$\ppp$} Gegeben seien zwei kongruente Kreise $k_1$, $k_2$ mit den Mittelpunkten 
+$M_1$ und $M_2$ vom Radius $1$, wobei $M_2$ auf $k_1$ und $M_1$ auf $k_2$ 
+liegen. Ferner seien 
+$A$ ein Punkt auf $k_1$ und $B$ und $C$ liegen auf $k_2$ bez"uglich $M_1M_2$
+symmetrisch zueinander.
+\\
+Zeigen Sie, dass $\overline{AB}^2+\overline{AC}^2\ge 2$!
+
+{\bf Aufgabe 9$\ppp$} Die Seitenhalbierenden eines Dreiecks $ABC$ schneiden sich im Punkte $M$. 
+Beweisen Sie, dass 
+$$
+\overline{AB}^2+\overline{BC}^2+\overline{AC}^2=3(\overline{MA}^2+\overline{MB}^2+\overline{MC}^2).
+$$
+
+{\bf Aufgabe 10.} Es sei $O$ der Mittelpunkt des Umkreises des Dreiecks $ABC$, $D$ der 
+Mittelpunkt der Seite $\overline{AB}$ und $E$ der Schnittpunkt der Seitenhalbierenden  
+des Dreiecks $ACD$. Beweisen Sie, dass $OE\perp CD$ genau dann, wenn $\overline{AB}=\overline{AC}$.
+
+{\em L"osung.} 
+Es sei $O$ der Koordinatenursprung; $\vec{a}=\vvec{OA}$, 
+$\vec{b}=\vvec{OB}$, $\vec{c}=\vvec{OC}$, $\vec{d}=\vvec{OD}$
+und $\vec{e}=\vvec{OE}$. Ohne Beschr"ankung der Allgemeinheit sei der Radius des Umkreises gleich $1$. Dann 
+gilt also $\vec{a}\,^2=\vec{b}\,^2=\vec{c}\,^2=1$. Ferner haben wir
+$\vec{d}=\half(\vec{a}+\vec{b})$. Als 
+Schwerpunkt des Dreiecks $ADC$ hat $E$ den Ortsvektor 
+$\vec{e}=\frac{1}{3}(\vec{a}+\vec{c}+\vec{d})=\frac{1}{3}\vec{a}+
+\frac{1}{3}\vec{c}+\frac{1}{6}(\vec{a}+\vec{b})=\half\vec{a}+\frac{1}{3}\vec{c}
++\frac{1}{6}\vec{b}$.
+Nun gilt $OE\perp CD$ genau dann, wenn $\vec{e}\bd\vvec{CD}=0$. 
+Das hei"st,
+\begin{align*}
+0&=\vec{e}(\vec{d}-\vec{c})
+\\
+&=(\half\vec{a}+\frac{1}{3}\vec{c}+\frac{1}{6}\vec{b}\,)\bd(\half\vec{a}+\half\vec{b}
+-\vec{c}\,)
+\\
+&=(\frac{1}{4}\vec{a}\,^2+\frac{1}{4}\vec{a}\vec{b}-
+\half\vec{a}\vec{c})+(\frac{1}{6}
+\vec{a}\vec{c}+\frac{1}{6}\vec{b}\vec{c}-\frac{1}{3}\vec{c}\,^2)+
+(\frac{1}{12}\vec{a}
+\vec{b}+\frac{1}{12}\vec{b}\,^2-\frac{1}{6}\vec{b}\vec{c})
+\\
+&=\frac{1}{4}-\frac{1}{3}+\frac{1}{12}+\frac{1}{3}\vec{a}\vec{b}
+-\frac{1}{3}\vec{a}\vec{c}
+\\
+&=\frac{1}{3}\vec{a}(\vec{b}-\vec{c}).
+\end{align*}
+Andererseits gilt $\overline{AB}=\overline{AC}$ genau dann, wenn 
+$(\vec{b}-\vec{a})^2=(\vec{c}-\vec{a})^2$. Da die Vektoren $\vec{a}$, $\vec{b}$ 
+und $\vec{c}$ die L"ange $1$ haben, ist die letzte Gleichung "aquivalent zu
+$-2\vec{a}\bd\vec{b}=-2\vec{c}\bd\vec{a}$ bzw.\ zu $\vec{a}(\vec{b}-\vec{c}\,)=0$.
+Damit ist der Beweis erbracht.
+
+{\bf Aufgabe 11$\ppp$} Die H"ohen des  spitzwinkligen Dreiecks $ABC$ schneiden sich im 
+Punkte $H$. Auf den Strecken $\overline{HB}$ und $\overline{HC}$ sind die Punkte $B_1$ und 
+$C_1$ derart gew"ahlt, dass 
+$$
+\angle AB_1C=\angle AC_1B=90^\circ.
+$$
+Beweisen Sie, dass $\overline{AB_1}=\overline{AC_1}$!
+
+\begin{comment}
+  todo: geometric markup
+\end{comment}
+
+\begin{attribution}
+schueler (2004-09-09): Contributed to KoSemNet
+
+graebe (2004-09-09): Prepared along the KoSemNet rules
+\end{attribution}
+
+\end{document}
+
