@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!--  XSchema $Id: Publikationen.xsd,v 1.2 2004/06/24 12:13:28 graebe Exp $  -->
+<!-- allgemeine Typdefinitionen -->
+
+  <xs:simpleType name="ISBNPattern">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(\d|-)+(\d|X)"/> <!-- 0-00 if missing -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RefPattern">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-z]([a-z]|-|\d)+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Sprache">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="de|en|ru"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="TokenWithRef">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+	<xs:attribute name="ref" type="RefPattern"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TokenWithRefAndNumber">
+    <xs:simpleContent>
+      <xs:extension base="xs:token">
+	<xs:attribute name="ref" type="RefPattern"/>
+	<xs:attribute name="number" type="xs:token"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+<!-- Elementdefinitionen -->
+
+  <xs:element name="CRef">
+    <xs:complexType>
+      <xs:simpleContent>
+	<xs:extension base="xs:token">
+	  <xs:attribute name="ref" type="RefPattern"/>
+	</xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CRef" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="value" type="xs:token" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Book">  
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element name="author" type="xs:token"/>
+          <!-- Autoren, durch Semikolon getrennt -->
+	<xs:element name="title" type="xs:token"/>
+	<xs:element name="subtitle" type="xs:token" minOccurs="0"/>
+	<xs:element name="auflage" type="xs:token" minOccurs="0"/>
+	<xs:element name="reihe" type="TokenWithRefAndNumber" minOccurs="0"/>
+	<xs:element name="publisher" type="xs:token"/>
+          <!-- Verlagsangaben mit Ort, mehrere durch Semikolon getrennt -->
+	<xs:element name="year" type="xs:gYear"/>
+          <!-- Fehlende Jahresangabe: 0000 -->
+	<xs:element name="umfang" type="xs:token" minOccurs="0"/>
+          <!-- "254 S., mit Bildern" oder Aehnliches -->
+	<xs:element name="note" type="xs:token" minOccurs="0"/>
+          <!-- Was nicht woanders reinpasst -->
+	<xs:element name="isbn" type="ISBNPattern" minOccurs="0"/>
+	<xs:element name="issn" type="ISBNPattern" minOccurs="0"/>
+        <xs:element name="keywords" type="xs:token" minOccurs="0"/>
+          <!-- semikolon-separierte Sequenz -->
+	<xs:element name="abstract" type="xs:string" minOccurs="0"/>
+	<xs:element name="inhalt" type="xs:string" minOccurs="0"/>
+          <!-- Informationen zur Inhaltsangabe -->
+      </xs:sequence>
+      <xs:attribute name="id" type="RefPattern" use="required"/> 
+      <xs:attribute name="lang" type="Sprache"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Collection">  
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element name="title" type="xs:token"/>
+	<xs:element name="subtitle" type="xs:token" minOccurs="0"/>
+	<xs:element name="editor" type="xs:token"/>
+	<xs:element name="auflage" type="xs:token" minOccurs="0"/>
+	<xs:element name="reihe" type="TokenWithRefAndNumber" minOccurs="0"/>
+	<xs:element name="publisher" type="xs:token"/>
+	<xs:element name="year" type="xs:gYear"/>
+	<xs:element name="umfang" type="xs:token" minOccurs="0"/>
+	<xs:element name="isbn" type="ISBNPattern"/>
+	<xs:element name="note" type="xs:token" minOccurs="0"/>
+	<xs:element name="abstract" type="xs:string" minOccurs="0"/>
+	<xs:element name="inhalt" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="RefPattern" use="required"/> 
+      <xs:attribute name="lang" type="Sprache"/>
+    </xs:complexType>
+</xs:element>
+
+<!-- Root-Elementdefinitionen -->
+
+  <xs:element name="Publisher">
+    <xs:complexType>
+      <xs:sequence> 
+        <xs:element name="name" type="xs:token"/>
+        <xs:element name="alias" type="xs:token" minOccurs="0"/>
+        <xs:element name="shortname" type="xs:token"/>
+        <xs:element name="city" type="xs:token" maxOccurs="3"/>
+        <xs:element name="country" type="xs:token"/> 
+      </xs:sequence>
+      <xs:attribute name="id" type="RefPattern" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Series">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:token"/>
+	<xs:element name="publisher" type="TokenWithRef" maxOccurs="10"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="RefPattern" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BookList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="Collection"/>
+          <xs:element ref="Book"/>
+	</xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="HashList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

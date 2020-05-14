@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: wen-62-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="wen-62-1" lang="de">
+  <author>Wentzel, J.S.</author>
+  <title>Elemente der Spieltheorie</title>
+  <reihe ref="nat-bib-mathe" number="1">Kleine naturwissenschaftliche Bibliothek - Mathematik</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1962</year>
+  <keywords>Spieltheorie</keywords>
+</Book>

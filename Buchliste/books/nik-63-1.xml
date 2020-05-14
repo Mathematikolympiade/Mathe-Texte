@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: nik-63-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="nik-63-1" lang="de">
+  <author>Nikitin, N.N.</author>
+  <title>Geometrie</title>
+  <subtitle>Lehrbuch für die 6. bis 8. Klasse</subtitle>
+  <publisher>Volk und Welt, Berlin</publisher>
+  <year>1963</year>
+  <keywords>Geometrie</keywords>
+</Book>

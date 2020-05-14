@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: tre-96-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="tre-96-1" lang="de">
+  <author>Treitz, N.</author>
+  <title>Spiele mit Physik! </title>
+  <subtitle>Ein Buch zum Basteln, Probieren und Verstehen</subtitle>
+  <publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+  <year>1996</year>
+  <isbn>3-8171-1498-2</isbn>
+  <keywords>Physik</keywords>
+</Book>

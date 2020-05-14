@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: mil-89-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="mil-89-1" lang="de">
+  <author>Miller, M.</author>
+  <title>Gelöste und ungelöste mathematische Probleme</title>
+  <reihe ref="deutsch-tb" number="53">Deutsch Taschenbücher</reihe>
+  <publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+  <year>1989</year>
+  <isbn>3-8714-882-6</isbn>
+  <keywords>Probleme</keywords>
+</Book>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: kru-96-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="kru-96-1" lang="de">
+  <author>Krüger, Kurt</author>
+  <title>Mit Theseus ins Labyrinth</title>
+  <subtitle>Das Labyrinth als mathematisches Problem</subtitle>
+  <publisher>Reinhardt Becker Verlag, Velten</publisher>
+  <year>1996</year>
+  <keywords>Labyrinth</keywords>
+</Book>

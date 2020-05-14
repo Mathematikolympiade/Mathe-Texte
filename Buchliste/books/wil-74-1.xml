@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: wil-74-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="wil-74-1" lang="de">
+  <author>Wilenkin, N.J.</author>
+  <title>Methoden der schrittweise Näherung</title>
+  <reihe ref="nat-bib-mathe" number="5">Kleine naturwissenschaftliche Bibliothek - Mathematik</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig; Verlag Mir, Moskau</publisher>
+  <year>1974</year>
+  <keywords>Näherung; Aproximation</keywords>
+</Book>

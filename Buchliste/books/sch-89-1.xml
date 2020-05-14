@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: sch-89-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="sch-89-1" lang="de">
+  <author>Schaschkin, Jn.A.</author>
+  <title>Ecken, Flächen, Kanten</title>
+  <subtitle>Die Eulersche Charakteristik</subtitle>
+  <reihe ref="deutsch-tb" number="59">Deutsch Taschenbücher</reihe>
+  <publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+  <year>1989</year>
+  <isbn>3-8171-1012</isbn>
+  <keywords>Numerik; Geometrie</keywords>
+</Book>

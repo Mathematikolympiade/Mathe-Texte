@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: qua-86-2.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="qua-86-2" lang="de">
+  <author>Quaisser, E.; Sprengel, H.-J.</author>
+  <title>Extrema</title>
+  <reihe ref="deutsch-tb" number="52">Deutsch Taschenbücher</reihe>
+  <publisher>Deutscher Verlag der Wissenschaften, Berlin</publisher>
+  <year>1986</year>
+  <isbn>3-326-00010-3</isbn>
+  <keywords>Extrema; Analysis</keywords>
+</Book>

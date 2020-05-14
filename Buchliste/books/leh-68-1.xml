@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: leh-68-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="leh-68-1" lang="de">
+  <author>Lehmann, E.</author>
+  <title>Zahlentheorie</title>
+  <reihe number="1">Übungen für Junge Mathematiker</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1968</year>
+  <keywords>Zahlentheorie; Numerik</keywords>
+</Book>

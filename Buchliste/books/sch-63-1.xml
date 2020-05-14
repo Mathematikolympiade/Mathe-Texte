@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: sch-63-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="sch-63-1" lang="de">
+  <author>Schwetschenko, I.N.</author>
+  <title>Arithmetik</title>
+  <subtitle>Lehrbuch der RSFSR für die 5. und 6. Klasse</subtitle>
+  <publisher>Volk und Welt, Berlin</publisher>
+  <year>1963</year>
+  <keywords>Arithmetik</keywords>
+</Book>

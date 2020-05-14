@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: kle-69-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="kle-69-1" lang="de">
+  <author>Kleinfeld, G.</author>
+  <title>Ungleichungen</title>
+  <reihe number="3">Übungen für Junge Mathematiker</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1969</year>
+  <keywords>Ungleichungen; Gleichungen</keywords>
+</Book>

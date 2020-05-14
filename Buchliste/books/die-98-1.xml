@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: die-98-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="die-98-1" lang="de">
+  <author>Dietze, S.; Pönisch, G.</author>
+  <title>Graphikfähige Taschenrecher und Numerik</title>
+  <reihe ref="starthilfe">Starthilfe</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Stuttgart, Leipzig</publisher>
+  <year>1998</year>
+  <isbn>3-519-00236-1</isbn>
+  <keywords>Numerik; Taschenrecher; Programmierung</keywords>
+</Book>

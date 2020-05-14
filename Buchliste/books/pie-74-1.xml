@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: pie-74-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="pie-74-1" lang="de">
+  <author>Pieper, H.</author>
+  <title>Zahlen aus Primzahlen</title>
+  <subtitle>Ein Einführung in die Zahlentheorie</subtitle>
+  <publisher/>
+  <year>1974</year>
+  <isbn>3-326-00670-5</isbn>
+  <keywords>Numerik; Primzahlen</keywords>
+</Book>

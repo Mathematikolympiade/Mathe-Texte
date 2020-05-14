@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: mil-56-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="mil-56-1" lang="de">
+  <author>Miller, M.</author>
+  <title>Analytische Geometrie des Raumes</title>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1956</year>
+  <keywords>Geometrie; Räume</keywords>
+</Book>

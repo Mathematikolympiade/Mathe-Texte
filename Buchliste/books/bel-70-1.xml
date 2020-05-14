@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: bel-70-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="bel-70-1" lang="de">
+  <author>Belkner, Horst</author>
+  <title>Determinanten</title>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1970</year>
+  <keywords>Determinanten; Matritzen; Lineare Algebra</keywords>
+</Book>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: ale-59-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="ale-59-1" lang="de">
+  <author>Alexandrow, A.D.</author>
+  <title>Kurven und Flächen</title>
+  <publisher>Deutscher Verlag der Wissenschaften, Berlin</publisher>
+  <year>1959</year>
+  <keywords>Kurven; Flächen; Lineare Algebra</keywords>
+</Book>

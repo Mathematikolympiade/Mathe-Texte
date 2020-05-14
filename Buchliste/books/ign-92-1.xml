@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: ign-92-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="ign-92-1" lang="de">
+  <author>Ignatjew, E.I.</author>
+  <title>Mathematische Spielereien</title>
+  <reihe ref="deutsch-tb" number="69">Deutsch Taschenbücher</reihe>
+  <publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+  <year>1992</year>
+  <keywords/>
+</Book>

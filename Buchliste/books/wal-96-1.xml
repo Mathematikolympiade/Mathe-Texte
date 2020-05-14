@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: wal-96-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="wal-96-1" lang="de">
+  <author>Walser, Hans</author>
+  <title>Der Goldene Schnitt</title>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Stuttgart, Leipzig</publisher>
+  <year>1996</year>
+  <isbn>3-8154-2511-5</isbn>
+  <keywords>Goldener Schnitt; Numerik</keywords>
+</Book>

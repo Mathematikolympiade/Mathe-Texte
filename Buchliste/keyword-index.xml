@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<HashList>
+  <entry value="Abbildungsgeometrie">
+    <CRef ref="kir-98-1"/>
+  </entry>
+  <entry value="Algebra">
+    <CRef ref="kae-83-1"/>
+    <CRef ref="lei-66-1"/>
+  </entry>
+  <entry value="Analysis">
+    <CRef ref="pie-67-1"/>
+    <CRef ref="qua-86-1"/>
+    <CRef ref="qua-86-2"/>
+    <CRef ref="sch-56-1"/>
+  </entry>
+  <entry value="Aproximation">
+    <CRef ref="wil-74-1"/>
+  </entry>
+  <entry value="Arithmetik">
+    <CRef ref="bel-85-1"/>
+    <CRef ref="hol-63-1"/>
+    <CRef ref="sch-63-1"/>
+  </entry>
+  <entry value="Aufgaben">
+    <CRef ref="ale-72-1"/>
+    <CRef ref="bro-78-1"/>
+    <CRef ref="kue-78-1"/>
+    <CRef ref="mo-65-1"/>
+    <CRef ref="mor-71-1"/>
+    <CRef ref="nik-71-1"/>
+    <CRef ref="ste-76-1"/>
+    <CRef ref="vas-88-1"/>
+    <CRef ref="vys-84-1"/>
+  </entry>
+  <entry value="Beweise">
+    <CRef ref="thi-68-1"/>
+  </entry>
+  <entry value="Competition">
+    <CRef ref="bet-97-1"/>
+  </entry>
+  <entry value="Determinanten">
+    <CRef ref="bel-70-1"/>
+  </entry>
+  <entry value="Differentialgeometrie">
+    <CRef ref="klo-81-1"/>
+    <CRef ref="klo-83-1"/>
+  </entry>
+  <entry value="Differentialgleichungen">
+    <CRef ref="may-74-1"/>
+  </entry>
+  <entry value="Division">
+    <CRef ref="bel-85-1"/>
+  </entry>
+  <entry value="Elementargeometrie">
+    <CRef ref="cho-69-1"/>
+  </entry>
+  <entry value="Entropie">
+    <CRef ref="wol-90-1"/>
+  </entry>
+  <entry value="Extrema">
+    <CRef ref="qua-86-1"/>
+    <CRef ref="qua-86-2"/>
+  </entry>
+  <entry value="Flächen">
+    <CRef ref="ale-59-1"/>
+  </entry>
+  <entry value="Functional Equations">
+    <CRef ref="acz-69-1"/>
+  </entry>
+  <entry value="Funktionale Gleichungen">
+    <CRef ref="acz-69-1"/>
+  </entry>
+  <entry value="Funktionen">
+    <CRef ref="acz-69-1"/>
+    <CRef ref="gel-74-1"/>
+    <CRef ref="sch-56-1"/>
+  </entry>
+  <entry value="Geometrie">
+    <CRef ref="cho-69-1"/>
+    <CRef ref="fuc-68-1"/>
+    <CRef ref="kir-98-1"/>
+    <CRef ref="klo-81-1"/>
+    <CRef ref="klo-83-1"/>
+    <CRef ref="lei-66-1"/>
+    <CRef ref="mil-56-1"/>
+    <CRef ref="nik-63-1"/>
+    <CRef ref="nik-71-1"/>
+    <CRef ref="per-63-1"/>
+    <CRef ref="sch-89-1"/>
+  </entry>
+  <entry value="Gleichungen">
+    <CRef ref="acz-69-1"/>
+    <CRef ref="bor-78-1"/>
+    <CRef ref="kle-69-1"/>
+    <CRef ref="kno-49-1"/>
+    <CRef ref="may-74-1"/>
+  </entry>
+  <entry value="Goldener Schnitt">
+    <CRef ref="wal-96-1"/>
+  </entry>
+  <entry value="Graphentheorie">
+    <CRef ref="sed-68-1"/>
+  </entry>
+  <entry value="Grenzwert">
+    <CRef ref="pie-67-1"/>
+  </entry>
+  <entry value="Information">
+    <CRef ref="wol-90-1"/>
+  </entry>
+  <entry value="Kalender">
+    <CRef ref="but-74-1"/>
+  </entry>
+  <entry value="Kegelschnitte">
+    <CRef ref="sch-56-1"/>
+  </entry>
+  <entry value="Komplexe Zahlen">
+    <CRef ref="pie-88-1"/>
+  </entry>
+  <entry value="Kurven">
+    <CRef ref="ale-59-1"/>
+  </entry>
+  <entry value="Labyrinth">
+    <CRef ref="kru-96-1"/>
+  </entry>
+  <entry value="Lineare Algebra">
+    <CRef ref="ale-59-1"/>
+    <CRef ref="bar-64-1"/>
+    <CRef ref="bel-70-1"/>
+    <CRef ref="bel-70-2"/>
+    <CRef ref="fuc-68-1"/>
+    <CRef ref="kir-98-1"/>
+    <CRef ref="kno-49-1"/>
+  </entry>
+  <entry value="Lineare Programmierung">
+    <CRef ref="bar-64-1"/>
+  </entry>
+  <entry value="Logik">
+    <CRef ref="has-84-1"/>
+    <CRef ref="zic-70-1"/>
+  </entry>
+  <entry value="Matritzen">
+    <CRef ref="bel-70-1"/>
+    <CRef ref="bel-70-2"/>
+  </entry>
+  <entry value="Mengenlehre">
+    <CRef ref="has-84-1"/>
+  </entry>
+  <entry value="Metrische Räume">
+    <CRef ref="bel-00-1"/>
+  </entry>
+  <entry value="Numerik">
+    <CRef ref="die-98-1"/>
+    <CRef ref="leh-68-1"/>
+    <CRef ref="pie-74-1"/>
+    <CRef ref="sch-89-1"/>
+    <CRef ref="wal-96-1"/>
+  </entry>
+  <entry value="Näherung">
+    <CRef ref="wil-74-1"/>
+  </entry>
+  <entry value="Olympiade">
+    <CRef ref="ale-72-1"/>
+    <CRef ref="bro-78-1"/>
+    <CRef ref="kue-78-1"/>
+    <CRef ref="mo-01-1"/>
+    <CRef ref="mo-65-1"/>
+    <CRef ref="mor-71-1"/>
+    <CRef ref="shk-93-1"/>
+    <CRef ref="vas-88-1"/>
+    <CRef ref="vys-84-1"/>
+  </entry>
+  <entry value="Optik">
+    <CRef ref="art-98-1"/>
+  </entry>
+  <entry value="Optische Täuschungen">
+    <CRef ref="art-98-1"/>
+  </entry>
+  <entry value="Physik">
+    <CRef ref="art-98-1"/>
+    <CRef ref="haa-85-1"/>
+    <CRef ref="tre-96-1"/>
+  </entry>
+  <entry value="Primzahlen">
+    <CRef ref="pie-74-1"/>
+  </entry>
+  <entry value="Probleme">
+    <CRef ref="mil-89-1"/>
+  </entry>
+  <entry value="Programmierung">
+    <CRef ref="bar-64-1"/>
+    <CRef ref="die-98-1"/>
+  </entry>
+  <entry value="Projektion">
+    <CRef ref="fuc-68-1"/>
+  </entry>
+  <entry value="Räume">
+    <CRef ref="bel-00-1"/>
+    <CRef ref="mil-56-1"/>
+  </entry>
+  <entry value="Spieltheorie">
+    <CRef ref="wen-62-1"/>
+  </entry>
+  <entry value="Symmetrie">
+    <CRef ref="wal-98-1"/>
+  </entry>
+  <entry value="Taschenrecher">
+    <CRef ref="die-98-1"/>
+  </entry>
+  <entry value="Ungleichungen">
+    <CRef ref="kle-69-1"/>
+  </entry>
+  <entry value="Wahrscheinlichkeitsrechnung">
+    <CRef ref="war-98-1"/>
+  </entry>
+  <entry value="Wettbewerb">
+    <CRef ref="ale-72-1"/>
+    <CRef ref="bet-97-1"/>
+    <CRef ref="bro-78-1"/>
+    <CRef ref="kue-78-1"/>
+    <CRef ref="mo-01-1"/>
+    <CRef ref="mo-65-1"/>
+    <CRef ref="mor-71-1"/>
+    <CRef ref="shk-93-1"/>
+    <CRef ref="vas-88-1"/>
+    <CRef ref="vys-84-1"/>
+  </entry>
+  <entry value="Zahlentheorie">
+    <CRef ref="leh-68-1"/>
+  </entry>
+</HashList>

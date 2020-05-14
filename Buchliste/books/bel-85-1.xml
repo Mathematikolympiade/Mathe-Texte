@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: bel-85-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="bel-85-1" lang="de">
+  <author>Belski, A.A.; Kaloujnine, L.A.</author>
+  <title>Division mit Rest</title>
+  <reihe ref="deutsch-tb" number="40">Deutsch Taschenbücher</reihe>
+  <publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+  <year>1985</year>
+  <isbn>3-87144-771-4</isbn>
+  <keywords>Division; Arithmetik</keywords>
+</Book>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: per-63-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="per-63-1" lang="de">
+  <author>Perelman, J.I.</author>
+  <title>Unterhaltsame Geometrie</title>
+  <publisher>Volk und Welt, Berlin</publisher>
+  <year>1963</year>
+  <keywords>Geometrie</keywords>
+</Book>

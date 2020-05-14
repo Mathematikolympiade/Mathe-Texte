@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Reihen>
+
+<Series id="deutsch-tb">
+	<name>Deutsch Taschenbücher </name>
+	<publisher>Verlag Harri Deutsch Thun, Frankfurt/Main</publisher>
+</Series>
+<Series id="nat-bib-mathe">
+	<name>Kleine naturwissenschaftliche Bibliothek - Mathematik </name>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+</Series>
+<Series id="nat-bib-physik">
+	<name>Kleine naturwissenschaftliche Bibliothek - Physik </name>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+</Series>
+<Series id="starthilfe">
+	<name>Starthilfe </name>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Stuttgart, Leipzig</publisher>
+</Series>
+<Series id="kopfnuss">
+	<name>Kopf-Nuss </name>
+	<publisher ref="r-becker"/>
+</Series>
+<Series id="math-lehr">
+	<name>Mathematische Lehrhefte </name>
+	<publisher ref="vuw"/>
+</Series>
+<Series id="bib-mat-kruz">
+	<name>Biblioteka matematikceskogo Kruzka </name>
+	<publisher ref="tnauka"/>
+</Series>
+<Journal id="math-comp" lang="en">
+	<title>Mathematics competitions </title>
+	<publisher ref="uni-canb"/>
+        <ISSN>1031-7503</ISSN>
+</Journal>
+<Journal id="mathe-info" lang="de">
+	<title>Mathematikinformation </title>
+	<publisher ref="begabt"/>
+</Journal>
+<Series id="junge-m">
+	<name>Junge Mathematiker </name>
+	<publisher ref="rat-L"/>
+</Series>
+<Series id="octagon">
+	<name>Octagon </name>
+	<publisher ref="brasor"/>
+</Series>
+<Series id="kaenguru">
+	<name>Känguru der Mathematik </name>
+	<publisher ref="humbold"/>
+</Series>
+<Series id="mathe-o-hamburg">
+	<name>Mathematik-Olympiade Hamburg </name>
+	<publisher ref="mathe-o-hamburg"/>
+</Series>
+<Series id="elem-math">
+	<name>Elemente Der Mathematik vom höheren Standpunkt aus </name>
+	<publisher ref="birk"/>
+</Series>
+</Reihen>

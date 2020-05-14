@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: lei-66-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="lei-66-1" lang="de">
+  <author>Leitzmann, W.</author>
+  <title>Der Pythagoreische Lehrsatz</title>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1966</year>
+  <keywords>Geometrie; Algebra</keywords>
+</Book>

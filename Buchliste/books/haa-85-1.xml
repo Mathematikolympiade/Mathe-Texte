@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: haa-85-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="haa-85-1" lang="de">
+  <author>Haase, K.; Lehmann, D.</author>
+  <title>NANOs Physikabenteuer</title>
+  <reihe ref="kopfnuss">Kopf-Nuss</reihe>
+  <publisher>Urania-Verlag, Leipzig, Jena, Berlin</publisher>
+  <year>1985</year>
+  <isbn>3-332-00477-8</isbn>
+  <keywords>Physik</keywords>
+</Book>

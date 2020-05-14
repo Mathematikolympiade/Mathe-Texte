@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: vas-88-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="vas-88-1" lang="ru">
+  <author>Vasil'ev, N.B.; Egorov, A.A.</author>
+  <title>Zadaci vsesojuznych matematicikich olimpiad</title>
+  <reihe ref="bib-mat-kruz" number="18">Biblioteka matematikceskogo Kruzka</reihe>
+  <publisher>Idz. Nauka, Moskau</publisher>
+  <year>1988</year>
+  <keywords>Olympiade; Wettbewerb; Aufgaben</keywords>
+</Book>

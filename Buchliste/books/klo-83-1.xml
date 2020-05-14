@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: klo-83-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="klo-83-1" lang="de">
+  <author>Klotzek, B.</author>
+  <title>Einführung in die Differentialgeometrie II</title>
+  <publisher>Deutscher Verlag der Wissenschaften, Berlin</publisher>
+  <year>1983</year>
+  <issn>0076-5449</issn>
+  <keywords>Differentialgeometrie; Geometrie</keywords>
+</Book>

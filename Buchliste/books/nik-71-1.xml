@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: nik-71-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="nik-71-1" lang="ru">
+  <author>Nikitin, N.N.; Maslova, G.G.</author>
+  <title>Sbornik zadac po geometrii</title>
+  <subtitle>dlja 6-8 klassov</subtitle>
+  <publisher>Izd. Prosvescenie, Moskau</publisher>
+  <year>1971</year>
+  <keywords>Geometrie; Aufgaben</keywords>
+</Book>

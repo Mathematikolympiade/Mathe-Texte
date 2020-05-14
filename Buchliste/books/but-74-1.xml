@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: but-74-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="but-74-1" lang="de">
+  <author>Butkewitsch, A.W.; Selikson, M.S.</author>
+  <title>Ewige Kalender</title>
+  <reihe ref="nat-bib-physik" number="23">Kleine naturwissenschaftliche Bibliothek - Physik</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1974</year>
+  <keywords>Kalender</keywords>
+</Book>

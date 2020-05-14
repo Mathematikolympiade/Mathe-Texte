@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: bor-78-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="bor-78-1" lang="de">
+  <author>Borneleit, P.</author>
+  <title>Gleichungen</title>
+  <reihe number="4">Übungen für Junge Mathematiker</reihe>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Leipzig</publisher>
+  <year>1978</year>
+  <keywords>Gleichungen</keywords>
+</Book>

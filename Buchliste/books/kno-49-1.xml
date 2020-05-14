@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: kno-49-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="kno-49-1" lang="de">
+  <author>Knochendöppel, C.</author>
+  <title>Von den Gleichungen dritten und höheren Grades</title>
+  <reihe ref="math-lehr">Mathematische Lehrhefte</reihe>
+  <publisher>Volk und Welt, Berlin</publisher>
+  <year>1949</year>
+  <keywords>Gleichungen; Lineare Algebra</keywords>
+</Book>

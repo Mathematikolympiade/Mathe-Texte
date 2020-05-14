@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: kir-98-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="kir-98-1" lang="de">
+  <author>Kirsche, Peter</author>
+  <title>Einführung in die Abbildungsgeometrie</title>
+  <subtitle>Kongruenzabbildungen und Ähnlichkeiten</subtitle>
+  <publisher>B.G. Teubner Verlagsgesellschaft, Stuttgart, Leipzig</publisher>
+  <year>1998</year>
+  <isbn>3-519-00232-9</isbn>
+  <keywords>Abbildungsgeometrie; Geometrie; Lineare Algebra</keywords>
+</Book>

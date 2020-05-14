@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: acz-69-1.xml,v 1.2 2004/06/24 09:43:23 graebe Exp $ -->
+<Book id="acz-69-1" lang="en">
+  <author>Aczél, J.</author>
+  <title>On Applications and Theory of Functional Equations</title>
+  <reihe ref="elem-math" number="V">Elemente der Mathematik vom höheren Standpunkt aus</reihe>
+  <publisher>Birkhäuser Verlag, Basel</publisher>
+  <year>1969</year>
+  <keywords>Functional Equations; Funktionale Gleichungen; Funktionen; Gleichungen</keywords>
+</Book>

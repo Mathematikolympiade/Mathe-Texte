@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: thi-95-1.xml,v 1.1 2004/06/24 09:13:36 graebe Exp $ -->
+<Book id="thi-95-1" lang="de">
+  <author>Thiele, R.</author>
+  <title>Spiel, Spass und Strategien</title>
+  <reihe ref="kopfnuss">Kopf-Nuss</reihe>
+  <publisher>Reinhardt Becker Verlag, Velten</publisher>
+  <year>1995</year>
+  <isbn>3-930640-15-5</isbn>
+  <keywords/>
+</Book>
