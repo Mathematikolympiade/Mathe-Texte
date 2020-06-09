@@ -8,7 +8,8 @@ mathematisch interessierten Jugendlichen
 - Buchliste - Früheres Projekt, Buchhinweise für die Zielgruppe zu sammeln
   - Muss noch nach RDF-Prinzipien aufgearbeitet werden
 - StyleFiles - LaTeX-Stylefiles, die in den Artikeln verwendet werden
-- web - Webseiten des Projekts, aktuell bei der LSGM ausgerollt
+- web - Webseiten des Projekts, aktuell [bei der
+  LSGM](https://lsgm.uni-leipzig.de/KoSemNet/) ausgerollt
   - Hier werden die pdfs der Miniaturen gelistet und verlinkt
 
 ## Nutzungsbedingungen
