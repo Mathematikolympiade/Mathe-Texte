@@ -1,8 +1,7 @@
 <?php
 /**
  * User: Hans-Gert Gräbe
- * Date: 2016-05-27
- * Last Update: 2020-05-14
+ * Last Update: 2021-01-16
  */
 
 include_once("layout.php");
