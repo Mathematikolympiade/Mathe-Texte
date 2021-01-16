@@ -1,6 +1,6 @@
 %############################################################
 %
-% File ko-graf.sty $Id: ko-graf.sty,v 1.8 2011/12/30 15:03:45 graebe Exp $
+% File ko-graf.sty 
 %
 
 % Pakete und Grafikkommandos, die ohne weitere Erlaeuterungen verwendet werden
@@ -53,6 +53,22 @@
 % RechterWinkel{w}{Zentrum}{AbstandArc}{AbstandDot}
 % Winkel von w bis w+90° 
 
+% Weitere Übernahmen aus mografik.sty - Graebe, 2020-06-10
+
+\newpsstyle{ausgemalt}{fillstyle=solid, fillcolor=lightgray}
+% Malt alles aus, Nutzung: Kommando[style=ausgemalt,...]...
+
+\newcommand{\MarkFlaeche}[1]{
+  \pspolygon[style=ausgemalt, linewidth=0pt, linecolor=lightgray]#1
+}
+
+\newcommand{\Winkela}[4][16]{
+  \Hauptlinien \psset{linewidth=0.1pt} \pswedge(#2){#1pt}{#3}{#4}
+} 
+
+\newcommand{\Hilfswinkel}[3]{
+  \Winkela{#1}{#2}{#3} \psarc{-}(#1){14pt}{#2}{#3}
+}
 
 %
 % File ko-graf.sty Ende
