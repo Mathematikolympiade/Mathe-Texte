@@ -25,7 +25,7 @@ function pageHeader() {
   <body>
 <div class="container">
   <div class="row">
-    <h1 align="center"><a href="http://lsgm.de/KoSemNet/index.php">Das KoSemNet Projekt</a></h1><hr>
+    <h1 align="center"><a href="index.php">Das KoSemNet Projekt</a></h1><hr>
   </div><!-- end h1 title -->
   <div class="row"> 
     <div class="col-sm-4">
