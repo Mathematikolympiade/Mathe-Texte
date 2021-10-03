@@ -1,11 +1,11 @@
 <?php
 /**
  * User: Hans-Gert Gräbe
- * Date: 2016-05-27
+ * Date: 2021-10-03
  */
 
+require 'vendor/autoload.php';
 include_once("layout.php");
-require_once("lib/EasyRdf.php");
 
 function getArticles() {
    /* 
@@ -16,13 +16,13 @@ function getArticles() {
 <dd> <blockquote>Nach einer Einführung in Zweipersonenspiele und gewinnerzwingende Strategien werden Zugänge unter methodischen Gesichtspunkten besprochen. Der Aufsatz schließt mit einer Reihe von Olympiadeaufgaben zum Thema.</blockquote>
 
 */ 
-  EasyRdf_Namespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
-  EasyRdf_Namespace::set('dcterms', 'http://purl.org/dc/terms/');
-  EasyRdf_Namespace::set('ksn', 'http://kosemnet.de/Data/Model#');
-  EasyRdf_Namespace::set('ksnp', 'http://kosemnet.de/Data/Person/');
-  EasyRdf_Namespace::set('ksnt', 'http://kosemnet.de/Data/Tag/');
-  $artikel= new EasyRdf_Graph("http://kosemnet.de/Data/Artikel/");
-  $personen= new EasyRdf_Graph("http://kosemnet.de/Data/Person/");
+  \EasyRdf\RdfNamespace::set('foaf', 'http://xmlns.com/foaf/0.1/');
+  \EasyRdf\RdfNamespace::set('dcterms', 'http://purl.org/dc/terms/');
+  \EasyRdf\RdfNamespace::set('ksn', 'http://kosemnet.de/Data/Model#');
+  \EasyRdf\RdfNamespace::set('ksnp', 'http://kosemnet.de/Data/Person/');
+  \EasyRdf\RdfNamespace::set('ksnt', 'http://kosemnet.de/Data/Tag/');
+  $artikel= new \EasyRdf\Graph("http://kosemnet.de/Data/Artikel/");
+  $personen= new \EasyRdf\Graph("http://kosemnet.de/Data/Person/");
   $artikel->parseFile("rdf/Artikel.rdf");
   $personen->parseFile("rdf/Personen.rdf");
   // echo $artikel->dump("Turtle");
@@ -87,8 +87,7 @@ Datenbasis.
 <p> "geeignet für" bedeutet, dass der Text geeigent ist für die Arbeit mit
 Schülern der Befähigungsstufe (klasse)-(grad).  "Grad" orientiert sich an der
 Schwierigkeit von Aufgaben der Mathematikolympiade (MO) der angegebenen
-Klassenstufe und reicht von 1 (MO 1. Stufe) bis 5 (IMO).
-   </div>'.getArticles().'</div>';
+Klassenstufe und reicht von 1 (MO 1. Stufe) bis 5 (IMO).'.getArticles().'</div>';
 echo showPage($content);
 
 ?>

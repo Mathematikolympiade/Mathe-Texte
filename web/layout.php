@@ -38,34 +38,33 @@ function pageNavbar() {
 	<div id="sidebar-wrapper">
           <ul class="sidebar-nav">
             <li><a href="index.php">Startseite</a></li> 
-            <li><a href="Overview.php">Kurze Übersicht</a></li> 
+	    <li> <a href="ArticleList.php">Kurzübersicht über verfügbare Texte</a></li> 
             <li><a href="LegalIssues.php">Rechtliche Fragen und soziale Regeln</a></li> 
             <li><a href="TechnicalIssues.php">Technische Fragen</a></li> 
             <li><a href="EditionRules.php">Editions-Regeln</a></li> 
-            <li><a href="MetaInformations.php">RDF Metainformationen</a></li> 
-            <li><a href="ProjectMembers.php">Projektbeteiligte</a></li> 
-	    <li> <a href="Papers.php">Präsentationen und Aufsätze</a></li> 
-	    <li> <a href="ArticleList.php">Kurzübersicht über verfügbare Texte</a></li> 
+	    <li> <a href="Papers.php">Präsentationen und Aufsätze zum Projekt</a></li> 
           </ul>
       </div><!-- sidebar end -->
-    </div><!-- sidebar end -->
+    </div><!-- col-sm-4 end -->
     ';
 }
 
 function generalContent() {
   return '
 <div  class="col-sm-8">
-<p>Das <b>Ko</b>rrespondenz-<b>Se</b>minar-<b>Net</b>zwerk Projekt entstand
-ursprünglich im Nachgang zu einem Treffen von Gruppen engagierter Förderer
-mathematischer Nachwuchstalente im Schulalter aus Tschechien, der Slowakei,
-Ungarn und Deutschland im März 2004 in Bratislava.
+  <p>Das <b>Ko</b>rrespondenz-<b>Se</b>minar-<b>Net</b>zwerk Projekt entstand
+    ursprünglich im Nachgang zu einem Treffen von Gruppen engagierter Förderer
+    mathematischer Nachwuchstalente im Schulalter aus Tschechien, der
+    Slowakei, Ungarn und Deutschland im März 2004 in Bratislava.</p>
 
-<p>Nach einer enthusiastischen Anfangsphase sind heute einzelne Personen aus
-verschiedenen Förderzusammenhängen in Deutschland im Projekt aktiv. Die
-Koordinierung der Aktivitäten erfolgt über die LSGM - die Leipziger
-Schülergesellschaft für Mathematik.
-</div>
-</div><hr>
+  <p>Nach einer enthusiastischen Anfangsphase sind heute einzelne Personen aus
+    verschiedenen Förderzusammenhängen in Deutschland nur noch sporadisch im
+    Projekt aktiv. Die Koordinierung der Aktivitäten erfolgt über die LSGM -
+    die Leipziger Schülergesellschaft für Mathematik.</p>
+</div><!-- col-sm-8 end -->
+
+  </div><!-- row end -->
+  <hr/>
 
 ';
 }

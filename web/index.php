@@ -8,16 +8,24 @@
 include_once("layout.php");
 
 $content='      
-   <div class="row" align="center"><h2>Allgemeines zum KoSemNet-Projekt</h2></div>
+<div class="row" align="center"><h2>Allgemeines zum KoSemNet-Projekt</h2></div>
    
-   <div class="row"><div  class="col-sm-12">
-     Die gemeinsame <b>Datenbasis</b> wird über zwei git-Repositories verwaltet.
-     Auf das interne Repo mit Aufgaben und Lösungen haben nur Projektmiglieder
-     Zugriff.
+<div class="row">
+  <div class="col-sm-12">
+    <p>Die gemeinsame <strong>Datenbasis</strong> wird über zwei
+     git-Repositories verwaltet.  Auf das interne Repo mit Aufgaben und
+     Lösungen haben nur Projektmiglieder Zugriff.
      Das <a href="https://github.com/Mathematikolympiade/Mathe-Texte">öffentliche
      Repo</a> mit mathematischen Miniaturen und weiteren Materialien wird bei
-     github gehostet. 
-   </div></div>
+     github gehostet. </p>
+    
+    <p><strong>Metainformationen</strong> zu unseren Artikeln werden als
+      einfache RDF-Datei im <a href="rdf">RDF-Download-Bereich unserer
+      Website</a> öffentlich zur Verfügung gestellt. Dies ist zugleich die
+      einfachste Form, RDF-Metadaten öffentlich verfügbar zu machen.  Siehe
+      auch die <a href="ArticleList.php">Kurzübersicht</a> der Aufsätze. </p>
+  </div>
+</div>
 
    <div class="row">
      <p><div  class="col-sm-2" style="text-align:center">
@@ -42,7 +50,8 @@ $content='
 		width:3em; text-align:center"
 		src="images/CC-0.png" /></a>
        </div><div  class="col-sm-1"></div>
-       <div class="col-sm-10"><b>Die Öffentlichkeit</b> kann das Material unter den Bedingungen der
+       <div class="col-sm-10"><b>Die Öffentlichkeit</b> kann das Material
+       unter den Bedingungen der
 	 <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de"
 	    >Creative Commons Zero License</a> (CC-0) frei verwenden,
 	    verbreiten und veröffentlichen.  Es wird allerdings erwartet, dass
@@ -52,9 +61,9 @@ $content='
    </div>
 
    <div class="row">
-     <p><div class="col-sm-12"><b>Details</b> sind im
-	   Abschnitt <a href="LegalIssues.php" >Rechtliche Fragen und soziale
-	   Regeln</a> des Projekts ausgeführt.
+     <p><div class="col-sm-12"><b>Details</b> sind im Abschnitt
+	 <a href="LegalIssues.php">Rechtliche Fragen und soziale Regeln</a>
+	 des Projekts ausgeführt.
        </div>
    </div>
 </div>
