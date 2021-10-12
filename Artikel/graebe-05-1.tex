@@ -4,7 +4,7 @@
 
 \author{Hans-Gert Gräbe, Leipzig}
 \title{Reguläre Polyeder\kosemnetlicensemark}
-\date{Version vom 10. Oktober 2021}
+\date{Version vom 11. Oktober 2021}
 
 \begin{document}
 
@@ -154,7 +154,7 @@ Mittelpunkt der Basis, für die Höhe in diesem Dreieck auf die Basis gilt also
 $H=1$.  Lot aus $Z$ auf den Schenkel trifft diesen im Schwerpunkt $S$ der
 Seitenfläche -- das ist zugleich der Berührradius des Inkreises. Damit gilt
 \begin{itemize}
-\item $1+\br{\frac12\,a}^2=h^2=\br{\frac12\sqrt{3}\,a}$ (Pythagoras), also
+\item $1+\br{\frac12\,a}^2=h^2=\br{\frac12\sqrt{3}\,a}^2$ (Pythagoras), also
   $a=\sqrt{2}$, 
 \item $O=8\m\frac14\sqrt{3}\,a^2=4\sqrt{3}$, 
 \item $V=\frac23\,a^2=\frac43$ (Doppelpyramide mit Höhe $H$) und 
@@ -173,44 +173,86 @@ Wir erhalten
 In beiden Fällen legen wir eine Ebene durch zwei benachbarte Eckpunkte und
 $Z$, schneiden das Polyeder also „mitten durch“.  Dabei kommen regelmäßige
 Fünfecke der Seitenlänge $a$ vor, von denen wir vorab die Länge $d$ der fünf
-gleich langen Diagonalen und die Länge $H$ einer der fünf Höhen von einer Ecke
-auf die Gegenseite berechnen wollen.
+gleich langen Diagonalen, die Länge $h$ einer der fünf Höhen von einer Ecke
+auf die Gegenseite, den Umkreisradius $R$, den Inkreisradius $r$ und den
+Flächeninhalt $A$ berechnen wollen.
 
-\begin{center}
-  \includegraphics[width=.8\textwidth]{graebe-05-1/fuenfeck.jpg}\\
-  \emph{Abbildung 3:} Seite, Diagonale und Höhe im regelmäßigen Fünfeck.\\
-  Quelle: Jürgen Köller. Mathematische Basteleien. \cite{KoellerFuenfeck}
-\end{center}
+\begin{satz}
+  Für ein regelmäßiges Fünfeck mit der Seitenlänge $a$ gilt
+  \begin{align*}
+    \text{\bf Diagonalenlänge:} & d=\frac{a}{2}\,\br{1+\sqrt{5}}\\
+    \text{\bf Höhe:} & h=\frac{a}{2}\,\sqrt{5+2\sqrt{5}}\\
+    \text{\bf Umkreisradius:} & R=\frac{a}{10}\,\sqrt{50+10\sqrt{5}}\\
+    \text{\bf Inkreisradius:} & r=\frac{a}{10}\,\sqrt{25+10\sqrt{5}}\\
+    \text{\bf Flächeninhalt:} & A=\frac{a^2}{4}\,\sqrt{25+10\sqrt{5}}
+  \end{align*}
+\end{satz}
 
-In Abbildung 3 sind die Verhältnisse dargestellt (die Höhe $H$ fehlt). Wir
-berechnen die Größen verschiedener Winkel und finden zwei ähnliche Dreiecke,
-in denen $d:a=a:(d-a)$ gilt, woraus sich $d=\frac{1+\sqrt{5}}{2}\,a$ ergibt.
-$H$ kann nun einfach mit Pythagoras berechnet werden: Aus
+Zum Beweis folgen wir \cite{KoellerFuenfeck}, berechnen die Größen
+verschiedener Winkel und finden zwei ähnliche Dreiecke, in denen $d:a=a:(d-a)$
+gilt, woraus sich $d=\frac{a}{2}\,\br{1+\sqrt{5}}$ ergibt.  $h$ kann nun
+einfach mit Pythagoras berechnet werden:
 \begin{gather*}
-  H^2+\br{\frac{a}{2}}^2=d^2=\frac{3+\sqrt{5}}{2}\,a^2
+  h^2+\br{\frac{a}{2}}^2=d^2=\frac{3+\sqrt{5}}{2}\,a^2
 \end{gather*}
-ergibt sich $H=\frac12\sqrt{5+2\sqrt{5}}\,a$. 
+ergibt sich $h=\frac{a}{2}\,\sqrt{5+2\sqrt{5}}$. 
 
-Für Dodekaeder und Ikosaeder sehen die Schnittfiguren ähnlich aus.  Beides
-sind punktsymmetrische Sechsecke $A_1A_2A_3A_4A_5A_6$ mit Seitenlängen
-$a,h,h,a,h,h$ mit $R=\msegment{A_iZ}=1$. Ist $M$ der Mittelpunkt einer der
-Seiten der Länge $h$ (dies ist zugleich der Mittelpunkt einer Seitenfläche),
-dann gilt $r=\msegment{ZM}$.  Da $A_1A_4$ ein Durchmesser ist und $A_2$ (sowie
-$A_5$) als Ecken des Polyeders auf der Umkugel liegen, steht $A_1A_2$
-senkrecht auf $A_2A_4$.  Weiter bezeichnen wir $H=\msegment{A_1A_6}$.
+Ähnlich ergibt sich die Formel für den Radius $R$. Im rechtwinkligen Dreieck
+aus Umkreismittelpunkt, Eckpunkt und Seitenmitte ergibt sich
+\begin{align*}
+  R^2&=\br{\frac{a}{2}}^2+(h-R)^2,
+  \intertext{daraus}
+  2\,h\,R&=\br{\frac{a}{2}}^2+h^2=\frac{a^2}{4}\,\br{6+2\sqrt{5}}
+  \intertext{und weiter}
+  R&=\frac{a}{4}\,\frac{6+2\sqrt{5}}{\sqrt{5+2\sqrt{5}}}
+  =\frac{a}{2}\,\frac{\br{3+\sqrt{5}}\sqrt{5-2\sqrt{5}}}{\sqrt{5^2-20}}
+  =\frac{a}{2}\,\frac{\sqrt{10+2\sqrt{5}}}{\sqrt{5}} =
+  \frac{a}{10}\,\sqrt{50+10\sqrt{5}}, 
+\end{align*}
+wobei im vorletzten Schritt 
+\begin{gather*}
+  \br{3+\sqrt{5}}\sqrt{5-2\sqrt{5}} =\sqrt{\br{3+\sqrt{5}}^2\br{5-2\sqrt{5}}}
+  =\sqrt{10+2\sqrt{5}}
+\end{gather*}
+ausmultipliziert wurde.  $r=h-R$ ist der Inkreisradius, für den wir aus
+derselben Beziehung nun
+\begin{align*}
+  r^2&=R^2-\frac{a^2}{4} =\frac{a^2}{100}\,\br{50+10\sqrt{5}}-\frac{a^2}{4}
+  =\frac{a^2}{100}\,\br{25+10\sqrt{5}}
+\end{align*}
+erhalten.  Der Flächeninhalt $A$ setzt sich aus fünf gleichschenkligen
+Dreiecke mit Grundseite $a$ und Spitze im Zentrum des regelmäßigen Fünfecks
+zusammen. Es ergibt sich
+\begin{gather*}
+  A=5\m\frac{a}{2}\,r =\frac{a^2}{4}\,\br{25+10\sqrt{5}}.
+\end{gather*}
 
-Allein die geometrische Interpretation von $h$ und $H$ unterscheiden sich in
-beiden Fällen. -- Das muss noch ausgearbeitet werden. 
+Wir kommen zu Dodekaeder und Ikosaeder zurück und erzeugen eine Schnittfigur
+durch die Ebene, die durch einen Eckpunkt, den Durchmesser durch diesen
+Eckpunkt und eine dazu adjazente Kante bestimmt ist.  Für beide Körper
+entsteht als Schnittfigur ein Sechseck $E_1E_2K_3E_4E_5K_6$, wobei $E_i$ Ecken
+und $K_i$ Kantenmitten des jeweiligen Polyeders sind.
 
-\textbf{Dodekaeder:} $h$ ist Höhe im regelmäßigen Fünfeck der Seitenlänge
-$a$, $H$ ist Höhe in gleichseitigen Dreieck mit Seitenlänge $d$, das von den
-drei zu $A_1$ benachbarten Eckpunkten des Dodekaeders gebildet wird.
-
-\textbf{Ikosaeder:} $h$ ist Höhe im gleichseitigen Dreieck der Seitenlänge
-$a$, $H$ ist Höhe im regelmäßigen Fünfeck mit Seitenlänge $a$, das von den
-fünf zu $A_1$ benachbarten Eckpunkten des Ikosaeders gebildet wird.
-
-
+Die Rechnungen hierfür sind in \cite{Fendt1, Fendt2} ausgeführt und liefern
+für das Dodekaeder mit der Seitenlänge $a$
+\begin{itemize}
+\item $R=\frac{a}{4}\,\sqrt{18+6\sqrt{5}}$ für den Umkugelradius,
+\item $r=\frac{a}{20}\,\sqrt{250+110\sqrt{5}}$ für den Inkugelradius,
+\item $O=12\m A=12\m\frac{a^2}{4}\,\sqrt{25+10\sqrt{5}}
+  =3\,a^2\,\sqrt{25+10\sqrt{5}}$,
+\item $V=12\m\frac13\,A\,r =\frac{a^3}{4}\,\br{15+7\sqrt{5}}$ (12 Pyramiden
+  auf den Seitenflächen mit Spitze im Zentrum des Polyeders)
+\end{itemize}
+und für das Ikosaeder
+\begin{itemize}
+\item $R=\frac{a}{4}\,\sqrt{10+2\sqrt{5}}$ für den Umkugelradius,
+\item $r=\frac{a}{12}\,\br{3\sqrt{3}+\sqrt{15}}$ für den Inkugelradius,
+\item $O=5\,a^2\,\sqrt{3}$,
+\item $V=\frac{5}{12}\,a^3\,\br{3+\sqrt{5}}$.
+\end{itemize}
+Setzen wir wieder $R=1$, so ergibt sich $a_D=\frac13\,\sqrt{18-6\sqrt{5}}
+\approx 0.7136$ für das Dodekaeder und $a_I=\frac15\,\sqrt{10\sqrt{5}-10}
+\approx 0.3073$ für das Ikosaeder. 
 
 \paragraph{Zusammenfassung der Ergebnisse}
 \begin{center}
@@ -221,7 +263,11 @@ fünf zu $A_1$ benachbarten Eckpunkten des Ikosaeders gebildet wird.
     Würfel & $\frac23\sqrt{3}\approx 1.155$ & $8$ & $\frac{8}{9}\sqrt{3}
     \approx 1.539$ & $\frac13\sqrt{3} \approx 0.577$ \\
     Oktaeder & $\sqrt{2}\approx 1.414$ & $4\sqrt{3}\approx 6.928$ &
-    $\frac43 \approx 1.333$ & $\frac13 \approx 0.333$ \\\hline
+    $\frac43 \approx 1.333$ & $\frac13 \approx 0.333$ \\
+    Dodekaeder & $a_D\approx 0.7136$ & $\approx 10.515$ &
+    $\approx 0.5031$ & $\approx 0.7947$ \\
+    Ikosaeder & $a_I\approx 0.3073$ & $\approx 0.8178$ &
+    $ \approx 1.333$ & $\frac13 \approx 0.333$ \\\hline
   \end{tabular}
 \end{center}
 
@@ -335,6 +381,10 @@ und damit $k=90$, $e=60$, $f_5=12$, $f_6=20$.
 
 
 \begin{thebibliography}{xxx}
+\bibitem{Fendt1} Walter Fendt (2005). Das Dodekaeder.
+  \url{https://www.walter-fendt.de/math/geo/dodekaeder.pdf} (12.10.2021) 
+\bibitem{Fendt2} Walter Fendt (2005). Das Ikosaeder.
+  \url{https://www.walter-fendt.de/math/geo/ikosaeder.pdf} (12.10.2021) 
 \bibitem{KoellerPlatonisch} Jürgen Köller. Mathematische Basteleien.
   Platonische Körper.\\
   \url{http://www.mathematische-basteleien.de/platonisch.htm} (10.10.2021)
