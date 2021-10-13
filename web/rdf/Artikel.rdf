@@ -151,11 +151,15 @@
   <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-05-1">
     <ksn:availableAsPDF rdf:resource="graebe-05-1.pdf"/>
     <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
-    <dc:abstract>Ein kurzer Text über konvexe Polyeder, den Beweis der Eulerformel und die Herleitung der Klassifikation regulärer Polyeder.</dc:abstract>
+    <dc:abstract>Ein längerer Text über konvexe Polyeder, den Beweis der
+    Eulerformel und die Herleitung der Klassifikation und einiger Parameter
+    der Platonischen Körper.</dc:abstract>
     <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-9-3"/>
     <dc:created>2005-07-24</dc:created>
+    <dc:modified>2021-10-13</dc:modified>
     <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
-    <dc:subject>Reguläre Polyeder; Eulerformel; Klassifikation von Polyedern</dc:subject>
+    <dc:subject>Reguläre Polyeder; Eulerformel; Klassifikation von Polyedern;
+    Maße der Platonischen Körper</dc:subject>
     <dc:title>Reguläre Polyeder</dc:title>
   </dc:BibliographicResource>
 

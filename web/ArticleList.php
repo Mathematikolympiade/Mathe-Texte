@@ -1,7 +1,7 @@
 <?php
 /**
  * User: Hans-Gert Gräbe
- * Date: 2021-10-03
+ * Date: 2021-10-13
  */
 
 require 'vendor/autoload.php';
@@ -59,7 +59,8 @@ function displayArtikel($v,$personen) {
   $title=$v->get("dcterms:title");
   $uri=fix($v->getURI());
   $subject=$v->join("dcterms:subject");
-  $created=date_format(date_create($v->get('dcterms:created')),"d.m.Y");
+  //$created=date_format(date_create($v->get('dcterms:created')),"d.m.Y");
+  //$modified=date_format(date_create($v->get('dcterms:modified')),"d.m.Y");
   $audience=fix($v->get("dcterms:audience"));
   $abstract=$v->get("dcterms:abstract");
   $author=getAutoren($v,$personen);
