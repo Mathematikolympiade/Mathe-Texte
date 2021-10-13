@@ -130,7 +130,7 @@ Lege eine Ebene durch eine Kante und $Z$. Die Schnittfigur ist ein
 Rechteck mit den Seitenlängen $a$ und $\sqrt{2}\,a$.  Die Diagonale ist
 Durchmesser der Umkugel und hat damit die Länge $2=\sqrt{3}\,a$. Damit gilt
 \begin{itemize}
-\item $\frac12\sqrt{3}\,a=1$,
+\item $\frac12\sqrt{3}\,a=1$, also $a=\frac{2}{\sqrt{3}}=\frac23\sqrt{3}$, 
 \item $r=\frac12\,a$ (Berührradius der Inkugel ist Lot auf die Mitte der
   Seitenfläche und damit die Mitte der längeren Rechteckseite),
 \item $O=6\,a^2$ und 
@@ -149,13 +149,14 @@ Wir erhalten $a=\frac23\sqrt{3}$ und
 Lege eine Ebene durch $Z$, eine Ecke $E$ und den Mittelpunkt einer dort
 inzidenten Dreiecksfläche. Die Schnittfigur ist eine Raute aus zwei
 gleichschenkligen Dreiecken, jedes mit der Basis der Länge $a$ und Schenkeln
-der Länge $h=\frac12\sqrt{3}a$ (Höhe in der Seitenfläche). $Z$ ist der
+der Länge $h=\frac12\sqrt{3}\,a$ (Höhe in der Seitenfläche). $Z$ ist der
 Mittelpunkt der Basis, für die Höhe in diesem Dreieck auf die Basis gilt also
 $H=1$.  Lot aus $Z$ auf den Schenkel trifft diesen im Schwerpunkt $S$ der
-Seitenfläche -- das ist zugleich der Berührradius des Inkreises. Damit gilt
+Seitenfläche -- das ist zugleich der Berührradius der Inkugel. Damit gilt
+\newpage
 \begin{itemize}
-\item $1+\br{\frac12\,a}^2=h^2=\br{\frac12\sqrt{3}\,a}^2$ (Pythagoras), also
-  $a=\sqrt{2}$, 
+\item $1+\br{\frac{a}{2}}^2=h^2=\br{\frac{a}{2}\sqrt{3}}^2$ (Pythagoras), also
+  $a=\sqrt{2}$,
 \item $O=8\m\frac14\sqrt{3}\,a^2=4\sqrt{3}$, 
 \item $V=\frac23\,a^2=\frac43$ (Doppelpyramide mit Höhe $H$) und 
 \item $\br{\frac23\,h}^2+r^2=1$, also $r^2=\frac13$.
@@ -169,29 +170,31 @@ Wir erhalten
   \end{tabular}
 \end{center}
 
-\paragraph{Dodekaeder und Ikosaeder.}
-In beiden Fällen legen wir eine Ebene durch zwei benachbarte Eckpunkte und
-$Z$, schneiden das Polyeder also „mitten durch“.  Dabei kommen regelmäßige
-Fünfecke der Seitenlänge $a$ vor, von denen wir vorab die Länge $d$ der fünf
-gleich langen Diagonalen, die Länge $h$ einer der fünf Höhen von einer Ecke
-auf die Gegenseite, den Umkreisradius $R$, den Inkreisradius $r$ und den
-Flächeninhalt $A$ berechnen wollen.
+\paragraph{Das regelmäßige Fünfeck.}
+In beiden Polyedern kommen regelmäßige Fünfecke vor. Als Vorbereitung wollen
+wir die Größenverhältnisse in einem solchen regelmäßigen Fünfeck der
+Seitenlänge $a$ untersuchen und die Länge $d$ einer der fünf gleich langen
+Diagonalen, die Länge $h$ einer der fünf Höhen von einer Ecke auf die
+Gegenseite, den Umkreisradius $R$, den Inkreisradius $r$ sowie den
+Flächeninhalt $A$ berechnen.
 
 \begin{satz}
   Für ein regelmäßiges Fünfeck mit der Seitenlänge $a$ gilt
-  \begin{align*}
-    \text{\bf Diagonalenlänge:} & d=\frac{a}{2}\,\br{1+\sqrt{5}}\\
-    \text{\bf Höhe:} & h=\frac{a}{2}\,\sqrt{5+2\sqrt{5}}\\
-    \text{\bf Umkreisradius:} & R=\frac{a}{10}\,\sqrt{50+10\sqrt{5}}\\
-    \text{\bf Inkreisradius:} & r=\frac{a}{10}\,\sqrt{25+10\sqrt{5}}\\
-    \text{\bf Flächeninhalt:} & A=\frac{a^2}{4}\,\sqrt{25+10\sqrt{5}}
-  \end{align*}
+  \begin{gather*}
+    \begin{array}{cl}    
+      \text{\bf Diagonalenlänge:} & d=\frac{a}{2}\,\br{1+\sqrt{5}}\\
+      \text{\bf Höhe:} & h=\frac{a}{2}\,\sqrt{5+2\sqrt{5}}\\
+      \text{\bf Umkreisradius:} & R=\frac{a}{10}\,\sqrt{50+10\sqrt{5}}\\
+      \text{\bf Inkreisradius:} & r=\frac{a}{10}\,\sqrt{25+10\sqrt{5}}\\
+      \text{\bf Flächeninhalt:} & A=\frac{a^2}{4}\,\sqrt{25+10\sqrt{5}}
+    \end{array}
+  \end{gather*}
 \end{satz}
 
 Zum Beweis folgen wir \cite{KoellerFuenfeck}, berechnen die Größen
 verschiedener Winkel und finden zwei ähnliche Dreiecke, in denen $d:a=a:(d-a)$
 gilt, woraus sich $d=\frac{a}{2}\,\br{1+\sqrt{5}}$ ergibt.  $h$ kann nun
-einfach mit Pythagoras berechnet werden:
+einfach mit Pythagoras berechnet werden: Aus
 \begin{gather*}
   h^2+\br{\frac{a}{2}}^2=d^2=\frac{3+\sqrt{5}}{2}\,a^2
 \end{gather*}
@@ -199,16 +202,16 @@ ergibt sich $h=\frac{a}{2}\,\sqrt{5+2\sqrt{5}}$.
 
 Ähnlich ergibt sich die Formel für den Radius $R$. Im rechtwinkligen Dreieck
 aus Umkreismittelpunkt, Eckpunkt und Seitenmitte ergibt sich
-\begin{align*}
-  R^2&=\br{\frac{a}{2}}^2+(h-R)^2,
+\begin{gather*}
+  R^2=\br{\frac{a}{2}}^2+(h-R)^2,
   \intertext{daraus}
-  2\,h\,R&=\br{\frac{a}{2}}^2+h^2=\frac{a^2}{4}\,\br{6+2\sqrt{5}}
+  2\,h\,R=\br{\frac{a}{2}}^2+h^2=\frac{a^2}{4}\,\br{6+2\sqrt{5}}
   \intertext{und weiter}
-  R&=\frac{a}{4}\,\frac{6+2\sqrt{5}}{\sqrt{5+2\sqrt{5}}}
+  R=\frac{a}{4}\,\frac{6+2\sqrt{5}}{\sqrt{5+2\sqrt{5}}}
   =\frac{a}{2}\,\frac{\br{3+\sqrt{5}}\sqrt{5-2\sqrt{5}}}{\sqrt{5^2-20}}
   =\frac{a}{2}\,\frac{\sqrt{10+2\sqrt{5}}}{\sqrt{5}} =
   \frac{a}{10}\,\sqrt{50+10\sqrt{5}}, 
-\end{align*}
+\end{gather*}
 wobei im vorletzten Schritt 
 \begin{gather*}
   \br{3+\sqrt{5}}\sqrt{5-2\sqrt{5}} =\sqrt{\br{3+\sqrt{5}}^2\br{5-2\sqrt{5}}}
@@ -227,6 +230,7 @@ zusammen. Es ergibt sich
   A=5\m\frac{a}{2}\,r =\frac{a^2}{4}\,\br{25+10\sqrt{5}}.
 \end{gather*}
 
+\paragraph{Dodekaeder und Ikosaeder.}
 Wir kommen zu Dodekaeder und Ikosaeder zurück und erzeugen eine Schnittfigur
 durch die Ebene, die durch einen Eckpunkt, den Durchmesser durch diesen
 Eckpunkt und eine dazu adjazente Kante bestimmt ist.  Für beide Körper
@@ -254,6 +258,19 @@ Setzen wir wieder $R=1$, so ergibt sich $a_D=\frac13\,\sqrt{18-6\sqrt{5}}
 \approx 0.7136$ für das Dodekaeder und $a_I=\frac15\,\sqrt{10\sqrt{5}-10}
 \approx 0.3073$ für das Ikosaeder. 
 
+%% Rechnungen mit Maxima für die folgende Tabelle:
+%% D:[a,R=a/4*sqrt(18+6*sqrt(5)), r=a/20*sqrt(250+110*sqrt(5)),
+%%    O=3*a^2*sqrt(25+10*sqrt(5)), V=a^3/4*(15+7*sqrt(5))];
+
+%% I:[a,R=a/4*sqrt(10+2*sqrt(5)), r=a/12*sqrt(3*sqrt(3)+sqrt(15)),
+%%    O=5*a^2*sqrt(3), V=5/12*a^3*(3+sqrt(5))];
+
+%% da:solve(ev(D[2],R=1),a);
+%% subst(da[1],D);
+
+%% ia:solve(ev(I[2],R=1),a);
+%% subst(ia[1],I);
+
 \paragraph{Zusammenfassung der Ergebnisse}
 \begin{center}
   \begin{tabular}{|l|c|c|c|c|}\hline
@@ -264,10 +281,12 @@ Setzen wir wieder $R=1$, so ergibt sich $a_D=\frac13\,\sqrt{18-6\sqrt{5}}
     \approx 1.539$ & $\frac13\sqrt{3} \approx 0.577$ \\
     Oktaeder & $\sqrt{2}\approx 1.414$ & $4\sqrt{3}\approx 6.928$ &
     $\frac43 \approx 1.333$ & $\frac13 \approx 0.333$ \\
-    Dodekaeder & $a_D\approx 0.7136$ & $\approx 10.515$ &
-    $\approx 0.5031$ & $\approx 0.7947$ \\
-    Ikosaeder & $a_I\approx 0.3073$ & $\approx 0.8178$ &
-    $ \approx 1.333$ & $\frac13 \approx 0.333$ \\\hline
+    Dodekaeder & $a_D\approx 0.7136$ & $\approx 10.515$ & $\approx 2.785$ &
+    $\approx 0.7947$ \\ 
+    Ikosaeder & $a_I\approx 1.051$ & $\approx 9.574$ & $ \approx 2.536$ &
+    $\approx 0.2639$ \\
+    Kugel &  & $4\pi\approx 12.57$ & $ \frac43\pi \approx 4.189$ &
+    $\approx 0.2639$ \\\hline 
   \end{tabular}
 \end{center}
 
