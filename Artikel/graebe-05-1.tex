@@ -4,7 +4,7 @@
 
 \author{Hans-Gert Gräbe, Leipzig}
 \title{Reguläre Polyeder\kosemnetlicensemark}
-\date{Version vom 13. Oktober 2021}
+\date{Version vom 10. Oktober 2023}
 
 \begin{document}
 
@@ -166,7 +166,7 @@ Wir erhalten
   \begin{tabular}{|l|c|c|c|c|}\hline
     & $a$ & $O$ & $V$ & $r$ \\\hline
     Oktaeder & $\sqrt{2}\approx 1.414$ & $4\sqrt{3}\approx 6.928$ &
-    $\frac43 \approx 1.333$ & $\frac13 \approx 0.333$ \\\hline
+    $\frac43 \approx 1.333$ & $\frac13\sqrt{3} \approx 0.577$ \\\hline
   \end{tabular}
 \end{center}
 
@@ -263,8 +263,8 @@ Rechnungen mit Maxima für die noch offenen Zeilen der folgenden Tabelle:
   D:[a,R=a/4*sqrt(18+6*sqrt(5)), r=a/20*sqrt(250+110*sqrt(5)),\\\>
     O=3*a\pw2*sqrt(25+10*sqrt(5)), V=a\pw3/4*(15+7*sqrt(5))];\\[4pt]
 
-  I:[a,R=a/4*sqrt(10+2*sqrt(5)), r=a/12*sqrt(3*sqrt(3)+sqrt(15)),\\\>
-    O=5*a\pw2*sqrt(3), V=5/12*a\pw3*(3+sqrt(5))];
+  I:[a,R=a/4*sqrt(10+2*sqrt(5)), r=a/12*(3*sqrt(3)+sqrt(15)),\\\>
+    O=5*a\pw2*sqrt(3), V=5/12*a\pw3*(3+sqrt(5))];\\
 
   da:solve(ev(D[2],R=1),a);\\
   subst(da[1],D);\\[4pt]
@@ -281,11 +281,11 @@ Rechnungen mit Maxima für die noch offenen Zeilen der folgenden Tabelle:
     Würfel & $\frac23\sqrt{3}\approx 1.155$ & $8$ & $\frac{8}{9}\sqrt{3}
     \approx 1.539$ & $\frac13\sqrt{3} \approx 0.577$ \\
     Oktaeder & $\sqrt{2}\approx 1.414$ & $4\sqrt{3}\approx 6.928$ &
-    $\frac43 \approx 1.333$ & $\frac13 \approx 0.333$ \\
+    $\frac43 \approx 1.333$ & $\frac13\sqrt{3} \approx 0.577$ \\
     Dodekaeder & $a_D\approx 0.7136$ & $\approx 10.515$ & $\approx 2.785$ &
     $\approx 0.7947$ \\ 
     Ikosaeder & $a_I\approx 1.051$ & $\approx 9.574$ & $ \approx 2.536$ &
-    $\approx 0.2639$ \\
+    $\approx 0.7947$ \\
     Kugel &  & $4\pi\approx 12.57$ & $ \frac43\pi \approx 4.189$ & \\\hline 
   \end{tabular}
 \end{center}
@@ -422,6 +422,7 @@ Platonische Körper aus Klickmaterial zusammengebaut, Ecken, Kanten, Flächen
 gezählt, invariante Drehbewegungen analysiert und zum Schluss der Eulersche
 Polyedersatz bewiesen sowie kurz auf das Fußballpolyeder eingegangen.
 
+graebe (2023-10-10): Zwei kleine Fehler berichtigt.
 \end{attribution}
 
 \end{document}
