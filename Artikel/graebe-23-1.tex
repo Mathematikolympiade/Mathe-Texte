@@ -256,6 +256,34 @@ mit $q_1=\sqrt{2+\sqrt{3}}$ und $q_2=\sqrt{2-\sqrt{3}}=q_1^{-1}$, da das
 charakteristische Polynom $p(x)=x^4-4x^2+1$ die vier Nullstellen $\pm q1, \pm
 q_2$ hat. 
 
+\paragraph{Aufgabe 13:}
+Für $f(x)=c_nx^n+\dots+c_1x+c_0$ ist $c_0=1$ und $c_n+c_{n-1}+\dots+c_1=0$.
+Damit ist
+\begin{gather*}
+  a_{k+1}=f(a_k)=a_k\br{c_na_k^{n-1}+\dots+c_1}+1
+  =a_k\br{c_n\br{a_k^{n-1}-1}+\dots+c_1(1-1)}+1=a_k\br{a_k-1}\m p_k+1
+\end{gather*}
+und zunächst $\gcd\br{a_{k+1},a_k}=1$.  Mit Induktion zeigt man
+$a_k-1=a_{k-1}\m\dots\m a_1\m q_k$.  In der Tat, setzt man das oben ein, so
+ergibt sich 
+\begin{gather*}
+  a_{k+1}-1=a_k\br{a_k-1}\m p_k=a_k\m a_{k-1}\m\dots\m a_1\m q_k\m p_k
+\end{gather*}
+und so $q_{k+1}=q_k\m p_k$.  Damit sind die $a_k$ aber paarweise
+teilerfremd. 
+
+
+\paragraph{Aufgabe 15:}
+Für die Mersennezahlen gilt $\gcd\br{2^a-1,2^b-1}=2^{\gcd(a,b)}-1$.  Das
+ergibt sich wie folgt: Mit $a=q\m b+r$ ist 
+\begin{gather*}
+  2^a=\br{2^b}^q\m 2^r\equiv 1\m 2^r \pmod{2^b-1}
+\end{gather*}
+und damit $\gcd\br{2^a-1,2^b-1}=\gcd\br{2^b-1,2^r-1}$.  Weiter wie im
+Euklidschen Algorithmus.
+
+Vermutung: Die Glieder der  Folge $a_n=2^n-3$, deren Index eine Fibonaccizahl
+ist, sind paarweise teilerfremd.
 
 
 \begin{thebibliography}{Wor77}
