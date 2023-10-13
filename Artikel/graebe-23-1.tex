@@ -2,6 +2,8 @@
 \usepackage{ngerman,schueler,url}
 \usepackage{kosemnet,ko-math}
 
+\newcommand{\cas}{\textsc{#1}}
+
 \title{Rekursive Folgen} 
 \author{Hans-Gert Gräbe\\[8pt]
 \url{mailto:graebe@informatik.uni-leipzig.de}}
@@ -30,6 +32,39 @@ den Grenzwert.
   x_0(a)=a, x_n(a)=\frac12\br{x_{n-1}(a)+\frac{a}{x_{n-1}(a)}},\quad n>0
 \end{gather*}
 Konvergiert gegen $\sqrt{a}$. Schnell konvergierendes Verfahren. 
+
+
+Vorher Begriff \emph{homogene lineare Rekursion mit konstanten Koeffizienten}
+(HLR) einführen und die allgemeine Theorie entwickeln. Beweise führen wir
+später.
+
+\paragraph{(MO 281224)}
+Es ist $x_1=y_1=2022$ sowie $x_{n+1}=2x_n-1$, $y_{n+1}=2y_n-2^{n+1}$ für
+$n>0$.  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv sind.
+
+\begin{loesung}
+  Erste Folge kann mit $z_n=x_n-1$ auf Potenzfolge $z_{n+1}=2z_n$
+  zurückgeführt werden. Es ist $z_n=2^{n-1}z_1$ und damit
+  $x_n=2^{n-1}\br{x_1-1}+1$ immer positiv.
+
+  Wir hätten auch so argumentiern können: $x_{n+1}=2x_n-1,
+  x_{n+2}=2x_{n+1}-1$, also ist $x_{n+2}-x_{n+1}=2x_{n+1}-2x_n$. Die Folge
+  genügt also der homogenen linearen Rekursion $x_{n+2}=3x_{n+1}-2x_n$.  Das
+  charakteristische Polynom ist $p(x)=x^2-3x+2$ mit den Nullstellen $q_1=2,
+  q_2=1$. Die allgemeine Lösung lautet dann $x_n=A\m 2^n+B\m 1^n=A\m 2^n+B$.
+
+  Für die zweite Folge scheint es ähnlich zu sein, aber es ist doch anders.
+  Wir führen das wieder auf eine HLR zurück: $y_{n+1}=2y_n-2^{n+1},
+  2y_n=4y_{n-1}-2^{n+1}$ führt auf $y_{n+1}=4y_n-4y_{n-1}$. Das
+  charakteristische Polynom ist $p(x)=x^2-4x+4=(x+2)^2$, was auf den Ansatz
+  $y_n=(An+B)\m2^n$ führt und mit den Startwerten $y_n=(1012-n)\m 2^n$.
+  \cas{Maxima} kann so tiefe Rekursionen nicht, wir können aber wenigstens mit
+  Induktion prüfen, dass die Formel korrekt ist:
+  \begin{gather*}
+    y_{n+1}=2y_n-2^{n+1}=(1012-n)\m2^{n+1}-2^{n+1}=(1012-(n+1))\m2^{n+1}.
+  \end{gather*}
+\end{loesung}
+
 
 \section*{Arithmetische und polynomiale Folgen als Differenzenfolgen}
 
@@ -253,7 +288,9 @@ b(n):=if n=1 then 1
 else if n=2 then 5/2
 else 5/2*b(n-1)-b(n-2);
 
+% MO 281224
 
+y(n):=if n=1 then 2023 else 2*y(n-1)-2^(n+1);
 
 
 % MO 271245
