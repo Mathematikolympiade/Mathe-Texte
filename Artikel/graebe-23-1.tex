@@ -2,36 +2,353 @@
 \usepackage{ngerman,schueler,url}
 \usepackage{kosemnet,ko-math}
 
-\newcommand{\cas}{\textsc{#1}}
+\newcommand{\cas}[1]{\textsc{#1}}
+
+\newcommand{\nein}[1]{}
 
 \title{Rekursive Folgen} 
-\author{Hans-Gert Gräbe\\[8pt]
-\url{mailto:graebe@informatik.uni-leipzig.de}}
-\date{13. Oktober 2023}
+\author{Hans-Gert Gräbe}
+\date{15. Oktober 2023}
 
 \begin{document}
 \maketitle
 
-Dieser Text setzt auf \cite{S} auf. Es werden u.a. einige der dort ohne Lösung
+Dieser Text setzt \cite{S} fort. Es werden u.a. einige der dort ohne Lösung
 angegebenen Aufgaben besprochen. 
 
-\section*{Rekursiv gegebene konvergente Folgen}
+Bei der Analyse von Folgen ist es oft wichtig, sich einen Überblick über ein
+Anfangsstück der Folgenglieder zu verschaffen, um angemessene Hypothesen zu
+formulieren oder andere zu verwerfen.  Für derartige Rechnungen kann man
+Computer-Algebra-Systeme (CAS) oder andere Pakete zum symbolischen
+Rechnen\footnote{Etwa das Python-Paket \emph{SymPy},
+\url{https://www.sympy.org/en/index.html} } verwenden, die hinreichend gut
+programmierbar sind.  Rechnungen werden im Weiteren mit dem freien CAS
+\cas{Maxima}\footnote{\url{https://maxima.sourceforge.io/}} ausgeführt.
 
-\paragraph{(MO 271245)}
-Gegeben ist die Folge mit $x_1=x_2=1$ und $x_{n+1}=\frac{x_n+1}{x_{n-1}+4}$
-für $n>1$.  Untersuchen Sie, ob die Folge konvergiert und bestimmen Sie ggf.
-den Grenzwert.
+\section*{Einleitung}
 
+Eine Folge $(a_n)_{n\ge 1}$ ist nichts anderes als eine Funktion, deren
+Definitionsbereich etwa die natürlichen Zahlen sind. Auf diese Weise lassen
+sich Folgen auch in einem CAS anschreiben.
+
+Im Gegensatz zu Funktionen über den reellen Zahlen, die in der Regel durch
+eine \emph{explizite Bildungsvorschrift} gegeben sind, kann der Bereich der
+natürlichen Zahlen schrittweise durchlaufen werden, womit Folgen auch durch
+\emph{rekursive Bildungsvorschriften} gegeben werden können. 
+
+Oft schränken rekursive Regeln die Möglichkeiten so weit ein, dass sich eine
+überschaubare Menge von Folgen oder auch nur eine einzige ergibt, die allen
+Bedingungen genügen. 
+
+\paragraph{Beispiel (MO 591036):}
+\begin{quote}
+  Für die Folge $(a_n)_{n\ge 1}$ positiver ganzer Zahlen gilt $a_m\le a_n$ und
+  $a_m\m a_n=a_{m\m n}$ für alle $m,n$ mit $0<m\le n$ sowie $a_{59}=59$.
+  Zeige, dass dann stets $a_n=n$ erfüllt ist.
+\end{quote}
 \begin{loesung}
-  
+  Wäre $a_k=a_{k+1}$ für ein $k$, so wäre $a_k=a_n$ für alle $n\ge k$.
+  Anderenfalls gäbe es ein kleinstes $t>k$ mit $a_t>a_k$. Das führt aber zu
+  folgendem Widerspruch:
+  \begin{gather*}
+    a_k^2=a_{t-1}^2=a_{t^2-2t+1}\ge a_{t^2-2t}=a_t\m a_{t-2}=a_t\m a_k
+  \end{gather*}
+  und damit $a_n\le a_k$.  Die Folge $(a_n)$ ist also streng monoton wachsend.
+
+  Wäre nicht stets $a_n=n$, so gäbe es ein kleinstes $t$ mit $a_t\neq t$.
+  Wegen $a_1^2=a_{1\m 1}=a_1>0$ ist $a_1=1$. Wäre $a_2\ge 3$, so wäre 
+  \begin{gather*}
+    81\le \br{a_2}^4=\br{a_4}^2=a_{16}\le a_{59}=59.
+  \end{gather*}
+  Also ist $a=a_1<a_2<3$ und damit $a_2=2$.  Ist $t$ gerade, so erhalten wir
+  den Widerspruch
+  \begin{gather*}
+    a_t=a_{t/2}\m a_2=2\m a_{t/2}=2\m \frac{t}{2}=t.
+  \end{gather*}
+  Ist $t$ ungerade, so erhalten wir die Ungleichung
+  \begin{gather*}
+    t-1=a_{t-1}<a_t<a_{t+1}=a_{(t+1)/2}\m a_2=2\m a_{(t+1)/2}=2\m
+    \frac{t+1}{2}=t+1
+  \end{gather*}
+  und daraus wieder $a_t=t$ im Widerspruch zur Annahme.   
 \end{loesung}
 
+\nein{
+\paragraph{Wurzel, Okt. 1990:}
+\begin{quote}
+  $a_0,\dots, a_n$ sei eine Folge nichtnegativer ganzer Zahlen mit $a_0=0$ und
+  $\abs{a_i-a_{i+1}}=1, i=0,\dots,n-1$.
+
+  Zeige, dass es genau $\binom{n}{\floor{\frac{n}{2}}}$ solcher Folgen gibt.
+\end{quote}
+\begin{loesung}
+  Stellt man die entsprechenden Pfade bis zu $a_k=i$ ($k+1$ ist immer gerade)
+  dar, so ergibt sich ein „halbes“ Pascalsches Dreieck
+  
+  Setze $f(k,i)$ gleich Zahl der Folgen bis $a_k=i$, dann ergibt sich die
+  Rekursion $f(k,i)=f(k-1,i+1)+f(k-1,i-1)$, wobei $f(0,0)=1$ und $f(k,i)=0$
+  für $i<0$ oder $i>k$ gesetzt wird. Weiter?  
+\end{loesung}
+}
+
+\paragraph{Quelle unbekannt:}
+\begin{quote}
+  Die Folge $a_1,a_2,\dots$ sei wie folgt definiert: $a_1=1$, $a_{2^k+j}=-a_j$
+  für $1\le j\le 2^k$ und $k=0,1,\dots$.
+
+  Man zeige, dass die Folge nicht periodisch ist.
+\end{quote}
+\begin{loesung}
+  Man sieht, dass $a_i=\pm 1$ gilt und die Folge aus je Stücken der Länge
+  $2^k$ mit $+1$ oder $-1$ besteht.  Genauer: Es gilt $a_i=(-1)^k$ für alle
+  $i$ mit $2^{k-1}<i\le 2^k$. 
+
+  Formaler Beweis: Wäre $p$ eine Periode, also $a_i=a_{i+p}$ für alle $i\ge l$
+  dann wähle $m$ so, dass $2^m> p,l$ gilt. Dann ist $a_i=(-1)^m$ für $i=2^m$
+  und $a_{i+p}=(-1)^{m+1}=-a_i$, da $2^m<i+p\le 2\m 2^m$. 
+\end{loesung}
+
+\paragraph{(MO 530944)}
+\begin{quote}
+  Gegeben ist $z>0$ und zwei Zahlenfolgen, die durch
+  \begin{align*}
+    a_1=4z,\ a_{n+1}=\frac{a_n+b_n}{2}\\
+    b_1=\frac14z,\ b_{n+1}=\frac{a_n\m b_n}{a_{n+1}}
+  \end{align*}
+  bestimmt sind. Zeige
+  \begin{itemize}
+  \item [a)] $a_n+b_n\ge 2z$
+  \item [b)] $a_n>a_{n+1}$
+  \end{itemize}
+\end{quote}
+\begin{loesung}
+  Es ist $a_{n+1}b_{n+1}=a_nb_n=z^2$ konstant und deshalb
+  $b_n=\frac{z^2}{a_n}$.  Dann ist aber (a) die bekannte Ungleichung
+  $\frac12\br{a_n+\frac{z^2}{a_n}}\ge z$ und (b) folgt aus $a_n>b_n$. 
+\end{loesung}
+
+\subsection*{Konvergente Folgen und Grenzwerte}
+
+\paragraph{(MO 271245)}
+\begin{quote}
+  Gegeben ist die Folge mit $x_1=x_2=1$ und $x_{n+1}=\frac{x_n+1}{x_{n-1}+4}$
+  für $n>1$.  Untersuchen Sie, ob die Folge konvergiert und bestimmen Sie ggf.
+  den Grenzwert.
+\end{quote}
+Führe hierzu Berechnungen mit \cas{Maxima} durch:
+\begin{code}
+  x(n):=if n=0 then 1\\
+else if n=1 then 1\\
+else (x(n-1)+1)/(x(n-2)+4);
+\end{code}
+Diskutiere, warum das für $n>25$ sehr langsam wird.  Verfolge dazu die
+Hierarchie der rekursiven Aufrufe. 
+
+\begin{loesung}
+Der Grenzwert, falls er existiert, erfüllt die Gleichung $a=\frac{a+1}{a+4}$,
+also $a^2+3a-1=0$, woraus $a=-\frac32\pm\frac12\sqrt{13}$ folgt.  Da alle
+$x_n>0$, kommt nur $a=\frac12\br{\sqrt{13}-3}$ in Frage.
+
+Für die Existenz des Grenzwerts zeigen wir, dass die Folge $x_n-a$ gegen null
+geht, indem wir $\abs{x_n-a}\le c\m \lambda^n$ für ein $c>0$ und $\lambda$ mit
+$0<\lambda<1$ zeigen. Dazu der folgende induktive Ansatz (von $n$ und $n+1$
+auf $n+2$)
+\begin{align*}
+  \abs{x_{n+2}-a}&=\abs{\frac{x_{n+1}-a+(a+1)}{x_n+4}-a}\\
+  &=\abs{\frac{x_{n+1}-a}{x_n+4}-\br{a-\frac{1+a}{x_n+4}}}\\
+  &=\abs{\frac{x_{n+1}-a}{x_n+4}-a\br{\frac{x_n-a}{x_n+4}}},
+\end{align*}
+wobei in der letzten Umformung $a\br{x_n+4}-a-1=ax_n+3a-1=ax_n-a^2$ eingesetzt
+wurde, da $a^2+3a-1=0$ gilt.  Wir erhalten also mit Induktionsvoraussetzung
+und $0<a<\frac12$ sowie $x_n>0$
+\begin{align*}
+  \abs{x_{n+2}-a}&\le
+  \abs{\frac{x_{n+1}-a}{x_n+4}}+a\abs{\frac{x_n-a}{x_n+4}}\\
+  &<\frac14 c \lambda^{n+1} + \frac18 c \lambda^n = c \lambda^{n+2},
+\end{align*}
+wenn wir $\lambda=\frac12$ setzen. $c$ passen wir so an, dass der
+Induktionsanfang für $n=1$ und $n=2$ passt.  Wegen $x_1=x_2=1$ muss
+$\abs{1-a}<c \lambda=\frac12 c$ erfüllt sein. Wegen $3<\sqrt{13}<4$ ist
+$0<a<\frac12$ und damit $\abs{1-a}<1$ kann $c=2$ gewählt werden.   
+\end{loesung}
 
 \paragraph{Newtonverfahren zum Berechnen der Quadratwurzel}
 \begin{gather*}
-  x_0(a)=a, x_n(a)=\frac12\br{x_{n-1}(a)+\frac{a}{x_{n-1}(a)}},\quad n>0
+  x_1=a,\ x_{n+1}=\frac12\br{x_n+\frac{a}{x_n}},\quad n>0
 \end{gather*}
-Konvergiert gegen $\sqrt{a}$. Schnell konvergierendes Verfahren. 
+Konvergiert gegen $b=\sqrt{a}$, da Grenzwert $b$ der Gleichung
+$b=\frac12\br{b+\frac{a}{b}}$ genügt. Schnell konvergierendes Verfahren.  Dazu
+\begin{gather*}
+  \frac{x_{n+1}-b}{x_n-b}=\frac{x_n^2-2bx_n+b^2}{2(x_n-b)}=\frac12\br{x_n-b}. 
+\end{gather*}
+Also ist $\abs{x_{n+1}-b}<\abs{x_n-b}^2$.
+
+\textbf{Aufgabe:} Zeige, dass die Rekursion
+$x_{n+1}=\frac12\br{x_n+\frac{a}{x_n^{k-1}}}$ mit ähnlichen Eigenschaften
+$b=\sqrt[k]{a}$ berechnet. 
+
+\subsection*{Partialsummen und Reihen}
+
+Zur Folge $(a_n)_{n\ge 1}$ kann man die Folge $(s_n)_{n\ge 1}$ der
+\emph{Partialsummen} bilden nach der Vorschrift
+\begin{gather*}
+  s_n=a_1+a_2+\dots+a_n=\sum_{k=1}^n{a_k}.
+\end{gather*}
+So ist etwa für die Potenzfolge $a_n=q^n, n\ge 1$, $q\ne 1$
+\begin{gather*}
+  s_n=1+q+q^2+\dots+q^n=\sum_{k=1}^n\br{q^k}
+\end{gather*}
+Mit Induktion beweist man die explizite Darstellung
+$s_n=\frac{q^{n+1}-1}{q-1}$, denn es ist
+\begin{gather*}
+  s_{n+1}=s_n+q^{n+1}\stackrel{IV}{=} \frac{q^{n+1}-1}{q-1}+q^{n+1}
+  =\frac{q^{n+2}-q^{n+1}+q^{n+1}-1}{q-1}= \frac{q^{n+2}-1}{q-1}. 
+\end{gather*}
+Für $\abs{q}<1$ ist diese Folge der Partialsummen konvergent mit dem Grenzwert
+$\frac{1-q^n}{1-q}\to \frac{1}{1-q}$. Diesen Wert bezeichnet man auch als den
+Wert der (konvergenten) unendlichen Reihe 
+\begin{gather*}
+  \sum_{k=0}^\infty=1+q+q^2+\dots \frac{1}{1-q}.
+\end{gather*}
+\textbf{Aufgabe:}
+Man untersuche die Konvergenz der unendlichen Reihe
+\begin{gather*}
+  s=\frac{1}{1\m 2}+\frac{1}{2\m 3}+\frac{1}{3\m 4}+\dots
+\end{gather*}
+und ermittle $s$.  
+
+\begin{loesung}
+  Es ist $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$ und somit
+  \begin{align*}
+    s_n&=\frac{1}{1\m 2}+\frac{1}{2\m 3}+\frac{1}{3\m 4}+\dots+\frac{1}{n(n+1)}
+    =
+    \br{1-\frac12}+\br{\frac12-\frac13}+\dots+\br{\frac{1}{n}-\frac{1}{n+1}}\\ 
+    &= 1-\frac{1}{n+1} \to 1.
+  \end{align*}
+\end{loesung}
+
+\textbf{Aufgabe:} Finde eine ähnliche Formel für
+\begin{gather*}
+  s=\frac{1}{1\m 2\m 3}+\frac{1}{2\m 3\m }+\frac{1}{3\m 4\m 5}+\dots
+\end{gather*}
+\begin{loesung}
+  Ähnlich wie in \cite{S}, Aufgabe 6, findet man
+  \begin{gather*}
+    \frac{1}{x(x+1)(x+2)}=\frac{1/2}{x}-\frac{1}{x+1}+\frac{1/2}{x+2}
+  \end{gather*}
+  und damit $s_n=\frac12\br{1-\frac12-\frac{1}{n+1}+\frac{1}{n+2}}$. 
+\end{loesung}
+
+\textbf{Aufgabe:} 
+\begin{quote}
+  Es sei $(a_n)$ eine beidseitig unendliche Folge paarweise verschiedener
+  positiver natürlicher Zahlen, wobei keines der Folgenglieder in seiner
+  Dezimaldarstellung die Ziffer Null enthält.
+
+  Zeige, dass $\sum_n{\frac{1}{a_n}}<29$ gilt. 
+\end{quote}
+\begin{loesung}
+  $b_n$ entsteht aus $a_n$, indem alle Ziffern bis auf die erste durch Nullen
+  ersetzt werden.  Dann ist $b_n\le a_n$ und
+  \begin{align*}
+    \sum_n{\frac{1}{a_n}}\le\sum_n{\frac{1}{b_n}}&<\br{1+\frac12+\dots+\frac19}
+    +\br{\frac{9}{10}+\frac{9}{20}+\dots+\frac{9}{90}}\\&\qquad
+    +\br{\frac{9^2}{10^2}+\frac{9^2}{2\m 10^2}+\dots+\frac{9^2}{9\m 10^2}}+
+    \dots\\ &=
+    \br{1+\frac12+\dots+\frac19}\br{1+\frac{9}{10}+\br{\frac{9}{10}}^2+\dots}
+    <2{,}83\m 10 <29.
+  \end{align*}
+  Interessant ist, dass die Summe aller Reziproken als Harmonische Reihe
+  divergiert.   
+\end{loesung}
+
+\section*{Arithmetische Folgen}
+
+\paragraph{(MO 291044)}
+\begin{quote}
+  Im folgenden $(5\times5)$-Quadrat stehen in allen Zeilen und Spalten
+  arithmetische Folgen.  Wie viele Möglichkeiten gibt es, das Quadrat zu
+  ergänzen?
+  \begin{center}
+    \def\abst{\hspace*{1em}}
+    \begin{tabular}{*{5}{|c}|}\hline
+      \abst&  &  &\abst&65\\\hline
+      &41&  &     &\\\hline
+      &  &81&     &\\\hline
+      &  &  &     &\\\hline
+      1&  &  &     &\\\hline
+    \end{tabular}
+  \end{center}
+\end{quote}
+\begin{loesung}
+\begin{center}
+\def\abst{\hspace*{1em}}
+  \begin{tabular}{*{5}{|c}|}\hline
+    $x$&  &$y$&\abst&65\\\hline
+    $z$&41&$w$&     &\\\hline
+       &  &81 &     &\\\hline
+       &  &   &     &\\\hline
+      1&  &   &     &\\\hline
+  \end{tabular}\hskip5em
+  \begin{tabular}{*{5}{|c}|}\hline
+     25&35& 45& 55& 65\\\hline
+     19&41& 63& 85&107\\\hline
+     13&47& 81&115&149\\\hline
+      7&53& 99&145&191\\\hline
+      1&59&117&175&233\\\hline
+  \end{tabular}
+\end{center}
+Für die Werte der vier Variablen $x,y,z,w$ muss gelten $65-y=y-x$,
+$w-41=41-z$, $1-z=3(z-x)$, $81-w=w-y$. Löse das Gleichungssystem: $z=82-w$,
+$y=2w-81$, $x=2y-65=4w-227$, $1=4z-3x=4\m82-5w-16w+3\m227$, $16w=1008$. Daraus
+ergibt sich $w=63$, $x=25$, $y=45$, $z=19$ und der Rest lässt sich einfach
+ergänzen. 
+\end{loesung}
+
+\nein{
+\textbf{(Wurzel 9/1972):} 
+\begin{quote}
+  Haben von $n>2$ beidseitig unendlichen arithmetischen Folgen \emph{ganzer
+  Zahlen} je zwei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
+  Glied.
+\end{quote}
+\begin{loesung}
+  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ haben genau dann ein gemeinsames
+  Folgenglied $A$, wenn $a_1-a_2$ durch $\gcd(d_1,d_2)$ teilbar ist, wenn also
+  $a_1-a_2\equiv 0\pmod{\gcd(d_1,d_2)}$ ist.  Die beiden Folgen haben dann sie
+  die gemeinsame Teilfolge $A+n\m d$ mit $d=\mathrm{kgV}(d_1,d_2)$.
+
+  Weiter?
+
+\end{loesung}
+
+\textbf{Aufgabe:} 
+\begin{quote}
+  Haben von $n$ beidseitig unendlichen arithmetischen Folgen \emph{reeller
+  Zahlen} je drei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
+  Glied.
+\end{quote}
+\begin{loesung}
+  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ mehr als ein Folgenglied
+  gemeinsam, so ist $\frac{d_1}{d_2}$ rational, denn aus 
+  \begin{gather*}
+    a_1+n_1d_1=a_2+n_2d_2\ \text{und}\ a_1+n_1'd_1=a_2+n_2'd_2
+  \end{gather*}
+  folgt $\br{n_1-n_1'}d_1=\br{n_2-n_2'}d_2$.  Ist also ein solcher Quotient
+  nicht rational, so haben diese beiden Folgen höchstens ein Glied gemeinsam,
+  und das ist auch das einzig mögliche Glied, das dann eine dritte Folge mit
+  diesen beiden Folgen gemeinsam haben kann.
+
+  Weiter? Müssen die Folgen beidseitig unendlich sein? 
+\end{loesung}
+}
+
+\section*{Fibonacci-Zahlen}
+
+$F_1=F_2=1$, $F_{n+2}=F_{n+1}+F_n$ für $n>0.
+
+
+
 
 
 Vorher Begriff \emph{homogene lineare Rekursion mit konstanten Koeffizienten}
@@ -39,9 +356,11 @@ Vorher Begriff \emph{homogene lineare Rekursion mit konstanten Koeffizienten}
 später.
 
 \paragraph{(MO 281224)}
-Es ist $x_1=y_1=2022$ sowie $x_{n+1}=2x_n-1$, $y_{n+1}=2y_n-2^{n+1}$ für
-$n>0$.  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv sind.
-
+\begin{quote}
+  Es ist $x_1=y_1=2022$ sowie $x_{n+1}=2x_n-1$, $y_{n+1}=2y_n-2^{n+1}$ für
+  $n>0$.  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv
+  sind.
+\end{quote}
 \begin{loesung}
   Erste Folge kann mit $z_n=x_n-1$ auf Potenzfolge $z_{n+1}=2z_n$
   zurückgeführt werden. Es ist $z_n=2^{n-1}z_1$ und damit
@@ -65,54 +384,8 @@ $n>0$.  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv sind.
   \end{gather*}
 \end{loesung}
 
-
 \section*{Arithmetische und polynomiale Folgen als Differenzenfolgen}
 
-\emph{Lernziele:}
-\begin{itemize}
-\item Arithmetische Folgen $a_n=c+d\m n$ sind charakterisiert durch
-  $a_{n+2}-a_{n+1}=a_{n+1}-a_n$ oder $a_{n+2}=2a_{n+1}+a_n$.
-\item Übung im Lösen linearer Gleichungssysteme.
-\end{itemize}
-\paragraph{(MO 291044)}
-Im folgenden $(5\times5)$-Quadrat stehen in allen Zeilen und Spalten
-arithmetische Folgen.  Wie viele Möglichkeiten gibt es, das Quadrat zu
-ergänzen? 
-\begin{center}
-\def\abst{\hspace*{1em}}
-  \begin{tabular}{*{5}{|c}|}\hline
-    \abst&  &  &\abst&65\\\hline
-         &41&  &     &\\\hline
-         &  &81&     &\\\hline
-         &  &  &     &\\\hline
-        1&  &  &     &\\\hline
-  \end{tabular}
-\end{center}
-
-\begin{loesung}
-\begin{center}
-\def\abst{\hspace*{1em}}
-  \begin{tabular}{*{5}{|c}|}\hline
-    $x$&  &$y$&\abst&65\\\hline
-    $z$&41&$w$&     &\\\hline
-       &  &81 &     &\\\hline
-       &  &   &     &\\\hline
-      1&  &   &     &\\\hline
-  \end{tabular}
-  \begin{tabular}{*{5}{|c}|}\hline
-     25&35& 45& 55& 65\\\hline
-     19&41& 63& 85&107\\\hline
-     13&47& 81&115&149\\\hline
-      7&53& 99&145&191\\\hline
-      1&59&117&175&233\\\hline
-  \end{tabular}
-\end{center}
-Für die Werte der vier Variablen $x,y,z,w$ muss gelten $65-y=y-x$,
-$w-41=41-z$, $1-z=3(z-x)$, $81-w=w-y$. Löse das Gleichungssystem: $z=82-w$,
-$y=2w-81$, $x=2y-65=4w-227$, $1=4z-3x=4\m82-5w-16w+3\m227$, $16w=1008$. Daraus
-ergibt sich $w=63$, $x=25$, $y=45$, $z=19$ und der Rest lässt sich einfach
-ergänzen. 
-\end{loesung}
 
 \section*{Lösungen zu Aufgaben in \cite{S}}
 
@@ -121,14 +394,15 @@ Am rechten Rand können ein Dominostein hochkant oder zwei Dominosteine
 horizontal liegen.  Damit ergibt sich die Rekursion $a_{n+2}=a_{n+1}+a_n$ mit
 $a_1=1, a_2=2$.
 
-
 \paragraph{Aufgabe 9:}
 Symbolische Berechnung der ersten Werte der Folge
-$b_n=a_n^2+4\br{a_0^2+a_1^2-3a_0a_1}$ ergibt $b_n=c_n^2$ mit einer Folge
-$c_0=3a_0-2a_1$, $c_1=2a_0-3a_1=3a_1-2a_2$ und $c_{n+2}=3c_{n+1}-c_n$.  Das
-legt die Vermutung $c_n=3a_n-2a_{n+1}$ nahe. Es bleibt zu zeigen, dass dies
-allgemein gilt.  Beweis mit Induktion und $a_n=3a_{n+1}-a_{n+2}$, wobei der
-Induktionsanfang schon gezeigt wurde.
+\begin{gather*}
+  b_n=a_n^2+4\br{a_0^2+a_1^2-3a_0a_1}
+\end{gather*}
+ergibt $b_n=c_n^2$ mit einer Folge $c_0=3a_0-2a_1$, $c_1=2a_0-3a_1=3a_1-2a_2$
+und $c_{n+2}=3c_{n+1}-c_n$.  Das legt die Vermutung $c_n=3a_n-2a_{n+1}$
+nahe. Es bleibt zu zeigen, dass dies allgemein gilt.  Beweis mit Induktion und
+$a_n=3a_{n+1}-a_{n+2}$, wobei der Induktionsanfang schon gezeigt wurde.
 \begin{align*}
   b_{n+1}&=b_n+5a_{n+1}^2-5a_n^2=\br{3a_n-2a_{n+1}}^2+5a_{n+1}^2-5a_n^2\\
   &=\br{7a_{n+1}-3a_{n+2}}^2+5a_{n+1}^2-5\br{3a_{n+1}-a_{n+2}}^2\\
@@ -184,12 +458,13 @@ $c_n=c_3=\frac{a_3+a_1}{a_2}=\frac{BD-A+A}{B}=D$.  $\br{a_n}$ genügt also der
 Rekursion $a_{n+2}=Da_{n+1}-a_n$.
 
 \paragraph{(MO 261242)}
-Ermittle alle Zahlenfolgen mit $a_1=1$, $a_2=\frac52$, für die
-\begin{gather*}
-  a_{m+n}\m a_{m-n}=a_m^2-a_n^2\ \text{für alle}\ m>n>0
-\end{gather*}
-gilt.
-
+\begin{quote}
+  Ermittle alle Zahlenfolgen mit $a_1=1$, $a_2=\frac52$, für die
+  \begin{gather*}
+    a_{m+n}\m a_{m-n}=a_m^2-a_n^2\ \text{für alle}\ m>n>0
+  \end{gather*}
+  gilt.
+\end{quote}
 \begin{loesung}
   Für $n=1$ ergibt sich $a_{m+1}=\frac{a_m^2-1}{a_{m-1}}$, womit die
   Zahlenfolge zumindest eindeutig bestimmt ist, wenn sie existiert.
@@ -213,8 +488,12 @@ gilt.
 \paragraph{Aufgabe 11:}
 Diese Aufgabe ist ähnlich zur Aufgabe 2.2 im BWM 2003. 
 \begin{quote}
-  Zeigen Sie, dass alls Glieder der durch $a_1=1, a_2=1, a_3=2$ sowie
-  $a_{n+3}=\frac{a_{n+2}a_{n+1}+7}{a_n}$ gegebenen Folge ganzzahlig sind.  
+  Zeigen Sie, dass alls Glieder der durch 
+  \begin{gather*}
+    a_1=1, a_2=1, a_3=2\ \text{sowie}\ a_{n+3}=\frac{a_{n+2}a_{n+1}+7}{a_n}\
+    \text{für}\ n>0 
+  \end{gather*}
+  gegebenen Folge ganzzahlig sind.  
 \end{quote}
 Berechnet man numerisch die Quotienten aufeinanderfolgender Glieder eines
 Anfangsstücks der Folge, so ergeben sich näherungsweise alternierend zwei
@@ -229,8 +508,11 @@ Rekursionsbeziehung für $n$ und $n+1$:
   c_{n+1}=\frac{a_{n+1}+a_{n-1}}{a_n}=\frac{a_{n-1}+a_{n-3}}{a_{n-2}}=c_{n-2}.
 \end{gather*}
 Im Gegensatz zur Aufgabe 4 und 10 ist hier also
-$c_3=c_5=\dots=\frac{a_3+a_1}{a_2}=2$ und
-$c_4=c_6=\dots=\frac{a_4+a_2}{a_3}=3$, was die Rekursionen
+\begin{gather*}
+  c_3=c_5=\dots=\frac{a_3+a_1}{a_2}=2\ \text{und}\
+  c_4=c_6=\dots=\frac{a_4+a_2}{a_3}=3, 
+\end{gather*}
+was die Rekursionen
 \begin{gather*}
   a_{2n}=3a_{2n-1}-a_{2n-2}\ \text{und}\ a_{2n+1}=2a_{2n}-a_{2n-1}
 \end{gather*}
@@ -259,10 +541,11 @@ q_2$ hat.
 \paragraph{Aufgabe 13:}
 Für $f(x)=c_nx^n+\dots+c_1x+c_0$ ist $c_0=1$ und $c_n+c_{n-1}+\dots+c_1=0$.
 Damit ist
-\begin{gather*}
-  a_{k+1}=f(a_k)=a_k\br{c_na_k^{n-1}+\dots+c_1}+1
-  =a_k\br{c_n\br{a_k^{n-1}-1}+\dots+c_1(1-1)}+1=a_k\br{a_k-1}\m p_k+1
-\end{gather*}
+\begin{align*}
+  a_{k+1}&=f(a_k)=a_k\br{c_na_k^{n-1}+\dots+c_1}+1\\
+  &=a_k\br{c_n\br{a_k^{n-1}-1}+\dots+c_1(1-1)}+1\\
+  &=a_k\br{a_k-1}\m p_k+1
+\end{align*}
 und zunächst $\gcd\br{a_{k+1},a_k}=1$.  Mit Induktion zeigt man
 $a_k-1=a_{k-1}\m\dots\m a_1\m q_k$.  In der Tat, setzt man das oben ein, so
 ergibt sich 
@@ -306,6 +589,18 @@ ist, sind paarweise teilerfremd.
 
 \end{document}
 
+f(n):=if n=0 then 0
+else if n=1 then 1
+else f(n-1)+f(n-2);
+
+f(n):=if n=0 then A[0]:0
+else if n=1 then A[1]:1
+else if numberp(A[n]) then A[n]
+else A[n]:f(n-1)+f(n-2);
+
+
+Problem des rekursiven Aufrufs, deutlich sichtbar ab n=25
+
 % MO 261242
 
 a(n):=if n=1 then 1
@@ -320,8 +615,11 @@ else 5/2*b(n-1)-b(n-2);
 
 y(n):=if n=1 then 2023 else 2*y(n-1)-2^(n+1);
 
-
 % MO 271245
+
+x(n):=if n=0 then 1
+else if n=1 then 1
+else (x(n-1)+1)/(x(n-2)+4);
 
 x(n):=if n=0 then 1
 else if n=1 then 1
@@ -329,8 +627,8 @@ else (x(n-1)+1)/(x(n-2)+4);
 
 y(n):=x(n)-1/2*(sqrt(13)-3);
 
-x(n,a):=if n=0 then 1
-else 1/2*(x(n-1,a)+a/x(n-1,a));
+x(n):=if n=0 then 1
+else 1/2*(x(n-1)+2/x(n-1));
 
 Aufgabe 10:
 
