@@ -1,20 +1,18 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage{ngerman,schueler,url}
+\usepackage{ngerman,url}
 \usepackage{kosemnet,ko-math}
 
 \newcommand{\cas}[1]{\textsc{#1}}
 
-\newcommand{\nein}[1]{}
-
 \title{Rekursive Folgen} 
 \author{Hans-Gert Gräbe}
-\date{15. Oktober 2023}
+\date{16. Oktober 2023}
 
 \begin{document}
 \maketitle
 
-Dieser Text setzt \cite{S} fort. Es werden u.a. einige der dort ohne Lösung
-angegebenen Aufgaben besprochen. 
+Dieser Text lehnt sich an \cite{S} an. Es werden u.a. einige der dort ohne
+Lösung angegebenen Aufgaben besprochen.
 
 Bei der Analyse von Folgen ist es oft wichtig, sich einen Überblick über ein
 Anfangsstück der Folgenglieder zu verschaffen, um angemessene Hypothesen zu
@@ -73,24 +71,6 @@ Bedingungen genügen.
   und daraus wieder $a_t=t$ im Widerspruch zur Annahme.   
 \end{loesung}
 
-\nein{
-\paragraph{Wurzel, Okt. 1990:}
-\begin{quote}
-  $a_0,\dots, a_n$ sei eine Folge nichtnegativer ganzer Zahlen mit $a_0=0$ und
-  $\abs{a_i-a_{i+1}}=1, i=0,\dots,n-1$.
-
-  Zeige, dass es genau $\binom{n}{\floor{\frac{n}{2}}}$ solcher Folgen gibt.
-\end{quote}
-\begin{loesung}
-  Stellt man die entsprechenden Pfade bis zu $a_k=i$ ($k+1$ ist immer gerade)
-  dar, so ergibt sich ein „halbes“ Pascalsches Dreieck
-  
-  Setze $f(k,i)$ gleich Zahl der Folgen bis $a_k=i$, dann ergibt sich die
-  Rekursion $f(k,i)=f(k-1,i+1)+f(k-1,i-1)$, wobei $f(0,0)=1$ und $f(k,i)=0$
-  für $i<0$ oder $i>k$ gesetzt wird. Weiter?  
-\end{loesung}
-}
-
 \paragraph{Quelle unbekannt:}
 \begin{quote}
   Die Folge $a_1,a_2,\dots$ sei wie folgt definiert: $a_1=1$, $a_{2^k+j}=-a_j$
@@ -123,29 +103,53 @@ Bedingungen genügen.
 \end{quote}
 \begin{loesung}
   Es ist $a_{n+1}b_{n+1}=a_nb_n=z^2$ konstant und deshalb
-  $b_n=\frac{z^2}{a_n}$.  Dann ist aber (a) die bekannte Ungleichung
-  $\frac12\br{a_n+\frac{z^2}{a_n}}\ge z$ und (b) folgt aus $a_n>b_n$. 
+  $b_n=\dfrac{z^2}{a_n}$.  Dann ist aber (a) die bekannte Ungleichung
+  $\frac12\br{a_n+\dfrac{z^2}{a_n}}\ge z$ und (b) folgt aus $a_n>b_n$. 
+\end{loesung}
+
+\paragraph{\cite{S}, Aufgabe 3}
+\begin{quote}
+  Auf wie viele Weisen kann ein $(2\times n)$-Rechteck mit Dominosteinen
+  ausgelegt werden? 
+\end{quote}
+\begin{loesung}
+  Die Anzahl $a_n$ erfüllt $a_1=1, a_2=2$ und die Rekursion
+  $a_n=a_{n-1}+a_{n-2}$ für $n>2$, denn an rechten Ende kann entweder ein
+  Dominostein hochkant oder zwei Dominosteine horizontal liegen. 
 \end{loesung}
 
 \subsection*{Konvergente Folgen und Grenzwerte}
 
 \paragraph{(MO 271245)}
 \begin{quote}
-  Gegeben ist die Folge mit $x_1=x_2=1$ und $x_{n+1}=\frac{x_n+1}{x_{n-1}+4}$
+  Gegeben ist die Folge mit $x_1=x_2=1$ und $x_{n+1}=\dfrac{x_n+1}{x_{n-1}+4}$
   für $n>1$.  Untersuchen Sie, ob die Folge konvergiert und bestimmen Sie ggf.
   den Grenzwert.
 \end{quote}
 Führe hierzu Berechnungen mit \cas{Maxima} durch:
 \begin{code}
   x(n):=if n=0 then 1\\
-else if n=1 then 1\\
-else (x(n-1)+1)/(x(n-2)+4);
+  else if n=1 then 1\\
+  else (x(n-1)+1)/(x(n-2)+4);
 \end{code}
 Diskutiere, warum das für $n>25$ sehr langsam wird.  Verfolge dazu die
-Hierarchie der rekursiven Aufrufe. 
+Hierarchie der rekursiven Aufrufe.  Ist $a_i$ die Zahl der Aufrufe von
+$x(n-i)$ bei der Berechnung von $x(n)$, so ist $a_i=a_{i-1}+a_{i-2}$ mit
+$a_0=a_1=1$, denn $x(n-i)$ wird genau bei der Berechnung von $x(n-i+1)$ und
+$x(n-i+2)$ aufgerufen.  Die Folge $(a_i)$ (im Wesentlichen die
+Fobonacci-Zahlen) wächst exponentiell.
+
+Abhilfe kann das Speichern der Zwischenergebnisse schaffen. 
+\begin{code}
+  x(n):=if n=0 then A[n]:1\\
+  else if n=1 then A[n]:1\\
+  else if numberp(A[n]) then A[n]\\
+  else A[n]:(x(n-1)+1)/(x(n-2)+4);
+\end{code}
+Dann wird die Größe der Ergebnisse zum begrenzenden Faktor (ab etwa $n=30$). 
 
 \begin{loesung}
-Der Grenzwert, falls er existiert, erfüllt die Gleichung $a=\frac{a+1}{a+4}$,
+Der Grenzwert, falls er existiert, erfüllt die Gleichung $a=\dfrac{a+1}{a+4}$,
 also $a^2+3a-1=0$, woraus $a=-\frac32\pm\frac12\sqrt{13}$ folgt.  Da alle
 $x_n>0$, kommt nur $a=\frac12\br{\sqrt{13}-3}$ in Frage.
 
@@ -177,14 +181,17 @@ $0<a<\frac12$ und damit $\abs{1-a}<1$ kann $c=2$ gewählt werden.
   x_1=a,\ x_{n+1}=\frac12\br{x_n+\frac{a}{x_n}},\quad n>0
 \end{gather*}
 Konvergiert gegen $b=\sqrt{a}$, da Grenzwert $b$ der Gleichung
-$b=\frac12\br{b+\frac{a}{b}}$ genügt. Schnell konvergierendes Verfahren.  Dazu
+$b=\frac12\br{b+\dfrac{a}{b}}$ genügt. Schnell konvergierendes Verfahren.
+Dazu
 \begin{gather*}
-  \frac{x_{n+1}-b}{x_n-b}=\frac{x_n^2-2bx_n+b^2}{2(x_n-b)}=\frac12\br{x_n-b}. 
+  \frac{x_{n+1}-b}{x_n-b}=\frac{x_n^2-2bx_n+b^2}{2x_n(x_n-b)}
+  =\frac{1}{2x_n}\br{x_n-b}.
 \end{gather*}
-Also ist $\abs{x_{n+1}-b}<\abs{x_n-b}^2$.
+Also ist $\abs{x_{n+1}-b}<c\m\abs{x_n-b}^2$ mit $c=\dfrac{1}{b}$ für $n\gg 0$,
+da wir $2x_n>b$ für große $n$ annehmen können (es ist $x_n\to b$).
 
 \textbf{Aufgabe:} Zeige, dass die Rekursion
-$x_{n+1}=\frac12\br{x_n+\frac{a}{x_n^{k-1}}}$ mit ähnlichen Eigenschaften
+$x_{n+1}=\frac12\br{x_n+\dfrac{a}{x_n^{k-1}}}$ mit ähnlichen Eigenschaften
 $b=\sqrt[k]{a}$ berechnet. 
 
 \subsection*{Partialsummen und Reihen}
@@ -199,16 +206,16 @@ So ist etwa für die Potenzfolge $a_n=q^n, n\ge 1$, $q\ne 1$
   s_n=1+q+q^2+\dots+q^n=\sum_{k=1}^n\br{q^k}
 \end{gather*}
 Mit Induktion beweist man die explizite Darstellung
-$s_n=\frac{q^{n+1}-1}{q-1}$, denn es ist
+$s_n=\dfrac{q^{n+1}-1}{q-1}$, denn es ist
 \begin{gather*}
   s_{n+1}=s_n+q^{n+1}\stackrel{IV}{=} \frac{q^{n+1}-1}{q-1}+q^{n+1}
   =\frac{q^{n+2}-q^{n+1}+q^{n+1}-1}{q-1}= \frac{q^{n+2}-1}{q-1}. 
 \end{gather*}
 Für $\abs{q}<1$ ist diese Folge der Partialsummen konvergent mit dem Grenzwert
-$\frac{1-q^n}{1-q}\to \frac{1}{1-q}$. Diesen Wert bezeichnet man auch als den
-Wert der (konvergenten) unendlichen Reihe 
+$\dfrac{1-q^n}{1-q}\to \dfrac{1}{1-q}$. Diesen Wert bezeichnet man auch als
+den Wert der (konvergenten) unendlichen Reihe
 \begin{gather*}
-  \sum_{k=0}^\infty=1+q+q^2+\dots \frac{1}{1-q}.
+  \sum_{k=0}^\infty=1+q+q^2+\dots = \frac{1}{1-q}.
 \end{gather*}
 \textbf{Aufgabe:}
 Man untersuche die Konvergenz der unendlichen Reihe
@@ -218,12 +225,11 @@ Man untersuche die Konvergenz der unendlichen Reihe
 und ermittle $s$.  
 
 \begin{loesung}
-  Es ist $\frac{1}{n(n+1)}=\frac{1}{n}-\frac{1}{n+1}$ und somit
+  Es ist $d\frac{1}{n(n+1)}=\dfrac{1}{n}-\dfrac{1}{n+1}$ und somit
   \begin{align*}
-    s_n&=\frac{1}{1\m 2}+\frac{1}{2\m 3}+\frac{1}{3\m 4}+\dots+\frac{1}{n(n+1)}
-    =
-    \br{1-\frac12}+\br{\frac12-\frac13}+\dots+\br{\frac{1}{n}-\frac{1}{n+1}}\\ 
-    &= 1-\frac{1}{n+1} \to 1.
+    s_n&=\frac{1}{1\m 2}+\frac{1}{2\m 3}+\frac{1}{3\m
+      4}+\dots+\frac{1}{n(n+1)} = \br{1-\frac12}+\br{\frac12-\frac13}+\dots
+    +\br{\frac{1}{n}-\frac{1}{n+1}}\\ &= 1-\frac{1}{n+1} \to 1.
   \end{align*}
 \end{loesung}
 
@@ -245,7 +251,7 @@ und ermittle $s$.
   positiver natürlicher Zahlen, wobei keines der Folgenglieder in seiner
   Dezimaldarstellung die Ziffer Null enthält.
 
-  Zeige, dass $\sum_n{\frac{1}{a_n}}<29$ gilt. 
+  Zeige, dass $\sum_n{\dfrac{1}{a_n}}<29$ gilt. 
 \end{quote}
 \begin{loesung}
   $b_n$ entsteht aus $a_n$, indem alle Ziffern bis auf die erste durch Nullen
@@ -258,11 +264,9 @@ und ermittle $s$.
     \br{1+\frac12+\dots+\frac19}\br{1+\frac{9}{10}+\br{\frac{9}{10}}^2+\dots}
     <2{,}83\m 10 <29.
   \end{align*}
-  Interessant ist, dass die Summe aller Reziproken als Harmonische Reihe
-  divergiert.   
+  Interessant ist, dass die Summe aller Reziproken der Zahlen $1,2,\dots$ als
+  Harmonische Reihe divergiert.
 \end{loesung}
-
-\section*{Arithmetische Folgen}
 
 \paragraph{(MO 291044)}
 \begin{quote}
@@ -305,103 +309,110 @@ ergibt sich $w=63$, $x=25$, $y=45$, $z=19$ und der Rest lässt sich einfach
 ergänzen. 
 \end{loesung}
 
-\nein{
-\textbf{(Wurzel 9/1972):} 
-\begin{quote}
-  Haben von $n>2$ beidseitig unendlichen arithmetischen Folgen \emph{ganzer
-  Zahlen} je zwei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
-  Glied.
-\end{quote}
-\begin{loesung}
-  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ haben genau dann ein gemeinsames
-  Folgenglied $A$, wenn $a_1-a_2$ durch $\gcd(d_1,d_2)$ teilbar ist, wenn also
-  $a_1-a_2\equiv 0\pmod{\gcd(d_1,d_2)}$ ist.  Die beiden Folgen haben dann sie
-  die gemeinsame Teilfolge $A+n\m d$ mit $d=\mathrm{kgV}(d_1,d_2)$.
+Wir haben hier verwendet, dass für jede arithmetische Folge
+$a_{n+2}-a_{n+1}=a_{n+1}-a_n$, also $a_{n+2}=2a_{n+1}-a_n$ gilt.
 
-  Weiter?
+\section*{Homogene lineare rekursive Folgen mit konstanten Koeffizienten}
 
-\end{loesung}
+Als \emph{homogene lineare rekursive Folge mit konstanten Koeffizienten} (HLR) 
+bezeichnet man jede Folge dieser Bauart:
+\begin{gather*}
+  a_{n+k}=c_1a_{n+k-1}+c_2a_{n+k-2}+\dots+c_ka_n\ \text{für}\ n\in\N.
+\end{gather*}
+Die ersten $k$ Folgenglieder können beliebig vorgegeben werden, die restlichen
+ergeben sich daraus eindeutig nach der Bildungsvorschrift.
 
-\textbf{Aufgabe:} 
-\begin{quote}
-  Haben von $n$ beidseitig unendlichen arithmetischen Folgen \emph{reeller
-  Zahlen} je drei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
-  Glied.
-\end{quote}
-\begin{loesung}
-  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ mehr als ein Folgenglied
-  gemeinsam, so ist $\frac{d_1}{d_2}$ rational, denn aus 
-  \begin{gather*}
-    a_1+n_1d_1=a_2+n_2d_2\ \text{und}\ a_1+n_1'd_1=a_2+n_2'd_2
-  \end{gather*}
-  folgt $\br{n_1-n_1'}d_1=\br{n_2-n_2'}d_2$.  Ist also ein solcher Quotient
-  nicht rational, so haben diese beiden Folgen höchstens ein Glied gemeinsam,
-  und das ist auch das einzig mögliche Glied, das dann eine dritte Folge mit
-  diesen beiden Folgen gemeinsam haben kann.
+Weiter wie in \cite{S}, Abschnitte 1 und 2. Verwandle dabei explizite
+Bildungsvorschriften in HLR.  
 
-  Weiter? Müssen die Folgen beidseitig unendlich sein? 
-\end{loesung}
-}
+Beispiele 1-4 aus \cite{S}, u.a. die \emph{Fibonacci-Folge}
+\begin{gather*}
+  a_1=a_2=1,\ a_{n+2}=a_{n+1}+a_n\ \text{für}\ n>0.
+\end{gather*}
 
-\section*{Fibonacci-Zahlen}
+Zu Beispiel 4 Polynomdivision an einem Beispiel vorführen $1:(1-2x)$. Dann das
+Beispiel in Axels Skript.
 
-$F_1=F_2=1$, $F_{n+2}=F_{n+1}+F_n$ für $n>0.
+Beispiel 5 auslassen.
 
-
-
-
-
-Vorher Begriff \emph{homogene lineare Rekursion mit konstanten Koeffizienten}
-(HLR) einführen und die allgemeine Theorie entwickeln. Beweise führen wir
-später.
+Dann zunächst das folgende Beispiel:
 
 \paragraph{(MO 281224)}
 \begin{quote}
   Es ist $x_1=y_1=2022$ sowie $x_{n+1}=2x_n-1$, $y_{n+1}=2y_n-2^{n+1}$ für
-  $n>0$.  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv
-  sind.
+  $n>0$.  Untersuche für beide Folgen, ob alle Folgenglieder positiv sind.
 \end{quote}
 \begin{loesung}
   Erste Folge kann mit $z_n=x_n-1$ auf Potenzfolge $z_{n+1}=2z_n$
   zurückgeführt werden. Es ist $z_n=2^{n-1}z_1$ und damit
-  $x_n=2^{n-1}\br{x_1-1}+1$ immer positiv.
+  $x_n=2^{n-1}\br{x_1-1}+1$ immer positiv.  Wir hätten auch die ersten Glieder
+  mit \cas{Maxima} mit einem variablen Startwert $a$ berechnen können
+  \begin{code}
+    x(n):=if n=1 then a\\
+    else expand(2*x(n-1)-1);
+  \end{code}
+  \begin{gather*}
+    x_1=a, x_2=2a-1, x_3=4a-3, x_4=8a-7, \dots
+  \end{gather*}
+  und dann die Formel $x_n=2^{n-1}2022-2^{n-1}+1$ vermuten und diese mit
+  vollständiger Induktion beweisen können. 
 
-  Wir hätten auch so argumentiern können: $x_{n+1}=2x_n-1,
-  x_{n+2}=2x_{n+1}-1$, also ist $x_{n+2}-x_{n+1}=2x_{n+1}-2x_n$. Die Folge
-  genügt also der homogenen linearen Rekursion $x_{n+2}=3x_{n+1}-2x_n$.  Das
-  charakteristische Polynom ist $p(x)=x^2-3x+2$ mit den Nullstellen $q_1=2,
-  q_2=1$. Die allgemeine Lösung lautet dann $x_n=A\m 2^n+B\m 1^n=A\m 2^n+B$.
-
-  Für die zweite Folge scheint es ähnlich zu sein, aber es ist doch anders.
-  Wir führen das wieder auf eine HLR zurück: $y_{n+1}=2y_n-2^{n+1},
-  2y_n=4y_{n-1}-2^{n+1}$ führt auf $y_{n+1}=4y_n-4y_{n-1}$. Das
-  charakteristische Polynom ist $p(x)=x^2-4x+4=(x+2)^2$, was auf den Ansatz
-  $y_n=(An+B)\m2^n$ führt und mit den Startwerten $y_n=(1012-n)\m 2^n$.
-  \cas{Maxima} kann so tiefe Rekursionen nicht, wir können aber wenigstens mit
-  Induktion prüfen, dass die Formel korrekt ist:
+  Die zweite Folge scheint ebenfalls schnell zu wachsen, wenn wir die ersten
+  Folgenglieder berechnen.  Berechnen wir wieder die ersten Glieder mit
+  \cas{Maxima} mit einem variablen Startwert~$a$ 
+  \begin{code}
+    x(n):=if n=1 then a\\
+    else expand(2*x(n-1)-2\pw n);
+  \end{code}
+  \begin{gather*}
+    y_1=a, y_2=2a-4, y_3=4a-16, y_4=8a-48, y_5=16a-128,\dots
+  \end{gather*}
+  so vermuten wir $y_n=2^{n-1}\br{a-2n+2}=(1012-n)\m 2^n$.   Wir können wieder
+  mit Induktion prüfen, dass die Formel korrekt ist:
   \begin{gather*}
     y_{n+1}=2y_n-2^{n+1}=(1012-n)\m2^{n+1}-2^{n+1}=(1012-(n+1))\m2^{n+1}.
   \end{gather*}
 \end{loesung}
+Für $n>1012$ ist also $y_n$ negativ.
 
-\section*{Arithmetische und polynomiale Folgen als Differenzenfolgen}
 
+Dann die Lösung der allgemeinen HLR.
 
-\section*{Lösungen zu Aufgaben in \cite{S}}
+Dann zurück zur Aufgabe oben. 
 
-\paragraph{Aufgabe 3:}
-Am rechten Rand können ein Dominostein hochkant oder zwei Dominosteine
-horizontal liegen.  Damit ergibt sich die Rekursion $a_{n+2}=a_{n+1}+a_n$ mit
-$a_1=1, a_2=2$.
+Dann Beispiel 6, die Binetsche Formel für die Fibonacci-Folge.
 
-\paragraph{Aufgabe 9:}
+Weiter mit Aufgaben aus \cite{S}.
+
+\paragraph{\cite{S}, Aufgabe 1}
+
+\paragraph{\cite{S}, Aufgabe 2:}
+Zunächst Zahlenwerte bestimmen.
+\begin{code}
+  a(n):=if n=1 then 1\\
+  else (1/16*(1+4*a(n-1)+sqrt(1+24*a(n-1)))); 
+\end{code}
+Sind alles rationale Zahlen.  $b_n=\sqrt{1+24a_n}$, also $b_1=5, b_2=4$ und
+$a_n=\br{b_n^2-1}{24}$. Usw. wie in \cite{S}.
+
+$b_{n+1}=\frac12b_n+\frac32$ ist keine HLR.  Man errät vielleicht
+$b_n=A\m2^{-n}+B$ und bekommt aus den Startwerten $A=4, B=3$.  Man kann die
+Rekursion aber auch wie oben in eine HLR verwandeln:
+\begin{gather*}
+  b_{n+2}-\frac12 b_{n+1}=b_{n+1}-\frac12 b_n,\\
+  b_{n+2}=\frac32 b_{n+1}-\frac12 b_n,\\
+  p(x)=x^2-\frac32 x-\frac12=(x-1)\br{x-\frac12},
+\end{gather*}
+was auf denselben Ansatz führt. 
+
+\paragraph{\cite{S}, Aufgabe 9:}
 Symbolische Berechnung der ersten Werte der Folge
 \begin{gather*}
   b_n=a_n^2+4\br{a_0^2+a_1^2-3a_0a_1}
 \end{gather*}
 ergibt $b_n=c_n^2$ mit einer Folge $c_0=3a_0-2a_1$, $c_1=2a_0-3a_1=3a_1-2a_2$
-und $c_{n+2}=3c_{n+1}-c_n$.  Das legt die Vermutung $c_n=3a_n-2a_{n+1}$
-nahe. Es bleibt zu zeigen, dass dies allgemein gilt.  Beweis mit Induktion und
+und $c_{n+2}=3c_{n+1}-c_n$.  Das legt die Vermutung $c_n=3a_n-2a_{n+1}$ nahe.
+Es bleibt zu zeigen, dass dies allgemein gilt.  Beweis mit Induktion und
 $a_n=3a_{n+1}-a_{n+2}$, wobei der Induktionsanfang schon gezeigt wurde.
 \begin{align*}
   b_{n+1}&=b_n+5a_{n+1}^2-5a_n^2=\br{3a_n-2a_{n+1}}^2+5a_{n+1}^2-5a_n^2\\
@@ -409,9 +420,7 @@ $a_n=3a_{n+1}-a_{n+2}$, wobei der Induktionsanfang schon gezeigt wurde.
   &=9a_{n+1}^2-12a_{n+1}a_{n+2}+4a_{n+2}^2=\br{3a_{n+1}-2a_{n+2}}^2=c_{n+1}^2.
 \end{align*}
 
-\section*{Eine spezielle Aufgabengruppe}
-
-\paragraph{Aufgabe 10:}
+\paragraph{\cite{S}, Aufgabe 10:}
 Es ist $a_3=2$ und die Rekursionsbeziehung lautet für $n$ und $n+1$ 
 \begin{gather*}
   a_na_{n-2}=a_{n-1}^2+1,\ a_{n+1}a_{n-1}=a_n^2+1.
@@ -422,25 +431,27 @@ weiter
   c_n=\frac{a_n+a_{n-2}}{a_{n-1}}=\frac{a_{n+1}+a_{n-1}}{a_n}=c_{n+1}.
 \end{gather*}
 Die Folge $(c_n)$ ist also konstant mit $c_n=3$ und $(a_n)$ genügt der
-Rekursionsbeziehung $a_{n+2}=3a_{n+1}-a_n$.
+Rekursionsbeziehung $a_{n+2}=3a_{n+1}-a_n$.  Damit ist die Ganzzahligkeit der
+Folgenglieder bereits gezeigt. 
 
-Das charakteristische Polynom $x^2-3x+1$ hat die beiden Nullstellen
-$q_1=\frac{3+\sqrt{5}}{2}$ und $q_2=\frac{3-\sqrt{5}}{2}=q_1^{-1}$.  Es gilt
-also $a_n=Aq_1^n+Bq_2^n$ für geeignete $A,B$.  Da die Folge auch für $n\le 0$
-fortgesetzt werden kann und sich dort $a_0=2$ ergibt, bestimmen sich $A$ und
-$B$ aus $A+B=2$ und $Aq_1+Bq_2=1$ zu $A=1-\frac{2}{\sqrt{5}}$ und
-$B=1+\frac{2}{\sqrt{5}}$, womit wir insgesamt die explizite Formel
+Wir berechnen noch die explizite Darstellung.  Das charakteristische Polynom
+$x^2-3x+1$ hat die beiden Nullstellen $q_1=\dfrac{3+\sqrt{5}}{2}$ und
+$q_2=\dfrac{3-\sqrt{5}}{2}=q_1^{-1}$.  Es gilt also $a_n=Aq_1^n+Bq_2^n$ für
+geeignete $A,B$.  Da die Folge auch für $n\le 0$ fortgesetzt werden kann und
+sich dort $a_0=2$ ergibt, bestimmen sich $A$ und $B$ aus $A+B=2$ und
+$Aq_1+Bq_2=1$ zu $A=1-\dfrac{2}{\sqrt{5}}$ und $B=1+\dfrac{2}{\sqrt{5}}$,
+womit wir insgesamt die explizite Formel
 \begin{gather*}
   a_n=\br{1-\frac{2}{\sqrt{5}}}\br{\frac{3+\sqrt{5}}{2}}^n
   +\br{1+\frac{2}{\sqrt{5}}}\br{\frac{3-\sqrt{5}}{2}}^n 
 \end{gather*}
 erhalten.  Eine Vergleichsrechnung mit CAS zeigt, dass die Formel für endliche
-Mwngen von Werten korrekt ist.
+Mengen von Werten korrekt ist.
 
-\paragraph{Aufgabe 4:}
+\paragraph{\cite{S}, Aufgabe 4:}
 Diese Aufgabe verallgemeinert Aufgabe 10, die sich für $A=B=C=1$ ergibt. 
 
-Wir setzen $D=\frac{A^2+B^2+C}{AB}$. Damit ist 
+Wir setzen $D=\dfrac{A^2+B^2+C}{AB}$. Damit ist 
 \begin{gather*}
   C=ABD-A^2-B^2\ \text{und}\ a_3=\frac{b^2+C}{A}=\frac{ABD-A^2}{A}=BD-A.
 \end{gather*}
@@ -454,8 +465,8 @@ weiter
   c_n=\frac{a_n+a_{n-2}}{a_{n-1}}=\frac{a_{n+1}+a_{n-1}}{a_n}=c_{n+1}.
 \end{gather*}
 Die Folge $\br{c_n}$ ist also konstant und wir erhalten
-$c_n=c_3=\frac{a_3+a_1}{a_2}=\frac{BD-A+A}{B}=D$.  $\br{a_n}$ genügt also der
-Rekursion $a_{n+2}=Da_{n+1}-a_n$.
+$c_n=c_3=\dfrac{a_3+a_1}{a_2}=\dfrac{BD-A+A}{B}=D$.  $\br{a_n}$ genügt also
+der Rekursion $a_{n+2}=Da_{n+1}-a_n$.
 
 \paragraph{(MO 261242)}
 \begin{quote}
@@ -466,13 +477,13 @@ Rekursion $a_{n+2}=Da_{n+1}-a_n$.
   gilt.
 \end{quote}
 \begin{loesung}
-  Für $n=1$ ergibt sich $a_{m+1}=\frac{a_m^2-1}{a_{m-1}}$, womit die
+  Für $n=1$ ergibt sich $a_{m+1}=\dfrac{a_m^2-1}{a_{m-1}}$, womit die
   Zahlenfolge zumindest eindeutig bestimmt ist, wenn sie existiert.
 
   Die Rekursionsbeziehung ist von ähnlicher Bauart wie die von Aufgaben 10,
   wobeidie dortige Ableitung der linearen Rekursion nicht daran gebunden ist,
   dass $A,B,C$ ganzzahlig sein müssen.  Hier ist $A=1, B=\frac52, C=-1$ und
-  damit $D=\frac{A^2+B^2+C}{AB}=\frac52$.  Die Folge $a_n$ erfüllt also die
+  damit $D=\dfrac{A^2+B^2+C}{AB}=\frac52$.  Die Folge $a_n$ erfüllt also die
   Rekursion $a_{n+2}=\frac52a_{n+1}-a_n$.  Das charakteristische Polynom ist
   $p(x)=x^2-\frac52x+1$ mit den Nullstellen $q_1=2, q_2=\frac12$.  Die
   explizite Bildungsvorschrift ergibt sich aus dem Ansatz $a_n=Aq_1^n+Bq_2^n$,
@@ -485,7 +496,7 @@ Rekursion $a_{n+2}=Da_{n+1}-a_n$.
   rechnet man nun leicht nach.
 \end{loesung}
 
-\paragraph{Aufgabe 11:}
+\paragraph{\cite{S}, Aufgabe 11:}
 Diese Aufgabe ist ähnlich zur Aufgabe 2.2 im BWM 2003. 
 \begin{quote}
   Zeigen Sie, dass alls Glieder der durch 
@@ -538,7 +549,16 @@ mit $q_1=\sqrt{2+\sqrt{3}}$ und $q_2=\sqrt{2-\sqrt{3}}=q_1^{-1}$, da das
 charakteristische Polynom $p(x)=x^4-4x^2+1$ die vier Nullstellen $\pm q1, \pm
 q_2$ hat. 
 
-\paragraph{Aufgabe 13:}
+\paragraph{\cite{S}, Aufgabe 12:}
+Folge $x_n$ hat $p(x)=x^2-2x-1=(x-2)(x+1)$ als char. Polynom und damit
+$x_n=A\m2^n+B\m(-1)^n$.  Einsetzen der Startwerte liefert $A=\frac13,
+B=-\frac13$ und somit $x_n=\frac13\br{2^n-(-1)^n}$.
+
+Folge $y_n$ hat $p(x)=x^2-3x-1=(x-3)(x+1)$ und damit $y_n=A\m3^n+B\m(-1)^n$.
+Einsetzen der Startwerte liefert $A=\frac23, B=1$ und somit
+$y_n=3^{n-1}+(-1)^n$.
+
+\paragraph{\cite{S}, Aufgabe 13:}
 Für $f(x)=c_nx^n+\dots+c_1x+c_0$ ist $c_0=1$ und $c_n+c_{n-1}+\dots+c_1=0$.
 Damit ist
 \begin{align*}
@@ -554,20 +574,6 @@ ergibt sich
 \end{gather*}
 und so $q_{k+1}=q_k\m p_k$.  Damit sind die $a_k$ aber paarweise
 teilerfremd. 
-
-
-\paragraph{Aufgabe 15:}
-Für die Mersennezahlen gilt $\gcd\br{2^a-1,2^b-1}=2^{\gcd(a,b)}-1$.  Das
-ergibt sich wie folgt: Mit $a=q\m b+r$ ist 
-\begin{gather*}
-  2^a=\br{2^b}^q\m 2^r\equiv 1\m 2^r \pmod{2^b-1}
-\end{gather*}
-und damit $\gcd\br{2^a-1,2^b-1}=\gcd\br{2^b-1,2^r-1}$.  Weiter wie im
-Euklidschen Algorithmus.
-
-Vermutung: Die Glieder der  Folge $a_n=2^n-3$, deren Index eine Fibonaccizahl
-ist, sind paarweise teilerfremd.
-
 
 \begin{thebibliography}{Wor77}
 
@@ -598,7 +604,6 @@ else if n=1 then A[1]:1
 else if numberp(A[n]) then A[n]
 else A[n]:f(n-1)+f(n-2);
 
-
 Problem des rekursiven Aufrufs, deutlich sichtbar ab n=25
 
 % MO 261242
@@ -621,14 +626,20 @@ x(n):=if n=0 then 1
 else if n=1 then 1
 else (x(n-1)+1)/(x(n-2)+4);
 
-x(n):=if n=0 then 1
-else if n=1 then 1
-else (x(n-1)+1)/(x(n-2)+4);
+x(n):=if n=0 then A[n]:1
+else if n=1 then A[n]:1
+else if numberp(A[n]) then A[n]
+else A[n]:(x(n-1)+1)/(x(n-2)+4);
 
 y(n):=x(n)-1/2*(sqrt(13)-3);
 
 x(n):=if n=0 then 1
 else 1/2*(x(n-1)+2/x(n-1));
+
+Aufgabe 2:
+
+a(n):=if n=1 then 1
+else (1/16*(1+4*a(n-1)+sqrt(1+24*a(n-1)))); 
 
 Aufgabe 10:
 
@@ -692,3 +703,13 @@ else expand(3*c(n-1)-c(n-2));
 b(n):=5*a(n)^2+4*(a0^2+a1^2-3*a0*a1);
 
 
+a(n):=if n=0 then 2
+else if n=1 then 4
+else 4*a(n-1)-a(n-2);
+
+x(n):=if n=0 then 2
+else if n=1 then x
+else expand(x*x(n-1)-x(n-2));
+
+x(n):=if n=1 then a
+else expand(2*x(n-1)-2^n);

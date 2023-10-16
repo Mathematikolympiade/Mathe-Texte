@@ -229,7 +229,7 @@ einer linearen Rekursion \rf[e-linrek] der Ordnung $k+1$. Es gilt nämlich
 \end{beispiel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lösung der allgemeinen linearen Rekursion \rf[e-linrek]}
-Die erste wichtige Tatsache ist, dass alle Folgen, die \rf[e-linrek] erfüllen
+Die erste wichtige Tatsache ist, dass alle Folgen, die \rf[e-linrek] erfüllen, 
 einen \emph{linearen Raum} bilden.
 
 \begin{satz} \label{s-1}
@@ -511,14 +511,15 @@ s=\frac{1}{1\cdot 2\cdot 3\cdot 4} +\frac{1}{2\cdot 3\cdot 4\cdot 5} +\cdots.
 \end{gather*}
 erhält man $A=\frac{1}{6}$, $B=-\half$, $C=\half$, $D=-\frac{1}{6}$, so dass
 \begin{gather*}
-\frac{1}{n}{n+1}{n+2}{n+3}=\frac{1}{6} \frac{1}{n} -\half \frac{1}{n+1} +\half
-\frac{1}{n+2} -\frac{1}{6} \frac{1}{n+3}.
+\frac{1}{n(n+1)(n+2)(n+3)}=\frac{1}{6}\m\frac{1}{n} -\half\m\frac{1}{n+1}
+  +\half\m\frac{1}{n+2} -\frac{1}{6}\m\frac{1}{n+3}.
 \end{gather*}
 Summiert man von $n=1$ bis $\infty$, so bleiben die ersten 6 Summanden stehen
 (von $n=1,2,3 $ kommend)
 \begin{gather*}
-s=\left(\frac{1}{6} 1 -\half\,\half +\half \third\right) +\left( \frac{1}{6}
-\,\frac{1}{2} -\half\,\third\right) +\frac{1}{6} \,\third = \frac{1}{18}.
+s=\left(\frac{1}{6}\m1 -\half\m\half +\half\m\third\right)
++\left(\frac{1}{6}\m\frac{1}{2} -\half\m\third\right) +\frac{1}{6}\m\third =
+\frac{1}{18}.
 \end{gather*}
 \end{loesung}
 
@@ -869,7 +870,7 @@ ein Polynom mit ganzen Koeffizienten (Welche Rekursion?). Also gilt
 \begin{aufgabe} (A 149) Die Folge $a_n$ sei gegeben durch $a_{n+2}=4a_{n+1}
   -a_n$, $ a_1= 4$, $a_2=14$.
 
-Beweisen Sie, dass das Dreieckk mit den Seitenlängen $a_n-1$, $a_n$, $a_{n} +1$
+Beweisen Sie, dass das Dreieck mit den Seitenlängen $a_n-1$, $a_n$, $a_{n} +1$
 einen ganzzahligen Flächeninhalt besitzt.
 \end{aufgabe}
 \begin{beweis} 

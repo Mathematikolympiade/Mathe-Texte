@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{ngerman,url}
+\usepackage{kosemnet,ko-math}
+
+\title{Schnipsel} 
+\author{Hans-Gert Gräbe}
+\date{16. Oktober 2023}
+
+\begin{document}
+\maketitle
+ 
+\paragraph{Wurzel, Okt. 1990:}
+\begin{quote}
+  $a_0,\dots, a_n$ sei eine Folge nichtnegativer ganzer Zahlen mit $a_0=0$ und
+  $\abs{a_i-a_{i+1}}=1, i=0,\dots,n-1$.
+
+  Zeige, dass es genau $\binom{n}{\floor{\frac{n}{2}}}$ solcher Folgen gibt.
+\end{quote}
+\begin{loesung}
+  Stellt man die entsprechenden Pfade bis zu $a_k=i$ ($k+1$ ist immer gerade)
+  dar, so ergibt sich ein „halbes“ Pascalsches Dreieck
+  
+  Setze $f(k,i)$ gleich Zahl der Folgen bis $a_k=i$, dann ergibt sich die
+  Rekursion $f(k,i)=f(k-1,i+1)+f(k-1,i-1)$, wobei $f(0,0)=1$ und $f(k,i)=0$
+  für $i<0$ oder $i>k$ gesetzt wird. Weiter?  
+\end{loesung}
+
+\paragraph{(Wurzel 9/1972):} 
+\begin{quote}
+  Haben von $n>2$ beidseitig unendlichen arithmetischen Folgen \emph{ganzer
+  Zahlen} je zwei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
+  Glied.
+\end{quote}
+\begin{loesung}
+  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ haben genau dann ein gemeinsames
+  Folgenglied $A$, wenn $a_1-a_2$ durch $\gcd(d_1,d_2)$ teilbar ist, wenn also
+  $a_1-a_2\equiv 0\pmod{\gcd(d_1,d_2)}$ ist.  Die beiden Folgen haben dann sie
+  die gemeinsame Teilfolge $A+n\m d$ mit $d=\mathrm{kgV}(d_1,d_2)$.
+
+  Weiter?
+
+\end{loesung}
+
+\paragraph{Aufgabe:} 
+\begin{quote}
+  Haben von $n$ beidseitig unendlichen arithmetischen Folgen \emph{reeller
+  Zahlen} je drei ein gemeinsames Glied, so haben alle Folgen ein gemeinsames
+  Glied.
+\end{quote}
+\begin{loesung}
+  Zwei Folgen $a_1+n\m d_1$ und $a_2+n\m d_2$ mehr als ein Folgenglied
+  gemeinsam, so ist $\frac{d_1}{d_2}$ rational, denn aus 
+  \begin{gather*}
+    a_1+n_1d_1=a_2+n_2d_2\ \text{und}\ a_1+n_1'd_1=a_2+n_2'd_2
+  \end{gather*}
+  folgt $\br{n_1-n_1'}d_1=\br{n_2-n_2'}d_2$.  Ist also ein solcher Quotient
+  nicht rational, so haben diese beiden Folgen höchstens ein Glied gemeinsam,
+  und das ist auch das einzig mögliche Glied, das dann eine dritte Folge mit
+  diesen beiden Folgen gemeinsam haben kann.
+
+  Weiter? Müssen die Folgen beidseitig unendlich sein? 
+\end{loesung}
+
+\paragraph{\cite{S}, Aufgabe 15:}
+Für die Mersennezahlen gilt $\gcd\br{2^a-1,2^b-1}=2^{\gcd(a,b)}-1$.  Das
+ergibt sich wie folgt: Mit $a=q\m b+r$ ist 
+\begin{gather*}
+  2^a=\br{2^b}^q\m 2^r\equiv 1\m 2^r \pmod{2^b-1}
+\end{gather*}
+und damit $\gcd\br{2^a-1,2^b-1}=\gcd\br{2^b-1,2^r-1}$.  Weiter wie im
+Euklidschen Algorithmus.
+
+Vermutung: Die Glieder der  Folge $a_n=2^n-3$, deren Index eine Fibonaccizahl
+ist, sind paarweise teilerfremd.
+
+\begin{thebibliography}{Wor77}
+
+\bibitem[S]{S} A.~Schüler.  \newblock \emph{Rekursive Folgen}.  Text
+  \emph{schueler-05-1} im KoSemNet.
+\end{thebibliography}
+
+\end{document}
