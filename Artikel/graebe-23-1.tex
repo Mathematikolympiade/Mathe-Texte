@@ -6,7 +6,7 @@
 
 \title{Rekursive Folgen} 
 \author{Hans-Gert Gräbe}
-\date{16. Oktober 2023}
+\date{17. Oktober 2023}
 
 \begin{document}
 \maketitle
@@ -247,8 +247,8 @@ und ermittle $s$.
 
 \textbf{Aufgabe:} 
 \begin{quote}
-  Es sei $(a_n)$ eine beidseitig unendliche Folge paarweise verschiedener
-  positiver natürlicher Zahlen, wobei keines der Folgenglieder in seiner
+  Es sei $(a_n)$ eine unendliche Folge paarweise verschiedener positiver
+  natürlicher Zahlen, wobei keines der Folgenglieder in seiner
   Dezimaldarstellung die Ziffer Null enthält.
 
   Zeige, dass $\sum_n{\dfrac{1}{a_n}}<29$ gilt. 
@@ -267,6 +267,15 @@ und ermittle $s$.
   Interessant ist, dass die Summe aller Reziproken der Zahlen $1,2,\dots$ als
   Harmonische Reihe divergiert.
 \end{loesung}
+\begin{quote}
+  Frage: Gibt es mehr Zahlen ohne Nullen oder mit Nullen?
+\end{quote}
+Unter den (genau) $k$-stelligen Zahlen gibt es $9^k$ Zahlen ohne Nullen.  Für
+alle Zahlen $N<10^n$ ist die Anzahl der Zahlen ohne Nullen also
+\begin{gather*}
+  9+9^2+\dots+9^n=\frac98\br{9^n-1}
+\end{gather*}
+Für große $n$ gibt es also „fast“ keine Zahlen ohne Nullen. 
 
 \paragraph{(MO 291044)}
 \begin{quote}
@@ -374,7 +383,6 @@ Dann zunächst das folgende Beispiel:
   \end{gather*}
 \end{loesung}
 Für $n>1012$ ist also $y_n$ negativ.
-
 
 Dann die Lösung der allgemeinen HLR.
 
@@ -575,6 +583,17 @@ ergibt sich
 und so $q_{k+1}=q_k\m p_k$.  Damit sind die $a_k$ aber paarweise
 teilerfremd. 
 
+\paragraph{\cite{S}, Aufgabe 17:}
+Probiert man die ersten Werte aus, so zeigt sich, dass sich eine Folge von
+Quotienten von Fibonacci-Zahlen ergibt.
+\begin{code}
+  x(n):=if n=1 then 1\\
+  else 1/(1+x(n-1));
+\end{code}
+Auch daraus folgt die Aussage $x_{2n}<q, x_{2n+1}>q$. 
+
+\paragraph{\cite{S}, Aufgabe 18}
+
 \begin{thebibliography}{Wor77}
 
 \bibitem[S]{S} A.~Schüler.  \newblock \emph{Rekursive Folgen}.  Text
@@ -713,3 +732,6 @@ else expand(x*x(n-1)-x(n-2));
 
 x(n):=if n=1 then a
 else expand(2*x(n-1)-2^n);
+
+x(n):=if n=1 then 1
+else 1/(1+x(n-1));
