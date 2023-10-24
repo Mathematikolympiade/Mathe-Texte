@@ -1,8 +1,9 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage{ngerman,url}
+\usepackage{ngerman,url,enumitem}
 \usepackage{kosemnet,ko-math}
 
 \newcommand{\cas}[1]{\textsc{#1}}
+\setlist{noitemsep}
 
 \title{Rekursive Folgen} 
 \author{Hans-Gert Gräbe}
@@ -40,53 +41,120 @@ Bedingungen genügen.
 
 \paragraph{Beispiel (MO 591036):}
 \begin{quote}
-  Für die Folge $(a_n)_{n\ge 1}$ positiver ganzer Zahlen gilt $a_m\le a_n$ und
-  $a_m\m a_n=a_{m\m n}$ für alle $m,n$ mit $0<m\le n$ sowie $a_{59}=59$.
+  Für die Folge $(a_n)_{n\ge 1}$ positiver ganzer Zahlen gilt 
+  \begin{itemize}
+  \item[(1)] $a_m\le a_n$ für alle $m,n$ mit $0<m<n$.
+  \item[(2)] $a_m\m a_n=a_{m\m n}$ für alle $m,n$ mit $0<m\le n$ sowie
+  \item[(3)] $a_{59}=59$.
+  \end{itemize}
   Zeige, dass dann stets $a_n=n$ erfüllt ist.
 \end{quote}
 \begin{loesung}
+  Wäre $a_k=a_n$ für $k<n$, dann wäre $a_k=a_{k+1}=\dots=a_n$.
+
   Wäre $a_k=a_{k+1}$ für ein $k$, so wäre $a_k=a_n$ für alle $n\ge k$.
   Anderenfalls gäbe es ein kleinstes $t>k$ mit $a_t>a_k$. Das führt aber zu
   folgendem Widerspruch:
   \begin{gather*}
     a_k^2=a_{t-1}^2=a_{t^2-2t+1}\ge a_{t^2-2t}=a_t\m a_{t-2}=a_t\m a_k
   \end{gather*}
-  und damit $a_n\le a_k$.  Die Folge $(a_n)$ ist also streng monoton wachsend.
+  und damit $a_n\le a_k$.  Die Folge $(a_n)$ ist also streng monoton
+  wachsend und damit $a_n\ge n$ für alle $n$. 
 
-  Wäre nicht stets $a_n=n$, so gäbe es ein kleinstes $t$ mit $a_t\neq t$.
-  Wegen $a_1^2=a_{1\m 1}=a_1>0$ ist $a_1=1$. Wäre $a_2\ge 3$, so wäre 
-  \begin{gather*}
-    81\le \br{a_2}^4=\br{a_4}^2=a_{16}\le a_{59}=59.
-  \end{gather*}
-  Also ist $a=a_1<a_2<3$ und damit $a_2=2$.  Ist $t$ gerade, so erhalten wir
-  den Widerspruch
-  \begin{gather*}
-    a_t=a_{t/2}\m a_2=2\m a_{t/2}=2\m \frac{t}{2}=t.
-  \end{gather*}
-  Ist $t$ ungerade, so erhalten wir die Ungleichung
-  \begin{gather*}
-    t-1=a_{t-1}<a_t<a_{t+1}=a_{(t+1)/2}\m a_2=2\m a_{(t+1)/2}=2\m
-    \frac{t+1}{2}=t+1
-  \end{gather*}
-  und daraus wieder $a_t=t$ im Widerspruch zur Annahme.   
+  Weiter ist $a_{1\m 59}=a_1\m a_{59}$ und damit $a_1=1$. Mit Induktion zeigt
+  man, dass $a_{59^k}=59^k$ ist. Also muss auch dazwischen $a_n=n$ sein.
 \end{loesung}
 
-\paragraph{Quelle unbekannt:}
+\paragraph{Die Thue-Morse-Folge:}
 \begin{quote}
-  Die Folge $a_1,a_2,\dots$ sei wie folgt definiert: $a_1=1$, $a_{2^k+j}=-a_j$
-  für $1\le j\le 2^k$ und $k=0,1,\dots$.
+  Die Folge $t_0,t_1,t_2,\dots$ sei wie folgt definiert: $t_0=1$,
+  $t_{2^k+j}=-t_j$ für $0\le j\le 2^k-1$ und $k=0,1,\dots$.
 
   Man zeige, dass die Folge nicht periodisch ist.
 \end{quote}
 \begin{loesung}
-  Man sieht, dass $a_i=\pm 1$ gilt und die Folge aus je Stücken der Länge
-  $2^k$ mit $+1$ oder $-1$ besteht.  Genauer: Es gilt $a_i=(-1)^k$ für alle
-  $i$ mit $2^{k-1}<i\le 2^k$. 
+  Für ein $k$ ergibt sich $t_j$ für alle $j\in\cbr{2^k,\dots,2^{k+1}-1}$ durch
+  Negation der bisher berechneten Folgenglieder $t_j$ mit $j\in\cbr{0,2^k-1}$:
+  \begin{center}
+    \begin{tabular}{c|l} 
+      $k=0$ & 1, -1\\
+      $k=1$ & 1, -1, -1, 1\\
+      $k=2$ & 1, -1, -1, 1, -1, 1, 1, -1\\
+      $k=3$ & 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1\\
+    \end{tabular}  
+  \end{center}
 
-  Formaler Beweis: Wäre $p$ eine Periode, also $a_i=a_{i+p}$ für alle $i\ge l$
-  dann wähle $m$ so, dass $2^m> p,l$ gilt. Dann ist $a_i=(-1)^m$ für $i=2^m$
-  und $a_{i+p}=(-1)^{m+1}=-a_i$, da $2^m<i+p\le 2\m 2^m$. 
+  Wir sehen, dass insbesondere das Vorzeichen des letzten Elements in jeder der
+  obigen Teilfolgen alterniert, d.h., dass $t_{2^m-1}=(-1)^m$ für $m\ge 0$
+  gilt.  Dies ergibt sich in der Tat daraus, dass $2^m-1=2^{m-1}+j$ mit
+  $j=2^{m-1}-1$ ist und folglich nach der Bildungsvorschrift
+  $t_{2^m-1}=-t_{2^{m-1}-1}$ gilt.
+
+  Wäre nun die Folge periodisch, dann gäbe es Zahlen $l,p>0$, so dass
+  $t_{k}=t_{k+p}$ für alle $k\ge l$ gilt.  Für alle $m$ mit $2^m>l,p$ gilt
+  $t_{2^m-1}=t_{2^m+(p-1)}=-t_{p-1}$ und damit
+  $t_{2^m-1}=t_{2^{m+1}-1}=-t_{p-1}$.  Dies widerspricht der gerade gezeigten
+  Eigenschaft.   
 \end{loesung}
+
+Es handelt sich um eine Variante der \emph{Thue-Morse-Folge}, eine Folge mit
+vielen spannenden Eigenschaften. So gilt zum Beispiel
+\begin{itemize}
+\item[(1)] $t_n$ ist gleich $(-1)^{v(n)}$, wobei $v(n)$ die Anzahl der Einsen
+  in der Binärdarstellung von $n$ ist.
+\item[(2)] $t_{2n}=t_n, t_{2n+1}=-t_n$.
+\item[(3)] Die Folge ist selbstähnlich: Streicht man alle Folgenglieder mit
+  ungeradem Index, so erhält man die Ausgangsfolge zurück.
+\item[(4)] Ist $X_k=\cbr{0\le n<2^{k+1}\ :\ t_n=1}$ und $Y_k= \cbr{0\le
+  n<2^{k+1}\ :\ t_n=-1}$, so gilt 
+  \begin{gather*}
+    \sum_{n\in X_k}{f(n)}=\sum_{n\in Y_k}{f(n)}
+  \end{gather*}
+  für jedes Polynom vom Grad $\le k$.
+
+  Für $k=2$ gilt insbesondere $0+3+5+6=1+2+4+7(=14)$ und
+  $0^2+3^2+5^2+6^2=1^2+2^2+4^2+7^2(=70)$.  
+\end{itemize}
+(1) folgt unmittelbar daraus, dass dies für ein Anfangsstück $0\le j<2^k$ gilt
+und $t_{2^k+j}=-t_j$ ist für $j<2^k$.  Die Binärdarstellungen der beiden Teile
+unterscheiden sich nur dadurch, dass im Stück ab $2^k$ das $k$-te Bit gleich 1
+ist.
+
+(2) ergibt sich unmittelbar daraus, denn $2n$ entsteht durch Anhängen einer
+Null an die Binärdarstellung von $n$, $2n+1$ durch das Anhängen einer Eins.
+
+(3) folgt unmittelbar aus $t_{2n}=t_n$.
+
+(4) kann mit Induktion nach $k$ gezeigt werden. Es ist nach der
+Konstruktionsvorschrift  
+\begin{gather*}
+  X_{k+1}=X_k\cup\cbr{2^{k+1}+n\ :\ n\in Y_k}\ \text{und}\ 
+  Y_{k+1}=Y_k\cup\cbr{2^{k+1}+n\ :\ n\in X_k}.
+\end{gather*}
+Ist $f(x)$ ein Polynom vom Grad $\le k+1$, so ist $h(x)=f\br{x+2^{k+1}}-f(x)$
+als Differenz von $f(x)$ und einem Shift dieses Polynoms ein Polynom vom Grad
+$\le k$. Es gilt deshalb nach Induktionsvoraussetzung
+\begin{align*}
+  \sum_{n\in X_k}{h(n)}&=\sum_{n\in Y_k}{h(n)}
+  \intertext{und damit auch}
+  \sum_{n\in X_k}{f\br{2^{k+1}+n}}-\sum_{n\in X_k}{f(n)}
+  &=\sum_{n\in Y_k}{f\br{2^{k+1}+n}}-\sum_{n\in Y_k}{f(n)}\\
+  \sum_{n\in Y_k}{f(n)}+\sum_{n\in X_k}{f\br{2^{k+1}+n}}
+  &=\sum_{n\in X_k}{f(n)}+\sum_{n\in Y_k}{f\br{2^{k+1}+n}}\\
+  \sum_{n\in Y_{k+1}}{f(n)}&=\sum_{n\in X_{k+1}}{f(n)}.\\
+\end{align*}
+
+Die \emph{Thue-Morse-Folge} ist als Folge
+A010060\footnote{\url{https://oeis.org/A010060}} in der \emph{Online
+Encyclopedia of Integer Sequences} (OEIS) zu finden. Mehr zu dieser Folge auch
+unter
+\begin{itemize}
+\item \url{https://de.wikipedia.org/wiki/Morse-Folge}
+\item \url{https://de.wikibrief.org/wiki/Thue-Morse_sequence}
+\item \url{https://mathworld.wolfram.com/Thue-MorseSequence.html}
+\item 
+  \url{https://sites.math.washington.edu/~morrow/336_12/papers/christopher.pdf}.
+\end{itemize}
 
 \paragraph{(MO 530944)}
 \begin{quote}

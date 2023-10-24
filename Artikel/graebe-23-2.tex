@@ -4,11 +4,130 @@
 
 \title{Schnipsel} 
 \author{Hans-Gert Gräbe}
-\date{16. Oktober 2023}
+\date{24. Oktober 2023}
 
 \begin{document}
 \maketitle
- 
+
+Neben den Fibonacci-Zahlen umfassen andere konstant rekursive Sequenzen die
+Lucas-Zahlen und Lucas-Sequenzen, die Jacobsthal-Zahlen, die Pell-Zahlen und
+allgemeiner die Lösungen für die Pell-Gleichung.
+
+Quelle: \url{https://de.wikibrief.org/wiki/Recurrence_relation}
+
+Pell-Zahlen sind eine Approximation von $\sqrt{2}$: $a_1=b_1=1$,
+$a_{n+1}=a_n+2b_n$, $b_{n+1}=a_n+b_n$. Es gilt $a_n^2-2b_n^2=(-1)^n$
+
+\begin{gather*}
+  \frac12, \frac32, \frac75, \frac{17}{12} \to \sqrt{2}
+\end{gather*}
+
+\paragraph{BWM 2001, Aufgabe 1.2:}
+Von einer Folge $(a_0, a_1, a_2, \dots$) reeller Zahlen sei bekannt:
+\begin{gather*}
+  a_0 =1\ \text{und} a_{n+1}=a_n+\sqrt{a_{n+1}+a_n}\ \text{für alle
+    natürlichen Zahlen $n$}. 
+\end{gather*}
+Man beweise, dass nur eine einzige Folge mit diesen Eigenschaften existiert,
+und gebe eine explizite Formel für $a_n$ an.
+
+\begin{loesung}
+  Wir brauchen zunächst eine Bildungsvorschrift, mit der $a_{n+1}$ aus bereits
+  bekannten Folgengliedern berechnet werden kann. diese soll zunächst
+  hergeleitet werden.
+
+  Erfüllt eine Folge $(a_n)$ die Bedingungen, so muss insbesondere
+  \begin{gather*}
+    \br{a_{n+1}-a_n}^2=a_{n+1}+a_n
+  \end{gather*}
+  sein.  Das führt auf eine quadratische Gleichung in $a_{n+1}$
+  \begin{gather*}
+    a_{n+1}^2-(2a_n+1)a_{n+1}+a_n^2-a_n=0
+  \end{gather*}
+  mit den zwei Lösungen
+  \begin{gather*}
+    a_{n+1}=a_n+\frac12 \pm \frac12\sqrt{8a_n+1}. 
+  \end{gather*}
+  Durch das Quadrieren ist hier eine Scheinlösung hinzugekommen, denn aus
+  \begin{gather*}
+    a_{n+1}=a_n+\sqrt{a_{n+1}+a_n}
+  \end{gather*}
+  folgt $a_{n+1}>a_n$, so dass die Folge monoton wächst.  Damit bleibt als
+  einziger Lösungskandidat die Folge
+  \begin{gather*}
+    a_{n+1}=a_n+\frac12\br{1+\sqrt{8a_n+1}},\ a_0=1. \tag{L} 
+  \end{gather*}
+  Berechne erste Folgenglieder:
+  \begin{code}
+    a(n):=if n=0 then 1\\
+    else a(n-1)+1/2+1/2*sqrt(8*a(n-1)+1);\\[4pt]
+    makelist(a(n),n,0,10);
+  \end{code}
+  \begin{gather*}    
+    [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66]
+  \end{gather*}
+  Interessanterweise sind das alles ganze Zahlen und die OEIS kennt diese
+  Folge als A000217 und den Hintergrund dazu: Es handelt sich um Folge der
+  Dreieckszahlen, also $a_n=\binom{n+2}{2}=\dfrac{(n+1)(n+2)}{2}$. 
+\end{loesung}
+
+Für andere Startwerte (etwa $n=2$) erhalten wir geschachtelte Wurzelausdrücke
+als Folgenglieder. Die Näherungswerte scheinen aber ebenfalls quadratisch zu
+wachsen.  Dazu berechnen wir die zweite Differenzenfolge
+\begin{code}
+  a(n):=if n=0 then 1\\
+  else a(n-1)+1/2+1/2*sqrt(8*a(n-1)+1);\\[4pt]
+  D2(n):=a(n+2)-2*a(n+1)+a(n);\\[4pt]
+
+  l:makelist(a(n),n,0,3);\\
+  ratsimp(l);\\
+  d:makelist(D2(n),n,0,8),float;
+\end{code}
+\begin{align*}
+  l&=\sbr{2,\frac{5+\sqrt{17}}{2},
+    \frac{\sqrt{4\sqrt{17} + 21} + \sqrt{17} + 6}{2}, a_3,\dots}\tag{$L_1$}\\
+  &\qquad \text{mit}\
+  a_3=\frac{\sqrt{4\sqrt{4\sqrt{17} + 21}+\sqrt{17}+25} + \sqrt{4\sqrt{17} + 21}
+      + \sqrt{17} + 7}{2}\\
+  d&=\sbr{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0} 
+\end{align*}
+Wir sehen, dass die zweite Differenzenfolge konstant ist, was auch bei anderen
+Startwerten als $a_0=1$ auf eine Rekursion 
+\begin{gather*}
+  a_{n+2}-2\m a_{n+1}+a_n=1\tag{R}
+\end{gather*}
+hindeutet mit der allgemeinen Lösung $a_n=A\m n^2+B\m n+C$.  Setzen wir $n=0$,
+so erhalten wir $C=a_0$.  Setzen wir $A\m n^2$ in (R) ein, so erhalten wir
+$A=\frac12$.  Für die oben betrachtete Folge mit $a_0=2$ ergibt sich für $n=1$
+\begin{gather*}
+  a_1=\frac{5+\sqrt{17}}{2}=\frac12+B+2 
+\end{gather*}
+und damit $B=\frac12\sqrt{17}$ sowie die allgemeine Formel $a_n=\frac12
+n^2+\frac12\sqrt{17} n+2$. Vergleichen wir das mit den Werten der
+ursprünglichen Folge 
+\begin{code}
+  a1(n):=1/2*(n\pw 2+sqrt(17)*n+4);\\[4pt]
+  l1:makelist(a1(n),n,0,9);\\
+  makelist(a1(n)-a(n),n,0,9),float;
+\end{code}
+\begin{gather*}
+  \sbr{2,\frac{5+\sqrt{17}}{2},\frac{8+2\sqrt{17}}{2},\frac{13+3\sqrt{17}}{2},\dots}\\  
+  \sbr{0.0, 0.0, 0.0, - 1.776E-15, 0.0, - 3.55E-15, - 7.105E-15, - 7.105E-15,
+    0.0, 0.0}
+\end{gather*}
+so sehen wir Übereinstimmung. Es liegt also die Vermutung nahe, dass sich die
+geschachtelten Wurzelausdrücke in $(L_1)$ durch einfachere Wurzeln ausdrücken
+lassen.  Insbesondere ergibt der Vergleich der beiden Darstellungen von $a_2$
+die Vermutung, dass 
+\begin{gather*}
+  \sqrt{4\sqrt{17} + 21}=2+\sqrt{17}
+\end{gather*}
+gilt, was durch Quadrieren leicht zu verifizieren ist.  Für $a_3$ sind die
+Rechnungen schon komplizierter.
+
+Es bleibt aber unklar, wie man aus der komplizierten Vorschrift (L) auf die
+lineare Rekursion kommt.  
+
 \paragraph{Wurzel, Okt. 1990:}
 \begin{quote}
   $a_0,\dots, a_n$ sei eine Folge nichtnegativer ganzer Zahlen mit $a_0=0$ und
