@@ -125,8 +125,18 @@ die Vermutung, dass
 gilt, was durch Quadrieren leicht zu verifizieren ist.  Für $a_3$ sind die
 Rechnungen schon komplizierter.
 
-Es bleibt aber unklar, wie man aus der komplizierten Vorschrift (L) auf die
-lineare Rekursion kommt.  
+Bleibt zu zeigen, dass (L) mit beliebigen Startwerten (R) erfüllt.  Mit (L)
+ist $a_{n+1}-a_n=\frac12\br{1+\sqrt{8a_n+1}}$ und damit
+\begin{gather*}
+  a_{n+2}-2\m a_{n+1}+a_n=\br{a_{n+2}-a_{n+1}}-\br{a_{n+1}-a_n}
+  =\frac12\br{\sqrt{8a_{n+1}+1}-\sqrt{8a_n+1}}.
+\end{gather*}
+Weiter haben wir wieder mit (L)
+\begin{gather*}
+  8a_{n+1}+1=8a_n+5+4\sqrt{8a_n+1}=\br{\sqrt{8a_n+1}+2}^2
+  \intertext{und so}
+  \sqrt{8a_{n+1}+1}-\sqrt{8a_n+1}=2.
+\end{gather*}
 
 \paragraph{Wurzel, Okt. 1990:}
 \begin{quote}
