@@ -4,7 +4,7 @@
 
 \author{Hans-Gert Gräbe, Leipzig}
 \title{Reguläre Polyeder\kosemnetlicensemark}
-\date{Version vom 28. Oktober 2023}
+\date{Version vom 29. Oktober 2023}
 
 \begin{document}
 
@@ -79,21 +79,8 @@ eines Würfels spannen ein Oktaeder auf, die Mittelpunkte der Seitenflächen
 eines Oktaeders einen Würfel. Im ersten Fall ist die Inkugel des Würfels die
 Umkugel des Oktaeders, die Mittelpunkte $M$ beider Kugeln fallen zusammen.
 
-Streckt man das Oktaeder mit Zentrum $M$ so, dass die Kantenkugeln von
-Oktaeder und Würfel zusammenfallen, so durchdringen sich die beiden zueinander
-dualen Polyeder. Genauer: Relevante Kanten schneiden sich in der Mitte und
-stehen senkrecht aufeinander.
-
 Ähnlich sind Dodekaeder und Ikosaeder zueinander dual.  Das Tetraeder ist zu
 sich selbst dual.
-
-\begin{center}
-  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_4.png}\hfill
-  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_8.png}\hfill
-  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_20.png}\\
-  \emph{Abbildung 3:} Dualität der Platonischen Körper. Quelle: Wikipedia,
-  T. Piesk, CC-BY 4.0
-\end{center}
 
 \subsection*{Symmetriegruppen}
 
@@ -123,7 +110,84 @@ Seitenflächen.
 Dabei wollen wir geeignete Schnitte durch die jeweilige räumliche Figur legen,
 in denen wir die uns interessierenden Größenverhältnisse in einer ebenen Figur
 wiederfinden, und dann Ansätze der ebenen Geometrie zur Anwendung bringen.
-  
+Vorher soll aber noch eine geometrische Interpretation der Dualität
+vorgestellt werden. 
+
+\paragraph{Pole und Polare im Raum.}
+Dazu zunächst die folgenden geometrischen Vorbetrachtungen: Schneidet eine
+Ebene $e$ eine Kugel mit dem Mittelpunkt $M$, so entsteht als Schnittfigur ein
+Kreis $k$ mit Mittelpunkt $M'$, wobei wir $M\neq M'$ voraussetzen wollen.
+$MM'$ steht dann senkrecht auf $e$. Damit steht auch jede Ebene $e'$ durch
+$MM'$ senkrecht auf $e$.  $e'$ schneidet die Kugel in einem Kreis $k'$, der
+mit $k$ zwei Punkte $B_1$ und $B_2$ gemeinsam hat.  Die Tangenten in $B_1$ und
+$B_2$ an $k$ bzw. $k'$ stehen dann ebenfalls senkrecht aufeinander (da sie in
+den Ebenen $e$ bzw. $e'$ liegen).  Die Tangenten in $B_1$ und $B_2$ an $k'$
+schneiden sich in einem Punkt $P$ auf der Geraden $MM'$, und dieser Punkt
+hängt nicht von der Wahl von $e'$ ab, da alle anderen solchen Ebenen durch
+Drehung um die Achse $MM'$ aus $e'$ erzeugt werden können.  Diesen Punkt $P$
+bezeichnet man als \emph{Pol} von $e$ bzgl.  der gegebenen Kugel. Umgekehrt
+berühren die Tangenten aus einem Punkt $P$ die Kugel in Punkten, die auf einem
+Kreis liegen, dessen Trägerebene senkrecht auf $PM$ steht.  Diese Ebene
+bezeichnet man als \emph{Polare} des Punkts $P$ bzgl. der gegebenen Kugel.
+Diese Definitionen übertragen die entsprechenden Begriffe aus der ebenen
+Geometrie auf die räumliche Situation.  Nach Konstruktion gilt
+\begin{gather*}
+  \msegment{MM'}\m\msegment{MP}=\msegment{MB_i}=r^2,
+\end{gather*}
+wobei $r$ der Radius der gegebenen Kugel ist. 
+
+Wenden wir diese Konstruktion nun auf einen Würfel und dessen Kantenkugel an.
+Eine Seitenfläche des Würfels mit Mittelpunkt $F$ bestimmt eine Ebene.  Der
+Pol $P$ dieser Seitenfläche liegt auf einer Senkrechten zu dieser Ebene durch
+$M$, also auf $MF$.  Die Kantenkugel berüht jede Kante des Würfels in deren
+Mitte. Die Tangenten aus $P$ an die Kantenkugel durch die Kantenmitten dieser
+Seitenfläche stehen senkrecht auf diesen Kanten. Führen wir diese Konstruktion
+für alle sechs Seitenflächen des Würfels aus, so erhalten wir die sechs
+Eeckpunkte eines Oktaeders mit derselben Kantenkugel, da die
+Symmetriebewegungen des Würfels auch diese Konstruktionen und damit das
+entstandene Oktaeder ineinander überführen.  Startet man umgekehrt von diesem
+Oktaeder, so erhält man den Ausgangswürfel zurück.  Würfel und Oktaeder in
+dieser Konstellation heißen \emph{in dualer Lage}.
+
+Da $\msegment{MF}=r_I(W)$ gerade der Radius der Inkugel des Würfels und
+$\msegment{MP}=r_U(O)$ der Radius der Umkugel des Oktaeders ist, ergibt sich
+\begin{gather*}
+  r_U(W)\m r_I(O)= r_I(W)\m r_U(O)=r_k^2,
+\end{gather*}
+wobei $r_K$ der Radius der gemeinsamen Kantenkugel ist. Es folgt
+\begin{gather*}
+  \frac{r_I(W)}{r_U(W)}=\frac{r_I(O)}{r_U(O)},
+\end{gather*}
+wobei diese Beziehung invariant bzgl. der konkreten Größe der Kantenkugel und
+damit allgemeingültig ist.
+
+Dieselben Überlegungen zeigen, dass auch für Dodekaeder und Ikosaeder in
+dualer Lage
+\begin{gather*}
+  r_U(D)\m r_I(I)= r_I(D)\m r_U(I)=r_k^2
+  \intertext{und allgemein}
+  \frac{r_I(D)}{r_U(D)}=\frac{r_I(I)}{r_U(I)}
+\end{gather*}
+gilt.   Das Tetraeder ist zu sich selbst dual und erfüllt damit die Beziehung 
+\begin{gather*}
+  r_U(T)\m r_I(T)= r_k(T)^2. 
+\end{gather*}
+\emph{Anmerkung:} Während das Tetraeder und seine Entsprechung in dualer Lage
+auch eine gemeinsame Inkugel und eine gemeinsame Umkugel haben, fallen die
+Umkugeln bzw.  die Inkugeln für Würfel und Oktaeder in dualer Lage bzw.
+Dodekaeder und Ikosaeder in dualer Lage nicht zusammen.  Davon kann man sich
+etwa an Hand der genauen Formeln für die verschiedenen Radien überzeugen, die
+wir im Weiteren berechnen werden.
+
+\begin{center}
+  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_4.png}\hfill
+  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_8.png}\hfill
+  \includegraphics[width=.3\textwidth]{graebe-05-1/Dual_20.png}\\
+  \emph{Abbildung 3:} Platonische Körper in dualer Lage. Quelle: Wikipedia,
+  T. Piesk, CC-BY 4.0
+\end{center}
+
+
 \paragraph{Tetraeder.}
 Lege eine Ebene durch eine Kante und $M$. Diese schneidet die
 gegenüberliegende Kante in deren Mitte $K$. Die Schnittfigur ist damit ein
@@ -591,7 +655,8 @@ Polyedersatz bewiesen sowie kurz auf das Fußballpolyeder eingegangen.
 
 graebe (2023-10-10): Zwei kleine Fehler berichtigt.
 
-graebe (2023-10-28): Überarbeitung für einen Vortrag in der LSGM-Herbstschule.
+graebe (2023-10-29): Überarbeitung für einen Vortrag in der LSGM-Herbstschule.
+Konstruktion der Dualität ergänzt.
 \end{attribution}
 
 \end{document}
