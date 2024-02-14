@@ -228,6 +228,39 @@
     <dc:subject>Algebraische Zahlen</dc:subject>
     <dc:title>Zur Vereinfachung von Wurzelausdrücken</dc:title>
   </dc:BibliographicResource>
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-15-1">
+    <ksn:availableAsPDF rdf:resource="graebe-15-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>In diesem Aufsatz wird gezeigt, wie man mit algebraischen Zahlen rechnen kann, deren Minimalpolynom bekannt ist. Insbesondere wird besprochen, wie man rationale Ausdrücke, die algebraische Zahlen enthalten, in eine Linearkombination reduzierter Terme transformieren kann.  Dieses Verfahren ist eine Verallgemeinerung des „Rationalmachens von Nennern”.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2015-01-11</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Algebraische Zahlen</dc:subject>
+    <dc:title>Zur Vereinfachung von Wurzelausdrücken</dc:title>
+  </dc:BibliographicResource>
+
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-24-1">
+    <ksn:availableAsPDF rdf:resource="graebe-24-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Dieser Aufsatz ergänzt schueler-05-1 um weiteres Material und
+    präsentiert Lösungen für einzelne Aufgaben, die im Original ohne Lösung
+    angegeben sind.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2024-02-14</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Rekursion mit konstanten Koeffizienten; Fibonaccizahlen</dc:subject>
+    <dc:title>Rekursive Folgen (Supplement)</dc:title>
+  </dc:BibliographicResource>
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-15-1">
+    <ksn:availableAsPDF rdf:resource="graebe-15-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>In diesem Aufsatz wird gezeigt, wie man mit algebraischen Zahlen rechnen kann, deren Minimalpolynom bekannt ist. Insbesondere wird besprochen, wie man rationale Ausdrücke, die algebraische Zahlen enthalten, in eine Linearkombination reduzierter Terme transformieren kann.  Dieses Verfahren ist eine Verallgemeinerung des „Rationalmachens von Nennern”.</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
+    <dc:created>2015-01-11</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>Algebraische Zahlen</dc:subject>
+    <dc:title>Zur Vereinfachung von Wurzelausdrücken</dc:title>
+  </dc:BibliographicResource>
 
   <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-97-1">
     <ksn:availableAsPDF rdf:resource="graebe-97-1.pdf"/>
@@ -484,7 +517,7 @@
     <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-11-3"/>
     <dc:created>2005-04-15</dc:created>
     <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Schueler_Axel"/>
-    <dc:subject>konstante Koeffizienten; Fibonaccizahlen</dc:subject>
+    <dc:subject>Rekursion mit konstanten Koeffizienten; Fibonaccizahlen</dc:subject>
     <dc:title>Rekursive Folgen</dc:title>
   </dc:BibliographicResource>
 

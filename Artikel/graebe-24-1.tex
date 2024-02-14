@@ -1,0 +1,897 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{a4wide,ngerman,schueler,url,enumitem}
+\usepackage{kosemnet,ko-math}
+
+\setlist{noitemsep}
+\newcommand{\cas}[1]{\textsc{#1}}
+
+\title{Rekursive Folgen (Supplement)\kosemnetlicensemark} 
+\author{Hans-Gert Gräbe, Leipzig}
+\date{14. Februar 2024}
+
+\parindent0pt
+\parskip3pt
+
+\begin{document}
+\maketitle
+
+Ergänzungen zu \cite{b-schueler}.
+
+\section{Rekursive Folgen}
+
+In \cite{b-schueler} werden Aufgaben vorgestellt, die auf die Arbeit mit
+rekursiven Folgen zurückgeführt werden können und insbesondere die Theorie der
+\emph{homogenen linearen Rekursionen mit konstanten Koeffizienten} (HLR)
+genauer besprochen.  Dies sind Rekursionen der Form
+\begin{align*}\label{e-linrek}
+a_{n+k}=c_1 a_{n+k-1} +c_2 a_{n+k-2} +\cdots + c_k a_n,\quad n\in \N.\tag{H}
+\end{align*}
+mit konstanten Koeffizienten $c_i$. 
+
+\subsection{Rekursive Folgen mit CAS berechnen}
+
+Viele Abzählaufgaben lassen sich über Rekursionsbeziehungen lösen.
+
+\begin{aufgabe}
+Es sei $a_n$ die Anzahl der Möglichkeiten, ein Rechteck vom Format $2\times n$
+in Dominosteine vom Format $2\times 1$ zu zerlegen.
+
+Man bestimme $a_n$.
+\end{aufgabe}
+
+\begin{loesung}
+  Die Anzahl $a_n$ erfüllt $a_1=1, a_2=2$ und die Rekursion
+  $a_n=a_{n-1}+a_{n-2}$ für $n>2$, denn am rechten Ende kann entweder ein
+  Dominostein hochkant oder zwei Dominosteine horizontal liegen. 
+\end{loesung}
+
+Diese Folge ist im Wesentlichen die \emph{Fibonacci-Folge}. Genauer: Der Index
+ist gegenüber der Fibonacci-Folge um 1 verschoben.
+
+Bei der Analyse von Folgen ist es oft wichtig, sich einen Überblick über ein
+Anfangsstück der Folgenglieder zu verschaffen, um angemessene Hypothesen zu
+formulieren oder andere zu verwerfen.  Für derartige Rechnungen kann man
+Computer-Algebra-Systeme (CAS) oder andere Pakete zum symbolischen
+Rechnen\footnote{Etwa das Python-Paket \emph{SymPy},
+\url{https://www.sympy.org/en/index.html} } verwenden, die hinreichend gut
+programmierbar sind.  Rechnungen werden im Weiteren mit dem freien CAS
+\cas{Maxima}\footnote{\url{https://maxima.sourceforge.io/}} ausgeführt.
+
+Bei der Analyse ist eine Besonderheit rekursiver Funktionen zu beachten, die
+am gerade betrachteten Beispiel demonstriert werden soll.  Anfangsstücke
+dieser Folge können etwa wie folgt mit \cas{Maxima} berechnet werden:
+\begin{code}
+  a(n):=if n=1 then 1\+\\
+  else if n=2 then 2\\
+  else a(n-1)+a(n-2);\-\\[4pt]
+  makelist(a(n),n,1,10);
+\end{code}
+\begin{gather*}
+  [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+\end{gather*}
+Allerdings gibt es bereits Probleme, Werte wie etwa $a(26)$ zu berechnen, da
+die Berechnung sehr lange dauert.  Wir haben hier mehr noch das typische
+Verhalten exponentiellen Wachstums -- in einem Anfangsbereich (hier bis etwa
+$n=23$) laufen die Rechnungen sehr schnell ab, in einem sehr kleinen
+Zwischenbereich (hier etwa für $n=24..28$) wächst die Rechenzeit rasch an, im
+Bereich darüber hinaus sind die Rechnungen nicht mehr in sinnvoller Zeit
+ausführbar.
+
+Dies liegt hier darin begründet, dass bei der Berechnung von $a(n)$ die
+Berechnung von $a(n-i)$ mehrfach aufgerufen wird und diese Anzahlen mit
+wachsendem $i$ schnell steigen.  Ist $z_i$ die Zahl der Aufrufe von $a(n-i)$
+bei der Berechnung von $a(n)$, so ist $z_i=z_{i-1}+z_{i-2}$ mit $z_0=z_1=1$,
+denn $a(n-i)$ wird genau bei der Berechnung von $a(n-i+1)$ und $a(n-i+2)$
+aufgerufen.  Die Folge $(z_i)$ (im Wesentlichen wieder die Fibonacci-Zahlen)
+wächst exponentiell, wie wir später noch sehen werden.
+
+Dieses Problem kann man umgehen, indem die einmal berechneten Funktionswerte
+zwischengespeichert werden.  Im folgenden Code wird in der vierten Zeile der
+berechnete Wert $a(n)$ in einem Array $A$ an der Stelle $A[n]$ gespeichert
+(beachte hier, dass die Zuweisung $A[n]:...$ den berechneten Wert auch noch
+zurückgibt) und in der dritten Zeile vorab geprüft, ob der Wert bereits
+berechnet wurde. In anderen CAS (etwa \cas{Mathematica}) kann explizit
+untersucht werden, ob die Variable $A[n]$ belegt ist, in \cas{Maxima} wird
+hier mit \texttt{integerp} geprüft, ob $A[n]$ mit einer ganzen Zahl belegt
+ist. 
+\begin{code}
+  a(n):=if n=1 then 1\+\\
+  else if n=2 then 2\\
+  else if integerp(A[n]) then A[n]\\
+  else A[n]:a(n-1)+a(n-2);\-\\[4pt]
+  a(200);
+\end{code}
+\begin{gather*}
+  453973694165307953197296969697410619233826
+\end{gather*}
+Die bessere Rechenzeit wird also mit mehr Speicherplatz erkauft. Alternativ
+kann man $a(n)$ auch iterativ über eine Schleife berechnen, in der die im
+Weiteren benötigten Werte aus den vorherigen Berechnungen in
+Schleifenvariablen zwischengespeichert werden.
+\begin{code}
+  a(n):=block([a1:1,a2:2,a3],\+\\
+  for i:1 thru n-1 do (a3:a1+a2, a1:a2, a2:a3),\\
+  a1);
+\end{code}
+
+\subsection{Zwei weitere Beispiele}
+
+Oft schränken rekursive Regeln die Möglichkeiten so weit ein, dass sich eine
+überschaubare Menge von Folgen oder auch nur eine einzige ergibt, die allen
+Bedingungen genügen. 
+
+\begin{aufgabe} (MO 591036)
+  Für die Folge $(a_n)_{n\ge 1}$ positiver ganzer Zahlen gilt 
+  \begin{itemize}
+  \item[(1)] $a_m\le a_n$ für alle $m,n$ mit $0<m<n$.
+  \item[(2)] $a_m\m a_n=a_{m\m n}$ für alle $m,n$ mit $0<m\le n$ sowie
+  \item[(3)] $a_{59}=59$.
+  \end{itemize}
+  Zeigen Sie, dass dann stets $a_n=n$ erfüllt ist.
+\end{aufgabe}
+
+\begin{loesung}
+  Wäre $a_k=a_n$ für $k<n$, dann wäre wegen (1) $a_k=a_{k+1}=\dots=a_n$.
+
+  Wäre $a_k=a_{k+1}$ für ein $k$, so wäre $a_k=a_n$ für alle $n\ge k$.
+  Anderenfalls gäbe es ein kleinstes $t>k$ mit $a_t>a_k$. Das führt aber zu
+  folgendem Widerspruch:
+  \begin{gather*}
+    a_k^2=a_{t-1}^2\stackrel{(2)}{=}a_{t^2-2t+1}\ge a_{t^2-2t}=a_t\m
+    a_{t-2}=a_t\m a_k
+  \end{gather*}
+  und damit $a_t\le a_k$.  Die Folge $(a_n)$ ist also streng monoton
+  wachsend und damit $a_n\ge n$ für alle $n$. 
+
+  Weiter ist $a_{1\m 59}=a_1\m a_{59}$ und damit $a_1=1$. Mit Induktion zeigt
+  man, dass $a_{59^k}=59^k$ ist. Also muss auch dazwischen $a_n=n$ sein.
+\end{loesung}
+
+\paragraph{Die Thue-Morse-Folge}
+\begin{aufgabe}
+  Die Folge $t_0,t_1,t_2,\dots$ sei wie folgt definiert: $t_0=1$,
+  $t_{2^k+j}=-t_j$ für $0\le j\le 2^k-1$ und $k=0,1,\dots$.
+
+  Man zeige, dass die Folge nicht periodisch ist.
+\end{aufgabe}
+\begin{loesung}
+  Für ein $k$ ergibt sich $t_j$ für alle $j\in\cbr{2^k,\dots,2^{k+1}-1}$ durch
+  Negation der bisher berechneten Folgenglieder $t_j$ mit $j\in\cbr{0,2^k-1}$:
+  \begin{center}
+    \begin{tabular}{c|l} 
+      $k=0$ & 1, -1\\
+      $k=1$ & 1, -1, -1, 1\\
+      $k=2$ & 1, -1, -1, 1, -1, 1, 1, -1\\
+      $k=3$ & 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1\\
+    \end{tabular}  
+  \end{center}
+
+  Wir sehen, dass insbesondere das Vorzeichen des letzten Elements in jeder
+  der obigen Teilfolgen alterniert, d.h., dass $t_{2^m-1}=(-1)^m$ für $m\ge 0$
+  gilt.  Dies ergibt sich in der Tat daraus, dass $2^m-1=2^{m-1}+j$ mit
+  $j=2^{m-1}-1$ ist und folglich nach der Bildungsvorschrift
+  $t_{2^m-1}=-t_{2^{m-1}-1}$ gilt.
+
+  Wäre nun die Folge periodisch, dann gäbe es Zahlen $l,p>0$, so dass
+  $t_{k}=t_{k+p}$ für alle $k\ge l$ gilt.  Für alle $m$ mit $2^m>l,p$ gilt
+  dann $t_{2^m-1}=t_{2^m+(p-1)}=-t_{p-1}$ und damit
+  $t_{2^m-1}=t_{2^{m+1}-1}=-t_{p-1}$.  Dies widerspricht der gerade gezeigten
+  Eigenschaft.
+\end{loesung}
+
+Es handelt sich um eine Variante der \emph{Thue-Morse-Folge}, eine Folge mit
+vielen spannenden Eigenschaften. So gilt zum Beispiel
+\begin{itemize}
+\item[(1)] $t_n=(-1)^{v(n)}$, wobei $v(n)$ die Anzahl der Einsen in der
+  Binärdarstellung von $n$ ist.
+\item[(2)] $t_{2n}=t_n, t_{2n+1}=-t_n$.
+\item[(3)] Die Folge ist selbstähnlich: Streicht man alle Folgenglieder mit
+  ungeradem Index, so erhält man die Ausgangsfolge zurück.
+\item[(4)] Ist $X_k=\cbr{0\le n<2^{k+1}\ :\ t_n=1}$ und $Y_k= \cbr{0\le
+  n<2^{k+1}\ :\ t_n=-1}$, so gilt 
+  \begin{gather*}
+    \sum_{n\in X_k}{f(n)}=\sum_{n\in Y_k}{f(n)}
+  \end{gather*}
+  für jedes Polynom vom Grad $\le k$.
+
+  Für $k=2$ gilt insbesondere $0+3+5+6=1+2+4+7(=14)$ und
+  $0^2+3^2+5^2+6^2=1^2+2^2+4^2+7^2(=70)$.  
+\end{itemize}
+(1) folgt unmittelbar daraus, dass dies für ein Anfangsstück $0\le j<2^k$ gilt
+und $t_{2^k+j}=-t_j$ ist für $j<2^k$.  Die Binärdarstellungen der beiden Teile
+unterscheiden sich nur dadurch, dass im Stück ab $2^k$ das $k$-te Bit gleich 1
+ist.
+
+(2) ergibt sich unmittelbar daraus, denn $2n$ entsteht durch Anhängen einer
+Null an die Binärdarstellung von $n$, $2n+1$ durch das Anhängen einer Eins.
+
+(3) folgt unmittelbar aus $t_{2n}=t_n$.
+
+(4) kann mit Induktion nach $k$ gezeigt werden. Es ist nach der
+Konstruktionsvorschrift  
+\begin{gather*}
+  X_{k+1}=X_k\cup\cbr{2^{k+1}+n\ :\ n\in Y_k}\ \text{und}\ 
+  Y_{k+1}=Y_k\cup\cbr{2^{k+1}+n\ :\ n\in X_k}.
+\end{gather*}
+Ist $f(x)$ ein Polynom vom Grad $\le k+1$, so ist $h(x)=f\br{x+2^{k+1}}-f(x)$
+als Differenz von $f(x)$ und einem Shift dieses Polynoms ein Polynom vom Grad
+$\le k$. Es gilt deshalb nach Induktionsvoraussetzung
+\begin{align*}
+  \sum_{n\in X_k}{h(n)}&=\sum_{n\in Y_k}{h(n)}
+  \intertext{und damit auch}
+  \sum_{n\in X_k}{f\br{2^{k+1}+n}}-\sum_{n\in X_k}{f(n)}
+  &=\sum_{n\in Y_k}{f\br{2^{k+1}+n}}-\sum_{n\in Y_k}{f(n)}\\
+  \sum_{n\in Y_k}{f(n)}+\sum_{n\in X_k}{f\br{2^{k+1}+n}}
+  &=\sum_{n\in X_k}{f(n)}+\sum_{n\in Y_k}{f\br{2^{k+1}+n}}\\
+  \sum_{n\in Y_{k+1}}{f(n)}&=\sum_{n\in X_{k+1}}{f(n)}.\\
+\end{align*}
+
+Die \emph{Thue-Morse-Folge} ist als Folge
+A010060\footnote{\url{https://oeis.org/A010060}} in der \emph{Online
+Encyclopedia of Integer Sequences} (OEIS) zu finden. Mehr zu dieser Folge auch
+unter
+\begin{itemize}
+\item \url{https://de.wikipedia.org/wiki/Morse-Folge}
+\item \url{https://de.wikibrief.org/wiki/Thue-Morse_sequence}
+\item \url{https://mathworld.wolfram.com/Thue-MorseSequence.html}
+\item 
+  \url{https://sites.math.washington.edu/~morrow/336_12/papers/christopher.pdf}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lösung der allgemeinen homogenen linearen Rekursion \rf[e-linrek]}
+
+Es wird nun die in \cite{b-schueler} genauer ausgeführte Theorie des Lösens
+von homogenen linearen Rekursionen \rf[e-linrek] kurz rekapituliert.  Beim
+Lösen spielt das \emph{charakteristische Polynom}
+\begin{gather*}
+  p(x)=x^k-c_1 x^{k-1}-c_2 x^{k-2} - \dots -c_k
+\end{gather*}
+eine wichtige Rolle. Es ist ein Polynom vom Grad $k$, das nach dem
+Fundamentalsatz der Algebra genau $k$ komplexe Nullstellen (gezählt mit ihrer
+Vielfachheit) $q_1,q_2,\cdots,q_k$ besitzt.
+
+Im einfachsten Fall sind diese $k$ Nullstellen alle voneinander verschieden.
+Dann erfüllen die $k$ voneinander verschiedenen geometrischen Folgen
+\begin{gather*}
+(q_1^n),\, (q_2^n),\dots,(q_k^n)
+\end{gather*}
+alle die Rekursion \rf[e-linrek]. Damit ist dann auch die Folge
+\begin{align}\label{e-allg}
+x_n=A_1 q_1^n +A_2 q_2^n +\cdots  +A_k q_k^n, n\ge 0,
+\end{align}
+mit beliebigen Koeffizienten $A_1,\dots ,A_k$ eine Lösung der Rekursion.
+
+Umgekehrt zeigt sich, dass für jede rekursive Folge $(x_n)$, die \rf[e-linrek]
+genügt, eine solche Darstellung \rf[e-allg] existiert.  Das Bestimmen der
+Koeffizienten $A_1,\dots,A_k$ führt dabei auf ein lineares Gleichungssystem
+mit den Folgenwerten $x_0,\dots,x_{k-1}$ als rechten Seiten, das in diesem
+Fall stets eindeutig lösbar ist.
+
+Hat $p(x)$ Mehrfachnullstellen und ist
+\begin{gather*}
+  p(x)=\br{x-q_1}^{m_1}\m \dots \m \br{x-q_s}^{m_s}
+\end{gather*}
+die Zerlegung von $p(x)$ in Linearfaktoren, so bilden die $k$ Folgen
+\begin{gather*}
+  \br{n^iq_j^n}, i=0,\dots, m_j-1, j=1,\dots,s
+\end{gather*}
+eine Basis des Lösungsraums von \rf[e-linrek], d.h. für jede Folge $(x_n)$,
+die \rf[e-linrek] genügt, gibt es (eindeutig bestimmte) Polynome $A_1(n)$
+vom Grad $m_1-1$, $A_2(n)$ vom Grad $m_2-1$, \dots, $A_s(n)$ vom Grad $m_s-1$
+mit
+\begin{gather*}
+  a_n=A_1(n)q_1^n+A_2(n)q_2^n+\dots+A_s(n)q_s^n.
+\end{gather*}
+Ein genauer Beweis dieser Zusammenhänge erfordert fortgeschrittenere Methoden
+der linearen Algebra sowie der Theorie der Polynome und ist deshalb auch in
+\cite{b-schueler} nur skizziert. 
+
+Um Beweise in Olympiadeaufgaben vollständig zu führen, kann man aber eine nach
+diesen Regeln gefundene explizite Darstellung durch (verallgemeinerte)
+vollständige Induktion beweisen. Dazu zeigt man als Induktionsanfang, dass die
+Beziehung für die ersten $k$ Werte gilt und schließt weiter im
+Induktionsschritt von der Gültigkeit der Formel für alle $k<n$ auf die
+Gültigkeit der Formel für $n$.
+
+\subsection*{Beispiele:}
+
+\paragraph{(1)}
+Die Fibonacci-Folge $a_{n+2}=a_{n+1} +a_n$, $a_1=a_2=1$ hat das
+charakteristische Polynom $p(x)=x^2-x-1$ mit den beiden rellen Nullstellen
+$q_{1,2} =\half \pm \half \sqrt{5}$. Die allgemeine Lösung lautet also
+\begin{gather*}
+a_n=A \br{\frac{1+\sqrt{5}}{2}}^n +B \br{\frac{1-\sqrt{5}}{2}}^n.
+\end{gather*}
+Beachtet man $a_0=0$, $a_1=1$, so hat man
+\begin{gather*}
+0=A+B,\quad 1=\frac12(A+B) +\frac{\sqrt{5}}{2}(A-B).
+\end{gather*}
+Dies liefert $A=-B=\frac{1}{\sqrt{5}}$, also
+\begin{gather*}
+  a_n=\frac{1}{\sqrt{5}}\br{\br{\frac{1+\sqrt{5}}{2}}^n
+    -\br{\frac{1-\sqrt{5}}{2}}^n}.
+\end{gather*}
+Diese Formel wird auch als \emph{Formel von Binet} bezeichnet. 
+
+\paragraph{(2)}
+$a_n=4a_{n-1}-3a_{n-2}$ für $n\ge 2$ und $a_0=1, a_1=2$.
+
+Das charakteristische Polynom ist $p(x)=x^2-4x+3=(x-1)(x-3)$, was auf den
+Ansatz $a_n=A\m 1^n+B\m 3^n$ führt. Aus den Gleichungen $a_0=1=A+B$ und
+$a_1=2=A+3B$ bestimmt man $A=B=\frac12$, was zur expliziten Formel
+\begin{gather*}
+  a_n=\frac12\m\br{3^n+1}
+\end{gather*}
+führt.
+
+\paragraph{(3)}
+$a_n=a_{n-1}+6a_{n-2}$ für $n\ge 2$ und $a_0=4, a_1=3$.
+
+Das charakteristische Polynom ist $p(x)=x^2-x-6=(x-3)(x+2)$, was auf den Ansatz
+$a_n=A\m 3^n+B\m (-2)^n$ führt. Aus den Gleichungen $a_0=4=A+B$ und
+$a_1=3=3A-2B$ bestimmt man $A=\frac{11}{5}$ und $B=\frac95$, was zur expliziten
+Formel
+\begin{gather*}
+  a_n=\frac{11}{5}\m 3^n+\frac95\m (-2)^n
+\end{gather*}
+führt.
+
+\paragraph{(4)}
+$a_n=6a_{n-1}-9a_{n-2}$ für $n\ge 2$ und $a_0=2, a_1=5$.
+
+Das charakteristische Polynom ist $p(x)=x^2-6x+9=(x-3)^2$, was auf den Ansatz
+$a_n=(A+B\m n)\m 3^n$ führt. Aus den Gleichungen $a_0=2=A$ und $a_1=5=3(A+B)$
+bestimmt man $A=2, B=-\frac13$, was zur expliziten Formel
+\begin{gather*}
+  a_n=\br{2-\frac{n}{3}}\m 3^n
+\end{gather*}
+führt.
+
+\paragraph{(5)}
+$a_n=2a_{n-1}-2a_{n-2}$ für $n\ge 2$ und $a_0=3, a_1=1$.
+
+Das charakteristische Polynom ist $p(x)=x^2-2x+2$, das die (komplexen)
+Nullstellen $q_1=1+\ii$ und $q_2=1-\ii$ hat. Dies führt auf den Ansatz
+$a_n=A\m(1+\ii)^n+B\m(1-\ii)^n$. Aus den Gleichungen $a_0=3=A+B$ und
+$a_1=1=(A+B)+(A-B)\ii$ bestimmt man nacheinander $(A-B)\ii=-2$, $A-B=2\ii$ und
+schließlich $A=\frac32+\ii, B=\frac32-\ii$, was zur expliziten Formel
+\begin{gather*}
+  a_n=\br{\frac32+\ii}(1+\ii)^n+\br{\frac32-\ii}(1-\ii)^n
+\end{gather*}
+führt.  Da die Folge $(a_n)$ ganzzahlig ist, kürzen sich für jedes konkrete
+$n$ die entsprechenden Imaginärteile der beiden Summanden gegenseitig weg.
+
+Wir sehen am letzten Beispiel, dass die explizite Formel kompliziert
+werden kann und für Fragen einer weitergehenden Analyse nicht in jedem Fall
+brauchbar ist. 
+
+\begin{aufgabe} (MO 281224)
+  Es ist $x_1=y_1=2023$ sowie $x_n=2x_{n-1}-1$, $y_n=2y_{n-1}-2^n$ für $n>1$.
+  Untersuchen Sie für beide Folgen, ob alle Folgenglieder positiv sind.
+\end{aufgabe}
+
+\begin{loesung}
+  Die erste Folge kann mit $z_n=x_n-1$ auf die Potenzfolge $z_{n+1}=2z_n$
+  zurückgeführt werden. Es ist $z_n=2^{n-1}z_1$ und damit
+  $x_n=2^{n-1}\br{x_1-1}+1$ immer positiv.  Wir hätten auch die ersten Glieder
+  mit \cas{Maxima} mit einem variablen Startwert $a$ berechnen können
+  \begin{code}
+    x(n):=if n=1 then a\+\\
+    else expand(2*x(n-1)-1);\-\\[4pt]
+    makelist(x(n),n,1,10);
+  \end{code}
+  \begin{gather*}
+    [a, 2 a - 1, 4 a - 3, 8 a - 7, 16 a - 15, 32 a - 31, 64 a - 63, 128 a -
+      127, 256 a - 255, 512 a - 511],
+  \end{gather*}
+dann die Formel $x_n=a\m 2^{n-1}-2^{n-1}+1=(a-1)\m 2^{n-1}+1$ vermuten und
+diese mit vollständiger Induktion beweisen können.
+
+Die zweite Folge scheint ebenfalls schnell zu wachsen, wenn wir die ersten
+Folgenglieder berechnen.  \cas{Maxima} liefert für die ersten Gleider mit
+einem variablen Startwert~$a$
+\begin{code}
+  x(n):=if n=1 then a\+\\
+  else expand(2*x(n-1)-2\pw n);\-\\[4pt]
+  makelist(x(n),n,1,8);
+\end{code}
+\begin{gather*}
+  [a, 2 a - 4, 4 a - 16, 8 a - 48, 16 a - 128, 32 a - 320, 64 a - 768, 128 a -
+    1792]
+\end{gather*}
+Wir vermuten $y_n=a\m 2^{n-1}-(n-1)\m 2^n=(a-2(n-1))\m 2^{n-1}$, denn es ist
+\begin{code}
+  makelist((n-1)*2\pw n,n,1,10);
+\end{code}
+\begin{gather*}
+  [0, 4, 16, 48, 128, 320, 768, 1792, 4096, 9216]
+\end{gather*}
+Wir können wieder mit Induktion prüfen, dass die Formel korrekt ist:
+\begin{align*}
+  y_{n+1}&=2y_n-2^{n+1}=2(a-2(n-1))\m2^{n-1}-2^{n+1}\\
+  &=(a-2(n-1)-2)\m2^n =(a-2n)\m 2^n.
+\end{align*}
+Für den Startwert $a=2023$ ist also $y_n$ für $n>1013$ negativ. 
+\end{loesung}
+
+Die gegebenen Rekursionsbeziehungen sind beide nicht homogen, so dass die
+allgemeine Theorie nicht unmittelbar angewendet werden kann.  Beide Folgen
+lassen sich auch als HLR anschreiben.
+
+Für $\br{x_n}$ ergibt sich aus
+\begin{gather*}
+  x_n-2x_{n-1}=x_{n-1}-2x_{n-2}(=-1)
+\end{gather*}
+für $n>2$ die HLR $x_n=3x_{n-1}-2x_{n-2}$ der Ordnung 2.  Für die eindeutige
+Auflösung dieser Rekursion muss noch $x_2$ aus der ursprünglichen Rekursion
+bestimmt werden.  Wir erhalten $x_2=4045$. Das charakteristische Polynom ist
+$p(x)=x^2-3x+2=(x-1)(x-2)$ mit den Nullstellen $q_1=1$ und $q_2=2$. Dies führt
+auf den Ansatz $x_n=A\m1^n+B\m2^n$. $A$ und $B$ lassen sich aus den
+Gleichungen $x_1=A+2B=2023$, $x_2=A+4B=4045$ bestimmen.  Es ergibt sich $A=1,
+B=1011$ und $x_n=1011\m2^n+1$ wie bereits oben berechnet.
+
+Für $\br{y_n}$ ergibt sich aus
+\begin{gather*}
+  y_n-2y_{n-1}=2\br{y_{n-1}-2y_{n-2}}(=-2^n)
+\end{gather*}
+die HLR $y_n=4y_{n-1}-4y_{n-2}$ mit dem charakteristischen Polynom
+$p(x)=x^2-4x+4=(x-2)^2$.  Dies führt auf den Lösungsansatz $y_n=(A+B\m n)2^n$,
+wobei zur Bestimmung der Koeffizienten $A$ und $B$ noch $y_2=2y_1-4=4042$
+benötigt wird.  Es ergibt sich 
+\begin{gather*}
+  y_n=\br{\frac{2025}{2}-n}\m2^n =(2025-2n)\m2^{n-1}
+\end{gather*}
+in Übereinstimmung mit dem früher berechneten Ergebnis.
+
+\section{Aufgaben aus \cite{b-schueler}}
+\begin{aufgabe}
+(Landesseminar Sachsen 2005, Klausur Klasse 9/10)\\ Bestimme die Einerziffer
+  und die erste Ziffer nach dem Komma von $b_{2005}$, wenn
+\begin{quote}
+(a) $ b_n=(2+\sqrt{3})^{n}$.\\
+(b) $ b_n=(3+\sqrt{7})^{n}$.
+\end{quote}
+\end{aufgabe}
+
+\begin{loesung}
+  Beide Ausdrücke lassen sich jeweils zu einer HLR der Ordnung 2 ergänzen,
+  deren Folgenglieder ganzzahlig sind.
+
+  (a) Betrachte dazu die Folge $a_n=(2+\sqrt{3})^{n}+(2-\sqrt{3})^{n}$, die
+  eine Kombination aus den Nullstellen $q_{1,2}=2\pm\sqrt3$ ist und so auf das
+  charakteristsche Polynom $p(x)=(x-2)^2-3=x^2-4x+1$ und die Rekursion
+  $a_n=4a_{n-1}-a_{n-2}$ mit $a_0=2, a_1=4$ führt.  Die letzte Ziffer von
+  $a_n$ ergibt sich als Rest modulo 10, also $a_n=(2,4,4,2,4,4,\dots
+  \mod{10})$.  Die Reste wiederholen sich periodisch mit der Periodenlänge 3.
+  Wegen $2023\equiv 1\mod{3}$ ist also $a_{2023}\equiv a_1=4\mod{10}$. Wegen
+  $0<(2-\sqrt{3})<1$ ist weiter $a_{2023}=\dots4$ und
+  $b_{2023}=\dots3{,}9999\dots$.
+
+Die letzten $k$ Ziffern von $a_n$ lassen sich mit \cas{Maxima} auch direkt
+bestimmen, wenn alle Zwischenergebnisse bereits $\mod{10^k}$ reduziert werden.
+Wie früher erläutert, sind die Rechnungen mit einer rekursiven Implementierung
+nicht erfolgreich, deshalb wird hier eine iterative Implementierung der
+Berechnung von $a_n\mod{10^k}$ angegeben.
+\begin{code}
+a(n,k):=block([u:2,v:4,w],\+\\
+  thru n do (w:mod(4*v-u,10\pw k), u:v, v:w),\\
+  u);
+\end{code}
+Die letzten 60 Stellen von $a_{2023}$ können so leicht berechnet werden.
+\begin{code}
+  a(2023,60);
+\end{code}
+\begin{gather*}
+  a_{2023}=\dots544477607903430234502941226114843894762534706639567206625764
+\end{gather*}
+
+(b) Betrachte die Folge $a_n=(2+\sqrt{5})^{n}+(2-\sqrt{5})^{n}$.  Dies führt
+wie oben auf die Nullstellen $q_{1,2}=2\pm\sqrt5$, weiter auf das
+charakteristische Polynom $p(x)=(x-2)^2-5=x^2-4x-1$ und die Rekursion
+$a_n=4a_{n-1}+a_{n-2}$, $a_0=2, a_1=4$.  Für die letzte Ziffer erhalten wir
+$a_n=(2,4,8,6,2,4,8,\dots \mod{10})$, die Periodenlänge ist 4. Dann ist
+$a_{2023}\equiv a_3=6\mod{10}$, also $a_{2023}=\dots6$ und
+$a_{2023}<b_{2023}=\dots6{,}000\dots$.  Beachte dabei $0>(2-\sqrt{5})>-1$.
+Wie oben lassen sich die letzten 60 Stellen von $a_{2023}$ bestimmen:
+\begin{gather*}
+  a_{2023}=\dots974562703306449804829226825960632014186192343935889477077276
+\end{gather*}
+
+\emph{Bemerkung:} Da als Reste modulo $10 $ nur die fünf geraden Zahlen
+$0,2,4,6,8$ in Frage kommen, gibt es maximal $5^2=25 $ Paare $(r_1,r_2)$ von
+Resten modulo $10$, die hier auftreten. Erstaunlicherweise treten alle Paare
+tatsächlich auf bis auf $(0,0)$, welches ein Orbit für sich ist.
+\end{loesung}
+
+\begin{aufgabe} (Engel, S. 209)
+Man finde eine explizite Formel für
+\begin{gather*}
+a_{n+1}= \frac{1}{16} \left( 1+4 a_n + \sqrt{1 +24 a_n}\right), \quad a_1=1.
+\end{gather*}
+\end{aufgabe}
+
+\begin{loesung} 
+Wir bestimmen zunächst Zahlenwerte, etwa mit folgendem \cas{Maxima}-Code:
+\begin{code}
+  a(n):=if n=1 then 1\\
+  else (1/16*(1+4*a(n-1)+sqrt(1+24*a(n-1))));\\[6pt]
+
+  makelist(a(n),n,1,10);
+\end{code}
+\begin{gather*}
+  \left[1, \frac{5}{8}, \frac{15}{32}, \frac{51}{128}, \frac{187}{512},
+    \frac{715}{2048}, \frac{2795}{8192}, \frac{11051}{32768},
+    \frac{43947}{131072}, \frac{175275}{524288}\right]
+\end{gather*}
+Wir erhalten nur rationale Zahlen, also steht unter der Wurzel aus
+irgendwelchen Gründen immer ein vollständiges Quadrat einer rationalen Zahl.
+Um diesem Phänomen auf den Grund zu gehen, betrachten wird die abgeleitete
+Folge $b_n=\sqrt{1+24a_n}$ mit $b_1=5, b_2=4$ und $a_n=\frac{b_n^2-1}{24}$.
+Setzt man dies in die Rekursion für $a_n$ ein, so hat man nacheinander
+\begin{align*}
+  a_{n+1}=\frac{b_{n+1}^2-1}{24}&=\frac{1}{16}\br{1+\frac{b_n^2-1}{6}+b_n}\\
+  b_{n+1}^2-1&=\frac{3}{2}\m\frac{6+b_n^2-1+6b_n}{6}\\
+  b_{n+1}^2&=\frac{1}{4}\br{b_n^2+6b_n+9}=\br{\frac{b_n+3}{2}}^2.
+\end{align*}
+Da alle Glieder positiv sind, folgt daraus $b_{n+1} = \frac12 b_n+\frac32.$
+
+Die Rekursion ist von der Ordnung 1, aber keine HLR, die Theorie also nicht
+unmittelbar anwendbar.  Wir versuchen den (nicht durch die Theorie gestützten)
+Ansatz $b_n=A\m2^{-n}+B$. Aus den Startwerten $A=4, B=3$ ergibt sich die
+Formel
+\begin{gather*}
+  b_n=4\br{\frac12}^n+3, n\ge 1,
+\end{gather*}
+die durch vollständige Induktion dann auch bewiesen werden kann.  Für $n=1$
+prüft man die Gültigkeit unmittelbar, der Induktionsschritt ergibt sich aus
+\begin{gather*}
+  b_{n+1} = \frac12 b_n+\frac32=\frac12\m\br{4\br{\frac12}^n+3}+\frac32
+  =4\m\br{\frac12}^{n+1}+2\m\frac32=4\m\br{\frac12}^{n+1}+3.
+\end{gather*}
+Man kann die Rekursion aber auch wieder in eine HLR verwandeln, indem die
+Rekursionsbeziehungen für $n$ und für $n+1$ verwendet werden, um den
+inhomogenen Teil zu eliminieren:
+\begin{gather*}
+  b_{n+2}-\frac12 b_{n+1}=b_{n+1}-\frac12 b_n,\\
+  b_{n+2}=\frac32 b_{n+1}-\frac12 b_n,
+  \intertext{was auf das charakteristische Polynom}
+  p(x)=x^2-\frac32 x-\frac12=(x-1)\br{x-\frac12}
+\end{gather*}
+und so auf denselben Ansatz führt. 
+\end{loesung}
+
+%%% Bulg Aufg. 77, S. 16 %%%%%%%%%%%%%%%
+\begin{aufgabe}\label{r-1} (BB, Aufgabe 77, S. 16)
+  Gegeben sei die rekursive Folge $(a_n)$ mit
+  \begin{gather*}
+    a_1=a_2=1,\quad \quad a_{n}=\frac{a_{n-1}^2 +2}{a_{n-2}}, \quad n\ge 3.
+  \end{gather*}
+  Beweisen Sie, dass alle Folgenglieder ganzzahlig sind.
+\end{aufgabe}
+
+\begin{loesung}
+Die Berechnung von einigen Folgengliedern ergibt
+\begin{gather*}
+  (a_n)=(1, 1, 3, 11, 41, 153, 571, 2131, 7953, 29681, \dots)
+\end{gather*}
+und legt die Vermutung nahe, dass dies in der Tat der Fall ist.
+
+Wir formen die Rekursionsbeziehung zunächst so um, dass in der Formel kein
+Quotient mehr enthalten ist:
+\begin{gather*}
+    a_na_{n-2}=a_{n-1}^2+1.
+\end{gather*}
+Diese Beziehung gilt für alle $n>3$. Wir betrachten neben dieser Beziehung für
+den Index $n$ wieder dieselbe Beziehung für den Index $n+1$:
+\begin{gather*}
+  a_na_{n-2}=a_{n-1}^2+1,\\ a_{n+1}a_{n-1}=a_n^2+1.
+\end{gather*}
+Die Differenz ergibt $a_n\br{a_n+a_{n-2}}=a_{n-1}\br{a_{n+1}+a_{n-1}}$ und
+weiter 
+\begin{gather*}
+  c_n=\frac{a_n+a_{n-2}}{a_{n-1}}=\frac{a_{n+1}+a_{n-1}}{a_n}=c_{n+1}.
+\end{gather*}
+Die Folge $(c_n)$ ist also konstant mit $c_n=4$ und $(a_n)$ genügt der
+Rekursionsbeziehung 
+\begin{gather*}
+  a_{n+2}=4a_{n+1}-a_n.
+\end{gather*}
+Damit ist die Ganzzahligkeit der Folgenglieder bereits gezeigt.
+\end{loesung}
+
+Wir berechnen noch die explizite Darstellung.  Das charakteristische Polynom
+$p(x)=x^2-4x+1$ hat die beiden Nullstellen $q_1=2+\sqrt{3}$ und
+$q_2=2-\sqrt{3}=q_1^{-1}$.  Es gilt also $a_n=Aq_1^n+Bq_2^n$ für geeignete
+$A,B$, die sich aus $a_1=a_2=1$ als $A=\frac{9-5\sqrt3}{6},
+B=\frac{9+5\sqrt3}{6}$ bestimmen lassen.  Daraus ergibt sich die explizite
+Formel
+\begin{gather*}
+  a_n=\frac{9-5\sqrt3}{6}\br{2+\sqrt3}^n +\dfrac{9+5\sqrt3}{6}\br{2-\sqrt3}^n.
+\end{gather*}
+
+\begin{aufgabe}\label{r-2}
+  Gegeben sei eine Folge $(a_n)$ mit $a_1=A$, $a_2=B$ und
+\begin{gather*}
+  a_n=\frac{a_{n-1}^2 +C}{a_{n-2}},\quad n\ge 3.
+\end{gather*}
+Beweisen Sie, dass aus der Ganzzahligkeit von
+\begin{gather*}
+  A, \, B,\,\,\frac{A^2 +B^2 +C}{AB}
+\end{gather*}
+folgt, dass alle Folgenglieder $a_n$ ganzzahlig sind.
+\end{aufgabe}
+
+\begin{loesung}
+  Diese Aufgabe verallgemeinert Aufgabe \ref{r-1}, die sich für $A=B=C=1$
+  ergibt.
+
+Wir setzen $D=\dfrac{A^2+B^2+C}{AB}$. Damit ist 
+\begin{gather*}
+  C=ABD-A^2-B^2\ \text{und}\ a_3=\frac{B^2+C}{A}=\frac{ABD-A^2}{A}=BD-A.
+\end{gather*}
+Aus der Rekursionsbeziehung für $n$ und $n+1$ erhalten wir
+\begin{gather*}
+  a_na_{n-2}=a_{n-1}^2+C,\ a_{n+1}a_{n-1}=a_n^2+C.
+\end{gather*}
+Die Differenz ergibt $a_n\br{a_n+a_{n-2}}=a_{n-1}\br{a_{n+1}+a_{n-1}}$ und
+weiter 
+\begin{gather*}
+  c_n=\frac{a_n+a_{n-2}}{a_{n-1}}=\frac{a_{n+1}+a_{n-1}}{a_n}=c_{n+1}.
+\end{gather*}
+Die Folge $\br{c_n}$ ist also konstant und wir erhalten
+$c_n=c_3=\dfrac{a_3+a_1}{a_2}=\dfrac{BD-A+A}{B}=D$.  $\br{a_n}$ genügt also
+der Rekursion $a_{n+2}=Da_{n+1}-a_n$.
+\end{loesung}
+
+\begin{aufgabe} (MO 261242)
+  Ermittle alle Zahlenfolgen mit $a_1=1$, $a_2=\frac52$, für die
+  \begin{gather*}
+    a_{m+n}\m a_{m-n}=a_m^2-a_n^2\ \text{für alle}\ m>n>0
+  \end{gather*}
+  gilt.
+\end{aufgabe}
+\begin{loesung}
+  Für $m=1$ ergibt sich $a_{n+1}=\dfrac{a_n^2-1}{a_{n-1}}$, womit die
+  Zahlenfolge zumindest eindeutig bestimmt ist, wenn sie existiert.
+
+  Die Rekursionsbeziehung ist von ähnlicher Bauart wie die in Aufgabe
+  \ref{r-2}, wobei die dortige Ableitung der linearen Rekursion nicht daran
+  gebunden ist, dass $A,B,C$ ganzzahlig sind.  Hier ist $A=1, B=\frac52, C=-1$
+  und damit $D=\dfrac{A^2+B^2+C}{AB}=\frac52$.  Die Folge $a_n$ erfüllt also
+  die Rekursion $a_{n+2}=\frac52a_{n+1}-a_n$.  Das charakteristische Polynom
+  ist $p(x)=x^2-\frac52x+1$ mit den Nullstellen $q_1=2, q_2=\frac12$.  Die
+  explizite Bildungsvorschrift ergibt sich aus dem Ansatz $a_n=Aq_1^n+Bq_2^n$,
+  für den man aus den Startwerten $A=\frac23, B=-\frac23$ ermittelt. Einziger
+  Lösungskandidat ist also die Folge
+  \begin{gather*}
+    a_n=\frac23\br{2^n-\br{\frac12}^n}.
+  \end{gather*}
+  Die Gültigkeit der Beziehung
+  \begin{gather*}
+    a_{m+n}\m a_{m-n}=a_m^2-a_n^2\ \text{für alle}\ m>n>0
+  \end{gather*}
+  rechnet man leicht nach.
+\end{loesung}
+
+
+\begin{aufgabe} Gegeben sei die rekursive Folge $(a_n)_{n\in\N } $ mit
+\begin{gather*}
+a_1=a_2=a_3=1,\quad a_{n}=\frac{a_{n-1}a_{n-2} +1}{a_{n-3}}, \quad n\ge 4.
+\end{gather*}
+Beweisen Sie, dass alle Folgenglieder ganzzahlig sind.
+\end{aufgabe}
+
+Diese Aufgabe ist ähnlich zur Aufgabe 2.2 im BWM 2003 \cite{BWM2003.2}. 
+\begin{quote}
+  Zeigen Sie, dass alle Glieder der durch 
+  \begin{gather*}
+    a_1=1, a_2=1, a_3=2\ \text{sowie}\ a_{n+3}=\frac{a_{n+2}a_{n+1}+7}{a_n}\
+    \text{für}\ n>0 
+  \end{gather*}
+  gegebenen Folge ganzzahlig sind.  
+\end{quote}
+Berechnet man numerisch die Quotienten aufeinanderfolgender Glieder eines
+Anfangsstücks der Folge, so ergeben sich näherungsweise alternierend zwei
+Werte, was die Vermutung nahe legt, dass -- wie in der dritten Lösung der
+BWM-Aufgabe -- die Folge über zwei verschränkte Rekursionsbeziehungen für
+gerade und ungerade Indizes berechnet werden kann.  Dies ist in der Tat so.
+
+\begin{loesung}
+Wir bilden wieder die Differenz der Rekursionsbeziehung für $n$ und $n+1$:
+\begin{gather*}
+  a_na_{n-3}=a_{n-1}a_{n-2}+1,\ a_{n+1}a_{n-2}=a_na_{n-1}+1,\\
+  a_n\br{a_{n-1}+a_{n-3}}=a_{n-2}\br{a_{n+1}+a_{n-1}},\\
+  c_{n+1}=\frac{a_{n+1}+a_{n-1}}{a_n}=\frac{a_{n-1}+a_{n-3}}{a_{n-2}}=c_{n-1}.
+\end{gather*}
+Im Gegensatz zur Aufgabe \ref{r-1} und \ref{r-2} ist hier also
+\begin{gather*}
+  c_3=c_5=\dots=\frac{a_3+a_1}{a_2}=2\ \text{und}\
+  c_4=c_6=\dots=\frac{a_4+a_2}{a_3}=3, 
+\end{gather*}
+was die Rekursionen
+\begin{gather*}
+  a_{2n}=3a_{2n-1}-a_{2n-2}\ \text{und}\ a_{2n+1}=2a_{2n}-a_{2n-1}
+\end{gather*}
+liefert.  Daraus folgt zunächst die Ganzzahligkeit der Folgenglieder.
+
+In der ersten Lösung der BWM-Aufgabe wird eine einfache Rekursion der Ordnung
+4 angegeben, der die Folge ebenfalls genügt.  Das soll nun für die hier
+gegebene Folge ebenfalls hergeleitet werden.  Es gilt
+\begin{align*}
+  a_{2n+2}&=3a_{2n+1}-a_{2n}, a_{2n}=3a_{2n-1}-a_{2n-2}\\
+  a_{2n+2}+a_{2n}&=3\br{a_{2n+1}+a_{2n-1}}-a_{2n}-a_{2n-2}\\
+  a_{2n+2}&=6a_{2n}-2a_{2n}-a_{2n-2}=4a_{2n}-a_{2n-2} 
+\end{align*}
+und ähnlich
+\begin{align*}
+  a_{2n+1}&=2a_{2n}-a_{2n-1}, a_{2n-1}=3a_{2n-2}-a_{2n-3}\\
+  a_{2n+1}&=2a_{2n}-a_{2n-1}, a_{2n-1}=3a_{2n-2}-a_{2n-3}\\
+  a_{2n+1}&=2\br{a_{2n}+a_{2n-2}}-2a_{2n-1}-a_{2n-3}\\
+  &=6a_{2n-1}-2a_{2n-1}-a_{2n-3}=4a_{2n-1}-a_{2n-3}. 
+\end{align*}
+Die Folge genügt also der gemeinsamen Rekursion $a_{n+4}=4a_{n+2}-a_n$.
+Daraus ergibt sich als explizite Formel der Ansatz 
+\begin{gather*}
+  a_n=Aq_1^n+B\br{-q_1}^n+Cq_2^n+D\br{-q_2}^n
+\end{gather*}
+mit $q_1=\sqrt{2+\sqrt{3}}$ und $q_2=\sqrt{2-\sqrt{3}}=q_1^{-1}$, da das
+charakteristische Polynom $p(x)=x^4-4x^2+1$ die vier Nullstellen $\pm q_1, \pm
+q_2$ hat.
+\end{loesung}
+
+%%% Bulgarisches Buch, Seite 16, Aufg. 76 %%%%
+\begin{aufgabe} (BB, S. 16, Aufgabe 76)
+Gegeben sei eine Folge $(a_n)_{n\ge 0}$ von ganzen Zahlen mit
+\begin{gather*}
+3 a_{n}= a_{n-1}  +a_{n+1}, \quad n\ge 1.
+\end{gather*}
+Beweisen Sie, dass $5a_n^2 +4( a_0^2 +a_1^2 -3a_0a_1) $ stets eine Quadratzahl
+ist.
+\end{aufgabe}
+
+\begin{loesung}
+  Symbolische Berechnung der ersten Werte der Folge
+\begin{gather*}
+  b_n=5a_n^2+4\br{a_0^2+a_1^2-3a_0a_1}
+\end{gather*}
+ergibt $b_n=c_n^2$ mit einer Folge $c_0=3a_0-2a_1$, $c_1=2a_0-3a_1=3a_1-2a_2$
+und $c_{n+2}=3c_{n+1}-c_n$.  Das legt die Vermutung $c_n=3a_n-2a_{n+1}$ nahe.
+Es bleibt zu zeigen, dass dies allgemein gilt.  Beweis mit Induktion und
+$a_n=3a_{n+1}-a_{n+2}$, wobei der Induktionsanfang schon gezeigt wurde.
+\begin{align*}
+  b_{n+1}&=b_n+5a_{n+1}^2-5a_n^2=\br{3a_n-2a_{n+1}}^2+5a_{n+1}^2-5a_n^2\\
+  &=\br{7a_{n+1}-3a_{n+2}}^2+5a_{n+1}^2-5\br{3a_{n+1}-a_{n+2}}^2\\
+  &=9a_{n+1}^2-12a_{n+1}a_{n+2}+4a_{n+2}^2=\br{3a_{n+1}-2a_{n+2}}^2=c_{n+1}^2.
+\end{align*}
+\end{loesung}
+
+\begin{aufgabe} 
+%%% Bulg Aufgabe 79, S. 17 %%%%
+Es seien $(x_n)$ und $(y_n)$ rekursive Folgen, gegeben durch
+\begin{alignat*}{3}
+x_1&=1,\,\,& x_2& = 1,& \,\, x_{n+2}& =x_{n+1} +2 x_{n} ,\quad n\in\N,\\
+y_1&= 1,&\,\, y_2&= 7,&\,\, y_{n+2}& = 2y_{n+1} +3 y_{n},\quad n\in \N.
+\end{alignat*}
+Beweisen Sie, dass außer $x_1=y_1=1$ die beiden Folgen keine gemeinsamen
+Folgenglieder besitzen.
+\end{aufgabe}
+
+\begin{loesung} Wir betrachten beide Folgen modulo $8$ und erhalten
+\begin{align*}
+x_n&\equiv 1,1,3,5,3,5,\cdots \mod{8},\\
+y_n&\equiv  1,-1,1,-1,\cdots \mod{8}.
+\end{align*}
+Folglich können nur die ersten Folgenglieder übereinstimmen.
+\end{loesung}
+
+Man kann hier auch die expliziten Bildungsvorschriften bestimmen, was
+allerdings in der gestellten Frage nicht weiterhilft. 
+
+Die Folge $x_n$ hat $p(x)=x^2-x-2=(x-2)(x+1)$ als charakteristisches Polynom
+und damit gilt $x_n=A\m2^n+B\m(-1)^n$.  Einsetzen der Startwerte liefert
+$A=\frac13, B=-\frac13$ und somit $x_n=\frac13\br{2^n-(-1)^n}$.
+
+Für die Folge $y_n$ ist $p(x)=x^2-2x-3=(x-3)(x+1)$ und damit
+$y_n=A\m3^n+B\m(-1)^n$.  Einsetzen der Startwerte liefert $A=\frac23, B=1$ und
+somit $y_n=3^{n-1}+(-1)^n$.
+
+%%% Bulgar Aufg. 80 S. 17 %%%%
+\begin{aufgabe} 
+Es sei $f(x) $ ein Polynom mit ganzzahligen Koeffizienten und $f(0)=f(1)=1$ und
+$a_1\in \Z $ beliebig gegeben.  Ferner sei $a_{n+1} =f(a_n)$ für alle $n\ge 1$.
+
+Beweisen Sie, dass die Folgenglieder paarweise teilerfremd sind.
+\end{aufgabe}
+
+\begin{loesung}
+  Für $f(x)=c_nx^n+\dots+c_1x+c_0$ ist $f(0)=c_0=1$ und
+  $f(1)-c_0=c_n+c_{n-1}+\dots+c_1=0$.  Damit ist
+\begin{align*}
+  a_{k+1}&=f(a_k)=a_k\br{c_na_k^{n-1}+\dots+c_1}+1\\
+  &=a_k\br{c_n\br{a_k^{n-1}-1}+\dots+c_1(1-1)}+1\\
+  &=a_k\br{a_k-1}\m p_k+1
+\end{align*}
+und zunächst $\gcd\br{a_{k+1},a_k}=1$.  Mit Induktion zeigt man
+$a_k-1=a_{k-1}\m\dots\m a_1\m q_k$.  In der Tat, setzt man das oben ein, so
+ergibt sich 
+\begin{gather*}
+  a_{k+1}-1=a_k\br{a_k-1}\m p_k=a_k\m a_{k-1}\m\dots\m a_1\m q_k\m p_k
+\end{gather*}
+und so $q_{k+1}=q_k\m p_k$.  Damit sind die $a_k$ aber paarweise
+teilerfremd. 
+\end{loesung}
+
+\subsection{Periodizität der Fibonacci-Zahlen modulo $m$}
+
+\begin{aufgabe} Es sei $m\in \N $ eine fixierte natürliche Zahl.
+  \begin{itemize}
+  \item[(a)] Beweise, dass es eine \textsc{Fibonacci}-Zahl $a_n$ gibt, die
+    durch $m$ teilbar ist.
+
+  \item[(b)] Zeige, dass es eine \textsc{Fibonacci}-Zahl gibt, die auf $m$
+    Neunen endet.
+  \end{itemize}
+\end{aufgabe}
+
+\begin{beweis} 
+(a) Wir betrachten sämtliche Paare von Resten $(a_n, a_{n+1})$ modulo $m$. Da
+  es höchstens $m\times m=m^2 $ solcher Paare gibt, wiederholt sich nach
+  spätestens $p\le m^2$ Schritten ein Paar:
+  \begin{gather*}
+    (a_n, a_{n+1})=(a_{n+p},a_{n+p+1}) \pmod{m}.
+  \end{gather*}
+  Da sich aus $(a_n, a_{n+1})$ und der Beziehung $a_{n+2}=a_{n+1}+a_n$ bzw.
+  $a_{n-1}=a_{n+1}-a_n$ das vorherige und das nächste Folgenglied eindeutig
+  ergeben, kann es keine Vorperiode geben und die Paare $(a_0,a_1)$
+  bzw. $(a_{-2},a_{-1})$ wiederholen sich nach $p$ Schritten. Nun ist aber
+\begin{gather*}
+a_0=0,\quad a_{-1} =1,\quad a_{-2}=-1.
+\end{gather*}
+Daher treten die Reste $0$, $1$ und $-1$ modulo $m$ stets auf.
+
+(b) Man betrachte als Modul $10^m $ und die Folgenglieder, welche kongruent
+$-1$ modulo $10^m$ sind.
+\end{beweis}
+
+Die Periodizität der modularen Fibonaccifolge kann mit folgender Darstellung
+genauer untersucht werden: Es gilt
+\begin{gather*}
+  \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix}=
+  M \m \begin{pmatrix} a_n \\ a_{n-1} \end{pmatrix}\text{ mit }
+  M=\begin{pmatrix} 1 & 1\\ 1 & 0 \end{pmatrix}
+  \intertext{und damit}
+  \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix}=M^n
+  \begin{pmatrix} a_1 \\ a_0 \end{pmatrix}. 
+\end{gather*}
+Die Fibonaccifolge hat damit eine Periode $p$ modulo $m$ genau dann, wenn
+$M^p\equiv E \pmod{m}$ gilt, wobei $E$ die Einheitsmatrix ist.     
+
+Für $m=10^k$ (also die Frage nach den Neunen) ergibt sich $M^{15\m m} \equiv E
+\pmod{m}$.  Hat man dies für kleine $k$ überprüft, so ergibt sich wegen
+\begin{gather*}
+  M^{15\m 10^{k+1}} =\br{M^{15\m 10^k}}^{10} \equiv \br{E+a\m 10^k} \equiv
+  E+\binom{10}{1}\m a\m 10^k \equiv E \pmod{10^{k+1}},
+\end{gather*}
+dass dies auch für alle $k>2$ gilt.  
+
+\begin{thebibliography}{Wor77}
+
+\bibitem{b-schueler} A.~Schüler.  \newblock \emph{Rekursive Folgen}.
+  \newblock KoSemNet Textsammlung.\\
+  \url{https://lsgm.uni-leipzig.de/KoSemNet/pdf/schueler-05-1.pdf}
+\bibitem{BWM2003.2} Bundeswettbewerb Mathematik 2003. 2. Runde.\\
+  \url{https://www.mathe-wettbewerbe.de/aufgaben}
+
+\end{thebibliography}
+
+\begin{attribution}
+graebe (2024-02-14): Contributed to KoSemNet
+\end{attribution}
+
+ 
+\end{document}
+
+
+
+
