@@ -74,7 +74,7 @@ function pageFooter() {
 
   <div class="container">
     <div class="footer" align="right">
-        <p class="text-muted">&copy; <a href="http://lsgm.de/KoSemNet/index.php">KoSemNet
+        <p class="text-muted">&copy; <a href="https://lsgm.uni-leipzig.de/KoSemNet/index.php">KoSemNet
         Projekt</a> seit 2015 </p>
     </div>
   </div>
