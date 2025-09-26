@@ -2,6 +2,8 @@
 \usepackage{kosemnet,ko-math,ngerman} 
 \usepackage[utf8]{inputenc}  
 
+\renewcommand{\det}[1]{\mathrm{det}\br{#1}}
+
 \author{Hans-Gert Gräbe, Leipzig}
 \title{Ein Van-der-Monde-artiges Theorem\kosemnetlicensemark}
 \date{11. Januar 2025}
@@ -15,71 +17,88 @@
   Binomialkoeffizienten werden diskutiert.  Der Text setzt Bekanntheit mit
   dem Determinantenbegriff voraus. 
 
-  NB: Die Arbeit entstand wohl Ende der 1980er Jahre und fand sich 2025 in
-  einer englischen Version beim Aufräumen wieder. Ich habe den Text nun
-  digital erfasst und ins Deutsche übertragen.
+  Die Arbeit entstand wohl Ende der 1980er Jahre und fand sich 2025 in einer
+  englischen Version beim Aufräumen wieder. Ich habe den Text nun digital
+  erfasst und ins Deutsche übertragen.
 \end{abstract}
 
 \section{Der Satz von van der Monde und eine Verallgemeinerung}
 
 $a_i$, $i=1,2,\dots,n$, seien $n$ Unbestimmte und $a_{ij}=a_j^{i-1},
-$i,j=1,2,\dots,n$. 
-\begin{theorem}{Satz von van der Monde}
-  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$ gilt   
+i,j=1,2,\dots,n$. 
+\begin{satz}[Satz von van der Monde]
+  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$, also   
   \begin{gather*}
-    \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}.
+    A_n=\begin{pmatrix}
+    1 & 1 & \dots & 1\\
+    a_1 & a_2 & \dots & a_n \\
+    \dots& \dots & \dots &\dots\\
+    a_1^{n-1} & a_2^{n-1} & \dots& a_n^{n-1}
+    \end{pmatrix}
+    \intertext{gilt}
+    \det{A_n}=\prod_{1\le i<j\le n}\br{a_j-a_i}.
   \end{gather*}
-\end{theorem}
-\emph{Beweis:} $\mathrm{det}(A_n)$ ist ein Polynom in $a_1,a_2,\dots,a_n$. Für
-$a_i=a_j$ stimmen die Spalten $i$ und $j$ von $A_n$ überein und
-$\mathrm{det}(A_n)$ verschwindet in diesem Fall.  Also ist $\mathrm{det}(A_n)$
-durch $a_j-a_i$ teilbar für alle $1\le i<j\le n$. Da diese Faktoren (als
-lineare Faktoren) paarweise teilerfremd sind, ergibt sich
+\end{satz}
+\begin{beweis}
+  $\det{A_n}$ ist ein Polynom in $a_1,a_2,\dots,a_n$. Für $a_i=a_j$ stimmen
+  die Spalten $i$ und $j$ von $A_n$ überein und $\det{A_n}$ verschwindet in
+  diesem Fall.  Also ist $\det{A_n}$ durch $a_j-a_i$ teilbar für alle $1\le
+  i<j\le n$. Da diese Faktoren (als lineare Faktoren) paarweise teilerfremd
+  sind, ergibt sich
 \begin{gather*}
-  \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{1}
+  \det{A_n}=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{1}
 \end{gather*}
 für ein Polynom $P_n=P_n(a_1,a_2,\dots,a_n)$.  Vergleich der $a_i$-Grade auf
 den beiden Seiten von (1) zeigen, dass $P_n$ ein konstantes Polynom ist.  Der
-Vergleich der Koeffizienten vor $a_n^{n-1}$ auf den beiden Seiten von (1)
-zeigt, dass $P_n=1$ ist.\hfill $\Box$
+Koeffizient vor $a_n^{n-1}$ auf der linken Seite ist $\det{A_{n-1}}$, der auf
+der rechten Seite $\prod_{1\le i<j\le n-1}\br{a_j-a_i}\m P_n$. Also ist
+$P_n=P_{n-1}$.  Wegen $P_1=1$ zeigt dies, dass $P_n=1$ ist.
+\end{beweis}
 
 \subsection{Eine Verallgemeinerung des Satzes von van der Monde}
 
 Seien nun $a_i,b_k$, $i,k=1,2,\dots,n$, $2n$ Unbestimmte und 
 \begin{gather*}
-  a_{ij}:=\prod_{k=1}^{i-j}\br{a_j-b_k},\quad i,j=1,2,\dots,n.
+  a_{ij}:=\prod_{k=1}^{i-1}\br{a_j-b_k},\quad i,j=1,2,\dots,n.
 \end{gather*}
 Das leere Produkt setzen wir dabei wie gewöhnlich per Definition gleich 1.
 
-\begin{theorem}
-  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$ gilt   
+\begin{satz}
+  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$, also    
   \begin{gather*}
-    \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}.
+    A_n=\begin{pmatrix}
+    1 & 1 & \dots & 1\\
+    a_1-b_1 & a_2-b_1 & \dots & a_n-b_1 \\
+    \br{a_1-b_1}\br{a_1-b_2} & \br{a_2-b_1}\br{a_2-b_2} & \dots &
+    \br{a_n-b_1}\br{a_n-b_2} \\ 
+    \dots& \dots & \dots &\dots
+    \end{pmatrix}
+    \intertext{gilt}
+    \det{A_n}=\prod_{1\le i<j\le n}\br{a_j-a_i}.
   \end{gather*}
-\end{theorem}
+\end{satz}
 Der Satz von van der Monde ergibt sich hieraus sofort für
-$b_1=b_2=\dots=b_n=0$, 
+$b_1=b_2=\dots=b_n=0$.
 
-\emph{Erster Beweis:} Wir argumentieren wie oben. $\mathrm{det}(A_n)$ ist nun
+\emph{Erster Beweis:} Wir argumentieren wie oben. $\det{A_n}$ ist nun
 ein Polynom in $a_1,a_2,\dots,a_n$ und $b_1,b_2,\dots,b_n$. Für $a_i=a_j$
 stimmen die Spalten $i$ und $j$ von $A_n$ wieder überein und wir schließen wie
-oben, dass $\mathrm{det}(A_n)$ für alle $1\le i<j\le n$ durch $a_j-a_i$
+oben, dass $\det{A_n}$ für alle $1\le i<j\le n$ durch $a_j-a_i$
 teilbar ist. Wie oben ergibt sich
 \begin{gather*}
-  \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{2}
+  \det{A_n}=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{2}
 \end{gather*}
 für ein gewisses Polynom $P_n=P_n(a_1.\dots,a_n,b_1,\dots,b_n)$. Ein Vergleich
 der $a_i$-Grade der beiden Seiten von (1) für $i=1,\dots,n$ zeigt wieder, dass
 alle $a_i$-Grade von $P_n$ gleich null sind. Also ist diesmal $P_n$ zwar nicht
 konstant, sondern ein Polynom nur in $b_1,\dots,b_n$.  Der Vergleich der
 Koeffizienten von $a_n^{n-1}$ auf der linken und der rechten Seite von (1)
-ergibt
+ergibt wieder
 \begin{gather*}
-  P_n\m\prod_{1\le i<j<n}\br{a_j-a_i}=\mathrm{det}(A_{n-1}).
+  P_n\m\prod_{1\le i<j\le n-1}\br{a_j-a_i}=\det{A_{n-1}},
 \end{gather*}
-Ein Induktionsargument liefert $P_n=P_{n-1}$ und weiter $P_n=1$ für $n\ge 1$,
-da offensichtlich $P_1=P_2=1$ gilt.  Das komplettiert den Beweis. \hfill
-$\Box$
+damit $P_n=P_{n-1}$ und weiter $P_n=1$ für $n\ge 1$, da offensichtlich
+$P_1=P_2=1$ gilt.  Das komplettiert den Beweis. \quad $\Box$
 
 \emph{Zweiter Beweis:} Addiere $b_i$ Mal die Zeile $i$ von $\begin{pmatrix}
   a_{i,j}\end{pmatrix}$ zur Zeile $(i+1)$, $i=n-1,n-2,\dots,1$. Als Zeile
@@ -100,21 +119,78 @@ Zeile $(i+1)$ der neuen Matrix ergibt sich
 Wiederholt man dasselbe Argument $(n-1)$ Mal, so wird die Matrix
 $\begin{pmatrix} a_{i,j}\end{pmatrix}$ in die van-der-Mondesche Matrix
 transformiert, ohne dass sich der Wert der Determinante ändert.  Damit folgt
-die Behauptung aber aus dem originalen Satz von van der Monde. \hfill$\Box$
+die Behauptung aber aus dem originalen Satz von van der Monde. \quad $\Box$
 
 \section{Anwendungen}
 
 \newcommand{\gauss}[2]{\ensuremath\sbr{\frac{#1}{#2}}}
 
-Let be $a\in\R$, $n\in\N$ and $x$ an indeterminate. Define \emph{Gaussian
-numbers} in the usual way as
+Es seien $a\in\R$, $n\in\N$ und $x$ eine Variable. Definiere die
+\emph{Gauss-Zahlen} wie üblich als
 \begin{gather*}
-  \gauss{a,n}=\prod{i=1}^n\frac{x^{a+1-i}-1}{x^i-1}
+  \gauss{a}{n}=\prod_{i=1}^n\frac{x^{a+1-i}-1}{x^i-1}
+  =\frac{\br{x^a-1}\br{x^{a-1}-1}\m\dots\m\br{x^{a-n+1}-1}}
+  {\br{x-1}\br{x^2-1}\br{x^n-1}}. 
 \end{gather*}
 
 \begin{folgerung}
-  
+  Ist $a_{ij}=\gauss{m_j}{i-1}$ für $m_1,\dots,m_n\in\N$, $i,j=1,\dots,n$, so
+  ist
+  \begin{gather*}
+    \det{a_{ij}} = x^{-\binom{n}{3}}\prod_{k=1}^n{\frac{1}{\br{x^k-1}^{n-k}}}
+    \prod_{1\le i<j\le n}{\br{x^{m_j}-x^{m_i}}}.
+  \end{gather*}
 \end{folgerung}
+\begin{beweis}
+  Es ist 
+\begin{gather*}
+  a_{ij} =\prod_{k=1}^{i-1}\frac{x^{m_j+1-k}-1}{x^k-1}
+  =\prod_{k=1}^{i-1}\frac{x^{m_j}-x^{k-1}}{\br{x^k-1}x^{k-1}}.
+\end{gather*}
+Da die Nenner bei allen Elementen einer Zeile gleich sind, können wir diese
+als Faktor aus der Determinante herausziehen. Damit erhalten wir
+\begin{gather*}
+  \det{a_{ij}}=\br{\prod_{i=1}^n{\prod_{k=1}^{i-1}\frac{1}{\br{x^k-1}x^{k-1}}}}\m
+  \det{b_{ij}}\ \text{mit}\ b_{ij}=\prod_{k=1}^{i-1}{\br{x^{m_j}-x^{k-1}}}.
+\end{gather*}
+Es ist  
+\begin{gather*}
+  \prod_{i=1}^n{\prod_{k=1}^{i-1}{x^{k-1}}}=x^{\sum_{i=1}^n{\frac{(i-1)(i-2)}{2}}}
+  =x^{\frac{n^3-3n^2+2n}{6}} =x^{\binom{n}{3}}.
+\end{gather*}
+Wir wenden Satz~2 auf die Berechnung von $\det{b_{ij}}$ mit $a_j=x^{m_j}$ und
+$b_k=x^{k-1}$ an:
+\begin{gather*}
+  \det{b_{ij}}=\prod_{1\le i<j\le n}{\br{x^{m_j}-x^{m_i}}}.
+\end{gather*}
+Damit ist der geforderte Nachweis erbracht.
+\end{beweis}
+Sei nun $\binom{a}{n}$ der (gewöhnliche) Binomialkoeffizient.
+\begin{folgerung}
+  Ist $a_{ij}=\binom{m_j}{i-1}$ für $m_1,\dots,m_n\in\N$, $i,j=1,\dots,n$, so
+  ist
+\begin{gather*}
+  \det{a_{ij}} = \prod_{k=1}^{n-1}{\frac{1}{k!}}
+  \prod_{1\le i<j\le n}{\br{m_j-m_i}}.
+\end{gather*}
+\end{folgerung}
+\begin{beweis}
+  Es ist 
+\begin{gather*}
+  a_{ij}=\binom{m_j}{i-1}=\frac{1}{(i-1)!}\prod_{k=1}^{i-1}{m_j+1-k}.
+\end{gather*}
+Auf dieselbe Weise wie oben ergibt sich für
+\begin{gather*}
+  b_{ij}=\prod_{k=1}^{i-1}{m_j+1-k}
+  \intertext{aus Satz 2}
+  \det{b_{ij}}=\prod_{1\le i<j\le n}{\br{m_j-m_i}}
+  \intertext{und damit}
+  \det{a_{ij}}=\frac{1}{1!\m 2!\m\dots\m(n-1)!}
+  \prod_{1\le i<j\le n}{\br{m_j-m_i}}.
+\end{gather*}
+\end{beweis}
 
+Folgerung 2 ergibt sich auch direkt aus Folgerung 1 durch Anwendung der Regel
+von l'Hospital und der Beziehung $\binom{a}{n}=\lim_{x\to 1}\gauss{a}{n}$.
 
 \end{document}
