@@ -1,0 +1,120 @@
+\documentclass[11pt,a4paper]{article}  
+\usepackage{kosemnet,ko-math,ngerman} 
+\usepackage[utf8]{inputenc}  
+
+\author{Hans-Gert Gräbe, Leipzig}
+\title{Ein Van-der-Monde-artiges Theorem\kosemnetlicensemark}
+\date{11. Januar 2025}
+
+\begin{document} 
+\maketitle 
+
+\begin{abstract}
+  Ziel der vorliegenden Arbeit ist die Berechnung einer Determinante, die der
+  van-der-Mondeschen ähnelt. Zwei Anwendungen auf Gausszahlen und
+  Binomialkoeffizienten werden diskutiert.  Der Text setzt Bekanntheit mit
+  dem Determinantenbegriff voraus. 
+
+  NB: Die Arbeit entstand wohl Ende der 1980er Jahre und fand sich 2025 in
+  einer englischen Version beim Aufräumen wieder. Ich habe den Text nun
+  digital erfasst und ins Deutsche übertragen.
+\end{abstract}
+
+\section{Der Satz von van der Monde und eine Verallgemeinerung}
+
+$a_i$, $i=1,2,\dots,n$, seien $n$ Unbestimmte und $a_{ij}=a_j^{i-1},
+$i,j=1,2,\dots,n$. 
+\begin{theorem}{Satz von van der Monde}
+  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$ gilt   
+  \begin{gather*}
+    \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}.
+  \end{gather*}
+\end{theorem}
+\emph{Beweis:} $\mathrm{det}(A_n)$ ist ein Polynom in $a_1,a_2,\dots,a_n$. Für
+$a_i=a_j$ stimmen die Spalten $i$ und $j$ von $A_n$ überein und
+$\mathrm{det}(A_n)$ verschwindet in diesem Fall.  Also ist $\mathrm{det}(A_n)$
+durch $a_j-a_i$ teilbar für alle $1\le i<j\le n$. Da diese Faktoren (als
+lineare Faktoren) paarweise teilerfremd sind, ergibt sich
+\begin{gather*}
+  \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{1}
+\end{gather*}
+für ein Polynom $P_n=P_n(a_1,a_2,\dots,a_n)$.  Vergleich der $a_i$-Grade auf
+den beiden Seiten von (1) zeigen, dass $P_n$ ein konstantes Polynom ist.  Der
+Vergleich der Koeffizienten vor $a_n^{n-1}$ auf den beiden Seiten von (1)
+zeigt, dass $P_n=1$ ist.\hfill $\Box$
+
+\subsection{Eine Verallgemeinerung des Satzes von van der Monde}
+
+Seien nun $a_i,b_k$, $i,k=1,2,\dots,n$, $2n$ Unbestimmte und 
+\begin{gather*}
+  a_{ij}:=\prod_{k=1}^{i-j}\br{a_j-b_k},\quad i,j=1,2,\dots,n.
+\end{gather*}
+Das leere Produkt setzen wir dabei wie gewöhnlich per Definition gleich 1.
+
+\begin{theorem}
+  Für die Matrix $A_n=\begin{pmatrix} a_{ij} \end{pmatrix}$ gilt   
+  \begin{gather*}
+    \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}.
+  \end{gather*}
+\end{theorem}
+Der Satz von van der Monde ergibt sich hieraus sofort für
+$b_1=b_2=\dots=b_n=0$, 
+
+\emph{Erster Beweis:} Wir argumentieren wie oben. $\mathrm{det}(A_n)$ ist nun
+ein Polynom in $a_1,a_2,\dots,a_n$ und $b_1,b_2,\dots,b_n$. Für $a_i=a_j$
+stimmen die Spalten $i$ und $j$ von $A_n$ wieder überein und wir schließen wie
+oben, dass $\mathrm{det}(A_n)$ für alle $1\le i<j\le n$ durch $a_j-a_i$
+teilbar ist. Wie oben ergibt sich
+\begin{gather*}
+  \mathrm{det}(A_n)=\prod_{1\le i<j\le n}\br{a_j-a_i}\m P_n\tag{2}
+\end{gather*}
+für ein gewisses Polynom $P_n=P_n(a_1.\dots,a_n,b_1,\dots,b_n)$. Ein Vergleich
+der $a_i$-Grade der beiden Seiten von (1) für $i=1,\dots,n$ zeigt wieder, dass
+alle $a_i$-Grade von $P_n$ gleich null sind. Also ist diesmal $P_n$ zwar nicht
+konstant, sondern ein Polynom nur in $b_1,\dots,b_n$.  Der Vergleich der
+Koeffizienten von $a_n^{n-1}$ auf der linken und der rechten Seite von (1)
+ergibt
+\begin{gather*}
+  P_n\m\prod_{1\le i<j<n}\br{a_j-a_i}=\mathrm{det}(A_{n-1}).
+\end{gather*}
+Ein Induktionsargument liefert $P_n=P_{n-1}$ und weiter $P_n=1$ für $n\ge 1$,
+da offensichtlich $P_1=P_2=1$ gilt.  Das komplettiert den Beweis. \hfill
+$\Box$
+
+\emph{Zweiter Beweis:} Addiere $b_i$ Mal die Zeile $i$ von $\begin{pmatrix}
+  a_{i,j}\end{pmatrix}$ zur Zeile $(i+1)$, $i=n-1,n-2,\dots,1$. Als Zeile
+$(i+1)$ der neuen Matrix ergibt sich 
+\begin{gather*}
+  a_{i+1,j}^{(1)}=a_{i+1,j}+b_i\m a_{ij}
+  =\prod_{k=1}^i\br{a_j-b_k}+b_i\m\prod_{k=1}^{i-1}\br{a_j-b_k} 
+  =a_j\m \prod_{k=1}^{i-1}\br{a_j-b_k} = a_j\m a_{ij}.
+\end{gather*}
+Addiere nun $b_{i-1}$ Mal die Zeile $i$ der Matrix $\begin{pmatrix}
+  a_{i,j}^{(1)}\end{pmatrix}$ zur Zeile $(i+1)$ $(i=n-1,n-2,\dots,2)$.  Als
+Zeile $(i+1)$ der neuen Matrix ergibt sich
+\begin{gather*}
+  a_{i+1,j}^{(2)}=a_{i+1,j}^{(1)}+b_i\m a_{ij}^{(1)}
+  =a_j\m\br{a_{ij}+b_{i-1}\m a_{i-1,j}} = a_j\m a_{ij}^{(1)} =a_j^2\m
+  a_{i-1,j}\quad (i\ge 2).
+\end{gather*}
+Wiederholt man dasselbe Argument $(n-1)$ Mal, so wird die Matrix
+$\begin{pmatrix} a_{i,j}\end{pmatrix}$ in die van-der-Mondesche Matrix
+transformiert, ohne dass sich der Wert der Determinante ändert.  Damit folgt
+die Behauptung aber aus dem originalen Satz von van der Monde. \hfill$\Box$
+
+\section{Anwendungen}
+
+\newcommand{\gauss}[2]{\ensuremath\sbr{\frac{#1}{#2}}}
+
+Let be $a\in\R$, $n\in\N$ and $x$ an indeterminate. Define \emph{Gaussian
+numbers} in the usual way as
+\begin{gather*}
+  \gauss{a,n}=\prod{i=1}^n\frac{x^{a+1-i}-1}{x^i-1}
+\end{gather*}
+
+\begin{folgerung}
+  
+\end{folgerung}
+
+
+\end{document}
