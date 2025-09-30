@@ -5,73 +5,163 @@
 \author{Hans-Gert Gräbe, Leipzig}
 \title{Das Dirichletsche Schubfachprinzip\kosemnetlicensemark\\ 
 Arbeitsmaterial für Klasse 8}
-\date{Version vom 20. August 2024}
+\date{Version vom 29. September 2025}
 
 \begin{document} 
 \maketitle 
 
+\section{Das Schubfachprinzip}
 \begin{quote}
 Felix behauptet am ersten Tag im Ferienlager: „In unserer Gruppe gibt es unter
-den 15 Kindern zwei, die im selben Monat Geburtstag haben.“ Hat Felix recht\,?
+den 15 Kindern zwei, die im selben Monat Geburtstag haben.“ Hat Felix recht?
 \end{quote}
 Wie kann Felix so sicher sein, wo er doch die Kinder noch gar nicht kennt und
 demzufolge bestimmt auch nicht wei"s, in welchem Monat jeder einzelne
 Geburtstag hat?
 
-Felix' "Uberlegung ist denkbar einfach: Denke ich mir 12 Schubk"asten, auf
+Felix' "Uberlegung ist denkbar einfach: Denke ich mir 12 Schubfächer, auf
 denen die verschiedenen Monatsnamen stehen, lie"se die 15 Kinder ihre Namen
 auf kleine Zettel schreiben und jedes Kind dann seinen Zettel in das Fach
 legen, auf dem sein Geburtsmonat steht, dann liegen in einem der K"asten mehr
 als ein Zettel, denn es gibt mehr Kinder in der Gruppe als Monate im Jahr.
 
 Auf eine solche "Uberlegung, die man das \emph{Dirichletsche Schubfachprinzip}
-nennt, kann man manche Knobelaufgaben zur"uckf"uhren. Dabei ist es egal,
-welcher Natur die K"asten und die verteilten Objekte sind und nat"urlich auch,
-ob sie wirklich verteilt worden sind oder (wie hier) man sich die Verteilung
-nur vorgestellt hat.
+nennt, kann man manche Aufgaben zur"uckf"uhren. Dabei ist es egal, welcher
+Natur die Fächer und die verteilten Objekte sind und nat"urlich auch, ob sie
+wirklich verteilt worden sind oder (wie hier) man sich die Verteilung nur
+vorgestellt hat.
 
-Zur Verdeutlichung spricht man deshalb oft von Kugeln und K"asten. In obiger
+Zur Verdeutlichung spricht man deshalb oft von Kugeln und Fächern. In obiger
 Aufgabe haben wir die Aussage
 \begin{quote}\it
-Hat man mehr Kugeln zum Verteilen als K"asten, wo sie hineinkommen, so liegen
-nach dem Verteilen in wenigstens einem Kasten mehrere Kugeln.
+Hat man mehr Kugeln zum Verteilen als Fächer, wo sie hineinkommen, so liegen
+nach dem Verteilen in wenigstens einem Fach mehrere Kugeln.
 \end{quote}
 verwendet.
 
 Man kann genauer folgende Aussage treffen:
 \begin{quote} \it
-Hat man (wenigstens) $k\cdot n+1$ Kugeln zum Verteilen auf $n$ K"asten, wo sie
-hineinkommen, so liegen nach dem Verteilen in einem Kasten mindestens $k+1$
-Kugeln.
+Hat man (wenigstens) $k\m n+1$ Kugeln zum Verteilen auf $n$ Fächer, so liegen
+nach dem Verteilen in einem Fach mindestens $k+1$ Kugeln.
 \end{quote}
+
+Im Englischen spricht man auch vom \emph{pigeonhole principle} (dem „Prinzip
+des Taubenschlags“); Wenn 10 Tauben in drei Taubenschlägen sitzen, dann müssen
+in einem der Schläge (mindestens) vier Tauben sitzen.
+
+\section{Aufgaben}
 
 \begin{aufgabe}
   Gibt es an Eurer Schule zwei Sch"uler, die am gleichen Tag Geburtstag
-  haben\,?
+  haben?
 \end{aufgabe}
-
-\emph{Antwort}: Da das Jahr h"ochstens 366 Tage hat, m"ussten an Deiner Schule
-also mindestens 367 Sch"uler sein, um die Frage mit {\glqq}ja{\grqq} zu
-beantworten. Gibt es wenigstens $2\cdot 366+1=733$ Sch"uler, so gibt es sogar
-einen {\glqq}Kasten, in dem drei Sch"uler liegen{\grqq}, wie man manchmal
-etwas salopp sagt.
+\begin{loesung}
+Da das Jahr h"ochstens 366 Tage hat, m"ussen an Deiner Schule also mindestens
+367 Sch"uler sein, um die Frage mit „ja“ zu beantworten. Gibt es wenigstens
+$2\cdot 366+1=733$ Sch"uler, so gibt es sogar ein „Fach, in dem drei Sch"uler
+liegen“, wie man manchmal etwas salopp sagt, dass also 3 Schüler am gleichen
+Tag Geburtstag haben.
+\end{loesung}
 
 \begin{aufgabe}
   Was kann man "uber ein f"unfz"ugiges Gymnasium mit durchschnittlich 28
-  Sch"ulern pro Klasse aussagen\,?
+  Sch"ulern pro Klasse aussagen?
 \end{aufgabe}
 
 \begin{aufgabe}
-  Gibt es in Deutschland 100 Menschen, die (keine Glatze haben und dennoch9
+  Wie viele Schüler muss eine Schule mindestens haben, damit mit Sicherheit
+  mindestens fünf von ihnen am gleichen Tag Geburtstag haben?
+\end{aufgabe}
+\begin{loesung}
+  Es gilt hier $n = 365$ (Anzahl der Tage eines Jahres) sowie $k+1=5$, also
+  $k=4$ und somit $nk+1 = 1461$. Folglich muss die Schule mindestens 1461
+  Schüler haben, damit die genannte Bedingung erfüllt ist.
+\end{loesung}
+
+\begin{aufgabe}
+  Gibt es in Deutschland 100 Menschen, die (keine Glatze haben und dennoch
   alle gleich viele Haare auf dem Kopf haben?
 \end{aufgabe}
 
-Versuche, diese Fragen selbst zu beantworten\,!
+\begin{aufgabe}
+  Gibt es eine (hinreichend große) Schüleranzahl, für die man behaupten kann,
+  dass mit Sicherheit an \emph{zwei} verschiedenen Tagen jeweils mehr als ein
+  Schüler Geburtstag hat? 
+\end{aufgabe}
+\begin{loesung}
+  Nein, es könnten alle am selben Tag Geburtstag haben.
+\end{loesung}
+
+\begin{aufgabe}
+  Beweise: Unter $n+1$ ganzen Zahlen kann man stets mindestens zwei finden,
+  deren Differenz durch $n$ teilbar ist ($n\ge 2, n\in\N$).
+\end{aufgabe}
+(Hinweis: Betrachte die Reste der $n+1$ Zahlen bei Division durch die Zahl
+$n$). 
+
+\begin{aufgabe}
+  Eine Schießscheibe habe die Form eines gleichseitigen Dreiecks mit der
+  Seitenlänge 2. Sie werde fünfmal getroffen. Zeige, dass es dann stets
+  mindestens zwei Einschusslöcher gibt, deren Abstand kleiner oder gleich 1
+  ist.
+\end{aufgabe}
+(Hinweis: Zerlege das Dreieck in vier kongruente Dreiecke mit der Seitenlänge
+1.)
+
+Wir betrachten nun zwei etwas schwerere Aufgaben:
+
+\begin{aufgabe}
+  In einem Saal seien $n\ge 2$ Personen anwesend. Zeige, dass es unter ihnen
+  stets mindestens zwei Personen gibt, die im Saal dieselbe Anzahl von
+  Bekannten haben.
+\end{aufgabe}
+
+\begin{loesung}
+  Wir ordnen einer Person, die im Saal genau $i$ Bekannte hat, das
+  Schubfach mit der Nummer $i$ zu.
+
+  Die $n$ Personen verteilen sich also auf die $n$ Schubfächer $0,
+  1,\dots,n-1$.  Eines der beiden Schubfächer mit der Nummer $0$ oder der
+  Nummer $n-1$ muss aber frei bleiben, weil es nicht möglich ist, dass eine
+  Person niemanden im Saal kennt, eine andere dagegen alle.  Folglich werden
+  die $n$ Personen auf nur $n-1$ Schubfächer verteilt und es gibt ein
+  Schubfach mit (mindestens) zwei Personen.
+\end{loesung}
+
+\begin{aufgabe}
+  Gegeben seien $n$ nicht notwendig verschiedene ganze Zahlen $a_1, a_2,\dots,
+  a_n$.  Zeige, dass es stets eine Teilmenge dieser Zahlen gibt, deren Summe
+  durch $n$ teilbar ist ($n\ge 1,n\in\N$).
+\end{aufgabe}
+\begin{loesung}
+  Wir betrachten die $n$ Zahlen $a_1, (a_1+a_2), (a_1+a_2+a_3),\dots,
+  (a_1+a_2+\dots+a_n)$.  Falls eine dieser Zahlen durch $n$ teilbar ist, gilt
+  die Behauptung. Anderenfalls lassen mindestens zwei dieser Zahlen bei
+  Division durch $n$ den gleichen Rest. Man wähle dazu die $n-1$ Reste
+  $1,2,\dots,n-1$ als Schubfächer. Dann ist aber die Differenz dieser beiden
+  Zahlen durch $n$ teilbar. Daraus folgt leicht die Behauptung.
+\end{loesung}
+
+\section{Für welche Aufgaben eignet sich das Schubfachprinzip?}
+
+Wenn man weiß, dass eine Aufgabe mit dem Schubfachprinzip lösbar ist, dann
+kommt es nur darauf an, die „Elemente“ und die „Schubfächer“ geschickt zu
+bestimmen. Hierin kann die Hauptschwierigkeit einer solchen Aufgabe liegen.
+
+Wie sieht man einer Aufgabe an, dass sie mit dem Schubfachprinzip lösbar ist?
+Hier kann man folgende Faustregel benutzen: Eine Aufgabe lässt sich mit dem
+Schubfachprinzip lösen, wenn in der Aufgabenstellung eine Menge beschrieben
+wird, in der zwei oder mehr Elemente gleich sein oder eine gewisse Bedingung
+erfüllen sollen. Dabei kommt in der Aufgabenstellung häufig die Formulierung
+„mindestens“ vor. Im allgemeinen sind Existenzaussagen über endliche Mengen
+mit dem Schubfachprinzip beweisbar.  Häufig kann der Aufgabentext so
+umformuliert werden, dass diese äußeren Merkmale sichtbar werden.
 
 \begin{attribution}
-graebe (2004-09-03):\\ Dieses Material wurde vor einiger Zeit als
-Begleitmaterial für den LSGM-Korrespondenzzirkel in der Klasse 8 erstellt und
-nun nach den Regeln der KoSemNet-Literatursammlung aufbereitet.
+graebe (2004-09-03): Begleitmaterial für den LSGM-Korrespondenzzirkel in der
+Klasse 8.
+
+graebe (2025-09-29): Um Material des BK Chemnitz ergänzt.
 \end{attribution}
 
 \end{document}

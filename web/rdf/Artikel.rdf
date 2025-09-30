@@ -261,6 +261,19 @@
     <dc:subject>Algebraische Zahlen</dc:subject>
     <dc:title>Zur Vereinfachung von Wurzelausdrücken</dc:title>
   </dc:BibliographicResource>
+  <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-25-1">
+    <ksn:availableAsPDF rdf:resource="graebe-25-1.pdf"/>
+    <ksn:submittedBy rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:abstract>Es wird der Satz von der Determinante der van der Mondeschen
+    Matrix sowie eine Verallgemeinerung bewiesen. Zwei Anwendungen auf
+    Gausszahlen und Binomialkoeffizienten werden diskutiert.  Der Text setzt
+    Bekanntheit mit dem Determinantenbegriff voraus..</dc:abstract>
+    <dc:audience rdf:resource="http://kosemnet.de/Data/Tag/de-12-3"/>
+    <dc:created>2025-09-30</dc:created>
+    <dc:creator rdf:resource="http://kosemnet.de/Data/Person/Graebe_HansGert"/>
+    <dc:subject>van der Mondesche Determinante</dc:subject>
+    <dc:title>Ein Van-der-Monde-artiges Theorem</dc:title>
+  </dc:BibliographicResource>
 
   <dc:BibliographicResource rdf:about="http://kosemnet.de/Data/Article/graebe-97-1">
     <ksn:availableAsPDF rdf:resource="graebe-97-1.pdf"/>
